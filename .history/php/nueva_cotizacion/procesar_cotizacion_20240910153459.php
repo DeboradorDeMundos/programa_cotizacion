@@ -280,10 +280,6 @@ $id_cotizacion = $mysqli->insert_id;
 echo "Cotización insertada. ID: $id_cotizacion<br>";
 
 
-
-
-
-
 // Recibir datos del formulario
 $detalles_titulo = $_POST['detalle_titulo'] ?? [];
 $detalles_subtitulo = $_POST['detalle_subtitulo'] ?? [];
