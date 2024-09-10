@@ -40,8 +40,6 @@ if ($result_bancos->num_rows > 0) {
 } else {
     echo '<option value="">No hay bancos disponibles</option>';
 }
-
-$mysqli->close();
 ?>
 
 <!-- ---------------------

@@ -111,11 +111,9 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     echo "Empresa insertada/actualizada. ID: $id_empresa<br>";
 
     $input = isset($_POST['cuentas_bancarias']) ? $_POST['cuentas_bancarias'] : '';
-    $condicionesJson = $_POST['condiciones'] ?? '[]'; 
 
     // Decodificar el JSON
     $data = json_decode(urldecode($input), true);
-    $condiciones = json_decode($condicionesJson, true);
     
     // Verificar si la decodificación fue exitosa
     if (json_last_error() !== JSON_ERROR_NONE) {
@@ -153,59 +151,81 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
         die("Error en la preparación de la consulta: " . $mysqli->error);
     }
     
-      // Obtener los datos JSON del formulario
-      $condicionesJson = isset($_POST['condiciones']) ? $_POST['condiciones'] : '[]';
-      $requisitosJson = isset($_POST['requisitos']) ? $_POST['requisitos'] : '[]';
-      $obligacionesJson = isset($_POST['obligaciones']) ? $_POST['obligaciones'] : '[]';
-  
-      // Decodificar el JSON a arrays PHP
-      $condiciones = json_decode($condicionesJson, true);
-      $requisitos = json_decode($requisitosJson, true);
-      $obligaciones = json_decode($obligacionesJson, true);
-  
-      // Verificar si la decodificación fue exitosa
-      if (json_last_error() !== JSON_ERROR_NONE) {
-          die("Error al decodificar el JSON: " . json_last_error_msg());
-      }
-  
-      // Insertar condiciones generales
-      if (!empty($condiciones) && is_array($condiciones)) {
-          $stmt = $mysqli->prepare("INSERT INTO C_Condiciones_Generales (id_empresa, descripcion_condiciones) VALUES (?, ?)");
-          
-          if (!$stmt) {
-              die("Error al preparar la consulta: " . $mysqli->error);
-          }
-  
-          foreach ($condiciones as $condicion) {
-              $stmt->bind_param("is", $id_empresa, $condicion);
-              if (!$stmt->execute()) {
-                  echo "Error al insertar condición: " . $stmt->error;
-              }
-          }
-          $stmt->close();
-      } else {
-          echo "No hay condiciones para insertar.";
-      }
-  
-      // Insertar requisitos básicos
-      if (!empty($requisitos) && is_array($requisitos)) {
-          $stmt = $mysqli->prepare("INSERT INTO E_Requisitos_Basicos (indice, descripcion_condiciones, id_empresa) VALUES (?, ?, ?)");
-          
-          if (!$stmt) {
-              die("Error al preparar la consulta: " . $mysqli->error);
-          }
-  
-          foreach ($requisitos as $index => $requisito) {
-              $indice = $index + 1; // Ajustar el índice
-              $stmt->bind_param("isi", $indice, $requisito, $id_empresa);
-              if (!$stmt->execute()) {
-                  echo "Error al insertar requisito: " . $stmt->error;
-              }
-          }
-          $stmt->close();
-      } else {
-          echo "No hay requisitos para insertar.";
-      }
+    // Iterar sobre las cuentas y realizar la inserción
+    foreach ($data as $account) {
+        $nombre_titular = $account['nombre'];
+        $rut_titular = $account['rut'];
+        $id_banco = getIdBanco($mysqli, $account['banco']);
+        $id_tipocuenta = getIdTipoCuenta($mysqli, $account['tipoCuenta']);
+        $numero_cuenta = $account['numeroCuenta'];
+        $celular = $account['celular'];
+        $email_banco = $account['email'];
+    
+        // Enlazar parámetros
+        $stmt->bind_param("ssiisssi", $nombre_titular, $rut_titular, $id_banco, $id_tipocuenta, $numero_cuenta, $celular, $email_banco, $id_empresa);
+    
+        // Ejecutar la consulta
+        if (!$stmt->execute()) {
+            echo "Error en la ejecución de la consulta: " . $stmt->error . "<br>";
+        } else {
+            $id_cuenta = $stmt->insert_id;
+            echo "Cuenta bancaria insertada. ID: $id_cuenta<br>";
+        }
+    }// Cerrar el statement
+    
+    // Obtener los datos JSON del formulario
+    $condicionesJson = isset($_POST['condiciones']) ? $_POST['condiciones'] : '[]';
+    $requisitosJson = isset($_POST['requisitos']) ? $_POST['requisitos'] : '[]';
+    $obligacionesJson = isset($_POST['obligaciones']) ? $_POST['obligaciones'] : '[]';
+
+    // Decodificar el JSON a arrays PHP
+    $condiciones = json_decode($condicionesJson, true);
+    $requisitos = json_decode($requisitosJson, true);
+    $obligaciones = json_decode($obligacionesJson, true);
+
+    // Verificar si la decodificación fue exitosa
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        die("Error al decodificar el JSON: " . json_last_error_msg());
+    }
+
+    // Insertar condiciones generales
+    if (!empty($condiciones) && is_array($condiciones)) {
+        $stmt = $mysqli->prepare("INSERT INTO C_Condiciones_Generales (id_empresa, descripcion_condiciones) VALUES (?, ?)");
+        
+        if (!$stmt) {
+            die("Error al preparar la consulta: " . $mysqli->error);
+        }
+
+        foreach ($condiciones as $condicion) {
+            $stmt->bind_param("is", $id_empresa, $condicion);
+            if (!$stmt->execute()) {
+                echo "Error al insertar condición: " . $stmt->error;
+            }
+        }
+        $stmt->close();
+    } else {
+        echo "No hay condiciones para insertar.";
+    }
+
+    // Insertar requisitos básicos
+    if (!empty($requisitos) && is_array($requisitos)) {
+        $stmt = $mysqli->prepare("INSERT INTO E_Requisitos_Basicos (indice, descripcion_condiciones, id_empresa) VALUES (?, ?, ?)");
+        
+        if (!$stmt) {
+            die("Error al preparar la consulta: " . $mysqli->error);
+        }
+
+        foreach ($requisitos as $index => $requisito) {
+            $indice = $index + 1; // Ajustar el índice
+            $stmt->bind_param("isi", $indice, $requisito, $id_empresa);
+            if (!$stmt->execute()) {
+                echo "Error al insertar requisito: " . $stmt->error;
+            }
+        }
+        $stmt->close();
+    } else {
+        echo "No hay requisitos para insertar.";
+    }
   
       
 
@@ -252,7 +272,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
     // Cierra la declaración de cotización
     $stmt_cotizacion->close();
-    $mysqli->close();
 
 
 

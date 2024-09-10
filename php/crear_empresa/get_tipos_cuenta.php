@@ -41,7 +41,6 @@ if ($result_tipo_cuenta->num_rows > 0) {
     echo '<option value="">No hay tipos de cuenta disponibles</option>';
 }
 
-$mysqli->close();
 ?>
 
 <!-- ---------------------
