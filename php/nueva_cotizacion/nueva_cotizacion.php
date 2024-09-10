@@ -143,7 +143,15 @@ if ($id > 0) {
     echo "<p>ID inválido.</p>";
 }
 
-$mysqli->close();
+//<!-- ---------------------
+//-- INICIO CIERRE CONEXION BD --
+//     --------------------- -->
+
+     $mysqli->close();
+
+//<!-- ---------------------
+//     -- FIN CIERRE CONEXION BD --
+//     --------------------- -->
 ?>
 
 
@@ -202,14 +210,6 @@ $mysqli->close();
             <?php include 'adelanto.php'; ?>
 
             <br>
-            <!-- Sección para Condiciones Generales -->
-
-            <?php include 'condiciones_generales.php'; ?>
-
-            <!-- Sección para Requisitos Básicos -->
-             
-            <?php include 'requisitos_basicos.php'; ?>
-
 
             
             <button type="submit" class="submit">Crear cotizacion</button> <!-- Botón para enviar el formulario y generar la cotización -->
@@ -241,15 +241,7 @@ $mysqli->close();
 </html>
 
 
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-     <?php
-     $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
+
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa nueva cotizacion .PHP -----------------------------------

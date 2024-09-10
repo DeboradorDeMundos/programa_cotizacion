@@ -23,6 +23,15 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 <!-- ---------------------
      -- FIN CONEXION BD --
      --------------------- -->
+<!-- ---------------------
+-- INICIO CIERRE CONEXION BD --
+     --------------------- -->
+     <?php
+     $mysqli->close();
+?>
+<!-- ---------------------
+     -- FIN CIERRE CONEXION BD --
+     --------------------- -->
 
 
 <!DOCTYPE html>
@@ -86,15 +95,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 </body>
 </html>
 
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-<?php
-     $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa crear_empresa .PHP -----------------------------------

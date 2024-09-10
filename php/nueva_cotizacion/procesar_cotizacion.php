@@ -463,34 +463,6 @@ echo "Adelanto insertado correctamente. ID: " . $mysqli->insert_id;
 
 
 
-//insertar datos en la tabla condiciones generales
-// Recibir los datos del formulario
-$descripcion_condiciones = $_POST['descripcion_condiciones'];
-$estado_condiciones = $_POST['estado_condiciones'] ;
-
-
-// Insertar datos en la tabla Condiciones_Generales
-$sql = "INSERT INTO C_Condiciones_Generales (id_cotizacion, descripcion_condiciones, estado) VALUES (?, ?, ?)";
-$stmt = $mysqli->prepare($sql);
-
-if ($stmt === false) {
-    die("Error en la preparación de la consulta: " . $mysqli->error);
-}
-
-foreach ($descripcion_condiciones as $key => $descripcion) {
-    $estado = isset($estado_condiciones[$key]) ? 1 : 0;
-    $stmt->bind_param("isi", $id_cotizacion, $descripcion, $estado);
-    
-    if (!$stmt->execute()) {
-        die("Error al insertar: " . $stmt->error);
-    }
-}
-
-echo "Condiciones generales insertadas correctamente.";
-$stmt->close();
-
-
-
 // <!-- ---------------------
 //  -- INICIO CIERRE CONEXION BD --
 //     --------------------- -->     
