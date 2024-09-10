@@ -18,7 +18,7 @@ BPPJ
 
      <?php
 // Establece la conexión a la base de datos de ITred Spa
-$conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
+$mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
 
  // Definir la ruta de subida de archivos
  $upload_dir = '../../imagenes/programa_cotizacion/'; // Ruta relativa desde el archivo PHP
@@ -45,13 +45,13 @@ $conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
 
          // Insertar la ruta de la foto en la tabla FotosPerfil
          $sql_foto = "INSERT INTO e_fotosPerfil (ruta_foto) VALUES (?)";
-         $stmt_foto = $conn->prepare($sql_foto);
+         $stmt_foto = $mysqli->prepare($sql_foto);
          $stmt_foto->bind_param("s", $upload_file);
          if ($stmt_foto->execute()) {
              echo "Foto del perfil insertada correctamente.";
              
              // Obtener el ID de la foto recién insertada
-             $empresa_id_foto = $conn->insert_id;
+             $empresa_id_foto = $mysqli->insert_id;
          } else {
              die("Error al insertar la foto del perfil: " . $stmt_foto->error);
          }
@@ -80,6 +80,16 @@ $conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
         <button for="logo-upload" class="logo" type="file" id ="logo-upload" name="logo_upload" accept="image/*" style="display:block;">Sube tu Logo Empresarial tamaño recomendado: 800x200 pixeles formato: png</button > <!-- Texto que aparece junto a la imagen para instruir al usuario a cargar el logo -->  
     </label>
 </div>
+
+<!-- ---------------------
+-- INICIO CIERRE CONEXION BD --
+     --------------------- -->
+     <?php
+     $mysqli->close();
+?>
+<!-- ---------------------
+     -- FIN CIERRE CONEXION BD --
+     --------------------- -->
 
 
 <!-- ------------------------------------------------------------------------------------------------------------

@@ -18,7 +18,7 @@ BPPJ
 
      <?php
 // Establece la conexión a la base de datos de ITred Spa
-$conn = new mysqli('localhost', 'root', '', 'itredspa_bd');
+$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 ?>
 <!-- ---------------------
      -- FIN CONEXION BD --
@@ -37,6 +37,16 @@ $conn = new mysqli('localhost', 'root', '', 'itredspa_bd');
     <button id="add-obligaciones-btn" type="button">Agregar nueva obligacion</button>
     <button id="remove-obligaciones-btn" type="button" style="display: none;">Eliminar última obligacion</button>
 </div>
+
+<!-- ---------------------
+-- INICIO CIERRE CONEXION BD --
+     --------------------- -->
+     <?php
+     $mysqli->close();
+?>
+<!-- ---------------------
+     -- FIN CIERRE CONEXION BD --
+     --------------------- -->
 
 
 <!-- ------------------------------------------------------------------------------------------------------------

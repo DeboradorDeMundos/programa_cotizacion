@@ -18,7 +18,7 @@ BPPJ
 
      <?php
 // Establece la conexión a la base de datos de ITred Spa
-$conn = new mysqli('localhost', 'root', '', 'itredspa_bd');
+$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 ?>
 <!-- ---------------------
      -- FIN CONEXION BD --
@@ -26,7 +26,7 @@ $conn = new mysqli('localhost', 'root', '', 'itredspa_bd');
 <?php
 // Consultar bancos
 $sql_bancos = "SELECT id_banco, nombre_banco FROM E_Bancos";
-$result_bancos = $conn->query($sql_bancos);
+$result_bancos = $mysqli->query($sql_bancos);
 
 // Verificar si hay resultados y generar opciones HTML
 if ($result_bancos->num_rows > 0) {
@@ -41,8 +41,18 @@ if ($result_bancos->num_rows > 0) {
     echo '<option value="">No hay bancos disponibles</option>';
 }
 
-$conn->close();
+$mysqli->close();
 ?>
+
+<!-- ---------------------
+-- INICIO CIERRE CONEXION BD --
+     --------------------- -->
+     <?php
+     $mysqli->close();
+?>
+<!-- ---------------------
+     -- FIN CIERRE CONEXION BD --
+     --------------------- -->
 
 
 
