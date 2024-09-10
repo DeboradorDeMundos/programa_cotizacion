@@ -16,15 +16,9 @@ BPPJ
      -- INICIO CONEXION BD --
      ------------------------ -->
 
-<?php
+     <?php
 // Establece la conexión a la base de datos de ITred Spa
 $conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-?>
-<!-- ---------------------
-     -- FIN CONEXION BD --
-     --------------------- -->
-
-<?php
 
 // Verificar la conexión
 if ($conn->connect_error) {
@@ -49,10 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $total = $cantidad * $precio_unitario; // Calcular el total
 
     // Preparar la consulta para actualizar la cotización
-    $sql_cotizacion = "UPDATE Cotizaciones SET
-                Nombre = ?, 
-                CodigoProv = ?
-            WHERE ID = ?";
+    $sql_cotizacion = "UPDATE C_Cotizaciones SET
+                nombre_cotizacion = ?, 
+                codigo_prov = ?
+            WHERE id_cotizacion = ?";
     $stmt_cotizacion = $conn->prepare($sql_cotizacion);
     $stmt_cotizacion->bind_param(
         "ssi",
@@ -62,12 +56,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     );
 
     // Preparar la consulta para actualizar los detalles del servicio
-    $sql_detalle = "UPDATE DetalleServicios SET
-                Cantidad = ?, 
-                Descripcion = ?, 
-                Precio_Unitario = ?, 
-                Total = ?
-            WHERE ID_Cotizacion = ?";
+    $sql_detalle = "UPDATE C_Detalles SET
+                cantidad = ?, 
+                descripcion = ?, 
+                precio_unitario = ?, 
+                total = ?
+            WHERE id_cotizacion = ?";
     $stmt_detalle = $conn->prepare($sql_detalle);
     $stmt_detalle->bind_param(
         "isddi",
@@ -96,71 +90,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                c.numero_cotizacion AS Numero, 
                c.fecha_emision AS FechaEmision, 
                c.fecha_validez AS FechaValidez, 
-               c.dias_compra AS DiasCompra, 
-               c.dias_trabajo AS DiasTrabajo, 
-               c.trabajadores AS Trabajadores, 
-               c.horario AS Horario, 
-               c.colacion AS Colacion, 
-               c.entrega AS Entrega, 
                c.id_cliente AS ClienteID, 
                c.id_proyecto AS ProyectoID, 
                c.id_empresa AS EmpresaID, 
                c.id_vendedor AS VendedorID, 
-               c.id_encargado AS EncargadoID,
-               c.total_final AS TotalGeneral, 
-               c.descuento_global AS Descuento, 
-               c.iva_valor AS IVA, 
-               
+               c.id_encargado AS EncargadoID, 
+               t.total_final AS TotalGeneral, 
+               t.descuento_global AS Descuento, 
+               t.iva_valor AS IVA, 
                cl.nombre_cliente AS ClienteNombre, 
                cl.empresa_cliente AS ClienteEmpresa, 
                cl.rut_cliente AS ClienteRUT, 
                cl.direccion_cliente AS ClienteDireccion, 
-               cl.lugar_cliente AS ClienteLugar, 
                cl.telefono_cliente AS ClienteTelefono, 
                cl.email_cliente AS ClienteEmail, 
-               cl.cargo_cliente AS ClienteCargo, 
-               cl.giro_cliente AS ClienteGiro, 
-               cl.comuna_cliente AS ClienteComuna, 
-               cl.ciudad_cliente AS ClienteCiudad, 
-               cl.tipo_cliente AS ClienteTipo,
-               
                p.nombre_proyecto AS ProyectoNombre, 
-               p.codigo_proyecto AS ProyectoCodigo, 
-               p.tipo_trabajo AS ProyectoTipoTrabajo,
-               p.area_trabajo AS ProyectoAreaTrabajo,
-               p.riesgo_proyecto AS ProyectoRiesgo,
-
-               e.nombre_encargado AS EncargadoNombre,
-               e.email_encargado AS EncargadoEmail,
-               e.fono_encargado AS EncargadoTelefono,
-               e.celular_encargado AS EncargadoCelular,
-
-               v.nombre_vendedor AS VendedorNombre,
-               v.email_vendedor AS VendedorEmail,
-               v.fono_vendedor AS VendedorTelefono,
-               v.celular_vendedor AS VendedorCelular,
-               
-               emp.rut_empresa AS EmpresaRUT,
-               emp.nombre_empresa AS EmpresaNombre,
-               emp.area_empresa AS EmpresaArea,
-               emp.direccion_empresa AS EmpresaDireccion,
-               emp.telefono_empresa AS EmpresaTelefono,
-               emp.email_empresa AS EmpresaEmail,
-               
-               ds.cantidad AS Cantidad, 
+               e.nombre_encargado AS EncargadoNombre, 
+               v.nombre_vendedor AS VendedorNombre, 
+               emp.nombre_empresa AS EmpresaNombre, 
+               d.cantidad AS Cantidad, 
                d.descripcion AS DetalleDescripcion, 
                d.precio_unitario AS PrecioUnitario, 
-               ds.cantidad * d.precio_unitario AS TotalDetalle
-        FROM Cotizaciones c
-        JOIN Clientes cl ON c.id_cliente = cl.id_cliente
-        JOIN Proyectos p ON c.id_proyecto = p.id_proyecto
-        JOIN Empresa emp ON c.id_empresa = emp.id_empresa
-        LEFT JOIN Vendedores v ON c.id_vendedor = v.id_vendedor
-        LEFT JOIN Encargados e ON c.id_encargado = e.id_encargado
-        LEFT JOIN Detalle_Cotizacion ds ON c.id_cotizacion = ds.id_cotizacion
-        LEFT JOIN Descripciones d ON ds.id_descripcion = d.id_descripcion
+               (d.cantidad * d.precio_unitario) AS TotalDetalle
+        FROM C_Cotizaciones c
+        JOIN C_Clientes cl ON c.id_cliente = cl.id_cliente
+        JOIN C_Proyectos p ON c.id_proyecto = p.id_proyecto
+        JOIN E_Empresa emp ON c.id_empresa = emp.id_empresa
+        LEFT JOIN C_Vendedores v ON c.id_vendedor = v.id_vendedor
+        LEFT JOIN C_Encargados e ON c.id_encargado = e.id_encargado
+        LEFT JOIN C_Detalles d ON c.id_cotizacion = d.id_cotizacion
+        JOIN C_Totales t ON c.id_cotizacion = t.id_cotizacion
         WHERE c.id_cotizacion = ?";
-    
+
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();

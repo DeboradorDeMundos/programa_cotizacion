@@ -35,17 +35,18 @@ if ($conn->connect_error) {
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;  // Obtiene el parámetro 'id' de la URL y lo convierte a entero; si no está presente, asigna 0
 
 if ($id > 0) {  // Verifica si el 'id' es mayor que 0
-    $sql = "SELECT c.*, p.*, cl.*, v.*, e.*, en.*, d.*, ds.cantidad, 
-    (ds.cantidad * d.precio_unitario) AS detalle_total 
-    FROM Cotizaciones c
-    JOIN Proyectos p ON c.id_proyecto = p.id_proyecto
-    JOIN Clientes cl ON c.id_cliente = cl.id_cliente
-    JOIN Vendedores v ON c.id_vendedor = v.id_vendedor
-    JOIN Empresa e ON c.id_empresa = e.id_empresa
-    LEFT JOIN Encargados en ON c.id_encargado = en.id_encargado
-    LEFT JOIN Detalle_Cotizacion ds ON c.id_cotizacion = ds.id_cotizacion
-    LEFT JOIN Descripciones d ON ds.id_descripcion = d.id_descripcion
-    WHERE c.id_cotizacion = ?";  // Filtra los resultados donde 'id_cotizacion' es igual al parámetro 'id'
+    $sql = "SELECT c.*, p.*, cl.*, v.*, e.*, en.*, d.*, det.cantidad, 
+            (det.cantidad * det.precio_unitario) AS detalle_total 
+            FROM C_Cotizaciones c
+            JOIN C_Proyectos p ON c.id_proyecto = p.id_proyecto
+            JOIN C_Clientes cl ON c.id_cliente = cl.id_cliente
+            JOIN C_Vendedores v ON c.id_vendedor = v.id_vendedor
+            JOIN E_Empresa e ON c.id_empresa = e.id_empresa
+            LEFT JOIN C_Encargados en ON c.id_encargado = en.id_encargado
+            LEFT JOIN C_Titulos t ON c.id_cotizacion = t.id_cotizacion
+            LEFT JOIN C_Detalles det ON t.id_titulo = det.id_titulo
+            LEFT JOIN P_Productos d ON det.nombre_producto = d.nombre_producto
+            WHERE c.id_cotizacion = ?";
 
     $stmt = $conn->prepare($sql);  // Prepara la consulta SQL para ejecutar con parámetros
     $stmt->bind_param("i", $id);  // Vincula el parámetro 'id' a la consulta SQL como entero

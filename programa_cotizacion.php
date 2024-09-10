@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <li><a href="php/nueva_cotizacion/nueva_cotizacion.php?id=<?php echo $id_empresa; ?>" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">Nueva Cotización</a></li>
             <li><a href="php/crear_producto/crear_producto.php?id=<?php echo $id_empresa; ?>" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">Crear Producto</a></li>
             <li><a href="php/crear_proveedor/crear_proveedor.php" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">Crear Proveedor</a></li>
-            <li><a href="php/programa_cotizacion/ver_listado.php" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">Ver listado Cotización</a></li>
+            <li><a href="php/programa_cotizacion/ver_listado.php?id=<?php echo $id_empresa; ?>" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">Ver listado Cotización</a></li>
             <li><a href="php/crear_empresa/crear_empresa.php">Crear nueva empresa</a></li>
         </ul>
     </nav>

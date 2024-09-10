@@ -18,36 +18,35 @@ BPPJ
 
 <?php
 // Establece la conexión a la base de datos de ITred Spa
-$conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-?>
-<!-- ---------------------
-     -- FIN CONEXION BD --
-     --------------------- -->
+$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
-<?php
+// Verifica la conexión
+if ($mysqli->connect_error) {
+    die("Conexión fallida: " . $mysqli->connect_error);
+}
 
 // Obtener el ID de la cotización desde la URL
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 if ($id > 0) {
     // Preparar la consulta para eliminar la cotización
-    $sql = "DELETE FROM cotizaciones WHERE id_cotizacion = ?";
-    $stmt = $conn->prepare($sql);
+    $sql = "DELETE FROM C_Cotizaciones WHERE id_cotizacion = ?";
+    $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
         // Redirigir a la página de lista de cotizaciones
-        header("Location: ../ver_listado.php");
+        header("Location: ver_listado.php");
         exit(); // Asegurarse de que no se ejecute ningún código adicional
     } else {
         echo "Error al eliminar la cotización.";
     }
     $stmt->close();
 } else {
-    $mensaje = "ID inválido.";
+    echo "ID inválido.";
 }
 
-$conn->close();
+$mysqli->close();
 ?>
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Eliminar Cotizacion .PHP -----------------------------------
