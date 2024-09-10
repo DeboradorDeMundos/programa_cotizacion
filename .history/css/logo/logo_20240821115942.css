@@ -1,0 +1,8 @@
+.logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 300px; /* Ajusta el tamaño según tus necesidades */
+    height: auto;
+    z-index: 1000; /* Asegura que el logo esté por encima de otros elementos */
+}

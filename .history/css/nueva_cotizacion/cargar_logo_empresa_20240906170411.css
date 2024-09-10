@@ -1,0 +1,474 @@
+
+/* 
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Agui Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ 
+*/
+
+
+/* --------------------------------------------------------------------------------------------------------------
+    -------------------------------------- INICIO ITred Spa Cargar Logo Empresa .CSS --------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+ /* Establece la fuente predeterminada, elimina márgenes y rellenos, y define el color de fondo de la página */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.container {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.box-6,
+.box-12 {
+  display: flex;
+  flex-direction: column;
+}
+
+.box-6 {
+  flex: 1;
+  padding: 10px;
+}
+
+.box-12 {
+  flex: 1;
+  max-width: 100%;
+  padding: 10px;
+}
+
+.logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo {
+  max-width: 300px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.data-box {
+  border: 1px solid #ddd;
+  padding: 15px;
+  background-color: #fff;
+}
+
+.data-box-red {
+  border-color: red;
+}
+
+.field {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.field label {
+  flex: 0 0 200px;
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.field input,
+.field textarea {
+  flex: 1;
+  padding: 8px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.submit-row {
+  text-align: center;
+}
+
+.submit-row input[type="submit"] {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-fixed {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.btn-fixed:hover {
+  background-color: #0056b3;
+}
+
+.detalle-content {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.detalle-content label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.detalle-content input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.detalle-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.detalle-buttons button {
+  flex: 1;
+  max-width: 200px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.detalle-buttons button:nth-of-type(1) {
+  background-color: #007bff;
+}
+
+.detalle-buttons button:nth-of-type(1):hover {
+  background-color: #0056b3;
+}
+
+.detalle-buttons button:nth-of-type(2) {
+  background-color: #f44336;
+}
+
+.detalle-buttons button:nth-of-type(2):hover {
+  background-color: #d32f2f;
+}
+
+.detalle-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+.detalle-table th, .detalle-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.detalle-table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+.detalle-table input[type="text"],
+.detalle-table textarea,
+.detalle-table input[type="number"] {
+  width: 100%;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.detalle-table button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-eliminar-titulo {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-eliminar-titulo  {
+  background-color: #d32f2f;
+}
+
+.detalle-table button:hover {
+  background-color: #d32f2f;
+}
+
+fieldset legend {
+  font-size: 1.2em;
+  padding: 0 10px;
+  color: #333;
+  font-weight: bold;
+}
+
+#detalle-container {
+  position: relative;
+  padding-bottom: 50px;
+}
+
+.fixed-button-container {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.fixed-button-container button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.fixed-button-container button:hover {
+  background-color: #0056b3;
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.list {
+  list-style: disc;
+  margin-left: 20px;
+}
+
+.submit {
+  width: 80%;
+  padding: 10px 20px;
+  background-color: #ff6f61;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.submit:hover {
+  background-color: #ff4500;
+}
+
+.form-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ddd;
+  max-width: 500px;
+  margin-left: auto;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+}
+
+/* Asegura que los label y input tengan la misma altura */
+.form-group {
+  display: flex;
+  align-items: stretch; /* Asegura que los elementos se estiren a la misma altura */
+  justify-content: space-between; /* Alinea el label y el input a los extremos */
+  margin-bottom: 10px;
+}
+
+.form-group label,
+.form-group input {
+  display: flex;
+  align-items: center; /* Centra el contenido de los label e input */
+}
+
+.form-group label {
+  width: 20%;
+  font-size: 14px;
+  background-color: #d4d4d4;
+  padding: 5px;
+  border-radius: 3px 0px 0px 3px;
+  text-align: left;
+}
+
+.form-group input {
+  flex: 2; /* Hace que el input ocupe 2 partes del espacio disponible */
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 0px 3px 3px 0px;
+  font-size: 14px;
+  text-align: left;
+  background-color: #fff;
+  box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el tamaño total del input */
+}
+
+/* Estilo para los grupos de campos en línea */
+.form-group-inline {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+th {
+  background-color: #4CAF50;
+  padding: 10px;
+  text-align: center;
+}
+
+td {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+.bancos td {
+  text-align: center;
+}
+
+.form-group-inline .form-group {
+  flex: 1; /* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
+}
+
+/* Para pantallas pequeñas, asegura que los inputs se mantengan del mismo tamaño que los labels */
+@media (max-width: 600px) {
+  .form-group {
+    flex-direction: column; /* Hace que los labels e inputs se apilen verticalmente en pantallas pequeñas */
+  }
+
+  .form-group label, 
+  .form-group input {
+    width: 100%;
+    margin-bottom: 5px;
+    flex: none;
+  }
+}
+
+.form-group span {
+  margin-left: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-container-2 {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ddd;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 20px;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+}
+
+.form-group-2 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.form-group-2 label {
+  width: 40%;
+  font-size: 14px;
+  color: #333; /* Color de texto de la etiqueta */
+  background-color: #d4d4d4; /* Cambia este color según lo necesites */
+  padding: 5px;
+  border-radius: 3px 0px 0px 3px;
+}
+
+.form-group-2 input {
+  width: 60%;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-size: 14px;
+  text-align: right;
+  background-color: #fff;
+}
+
+.form-group-inline-2 {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.form-group-inline-2 .form-group {
+  flex: 1;
+}
+
+.form-group-2 span {
+  margin-left: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+
+
+/* --------------------------------------------------------------------------------------------------------------
+    ---------------------------------------- FIN ITred Spa Cargar Logo Empresa .CSS ---------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+
+/*
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Agui Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+*/
