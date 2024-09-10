@@ -1,8 +1,0 @@
-.logo {
-    position: absolute; /* Posiciona el elemento de manera absoluta en relación con su contenedor posicionado */
-    top: 10px;          /* Coloca el borde superior del elemento a 10 píxeles del borde superior del contenedor */
-    left: 10px;         /* Coloca el borde izquierdo del elemento a 10 píxeles del borde izquierdo del contenedor */
-    width: 250px;       /* Establece el ancho del elemento en 250 píxeles */
-    height: auto;       /* Ajusta la altura automáticamente para mantener la proporción original del contenido */
-    z-index: 1000;      /* Establece la prioridad de apilamiento del elemento, asegurando que se muestre por encima de otros con menor índice z */
-}
