@@ -23,21 +23,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
      -- FIN CONEXION BD --
      --------------------- -->
 
-
-
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-     <?php
-     $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
-
-
-
-
 <fieldset>
     <legend>Detalle de la Cotización</legend>
     <div id="detalle-container">

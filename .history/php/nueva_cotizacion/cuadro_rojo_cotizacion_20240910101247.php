@@ -44,7 +44,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
     
     <label for="fecha_validez">Fecha de Validez:</label>
     <input type="date" id="fecha_validez" name="fecha_validez" readonly> <!-- Campo de fecha de validez -->
-  
+    </div>
 </fieldset>   
 </body>
 

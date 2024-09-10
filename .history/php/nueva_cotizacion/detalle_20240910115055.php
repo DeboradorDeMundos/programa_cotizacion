@@ -52,7 +52,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
 </fieldset>
 
 
-
+<script src="../../js/nueva_cotizacion/nueva_cotizacion.js"></script> <!-- Enlaza nuevamente el archivo JavaScript para manejar la lógica del formulario de cotización -->
      <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Detalle.PHP ----------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->

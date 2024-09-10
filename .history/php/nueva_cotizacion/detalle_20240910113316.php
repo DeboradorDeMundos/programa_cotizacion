@@ -23,8 +23,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
      -- FIN CONEXION BD --
      --------------------- -->
 
-
-
 <!-- ---------------------
 -- INICIO CIERRE CONEXION BD --
      --------------------- -->

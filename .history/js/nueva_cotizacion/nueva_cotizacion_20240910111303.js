@@ -24,19 +24,15 @@ function calculateAdelanto() {
     document.getElementById('monto_adelanto').value = montoAdelanto;
 }
 
-let tituloCount = 0; // Contador global para los títulos
-
 function addDetailSection() {
     const container = document.getElementById('detalle-container');
     const newSection = document.createElement('div');
     newSection.classList.add('detalle-section');
-    newSection.dataset.tituloIndex = tituloCount; // Asigna un índice único al título
-
     newSection.innerHTML = `
         <div class="detalle-content">
             <div class="titulo-container" style="display: flex; align-items: center;">
                 <label for="titulo">Título:</label>
-                <input type="text" name="detalle_titulo[${tituloCount}]" required style="margin-right: 10px;">
+                <input type="text" name="detalle_titulo[]" required style="margin-right: 10px;">
                 <button type="button" class="btn-eliminar-titulo" onclick="removeDetailSection(this)">Eliminar Título</button>
             </div>
             <table class="detalle-table">
@@ -55,7 +51,6 @@ function addDetailSection() {
         </div>
     `;
     container.appendChild(newSection);
-    tituloCount++; // Incrementa el contador de títulos
 }
 
 function removeDetailSection(button) {
@@ -67,14 +62,11 @@ function removeDetailSection(button) {
 }
 
 function addDetailRow(button) {
-    const section = button.closest('.detalle-section');
-    const tableBody = section.querySelector('.detalle-contenido');
-    const tituloIndex = section.dataset.tituloIndex; // Obtiene el índice del título
-
+    const tableBody = button.closest('.detalle-section').querySelector('.detalle-contenido');
     const newRow = document.createElement('tr');
     newRow.innerHTML = `
         <td>
-            <select name="tipo_producto[${tituloIndex}][]">
+            <select name="tipo_producto[]">
                 <option value="nuevo">Nuevo</option>
                 <option value="insumo">Insumo</option>
                 <option value="producto">Producto</option>
@@ -86,12 +78,12 @@ function addDetailRow(button) {
                 <option value="ayudante">Ayudante</option>
             </select>
         </td>
-        <td><input type="text" name="nombre_producto[${tituloIndex}][]"></td>
+        <td><input type="text" name="nombre_producto[]"></td>
         <td><input type="checkbox" onclick="toggleDescription(this)"></td>
-        <td><input type="number" name="detalle_cantidad[${tituloIndex}][]" step="1" min="1" required oninput="updateTotal(this)"></td>
-        <td><input type="number" name="detalle_precio_unitario[${tituloIndex}][]" step="0.01" min="0" required oninput="updateTotal(this)"></td>
-        <td><input type="number" name="detalle_descuento[${tituloIndex}][]" step="1" min="0" required oninput="updateTotal(this)"></td>
-        <td><input type="number" name="detalle_total[${tituloIndex}][]" step="0.01" min="0" readonly></td>
+        <td><input type="number" name="detalle_cantidad[]" step="1" min="1" required oninput="updateTotal(this)"></td>
+        <td><input type="number" name="detalle_precio_unitario[]" step="0.01" min="0" required oninput="updateTotal(this)"></td>
+        <td><input type="number" name="detalle_descuento[]" step="1" min="0" required oninput="updateTotal(this)"></td>
+        <td><input type="number" name="detalle_total[]" step="0.01" min="0" readonly></td>
         <td><button type="button" class="btn-eliminar" onclick="removeDetailRow(this)">Eliminar</button></td>
     `;
     tableBody.appendChild(newRow);
@@ -101,7 +93,7 @@ function addDetailRow(button) {
     descriptionRow.style.display = 'none';
     descriptionRow.innerHTML = `
         <td colspan="7">
-            <textarea name="detalle_descripcion[${tituloIndex}][]" placeholder="Ingrese sólo si requiere ingresar una descripción extendida del producto o servicio"></textarea>
+            <textarea name="detalle_descripcion[]" placeholder="Ingrese sólo si requiere ingresar una descripción extendida del producto o servicio"></textarea>
         </td>
     `;
     tableBody.appendChild(descriptionRow);
@@ -110,16 +102,13 @@ function addDetailRow(button) {
 }
 
 function addSubtitleRow(button) {
-    const section = button.closest('.detalle-section');
-    const tableBody = section.querySelector('.detalle-contenido');
-    const tituloIndex = section.dataset.tituloIndex; // Obtiene el índice del título
-
+    const tableBody = button.closest('.detalle-section').querySelector('.detalle-contenido');
     const newSubtitle = document.createElement('tr');
     newSubtitle.classList.add('subtitulo');
     newSubtitle.innerHTML = `
         <td colspan="7">
             <label for="subtitulo">Subtítulo:</label>
-            <input type="text" name="detalle_subtitulo[${tituloIndex}][]" style="margin-right: 10px;">
+            <input type="text" name="detalle_subtitulo[]" style="margin-right: 10px;">
         </td>
         <td><button type="button" class="btn-eliminar-titulo" onclick="removeSubtitleRow(this)">Eliminar subtítulo</button></td>
     `;
@@ -142,7 +131,6 @@ function removeDetailRow(button) {
 
     calculateTotals();
 }
-
 
 function toggleDescription(checkbox) {
     const descriptionRow = checkbox.closest('tr').nextElementSibling;

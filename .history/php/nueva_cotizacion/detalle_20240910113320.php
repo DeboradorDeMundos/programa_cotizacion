@@ -24,7 +24,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
      --------------------- -->
 
 
-
+     
 <!-- ---------------------
 -- INICIO CIERRE CONEXION BD --
      --------------------- -->

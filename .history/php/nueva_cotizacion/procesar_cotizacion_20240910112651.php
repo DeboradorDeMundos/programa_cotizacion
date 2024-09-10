@@ -280,6 +280,9 @@ $id_cotizacion = $mysqli->insert_id;
 echo "Cotización insertada. ID: $id_cotizacion<br>";
 
 
+
+
+
 // Recibir datos del formulario
 $detalles_titulo = $_POST['detalle_titulo'] ?? [];
 $detalles_subtitulo = $_POST['detalle_subtitulo'] ?? [];
@@ -287,7 +290,7 @@ $detalles_cantidad = $_POST['detalle_cantidad'] ?? [];
 $detalles_descripcion = $_POST['detalle_descripcion'] ?? [];
 $detalles_precio_unitario = $_POST['detalle_precio_unitario'] ?? [];
 $detalles_descuento = $_POST['detalle_descuento'] ?? [];
-$detalles_tipo = $_POST['tipo_producto'] ?? [];
+$detalles_tipo = $_POST['detalle_tipo'] ?? [];
 $detalles_nombre_producto = $_POST['nombre_producto'] ?? [];
 
 // Verificar el número de títulos
@@ -302,13 +305,8 @@ $stmt_insert_titulo = $mysqli->prepare($sql_insert_titulo);
 $stmt_insert_subtitulo = $mysqli->prepare($sql_insert_subtitulo);
 $stmt_insert_detalle = $mysqli->prepare($sql_insert_detalle);
 
-if (!$stmt_insert_titulo || !$stmt_insert_subtitulo || !$stmt_insert_detalle) {
-    die("Error al preparar las consultas: " . $mysqli->error);
-}
-
-// Crear un array para guardar los IDs de los títulos y subtítulos
+// Crear un array para guardar los IDs de los títulos
 $titulos_ids = [];
-$subtitulos_ids = [];
 
 // Comenzar una transacción para asegurar consistencia
 $mysqli->begin_transaction();
@@ -319,11 +317,9 @@ try {
         $titulo = $detalles_titulo[$index] ?? '';
         if ($titulo) {
             $stmt_insert_titulo->bind_param("is", $id_cotizacion, $titulo);
-            if (!$stmt_insert_titulo->execute()) {
-                throw new Exception("Error al insertar título: " . $stmt_insert_titulo->error);
-            }
+            $stmt_insert_titulo->execute();
             $id_titulo = $stmt_insert_titulo->insert_id;
-            $titulos_ids[$id_titulo] = $index; // Guardar el índice del título para referencia futura
+            $titulos_ids[$index] = $id_titulo;
             echo "Título insertado correctamente. ID: $id_titulo<br>";
         } else {
             echo "Falta el título para el índice $index.<br>";
@@ -332,46 +328,41 @@ try {
 
     // Insertar los subtítulos para cada título
     $sub_index = 0;
-    foreach ($titulos_ids as $id_titulo => $titulo_index) {
-        $num_subtitulos_por_titulo = count($detalles_subtitulo) / $numero_titulos;
-
-        // Asegurarse de que no se excedan los índices de subtítulos
-        for ($i = 0; $i < $num_subtitulos_por_titulo; $i++) {
-            if ($sub_index < count($detalles_subtitulo)) {
-                $subtitulo = $detalles_subtitulo[$sub_index] ?? '';
+    foreach ($titulos_ids as $index => $id_titulo) {
+        // Asumiendo que cada título tiene sus propios subtítulos en el array correspondiente.
+        // Ajustamos para que el número de subtítulos por título se maneje correctamente.
+        if (!empty($detalles_subtitulo[$index])) {
+            foreach ($detalles_subtitulo[$index] as $subtitulo) {
                 if ($subtitulo) {
                     $stmt_insert_subtitulo->bind_param("is", $id_titulo, $subtitulo);
-                    if (!$stmt_insert_subtitulo->execute()) {
-                        throw new Exception("Error al insertar subtítulo: " . $stmt_insert_subtitulo->error);
-                    }
-                    $subtitulos_ids[$stmt_insert_subtitulo->insert_id] = $id_titulo;
-                    echo "Subtítulo insertado correctamente. ID: " . $stmt_insert_subtitulo->insert_id . "<br>";
+                    $stmt_insert_subtitulo->execute();
+                    $id_subtitulo = $stmt_insert_subtitulo->insert_id;
+                    echo "Subtítulo insertado correctamente. ID: $id_subtitulo<br>";
                 }
-                $sub_index++;
             }
         }
     }
 
     // Insertar los detalles para cada título
-    $detalle_index = 0;
-    while ($detalle_index < count($detalles_cantidad)) {
+    for ($detalle_index = 0; $detalle_index < count($detalles_cantidad); $detalle_index++) {
         $titulo_index = intdiv($detalle_index, $numero_titulos);
-        $id_titulo = array_keys($titulos_ids)[$titulo_index] ?? null;
 
-        if ($id_titulo) {
-            $descripcion = $detalles_descripcion[$detalle_index] ?? '';
-            $precio_unitario = $detalles_precio_unitario[$detalle_index] ?? 0;
-            $cantidad = $detalles_cantidad[$detalle_index] ?? 0;
-            $descuento = $detalles_descuento[$detalle_index] ?? 0;
-            $tipo = $detalles_tipo[$detalle_index] ?? '';
-            $nombre_producto = $detalles_nombre_producto[$detalle_index] ?? '';
+        // Verificar si todos los datos relevantes están presentes
+        $descripcion = $detalles_descripcion[$detalle_index] ?? '';
+        $precio_unitario = $detalles_precio_unitario[$detalle_index] ?? 0;
+        $cantidad = $detalles_cantidad[$detalle_index] ?? 0;
+        $descuento = $detalles_descuento[$detalle_index] ?? 0;
+        $tipo = $detalles_tipo[$detalle_index] ?? '';
+        $nombre_producto = $detalles_nombre_producto[$detalle_index] ?? '';
 
-            // Evitar insertar filas vacías o con valores nulos
-            if (!empty($nombre_producto) && $cantidad > 0 && $precio_unitario > 0) {
-                // Calcular el precio final
-                $precio_final = $precio_unitario - ($precio_unitario * ($descuento / 100));
+        if (!empty($nombre_producto) && $cantidad > 0 && $precio_unitario > 0) {
+            if (isset($titulos_ids[$titulo_index])) {
+                $id_titulo = $titulos_ids[$titulo_index];
 
-                // Insertar el detalle
+                // Calcular el total con descuento
+                $subtotal = $precio_unitario * $cantidad;
+                $total = $subtotal - ($subtotal * ($descuento / 100));
+
                 $stmt_insert_detalle->bind_param(
                     "isssiddi",
                     $id_titulo,
@@ -381,17 +372,15 @@ try {
                     $cantidad,
                     $precio_unitario,
                     $descuento,
-                    $precio_final
+                    $total
                 );
-                if (!$stmt_insert_detalle->execute()) {
-                    throw new Exception("Error al insertar detalle: " . $stmt_insert_detalle->error);
-                }
-                echo "Detalle insertado correctamente. ID: " . $stmt_insert_detalle->insert_id . "<br>";
+                $stmt_insert_detalle->execute();
+                $id_detalle = $stmt_insert_detalle->insert_id;
+                echo "Detalle insertado correctamente. ID: $id_detalle<br>";
             }
         } else {
-            echo "Título no encontrado para el índice de detalle $detalle_index.<br>";
+            echo "Detalle omitido debido a datos incompletos para el índice $detalle_index.<br>";
         }
-        $detalle_index++;
     }
 
     // Confirmar la transacción
@@ -407,6 +396,7 @@ try {
 $stmt_insert_titulo->close();
 $stmt_insert_subtitulo->close();
 $stmt_insert_detalle->close();
+
 
 
 
@@ -467,12 +457,6 @@ if ($stmt->error) {
 echo "Adelanto insertado correctamente. ID: " . $mysqli->insert_id;
 
 
-
-
-// Mostrar el contenido del POST para depuración
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
 
 
 

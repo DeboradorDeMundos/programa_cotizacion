@@ -201,7 +201,6 @@
                 
                 <!-- sección para Detalle de Cotización -->
                 <?php include 'detalle.php'; ?>
-                
                 <!-- Sección para los cálculos finales -->
 
                 <?php include 'detalle_total.php'; ?>
@@ -240,7 +239,6 @@
     <script src="../../js/nueva_cotizacion/detalle.js"></script> 
     </body>
     </html>
-
 
 
 
