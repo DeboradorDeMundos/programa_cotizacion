@@ -18,7 +18,7 @@ BPPJ
 
      <?php
 // Establece la conexión a la base de datos de ITred Spa
-$conn = new mysqli('localhost', 'root', '', 'itredspa_bd');
+$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 ?>
 <!-- ---------------------
      -- FIN CONEXION BD --
@@ -26,7 +26,7 @@ $conn = new mysqli('localhost', 'root', '', 'itredspa_bd');
 <?php
 // Consultar tipo de cuenta
 $sql_tipo_cuenta = "SELECT id_tipocuenta, tipocuenta FROM E_Tipo_Cuenta";
-$result_tipo_cuenta = $conn->query($sql_tipo_cuenta);
+$result_tipo_cuenta = $mysqli->query($sql_tipo_cuenta);
 
 // Verificar si hay resultados y generar opciones HTML
 if ($result_tipo_cuenta->num_rows > 0) {
@@ -41,8 +41,19 @@ if ($result_tipo_cuenta->num_rows > 0) {
     echo '<option value="">No hay tipos de cuenta disponibles</option>';
 }
 
-$conn->close();
+$mysqli->close();
 ?>
+
+<!-- ---------------------
+-- INICIO CIERRE CONEXION BD --
+     --------------------- -->
+     <?php
+     $mysqli->close();
+?>
+<!-- ---------------------
+     -- FIN CIERRE CONEXION BD --
+     --------------------- -->
+     
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Get tipo cuenta .PHP -----------------------------------
     ------------------------------------------------------------------------------------------------------------- -->

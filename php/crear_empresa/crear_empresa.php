@@ -18,7 +18,7 @@ BPPJ
 
      <?php
 // Establece la conexión a la base de datos de ITred Spa
-$conn = new mysqli('localhost', 'root', '', 'itredspa_bd');
+$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 ?>
 <!-- ---------------------
      -- FIN CONEXION BD --
@@ -85,6 +85,16 @@ $conn = new mysqli('localhost', 'root', '', 'itredspa_bd');
     <!-- Enlaza un archivo JavaScript externo para actualizar el logo o realizar otras actualizaciones -->
 </body>
 </html>
+
+<!-- ---------------------
+-- INICIO CIERRE CONEXION BD --
+     --------------------- -->
+<?php
+     $mysqli->close();
+?>
+<!-- ---------------------
+     -- FIN CIERRE CONEXION BD --
+     --------------------- -->
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa crear_empresa .PHP -----------------------------------

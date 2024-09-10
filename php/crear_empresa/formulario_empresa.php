@@ -18,7 +18,7 @@ BPPJ
 
      <?php
 // Establece la conexión a la base de datos de ITred Spa
-$conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
+$mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
 ?>
 <!-- ---------------------
      -- FIN CONEXION BD --
@@ -57,6 +57,15 @@ $conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
     </div> <!-- Cierra la caja de datos -->
 </div> <!-- Cierra la fila -->
 
+<!-- ---------------------
+-- INICIO CIERRE CONEXION BD --
+     --------------------- -->
+<?php
+     $mysqli->close();
+?>
+<!-- ---------------------
+     -- FIN CIERRE CONEXION BD --
+     --------------------- -->
 
 
 <!-- ------------------------------------------------------------------------------------------------------------

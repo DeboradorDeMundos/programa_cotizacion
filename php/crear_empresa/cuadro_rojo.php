@@ -18,7 +18,7 @@ BPPJ
 
      <?php
 // Establece la conexión a la base de datos de ITred Spa
-$conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
+$mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
 ?>
 <!-- ---------------------
      -- FIN CONEXION BD --
@@ -42,8 +42,15 @@ $conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
     <input type="date" id="fecha_creacion" name="fecha_creacion" required> <!-- Campo de fecha para seleccionar la fecha de emisión. Es obligatorio -->
 </div>
 
-
-
+<!-- ---------------------
+-- INICIO CIERRE CONEXION BD --
+     --------------------- -->
+     <?php
+     $mysqli->close();
+?>
+<!-- ---------------------
+     -- FIN CIERRE CONEXION BD --
+     --------------------- -->
 
 
 <!-- ------------------------------------------------------------------------------------------------------------
