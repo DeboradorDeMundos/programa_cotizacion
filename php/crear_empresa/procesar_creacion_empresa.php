@@ -177,17 +177,17 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     $condicionesJson = isset($_POST['condiciones']) ? $_POST['condiciones'] : '[]';
     $requisitosJson = isset($_POST['requisitos']) ? $_POST['requisitos'] : '[]';
     $obligacionesJson = isset($_POST['obligaciones']) ? $_POST['obligaciones'] : '[]';
-
+    
     // Decodificar el JSON a arrays PHP
     $condiciones = json_decode($condicionesJson, true);
     $requisitos = json_decode($requisitosJson, true);
     $obligaciones = json_decode($obligacionesJson, true);
-
+    
     // Verificar si la decodificación fue exitosa
     if (json_last_error() !== JSON_ERROR_NONE) {
         die("Error al decodificar el JSON: " . json_last_error_msg());
     }
-
+    
     // Insertar condiciones generales
     if (!empty($condiciones) && is_array($condiciones)) {
         $stmt = $mysqli->prepare("INSERT INTO C_Condiciones_Generales (id_empresa, descripcion_condiciones) VALUES (?, ?)");
@@ -195,7 +195,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
         if (!$stmt) {
             die("Error al preparar la consulta: " . $mysqli->error);
         }
-
+    
         foreach ($condiciones as $condicion) {
             $stmt->bind_param("is", $id_empresa, $condicion);
             if (!$stmt->execute()) {
@@ -206,7 +206,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     } else {
         echo "No hay condiciones para insertar.";
     }
-
+    
     // Insertar requisitos básicos
     if (!empty($requisitos) && is_array($requisitos)) {
         $stmt = $mysqli->prepare("INSERT INTO E_Requisitos_Basicos (indice, descripcion_condiciones, id_empresa) VALUES (?, ?, ?)");
@@ -214,7 +214,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
         if (!$stmt) {
             die("Error al preparar la consulta: " . $mysqli->error);
         }
-
+    
         foreach ($requisitos as $index => $requisito) {
             $indice = $index + 1; // Ajustar el índice
             $stmt->bind_param("isi", $indice, $requisito, $id_empresa);
@@ -225,6 +225,27 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
         $stmt->close();
     } else {
         echo "No hay requisitos para insertar.";
+    }
+    
+    // Insertar obligaciones del cliente
+    if (!empty($obligaciones) && is_array($obligaciones)) {
+        $stmt = $mysqli->prepare("INSERT INTO e_obligaciones_cliente (indice, descripcion, id_empresa) VALUES (?, ?, ?)");
+        
+        if (!$stmt) {
+            die("Error al preparar la consulta: " . $mysqli->error);
+        }
+    
+        foreach ($obligaciones as $index => $obligacion) {
+            $indice = $index + 1; // Ajustar el índice
+            $descripcion = $obligacion;
+            $stmt->bind_param("isi", $indice, $descripcion, $id_empresa);
+            if (!$stmt->execute()) {
+                echo "Error al insertar obligación: " . $stmt->error;
+            }
+        }
+        $stmt->close();
+    } else {
+        echo "No hay obligaciones para insertar.";
     }
   
       

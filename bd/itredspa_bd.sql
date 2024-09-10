@@ -352,6 +352,14 @@ CREATE TABLE E_Requisitos_Basicos (
 
     FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE CASCADE -- Clave foránea hacia Empresa
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+CREATE TABLE E_obligaciones_cliente (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    indice INT NOT NULL,
+    descripcion TEXT NOT NULL,
+    id_empresa INT NOT NULL,
+    FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE CASCADE 
+);
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- INSERT DATOS ----------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
