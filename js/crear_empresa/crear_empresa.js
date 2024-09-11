@@ -34,37 +34,30 @@ BPPJ
     document.getElementById('cotizacion-form').addEventListener('submit', function(event) {
         event.preventDefault();
     
-        // Convertir el array de condiciones a JSON
-        const conditions = [];
-        document.querySelectorAll('#conditions-container .condition-row').forEach(conditionDiv => {
+        // Crear cadenas delimitadas para cada tipo de datos
+        let conditionsString = '';
+        document.querySelectorAll('#conditions-container .condition-row').forEach((conditionDiv, index) => {
             const inputField = conditionDiv.querySelector('input');
             if (inputField) {
-                conditions.push(inputField.value);
+                conditionsString += (index > 0 ? '|' : '') + inputField.value;
             }
         });
     
-        // Convertir el array de requisitos a JSON
-        const requisitos = [];
-        document.querySelectorAll('#requisito-container .requisito-row').forEach(requisitoDiv => {
+        let requisitosString = '';
+        document.querySelectorAll('#requisito-container .requisito-row').forEach((requisitoDiv, index) => {
             const inputField = requisitoDiv.querySelector('input');
             if (inputField) {
-                requisitos.push(inputField.value);
+                requisitosString += (index > 0 ? '|' : '') + inputField.value;
             }
         });
     
-        // Convertir el array de obligaciones a JSON
-        const obligaciones = [];
-        document.querySelectorAll('#obligaciones-container .obligaciones-row').forEach(obligacionesDiv => {
+        let obligacionesString = '';
+        document.querySelectorAll('#obligaciones-container .obligaciones-row').forEach((obligacionesDiv, index) => {
             const inputField = obligacionesDiv.querySelector('input');
             if (inputField) {
-                obligaciones.push(inputField.value);
+                obligacionesString += (index > 0 ? '|' : '') + inputField.value;
             }
         });
-    
-        // Convertir los arrays a JSON
-        const conditionsJson = JSON.stringify(conditions);
-        const requisitosJson = JSON.stringify(requisitos);
-        const obligacionesJson = JSON.stringify(obligaciones);
     
         // Verificar si hay cuentas bancarias antes de enviar el formulario
         if (accounts.length === 0) {
@@ -72,32 +65,36 @@ BPPJ
             return;
         }
     
-        // Convertir el array de cuentas a JSON
-        const cuentasJson = JSON.stringify(accounts);
+        // Crear cadena delimitada para cuentas bancarias
+        let cuentasString = '';
+        accounts.forEach((account, index) => {
+            cuentasString += (index > 0 ? '|' : '') +
+                `${account.nombre},${account.rut},${account.celular},${account.email},${account.banco},${account.tipoCuenta},${account.numeroCuenta}`;
+        });
     
-        // Crear un campo oculto en el formulario con los datos JSON
+        // Crear campos ocultos en el formulario con los datos
         const hiddenInputCuentas = document.createElement('input');
         hiddenInputCuentas.type = 'hidden';
         hiddenInputCuentas.name = 'cuentas_bancarias';
-        hiddenInputCuentas.value = cuentasJson;
+        hiddenInputCuentas.value = cuentasString;
         this.appendChild(hiddenInputCuentas);
     
         const hiddenInputConditions = document.createElement('input');
         hiddenInputConditions.type = 'hidden';
         hiddenInputConditions.name = 'condiciones';
-        hiddenInputConditions.value = conditionsJson;
+        hiddenInputConditions.value = conditionsString;
         this.appendChild(hiddenInputConditions);
     
         const hiddenInputRequisitos = document.createElement('input');
         hiddenInputRequisitos.type = 'hidden';
         hiddenInputRequisitos.name = 'requisitos';
-        hiddenInputRequisitos.value = requisitosJson;
+        hiddenInputRequisitos.value = requisitosString;
         this.appendChild(hiddenInputRequisitos);
     
         const hiddenInputObligaciones = document.createElement('input');
         hiddenInputObligaciones.type = 'hidden';
         hiddenInputObligaciones.name = 'obligaciones';
-        hiddenInputObligaciones.value = obligacionesJson;
+        hiddenInputObligaciones.value = obligacionesString;
         this.appendChild(hiddenInputObligaciones);
     
         // Enviar el formulario

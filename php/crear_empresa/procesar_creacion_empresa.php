@@ -112,142 +112,129 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
     $input = isset($_POST['cuentas_bancarias']) ? $_POST['cuentas_bancarias'] : '';
 
-    // Decodificar el JSON
-    $data = json_decode(urldecode($input), true);
-    
-    // Verificar si la decodificación fue exitosa
-    if (json_last_error() !== JSON_ERROR_NONE) {
-        die("Error al decodificar el JSON: " . json_last_error_msg());
-    }
-    
-    // Función para obtener el ID de un banco basado en el nombre
-    function getIdBanco($mysqli, $nombreBanco) {
-        $stmt = $mysqli->prepare("SELECT id_banco FROM e_bancos WHERE nombre_banco = ?");
-        $stmt->bind_param("s", $nombreBanco);
-        $stmt->execute();
-        $stmt->bind_result($id_banco);
-        $stmt->fetch();
-        $stmt->close();
-        return $id_banco;
-    }
-    
-    // Función para obtener el ID de un tipo de cuenta basado en el nombre
-    function getIdTipoCuenta($mysqli, $nombreTipoCuenta) {
-        $stmt = $mysqli->prepare("SELECT id_tipocuenta FROM e_tipo_cuenta WHERE tipocuenta = ?");
-        $stmt->bind_param("s", $nombreTipoCuenta);
-        $stmt->execute();
-        $stmt->bind_result($id_tipocuenta);
-        $stmt->fetch();
-        $stmt->close();
-        return $id_tipocuenta;
-    }
-    
-    // Preparar la consulta de inserción
-    $sql = "INSERT INTO e_cuenta_Bancaria (nombre_titular, rut_titular, id_banco, id_tipocuenta, numero_cuenta, celular, email_banco, id_empresa)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    
-    $stmt = $mysqli->prepare($sql);
-    if ($stmt === false) {
-        die("Error en la preparación de la consulta: " . $mysqli->error);
-    }
-    
-    // Iterar sobre las cuentas y realizar la inserción
-    foreach ($data as $account) {
-        $nombre_titular = $account['nombre'];
-        $rut_titular = $account['rut'];
-        $id_banco = getIdBanco($mysqli, $account['banco']);
-        $id_tipocuenta = getIdTipoCuenta($mysqli, $account['tipoCuenta']);
-        $numero_cuenta = $account['numeroCuenta'];
-        $celular = $account['celular'];
-        $email_banco = $account['email'];
-    
-        // Enlazar parámetros
+// Obtener los datos del formulario
+$cuentasString = isset($_POST['cuentas_bancarias']) ? $_POST['cuentas_bancarias'] : '';
+$condicionesString = isset($_POST['condiciones']) ? $_POST['condiciones'] : '';
+$requisitosString = isset($_POST['requisitos']) ? $_POST['requisitos'] : '';
+$obligacionesString = isset($_POST['obligaciones']) ? $_POST['obligaciones'] : '';
+
+// Función para obtener el ID de un banco basado en el nombre
+function getIdBanco($mysqli, $nombreBanco) {
+    $stmt = $mysqli->prepare("SELECT id_banco FROM e_bancos WHERE nombre_banco = ?");
+    $stmt->bind_param("s", $nombreBanco);
+    $stmt->execute();
+    $stmt->bind_result($id_banco);
+    $stmt->fetch();
+    $stmt->close();
+    return $id_banco;
+}
+
+// Función para obtener el ID de un tipo de cuenta basado en el nombre
+function getIdTipoCuenta($mysqli, $nombreTipoCuenta) {
+    $stmt = $mysqli->prepare("SELECT id_tipocuenta FROM e_tipo_cuenta WHERE tipocuenta = ?");
+    $stmt->bind_param("s", $nombreTipoCuenta);
+    $stmt->execute();
+    $stmt->bind_result($id_tipocuenta);
+    $stmt->fetch();
+    $stmt->close();
+    return $id_tipocuenta;
+}
+
+// Procesar cuentas bancarias
+$cuentasArray = explode('|', $cuentasString);
+foreach ($cuentasArray as $cuenta) {
+    $datosCuenta = explode(',', $cuenta);
+    if (count($datosCuenta) == 7) {
+        $nombre_titular = $datosCuenta[0];
+        $rut_titular = $datosCuenta[1];
+        $id_banco = getIdBanco($mysqli, $datosCuenta[4]);
+        $id_tipocuenta = getIdTipoCuenta($mysqli, $datosCuenta[5]);
+        $numero_cuenta = $datosCuenta[6];
+        $celular = $datosCuenta[2];
+        $email_banco = $datosCuenta[3];
+
+        $sql = "INSERT INTO e_cuenta_Bancaria (nombre_titular, rut_titular, id_banco, id_tipocuenta, numero_cuenta, celular, email_banco, id_empresa)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        $stmt = $mysqli->prepare($sql);
+        if ($stmt === false) {
+            die("Error en la preparación de la consulta: " . $mysqli->error);
+        }
+
         $stmt->bind_param("ssiisssi", $nombre_titular, $rut_titular, $id_banco, $id_tipocuenta, $numero_cuenta, $celular, $email_banco, $id_empresa);
-    
-        // Ejecutar la consulta
+
         if (!$stmt->execute()) {
             echo "Error en la ejecución de la consulta: " . $stmt->error . "<br>";
         } else {
             $id_cuenta = $stmt->insert_id;
             echo "Cuenta bancaria insertada. ID: $id_cuenta<br>";
         }
-    }// Cerrar el statement
-    
-    // Obtener los datos JSON del formulario
-    $condicionesJson = isset($_POST['condiciones']) ? $_POST['condiciones'] : '[]';
-    $requisitosJson = isset($_POST['requisitos']) ? $_POST['requisitos'] : '[]';
-    $obligacionesJson = isset($_POST['obligaciones']) ? $_POST['obligaciones'] : '[]';
-    
-    // Decodificar el JSON a arrays PHP
-    $condiciones = json_decode($condicionesJson, true);
-    $requisitos = json_decode($requisitosJson, true);
-    $obligaciones = json_decode($obligacionesJson, true);
-    
-    // Verificar si la decodificación fue exitosa
-    if (json_last_error() !== JSON_ERROR_NONE) {
-        die("Error al decodificar el JSON: " . json_last_error_msg());
-    }
-    
-    // Insertar condiciones generales
-    if (!empty($condiciones) && is_array($condiciones)) {
-        $stmt = $mysqli->prepare("INSERT INTO C_Condiciones_Generales (id_empresa, descripcion_condiciones) VALUES (?, ?)");
-        
-        if (!$stmt) {
-            die("Error al preparar la consulta: " . $mysqli->error);
-        }
-    
-        foreach ($condiciones as $condicion) {
-            $stmt->bind_param("is", $id_empresa, $condicion);
-            if (!$stmt->execute()) {
-                echo "Error al insertar condición: " . $stmt->error;
-            }
-        }
         $stmt->close();
-    } else {
-        echo "No hay condiciones para insertar.";
     }
-    
-    // Insertar requisitos básicos
-    if (!empty($requisitos) && is_array($requisitos)) {
-        $stmt = $mysqli->prepare("INSERT INTO E_Requisitos_Basicos (indice, descripcion_condiciones, id_empresa) VALUES (?, ?, ?)");
-        
-        if (!$stmt) {
-            die("Error al preparar la consulta: " . $mysqli->error);
-        }
-    
-        foreach ($requisitos as $index => $requisito) {
-            $indice = $index + 1; // Ajustar el índice
-            $stmt->bind_param("isi", $indice, $requisito, $id_empresa);
-            if (!$stmt->execute()) {
-                echo "Error al insertar requisito: " . $stmt->error;
-            }
-        }
-        $stmt->close();
-    } else {
-        echo "No hay requisitos para insertar.";
+}
+
+// Procesar condiciones generales
+$condicionesArray = explode('|', $condicionesString);
+if (!empty($condicionesArray)) {
+    $stmt = $mysqli->prepare("INSERT INTO C_Condiciones_Generales (id_empresa, descripcion_condiciones) VALUES (?, ?)");
+
+    if (!$stmt) {
+        die("Error al preparar la consulta: " . $mysqli->error);
     }
-    
-    // Insertar obligaciones del cliente
-    if (!empty($obligaciones) && is_array($obligaciones)) {
-        $stmt = $mysqli->prepare("INSERT INTO e_obligaciones_cliente (indice, descripcion, id_empresa) VALUES (?, ?, ?)");
-        
-        if (!$stmt) {
-            die("Error al preparar la consulta: " . $mysqli->error);
+
+    foreach ($condicionesArray as $condicion) {
+        $stmt->bind_param("is", $id_empresa, $condicion);
+        if (!$stmt->execute()) {
+            echo "Error al insertar condición: " . $stmt->error;
         }
-    
-        foreach ($obligaciones as $index => $obligacion) {
-            $indice = $index + 1; // Ajustar el índice
-            $descripcion = $obligacion;
-            $stmt->bind_param("isi", $indice, $descripcion, $id_empresa);
-            if (!$stmt->execute()) {
-                echo "Error al insertar obligación: " . $stmt->error;
-            }
-        }
-        $stmt->close();
-    } else {
-        echo "No hay obligaciones para insertar.";
     }
-  
+    $stmt->close();
+} else {
+    echo "No hay condiciones para insertar.";
+}
+
+// Procesar requisitos básicos
+$requisitosArray = explode('|', $requisitosString);
+if (!empty($requisitosArray)) {
+    $stmt = $mysqli->prepare("INSERT INTO E_Requisitos_Basicos (indice, descripcion_condiciones, id_empresa) VALUES (?, ?, ?)");
+
+    if (!$stmt) {
+        die("Error al preparar la consulta: " . $mysqli->error);
+    }
+
+    foreach ($requisitosArray as $index => $requisito) {
+        $indice = $index + 1;
+        $stmt->bind_param("isi", $indice, $requisito, $id_empresa);
+        if (!$stmt->execute()) {
+            echo "Error al insertar requisito: " . $stmt->error;
+        }
+    }
+    $stmt->close();
+} else {
+    echo "No hay requisitos para insertar.";
+}
+
+// Procesar obligaciones del cliente
+$obligacionesArray = explode('|', $obligacionesString);
+if (!empty($obligacionesArray)) {
+    $stmt = $mysqli->prepare("INSERT INTO e_obligaciones_cliente (indice, descripcion, id_empresa) VALUES (?, ?, ?)");
+
+    if (!$stmt) {
+        die("Error al preparar la consulta: " . $mysqli->error);
+    }
+
+    foreach ($obligacionesArray as $index => $obligacion) {
+        $indice = $index + 1;
+        $descripcion = $obligacion;
+        $stmt->bind_param("isi", $indice, $descripcion, $id_empresa);
+        if (!$stmt->execute()) {
+            echo "Error al insertar obligación: " . $stmt->error;
+        }
+    }
+    $stmt->close();
+} else {
+    echo "No hay obligaciones para insertar.";
+}
       
 
     // Obtener el último número de cotización para la empresa específica
