@@ -12,17 +12,6 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Traer foto.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-<!-- ------------------------
-     -- INICIO CONEXION BD --
-     ------------------------ -->
-
-<?php
-// Establece la conexión a la base de datos de ITred Spa
-$mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-?>
-<!-- ---------------------
-     -- FIN CONEXION BD --
-     --------------------- -->
 
 <div class="box-6 logo-box">
     <label for="logo-upload" class="logo-container">
@@ -35,17 +24,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
     </label>
 </div>
 
-
-
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-     <?php
-     $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
 
      <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Traer foto.PHP ----------------------------------------

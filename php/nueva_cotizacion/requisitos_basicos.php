@@ -12,16 +12,6 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Requisitos basicos.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-<!-- ------------------------
-     -- INICIO CONEXION BD --
-     ------------------------ -->
-     <?php
-// Establece la conexión a la base de datos de ITred Spa
-$mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-?>
-<!-- ---------------------
-     -- FIN CONEXION BD --
-     --------------------- -->
 
 <div id="requisitos-basicos" class="data-box">
     <h3>Requisitos Básicos</h3>
@@ -41,15 +31,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
 </div>
 
 
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-     <?php
-     $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
 
      <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Requisitos basicos.PHP ----------------------------------------

@@ -12,19 +12,6 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Detalle proyecto.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-<!-- ------------------------
-     -- INICIO CONEXION BD --
-     ------------------------ -->
-     <?php
-// Establece la conexión a la base de datos de ITred Spa
-$mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-
-
-     $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
 
 
 <fieldset class="box-6 data-box"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
@@ -57,7 +44,67 @@ $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
 </fieldset>
 
 
+<?php
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Recibir datos del formulario para C_Proyectos
+    $proyecto_nombre = isset($_POST['proyecto_nombre']) ? trim($_POST['proyecto_nombre']) : null;
+    $proyecto_codigo = isset($_POST['proyecto_codigo']) ? trim($_POST['proyecto_codigo']) : null;
+    $tipo_trabajo = isset($_POST['tipo_trabajo']) ? $_POST['tipo_trabajo'] : null;
+    $area_trabajo = isset($_POST['area_trabajo']) ? $_POST['area_trabajo'] : null;
+    $riesgo = isset($_POST['riesgo']) ? $_POST['riesgo'] : null;
+    $dias_compra = isset($_POST['dias_compra']) ? $_POST['dias_compra'] : null;
+    $dias_trabajo = isset($_POST['dias_trabajo']) ? $_POST['dias_trabajo'] : null;
+    $trabajadores = isset($_POST['trabajadores']) ? $_POST['trabajadores'] : null;
+    $horario = isset($_POST['horario']) ? $_POST['horario'] : null;
+    $colacion = isset($_POST['colacion']) ? $_POST['colacion'] : null;
+    $entrega = isset($_POST['entrega']) ? $_POST['entrega'] : null;
+
+    if ($proyecto_nombre && $proyecto_codigo) {
+        // Insertar o actualizar el proyecto
+        $sql = "INSERT INTO C_Proyectos (nombre_proyecto, codigo_proyecto, tipo_trabajo, area_trabajo, riesgo_proyecto, dias_compra, dias_trabajo, trabajadores, horario, colacion, entrega)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON DUPLICATE KEY UPDATE 
+                    nombre_proyecto=VALUES(nombre_proyecto), 
+                    codigo_proyecto=VALUES(codigo_proyecto), 
+                    tipo_trabajo=VALUES(tipo_trabajo), 
+                    area_trabajo=VALUES(area_trabajo), 
+                    riesgo_proyecto=VALUES(riesgo_proyecto),
+                    dias_compra=VALUES(dias_compra),
+                    dias_trabajo=VALUES(dias_trabajo),
+                    trabajadores=VALUES(trabajadores),
+                    horario=VALUES(horario),
+                    colacion=VALUES(colacion),
+                    entrega=VALUES(entrega)";
+        $stmt = $mysqli->prepare($sql);
+        if ($stmt === false) {
+            die("Error en la preparación de la consulta: " . $mysqli->error);
+        }
+        $stmt->bind_param("sssssiissss", 
+            $proyecto_nombre, 
+            $proyecto_codigo, 
+            $tipo_trabajo, 
+            $area_trabajo, 
+            $riesgo, 
+            $dias_compra, 
+            $dias_trabajo, 
+            $trabajadores, 
+            $horario, 
+            $colacion, 
+            $entrega
+        );
+        $stmt->execute();
+        if ($stmt->error) {
+            die("Error en la ejecución de la consulta: " . $stmt->error);
+        }
+        
+        $id_proyecto = $mysqli->insert_id;
+        echo "Proyecto insertado/actualizado. ID: $id_proyecto<br>";
+    } else {
+        echo "El nombre y el código del proyecto son obligatorios.";
+    }
+}
+?>
 
      <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Detalle proyecto.PHP ----------------------------------------

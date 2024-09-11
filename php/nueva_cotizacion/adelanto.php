@@ -32,7 +32,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
 </fieldset>
 
 
-<script> src="../../js"</script>
+
 
 <!-- ---------------------
 -- INICIO CIERRE CONEXION BD --

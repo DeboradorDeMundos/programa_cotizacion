@@ -165,7 +165,7 @@
     </head> <!-- Cierra el elemento de cabecera -->
     <body> <!-- Abre el elemento del cuerpo de la página donde se coloca el contenido visible -->
         <div class="container"> <!-- Contenedor principal que puede ayudar a centrar y organizar el contenido en la página -->
-            <form id="cotizacion-form" method="POST" action="procesar_cotizacion.php" enctype="multipart/form-data">
+            <form id="cotizacion-form" method="POST" action="nueva_cotizacion.php" enctype="multipart/form-data">
                 <!-- Formulario con ID "cotizacion-form". Usa el método POST para enviar los datos al servidor. El atributo "action" define el archivo al que se enviarán los datos. "enctype" especifica que el formulario puede enviar archivos -->
                 <a href="javascript:history.back()" class="btn-fixed">Volver</a>
                 <!-- Fila 1 -->
@@ -243,7 +243,15 @@
 
 
 
-
+<!-- ---------------------
+-- INICIO CIERRE CONEXION BD --
+     --------------------- -->
+     <?php
+     $mysqli->close();
+?>
+<!-- ---------------------
+     -- FIN CIERRE CONEXION BD --
+     --------------------- -->
 
     <!-- ------------------------------------------------------------------------------------------------------------
         -------------------------------------- FIN ITred Spa nueva cotizacion .PHP -----------------------------------

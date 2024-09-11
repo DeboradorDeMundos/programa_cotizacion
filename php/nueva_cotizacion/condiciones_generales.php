@@ -12,16 +12,7 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Condiciones generales.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-<!-- ------------------------
-     -- INICIO CONEXION BD --
-     ------------------------ -->
-     <?php
-// Establece la conexión a la base de datos de ITred Spa
-$mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-?>
-<!-- ---------------------
-     -- FIN CONEXION BD --
-     --------------------- -->
+    
 
 <div id="condiciones-generales" class="data-box">
     <h3>Condiciones Generales</h3>
@@ -34,17 +25,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
 
 
 
-
-
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-     <?php
-     $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
 
 
 

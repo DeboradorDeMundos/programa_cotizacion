@@ -12,19 +12,6 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Cuadro rojo cotizacion.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-<!-- ------------------------
-     -- INICIO CONEXION BD --
-     ------------------------ -->
-     <?php
-// Establece la conexión a la base de datos de ITred Spa
-$mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-
-
-?>
-<!-- ---------------------
-     -- FIN CONEXION BD --
-     --------------------- -->
-     
      
      <body onload="calcularFechaValidez();">
 <fieldset class="box-6 data-box data-box-red"> <!-- Crea una caja para ingresar datos, ocupando otras 6 columnas. Se aplica una clase adicional para estilo -->
@@ -50,17 +37,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
 
 <script src="../../js/nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> <!-- Enlaza nuevamente el archivo JavaScript para manejar la lógica del formulario de cotización -->
  
-
-
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-     <?php
-     $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
 
 
 

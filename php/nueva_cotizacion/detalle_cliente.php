@@ -12,16 +12,8 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Detalle cliente.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-<!-- ------------------------
-     -- INICIO CONEXION BD --
-     ------------------------ -->
-     <?php
-// Establece la conexión a la base de datos de ITred Spa
-$mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-?>
-<!-- ---------------------
-     -- FIN CONEXION BD --
-     --------------------- -->
+
+
 
 <fieldset class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
     <legend>Detalle cliente</legend>
@@ -96,16 +88,70 @@ $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
     </div>
 </fieldset> <!-- Cierra la fila -->
 
+<?php
 
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-     <?php
-     $mysqli->close();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Recibir datos del formulario cliente
+    $cliente_nombre = isset($_POST['cliente_nombre']) ? trim($_POST['cliente_nombre']) : null;
+    $cliente_rut = isset($_POST['cliente_rut']) ? $_POST['cliente_rut'] : null;
+    $cliente_empresa = isset($_POST['cliente_empresa']) ? $_POST['cliente_empresa'] : null;
+    $cliente_direccion = isset($_POST['cliente_direccion']) ? $_POST['cliente_direccion'] : null;
+    $cliente_lugar = isset($_POST['cliente_lugar']) ? $_POST['cliente_lugar'] : null;
+    $cliente_fono = isset($_POST['cliente_fono']) ? $_POST['cliente_fono'] : null;
+    $cliente_email = isset($_POST['cliente_email']) ? $_POST['cliente_email'] : null;
+    $cliente_cargo = isset($_POST['cliente_cargo']) ? $_POST['cliente_cargo'] : null;
+    $cliente_giro = isset($_POST['cliente_giro']) ? $_POST['cliente_giro'] : null;
+    $cliente_comuna = isset($_POST['cliente_comuna']) ? $_POST['cliente_comuna'] : null;
+    $cliente_ciudad = isset($_POST['cliente_ciudad']) ? $_POST['cliente_ciudad'] : null;
+    $cliente_tipo = isset($_POST['cliente_tipo']) ? $_POST['cliente_tipo'] : null;
+
+    if ($cliente_nombre && $cliente_rut) {
+        // Insertar o actualizar el cliente
+        $sql = "INSERT INTO C_Clientes (nombre_cliente, empresa_cliente, rut_cliente, direccion_cliente, lugar_cliente, telefono_cliente, email_cliente, cargo_cliente, giro_cliente, comuna_cliente, ciudad_cliente, tipo_cliente)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON DUPLICATE KEY UPDATE 
+                    nombre_cliente=VALUES(nombre_cliente), 
+                    empresa_cliente=VALUES(empresa_cliente), 
+                    direccion_cliente=VALUES(direccion_cliente), 
+                    lugar_cliente=VALUES(lugar_cliente), 
+                    telefono_cliente=VALUES(telefono_cliente), 
+                    email_cliente=VALUES(email_cliente), 
+                    cargo_cliente=VALUES(cargo_cliente), 
+                    giro_cliente=VALUES(giro_cliente), 
+                    comuna_cliente=VALUES(comuna_cliente), 
+                    ciudad_cliente=VALUES(ciudad_cliente), 
+                    tipo_cliente=VALUES(tipo_cliente)";
+        $stmt = $mysqli->prepare($sql);
+        if ($stmt === false) {
+            die("Error en la preparación de la consulta: " . $mysqli->error);
+        }
+        $stmt->bind_param("ssssssssssss", 
+            $cliente_nombre, 
+            $cliente_empresa, 
+            $cliente_rut, 
+            $cliente_direccion, 
+            $cliente_lugar, 
+            $cliente_fono, 
+            $cliente_email, 
+            $cliente_cargo, 
+            $cliente_giro, 
+            $cliente_comuna, 
+            $cliente_ciudad, 
+            $cliente_tipo
+        );
+        $stmt->execute();
+        if ($stmt->error) {
+            die("Error en la ejecución de la consulta: " . $stmt->error);
+        }
+        
+        $id_cliente = $mysqli->insert_id;
+        echo "Cliente insertado/actualizado. ID: $id_cliente<br>";
+    } else {
+        echo "Nombre y RUT del cliente son obligatorios.";
+    }
+}
 ?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
+
 
 
 

@@ -11,17 +11,7 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Datos empresa.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-
-<!-- ------------------------
-     -- INICIO CONEXION BD --
-     ------------------------ -->
-     <?php
-// Establece la conexión a la base de datos de ITred Spa
-$mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-?>
-<!-- ---------------------
-     -- FIN CONEXION BD --
-     --------------------- -->
+     
      <?php
 function obtener_datos_empresa($mysqli, $id) {
     $sql_empresa = "SELECT 
@@ -81,15 +71,45 @@ function obtener_datos_empresa($mysqli, $id) {
 
 
 
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-     <?php
-     $mysqli->close();
+<?php
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $empresa_id = isset($_POST['empresa_id']) ? $_POST['empresa_id'] : null;
+    $empresa_rut = isset($_POST['empresa_rut']) ? $_POST['empresa_rut'] : null;
+    $empresa_nombre = isset($_POST['empresa_nombre']) ? trim($_POST['empresa_nombre']) : null;
+    $empresa_area = isset($_POST['empresa_area']) ? $_POST['empresa_area'] : null;
+    $empresa_direccion = isset($_POST['empresa_direccion']) ? $_POST['empresa_direccion'] : null;
+    $empresa_telefono = isset($_POST['empresa_telefono']) ? $_POST['empresa_telefono'] : null;
+    $empresa_email = isset($_POST['empresa_email']) ? $_POST['empresa_email'] : null;
+
+    if ($empresa_nombre && $empresa_rut) {
+        // Insertar o actualizar la empresa
+        $sql = "INSERT INTO E_Empresa (rut_empresa, id_foto, nombre_empresa, area_empresa, direccion_empresa, telefono_empresa, email_empresa)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+                ON DUPLICATE KEY UPDATE nombre_empresa=VALUES(nombre_empresa), area_empresa=VALUES(area_empresa), direccion_empresa=VALUES(direccion_empresa), telefono_empresa=VALUES(telefono_empresa), email_empresa=VALUES(email_empresa)";
+        $stmt = $mysqli->prepare($sql);
+        if ($stmt === false) {
+            die("Error en la preparación de la consulta: " . $mysqli->error);
+        }
+        $empresa_id_foto = null; // O el valor correspondiente si tienes la foto
+        $stmt->bind_param("sisssss", $empresa_rut, $empresa_id_foto, $empresa_nombre, $empresa_area, $empresa_direccion, $empresa_telefono, $empresa_email);
+        $stmt->execute();
+        if ($stmt->error) {
+            die("Error en la ejecución de la consulta: " . $stmt->error);
+        }
+
+        $id_empresa = $mysqli->insert_id;
+        echo "Empresa insertada/actualizada. ID: $id_empresa<br>";
+    } else {
+        echo "Nombre y RUT de la empresa son obligatorios.";
+    }
+}
 ?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
+
+
+
+
 
 
      <!-- ------------------------------------------------------------------------------------------------------------
