@@ -1,308 +1,366 @@
-<!--
-Sitio Web Creado por ITred Spa.
-Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
-contacto@itred.cl o itred.spa@gmail.com
-https://www.itred.cl
-Creado, Programado y Diseñado por ITred Spa.
-BPPJ
--->
-
-<!-- ------------------------------------------------------------------------------------------------------------
-    ------------------------------------- INICIO ITred Spa Ver cotizacion .PHP --------------------------------------
-    ------------------------------------------------------------------------------------------------------------- -->
-
-<!-- ------------------------
-     -- INICIO CONEXION BD --
-     ------------------------ -->
-
 <?php
-// Establece la conexión a la base de datos de ITred Spa
+// Conexión a la base de datos
 $conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-?>
-<!-- ---------------------
-     -- FIN CONEXION BD --
-     --------------------- -->
-
-<?php
 
 // Verificar la conexión
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
+// Obtener el ID de la cotización desde la URL
+$id_cotizacion = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
-$id = isset($_GET['id']) ? intval($_GET['id']) : 0;  // Obtiene el parámetro 'id' de la URL y lo convierte a entero; si no está presente, asigna 0
+// Validar si el ID es válido
+if ($id_cotizacion > 0) {
+    // Consulta para obtener los datos de la cotización y relaciones
+    $sql = "SELECT 
+    e.rut_empresa,
+    e.nombre_empresa,
+    e.area_empresa,
+    e.direccion_empresa,
+    e.telefono_empresa,
+    e.email_empresa,
+    e.fecha_creacion,
+    e.dias_validez,
+    p.nombre_proyecto,
+    p.codigo_proyecto,
+    p.tipo_trabajo,
+    p.area_trabajo,
+    p.riesgo_proyecto,
+    p.dias_compra,
+    p.dias_trabajo,
+    p.trabajadores,
+    p.horario,
+    p.colacion,
+    p.entrega,
+    c.rut_cliente,
+    c.nombre_cliente,
+    c.empresa_cliente,
+    c.direccion_cliente,
+    c.lugar_cliente,
+    c.telefono_cliente,
+    c.email_cliente,
+    c.cargo_cliente,
+    c.giro_cliente,
+    c.comuna_cliente,
+    c.ciudad_cliente,
+    c.tipo_cliente,
+    en.rut_encargado,
+    en.nombre_encargado,
+    en.email_encargado,
+    en.fono_encargado,
+    en.celular_encargado,
+    cv.rut_vendedor,
+    cv.nombre_vendedor,
+    cv.email_vendedor,
+    cv.fono_vendedor,
+    cv.celular_vendedor,
+    ct.numero_cotizacion,
+    ct.fecha_emision,
+    ct.fecha_validez,
+    cb.rut_titular,
+    cb.nombre_titular,
+    b.nombre_banco,
+    tc.tipocuenta,
+    cb.numero_cuenta,
+    cb.celular AS cuenta_celular,
+    cb.email_banco,
+    cg.descripcion_condiciones,
+    rb.descripcion_condiciones AS requisitos,
+    ob.descripcion AS obligaciones
+FROM 
+    C_Cotizaciones ct
+    JOIN E_Empresa e ON ct.id_empresa = e.id_empresa
+    JOIN C_Proyectos p ON ct.id_proyecto = p.id_proyecto
+    JOIN C_Clientes c ON ct.id_cliente = c.id_cliente
+    JOIN C_Encargados en ON ct.id_encargado = en.id_encargado
+    JOIN C_Vendedores cv ON ct.id_vendedor = cv.id_vendedor
+    LEFT JOIN E_Cuenta_Bancaria cb ON e.id_empresa = cb.id_empresa
+    LEFT JOIN E_Bancos b ON cb.id_banco = b.id_banco
+    LEFT JOIN E_Tipo_Cuenta tc ON cb.id_tipocuenta = tc.id_tipocuenta
+    LEFT JOIN C_Condiciones_Generales cg ON e.id_empresa = cg.id_empresa
+    LEFT JOIN E_Requisitos_Basicos rb ON e.id_empresa = rb.id_empresa
+    LEFT JOIN E_obligaciones_cliente ob ON e.id_empresa = ob.id_empresa
+WHERE 
+    ct.id_cotizacion = ?;";
 
-if ($id > 0) {  // Verifica si el 'id' es mayor que 0
-    $sql = "SELECT c.*, p.*, cl.*, v.*, e.*, en.*, d.*, det.cantidad, 
-            (det.cantidad * det.precio_unitario) AS detalle_total 
-            FROM C_Cotizaciones c
-            JOIN C_Proyectos p ON c.id_proyecto = p.id_proyecto
-            JOIN C_Clientes cl ON c.id_cliente = cl.id_cliente
-            JOIN C_Vendedores v ON c.id_vendedor = v.id_vendedor
-            JOIN E_Empresa e ON c.id_empresa = e.id_empresa
-            LEFT JOIN C_Encargados en ON c.id_encargado = en.id_encargado
-            LEFT JOIN C_Titulos t ON c.id_cotizacion = t.id_cotizacion
-            LEFT JOIN C_Detalles det ON t.id_titulo = det.id_titulo
-            LEFT JOIN P_Productos d ON det.nombre_producto = d.nombre_producto
-            WHERE c.id_cotizacion = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id_cotizacion);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    $stmt = $conn->prepare($sql);  // Prepara la consulta SQL para ejecutar con parámetros
-    $stmt->bind_param("i", $id);  // Vincula el parámetro 'id' a la consulta SQL como entero
-    $stmt->execute();  // Ejecuta la consulta SQL
-    $result = $stmt->get_result();  // Obtiene el resultado de la consulta ejecutada
-    
-    if ($result->num_rows > 0) {  // Verifica si hay resultados en la consulta
-        $row = $result->fetch_assoc();  // Obtiene una fila de resultados como un array asociativo
-    
-        // Inicio del HTML para mostrar los datos
-        echo "<div style='font-family: Arial, sans-serif; font-size: 12px;'>";  // Inicia un contenedor con estilo de fuente y tamaño de texto
-        echo "<div style='display: flex; justify-content: space-between;'>";  // Crea un contenedor flexible para distribuir elementos
-        echo "<div>";  // Contenedor para la información del encabezado
-        echo "<img src='path_to_your_logo.png' alt='Logo' style='width: 100px;'>";  // Muestra el logo con un ancho de 100px
-        echo "<h2 style='margin: 0; font-size: 24px;'>ITRED SPA</h2>";  // Muestra el nombre de la empresa con tamaño de fuente de 24px
-        echo "<p style='margin: 0; font-size: 12px;'>TECNOLOGIA Y CONSTRUCCION</p>";  // Muestra el lema de la empresa con tamaño de fuente de 12px
-        echo "<p style='margin: 0; font-size: 12px;'>DIRECCION: GUIDO RENI #4190, PEDRO AGUIRRE CERDA - SANTIAGO</p>";  // Muestra la dirección de la empresa
-        echo "<p style='margin: 0; font-size: 12px;'>FONO: (+56 9) 7242 5972</p>";  // Muestra el número de teléfono
-        echo "<p style='margin: 0; font-size: 12px;'>E-MAIL: CONTACTO@ITRED.CL</p>";  // Muestra el correo electrónico
-        echo "</div>";
-        echo "<div style='text-align: right;'>";  // Contenedor para la información alineada a la derecha
-        echo "<p style='border: 2px solid red; padding: 5px; font-size: 14px;'>RUT: 77.243.277-1 <br> ORDEN DE TRABAJO<br>N°" . htmlspecialchars($row['numero_cotizacion']) ."<br>VALIDA HASTA EL " . htmlspecialchars($row['fecha_validez']) ."</p>";  // Muestra el RUT, número de cotización y fecha de validez con bordes y padding
-        echo "</div>";
-        echo "</div>";
-        echo "<hr>";  // Inserta una línea horizontal para separar contenido
+    // Inicializar variables
+    $productos = [];
+    $subtotal = $iva = $total_final = 0;
 
-        // Muestra el título del proyecto
-        echo "<h4 style='margin: 0; font-size: 18px;'>PROYECTO: INSTALACION MEMORIA RAM Y SOPORTE PC EQUIPO 1</h4>";
+    // Verificar si se encontraron resultados
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            // Almacenar los datos en variables para mostrarlos más tarde
+            $numero_cotizacion = $row['numero_cotizacion'];
+            $fecha_emision = $row['fecha_emision'];
+            $fecha_validez = $row['fecha_validez'];
+            
+            // Detalles del cliente
+            $nombre_cliente = $row['nombre_cliente'];
+            $rut_cliente = $row['rut_cliente'];
+            $direccion_cliente = $row['direccion_cliente'];
+            $telefono_cliente = $row['telefono_cliente'];
+            $email_cliente = $row['email_cliente'];
+            $giro_cliente = $row['giro_cliente'];
+            $comuna_cliente = $row['comuna_cliente'];
+            $ciudad_cliente = $row['ciudad_cliente'];
+            
+            // Detalles de la empresa
+            $nombre_empresa = $row['nombre_empresa'];
+            $rut_empresa = $row['rut_empresa'];
+            $direccion_empresa = $row['direccion_empresa'];
+            $telefono_empresa = $row['telefono_empresa'];
+            $email_empresa = $row['email_empresa'];
+            $area_empresa = $row['area_empresa'];
+            
+            // Detalles del proyecto
+            $nombre_proyecto = $row['nombre_proyecto'];
+            $codigo_proyecto = $row['codigo_proyecto'];
+            $tipo_trabajo = $row['tipo_trabajo'];
+            $area_trabajo = $row['area_trabajo'];
+            $riesgo_proyecto = $row['riesgo_proyecto'];
+            
+            // Detalles del encargado
+            $nombre_encargado = $row['nombre_encargado'];
+            $email_encargado = $row['email_encargado'];
+            $fono_encargado = $row['fono_encargado'];
+            $celular_encargado = $row['celular_encargado'];
+            
+            // Detalles del vendedor
+            $nombre_vendedor = $row['nombre_vendedor'];
+            $email_vendedor = $row['email_vendedor'];
+            $fono_vendedor = $row['fono_vendedor'];
+            $celular_vendedor = $row['celular_vendedor'];
 
-        // Contenedor para los detalles del proyecto
-        echo "<div style='display: flex; justify-content: space-between; margin-top: 10px'>";
-        
-        // Primer bloque de detalles del proyecto
-        echo "<div>";
-        echo "<table>";
-        echo "<tr><td style='font-size: 14px;'><strong>Proyecto</strong></td><td style='font-size: 12px;'>" . htmlspecialchars($row['nombre_proyecto']); // Nombre del proyecto
-        echo "<tr><td style='font-size: 14px;'><strong>COD. PROY</strong></td><td style='font-size: 12px;'>" . htmlspecialchars($row['id_proyecto']); // Código del proyecto
-        echo "<tr><td style='font-size: 14px;'><strong>AREA TRABAJO</strong></td><td style='font-size: 12px;'>" . htmlspecialchars($row['area_trabajo']); // Área de trabajo
-        echo "<tr><td style='font-size: 14px;'><strong>RISGO TRAB.</strong></td><td style='font-size: 12px;'>" . htmlspecialchars($row['riesgo_proyecto']); // Riesgo del proyecto
-        echo "</table>";
-        echo "</div>";
-        
-        // Segundo bloque de detalles del proyecto alineado a la derecha
-        echo "<div style='text-align: right; padding-right: 20px;'>";
-        echo "<table>";
-        echo "<tr><td style='font-size: 14px;'><strong>DIAS COMPRA</strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['dias_compra']); // Días para la compra
-        echo "<tr><td style='font-size: 14px;'><strong>DIAS TRABAJO</strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['dias_trabajo']); // Días de trabajo
-        echo "<tr><td style='font-size: 14px;'><strong>TRABAJADORES</strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['trabajadores']); // Número de trabajadores
-        echo "<tr><td style='font-size: 14px;'><strong>HORARIO</strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['horario']); // Horario
-        echo "<tr><td style='font-size: 14px;'><strong>COLACION</strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['colacion']); // Colación
-        echo "<tr><td style='font-size: 14px;'><strong>ENTREGA</strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['entrega']); // Entrega
-        echo "</table>";
-        echo "</div>";
+            // Manejar productos
+            $productos[] = array(
+                'nombre_producto' => $row['nombre_producto'] ?? 'No disponible',
+                'cantidad' => $row['cantidad'] ?? 0,
+                'precio_unitario' => $row['precio_unitario'] ?? 0,
+                'total' => $row['total'] ?? 0
+            );
 
-        // Fin del contenedor de detalles del proyecto
-        echo "</div>";
-
-        // Muestra el título de datos del cliente
-        echo "<h3 style='margin: 0; font-size: 18px;'>DATOS CLIENTES</h3>";
-
-        // Contenedor para los detalles del cliente
-        echo "<div style='display: flex; justify-content: space-between; margin-top: 10px'>";
-        
-        // Primer bloque de detalles del cliente
-        echo "<div>";
-        echo "<table>";
-        echo "<tr><td style='font-size: 14px;'><strong>SR/TA: </strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['nombre_cliente']); // Nombre del cliente
-        echo "<tr><td style='font-size: 14px;'><strong>EMPRESA: </strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['empresa_cliente']); // Empresa del cliente
-        echo "<tr><td style='font-size: 14px;'><strong>RUT: </strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['rut_cliente']); // RUT del cliente
-        echo "<tr><td style='font-size: 14px;'><strong>DIRECCION: </strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['direccion_cliente']); // Dirección del cliente
-        echo "<tr><td style='font-size: 14px;'><strong>OF./DEPTO</strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['lugar_cliente']); // Oficina/departamento del cliente
-        echo "<tr><td style='font-size: 14px;'><strong>FONO: </strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['telefono_cliente']); // Teléfono del cliente
-        echo "<tr><td style='font-size: 14px;'><strong>E-MAIL: </strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['email_cliente']); // Correo electrónico del cliente
-        echo "</table>";
-        echo "</div>";
-
-        // Segundo bloque de detalles del cliente alineado a la derecha
-        echo "<div style='text-align: right; padding-right: 20px;'>";
-        echo "<table>";
-        echo "<tr><td style='font-size: 14px;'><strong>CARGO: </strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['cargo_cliente']); // Cargo del cliente
-        echo "<tr><td style='font-size: 14px;'><strong>GIRO: </strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['giro_cliente']); // Giro del cliente
-        echo "<tr><td style='font-size: 14px;'><strong>COMUNA: </strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['comuna_cliente']); // Comuna del cliente
-        echo "<tr><td style='font-size: 14px;'><strong>CIUDAD: </strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['ciudad_cliente']); // Ciudad del cliente
-        echo "</table>";
-        echo "</div>";
-        
-        // Fin del contenedor de detalles del cliente
-        echo "</div>";
-
-        echo "<h3 style='margin: 20px; font-size: 18px;'>DATOS EMPRESA</h3>";  // Muestra el título "DATOS EMPRESA" con estilo de margen y tamaño de fuente
-
-        echo "<div style='display: flex; justify-content: space-between; margin-top: 10px'>";  // Crea un contenedor flexible para los datos de la empresa
-        echo "<div>";  // Contenedor para la tabla de datos del encargado
-        
-        echo "<table>";  // Inicia una tabla para mostrar los datos
-        echo "<tr><td><strong>ENC. PROYEC.: </strong></td><td>" . htmlspecialchars($row['nombre_encargado']) ."</tr>";  // Fila de la tabla para el nombre del encargado del proyecto
-        echo "<tr><td><strong>E-MAIL: </strong></td><td>" . htmlspecialchars($row['email_encargado']) . "</td></tr>";  // Fila de la tabla para el email del encargado
-        echo "<tr><td><strong>FONO: </strong></td><td>" . htmlspecialchars($row['fono_encargado']) . "</td></tr>";  // Fila de la tabla para el teléfono del encargado
-        echo "<tr><td><strong>WHATSAPP: </strong></td><td>" . htmlspecialchars($row['celular_encargado']) . "</td></tr>";  // Fila de la tabla para el WhatsApp del encargado
-        echo "<tr><td><strong>TIPO CLIENTE: </strong></td><td>" . htmlspecialchars($row['tipo_cliente']) . "</td></tr>";  // Fila de la tabla para el tipo de cliente
-        echo "<tr><td><strong>Validez</strong></td><td>" . htmlspecialchars($row['fecha_validez']) . "</td></tr>";  // Fila de la tabla para la validez de la cotización
-        echo "</table>";  // Cierra la tabla
-        
-        echo "</div>";
-        echo "<div style='text-align: right; padding-right: 20px;' >";  // Contenedor para la tabla de datos del vendedor, alineada a la derecha
-        
-        echo "<table>";  // Inicia una tabla para mostrar los datos del vendedor
-        echo "<tr><td style='font-size: 14px;'><strong>VENDEDOR: </strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['nombre_vendedor']);  // Fila de la tabla para el nombre del vendedor
-        echo "<tr><td style='font-size: 14px;'><strong>E-MAIL:  </strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['email_vendedor']);  // Fila de la tabla para el email del vendedor
-        echo "<tr><td style='font-size: 14px;'><strong>FONO:  </strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['fono_vendedor']);  // Fila de la tabla para el teléfono del vendedor
-        echo "<tr><td style='font-size: 14px;'><strong>WHATSAPP:  </strong></td><td style='font-size: 10px;'>" . htmlspecialchars($row['celular_vendedor']);  // Fila de la tabla para el WhatsApp del vendedor
-        echo "</table>";  // Cierra la tabla
-        
-        echo "</div>";
-        echo "</div>";
-        
-        echo "<h3>Detalles del Servicio</h3>";  // Muestra el título "Detalles del Servicio"
-        
-        echo "<h4 style='margin: 0;'><strong>ESTIMADO SEÑOR(A)  :</h4>";  // Muestra el saludo con estilo de margen
-        
-        echo "<h5 style='margin: 0;'>DE ACUERDO A SU SOLICITUD DE COTIZACIÓN, TENEMOS EL AGRADO DE PRESENTAR NUESTRA OFERTA ECONOMICA :</h5>";  // Muestra el mensaje de presentación de la oferta económica
-        
-        echo "<table border='1' cellpadding='5' cellspacing='0' width='100%'>";  // Inicia una tabla con borde, padding, y ancho del 100%
-        echo "<tr><th>Cantidad</th><th>Descripción</th><th>Precio Unitario</th><th>Total</th></tr>";  // Encabezado de la tabla con los nombres de las columnas
-        echo "<tr>";  // Inicia una fila de la tabla
-        echo "<td>" . htmlspecialchars($row['cantidad']) . "</td>";  // Muestra la cantidad del servicio
-        echo "<td>" . htmlspecialchars($row['descripcion']) . "</td>";  // Muestra la descripción del servicio
-        echo "<td>" . htmlspecialchars($row['precio_unitario']) . "</td>";  // Muestra el precio unitario del servicio
-        echo "<td>" . htmlspecialchars($row['detalle_total']) . "</td>";  // Muestra el total del servicio (cantidad * precio unitario)
-        echo "</tr>";  // Cierra la fila de la tabla
-        echo "</table>";  // Cierra la tabla
-
-        // Contenedor para la tabla de totales y descuentos
-        echo "<div style='width: 100%; display: flex; justify-content: flex-end;'>"; // Inicio del contenedor flex
-
-        // Tabla de totales y descuentos
-        echo "<table border='1' cellpadding='5' cellspacing='0' width='48.9%'>"; // Inicio de la tabla
-
-        // Fila de NETO
-        echo "<tr><td colspan='3' align='right' ><strong>NETO</strong></td><td align='right'>" . htmlspecialchars($row['total']) . "</td></tr>"; // Fila de NETO
-
-        // Fila de IVA 19%
-        echo "<tr><td colspan='3' align='right'><strong>IVA 19%</strong></td><td align='right'>" . htmlspecialchars($row['iva']) . "</td></tr>"; // Fila de IVA 19%
-
-        // Fila de TOTAL
-        echo "<tr><td colspan='3' align='right'><strong>TOTAL</strong></td><td align='right'>" . htmlspecialchars($row['total']) . "</td></tr>"; // Fila de TOTAL
-
-        // Fila de DESCUENTO 5%
-        echo "<tr><td colspan='3' align='right'><strong>DESCUENTO 5%</strong></td><td align='right'>" . htmlspecialchars($row['descuento']) . "</td></tr>"; // Fila de DESCUENTO 5%
-
-        // Cierre de la tabla
-        echo "</table>"; // Fin de la tabla
-        echo "</div>"; // Fin del contenedor flex
-
-        // Contenedor para la descripción del adelanto para compra
-        echo "<div style='margin-top: 40px;'>"; // Inicio del contenedor para la descripción
-
-        // Tabla de adelanto para compra
-        echo "<table border='1' cellpadding='5' cellspacing='0' width='100%'>"; // Inicio de la tabla
-
-        // Fila de ADELANTO PARA COMPRA 30%
-        echo "<tr>";
-        echo "<td>ADELANTO PARA COMPRA 30%</td>"; // Celda de ADELANTO PARA COMPRA 30%
-        echo "<td>" . htmlspecialchars($row['descripcion']) . "</td>"; // Celda de descripción
-        echo "</tr>"; // Fin de la fila
-
-        // Cierre de la tabla
-        echo "</table>"; // Fin de la tabla
-        echo "</div>"; // Fin del contenedor para la descripción
-
-        // Contenedor para las condiciones generales
-        echo "<div style='margin-top: 40px;'>"; // Inicio del contenedor para las condiciones
-
-        // Tabla de condiciones generales
-        echo "<table>"; // Inicio de la tabla
-
-        // Encabezado de condiciones generales
-        echo "<tr><th style='background-color:lightgray'>CONDICIONES GENERALES</th></tr>"; // Encabezado de la tabla
-
-        // Filas de condiciones generales
-        echo "<tr><td>1.- VALORES EXPRESADOS SERAN FACTURADOS EN MONEDA NACIONAL.</td></tr>"; // Condición 1
-        echo "<tr><td>2.- VALORES SUJETOS A VARIACION, DEBIDO A QUE LOS EQUIPOS, MATERIALES Y HERRAMIENTAS SON CALCULADOS CON EL VALOR DOLAR DIA</td></tr>"; // Condición 2
-        echo "<tr><td>3.- LAS INSTALACIONES NO INCLUYEN EQUIPOS, MATERIALES, FERRETERIA U OTRO TIPO DE HERRAMIENTAS QUE SE REQUIERAN PARA EL TRABAJO, QUE NO SE ENCUENTRE DETALLADO DENTRO DE ESTA COTIZACION.</td></tr>"; // Condición 3
-        echo "<tr><td>4.- GARANTIA 6 MESES, DESDE EL DIA DE LA ENTREGA, LA QUE CADUCA AUTOMATICAMENTE, EN CASO DE NO CUMPLIR LOS PAGOS, EN LAS FECHAS ACORDADAS</td></tr>"; // Condición 4
-        echo "<tr><td>5.- GARANTIA 6 MESES, DESDE EL DIA DE LA ENTREGA, LA QUE CADUCA AUTOMATICAMENTE, EN CASO DE HABER MANIPULACION O INTERVENCION DE TERCEROS</td></tr>"; // Condición 5
-        echo "<tr><td>6.- SI ALGUN TRABAJO, MATERIAL, PRODUCTO, EQUIPO, FERRETERIA O MANO DE OBRA, QUE NO SE ENCUENTRE EN ESTA COTIZACION, SE DEBERA COTIZAR Y AGREGAR EL VALOR A LA COTIZACION</td></tr>"; // Condición 6
-        echo "<tr><td>7.- LUGAR DE TRABAJO LIBRE DE OBJETOS, QUE SE PUEDAN, ROMPER, DAÑAR O ENTORPECER EL TRABAJO, DE LO CONTRARIO, SE DEBERA COTIZAR Y AGREGAR EL MOVIMIENTO DE OBJETOS A LA COTIZACION</td></tr>"; // Condición 7
-        echo "<tr><td>8.- EL CLIENTE DEBE INDICAR EL HORARIO DE ENTRADA Y DE SALIDA, CONTEMPLANDO QUE NUESTRO HORARIO DE TRABAJO ES DE LUNES A VIERNES DE 9:00 AM A 18:30HRS</td></tr>"; // Condición 8
-        echo "<tr><td>9.- LOS DIAS DE TRABAJO, SON COTIZADOS DE LUNES A VIERNES DE 9:30AM A 18:30HRS., CON 1HR. DE COLACION, SI EL CLIENTE PRESENTA ALGUN PROBLEMA DE HORARIO O URGENCIAS, DEBERA DAR AVISO ANTES DE COMENZAR EL PROYECTO, PARA AGREGAR HORAS EXTRAS, VIATICOS Y TODO LO QUE CORRESPONDE PARA CUMPLIR CON LA URGENCIA DEL CLIENTE, YA SEA TRABAJO DESPUES DE LA HORA LABORAL, FIN DE SEMANA O FESTIVOS</td></tr>"; // Condición 9
-        echo "<tr><td>10.- EL CLIENTE DEBE INDICAR LOS HORARIOS, EN LOS CUALES, SE PERMITE HACER RUIDOS FUERTES O INTERVENIR ENTRADAS, PASILLOS, CON MESONES, ESCALERAS, HERRAMIENTAS, ENTRE OTROS, ESTO ES MUY IMPORTANTE, PORQUE SI LOS HORARIOS SON MUY COMPLICADOS O REDUCIDOS, SE DEBERA RECALCULAR EL PRESUPUESTO</td></tr>"; // Condición 10
-
-        // Cierre de la tabla
-        echo "</table>"; // Fin de la tabla
-        echo "</div>"; // Fin del contenedor para las condiciones
-
-        // Sección de transferencias
-        echo "<h2>TRANSFERENCIAS A:</h2>";  // Muestra el título "TRANSFERENCIAS A:"
-
-        // Inicia una tabla para mostrar los detalles de las transferencias
-        echo "<table>";
-        echo "<tr><th>CHEQUERA ELECTRONICA ITRED SPA</th><th>CUENTA CORRIENTE PERSONAL</th><th>CUENTA RUT PERSONAL</th></tr>";  // Encabezado de la tabla con nombres de columnas para diferentes tipos de cuentas
-        echo "<tr><td>BANCO: Banco Estado</td><td>BANCO: Santander</td><td>BANCO: Banco Estado</td></tr>";  // Fila de la tabla para los nombres de los bancos
-        echo "<tr><td>TIPO CUENTA: Chequera electrónica</td><td>TIPO CUENTA: Cuenta corriente</td><td>TIPO CUENTA: Cuenta RUT</td></tr>";  // Fila de la tabla para los tipos de cuentas
-        echo "<tr><td>NUMERO CUENTA: 902-7-053409-0</td><td>NUMERO CUENTA: 0-000-77-51325-6</td><td>NUMERO CUENTA: 15457398</td></tr>";  // Fila de la tabla para los números de cuenta
-        echo "<tr><td>NOMBRE: ITRED SPA</td><td>NOMBRE: Barner Piña Jara</td><td>NOMBRE: Barner Piña Jara</td></tr>";  // Fila de la tabla para los nombres asociados a las cuentas
-        echo "<tr><td>RUT: 77.243.277-1</td><td>RUT: 15.457.398-4</td><td>RUT: 15.457.398-4</td></tr>";  // Fila de la tabla para los RUTs asociados a las cuentas
-        echo "<tr><td>E-MAIL: barnerp1@gmail.com</td><td>E-MAIL: barnerp1@gmail.com</td><td>E-MAIL: barnerp1@gmail.com</td></tr>";  // Fila de la tabla para los correos electrónicos asociados a las cuentas
-        echo "</table>";  // Cierra la tabla
-
-        // Mensaje de despedida
-        echo "<p>SIN OTRO PARTICULAR, Y ESPERANDO QUE LA PRESENTE OFERTA SEA DE SU INTERÉS, SE DESPIDE ATENTAMENTE</p>";  // Muestra un mensaje de despedida formal
-        echo "<p>BARNER PATRICIO PIÑA JARA</p>";  // Muestra el nombre del remitente
-        echo "<p>JEFE DE PROYECTO TECNOLOGÍA Y CONSTRUCCIÓN</p>";  // Muestra el cargo del remitente
-        echo "<p>ITRED SPA.</p>";  // Muestra el nombre de la empresa
-        echo "</div>";  // Cierra el contenedor principal
-    } else { // Si no se encuentra la cotización con el ID proporcionado
-        echo "<p>No se encontró la cotización con el ID proporcionado.</p>"; // Mensaje de error cuando no se encuentra la cotización
+            // Totales (Asegurarse de que existan)
+            $subtotal = $row['sub_total'] ?? 0;
+            $iva = $row['iva_valor'] ?? 0;
+            $total_final = $row['total_final'] ?? 0;
+        }
+    } else {
+        echo "No se encontró la cotización.";
     }
-    $stmt->close(); // Cierra la declaración preparada
-} else { // Si el ID proporcionado no es válido
-    echo "<p>ID inválido.</p>"; // Mensaje de error cuando el ID es inválido
+
+    $stmt->close();
+} else {
+    echo "ID de cotización no válido.";
 }
 
-$conn->close(); // Cierra la conexión a la base de datos
-?> 
+// Cerrar la conexión
+$conn->close();
+?>
 
-<!DOCTYPE html> <!-- Define el tipo de documento como HTML5 -->
-<html lang="es"> <!-- Define el idioma del contenido como español -->
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8"> <!-- Establece la codificación de caracteres a UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura el viewport para dispositivos móviles -->
-    <title>Detalles de la Cotización</title> <!-- Define el título de la página que aparece en la pestaña del navegador -->
-    <link rel="stylesheet" href="../../css/ver_cotizacion/ver_cotizacion.css"> <!-- Vincula el archivo de estilos CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotización</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+        .cotizacion-container { width: 800px; margin: 20px auto; background-color: #ffffff; padding: 20px; border: 1px solid #cccccc; }
+        header { display: flex; justify-content: space-between; align-items: center; }
+        .header-left { font-size: 14px; }
+        .header-left h2 { font-size: 28px; color: #007bff; margin: 0; }
+        .header-right .logo { width: 150px; }
+        .section { margin-top: 20px; }
+        h3 { font-size: 14px; color: #007bff; margin-bottom: 5px; }
+        .info { padding: 10px 0; }
+        .section-container { display: flex; flex-wrap: wrap; gap: 20px; }
+        .section-container .section { flex: 1 1 calc(50% - 20px); box-sizing: border-box; }
+        .tabla-productos { width: 100%; margin-top: 20px; border-collapse: collapse; }
+        .tabla-productos th, .tabla-productos td { padding: 10px; border: 1px solid #dddddd; text-align: left; }
+        .tabla-productos th { background-color: #007bff; color: #ffffff; }
+        .resumen-precio { width: 300px; float: right; margin-top: 20px; }
+        .resumen-precio table { width: 100%; border-collapse: collapse; }
+        .resumen-precio td { padding: 10px; border: 1px solid #dddddd; }
+        .metodo-pago { margin-top: 40px; }
+        .firmas { display: flex; justify-content: space-between; margin-top: 40px; }
+        .firma { width: 45%; text-align: center; }
+        .firma hr { border: none; border-top: 1px solid #000000; margin: 10px 0; }
+    </style>
 </head>
 <body>
-    <ul> <!-- Crea una lista desordenada -->
-        <li><a href="../formulario_cotizacion/formulario_cotizacion.php">Crear Cotización</a></li> <!-- Enlace para crear una nueva cotización -->
-        <li><a href="../modificar_cotizacion/modificar_cotizacion.php?id=<?php echo $id; ?>">Modificar Cotización</a></li> <!-- Enlace para modificar la cotización actual, con ID incluido -->
-        <li><a href="../eliminar_cotizacion/eliminar_cotizacion.php?id=<?php echo $id; ?>">Eliminar Cotización</a></li> <!-- Enlace para eliminar la cotización actual, con ID incluido -->
-        <li><a href="../ver_listado/ver_listado.php">Volver al Listado</a></li> <!-- Enlace para volver al listado de cotizaciones -->
-    </ul>
+    <div class="cotizacion-container">
+        <header>
+            <div class="header-left">
+                <h2>COTIZACIÓN</h2>
+                <p>No. <?php echo $numero_cotizacion; ?></p>
+                <p>Fecha de emisión: <?php echo $fecha_emision; ?></p>
+                <p>Fecha de validez: <?php echo $fecha_validez; ?></p>
+            </div>
+            <div class="header-right">
+                <img src="logo.png" alt="Logo Empresa" class="logo">
+            </div>
+        </header>
+
+        <!-- Sección de Detalles -->
+        <div class="section-container">
+            <!-- Detalles de la Empresa -->
+            <div class="section">
+                <h3>DETALLES DE LA EMPRESA</h3>
+                <div class="info">
+                    <p><strong>Empresa:</strong> <?php echo $nombre_empresa; ?></p>
+                    <p><strong>RUT:</strong> <?php echo $rut_empresa; ?></p>
+                    <p><strong>Dirección:</strong> <?php echo $direccion_empresa; ?></p>
+                    <p><strong>Teléfono:</strong> <?php echo $telefono_empresa; ?></p>
+                    <p><strong>Email:</strong> <?php echo $email_empresa; ?></p>
+                    <p><strong>Área:</strong> <?php echo $area_empresa; ?></p>
+                </div>
+            </div>
+
+            <!-- Detalles del Proyecto -->
+            <div class="section">
+                <h3>DETALLES DEL PROYECTO</h3>
+                <div class="info">
+                    <p><strong>Nombre:</strong> <?php echo $nombre_proyecto; ?></p>
+                    <p><strong>Código:</strong> <?php echo $codigo_proyecto; ?></p>
+                    <p><strong>Tipo de trabajo:</strong> <?php echo $tipo_trabajo; ?></p>
+                    <p><strong>Área de trabajo:</strong> <?php echo $area_trabajo; ?></p>
+                    <p><strong>Riesgo:</strong> <?php echo $riesgo_proyecto; ?></p>
+                </div>
+            </div>
+
+            <!-- Detalles del Cliente -->
+            <div class="section">
+                <h3>DETALLES DEL CLIENTE</h3>
+                <div class="info">
+                    <p><strong>Nombre:</strong> <?php echo $nombre_cliente; ?></p>
+                    <p><strong>RUT:</strong> <?php echo $rut_cliente; ?></p>
+                    <p><strong>Dirección:</strong> <?php echo $direccion_cliente; ?></p>
+                    <p><strong>Teléfono:</strong> <?php echo $telefono_cliente; ?></p>
+                    <p><strong>Email:</strong> <?php echo $email_cliente; ?></p>
+                    <p><strong>Giro:</strong> <?php echo $giro_cliente; ?></p>
+                    <p><strong>Comuna:</strong> <?php echo $comuna_cliente; ?></p>
+                    <p><strong>Ciudad:</strong> <?php echo $ciudad_cliente; ?></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detalles del Encargado -->
+        <div class="section">
+            <h3>DETALLES DEL ENCARGADO</h3>
+            <div class="info">
+                <p><strong>Nombre:</strong> <?php echo $nombre_encargado; ?></p>
+                <p><strong>Email:</strong> <?php echo $email_encargado; ?></p>
+                <p><strong>Teléfono:</strong> <?php echo $fono_encargado; ?></p>
+                <p><strong>Celular:</strong> <?php echo $celular_encargado; ?></p>
+            </div>
+        </div>
+
+        <!-- Detalles del Vendedor -->
+        <div class="section">
+            <h3>DETALLES DEL VENDEDOR</h3>
+            <div class="info">
+                <p><strong>Nombre:</strong> <?php echo $nombre_vendedor; ?></p>
+                <p><strong>Email:</strong> <?php echo $email_vendedor; ?></p>
+                <p><strong>Teléfono:</strong> <?php echo $fono_vendedor; ?></p>
+                <p><strong>Celular:</strong> <?php echo $celular_vendedor; ?></p>
+            </div>
+        </div>
+
+        <!-- Productos -->
+        <div class="section">
+            <h3>PRODUCTOS</h3>
+            <table class="tabla-productos">
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (!empty($productos)): ?>
+                        <?php foreach ($productos as $producto): ?>
+                            <tr>
+                                <td><?php echo $producto['nombre_producto']; ?></td>
+                                <td><?php echo $producto['cantidad']; ?></td>
+                                <td><?php echo $producto['precio_unitario']; ?></td>
+                                <td><?php echo $producto['total']; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="4">No se encontraron productos.</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Totales -->
+        <div class="resumen-precio">
+            <table>
+                <tr>
+                    <td><strong>Subtotal</strong></td>
+                    <td><?php echo $subtotal; ?></td>
+                </tr>
+                <tr>
+                    <td><strong>IVA</strong></td>
+                    <td><?php echo $iva; ?></td>
+                </tr>
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td><?php echo $total_final; ?></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Método de Pago -->
+        <div class="section metodo-pago">
+            <h3>MÉTODO DE PAGO</h3>
+            <p>Se aceptan los siguientes métodos de pago: [Inserta detalles del método de pago aquí]</p>
+        </div>
+
+        <!-- Requisitos, Obligaciones y Condiciones Generales -->
+        <?php if (!empty($requisitos)): ?>
+            <div class="section">
+                <h3>REQUISITOS</h3>
+                <p><?php echo $requisitos; ?></p>
+            </div>
+        <?php endif; ?>
+
+        <?php if (!empty($obligaciones)): ?>
+            <div class="section">
+                <h3>OBLIGACIONES</h3>
+                <p><?php echo $obligaciones; ?></p>
+            </div>
+        <?php endif; ?>
+
+        <?php if (!empty($descripcion_condiciones)): ?>
+            <div class="section">
+                <h3>CONDICIONES GENERALES</h3>
+                <p><?php echo $descripcion_condiciones; ?></p>
+            </div>
+        <?php endif; ?>
+
+        <!-- Firmas -->
+        <div class="firmas">
+            <div class="firma">
+                <p>Firma Cliente</p>
+                <hr>
+            </div>
+            <div class="firma">
+                <p>Firma Empresa</p>
+                <hr>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
-
-
-
-<!-- ------------------------------------------------------------------------------------------------------------
-    -------------------------------------- FIN ITred Spa  Ver Cotización .PHP -----------------------------------
-    ------------------------------------------------------------------------------------------------------------- -->
-
-<!--
-Sitio Web Creado por ITred Spa.
-Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
-contacto@itred.cl o itred.spa@gmail.com
-https://www.itred.cl
-Creado, Programado y Diseñado por ITred Spa.
-BPPJ
--->
