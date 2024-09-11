@@ -25,17 +25,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
 
 
 
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-     <?php
-     $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
-
-
 
 
 <fieldset>
@@ -50,6 +39,19 @@ $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
         </div>
     </div>
 </fieldset>
+
+
+
+
+<!-- ---------------------
+-- INICIO CIERRE CONEXION BD --
+     --------------------- -->
+     <?php
+     $mysqli->close();
+?>
+<!-- ---------------------
+     -- FIN CIERRE CONEXION BD --
+     --------------------- -->
 
 
 

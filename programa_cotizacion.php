@@ -24,6 +24,8 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
      -- FIN CONEXION BD --
      --------------------- -->
 
+
+     
 <?php
 
 $error = '';
@@ -56,9 +58,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error = "Por favor, seleccione una empresa.";
     }
 }
-
-
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -128,6 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 
+
 <!-- ---------------------
 -- INICIO CIERRE CONEXION BD --
      --------------------- -->
@@ -137,6 +141,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!-- ---------------------
      -- FIN CIERRE CONEXION BD --
      --------------------- -->
+
+
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Programa Cotizacion .PHP ----------------------------------------

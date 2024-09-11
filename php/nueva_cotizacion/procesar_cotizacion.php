@@ -413,42 +413,38 @@ echo "Totales insertados correctamente. ID: $id_total<br>";
 
 
 
-// Recibir los datos del formulario para ADELANTO
-$adelanto_descripcion = $_POST['adelanto_descripcion'] ?? null;
-$porcentaje_adelanto = $_POST['porcentaje_adelanto'] ?? null;
-$monto_adelanto = $_POST['monto_adelanto'] ?? null;
-$fecha_adelanto = $_POST['fecha_adelanto'] ?? null;
+// Recibir los datos del formulario para pago
+$numero_pago = $_POST['numero_pago'] ?? null;
+$pago_descripcion = $_POST['descripcion_pago'] ?? null;
+$porcentaje_pago = $_POST['porcentaje_pago'] ?? null;
+$monto_pago = $_POST['monto_pago'] ?? null;
+$fecha_pago = $_POST['fecha_pago'] ?? null;
+$forma_pago = $_POST['forma_pago'] ?? null;
 
-// Verificar que todos los campos necesarios estén presentes
-if ($porcentaje_adelanto === null || $monto_adelanto === null || $fecha_adelanto === null) {
-    die("Error: Todos los campos del adelanto son requeridos.");
+// Validar datos obligatorios
+if (is_null($porcentaje_pago) || is_null($monto_pago) || is_null($fecha_pago) || is_null($forma_pago)) {
+    die("Faltan datos obligatorios.");
 }
 
-// Validar que el porcentaje y el monto sean numéricos
-if (!is_numeric($porcentaje_adelanto) || !is_numeric($monto_adelanto)) {
-    die("Error: El porcentaje y el monto deben ser numéricos.");
-}
-
-// Validar que el porcentaje esté entre 0 y 100
-if ($porcentaje_adelanto < 0 || $porcentaje_adelanto > 100) {
-    die("Error: El porcentaje debe estar entre 0 y 100.");
-}
-
-// Insertar datos en la tabla Adelanto
-$sql = "INSERT INTO C_Adelanto (id_cotizacion, porcentaje_adelanto, monto_adelanto, fecha_adelanto, descripcion)
-        VALUES (?, ?, ?, ?, ?)";
+// Insertar datos en la tabla pago
+$sql = "INSERT INTO C_pago (id_cotizacion, numero_pago, descripcion, porcentaje_pago, monto_pago, fecha_pago, forma_pago)
+        VALUES (?, ?, ?, ?, ?, ?, ?)";
 $stmt = $mysqli->prepare($sql);
 if ($stmt === false) {
     die("Error en la preparación de la consulta: " . $mysqli->error);
 }
-$stmt->bind_param("iddss", $id_cotizacion, $porcentaje_adelanto, $monto_adelanto, $fecha_adelanto, $adelanto_descripcion);
 
+// Asignar los parámetros de forma correcta
+$stmt->bind_param("iisdiss", $id_cotizacion, $numero_pago, $pago_descripcion, $porcentaje_pago, $monto_pago, $fecha_pago, $forma_pago);
+
+// Ejecutar la consulta y manejar posibles errores
 $stmt->execute();
 if ($stmt->error) {
     die("Error en la ejecución de la consulta: " . $stmt->error);
 }
 
-echo "Adelanto insertado correctamente. ID: " . $mysqli->insert_id;
+echo "pago insertado correctamente. ID: " . $mysqli->insert_id;
+
 
 
 

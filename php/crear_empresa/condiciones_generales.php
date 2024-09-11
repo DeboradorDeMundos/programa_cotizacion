@@ -12,17 +12,27 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Condiciones Generales.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-<!-- ------------------------
+   <!-- ------------------------
      -- INICIO CONEXION BD --
      ------------------------ -->
 
      <?php
 // Establece la conexión a la base de datos de ITred Spa
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+
+
+// <!-- ---------------------
+//  -- INICIO CIERRE CONEXION BD --
+//         --------------------- -->
+     
+$mysqli->close();
 ?>
 <!-- ---------------------
-     -- FIN CONEXION BD --
+     -- FIN CIERRE CONEXION BD --
      --------------------- -->
+
+
+
 
 
 <!-- falta php de esta funcion -->
@@ -38,15 +48,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     <button id="remove-condition-btn" type="button" style="display: none;">Eliminar última condición</button>
 </div>
 
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-<?php
-     $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
 
 
 <!-- ------------------------------------------------------------------------------------------------------------

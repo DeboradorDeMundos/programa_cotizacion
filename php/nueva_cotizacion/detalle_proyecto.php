@@ -18,10 +18,14 @@ BPPJ
      <?php
 // Establece la conexión a la base de datos de ITred Spa
 $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
+
+
+     $mysqli->close();
 ?>
 <!-- ---------------------
-     -- FIN CONEXION BD --
+     -- FIN CIERRE CONEXION BD --
      --------------------- -->
+
 
 <fieldset class="box-6 data-box"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
     <legend>Detalle proyecto</legend>
@@ -53,16 +57,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
 </fieldset>
 
 
-
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-     <?php
-     $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
 
 
      <!-- ------------------------------------------------------------------------------------------------------------
