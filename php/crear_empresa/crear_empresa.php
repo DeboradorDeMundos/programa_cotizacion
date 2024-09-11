@@ -86,13 +86,22 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     <p>ITRED SPA.</p> <!-- Nombre de la empresa del remitente -->
 
     <script src="../../js/crear_empresa/upload_logo.js"></script>
-    <script src="../../js/nueva_cotizacion/load_bancos.js"></script> 
-    <script src="../../js/nueva_cotizacion/loadTipoCuenta.js"></script> 
-    <script src="../../js/nueva_cotizacion/agregar_banco.js"></script> 
     <script src="../../js/crear_empresa/crear_empresa.js"></script> 
     <!-- Enlaza un archivo JavaScript externo para actualizar el logo o realizar otras actualizaciones -->
 </body>
 </html>
+
+<!-- ---------------------
+-- INICIO CIERRE CONEXION BD --
+     --------------------- -->
+     <?php
+     $mysqli->close();
+?>
+<!-- ---------------------
+     -- FIN CIERRE CONEXION BD --
+     --------------------- -->
+
+
 
 
 <!-- ------------------------------------------------------------------------------------------------------------

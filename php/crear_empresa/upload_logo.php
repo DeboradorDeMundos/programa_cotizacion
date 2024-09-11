@@ -11,15 +11,7 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Upload Logo.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-
-<!-- ------------------------
-     -- INICIO CONEXION BD --
-     ------------------------ -->
-
-     <?php
-// Establece la conexión a la base de datos de ITred Spa
-$mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-
+<?php
  // Definir la ruta de subida de archivos
  $upload_dir = '../../imagenes/programa_cotizacion/'; // Ruta relativa desde el archivo PHP
 
@@ -80,18 +72,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
         <button for="logo-upload" class="logo" type="file" id ="logo-upload" name="logo_upload" accept="image/*" style="display:block;">Sube tu Logo Empresarial tamaño recomendado: 800x200 pixeles formato: png</button > <!-- Texto que aparece junto a la imagen para instruir al usuario a cargar el logo -->  
     </label>
 </div>
-
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-     <?php
-     $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
-
-
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Upload_Logo .PHP ----------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->

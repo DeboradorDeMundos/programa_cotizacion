@@ -11,20 +11,6 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Condiciones Generales.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-
-<!-- ------------------------
-     -- INICIO CONEXION BD --
-     ------------------------ -->
-
-     <?php
-// Establece la conexión a la base de datos de ITred Spa
-$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
-?>
-<!-- ---------------------
-     -- FIN CONEXION BD --
-     --------------------- -->
-
-
 <!-- falta php de esta funcion -->
 
 <h2>Obligaciones cliente</h2>
@@ -37,18 +23,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     <button id="add-obligaciones-btn" type="button">Agregar nueva obligacion</button>
     <button id="remove-obligaciones-btn" type="button" style="display: none;">Eliminar última obligacion</button>
 </div>
-
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-     <?php
-     $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
-
-
+<script src="../../js/crear_empresa/obligaciones_cliente.js"></script>
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Condiciones Generales .PHP ----------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->

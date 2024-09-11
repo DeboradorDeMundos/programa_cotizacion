@@ -13,7 +13,9 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Agregar Banco .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('cotizacion-form').addEventListener('submit', function(event) {
+        event.preventDefault();
 
     document.addEventListener('DOMContentLoaded', function() {
         let accountIndex = 1;
@@ -94,7 +96,8 @@ BPPJ
     });
     
 
-
+});
+});
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Agregar Banco .JS ---------------------------------------

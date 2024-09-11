@@ -11,20 +11,6 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Formulario Cuenta.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-
-<!-- ------------------------
-     -- INICIO CONEXION BD --
-     ------------------------ -->
-
-     <?php
-// Establece la conexión a la base de datos de ITred Spa
-$mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-?>
-<!-- ---------------------
-     -- FIN CONEXION BD --
-     --------------------- -->
-
-
 <div class="row">
     <div class="box-12 data-box bank-account-container">
         <h2>Agrega tu cuenta bancaria:</h2>
@@ -62,19 +48,10 @@ $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
         </div>
     </div>
 </div>
-
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-<?php
-     $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
-
-
-
+<script src="../../js/crear_empresa/formulario_cuenta.js"></script>
+<script src="../../js/nueva_cotizacion/load_bancos.js"></script> 
+<script src="../../js/nueva_cotizacion/loadTipoCuenta.js"></script> 
+<script src="../../js/nueva_cotizacion/agregar_banco.js"></script> 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Formulario Cuenta .PHP ----------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->

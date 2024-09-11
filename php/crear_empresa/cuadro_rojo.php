@@ -12,23 +12,7 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Cuadro Rojo.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-<!-- ------------------------
-     -- INICIO CONEXION BD --
-     ------------------------ -->
-
-     <?php
-// Establece la conexión a la base de datos de ITred Spa
-$mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-?>
-<!-- ---------------------
-     -- FIN CONEXION BD --
-     --------------------- -->
-
-
-
 <!-- falta php de esto -->
-
-
 <div class="box-6 data-box data-box-red"> <!-- Crea una caja para ingresar datos, ocupando otras 6 columnas. Se aplica una clase adicional para estilo -->
     <label for="empresa_rut">RUT de la Empresa:</label> <!-- Etiqueta para el campo de entrada del RUT de la empresa -->
     <input type="text" id="empresa_rut" name="empresa_rut" required oninput="formatRut(this)"> <!-- Campo de texto para ingresar el RUT de la empresa. El atributo "required" hace que el campo sea obligatorio -->
@@ -41,18 +25,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
     <label for="fecha_creacion">Fecha de Creacion de empresa:</label> <!-- Etiqueta para el campo de entrada de la fecha de emisión -->
     <input type="date" id="fecha_creacion" name="fecha_creacion" required> <!-- Campo de fecha para seleccionar la fecha de emisión. Es obligatorio -->
 </div>
-
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-     <?php
-     $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
-
-
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Cuadro Rojo .PHP ----------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->

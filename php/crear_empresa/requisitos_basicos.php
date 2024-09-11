@@ -15,16 +15,6 @@ BPPJ
 <!-- ------------------------
      -- INICIO CONEXION BD --
      ------------------------ -->
-
-     <?php
-// Establece la conexión a la base de datos de ITred Spa
-$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
-?>
-<!-- ---------------------
-     -- FIN CONEXION BD --
-     --------------------- -->
-
-
 <!-- falta php de esta funcion -->
 
 <h2>Requisitos basicos</h2>
@@ -38,17 +28,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     <button id="remove-requisito-btn" type="button" style="display: none;">Eliminar último requisito</button>
 </div>
 
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-     <?php
-     $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
-
-
+<script src="../../js/crear_empresa/requisitos_basicos.js"></script>
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Requisitos basicos .PHP ----------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->

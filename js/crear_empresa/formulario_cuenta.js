@@ -12,13 +12,127 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- Inicio ITred Spa Formulario Cuenta .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
+    let accounts = [];
+let cuenta = false;
 
+// Función para agregar una cuenta
+function addAccount() {
+    // Obtener los valores del formulario
+    const nombreCuenta = document.getElementById('nombre-cuenta').value;
+    const rutTitular = document.getElementById('rut-titular').value;
+    const celular = document.getElementById('celular').value;
+    const emailBanco = document.getElementById('email-banco').value;
+    const idBanco = document.getElementById('id-banco').options[document.getElementById('id-banco').selectedIndex].text;
+    const tipoCuenta = document.getElementById('id-tipocuenta').options[document.getElementById('id-tipocuenta').selectedIndex].text;
+    const numeroCuenta = document.getElementById('numero-cuenta').value;
 
+    // Validar que todos los campos requeridos estén llenos
+    if (nombreCuenta && rutTitular && celular && emailBanco && idBanco && tipoCuenta && numeroCuenta) {
+        // Verificar si ya hay 4 cuentas agregadas
+        if (accounts.length >= 4) {
+            alert('Solo puedes agregar un máximo de 4 cuentas bancarias.');
+            return;
+        }
 
+        // Añadir la nueva cuenta a la lista de cuentas
+        accounts.push({
+            nombre: nombreCuenta,
+            rut: rutTitular,
+            celular: celular,
+            email: emailBanco,
+            banco: idBanco,
+            tipoCuenta: tipoCuenta,
+            numeroCuenta: numeroCuenta
+        });
 
-    
+        console.log("JSON a enviar:", JSON.stringify(accounts));
 
-    
+        // Limpiar los campos del formulario para permitir la entrada de una nueva cuenta
+        document.getElementById('nombre-cuenta').value = '';
+        document.getElementById('rut-titular').value = '';
+        document.getElementById('celular').value = '';
+        document.getElementById('email-banco').value = '';
+        document.getElementById('id-banco').selectedIndex = 0;
+        document.getElementById('id-tipocuenta').selectedIndex = 0;
+        document.getElementById('numero-cuenta').value = '';
+
+        updateTable();
+
+        if (!cuenta) {
+            cuenta = true;
+            makeFieldsOptional();
+        }
+
+        document.getElementById('submit-button').disabled = accounts.length === 0;
+    } else {
+        alert('Por favor, complete todos los campos.');
+    }
+}
+
+function makeFieldsOptional() {
+    const fields = ['nombre-cuenta', 'rut-titular', 'celular', 'email-banco', 'id-banco', 'id-tipocuenta', 'numero-cuenta'];
+
+    fields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        field.removeAttribute('required');
+    });
+}
+
+// Función para actualizar la tabla
+function updateTable() {
+    const table = document.getElementById('accounts-table');
+    table.innerHTML = ''; // Limpiar la tabla
+
+    if (accounts.length === 0) return;
+
+    // Crear el encabezado de la tabla
+    const headerRow = document.createElement('tr');
+    accounts.forEach(account => {
+        const th = document.createElement('th');
+        th.innerText = `${account.tipoCuenta} - ${account.nombre}`;
+        headerRow.appendChild(th);
+    });
+    table.appendChild(headerRow);
+
+    // Agregar las filas para cada tipo de dato
+    const rows = [
+        'Banco',
+        'Tipo de Cuenta',
+        'Número de Cuenta',
+        'Nombre de la Cuenta',
+        'RUT',
+        'Email'
+    ];
+
+    rows.forEach(rowTitle => {
+        const row = document.createElement('tr');
+        accounts.forEach(account => {
+            const cell = document.createElement('td');
+            switch (rowTitle) {
+                case 'Banco':
+                    cell.innerText = 'Banco: ' + account.banco;
+                    break;
+                case 'Tipo de Cuenta':
+                    cell.innerText = 'Tipo de cuenta: ' + account.tipoCuenta;
+                    break;
+                case 'Número de Cuenta':
+                    cell.innerText = 'Numero de cuenta: ' + account.numeroCuenta;
+                    break;
+                case 'Nombre de la Cuenta':
+                    cell.innerText = 'Nombre de cuenta: ' + account.nombre;
+                    break;
+                case 'RUT':
+                    cell.innerText = 'Rut: ' + account.rut;
+                    break;
+                case 'Email':
+                    cell.innerText = 'Email: ' + account.email;
+                    break;
+            }
+            row.appendChild(cell);
+        });
+        table.appendChild(row);
+    });
+}
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Formulario Cuenta .JS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

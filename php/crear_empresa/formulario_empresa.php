@@ -11,26 +11,7 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Formulario Empresa.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-
-<!-- ------------------------
-     -- INICIO CONEXION BD --
-     ------------------------ -->
-
-     <?php
-// Establece la conexión a la base de datos de ITred Spa
-$mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-?>
-<!-- ---------------------
-     -- FIN CONEXION BD --
-     --------------------- -->
-
-
-
 <!-- falta php de esto -->
-
-
-
-
 <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
     <div class="box-12 data-box"> <!-- Crea una caja para ingresar datos, ocupando las 12 columnas disponibles en el diseño. Esta caja contiene varios campos de entrada de datos -->
 
@@ -56,18 +37,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
         
     </div> <!-- Cierra la caja de datos -->
 </div> <!-- Cierra la fila -->
-
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-<?php
-     $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
-
-
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Formulario Empresa .PHP ----------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->

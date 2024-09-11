@@ -86,8 +86,8 @@ if ($result->num_rows > 0) {
         $mensaje .= "<td>" . htmlspecialchars($row['cliente_email']) . "</td>";
         $mensaje .= "<td>" . htmlspecialchars($row['vendedor_nombre']) . "</td>";
         $mensaje .= "<td>
-                        <a href='../ver_cotizacion/ver_cotizacion.php?id=" . $row['cotizacion_id'] . "'>|Ver</a> |
-                        <a href='../programa_cotizacion/modificar_cotizacion.php?id=" . $row['cotizacion_id'] . "'>Modificar</a> |
+                        <a href='ver_cotizacion.php?id=" . $row['cotizacion_id'] . "'>|Ver</a> |
+                        <a href='modificar_cotizacion.php?id=" . $row['cotizacion_id'] . "'>Modificar</a> |
                         <a href='eliminar_cotizacion.php?id=" . $row['cotizacion_id'] . "'>Eliminar</a> |
                      </td>";
         $mensaje .= "</tr>";
