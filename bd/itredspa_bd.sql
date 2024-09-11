@@ -306,20 +306,22 @@ CREATE TABLE P_Productos (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 -- ------------------------------------------------------------------------------------------------------------
--- ------------------------------------- TABLA ADELANTO -----------------------------------------------------
+-- ------------------------------------- TABLA pago -----------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
 
--- Eliminar la tabla Adelanto si existe
-DROP TABLE IF EXISTS C_Adelanto;
+-- Eliminar la tabla pago si existe
+DROP TABLE IF EXISTS C_pago;
 
--- Crear la tabla Adelanto
-CREATE TABLE C_Adelanto (
-    id_adelanto INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+-- Crear la tabla pago
+CREATE TABLE C_pago (
+    id_pago INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     id_cotizacion INT NOT NULL, -- ID de la cotización (clave foránea)
+    numero_pago INT,
     descripcion VARCHAR(255) ,
-    porcentaje_adelanto INT(3)  DEFAULT 0, 
-    monto_adelanto INT(10) DEFAULT 0,
-    fecha_adelanto DATE ,
+    porcentaje_pago INT(3)  DEFAULT 0, 
+    monto_pago INT(10) DEFAULT 0,
+    fecha_pago DATE ,
+    forma_pago VARCHAR(50),
     FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
@@ -615,19 +617,19 @@ INSERT INTO P_Productos (
     1 -- ID de la empresa
 );
 
--- Insertar datos en la tabla C_Adelanto
-INSERT INTO C_Adelanto (
+-- Insertar datos en la tabla C_pago
+INSERT INTO C_pago (
     id_cotizacion, 
     descripcion, 
-    porcentaje_adelanto, 
-    monto_adelanto, 
-    fecha_adelanto
+    porcentaje_pago, 
+    monto_pago, 
+    fecha_pago
 ) VALUES (
     1, -- ID de la cotización
-    'Adelanto por trabajo inicial', -- Descripción
-    20, -- Porcentaje de adelanto
-    180.00, -- Monto del adelanto
-    '2024-09-05' -- Fecha del adelanto
+    'pago por trabajo inicial', -- Descripción
+    20, -- Porcentaje de pago
+    180.00, -- Monto del pago
+    '2024-09-05' -- Fecha del pago
 );
 
 -- Insertar datos en la tabla C_Condiciones_Generales
