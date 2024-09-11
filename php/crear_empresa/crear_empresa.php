@@ -16,7 +16,7 @@ BPPJ
      -- INICIO CONEXION BD --
      ------------------------ -->
 
-     <?php
+<?php
 // Establece la conexión a la base de datos de ITred Spa
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 ?>
@@ -42,7 +42,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     <title>Formulario de Cotización</title> <!-- Define el título de la página que se muestra en la pestaña del navegador -->
     
     <link rel="stylesheet" href="../../css/crear_empresa/crear_empresa.css"> <!-- Enlaza una hoja de estilo externa que se encuentra en la ruta especificada para estilizar el contenido de la página -->
-    <link rel="stylesheet" href="../../css/crear_empresa/crear_empresa.css">
 </head> <!-- Cierra el elemento de cabecera -->
 <body> <!-- Abre el elemento del cuerpo de la página donde se coloca el contenido visible -->
     <div class="container"> <!-- Contenedor principal que puede ayudar a centrar y organizar el contenido en la página -->

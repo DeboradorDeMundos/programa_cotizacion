@@ -12,150 +12,187 @@ $id_cotizacion = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
 // Validar si el ID es válido
 if ($id_cotizacion > 0) {
-    // Consulta para obtener los datos de la cotización y relaciones
-    $sql = "SELECT 
-    e.rut_empresa,
-    e.nombre_empresa,
-    e.area_empresa,
-    e.direccion_empresa,
-    e.telefono_empresa,
-    e.email_empresa,
-    e.fecha_creacion,
-    e.dias_validez,
-    p.nombre_proyecto,
-    p.codigo_proyecto,
-    p.tipo_trabajo,
-    p.area_trabajo,
-    p.riesgo_proyecto,
-    p.dias_compra,
-    p.dias_trabajo,
-    p.trabajadores,
-    p.horario,
-    p.colacion,
-    p.entrega,
-    c.rut_cliente,
-    c.nombre_cliente,
-    c.empresa_cliente,
-    c.direccion_cliente,
-    c.lugar_cliente,
-    c.telefono_cliente,
-    c.email_cliente,
-    c.cargo_cliente,
-    c.giro_cliente,
-    c.comuna_cliente,
-    c.ciudad_cliente,
-    c.tipo_cliente,
-    en.rut_encargado,
-    en.nombre_encargado,
-    en.email_encargado,
-    en.fono_encargado,
-    en.celular_encargado,
-    cv.rut_vendedor,
-    cv.nombre_vendedor,
-    cv.email_vendedor,
-    cv.fono_vendedor,
-    cv.celular_vendedor,
-    ct.numero_cotizacion,
-    ct.fecha_emision,
-    ct.fecha_validez,
-    cb.rut_titular,
-    cb.nombre_titular,
-    b.nombre_banco,
-    tc.tipocuenta,
-    cb.numero_cuenta,
-    cb.celular AS cuenta_celular,
-    cb.email_banco,
-    cg.descripcion_condiciones,
-    rb.descripcion_condiciones AS requisitos,
-    ob.descripcion AS obligaciones
-FROM 
-    C_Cotizaciones ct
-    JOIN E_Empresa e ON ct.id_empresa = e.id_empresa
-    JOIN C_Proyectos p ON ct.id_proyecto = p.id_proyecto
-    JOIN C_Clientes c ON ct.id_cliente = c.id_cliente
-    JOIN C_Encargados en ON ct.id_encargado = en.id_encargado
-    JOIN C_Vendedores cv ON ct.id_vendedor = cv.id_vendedor
-    LEFT JOIN E_Cuenta_Bancaria cb ON e.id_empresa = cb.id_empresa
-    LEFT JOIN E_Bancos b ON cb.id_banco = b.id_banco
-    LEFT JOIN E_Tipo_Cuenta tc ON cb.id_tipocuenta = tc.id_tipocuenta
-    LEFT JOIN C_Condiciones_Generales cg ON e.id_empresa = cg.id_empresa
-    LEFT JOIN E_Requisitos_Basicos rb ON e.id_empresa = rb.id_empresa
-    LEFT JOIN E_obligaciones_cliente ob ON e.id_empresa = ob.id_empresa
-WHERE 
-    ct.id_cotizacion = ?;";
+    // Paso 1: Obtener los IDs de los títulos relacionados con la cotización
+    $sql_titulo = "SELECT id_titulo FROM C_Titulos WHERE id_cotizacion = ?";
+    $stmt_titulo = $conn->prepare($sql_titulo);
+    $stmt_titulo->bind_param("i", $id_cotizacion);
+    $stmt_titulo->execute();
+    $result_titulo = $stmt_titulo->get_result();
 
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id_cotizacion);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    // Inicializar variables
-    $productos = [];
-    $subtotal = $iva = $total_final = 0;
-
-    // Verificar si se encontraron resultados
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            // Almacenar los datos en variables para mostrarlos más tarde
-            $numero_cotizacion = $row['numero_cotizacion'];
-            $fecha_emision = $row['fecha_emision'];
-            $fecha_validez = $row['fecha_validez'];
-            
-            // Detalles del cliente
-            $nombre_cliente = $row['nombre_cliente'];
-            $rut_cliente = $row['rut_cliente'];
-            $direccion_cliente = $row['direccion_cliente'];
-            $telefono_cliente = $row['telefono_cliente'];
-            $email_cliente = $row['email_cliente'];
-            $giro_cliente = $row['giro_cliente'];
-            $comuna_cliente = $row['comuna_cliente'];
-            $ciudad_cliente = $row['ciudad_cliente'];
-            
-            // Detalles de la empresa
-            $nombre_empresa = $row['nombre_empresa'];
-            $rut_empresa = $row['rut_empresa'];
-            $direccion_empresa = $row['direccion_empresa'];
-            $telefono_empresa = $row['telefono_empresa'];
-            $email_empresa = $row['email_empresa'];
-            $area_empresa = $row['area_empresa'];
-            
-            // Detalles del proyecto
-            $nombre_proyecto = $row['nombre_proyecto'];
-            $codigo_proyecto = $row['codigo_proyecto'];
-            $tipo_trabajo = $row['tipo_trabajo'];
-            $area_trabajo = $row['area_trabajo'];
-            $riesgo_proyecto = $row['riesgo_proyecto'];
-            
-            // Detalles del encargado
-            $nombre_encargado = $row['nombre_encargado'];
-            $email_encargado = $row['email_encargado'];
-            $fono_encargado = $row['fono_encargado'];
-            $celular_encargado = $row['celular_encargado'];
-            
-            // Detalles del vendedor
-            $nombre_vendedor = $row['nombre_vendedor'];
-            $email_vendedor = $row['email_vendedor'];
-            $fono_vendedor = $row['fono_vendedor'];
-            $celular_vendedor = $row['celular_vendedor'];
-
-            // Manejar productos
-            $productos[] = array(
-                'nombre_producto' => $row['nombre_producto'] ?? 'No disponible',
-                'cantidad' => $row['cantidad'] ?? 0,
-                'precio_unitario' => $row['precio_unitario'] ?? 0,
-                'total' => $row['total'] ?? 0
-            );
-
-            // Totales (Asegurarse de que existan)
-            $subtotal = $row['sub_total'] ?? 0;
-            $iva = $row['iva_valor'] ?? 0;
-            $total_final = $row['total_final'] ?? 0;
+    if ($result_titulo->num_rows > 0) {
+        $titulo_ids = [];
+        while ($row_titulo = $result_titulo->fetch_assoc()) {
+            $titulo_ids[] = $row_titulo['id_titulo'];
         }
-    } else {
-        echo "No se encontró la cotización.";
-    }
+        $stmt_titulo->close();
 
-    $stmt->close();
+        // Convertir el array de IDs a una lista separada por comas
+        $titulo_ids_list = implode(',', $titulo_ids);
+
+        // Paso 2: Obtener los datos de la cotización y relaciones
+        $sql_cotizacion = "SELECT 
+            e.rut_empresa,
+            e.nombre_empresa,
+            e.area_empresa,
+            e.direccion_empresa,
+            e.telefono_empresa,
+            e.email_empresa,
+            e.fecha_creacion,
+            e.dias_validez,
+            p.nombre_proyecto,
+            p.codigo_proyecto,
+            p.tipo_trabajo,
+            p.area_trabajo,
+            p.riesgo_proyecto,
+            p.dias_compra,
+            p.dias_trabajo,
+            p.trabajadores,
+            p.horario,
+            p.colacion,
+            p.entrega,
+            c.rut_cliente,
+            c.nombre_cliente,
+            c.empresa_cliente,
+            c.direccion_cliente,
+            c.lugar_cliente,
+            c.telefono_cliente,
+            c.email_cliente,
+            c.cargo_cliente,
+            c.giro_cliente,
+            c.comuna_cliente,
+            c.ciudad_cliente,
+            c.tipo_cliente,
+            en.rut_encargado,
+            en.nombre_encargado,
+            en.email_encargado,
+            en.fono_encargado,
+            en.celular_encargado,
+            cv.rut_vendedor,
+            cv.nombre_vendedor,
+            cv.email_vendedor,
+            cv.fono_vendedor,
+            cv.celular_vendedor,
+            ct.numero_cotizacion,
+            ct.fecha_emision,
+            ct.fecha_validez,
+            cb.rut_titular,
+            cb.nombre_titular,
+            b.nombre_banco,
+            tc.tipocuenta,
+            cb.numero_cuenta,
+            cb.celular AS cuenta_celular,
+            cb.email_banco,
+            cg.descripcion_condiciones,
+            rb.descripcion_condiciones AS requisitos,
+            ob.descripcion AS obligaciones,
+            ctot.sub_total,
+            ctot.total_iva,
+            ctot.total_final
+        FROM 
+            C_Cotizaciones ct
+            JOIN E_Empresa e ON ct.id_empresa = e.id_empresa
+            JOIN C_Proyectos p ON ct.id_proyecto = p.id_proyecto
+            JOIN C_Clientes c ON ct.id_cliente = c.id_cliente
+            JOIN C_Encargados en ON ct.id_encargado = en.id_encargado
+            JOIN C_Vendedores cv ON ct.id_vendedor = cv.id_vendedor
+            LEFT JOIN E_Cuenta_Bancaria cb ON e.id_empresa = cb.id_empresa
+            LEFT JOIN E_Bancos b ON cb.id_banco = b.id_banco
+            LEFT JOIN E_Tipo_Cuenta tc ON cb.id_tipocuenta = tc.id_tipocuenta
+            LEFT JOIN C_Condiciones_Generales cg ON e.id_empresa = cg.id_empresa
+            LEFT JOIN E_Requisitos_Basicos rb ON e.id_empresa = rb.id_empresa
+            LEFT JOIN E_obligaciones_cliente ob ON e.id_empresa = ob.id_empresa
+            LEFT JOIN C_totales ctot ON ctot.id_cotizacion = ct.id_cotizacion 
+        WHERE 
+            ct.id_cotizacion = ?";
+        
+        $stmt_cotizacion = $conn->prepare($sql_cotizacion);
+        $stmt_cotizacion->bind_param("i", $id_cotizacion);
+        $stmt_cotizacion->execute();
+        $result_cotizacion = $stmt_cotizacion->get_result();
+
+        // Inicializar variables
+        $subtotal = $iva = $total_final = 0;
+
+        if ($result_cotizacion->num_rows > 0) {
+            while ($row_cotizacion = $result_cotizacion->fetch_assoc()) {
+                // Almacenar los datos en variables para mostrarlos más tarde
+                $numero_cotizacion = $row_cotizacion['numero_cotizacion'];
+                $fecha_emision = $row_cotizacion['fecha_emision'];
+                $fecha_validez = $row_cotizacion['fecha_validez'];
+                
+                // Detalles del cliente
+                $nombre_cliente = $row_cotizacion['nombre_cliente'];
+                $rut_cliente = $row_cotizacion['rut_cliente'];
+                $direccion_cliente = $row_cotizacion['direccion_cliente'];
+                $telefono_cliente = $row_cotizacion['telefono_cliente'];
+                $email_cliente = $row_cotizacion['email_cliente'];
+                $giro_cliente = $row_cotizacion['giro_cliente'];
+                $comuna_cliente = $row_cotizacion['comuna_cliente'];
+                $ciudad_cliente = $row_cotizacion['ciudad_cliente'];
+                
+                // Detalles de la empresa
+                $nombre_empresa = $row_cotizacion['nombre_empresa'];
+                $rut_empresa = $row_cotizacion['rut_empresa'];
+                $direccion_empresa = $row_cotizacion['direccion_empresa'];
+                $telefono_empresa = $row_cotizacion['telefono_empresa'];
+                $email_empresa = $row_cotizacion['email_empresa'];
+                $area_empresa = $row_cotizacion['area_empresa'];
+                
+                // Detalles del proyecto
+                $nombre_proyecto = $row_cotizacion['nombre_proyecto'];
+                $codigo_proyecto = $row_cotizacion['codigo_proyecto'];
+                $tipo_trabajo = $row_cotizacion['tipo_trabajo'];
+                $area_trabajo = $row_cotizacion['area_trabajo'];
+                $riesgo_proyecto = $row_cotizacion['riesgo_proyecto'];
+                
+                // Detalles del encargado
+                $nombre_encargado = $row_cotizacion['nombre_encargado'];
+                $email_encargado = $row_cotizacion['email_encargado'];
+                $fono_encargado = $row_cotizacion['fono_encargado'];
+                $celular_encargado = $row_cotizacion['celular_encargado'];
+                
+                // Detalles del vendedor
+                $nombre_vendedor = $row_cotizacion['nombre_vendedor'];
+                $email_vendedor = $row_cotizacion['email_vendedor'];
+                $fono_vendedor = $row_cotizacion['fono_vendedor'];
+                $celular_vendedor = $row_cotizacion['celular_vendedor'];
+
+                // Totales (Asegurarse de que existan)
+                $subtotal = $row_cotizacion['sub_total'] ?? 0;
+                $iva = $row_cotizacion['total_iva'] ?? 0;
+                $total_final = $row_cotizacion['total_final'] ?? 0;
+            }
+        } else {
+            echo "No se encontró la cotización.";
+        }
+
+        $stmt_cotizacion->close();
+
+        // Paso 3: Obtener los detalles de los productos usando los IDs de los títulos
+        $sql_productos = "SELECT nombre_producto, cantidad, precio_unitario, total 
+                          FROM C_Detalles 
+                          WHERE id_titulo IN ($titulo_ids_list)";
+
+        $stmt_productos = $conn->prepare($sql_productos);
+        $stmt_productos->execute();
+        $result_productos = $stmt_productos->get_result();
+
+        // Inicializar el array de productos
+        $productos = [];
+
+        while ($row_producto = $result_productos->fetch_assoc()) {
+            $productos[] = array(
+                'nombre_producto' => $row_producto['nombre_producto'] ?? 'No disponible',
+                'cantidad' => $row_producto['cantidad'] ?? 0,
+                'precio_unitario' => $row_producto['precio_unitario'] ?? 0,
+                'total' => $row_producto['total'] ?? 0
+            );
+        }
+
+        $stmt_productos->close();
+    } else {
+        echo "No se encontraron títulos para la cotización.";
+    }
 } else {
     echo "ID de cotización no válido.";
 }
@@ -249,28 +286,30 @@ $conn->close();
                     <p><strong>Ciudad:</strong> <?php echo $ciudad_cliente; ?></p>
                 </div>
             </div>
-        </div>
 
-        <!-- Detalles del Encargado -->
-        <div class="section">
-            <h3>DETALLES DEL ENCARGADO</h3>
-            <div class="info">
-                <p><strong>Nombre:</strong> <?php echo $nombre_encargado; ?></p>
-                <p><strong>Email:</strong> <?php echo $email_encargado; ?></p>
-                <p><strong>Teléfono:</strong> <?php echo $fono_encargado; ?></p>
-                <p><strong>Celular:</strong> <?php echo $celular_encargado; ?></p>
-            </div>
-        </div>
 
-        <!-- Detalles del Vendedor -->
-        <div class="section">
-            <h3>DETALLES DEL VENDEDOR</h3>
-            <div class="info">
-                <p><strong>Nombre:</strong> <?php echo $nombre_vendedor; ?></p>
-                <p><strong>Email:</strong> <?php echo $email_vendedor; ?></p>
-                <p><strong>Teléfono:</strong> <?php echo $fono_vendedor; ?></p>
-                <p><strong>Celular:</strong> <?php echo $celular_vendedor; ?></p>
+            <!-- Detalles del Encargado -->
+            <div class="section">
+                <h3>DETALLES DEL ENCARGADO</h3>
+                <div class="info">
+                    <p><strong>Nombre:</strong> <?php echo $nombre_encargado; ?></p>
+                    <p><strong>Email:</strong> <?php echo $email_encargado; ?></p>
+                    <p><strong>Teléfono:</strong> <?php echo $fono_encargado; ?></p>
+                    <p><strong>Celular:</strong> <?php echo $celular_encargado; ?></p>
+                </div>
             </div>
+
+            <!-- Detalles del Vendedor -->
+            <div class="section">
+                <h3>DETALLES DEL VENDEDOR</h3>
+                <div class="info">
+                    <p><strong>Nombre:</strong> <?php echo $nombre_vendedor; ?></p>
+                    <p><strong>Email:</strong> <?php echo $email_vendedor; ?></p>
+                    <p><strong>Teléfono:</strong> <?php echo $fono_vendedor; ?></p>
+                    <p><strong>Celular:</strong> <?php echo $celular_vendedor; ?></p>
+                </div>
+            </div>
+
         </div>
 
         <!-- Productos -->
