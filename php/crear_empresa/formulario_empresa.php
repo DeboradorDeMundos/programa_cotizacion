@@ -12,6 +12,49 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Formulario Empresa.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 <!-- falta php de esto -->
+<?php
+// Verifica si el formulario ha sido enviado
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recibir datos del formulario
+    $empresa_rut = $_POST['empresa_rut'];
+    $empresa_nombre = $_POST['empresa_nombre'];
+    $empresa_area = $_POST['empresa_area'];
+    $empresa_direccion = $_POST['empresa_direccion'];
+    $empresa_telefono = $_POST['empresa_telefono'];
+    $empresa_email = $_POST['empresa_email'];
+    $fecha_creacion = $_POST['fecha_creacion'];
+    $validez_cotizacion = $_POST['validez_cotizacion'];
+
+    // Llamar a upload_image.php para manejar la subida de imagen
+    include 'upload_image.php';
+
+    // Insertar o actualizar la empresa
+    $sql = "INSERT INTO e_empresa (rut_empresa, id_foto, nombre_empresa, area_empresa, direccion_empresa, telefono_empresa, email_empresa, fecha_creacion, dias_validez)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON DUPLICATE KEY UPDATE nombre_empresa=VALUES(nombre_empresa), area_empresa=VALUES(area_empresa), direccion_empresa=VALUES(direccion_empresa), telefono_empresa=VALUES(telefono_empresa), email_empresa=VALUES(email_empresa), fecha_creacion=VALUES(fecha_creacion), dias_validez=VALUES(dias_validez)";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("sissssssi", $empresa_rut, $empresa_id_foto, $empresa_nombre, $empresa_area, $empresa_direccion, $empresa_telefono, $empresa_email, $fecha_creacion, $validez_cotizacion);
+
+    if (!$stmt->execute()) {
+        die("Error en la ejecución de la consulta: " . $stmt->error);
+    }
+
+    // Obtener el ID de la empresa después de la inserción/actualización
+    $id_empresa = $stmt->insert_id;
+
+    if ($id_empresa === 0) {
+        $result = $mysqli->query("SELECT id_empresa FROM e_empresa WHERE rut_empresa = '$empresa_rut'");
+        $row = $result->fetch_assoc();
+        $id_empresa = $row['id_empresa'];
+    }
+
+    echo "Empresa insertada/actualizada. ID: $id_empresa<br>";
+
+    // Redirigir a la siguiente página para procesar cotización
+    header("Location: process_cotizacion.php?id_empresa=$id_empresa");
+    exit();
+}
+?>
 <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
     <div class="box-12 data-box"> <!-- Crea una caja para ingresar datos, ocupando las 12 columnas disponibles en el diseño. Esta caja contiene varios campos de entrada de datos -->
 
