@@ -25,7 +25,10 @@ $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
      --------------------- -->
      
      
-     <?php
+
+
+<div class="box-6 logo-box">
+<?php
 // Procesar la subida de la imagen cuando se envía el formulario
 $upload_dir = '../../imagenes/cotizacion/'; // Ruta relativa desde el archivo PHP
 $empresa_id_foto = null;
@@ -66,10 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
-
-
-<div class="box-6 logo-box">
         <label for="logo-upload" class="logo-container">
             <?php if (isset($row['ruta_foto']) && !empty($row['ruta_foto'])): ?>
                 <img src="<?php echo htmlspecialchars($row['ruta_foto'], ENT_QUOTES, 'UTF-8'); ?>" alt="Foto de perfil" id="logo-preview" class="logo" onclick="document.getElementById('logo-upload').click();" />
