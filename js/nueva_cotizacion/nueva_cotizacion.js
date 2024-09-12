@@ -17,11 +17,24 @@ BPPJ
     });
     
     function calculateAdelanto() {
-        const porcentajeAdelanto = parseFloat(document.getElementById('porcentaje_adelanto').value) || 0;
-        const totalFinal = parseFloat(document.getElementById('total_final').value) || 0;
+        // Obtén los elementos del DOM
+        const porcentajePagoInput = document.getElementById('porcentaje-pago');
+        const totalFinalInput = document.getElementById('total_final');
+        const montoPagoInput = document.getElementById('monto-pago');
+    
+        // Lee los valores y asigna 0 si no están presentes o son inválidos
+        const porcentajeAdelanto = parseFloat(porcentajePagoInput ? porcentajePagoInput.value : 0) || 0;
+        const totalFinal = parseFloat(totalFinalInput ? totalFinalInput.value : 0) || 0;
+    
+        // Calcula el monto del adelanto
         const montoAdelanto = (totalFinal * (porcentajeAdelanto / 100)).toFixed(2);
     
-        document.getElementById('monto_adelanto').value = montoAdelanto;
+        // Asigna el monto calculado al campo correspondiente
+        if (montoPagoInput) {
+            montoPagoInput.value = montoAdelanto;
+        } else {
+            console.error("El elemento 'monto-pago' no está disponible en el DOM.");
+        }
     }
     
     let tituloCount = 0; // Contador global para los títulos
@@ -167,35 +180,46 @@ BPPJ
     }
     
     
-    function calculateTotals() {
-        const rows = document.querySelectorAll('.detalle-section .detalle-table tbody tr');
-        let subTotal = 0;
-        let descuentoGlobalPorcentaje = parseFloat(document.getElementById('descuento_global_porcentaje').value) || 0;
-        let descuentoGlobalMonto = 0;
-        let ivaValor = 0;
-        let totalFinal = 0;
-    
-        rows.forEach(row => {
-            const totalInput = row.querySelector('input[name="detalle_total[]"]');
-            if (totalInput) {
-                const totalItem = parseFloat(totalInput.value) || 0;
-                subTotal += totalItem;
-            }
-        });
-    
-        descuentoGlobalMonto = Math.round(subTotal * (descuentoGlobalPorcentaje / 100));
-        ivaValor = ((subTotal - descuentoGlobalMonto) * 0.19).toFixed(2);  // 19% IVA
-        totalFinal = Math.round(subTotal - descuentoGlobalMonto + parseFloat(ivaValor));
-    
-        document.getElementById('sub_total').value = Math.round(subTotal);
-        document.getElementById('descuento_global_monto').value = descuentoGlobalMonto;
-        document.getElementById('monto_neto').value = Math.round(subTotal - descuentoGlobalMonto);
-        document.getElementById('total_iva').value = ivaValor;
-        document.getElementById('total_final').value = totalFinal;
-    
-        calculateAdelanto();
-    }
-    
+function calculateTotals() {
+    const rows = document.querySelectorAll('.detalle-section .detalle-table tbody tr');
+    console.log('Número de filas:', rows.length); // Verifica cuántas filas se seleccionaron
+
+    let subTotal = 0;
+    let descuentoGlobalPorcentaje = parseFloat(document.getElementById('descuento_global_porcentaje').value) || 0;
+    let descuentoGlobalMonto = 0;
+    let ivaValor = 0;
+    let totalFinal = 0;
+
+    rows.forEach(row => {
+        const totalInput = row.querySelector('input[name^="detalle_total"]'); // Usa un selector más general
+        console.log('Input de Total:', totalInput); // Verifica si se encuentra el input
+
+        if (totalInput) {
+            const totalItem = parseFloat(totalInput.value) || 0;
+            subTotal += totalItem;
+            console.log(`Total Item (${row.id}): ${totalItem}`); // Verifica el total por fila
+        } else {
+            console.log(`No se encontró input en la fila ${row.id}`);
+        }
+    });
+
+    descuentoGlobalMonto = Math.round(subTotal * (descuentoGlobalPorcentaje / 100));
+    ivaValor = ((subTotal - descuentoGlobalMonto) * 0.19).toFixed(2);  // 19% IVA
+    totalFinal = Math.round(subTotal - descuentoGlobalMonto + parseFloat(ivaValor));
+
+    console.log(`Subtotal: ${subTotal}`);
+    console.log(`Descuento Global Monto: ${descuentoGlobalMonto}`);
+    console.log(`IVA Valor: ${ivaValor}`);
+    console.log(`Total Final: ${totalFinal}`);
+
+    document.getElementById('sub_total').value = Math.round(subTotal);
+    document.getElementById('descuento_global_monto').value = descuentoGlobalMonto;
+    document.getElementById('monto_neto').value = Math.round(subTotal - descuentoGlobalMonto);
+    document.getElementById('total_iva').value = ivaValor;
+    document.getElementById('total_final').value = totalFinal;
+
+    calculateAdelanto();
+}
     function formatRut(input) {
         let rut = input.value.replace(/\D/g, '');
         if (rut.length > 1) {
