@@ -32,7 +32,7 @@ BPPJ
             <label>Descripción de pago:</label>
             <textarea name="descripcion_pago[]" placeholder="Descripción del pago"></textarea>
             <label>% De pago:</label>
-            <input type="number" id="porcentaje-pago" name="porcentaje_pago[]" min="0" max="100" required oninput="calcularPago(this)">
+            <input type="number" id="porcentaje-pago" name="porcentaje_pago[]" min="0" max="100" required oninput="calculateAdelanto(this)">
             <label>Monto de pago:</label>
             <input type="number" id="monto-pago" name="monto_pago[]" min="0" required readonly>
             <label>Fecha de pago:</label>

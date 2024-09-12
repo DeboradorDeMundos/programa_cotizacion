@@ -16,7 +16,26 @@ BPPJ
         document.getElementById('fecha_emision').value = new Date().toISOString().split('T')[0];
     });
     
-  
+    function calculateAdelanto() {
+        // Obtén los elementos del DOM
+        const porcentajePagoInput = document.getElementById('porcentaje-pago');
+        const totalFinalInput = document.getElementById('total_final');
+        const montoPagoInput = document.getElementById('monto-pago');
+    
+        // Lee los valores y asigna 0 si no están presentes o son inválidos
+        const porcentajeAdelanto = parseFloat(porcentajePagoInput ? porcentajePagoInput.value : 0) || 0;
+        const totalFinal = parseFloat(totalFinalInput ? totalFinalInput.value : 0) || 0;
+    
+        // Calcula el monto del adelanto
+        const montoAdelanto = (totalFinal * (porcentajeAdelanto / 100)).toFixed(2);
+    
+        // Asigna el monto calculado al campo correspondiente
+        if (montoPagoInput) {
+            montoPagoInput.value = montoAdelanto;
+        } else {
+            console.error("El elemento 'monto-pago' no está disponible en el DOM.");
+        }
+    }
     
     let tituloCount = 0; // Contador global para los títulos
     

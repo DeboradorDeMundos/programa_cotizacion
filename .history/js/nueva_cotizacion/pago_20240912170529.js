@@ -32,7 +32,7 @@ BPPJ
             <label>Descripción de pago:</label>
             <textarea name="descripcion_pago[]" placeholder="Descripción del pago"></textarea>
             <label>% De pago:</label>
-            <input type="number" id="porcentaje-pago" name="porcentaje_pago[]" min="0" max="100" required oninput="calcularPago(this)">
+            <input type="number" id="porcentaje-pago" name="porcentaje_pago[]" min="0" max="100" required oninput="calculatePago(this)">
             <label>Monto de pago:</label>
             <input type="number" id="monto-pago" name="monto_pago[]" min="0" required readonly>
             <label>Fecha de pago:</label>
@@ -44,28 +44,16 @@ BPPJ
     }
     
     // Función para calcular el monto de pago basado en el porcentaje (puedes ajustar la lógica según lo que necesites)
-  
-    
-    function calcularPago() {
-        // Obtén los elementos del DOM
-        const porcentajePagoInput = document.getElementById('porcentaje-pago');
-        const totalFinalInput = document.getElementById('total_final');
-        const montoPagoInput = document.getElementById('monto-pago');
-    
-        // Lee los valores y asigna 0 si no están presentes o son inválidos
-        const porcentajeAdelanto = parseFloat(porcentajePagoInput ? porcentajePagoInput.value : 0) || 0;
-        const totalFinal = parseFloat(totalFinalInput ? totalFinalInput.value : 0) || 0;
-    
-        // Calcula el monto del adelanto
-        const montoAdelanto = (totalFinal * (porcentajeAdelanto / 100)).toFixed(2);
-    
-        // Asigna el monto calculado al campo correspondiente
-        if (montoPagoInput) {
-            montoPagoInput.value = montoAdelanto;
-        } else {
-            console.error("El elemento 'monto-pago' no está disponible en el DOM.");
-        }
+    function calculatePago(input) {
+        const paymentBlock = input.closest('.payment-block');
+        const porcentaje = input.value;
+        const monto = paymentBlock.querySelector('[name="monto_pago[]"]');
+        // Suponiendo que tienes un valor base para calcular el monto
+        const valorBase = 1000; // Reemplaza esto con la lógica correcta
+        monto.value = (valorBase * (porcentaje / 100)).toFixed(2);
     }
+    
+
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Adelanto.JS ---------------------------------------
