@@ -28,6 +28,30 @@ BPPJ
 </div>
 
 <script src="../../js/crear_empresa/condiciones_generales.js"></script>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $condicionesString = $_POST['condiciones'];
+    
+    $condicionesArray = explode('|', $condicionesString);
+    if (!empty($condicionesArray)) {
+        $stmt = $mysqli->prepare("INSERT INTO C_Condiciones_Generales (id_empresa, descripcion_condiciones) VALUES (?, ?)");
+
+        if (!$stmt) {
+            die("Error al preparar la consulta: " . $mysqli->error);
+        }
+
+        foreach ($condicionesArray as $condicion) {
+            $stmt->bind_param("is", $id_empresa, $condicion);
+            if (!$stmt->execute()) {
+                echo "Error al insertar condición: " . $stmt->error;
+            }
+        }
+        $stmt->close();
+    } else {
+        echo "No hay condiciones para insertar.";
+    }
+}
+?>
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Condiciones Generales .PHP ----------------------------------------

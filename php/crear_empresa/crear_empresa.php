@@ -23,15 +23,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 <!-- ---------------------
      -- FIN CONEXION BD --
      --------------------- -->
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-     <?php
-     $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
 
 
 <!DOCTYPE html>
@@ -45,7 +36,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 </head> <!-- Cierra el elemento de cabecera -->
 <body> <!-- Abre el elemento del cuerpo de la página donde se coloca el contenido visible -->
     <div class="container"> <!-- Contenedor principal que puede ayudar a centrar y organizar el contenido en la página -->
-        <form id="cotizacion-form" method="POST" action="procesar_creacion_empresa.php" enctype="multipart/form-data">
+        <form id="cotizacion-form" method="POST" action="" enctype="multipart/form-data">
             <!-- Formulario con ID "cotizacion-form". Usa el método POST para enviar los datos al servidor. El atributo "action" define el archivo al que se enviarán los datos. "enctype" especifica que el formulario puede enviar archivos -->
             <a href="javascript:history.back()" class="btn-fixed">Volver</a>
             <!-- Fila 1 -->

@@ -11,48 +11,45 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Upload Logo.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-<?php
- // Definir la ruta de subida de archivos
- $upload_dir = '../../imagenes/programa_cotizacion/'; // Ruta relativa desde el archivo PHP
+    <?php
+// Verificar si el archivo fue subido sin errores
+if (isset($_FILES['logo_upload']) && $_FILES['logo_upload']['error'] == UPLOAD_ERR_OK) {
+    $upload_dir = '../../imagenes/programa_cotizacion/';
+    $tmp_name = $_FILES['logo_upload']['tmp_name'];
+    $name = basename($_FILES['logo_upload']['name']);
 
- // Inicializar la variable para el ID de la foto
- $empresa_id_foto = null;
+    // Validar el tipo de archivo
+    $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
+    if (!in_array($_FILES['logo_upload']['type'], $allowed_types)) {
+        die("Error: Tipo de archivo no permitido.");
+    }
 
- // Verificar si el archivo fue subido sin errores
- if (isset($_FILES['logo_upload']) && $_FILES['logo_upload']['error'] == UPLOAD_ERR_OK) {
-     $tmp_name = $_FILES['logo_upload']['tmp_name'];
-     $name = basename($_FILES['logo_upload']['name']);
+    $upload_file = $upload_dir . $name;
 
-     // Validar el tipo de archivo
-     $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
-     if (!in_array($_FILES['logo_upload']['type'], $allowed_types)) {
-         die("Error: Tipo de archivo no permitido.");
-     }
+    // Mover el archivo cargado al directorio de destino
+    if (move_uploaded_file($tmp_name, $upload_file)) {
+        echo "Imagen subida correctamente.";
 
-     $upload_file = $upload_dir . $name;
+        // Conectar a la base de datos
+        $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+        if ($mysqli->connect_error) {
+            die("Error de conexión: " . $mysqli->connect_error);
+        }
 
-     // Mover el archivo cargado al direcrut_bancotorio de destino
-     if (move_uploaded_file($tmp_name, $upload_file)) {
-         echo "Imagen subida correctamente.";
-
-         // Insertar la ruta de la foto en la tabla FotosPerfil
-         $sql_foto = "INSERT INTO e_fotosPerfil (ruta_foto) VALUES (?)";
-         $stmt_foto = $mysqli->prepare($sql_foto);
-         $stmt_foto->bind_param("s", $upload_file);
-         if ($stmt_foto->execute()) {
-             echo "Foto del perfil insertada correctamente.";
-             
-             // Obtener el ID de la foto recién insertada
-             $empresa_id_foto = $mysqli->insert_id;
-         } else {
-             die("Error al insertar la foto del perfil: " . $stmt_foto->error);
-         }
-         $stmt_foto->close();
-     } else {
-         die("Error al subir la imagen.");
-     }
- } 
- 
+        // Insertar la ruta de la foto en la tabla e_fotosPerfil
+        $sql_foto = "INSERT INTO e_fotosPerfil (ruta_foto) VALUES (?)";
+        $stmt_foto = $mysqli->prepare($sql_foto);
+        $stmt_foto->bind_param("s", $upload_file);
+        if ($stmt_foto->execute()) {
+            echo "Foto del perfil insertada correctamente.";
+        } else {
+            die("Error al insertar la foto del perfil: " . $stmt_foto->error);
+        }
+        $stmt_foto->close();
+    } else {
+        die("Error al subir la imagen.");
+    }
+}
 ?>
 <!-- ---------------------
      -- FIN CONEXION BD --
