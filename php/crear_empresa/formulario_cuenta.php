@@ -57,6 +57,86 @@ BPPJ
 <script src="../../js/nueva_cotizacion/load_bancos.js"></script> 
 <script src="../../js/nueva_cotizacion/loadTipoCuenta.js"></script> 
 <script src="../../js/nueva_cotizacion/agregar_banco.js"></script>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Obtener las cuentas bancarias del formulario
+    $cuentasString = isset($_POST['cuentas_bancarias']) ? $_POST['cuentas_bancarias'] : '';
+
+    // Función para obtener el ID de un banco basado en el nombre
+    function getIdBanco($mysqli, $nombreBanco) {
+        $stmt = $mysqli->prepare("SELECT id_banco FROM e_bancos WHERE nombre_banco = ?");
+        $stmt->bind_param("s", $nombreBanco);
+        $stmt->execute();
+        $stmt->bind_result($id_banco);
+        $stmt->fetch();
+        $stmt->close();
+        return $id_banco;
+    }
+
+    // Función para obtener el ID de un tipo de cuenta basado en el nombre
+    function getIdTipoCuenta($mysqli, $nombreTipoCuenta) {
+        $stmt = $mysqli->prepare("SELECT id_tipocuenta FROM e_tipo_cuenta WHERE tipocuenta = ?");
+        $stmt->bind_param("s", $nombreTipoCuenta);
+        $stmt->execute();
+        $stmt->bind_result($id_tipocuenta);
+        $stmt->fetch();
+        $stmt->close();
+        return $id_tipocuenta;
+    }
+
+    // Verificamos que haya datos de cuentas bancarias
+    if (!empty($cuentasString)) {
+        $cuentasArray = explode('|', $cuentasString);
+
+        foreach ($cuentasArray as $cuenta) {
+            $datosCuenta = explode(',', $cuenta);
+
+            if (count($datosCuenta) == 7) {
+                $nombre_titular = $datosCuenta[0];
+                $rut_titular = $datosCuenta[1];
+                $celular = $datosCuenta[2];
+                $email_banco = $datosCuenta[3];
+                $nombre_banco = $datosCuenta[4];
+                $nombre_tipocuenta = $datosCuenta[5];
+                $numero_cuenta = $datosCuenta[6];
+
+                // Obtener los IDs de banco y tipo de cuenta
+                $id_banco = getIdBanco($mysqli, $nombre_banco);
+                $id_tipocuenta = getIdTipoCuenta($mysqli, $nombre_tipocuenta);
+
+                // Verificar que se obtuvieron los IDs correctamente
+                if ($id_banco && $id_tipocuenta) {
+                    // Insertar la cuenta bancaria con el id_empresa recién creado
+                    $sql = "INSERT INTO E_Cuenta_Bancaria (nombre_titular, rut_titular, id_banco, id_tipocuenta, numero_cuenta, celular, email_banco, id_empresa)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+                    $stmt = $mysqli->prepare($sql);
+                    if ($stmt === false) {
+                        die("Error en la preparación de la consulta: " . $mysqli->error);
+                    }
+
+                    // Vincular los parámetros y ejecutar la consulta
+                    $stmt->bind_param("ssiisssi", $nombre_titular, $rut_titular, $id_banco, $id_tipocuenta, $numero_cuenta, $celular, $email_banco, $id_empresa);
+
+                    if ($stmt->execute()) {
+                        echo "Cuenta bancaria insertada correctamente. ID: " . $stmt->insert_id . "<br>";
+                    } else {
+                        echo "Error al insertar la cuenta bancaria: " . $stmt->error . "<br>";
+                    }
+
+                    $stmt->close();
+                } else {
+                    echo "Error: No se pudo obtener el ID del banco o del tipo de cuenta.<br>";
+                }
+            } else {
+                echo "Error: Formato incorrecto en los datos de la cuenta bancaria.<br>";
+            }
+        }
+    } else {
+        echo "No se proporcionaron cuentas bancarias.<br>";
+    }
+}
+?>
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Formulario Cuenta .PHP ----------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->

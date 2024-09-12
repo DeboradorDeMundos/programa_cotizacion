@@ -24,6 +24,31 @@ BPPJ
     <button id="remove-obligaciones-btn" type="button" style="display: none;">Eliminar última obligacion</button>
 </div>
 <script src="../../js/crear_empresa/obligaciones_cliente.js"></script>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $obligacionesString = $_POST['obligaciones'];
+    
+    $obligacionesArray = explode('|', $obligacionesString);
+    if (!empty($obligacionesArray)) {
+        $stmt = $mysqli->prepare("INSERT INTO E_Obligaciones_Cliente (indice, descripcion, id_empresa) VALUES (?, ?, ?)");
+
+        if (!$stmt) {
+            die("Error al preparar la consulta: " . $mysqli->error);
+        }
+
+        foreach ($obligacionesArray as $index => $obligacion) {
+            $indice = $index + 1;
+            $stmt->bind_param("isi", $indice, $obligacion, $id_empresa);
+            if (!$stmt->execute()) {
+                echo "Error al insertar obligación: " . $stmt->error;
+            }
+        }
+        $stmt->close();
+    } else {
+        echo "No hay obligaciones para insertar.";
+    }
+}
+?>
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Condiciones Generales .PHP ----------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
