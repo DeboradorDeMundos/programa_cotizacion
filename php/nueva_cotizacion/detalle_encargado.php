@@ -27,28 +27,28 @@ BPPJ
             </div>
             <div class="form-group">
                 <label for="enc_nombre">Nombre:</label> <!-- Etiqueta para el campo de entrada del nombre del encargado -->
-                <input type="text" id="enc_nombre" name="enc_nombre"> <!-- Campo de texto para ingresar el nombre del encargado. Este campo no es obligatorio -->
+                <input type="text" id="enc-nombre" name="enc_nombre"> <!-- Campo de texto para ingresar el nombre del encargado. Este campo no es obligatorio -->
             </div>
         </div>
     
        
         <div class="form-group">
             <label for="enc_email">Email:</label> <!-- Etiqueta para el campo de entrada del email del encargado -->
-            <input type="email" id="enc_email" name="enc_email"> <!-- Campo de correo electrónico para ingresar el email del encargado. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
+            <input type="email" id="enc-email" name="enc_email"> <!-- Campo de correo electrónico para ingresar el email del encargado. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
         </div>
         <div class="form-group">
         <label for="enc_fono">Teléfono:</label> <!-- Etiqueta para el campo de entrada del teléfono del encargado -->
-        <input type="text" id="enc_fono" name="enc_fono" pattern="\+?\d{7,15}" placeholder="+1234567890"> <!-- Campo de texto para ingresar el teléfono del encargado. Este campo no es obligatorio -->
+        <input type="text" id="enc-fono" name="enc_fono" pattern="\+?\d{7,15}" placeholder="+1234567890"> <!-- Campo de texto para ingresar el teléfono del encargado. Este campo no es obligatorio -->
         </div>
     </div>
     <div class="box-6 data-box data-box-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "data-box-left" para estilo -->
         <div class="form-group">
             <label for="enc_celular">Celular:</label> <!-- Etiqueta para el campo de entrada del celular del encargado -->
-            <input type="text" id="enc_celular" name="enc_celular" pattern="\+?\d{7,15}" placeholder="+1234567890"> <!-- Campo de texto para ingresar el número de celular del encargado. Este campo no es obligatorio -->
+            <input type="text" id="en-_celular" name="enc_celular" pattern="\+?\d{7,15}" placeholder="+1234567890"> <!-- Campo de texto para ingresar el número de celular del encargado. Este campo no es obligatorio -->
         </div>
         <div class="form-group">
             <label for="enc_proyecto">Proyecto Asignado:</label> <!-- Etiqueta para el campo de entrada del proyecto asignado al encargado -->
-            <input type="text" id="enc_proyecto" name="enc_proyecto"> <!-- Campo de texto para ingresar el nombre del proyecto asignado al encargado. No es obligatorio -->
+            <input type="text" id="enc-proyecto" name="enc_proyecto"> <!-- Campo de texto para ingresar el nombre del proyecto asignado al encargado. No es obligatorio -->
         </div>
     </div>
 </fieldset> <!-- Cierra la fila -->
@@ -60,7 +60,7 @@ BPPJ
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recibir datos del formulario encargado
-    $enc_rut = isset($_POST['enc_rut']) ? trim($_POST['enc_rut']) : null;
+    $enc_rut = isset($_POST['encargado_rut']) ? trim($_POST['encargado_rut']) : null;
     $enc_nombre = isset($_POST['enc_nombre']) ? trim($_POST['enc_nombre']) : null;
     $enc_email = isset($_POST['enc_email']) ? trim($_POST['enc_email']) : null;
     $enc_fono = isset($_POST['enc_fono']) ? trim($_POST['enc_fono']) : null;
@@ -70,25 +70,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verificación básica para campos requeridos
     if ($enc_rut && $enc_nombre) {
         // Insertar o actualizar el encargado
-        $sql = "INSERT INTO C_Encargados (rut_encargado, nombre_encargado, email_encargado, fono_encargado, celular_encargado, proyecto_encargado)
-                VALUES (?, ?, ?, ?, ?, ?)
+        $sql = "INSERT INTO C_Encargados (rut_encargado, nombre_encargado, email_encargado, fono_encargado, celular_encargado)
+                VALUES (?, ?, ?, ?, ?)
                 ON DUPLICATE KEY UPDATE 
                     nombre_encargado = VALUES(nombre_encargado), 
                     email_encargado = VALUES(email_encargado), 
                     fono_encargado = VALUES(fono_encargado), 
-                    celular_encargado = VALUES(celular_encargado), 
-                    proyecto_encargado = VALUES(proyecto_encargado)";
+                    celular_encargado = VALUES(celular_encargado)";
         $stmt = $mysqli->prepare($sql);
         if ($stmt === false) {
             die("Error en la preparación de la consulta: " . $mysqli->error);
         }
-        $stmt->bind_param("ssssss", 
+        $stmt->bind_param("sssss", 
             $enc_rut, 
             $enc_nombre, 
             $enc_email, 
             $enc_fono, 
-            $enc_celular, 
-            $enc_proyecto
+            $enc_celular
         );
 
         if (!$stmt->execute()) {

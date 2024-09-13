@@ -27,44 +27,55 @@ BPPJ
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recibir los datos del formulario para pago
-    $id_cotizacion = isset($_POST['id_cotizacion']) ? intval($_POST['id_cotizacion']) : null;
-    $numero_pago = isset($_POST['numero_pago']) ? intval($_POST['numero_pago']) : null;
-    $pago_descripcion = isset($_POST['descripcion_pago']) ? trim($_POST['descripcion_pago']) : null;
-    $porcentaje_pago = isset($_POST['porcentaje_pago']) ? floatval($_POST['porcentaje_pago']) : null;
-    $monto_pago = isset($_POST['monto_pago']) ? floatval($_POST['monto_pago']) : null;
-    $fecha_pago = isset($_POST['fecha_pago']) ? trim($_POST['fecha_pago']) : null;
-    $forma_pago = isset($_POST['forma_pago']) ? trim($_POST['forma_pago']) : null;
+    // Asegúrate de que los datos sean arrays y no estén vacíos
+    $numero_pago_array = isset($_POST['numero_pago']) ? $_POST['numero_pago'] : [];
+    $pago_descripcion_array = isset($_POST['descripcion_pago']) ? $_POST['descripcion_pago'] : [];
+    $porcentaje_pago_array = isset($_POST['porcentaje_pago']) ? $_POST['porcentaje_pago'] : [];
+    $monto_pago_array = isset($_POST['monto_pago']) ? $_POST['monto_pago'] : [];
+    $fecha_pago_array = isset($_POST['fecha_pago']) ? $_POST['fecha_pago'] : [];
 
-    // Validar datos obligatorios
-    if (is_null($id_cotizacion) || is_null($porcentaje_pago) || is_null($monto_pago) || is_null($fecha_pago) || is_null($forma_pago)) {
+    // Asegúrate de que haya datos en los arreglos
+    if (empty($numero_pago_array) || empty($pago_descripcion_array) || empty($porcentaje_pago_array) || empty($monto_pago_array) || empty($fecha_pago_array)) {
         die("Faltan datos obligatorios.");
     }
 
-    // Insertar datos en la tabla pago
-    $sql = "INSERT INTO C_pago (id_cotizacion, numero_pago, descripcion, porcentaje_pago, monto_pago, fecha_pago, forma_pago)
-            VALUES (?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $mysqli->prepare($sql);
+    // Iterar sobre los datos del formulario
+    foreach ($numero_pago_array as $index => $numero_pago) {
+        // Recuperar los datos para esta iteración
+        $pago_descripcion = isset($pago_descripcion_array[$index]) && is_string($pago_descripcion_array[$index]) ? trim($pago_descripcion_array[$index]) : null;
+        $porcentaje_pago = isset($porcentaje_pago_array[$index]) ? floatval($porcentaje_pago_array[$index]) : null;
+        $monto_pago = isset($monto_pago_array[$index]) ? floatval($monto_pago_array[$index]) : null;
+        $fecha_pago = isset($fecha_pago_array[$index]) && is_string($fecha_pago_array[$index]) ? trim($fecha_pago_array[$index]) : null;
 
-    if ($stmt === false) {
-        die("Error en la preparación de la consulta: " . $mysqli->error);
-    }
+        // Validar datos obligatorios para esta iteración
+        if (is_null($numero_pago) || is_null($porcentaje_pago) || is_null($monto_pago) || is_null($fecha_pago)) {
+            die("Faltan datos obligatorios en una de las entradas.");
+        }
 
-    // Asignar los parámetros de forma correcta
-    $stmt->bind_param("iisdiss", $id_cotizacion, $numero_pago, $pago_descripcion, $porcentaje_pago, $monto_pago, $fecha_pago, $forma_pago);
+        // Insertar datos en la tabla pago
+        $sql = "INSERT INTO C_pago (id_cotizacion, numero_pago, descripcion, porcentaje_pago, monto_pago, fecha_pago)
+                VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $mysqli->prepare($sql);
 
-    // Ejecutar la consulta y manejar posibles errores
-    if ($stmt->execute()) {
-        echo "Pago insertado correctamente. ID: " . $stmt->insert_id;
-    } else {
-        die("Error en la ejecución de la consulta: " . $stmt->error);
+        if ($stmt === false) {
+            die("Error en la preparación de la consulta: " . $mysqli->error);
+        }
+
+        // Asignar los parámetros de forma correcta
+        $stmt->bind_param("iisdis", $id_cotizacion, $numero_pago, $pago_descripcion, $porcentaje_pago, $monto_pago, $fecha_pago);
+
+        // Ejecutar la consulta y manejar posibles errores
+        if ($stmt->execute()) {
+            echo "Pago insertado correctamente. ID: " . $stmt->insert_id . "<br>";
+        } else {
+            die("Error en la ejecución de la consulta: " . $stmt->error);
+        }
     }
 
     $stmt->close();
 }
 
 ?>
-
 
 
 

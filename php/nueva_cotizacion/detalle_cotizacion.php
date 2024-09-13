@@ -59,16 +59,12 @@ if (!$id_empresa) {
     $numero_cotizacion = isset($_POST['numero_cotizacion']) ? trim($_POST['numero_cotizacion']) : null;
     $fecha_validez = isset($_POST['fecha_validez']) ? trim($_POST['fecha_validez']) : null;
     $fecha_emision = isset($_POST['fecha_emision']) ? trim($_POST['fecha_emision']) : null;
-    $id_cliente = isset($_POST['id_cliente']) ? intval($_POST['id_cliente']) : null;
-    $id_proyecto = isset($_POST['id_proyecto']) ? intval($_POST['id_proyecto']) : null;
-    $id_empresa = isset($_POST['id_empresa']) ? intval($_POST['id_empresa']) : null;
-    $id_vendedor = isset($_POST['id_vendedor']) ? intval($_POST['id_vendedor']) : null;
-    $id_encargado = isset($_POST['id_encargado']) ? intval($_POST['id_encargado']) : null;
 
     // Validar datos obligatorios
     if (is_null($numero_cotizacion) || is_null($fecha_emision) || is_null($fecha_validez) || is_null($id_cliente) || is_null($id_proyecto) || is_null($id_empresa) || is_null($id_vendedor) || is_null($id_encargado)) {
         die("Faltan datos obligatorios para la cotización.");
     }
+    
 
     // Insertar en la tabla Cotizaciones
     $sql_cotizaciones = "INSERT INTO C_Cotizaciones (

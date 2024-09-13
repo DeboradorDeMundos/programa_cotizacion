@@ -42,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $detalles_descuento = $_POST['detalle_descuento'] ?? [];
     $detalles_tipo = $_POST['tipo_producto'] ?? [];
     $detalles_nombre_producto = $_POST['nombre_producto'] ?? [];
-    $id_cotizacion = $_POST['id_cotizacion'] ?? 0; // Asegúrate de recibir el ID de la cotización
 
     // Estructurar los datos en arrays anidados
     $estructura_datos = [];

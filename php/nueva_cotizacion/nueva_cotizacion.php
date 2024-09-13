@@ -190,7 +190,8 @@
                 <!-- Fila 6 -->
                 <?php include 'detalle_vendedor.php'; ?>
 
-                
+                                    <!-- Sección que guarda los datos de la cotizacion -->
+                <?php include 'detalle_cotizacion.php'; ?>
                 <!-- sección para Detalle de Cotización -->
                 <?php include 'detalle.php'; ?>
                 
@@ -203,8 +204,7 @@
                 <?php include 'pago.php'; ?>
 
                 <br>
-                    <!-- Sección que guarda los datos de la cotizacion -->
-                <?php include 'detalle_cotizacion.php'; ?>
+
                 
                 <button type="submit" class="submit">Crear cotizacion</button> <!-- Botón para enviar el formulario y generar la cotización -->
                 </form> <!-- Cierra el formulario -->

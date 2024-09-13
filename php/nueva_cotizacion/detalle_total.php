@@ -66,7 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $iva_valor = isset($_POST['iva_porcentaje']) ? floatval($_POST['iva_porcentaje']) : 0;
     $total_iva = isset($_POST['total_iva']) ? floatval($_POST['total_iva']) : 0;
     $total_final = isset($_POST['total_final']) ? floatval($_POST['total_final']) : 0;
-    $id_cotizacion = isset($_POST['id_cotizacion']) ? intval($_POST['id_cotizacion']) : 0;
 
     // Verificación básica para asegurar que se ha proporcionado un ID de cotización válido
     if ($id_cotizacion > 0) {
