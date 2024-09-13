@@ -19,7 +19,7 @@ BPPJ
         <div class="form-group-inline">
             <div class="form-group">
                 <label for="vendedor_rut">RUT: </label> <!-- Etiqueta para el campo de entrada del RUT del cliente -->
-                <input type="text" id="vendedor-rut" name="vendedor_rut" 
+                <input type="text" id="vendedor_rut" name="vendedor_rut" 
                     minlength="7" maxlength="12" 
                     placeholder="x.xxx.xxx-x"
                     required oninput="formatRut(this)"> <!-- Campo de texto para ingresar el RUT del cliente. También es obligatorio -->

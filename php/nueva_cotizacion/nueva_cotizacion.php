@@ -143,15 +143,7 @@
         echo "<p>ID inválido.</p>";
     }
 
-    // <!-- ---------------------
-    // -- INICIO CIERRE CONEXION BD --
-    //     --------------------- -->
 
-        $mysqli->close();
-
-    // <!-- ---------------------
-    //     -- FIN CIERRE CONEXION BD --
-    //     --------------------- -->
     ?>
 
 
@@ -165,7 +157,7 @@
     </head> <!-- Cierra el elemento de cabecera -->
     <body> <!-- Abre el elemento del cuerpo de la página donde se coloca el contenido visible -->
         <div class="container"> <!-- Contenedor principal que puede ayudar a centrar y organizar el contenido en la página -->
-            <form id="cotizacion-form" method="POST" action="nueva_cotizacion.php" enctype="multipart/form-data">
+            <form id="cotizacion-form" method="POST" action="" enctype="multipart/form-data">
                 <!-- Formulario con ID "cotizacion-form". Usa el método POST para enviar los datos al servidor. El atributo "action" define el archivo al que se enviarán los datos. "enctype" especifica que el formulario puede enviar archivos -->
                 <a href="javascript:history.back()" class="btn-fixed">Volver</a>
                 <!-- Fila 1 -->
@@ -186,7 +178,7 @@
                 <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
                     <?php include 'detalle_proyecto.php'; ?>
 
-                    <?php include 'detalle_cotizacion.php'; ?>
+                    
                 </div> <!-- Cierra la fila -->
 
                 <!-- Fila 4 -->
@@ -211,7 +203,8 @@
                 <?php include 'pago.php'; ?>
 
                 <br>
-
+                    <!-- Sección que guarda los datos de la cotizacion -->
+                <?php include 'detalle_cotizacion.php'; ?>
                 
                 <button type="submit" class="submit">Crear cotizacion</button> <!-- Botón para enviar el formulario y generar la cotización -->
                 </form> <!-- Cierra el formulario -->

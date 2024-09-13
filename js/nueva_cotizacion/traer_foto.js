@@ -15,7 +15,16 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 
-
+    function previewImage(event) {
+        const reader = new FileReader();
+        reader.onload = function() {
+            const output = document.getElementById('logo-preview');
+            output.src = reader.result;
+            output.style.display = 'block';
+            document.getElementById('logo-text').style.display = 'none';
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
 
 
 /* --------------------------------------------------------------------------------------------------------------

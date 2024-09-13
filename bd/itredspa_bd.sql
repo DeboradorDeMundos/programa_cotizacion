@@ -1,25 +1,32 @@
 -- Sitio Web Creado por ITred Spa.
 -- Direccion: Guido Reni #4190
--- Pedro Agui Cerda - Santiago - Chile
+-- Pedro Aguirre Cerda - Santiago - Chile
 -- contacto@itred.cl o itred.spa@gmail.com
 -- https://www.itred.cl
 -- Creado, Programado y Diseñado por ITred Spa.
 -- BPPJ
 
--- ------------------------------------------------------------------------------------------------------------
--- ------------------------------------- INICIO SCRIPT DE BASE DE DATOS ---------------------------------------
--- ------------------------------------------------------------------------------------------------------------ 
+-- -----------------------------------------------------------------------------------------------------------------------------
+-- ------------------------------------- INICIO SCRIPT DE BASE DE DATOS itredspa_bd .SQL ---------------------------------------
+-- -----------------------------------------------------------------------------------------------------------------------------
 
--- ------------------------------------------------------------------------------------------------------------
--- ------------------------------------- CONEXION BD --------------------------------------------------------
--- ------------------------------------------------------------------------------------------------------------ 
--- Configuraciones iniciales
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+-- -
+-- base de datos: `itredspa_bd`
+-- -
+
 -- Selección de la base de datos para usar
+CREATE DATABASE IF NOT EXISTS `itredspa_bd` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
 USE itredspa_bd;
+-- ------------------------------------------------------------------------------------------------------------
 
 -- Eliminar la tabla FotosPerfil si existe
 DROP TABLE IF EXISTS E_FotosPerfil;
@@ -30,7 +37,7 @@ CREATE TABLE E_FotosPerfil (
     ruta_foto VARCHAR(255) NOT NULL, -- Ruta del archivo de la foto
     fecha_subida DATETIME DEFAULT CURRENT_TIMESTAMP, -- Fecha de carga de la foto
     PRIMARY KEY (id_foto) -- Definición de la clave primaria
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB;
 
 -- Eliminar la tabla Empresa si existe
 DROP TABLE IF EXISTS E_Empresa;
@@ -49,7 +56,7 @@ CREATE TABLE E_Empresa (
     dias_validez INT,
     PRIMARY KEY (id_empresa), -- Definición de la clave primaria
     FOREIGN KEY (id_foto) REFERENCES E_FotosPerfil(id_foto) ON DELETE CASCADE -- Definición de la clave foránea
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB ;
 
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA CLIENTES -------------------------------------------------------
@@ -74,7 +81,7 @@ CREATE TABLE C_Clientes (
     ciudad_cliente varchar(255), -- Ciudad del cliente
     tipo_cliente varchar(255), -- Tipo del cliente
     PRIMARY KEY (id_cliente) -- Definición de la clave primaria
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB ;
 
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA PROYECTOS ------------------------------------------------------
@@ -98,7 +105,7 @@ CREATE TABLE C_Proyectos (
     colacion VARCHAR(50), -- Colación incluida
     entrega VARCHAR(50), -- Entrega especificada
     PRIMARY KEY (id_proyecto) -- Definición de la clave primaria
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB ;
 
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA ENCARGADOS -----------------------------------------------------
@@ -116,7 +123,7 @@ CREATE TABLE C_Encargados (
     fono_encargado varchar(20), -- Teléfono del encargado
     celular_encargado varchar(20), -- Celular del encargado
     PRIMARY KEY (id_encargado) -- Definición de la clave primaria
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB ;
 
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA VENDEDORES -----------------------------------------------------
@@ -134,7 +141,7 @@ CREATE TABLE C_Vendedores (
     fono_vendedor varchar(20), -- Teléfono del vendedor
     celular_vendedor varchar(20), -- Celular del vendedor
     PRIMARY KEY (id_vendedor) -- Definición de la clave primaria
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB ;
 
 CREATE TABLE E_Bancos (
     id_banco INT AUTO_INCREMENT PRIMARY KEY,
@@ -187,7 +194,7 @@ CREATE TABLE C_Cotizaciones (
     FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE CASCADE, 
     FOREIGN KEY (id_vendedor) REFERENCES C_Vendedores(id_vendedor) ON DELETE SET NULL,
     FOREIGN KEY (id_encargado) REFERENCES C_Encargados(id_encargado) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB ;
 
 
 
@@ -205,7 +212,7 @@ CREATE TABLE C_Titulos (
     nombre VARCHAR(255) NOT NULL,
     PRIMARY KEY (id_titulo),
     FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB ;
 
 
 
@@ -221,7 +228,7 @@ CREATE TABLE C_Subtitulos (
     nombre VARCHAR(255),
     PRIMARY KEY (id_subtitulo),
     FOREIGN KEY (id_titulo) REFERENCES C_Titulos(id_titulo) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB ;
 
 
 
@@ -246,7 +253,7 @@ CREATE TABLE C_Detalles (
     PRIMARY KEY (id_detalle),
 
     FOREIGN KEY (id_titulo) REFERENCES C_Titulos(id_titulo) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB ;
 
 
 
@@ -271,7 +278,7 @@ CREATE TABLE C_Totales (
     total_final DECIMAL(10,2),
     PRIMARY KEY (id_total),
     FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB ;
 
 
 
@@ -279,7 +286,7 @@ CREATE TABLE C_Totales (
 CREATE TABLE p_tipo_producto (
     id_tipo_producto INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     tipo_producto VARCHAR(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB ;
 
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA DETALLE Productos ----------------------------------------------
@@ -303,7 +310,7 @@ CREATE TABLE P_Productos (
     FOREIGN KEY (id_foto) REFERENCES E_FotosPerfil(id_foto) ON DELETE CASCADE,
     FOREIGN KEY (id_tipo_producto) REFERENCES p_tipo_producto(id_tipo_producto) ON DELETE SET NULL, -- Puedes usar ON DELETE CASCADE si prefieres eliminar los productos cuando se elimina un tipo
     FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE CASCADE 
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB ;
 
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA pago -----------------------------------------------------
@@ -323,7 +330,7 @@ CREATE TABLE C_pago (
     fecha_pago DATE ,
     forma_pago VARCHAR(50),
     FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB ;
 
 COMMIT;
 
@@ -341,7 +348,7 @@ CREATE TABLE C_Condiciones_Generales (
     descripcion_condiciones TEXT NOT NULL, -- Descripción de las condiciones generales
     estado BOOLEAN DEFAULT FALSE, -- Estado de la condición (por defecto, falso)
     FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE CASCADE -- Clave foránea hacia Cotizaciones
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB ;
 
 
 -- Crear la tabla Requisitos_Basicos
@@ -353,7 +360,7 @@ CREATE TABLE E_Requisitos_Basicos (
     id_empresa INT NOT NULL, -- ID de la empresa (clave foránea)
 
     FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE CASCADE -- Clave foránea hacia Empresa
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB ;
 
 CREATE TABLE E_obligaciones_cliente (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -680,6 +687,11 @@ INSERT INTO E_Cuenta_Bancaria (
 -- Confirmar cambios
 COMMIT;
 
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- FIN SCRIPT DE BASE DE DATOS ------------------------------------------
@@ -687,7 +699,7 @@ COMMIT;
 
 -- Sitio Web Creado por ITred Spa.
 -- Direccion: Guido Reni #4190
--- Pedro Agui Cerda - Santiago - Chile
+-- Pedro Aguirre Cerda - Santiago - Chile
 -- contacto@itred.cl o itred.spa@gmail.com
 -- https://www.itred.cl
--- Creado, Programado y Diseñado por ITred Spa.
+-- Creado, Programado y Diseñado por ITredSpa.
