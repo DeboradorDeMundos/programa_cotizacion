@@ -54,7 +54,7 @@ BPPJ
     </div>
     
 </div>
-
+<script src="../../js/nueva_cotizacion/detalle_total.js"></script> 
 
 
 <?php

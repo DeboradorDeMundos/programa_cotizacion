@@ -14,14 +14,14 @@ BPPJ
 
 
 
-     <fieldset id="payment-section">
+<fieldset id="payment-section">
     <legend>Información de pago</legend>
     <button type="button" onclick="addPayment()">Agregar Pago</button>
     <div id="payments-container">
         <!-- Aquí se agregarán dinámicamente los pagos -->
     </div>
 </fieldset>
-
+<script src="../../js/nueva_cotizacion/detalle.js"></script> 
 
 
 <?php

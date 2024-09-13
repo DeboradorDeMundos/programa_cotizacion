@@ -231,7 +231,6 @@
     <script src="../../js/crear_empresa/upload_logo.js"></script>
     <script src="../../js/nueva_cotizacion/cargar_logo_empresa.js"></script> 
     <script src="../../js/nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
-    <script src="../../js/nueva_cotizacion/detalle.js"></script> 
     <script src="../../js/nueva_cotizacion/pago.js"></script> 
     </body>
     </html>
