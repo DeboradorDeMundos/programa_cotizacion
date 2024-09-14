@@ -248,100 +248,26 @@ $conn->close();
         <!-- Sección de Detalles -->
         <div class="section-container">
             <!-- Detalles de la Empresa -->
-            <div class="section">
-                <h3>DETALLES DE LA EMPRESA</h3>
-                <div class="info">
-                    <p><strong>Empresa:</strong> <?php echo $nombre_empresa; ?></p>
-                    <p><strong>RUT:</strong> <?php echo $rut_empresa; ?></p>
-                    <p><strong>Dirección:</strong> <?php echo $direccion_empresa; ?></p>
-                    <p><strong>Teléfono:</strong> <?php echo $telefono_empresa; ?></p>
-                    <p><strong>Email:</strong> <?php echo $email_empresa; ?></p>
-                    <p><strong>Área:</strong> <?php echo $area_empresa; ?></p>
-                </div>
-            </div>
+
+            <?php include 'detalles_empresa.php'; ?>
 
             <!-- Detalles del Proyecto -->
-            <div class="section">
-                <h3>DETALLES DEL PROYECTO</h3>
-                <div class="info">
-                    <p><strong>Nombre:</strong> <?php echo $nombre_proyecto; ?></p>
-                    <p><strong>Código:</strong> <?php echo $codigo_proyecto; ?></p>
-                    <p><strong>Tipo de trabajo:</strong> <?php echo $tipo_trabajo; ?></p>
-                    <p><strong>Área de trabajo:</strong> <?php echo $area_trabajo; ?></p>
-                    <p><strong>Riesgo:</strong> <?php echo $riesgo_proyecto; ?></p>
-                </div>
-            </div>
+             <?php include 'detalles_proyecto.php'; ?>
 
             <!-- Detalles del Cliente -->
-            <div class="section">
-                <h3>DETALLES DEL CLIENTE</h3>
-                <div class="info">
-                    <p><strong>Nombre:</strong> <?php echo $nombre_cliente; ?></p>
-                    <p><strong>RUT:</strong> <?php echo $rut_cliente; ?></p>
-                    <p><strong>Dirección:</strong> <?php echo $direccion_cliente; ?></p>
-                    <p><strong>Teléfono:</strong> <?php echo $telefono_cliente; ?></p>
-                    <p><strong>Email:</strong> <?php echo $email_cliente; ?></p>
-                    <p><strong>Giro:</strong> <?php echo $giro_cliente; ?></p>
-                    <p><strong>Comuna:</strong> <?php echo $comuna_cliente; ?></p>
-                    <p><strong>Ciudad:</strong> <?php echo $ciudad_cliente; ?></p>
-                </div>
-            </div>
+             <?php include 'detalle_cliente.php'; ?>
 
 
             <!-- Detalles del Encargado -->
-            <div class="section">
-                <h3>DETALLES DEL ENCARGADO</h3>
-                <div class="info">
-                    <p><strong>Nombre:</strong> <?php echo $nombre_encargado; ?></p>
-                    <p><strong>Email:</strong> <?php echo $email_encargado; ?></p>
-                    <p><strong>Teléfono:</strong> <?php echo $fono_encargado; ?></p>
-                    <p><strong>Celular:</strong> <?php echo $celular_encargado; ?></p>
-                </div>
-            </div>
+             <?php include 'detalle_encargado.php'; ?>
 
             <!-- Detalles del Vendedor -->
-            <div class="section">
-                <h3>DETALLES DEL VENDEDOR</h3>
-                <div class="info">
-                    <p><strong>Nombre:</strong> <?php echo $nombre_vendedor; ?></p>
-                    <p><strong>Email:</strong> <?php echo $email_vendedor; ?></p>
-                    <p><strong>Teléfono:</strong> <?php echo $fono_vendedor; ?></p>
-                    <p><strong>Celular:</strong> <?php echo $celular_vendedor; ?></p>
-                </div>
-            </div>
+             <?php include 'detalle_vendedor.php'; ?>
 
         </div>
 
         <!-- Productos -->
-        <div class="section">
-            <h3>PRODUCTOS</h3>
-            <table class="tabla-productos">
-                <thead>
-                    <tr>
-                        <th>Descripción</th>
-                        <th>Cantidad</th>
-                        <th>Precio Unitario</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if (!empty($productos)): ?>
-                        <?php foreach ($productos as $producto): ?>
-                            <tr>
-                                <td><?php echo $producto['nombre_producto']; ?></td>
-                                <td><?php echo $producto['cantidad']; ?></td>
-                                <td><?php echo $producto['precio_unitario']; ?></td>
-                                <td><?php echo $producto['total']; ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <tr>
-                            <td colspan="4">No se encontraron productos.</td>
-                        </tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-        </div>
+        <?php include 'detalle_productos.php'; ?>
 
         <!-- Totales -->
         <div class="resumen-precio">
