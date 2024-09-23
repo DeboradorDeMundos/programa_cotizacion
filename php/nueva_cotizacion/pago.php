@@ -17,11 +17,23 @@ BPPJ
 <fieldset id="payment-section">
     <legend>Información de pago</legend>
     <button type="button" onclick="addPayment()">Agregar Pago</button>
-    <div id="payments-container">
-        <!-- Aquí se agregarán dinámicamente los pagos -->
-    </div>
+    <table id="payment-table" style="display: none;"> <!-- Inicialmente oculto -->
+        <thead>
+            <tr>
+                <th>N° Pago</th>
+                <th>Descripción de Pago</th>
+                <th>% De Pago</th>
+                <th>Monto de Pago</th>
+                <th>Fecha de Pago</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="payments-container">
+            <!-- Aquí se agregarán dinámicamente los pagos -->
+        </tbody>
+    </table>
 </fieldset>
-<script src="../../js/nueva_cotizacion/detalle.js"></script> 
+<script src="../../js/nueva_cotizacion/detalle.js"></script>
 
 
 <?php

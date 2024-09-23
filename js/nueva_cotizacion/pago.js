@@ -16,54 +16,89 @@ BPPJ
 
 
     function addPayment() {
-        // Contenedor donde se agregan los pagos
         const container = document.getElementById('payments-container');
+        const porcentajeInputs = container.querySelectorAll('input[name="porcentaje_pago[]"]');
+        let totalPorcentaje = 0;
+    
+        // Sumar todos los porcentajes existentes
+        porcentajeInputs.forEach(input => {
+            totalPorcentaje += parseFloat(input.value) || 0;
+        });
+    
+        // Verificar si el total ya alcanza o supera el 100%
+        if (totalPorcentaje >= 100) {
+            alert("Ya se ha alcanzado el 100% de los pagos. No se pueden agregar más pagos.");
+            return;
+        }
+    
+        // Mostrar la tabla si está oculta
+        const table = document.getElementById('payment-table');
+        if (table.style.display === 'none') {
+            table.style.display = 'table';
+        }
     
         // Crear un nuevo bloque de pago
-        const paymentBlock = document.createElement('div');
-        paymentBlock.classList.add('payment-block');
+        const paymentRow = document.createElement('tr');
     
-        // Generar el HTML para un nuevo pago
-        paymentBlock.innerHTML = `
-            <hr>
-            <h4>Pago</h4>
-            <label>N° Pago:</label>
-            <input type="number" name="numero_pago[]" required>
-            <label>Descripción de pago:</label>
-            <textarea name="descripcion_pago[]" placeholder="Descripción del pago"></textarea>
-            <label>% De pago:</label>
-            <input type="number" id="porcentaje-pago" name="porcentaje_pago[]" min="0" max="100" required oninput="calcularPago(this)">
-            <label>Monto de pago:</label>
-            <input type="number" id="monto-pago" name="monto_pago[]" min="0" required readonly>
-            <label>Fecha de pago:</label>
-            <input type="date" name="fecha_pago[]" required>
+        // Generar el HTML para un nuevo pago dentro de la tabla
+        paymentRow.innerHTML = `
+            <td><input type="number" name="numero_pago[]" required></td>
+            <td><textarea name="descripcion_pago[]" placeholder="Descripción del pago"></textarea></td>
+            <td><input type="number" id="porcentaje-pago" name="porcentaje_pago[]" min="0" max="${100 - totalPorcentaje}" required oninput="calcularPago(this)"></td>
+            <td><input type="number" id="monto-pago" name="monto_pago[]" min="0" required readonly></td>
+            <td><input type="date" name="fecha_pago[]" required></td>
+            <td><button type="button" onclick="removePayment(this)">Eliminar</button></td>
         `;
     
-        // Agregar el bloque al contenedor
-        container.appendChild(paymentBlock);
+        // Agregar la nueva fila de pago al cuerpo de la tabla
+        container.appendChild(paymentRow);
     }
     
-    // Función para calcular el monto de pago basado en el porcentaje (puedes ajustar la lógica según lo que necesites)
-  
+    function removePayment(button) {
+        // Eliminar la fila correspondiente
+        const row = button.closest('tr');
+        row.remove();
     
-    function calcularPago() {
-        // Obtén los elementos del DOM
-        const porcentajePagoInput = document.getElementById('porcentaje-pago');
+        // Ocultar la tabla si no quedan filas
+        const container = document.getElementById('payments-container');
+        if (container.children.length === 0) {
+            document.getElementById('payment-table').style.display = 'none';
+        }
+    }
+    
+    function calcularPago(input) {
+        const row = input.closest('tr');
+        const montoPagoInput = row.querySelector('#monto-pago');
         const totalFinalInput = document.getElementById('total_final');
-        const montoPagoInput = document.getElementById('monto-pago');
     
-        // Lee los valores y asigna 0 si no están presentes o son inválidos
-        const porcentajeAdelanto = parseFloat(porcentajePagoInput ? porcentajePagoInput.value : 0) || 0;
-        const totalFinal = parseFloat(totalFinalInput ? totalFinalInput.value : 0) || 0;
+        const porcentajeAdelanto = parseFloat(input.value) || 0;
+        const totalFinal = parseFloat(totalFinalInput.value) || 0;
     
-        // Calcula el monto del adelanto
         const montoAdelanto = (totalFinal * (porcentajeAdelanto / 100)).toFixed(2);
+        montoPagoInput.value = montoAdelanto;
     
-        // Asigna el monto calculado al campo correspondiente
-        if (montoPagoInput) {
-            montoPagoInput.value = montoAdelanto;
-        } else {
-            console.error("El elemento 'monto-pago' no está disponible en el DOM.");
+        // Verificar si la suma de todos los porcentajes excede el 100%
+        verificarTotalPorcentajes(input);
+    }
+    
+    function verificarTotalPorcentajes(input) {
+        const container = document.getElementById('payments-container');
+        const porcentajeInputs = container.querySelectorAll('input[name="porcentaje_pago[]"]');
+        let totalPorcentaje = 0;
+    
+        // Sumar todos los porcentajes existentes
+        porcentajeInputs.forEach(porcentajeInput => {
+            totalPorcentaje += parseFloat(porcentajeInput.value) || 0;
+        });
+    
+        // Si el total supera el 100%, restablecer el último valor y mostrar alerta
+        if (totalPorcentaje > 100) {
+            // Restablecer el valor del campo actual para no exceder el 100%
+            const porcentajeActual = parseFloat(input.value);
+            const maxValorPermitido = 100 - (totalPorcentaje - porcentajeActual);
+            input.value = Math.max(0, maxValorPermitido);  // Limitar el valor al máximo permitido
+    
+            alert("La suma de los porcentajes no puede exceder el 100%. Por favor, ajusta los pagos existentes.");
         }
     }
 
