@@ -62,6 +62,8 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
             <?php include 'obligaciones_cliente.php';?>
 
+            <?php include 'firma.php';?>
+
             <button type="submit" id="submit-button" class="subir">Crear empresa</button> <!-- Botón para enviar el formulario y generar la cotización -->
         </form> <!-- Cierra el formulario -->
     </div> <!-- Cierra el contenedor principal -->
