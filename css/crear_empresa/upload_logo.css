@@ -13,111 +13,38 @@ BPPJ
     -------------------------------------- Inicio ITred Spa Upload Logo .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
  /* Estilos comunes */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-  }
-  
-  .container {
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
-  
-  .box-6, .box-12 {
-    padding: 10px;
-  }
-  
-  .box-6 {
-    flex: 1;
-    max-width: 50%;
-  }
-  
-  .box-12 {
-    flex: 1;
-    max-width: 100%;
-  }
-  
-  input, select {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-  }
-  
-  th {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  td {
-    padding: 5px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  h2 {
-    color: #333;
-    margin-top: 0;
-  }
-  
-  p {
-    color: #666;
-    line-height: 1.6;
-    text-align: center;
-  }
-  
-  /* Botones comunes */
-  .submit-row input[type="submit"],
-  .subir {
-    width: calc(100% - 20px);
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: white;
-  }
-  
-  .submit-row input[type="submit"]:hover,
-  .subir:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Media Queries */
-  @media (max-width: 768px) {
-    .box-6 {
-      max-width: 100%;
-    }
-  }   
-    
-    
-.logo {
-    position: absolute; /* Posiciona el elemento de manera absoluta en relación con su contenedor posicionado */
-    top: 10px;          /* Coloca el borde superior del elemento a 10 píxeles del borde superior del contenedor */
-    left: 10px;         /* Coloca el borde izquierdo del elemento a 10 píxeles del borde izquierdo del contenedor */
-    width: 250px;       /* Establece el ancho del elemento en 250 píxeles */
-    height: auto;       /* Ajusta la altura automáticamente para mantener la proporción original del contenido */
-    z-index: 1000;      /* Establece la prioridad de apilamiento del elemento, asegurando que se muestre por encima de otros con menor índice z */
+
+ .logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-    
+.logo-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo {
+  max-width: 300px;
+  height: auto;
+  margin-right: 10px;
+}
+
+button.logo {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto;
+}
+
+button.logo:hover {
+  background-color: #555;
+}
     
     
     /* --------------------------------------------------------------------------------------------------------------

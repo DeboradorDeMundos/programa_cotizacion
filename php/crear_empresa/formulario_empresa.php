@@ -11,6 +11,7 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Formulario Empresa.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
+<link rel="stylesheet" href="../../css/crear_empresa/formulario_empresa.css">
 <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
     <div class="box-12 data-box"> <!-- Crea una caja para ingresar datos, ocupando las 12 columnas disponibles en el diseño. Esta caja contiene varios campos de entrada de datos -->
 

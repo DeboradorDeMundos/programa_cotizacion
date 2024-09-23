@@ -16,21 +16,49 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 
-.obligaciones-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }nnnn                                                    
-  
-  .remove-obligaciones-btn {
-    background-color: #dc3545;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
+    h2 {
+      color: #333;
+      margin-top: 0;
+    }
+    
+    #obligaciones-container {
+      margin-bottom: 20px;
+    }
+    
+    .obligaciones-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      padding: 5px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    
+    .obligaciones-number {
+      font-weight: bold;
+    }
+    
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    button:hover {
+      background-color: #0056b3;
+    }
+    
+    .remove-obligaciones-btn {
+      background-color: #dc3545; /* Color rojo */
+    }
+    
+    .remove-obligaciones-btn:hover {
+      background-color: #c82333; /* Rojo más oscuro al hacer hover */
+    }
 
 
 

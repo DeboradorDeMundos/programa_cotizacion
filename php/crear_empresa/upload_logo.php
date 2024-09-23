@@ -59,7 +59,7 @@ if (isset($_FILES['logo_upload']) && $_FILES['logo_upload']['error'] == UPLOAD_E
 
 <!-- falta php de esto -->
 
-
+<link rel="stylesheet" href="../../css/crear_empresa/upload_logo.css">
 <h3>EJEMPLO: </h3>
 <div class="box-6 logo-box"> <!-- Crea una caja para el logo o foto de perfil, ocupando 6 de las 12 columnas disponibles en el diseño -->
     <!-- Imagen del logo o foto de perfil -->

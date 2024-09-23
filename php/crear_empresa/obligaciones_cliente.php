@@ -12,7 +12,7 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Condiciones Generales.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 <!-- falta php de esta funcion -->
-
+<link rel="stylesheet" href="../../css/crear_empresa/obligaciones_clientes.css">
 <h2>Obligaciones cliente</h2>
 <div id="obligaciones-container">
     

@@ -12,7 +12,7 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Formulario Cuenta.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
     <!-- Otros campos del formulario -->
-
+    <link rel="stylesheet" href="../../css/crear_empresa/formulario_cuenta.css">
     <div class="row">
         <div class="box-12 data-box bank-account-container">
             <h2>Agrega tu cuenta bancaria:</h2>
