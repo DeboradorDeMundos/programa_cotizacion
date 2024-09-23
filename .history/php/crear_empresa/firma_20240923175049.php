@@ -151,10 +151,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         nombre_empresa_firma, 
         area_empresa_firma, 
         telefono_empresa_firma, 
-        firma_digital, 
-        email_firma,
-        direccion_firma, 
-        rut_firma) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        firma_digital, email_firma,
+        direccion_firma, rut_firma) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         
         if ($stmt === false) {
             die("Error en la preparación de la consulta: " . $mysqli->error);

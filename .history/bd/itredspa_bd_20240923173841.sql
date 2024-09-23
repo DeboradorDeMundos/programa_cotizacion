@@ -385,6 +385,7 @@ CREATE TABLE E_obligaciones_cliente (
 -- ------------------------------------- TABLA firmas -----------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
 
+
 CREATE TABLE E_Firmas (
     id_firma INT AUTO_INCREMENT PRIMARY KEY,
     id_empresa INT NOT NULL,
@@ -399,9 +400,8 @@ CREATE TABLE E_Firmas (
     email_firma VARCHAR(70) NULL,
     direccion_firma VARCHAR(70) NULL,
     rut_firma VARCHAR(70) NULL,
-    FOREIGN KEY (id_empresa) REFERENCES e_Empresa(id_empresa)
+    FOREIGN KEY (id_empresa) REFERENCES e_Empresa(id_empresa),
 );
-
 
 
 -- ------------------------------------------------------------------------------------------------------------

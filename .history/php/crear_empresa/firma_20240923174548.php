@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $nombre_encargado = ""; // Dejar vacío si no hay encargado
         $cargo_encargado = "";  // Dejar vacío si no hay cargo
         $telefono_encargado_firma = "999999999";
-        $firma_digital = "";
+        %
         $stmt = $mysqli->prepare("INSERT INTO E_Firmas (
           id_empresa,
           titulo_firma,
@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $empresa_nombre, 
         $empresa_area, 
         $empresa_telefono, 
-        $firma_digital, 
+        null, 
         $empresa_email, 
         $empresa_direccion, 
         $empresa_rut);
@@ -140,39 +140,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email_firma = $_POST['email_firma'];
         $direccion_firma = $_POST['direccion_firma'];
         $rut_firma = $_POST['rut_firma'];
-        $firma_digital = "";
 
-        $stmt = $mysqli->prepare("INSERT INTO E_Firmas (
-        id_empresa,
-        titulo_firma, 
-        nombre_encargado_firma,
-        cargo_encargado_firma, 
-        telefono_encargado_firma, 
-        nombre_empresa_firma, 
-        area_empresa_firma, 
-        telefono_empresa_firma, 
-        firma_digital, 
-        email_firma,
-        direccion_firma, 
-        rut_firma) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $mysqli->prepare("INSERT INTO E_Firmas (id_empresa, titulo_firma, nombre_encargado_firma, cargo_encargado_firma, telefono_encargado_firma, nombre_empresa_firma, area_empresa_firma, telefono_empresa_firma, firma_digital, email_firma, direccion_firma, rut_firma) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         
         if ($stmt === false) {
             die("Error en la preparación de la consulta: " . $mysqli->error);
         }
 
-        $stmt->bind_param("isssssssssss", 
-        $id_empresa,
-        $titulo_firma,
-        $nombre_encargado,
-        $cargo_encargado,
-        $telefono_encargado_firma,
-        $nombre_empresa,
-        $area_empresa, 
-        $telefono_empresa, 
-        $firma_digital,
-        $email_firma,
-        $direccion_firma, 
-        $rut_firma);
+        $stmt->bind_param("isssssssssss", $id_empresa, $titulo_firma, $nombre_encargado, $cargo_encargado, $telefono_encargado_firma, $nombre_empresa, $area_empresa, $telefono_empresa, null, $email_firma, $direccion_firma, $rut_firma);
         $stmt->execute();
 
     } elseif ($firma_opcion === 'image') {
@@ -193,7 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $stmt->close();
-    
+    $mysqli->close();
 
     echo "Firma guardada con éxito.";
 }

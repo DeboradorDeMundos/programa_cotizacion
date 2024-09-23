@@ -140,39 +140,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email_firma = $_POST['email_firma'];
         $direccion_firma = $_POST['direccion_firma'];
         $rut_firma = $_POST['rut_firma'];
-        $firma_digital = "";
 
-        $stmt = $mysqli->prepare("INSERT INTO E_Firmas (
-        id_empresa,
-        titulo_firma, 
-        nombre_encargado_firma,
-        cargo_encargado_firma, 
-        telefono_encargado_firma, 
-        nombre_empresa_firma, 
-        area_empresa_firma, 
-        telefono_empresa_firma, 
-        firma_digital, 
-        email_firma,
-        direccion_firma, 
-        rut_firma) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $mysqli->prepare("INSERT INTO E_Firmas (id_empresa, titulo_firma, nombre_encargado_firma, cargo_encargado_firma, telefono_encargado_firma, nombre_empresa_firma, area_empresa_firma, telefono_empresa_firma, firma_digital, email_firma, direccion_firma, rut_firma) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         
         if ($stmt === false) {
             die("Error en la preparación de la consulta: " . $mysqli->error);
         }
 
-        $stmt->bind_param("isssssssssss", 
-        $id_empresa,
-        $titulo_firma,
-        $nombre_encargado,
-        $cargo_encargado,
-        $telefono_encargado_firma,
-        $nombre_empresa,
-        $area_empresa, 
-        $telefono_empresa, 
-        $firma_digital,
-        $email_firma,
-        $direccion_firma, 
-        $rut_firma);
+        $stmt->bind_param("isssssssssss", $id_empresa, $titulo_firma, $nombre_encargado, $cargo_encargado, $telefono_encargado_firma, $nombre_empresa, $area_empresa, $telefono_empresa, null, $email_firma, $direccion_firma, $rut_firma);
         $stmt->execute();
 
     } elseif ($firma_opcion === 'image') {

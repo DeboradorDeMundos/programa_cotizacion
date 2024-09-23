@@ -140,7 +140,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email_firma = $_POST['email_firma'];
         $direccion_firma = $_POST['direccion_firma'];
         $rut_firma = $_POST['rut_firma'];
-        $firma_digital = "";
 
         $stmt = $mysqli->prepare("INSERT INTO E_Firmas (
         id_empresa,
@@ -151,10 +150,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         nombre_empresa_firma, 
         area_empresa_firma, 
         telefono_empresa_firma, 
-        firma_digital, 
-        email_firma,
-        direccion_firma, 
-        rut_firma) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        firma_digital, email_firma,
+        direccion_firma, rut_firma) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         
         if ($stmt === false) {
             die("Error en la preparación de la consulta: " . $mysqli->error);
@@ -169,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $nombre_empresa,
         $area_empresa, 
         $telefono_empresa, 
-        $firma_digital,
+        null,
         $email_firma,
         $direccion_firma, 
         $rut_firma);

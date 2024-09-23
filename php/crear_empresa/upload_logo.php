@@ -51,13 +51,8 @@ if (isset($_FILES['logo_upload']) && $_FILES['logo_upload']['error'] == UPLOAD_E
     }
 }
 ?>
-<!-- ---------------------
-     -- FIN CONEXION BD --
-     --------------------- -->
 
 
-
-<!-- falta php de esto -->
 
 <link rel="stylesheet" href="../../css/crear_empresa/upload_logo.css">
 <h3>EJEMPLO: </h3>
