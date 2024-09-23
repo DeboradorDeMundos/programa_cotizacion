@@ -14,7 +14,12 @@ BPPJ
 
 
 
-     <table>
+<!-- Checkbox para mostrar/ocultar requisitos generales -->
+<label>
+    <input type="checkbox" id="toggle-requisitos" onclick="toggleRequisitos()"> Mostrar requisitos generales
+</label>
+
+<table id="requisitos-table" style="display: none;">
     <tr>
         <th style="background-color:lightgray">REQUISITOS GENERALES</th>
     </tr>
@@ -35,6 +40,15 @@ BPPJ
         </tr>
     <?php endif; ?>
 </table>
+
+<script>
+function toggleRequisitos() {
+    const checkbox = document.getElementById('toggle-requisitos');
+    const table = document.getElementById('requisitos-table');
+    // Muestra u oculta la tabla según el estado del checkbox
+    table.style.display = checkbox.checked ? 'table' : 'none';
+}
+</script>
 
 
 

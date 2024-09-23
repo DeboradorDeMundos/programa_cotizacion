@@ -204,16 +204,17 @@
                 <?php include 'pago.php'; ?>
 
                 <br>
+                
+                <?php include 'traer_condiciones.php'; ?>
 
+                <?php include 'traer_requisitos.php'; ?>
                 
                 <button type="submit" class="submit">Crear cotizacion</button> <!-- Botón para enviar el formulario y generar la cotización -->
                 </form> <!-- Cierra el formulario -->
                 </div> <!-- Cierra el contenedor principal -->
                 </div> <!-- Cierra el contenedor principal -->
 
-                <?php include 'traer_condiciones.php'; ?>
 
-                <?php include 'traer_requisitos.php'; ?>
 
                 <?php include 'traer_datos_bancarios.php'; ?>
 
