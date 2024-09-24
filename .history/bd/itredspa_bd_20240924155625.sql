@@ -46,12 +46,12 @@ DROP TABLE IF EXISTS E_Empresa;
 CREATE TABLE E_Empresa (
     id_empresa INT NOT NULL AUTO_INCREMENT, -- Identificador único de la empresa
     id_foto INT, -- Identificador de la foto de la empresa
-    rut_empresa VARCHAR(20) UNIQUE NOT NULL, -- RUT de la empresa
+    rut_empresa VARCHAR(20) UNIQUE, -- RUT de la empresa
     nombre_empresa VARCHAR(255) NOT NULL, -- Nombre de la empresa
-    area_empresa VARCHAR(255) NOT NULL, -- Área de la empresa
-    direccion_empresa VARCHAR(255) , -- Dirección de la empresa
-    telefono_empresa VARCHAR(20) , -- Teléfono de la empresa
-    email_empresa VARCHAR(100) , -- Email de la empresa
+    area_empresa VARCHAR(255), -- Área de la empresa
+    direccion_empresa VARCHAR(255), -- Dirección de la empresa
+    telefono_empresa VARCHAR(20), -- Teléfono de la empresa
+    email_empresa VARCHAR(100), -- Email de la empresa
     fecha_creacion DATE , -- fecha de creacion de la empresa
     dias_validez INT,
     PRIMARY KEY (id_empresa), -- Definición de la clave primaria
