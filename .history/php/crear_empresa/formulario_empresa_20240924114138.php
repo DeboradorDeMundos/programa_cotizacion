@@ -15,67 +15,52 @@ BPPJ
 <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
     <div class="box-12 data-box"> <!-- Crea una caja para ingresar datos, ocupando las 12 columnas disponibles en el diseño. Esta caja contiene varios campos de entrada de datos -->
 
-        <label for="empresa_nombre">Nombre de la Empresa:</label>
-        <input type="text" id="empresa_nombre" name="empresa_nombre" required minlength="3" maxlength="100" 
-            pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
-            title="Por favor, ingrese solo letras, números y caracteres como &,-."
-            placeholder="Ejemplo: Mi Empresa S.A.">
+        <label for="empresa_nombre">Nombre de la Empresa:</label> <!-- Etiqueta para el campo de entrada del nombre de la empresa -->
+        <input type="text" id="empresa_nombre" name="empresa_nombre" required> <!-- Campo de texto para ingresar el nombre de la empresa. El atributo "required" hace que el campo sea obligatorio -->
 
-        <label for="empresa_area">Área de la Empresa:</label>
-        <input type="text" id="empresa_area" name="empresa_area" 
-            minlength="2" maxlength="50" 
-            pattern="^[A-Za-zÀ-ÿ\s&.-]*$" 
-            title="Por favor, ingrese solo letras y espacios. Los caracteres permitidos son &, - y .."
-            placeholder="Ejemplo: Tecnología">
-
-        <label for="empresa_direccion">Dirección de la Empresa:</label>
-        <input type="text" id="empresa_direccion" name="empresa_direccion" 
-            minlength="5" maxlength="100" 
-            pattern="^[A-Za-z0-9À-ÿ\s#,-.]*$" 
-            title="Por favor, ingrese una dirección válida. Se permiten letras, números, espacios y los caracteres #, -, , y .."
-            placeholder="Ejemplo: Av. Siempre Viva 742">
+        
+        <label for="empresa_area">Área de la Empresa:</label> <!-- Etiqueta para el campo de entrada del área de la empresa -->
+        <input type="text" id="empresa_area" name="empresa_area"> <!-- Campo de texto para ingresar el área de la empresa. Este campo no es obligatorio -->
 
 
-        <label for="empresa_telefono">Teléfono de la Empresa:</label>
-        <input type="text" id="empresa_telefono" name="empresa_telefono" 
-            placeholder="+56 9 1234 1234" 
-            maxlength="11" 
-            required 
-            pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
-            title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-            oninput="formatPhoneNumber(this)">
+        <label for="empresa_direccion">Dirección de la Empresa:</label> <!-- Etiqueta para el campo de entrada de la dirección de la empresa -->
+        <input type="text" id="empresa_direccion" name="empresa_direccion"> <!-- Campo de texto para ingresar la dirección de la empresa. Este campo no es obligatorio -->
+
+
+        <label for="empresa_telefono">Teléfono de la Empresa:</label> <!-- Etiqueta para el campo de entrada del teléfono de la empresa -->
+        <input type="text" id="empresa_telefono" name="empresa_telefono" pattern="\+?\d{7,15}" placeholder="+1234567890"> <!-- Campo de texto para ingresar el teléfono de la empresa. Este campo no es obligatorio -->
 
 
         <label for="empresa_email">Email de la Empresa:</label> <!-- Etiqueta para el campo de entrada del email de la empresa -->
         <input type="email" id="empresa_email" name="empresa_email"> <!-- Campo de correo electrónico para ingresar el email de la empresa. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
-    
-        <label for="fecha_creacion">Fecha de Creacion de empresa:</label> <!-- Etiqueta para el campo de entrada de la fecha de emisión -->
-        <input type="date" id="fecha_creacion" name="fecha_creacion" required> <!-- Campo de fecha para seleccionar la fecha de emisión. Es obligatorio -->
+
         
     </div> <!-- Cierra la caja de datos -->
 </div> <!-- Cierra la fila -->
-<script src="../../js/crear_empresa/formulario_empresa.js"></script> 
 <?php
+session_start(); // Iniciar la sesión para acceder a la id_foto almacenada
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    
     // Primero, procesar el formulario de empresa
     if (isset($_POST['empresa_nombre'])) {
         // Obtener datos del formulario de empresa
-        $rut_empresa = $_POST['empresa_rut'];
+        $rut_empresa = $_POST['empresa_rut']; // Asegúrate de que este campo esté presente en tu formulario
         $nombre_empresa = $_POST['empresa_nombre'];
         $area_empresa = $_POST['empresa_area'];
         $direccion_empresa = $_POST['empresa_direccion'];
         $telefono_empresa = $_POST['empresa_telefono'];
         $email_empresa = $_POST['empresa_email'];
-        $fecha_creacion = $_POST['fecha_creacion'];
-        $dias_validez = $_POST['validez_cotizacion'];
-        var_dump($_POST['fecha_creacion']); // Añade esta línea para depurar
+        $fecha_creacion = date('Y-m-d'); // Puedes asignar la fecha actual directamente
+        $dias_validez = $_POST['validez_cotizacion']; // Este campo debe estar presente en tu formulario
+
+        // Asegúrate de que la id_foto esté disponible
+        $id_foto = isset($_SESSION['id_foto']) ? $_SESSION['id_foto'] : null;
 
         // Insertar empresa en la base de datos
-        $sql_empresa = "INSERT INTO E_Empresa (id_foto,rut_empresa, nombre_empresa, area_empresa, direccion_empresa, telefono_empresa, email_empresa, fecha_creacion, dias_validez)
-                        VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql_empresa = "INSERT INTO E_Empresa (rut_empresa, nombre_empresa, area_empresa, direccion_empresa, telefono_empresa, email_empresa, fecha_creacion, dias_validez, id_foto)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt_empresa = $mysqli->prepare($sql_empresa);
-        $stmt_empresa->bind_param("issssssis",$id_foto, $rut_empresa, $nombre_empresa, $area_empresa, $direccion_empresa, $telefono_empresa, $email_empresa, $fecha_creacion, $dias_validez);
+        $stmt_empresa->bind_param("ssssssssi", $rut_empresa, $nombre_empresa, $area_empresa, $direccion_empresa, $telefono_empresa, $email_empresa, $fecha_creacion, $dias_validez, $id_foto);
 
         if ($stmt_empresa->execute()) {
             // Obtener el ID de la empresa recién insertada
@@ -105,9 +90,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         $stmt_empresa->close();
     }
-
 }
 ?>
+
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Formulario Empresa .PHP ----------------------------------------

@@ -178,7 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } elseif ($firma_opcion === 'image') {
              // Firma digital (subida de imagen)
              if (isset($_FILES['signature-image']) && $_FILES['signature-image']['error'] === UPLOAD_ERR_OK) {
-                $target_dir = "../../imagenes/crear_empresas/firmas/";
+                $target_dir = "../../imagenes/crear_empresa/firma/";
                 $target_file = $target_dir . basename($_FILES["signature-image"]["name"]);
                 $uploadOk = 1;
                 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -213,10 +213,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             nombre_empresa_firma, 
                             area_empresa_firma, 
                             telefono_empresa_firma, 
-                            firma_ruta, 
+                            firma_digital, 
                             email_firma, 
                             direccion_firma, 
-                            rut_firma) VALUES (?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, ?, NULL, NULL, NULL)");
+                            rut_firma) VALUES (?, 'null', NULL, NULL, NULL, NULL, NULL, NULL, ?, NULL, NULL, NULL)");
                         
                         if ($stmt === false) {
                             die("Error en la preparación de la consulta: " . $mysqli->error);

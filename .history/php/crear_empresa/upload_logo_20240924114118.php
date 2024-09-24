@@ -30,6 +30,8 @@ BPPJ
 
 
 <?php
+session_start(); // Asegúrate de que la sesión esté iniciada
+
 // Verificar si el archivo fue subido sin errores
 if (isset($_FILES['logo_upload']) && $_FILES['logo_upload']['error'] == UPLOAD_ERR_OK) {
     $upload_dir = '../../imagenes/crear_empresa/logo/';
@@ -46,8 +48,6 @@ if (isset($_FILES['logo_upload']) && $_FILES['logo_upload']['error'] == UPLOAD_E
 
     // Mover el archivo cargado al directorio de destino
     if (move_uploaded_file($tmp_name, $upload_file)) {
-        echo "Imagen subida correctamente.";
-
         // Conectar a la base de datos
         $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
         if ($mysqli->connect_error) {
@@ -59,12 +59,9 @@ if (isset($_FILES['logo_upload']) && $_FILES['logo_upload']['error'] == UPLOAD_E
         $stmt_foto = $mysqli->prepare($sql_foto);
         $stmt_foto->bind_param("s", $upload_file);
         if ($stmt_foto->execute()) {
-            // Obtener el ID de la foto insertada
-            $id_foto = $stmt_foto->insert_id;
-            echo "Foto del perfil insertada correctamente. ID: " . $id_foto;
-
-            // Aquí puedes guardar la ID en un campo oculto en el formulario de la empresa
-            echo '<input type="hidden" name="id_foto" value="' . $id_foto . '">';
+            // Almacenar la id_foto en la sesión
+            $_SESSION['id_foto'] = $mysqli->insert_id; // Guardar el id_foto
+            echo "Foto del perfil insertada correctamente. ID: " . $_SESSION['id_foto'];
         } else {
             die("Error al insertar la foto del perfil: " . $stmt_foto->error);
         }
@@ -74,7 +71,6 @@ if (isset($_FILES['logo_upload']) && $_FILES['logo_upload']['error'] == UPLOAD_E
     }
 }
 ?>
-
 
 
 <!-- ------------------------------------------------------------------------------------------------------------

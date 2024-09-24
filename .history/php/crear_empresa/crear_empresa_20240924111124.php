@@ -73,6 +73,12 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
         <!-- La tabla se llenará dinámicamente -->
     </table>
 
+    <p>SIN OTRO PARTICULAR, Y ESPERANDO QUE LA PRESENTE OFERTA SEA DE SU INTERÉS, SE DESPIDE ATENTAMENTE</p> <!-- Mensaje de despedida en la oferta -->
+    <p>BARNER PATRICIO PIÑA JARA</p> <!-- Nombre del remitente -->
+    <p>JEFE DE PROYECTO TECNOLOGIA Y CONSTRUCCION</p> <!-- Cargo del remitente -->
+    <p>ITRED SPA.</p> <!-- Nombre de la empresa del remitente -->
+
+    
     <script src="../../js/crear_empresa/crear_empresa.js"></script> 
     <!-- Enlaza un archivo JavaScript externo para actualizar el logo o realizar otras actualizaciones -->
 </body>

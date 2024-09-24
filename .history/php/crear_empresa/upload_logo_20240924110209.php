@@ -11,28 +11,10 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Upload Logo.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-    
-
-
-<link rel="stylesheet" href="../../css/crear_empresa/upload_logo.css">
-<h3>EJEMPLO: </h3>
-<div class="box-6 logo-box"> <!-- Crea una caja para el logo o foto de perfil, ocupando 6 de las 12 columnas disponibles en el diseño -->
-    <!-- Imagen del logo o foto de perfil -->
-    <label for="logo-upload" class="logo-container"> <!-- Etiqueta para el campo de carga de imagen. El atributo "for" enlaza con el input de archivo -->
-        <img src="http://localhost/programa_cotizacion/imagenes/crear_empresa/generic-logo.png" alt="tamaño recomendado: 800x200 pixeles" class="logo" id="logo-preview"> <!-- Muestra una imagen previa del logo con un texto alternativo en caso de que no se cargue la imagen -->
-        <input type="file" id="logo-upload" name="logo_upload" accept="image/*" style="display:none;"> <!-- Campo oculto para cargar el archivo del logo. Acepta solo archivos de imagen -->
-        <button for="logo-upload" class="logo" type="file" id ="logo-upload" name="logo_upload" accept="image/*" style="display:block;">Sube tu Logo Empresarial tamaño recomendado: 800x200 pixeles formato: png</button > <!-- Texto que aparece junto a la imagen para instruir al usuario a cargar el logo -->  
-    </label>
-</div>
-
-<script src="../../js/crear_empresa/upload_logo.js"></script>
-
-
-
-<?php
+    <?php
 // Verificar si el archivo fue subido sin errores
 if (isset($_FILES['logo_upload']) && $_FILES['logo_upload']['error'] == UPLOAD_ERR_OK) {
-    $upload_dir = '../../imagenes/crear_empresa/logo/';
+    $upload_dir = '../../imagenes/crear_empresa/';
     $tmp_name = $_FILES['logo_upload']['tmp_name'];
     $name = basename($_FILES['logo_upload']['name']);
 
@@ -59,12 +41,7 @@ if (isset($_FILES['logo_upload']) && $_FILES['logo_upload']['error'] == UPLOAD_E
         $stmt_foto = $mysqli->prepare($sql_foto);
         $stmt_foto->bind_param("s", $upload_file);
         if ($stmt_foto->execute()) {
-            // Obtener el ID de la foto insertada
-            $id_foto = $stmt_foto->insert_id;
-            echo "Foto del perfil insertada correctamente. ID: " . $id_foto;
-
-            // Aquí puedes guardar la ID en un campo oculto en el formulario de la empresa
-            echo '<input type="hidden" name="id_foto" value="' . $id_foto . '">';
+            echo "Foto del perfil insertada correctamente.";
         } else {
             die("Error al insertar la foto del perfil: " . $stmt_foto->error);
         }
@@ -77,6 +54,16 @@ if (isset($_FILES['logo_upload']) && $_FILES['logo_upload']['error'] == UPLOAD_E
 
 
 
+<link rel="stylesheet" href="../../css/crear_empresa/upload_logo.css">
+<h3>EJEMPLO: </h3>
+<div class="box-6 logo-box"> <!-- Crea una caja para el logo o foto de perfil, ocupando 6 de las 12 columnas disponibles en el diseño -->
+    <!-- Imagen del logo o foto de perfil -->
+    <label for="logo-upload" class="logo-container"> <!-- Etiqueta para el campo de carga de imagen. El atributo "for" enlaza con el input de archivo -->
+        <img src="http://localhost/programa_cotizacion/imagenes/crear_empresa/generic-logo.png" alt="tamaño recomendado: 800x200 pixeles" class="logo" id="logo-preview"> <!-- Muestra una imagen previa del logo con un texto alternativo en caso de que no se cargue la imagen -->
+        <input type="file" id="logo-upload" name="logo_upload" accept="image/*" style="display:none;"> <!-- Campo oculto para cargar el archivo del logo. Acepta solo archivos de imagen -->
+        <button for="logo-upload" class="logo" type="file" id ="logo-upload" name="logo_upload" accept="image/*" style="display:block;">Sube tu Logo Empresarial tamaño recomendado: 800x200 pixeles formato: png</button > <!-- Texto que aparece junto a la imagen para instruir al usuario a cargar el logo -->  
+    </label>
+</div>
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Upload_Logo .PHP ----------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
