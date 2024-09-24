@@ -43,33 +43,55 @@ BPPJ
     <div class="form-group-inline">
 
         <div class="form-group">
-            <label for="area_trabajo">Área de Trabajo:</label> <!-- Etiqueta para el campo de entrada del área de trabajo -->
-            <input type="text" id="area_trabajo" name="area_trabajo" placeholder="tecnologia" required
-                minlength="2" maxlength="50" 
-                pattern="^[A-Za-zÀ-ÿ\s&.-]*$" 
-                title="Por favor, ingrese solo letras y espacios. Los caracteres permitidos son &, - y .."
-                placeholder="Ejemplo: Tecnología"> <!-- Campo de texto para ingresar el área de trabajo. Este campo es obligatorio -->
+            <label for="area_trabajo">Área de Trabajo:</label> <!-- Etiqueta para el campo de selección del área de trabajo -->
+            <select id="area_trabajo" name="area_trabajo" required> <!-- Campo de selección para el área de trabajo. Este campo es obligatorio -->
+                <option value="" disabled selected>Selecciona un área</option> <!-- Opción por defecto -->
+                <option value="tecnologia">Tecnología</option>
+                <option value="salud">Salud</option>
+                <option value="educacion">Educación</option>
+                <option value="construccion">Construcción</option>
+                <option value="marketing">Marketing</option>
+                <option value="finanzas">Finanzas</option>
+                <option value="logistica">Logística</option>
+                <option value="administracion">Administración</option>
+                <option value="recursos_humanos">Recursos Humanos</option>
+                <option value="ventas">Ventas</option>
+                <option value="diseño">Diseño</option>
+                <option value="investigacion">Investigación</option>
+                <option value="arte">Arte</option>
+                <option value="turismo">Turismo</option>
+                <option value="comercio">Comercio</option>
+            </select>
         </div>
 
         <div class="form-group">
-            <label for="tipo_trabajo">Tipo de Trabajo:</label>
-            <input type="text" id="tipo_trabajo" name="tipo_trabajo" 
-                placeholder="Ej: Instalación" 
-                required 
-                maxlength="50" 
-                pattern="^[a-zA-ZÀ-ÿ\s]+$" 
-                title="Ingresa solo letras y espacios.">
+            <label for="tipo_trabajo">Tipo de Trabajo:</label> <!-- Etiqueta para el campo de selección del tipo de trabajo -->
+            <select id="tipo_trabajo" name="tipo_trabajo" required> <!-- Campo de selección para el tipo de trabajo. Este campo es obligatorio -->
+                <option value="" disabled selected>Selecciona un tipo de trabajo</option> <!-- Opción por defecto -->
+                <option value="instalacion">Instalación</option>
+                <option value="mantenimiento">Mantenimiento</option>
+                <option value="reparacion">Reparación</option>
+                <option value="consultoria">Consultoría</option>
+                <option value="desarrollo">Desarrollo</option>
+                <option value="diseño">Diseño</option>
+                <option value="gestión">Gestión</option>
+                <option value="soporte">Soporte</option>
+                <option value="capacitación">Capacitación</option>
+                <option value="investigacion">Investigación</option>
+                <option value="logistica">Logística</option>
+                <option value="ventas">Ventas</option>
+            </select>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="riesgo">Riesgo:</label>
-        <input type="text" id="riesgo" name="riesgo" 
-            placeholder="Ej: alto, medio, bajo" 
-            required 
-            maxlength="10" 
-            pattern="^(alto|medio|bajo)$" 
-            title="Ingresa 'alto', 'medio' o 'bajo'.">
+        <label for="riesgo">Riesgo:</label> <!-- Etiqueta para el campo de selección del riesgo -->
+        <select id="riesgo" name="riesgo" required> <!-- Campo de selección para el riesgo. Este campo es obligatorio -->
+            <option value="" disabled selected>Selecciona un nivel de riesgo</option> <!-- Opción por defecto -->
+            <option value="alto">Alto</option>
+            <option value="medio">Medio</option>
+            <option value="bajo">Bajo</option>
+        </select>
     </div>
 </fieldset>
 
@@ -101,14 +123,21 @@ BPPJ
             title="Ingresa un horario válido (Ej: 08:00 a 18:00)."> <!-- Campo de texto para ingresar el horario. Este campo no es obligatorio -->
         </div>
         <div class="form-group">
-            <label for="colacion">Colación:</label> <!-- Etiqueta para el campo de entrada de colación -->
-            <input type="text" id="colacion" name="colacion" placeholder="Si/No"> <!-- Campo de texto para ingresar la información sobre la colación. No es obligatorio -->
+            <label for="colacion">Colación:</label>
+            <input type="text" id="colacion" name="colacion" 
+                placeholder="Ej: Sí o No" 
+                pattern="^[a-zA-Z0-9-_]{1,10}$" 
+                title="Ingresa 'Sí' o 'No'." /> <!-- Campo de texto para ingresar la información sobre la colación. No es obligatorio -->
         </div>
     </div>
 
     <div class="form-group">
         <label for="entrega">Entrega:</label> <!-- Etiqueta para el campo de entrada de la entrega -->
-        <input type="text" id="entrega" name="entrega" placeholder="Dia entrega"> <!-- Campo de texto para ingresar detalles sobre la entrega. Este campo no es obligatorio -->
+        <input type="text" id="entrega" name="entrega" 
+            placeholder="Ej: Lunes, Martes" 
+            required 
+            pattern="^[a-zA-Z0-9-_]{1,10}$" 
+            title="Ingresa un día de la semana (Ej: Lunes, Martes, etc.). Solo se permiten nombres de días."> <!-- Campo de texto para ingresar detalles sobre la entrega. Este campo no es obligatorio -->
     </div>
 </fieldset>
 

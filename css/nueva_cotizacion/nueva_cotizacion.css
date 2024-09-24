@@ -332,6 +332,7 @@ fieldset legend {
 }
 
 .form-group label,
+.form-group select,
 .form-group input {
   display: flex;
   align-items: center; /* Centra el contenido de los label e input */
@@ -345,7 +346,7 @@ fieldset legend {
   border-radius: 3px 0px 0px 3px;
   text-align: left;
 }
-
+.form-group select,
 .form-group input {
   flex: 2; /* Hace que el input ocupe 2 partes del espacio disponible */
   padding: 5px;

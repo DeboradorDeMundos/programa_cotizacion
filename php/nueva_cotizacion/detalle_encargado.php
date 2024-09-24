@@ -22,33 +22,61 @@ BPPJ
                 <label for="encargado_rut">RUT: </label> <!-- Etiqueta para el campo de entrada del RUT del cliente -->
                 <input type="text" id="encargado-rut" name="encargado_rut" 
                     minlength="7" maxlength="12" 
-                    placeholder="x.xxx.xxx-x"
+                    placeholder="Ej: 12.345.678-9"
                     required oninput="formatRut(this)"> <!-- Campo de texto para ingresar el RUT del cliente. También es obligatorio -->
             </div>
             <div class="form-group">
                 <label for="enc_nombre">Nombre:</label> <!-- Etiqueta para el campo de entrada del nombre del encargado -->
-                <input type="text" id="enc-nombre" name="enc_nombre"> <!-- Campo de texto para ingresar el nombre del encargado. Este campo no es obligatorio -->
+                <input type="text" id="enc-nombre" name="enc_nombre" 
+                    placeholder="Ej: Juan Pérez" 
+                    required 
+                    minlength="3" 
+                    maxlength="50" 
+                    pattern="^[a-zA-ZÀ-ÿ\s]+$" 
+                    title="Ingresa un nombre válido (Ej: Juan Pérez). Solo se permiten letras y espacios."> <!-- Campo de texto para ingresar el nombre del encargado. Este campo no es obligatorio -->
             </div>
         </div>
     
        
         <div class="form-group">
             <label for="enc_email">Email:</label> <!-- Etiqueta para el campo de entrada del email del encargado -->
-            <input type="email" id="enc-email" name="enc_email"> <!-- Campo de correo electrónico para ingresar el email del encargado. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
+            <input type="email" id="enc-email" name="enc_email"
+                placeholder="ejemplo@gmail.com" 
+                maxlength="255" 
+                required 
+                title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
+                onblur="completeEmail(this)"> <!-- Campo de correo electrónico para ingresar el email del encargado. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
         </div>
         <div class="form-group">
         <label for="enc_fono">Teléfono:</label> <!-- Etiqueta para el campo de entrada del teléfono del encargado -->
-        <input type="text" id="enc-fono" name="enc_fono" pattern="\+?\d{7,15}" placeholder="+1234567890"> <!-- Campo de texto para ingresar el teléfono del encargado. Este campo no es obligatorio -->
+        <input type="text" id="enc-fono" name="enc_fono" 
+            placeholder="+56 9 1234 1234" 
+            maxlength="11" 
+            required 
+            pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
+            title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
+            oninput="formatPhoneNumber(this)"> <!-- Campo de texto para ingresar el teléfono del encargado. Este campo no es obligatorio -->
         </div>
     </div>
     <div class="box-6 data-box data-box-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "data-box-left" para estilo -->
         <div class="form-group">
             <label for="enc_celular">Celular:</label> <!-- Etiqueta para el campo de entrada del celular del encargado -->
-            <input type="text" id="en-_celular" name="enc_celular" pattern="\+?\d{7,15}" placeholder="+1234567890"> <!-- Campo de texto para ingresar el número de celular del encargado. Este campo no es obligatorio -->
+            <input type="text" id="en-_celular" name="enc_celular"
+                placeholder="+56 9 1234 1234" 
+                    maxlength="11" 
+                    required 
+                    pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
+                    title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
+                    oninput="formatPhoneNumber(this)"> <!-- Campo de texto para ingresar el número de celular del encargado. Este campo no es obligatorio -->
         </div>
         <div class="form-group">
             <label for="enc_proyecto">Proyecto Asignado:</label> <!-- Etiqueta para el campo de entrada del proyecto asignado al encargado -->
-            <input type="text" id="enc-proyecto" name="enc_proyecto"> <!-- Campo de texto para ingresar el nombre del proyecto asignado al encargado. No es obligatorio -->
+            <input type="text" id="enc-proyecto" name="enc_proyecto" 
+                placeholder="Ej: Proyecto XYZ" 
+                minlength="3" 
+                maxlength="100" 
+                pattern="^[a-zA-ZÀ-ÿ0-9\s\-]+$" 
+                title="Ingresa un nombre de proyecto válido (Ej: Proyecto XYZ). Solo se permiten letras, números, espacios y guiones."> <!-- Campo de texto para ingresar el nombre del proyecto asignado al encargado. No es obligatorio -->
         </div>
     </div>
 </fieldset> <!-- Cierra la fila -->
