@@ -60,7 +60,13 @@ function obtener_datos_empresa($mysqli, $id) {
         </div>
         <div class="form-group">
             <label for="empresa_telefono">Teléfono</label> <!-- Etiqueta para el campo de entrada del teléfono de la empresa -->
-            <input type="text" id="empresa_telefono" name="empresa_telefono" pattern="\+?\d{7,15}" placeholder="+1234567890" value="<?php echo htmlspecialchars($row['EmpresaTelefono']); ?>"> <!-- Campo de texto para ingresar el teléfono de la empresa. Este campo no es obligatorio -->
+            <input type="text" id="empresa_telefono" name="empresa_telefono" pattern="\+?\d{7,15}" placeholder="+1234567890" value="<?php echo htmlspecialchars($row['EmpresaTelefono']); ?>"
+                placeholder="+56 9 1234 1234" 
+                maxlength="11" 
+                required 
+                pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
+                title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
+                oninput="formatPhoneNumber(this)">  <!-- Campo de texto para ingresar el teléfono de la empresa. Este campo no es obligatorio -->
         </div>
         <div class="form-group">
             <label for="empresa_email">Email</label> <!-- Etiqueta para el campo de entrada del email de la empresa -->
