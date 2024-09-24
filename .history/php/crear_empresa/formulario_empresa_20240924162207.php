@@ -64,7 +64,6 @@ BPPJ
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $mensaje = ""; // Inicializa el mensaje
 
     if (isset($_POST['empresa_nombre'])) {
         // Obtener datos del formulario de empresa
@@ -79,46 +78,70 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Verificar que la fecha está bien formada antes de intentar insertarla
         if ($fecha_creacion && preg_match('/^\d{4}-\d{2}-\d{2}$/', $fecha_creacion)) {
-            // Intenta hacer una consulta directa de prueba sin bind_param
-            $sql_empresa = "INSERT INTO E_Empresa (id_foto, rut_empresa, nombre_empresa, area_empresa, direccion_empresa, telefono_empresa, email_empresa, fecha_creacion, dias_validez)
-                            VALUES ($id_foto, '$rut_empresa', '$nombre_empresa', '$area_empresa', '$direccion_empresa', '$telefono_empresa', '$email_empresa', '$fecha_creacion', $dias_validez)";
-            
-            if ($mysqli->query($sql_empresa) === TRUE) {
-                // Obtener el ID de la empresa recién insertada
-                $id_empresa = $mysqli->insert_id;
+            echo "Fecha de creación válida: $fecha_creacion<br>";
+        } else {
+            echo "Error: Fecha de creación no válida o no se recibió correctamente.<br>";
+            var_dump($fecha_creacion);
+            die();
+        }
 
-                // Ahora, procesar la cotización si se han proporcionado los datos
-                if (isset($_POST['numero_cotizacion']) && isset($_POST['validez_cotizacion'])) {
-                    $numero_cotizacion = $_POST['numero_cotizacion'];
-                    $validez_cotizacion = (int)$_POST['validez_cotizacion'];
+        // Intenta hacer una consulta directa de prueba sin bind_param
+        $sql_empresa = "INSERT INTO E_Empresa (id_foto, rut_empresa, nombre_empresa, area_empresa, direccion_empresa, telefono_empresa, email_empresa, fecha_creacion, dias_validez)
+                        VALUES ($id_foto, '$rut_empresa', '$nombre_empresa', '$area_empresa', '$direccion_empresa', '$telefono_empresa', '$email_empresa', '$fecha_creacion', $dias_validez)";
+        
+        echo "Consulta SQL: " . $sql_empresa . "<br>";
 
-                    // Insertar la cotización
-                    $sql_cotizacion = "INSERT INTO c_cotizaciones (numero_cotizacion, fecha_emision, fecha_validez, id_empresa)
-                                       VALUES ('$numero_cotizacion', CURDATE(), DATE_ADD(CURDATE(), INTERVAL $validez_cotizacion DAY), $id_empresa)";
-                    
-                    if ($mysqli->query($sql_cotizacion) === TRUE) {
-                        $mensaje = "Empresa creada correctamente, se redirije al home.";
-                    } else {
-                        $mensaje = "Error al insertar la cotización: " . $mysqli->error;
-                    }
+        if ($mysqli->query($sql_empresa) === TRUE) {
+            // Obtener el ID de la empresa recién insertada
+            $id_empresa = $mysqli->insert_id;
+            echo "<script>
+                    alert('Empresa insertada correctamente con ID: $id_empresa');
+                    setTimeout(function() {
+                        window.location.href = 'programa_cotizacion.php';
+                    }, 3000);
+                  </script>";
+
+            // Ahora, procesar la cotización si se han proporcionado los datos
+            if (isset($_POST['numero_cotizacion']) && isset($_POST['validez_cotizacion'])) {
+                $numero_cotizacion = $_POST['numero_cotizacion'];
+                $validez_cotizacion = (int)$_POST['validez_cotizacion'];
+
+                // Insertar la cotización
+                $sql_cotizacion = "INSERT INTO c_cotizaciones (numero_cotizacion, fecha_emision, fecha_validez, id_empresa)
+                                   VALUES ('$numero_cotizacion', CURDATE(), DATE_ADD(CURDATE(), INTERVAL $validez_cotizacion DAY), $id_empresa)";
+                
+                if ($mysqli->query($sql_cotizacion) === TRUE) {
+                    echo "<script>
+                            alert('Cotización creada correctamente con ID: " . $mysqli->insert_id . "');
+                            setTimeout(function() {
+                                window.location.href = 'programa_cotizacion.php';
+                            }, 3000);
+                          </script>";
                 } else {
-                    $mensaje = "Empresa creada correctamente, pero no se proporcionó la cotización.";
+                    echo "<script>
+                            alert('Error al insertar la cotización: " . $mysqli->error . "');
+                            setTimeout(function() {
+                                window.location.href = 'programa_cotizacion.php';
+                            }, 3000);
+                          </script>";
                 }
-            } else {
-                $mensaje = "Error al insertar la empresa: " . $mysqli->error;
             }
         } else {
-            $mensaje = "Error: Fecha de creación no válida o no se recibió correctamente.";
+            echo "<script>
+                    alert('Error al insertar la empresa: " . $mysqli->error . "');
+                    setTimeout(function() {
+                        window.location.href = 'programa_cotizacion.php';
+                    }, 3000);
+                  </script>";
         }
     } else {
-        $mensaje = "Error: No se envió el nombre de la empresa.";
+        echo "<script>
+                alert('Error: No se envió el nombre de la empresa.');
+                setTimeout(function() {
+                    window.location.href = '../programa_cotizacion.php';
+                }, 3000);
+              </script>";
     }
-
-    // Mostrar el mensaje y redirigir
-    echo "<script>
-            alert('$mensaje');
-            window.location.href='../../programa_cotizacion.php';
-          </script>";
 }
 ?>
 

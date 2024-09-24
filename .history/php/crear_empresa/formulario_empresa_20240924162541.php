@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                        VALUES ('$numero_cotizacion', CURDATE(), DATE_ADD(CURDATE(), INTERVAL $validez_cotizacion DAY), $id_empresa)";
                     
                     if ($mysqli->query($sql_cotizacion) === TRUE) {
-                        $mensaje = "Empresa creada correctamente, se redirije al home.";
+                        $mensaje = "Empresa y cotización creadas correctamente.";
                     } else {
                         $mensaje = "Error al insertar la cotización: " . $mysqli->error;
                     }
