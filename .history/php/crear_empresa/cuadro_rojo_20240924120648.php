@@ -22,7 +22,10 @@ BPPJ
     
     <label for="validez_cotizacion"> Validez de la Cotización</label> <!-- Etiqueta para el campo de entrada de la validez de la cotización -->
     <input type="number" id="validez_cotizacion" name="validez_cotizacion" required min="1" required placeholder="30" > <!-- Campo de número para ingresar la validez de la cotización en días. El atributo "required" asegura que no se deje vacío -->
+    
    
+
+
 </div>
 
 

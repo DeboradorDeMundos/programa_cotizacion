@@ -28,7 +28,6 @@ BPPJ
 <script src="../../js/crear_empresa/upload_logo.js"></script>
 
 
-
 <?php
 // Verificar si el archivo fue subido sin errores
 if (isset($_FILES['logo_upload']) && $_FILES['logo_upload']['error'] == UPLOAD_ERR_OK) {
@@ -59,12 +58,23 @@ if (isset($_FILES['logo_upload']) && $_FILES['logo_upload']['error'] == UPLOAD_E
         $stmt_foto = $mysqli->prepare($sql_foto);
         $stmt_foto->bind_param("s", $upload_file);
         if ($stmt_foto->execute()) {
-            // Obtener el ID de la foto insertada
-            $id_foto = $stmt_foto->insert_id;
-            echo "Foto del perfil insertada correctamente. ID: " . $id_foto;
+            echo "Foto del perfil insertada correctamente.";
 
-            // Aquí puedes guardar la ID en un campo oculto en el formulario de la empresa
-            echo '<input type="hidden" name="id_foto" value="' . $id_foto . '">';
+            // Obtener el último id_foto insertado
+            $id_foto = $mysqli->insert_id;
+
+            // Ahora actualizar la tabla e_empresa con el id_foto
+            $sql_empresa = "UPDATE e_Empresa SET id_foto = ? WHERE id_empresa = ?";
+            $stmt_empresa = $mysqli->prepare($sql_empresa);
+            $stmt_empresa->bind_param("ii", $id_foto, $id_empresa);
+            
+            if ($stmt_empresa->execute()) {
+                echo "Empresa actualizada correctamente con el ID de la foto.";
+            } else {
+                die("Error al actualizar la empresa: " . $stmt_empresa->error);
+            }
+
+            $stmt_empresa->close();
         } else {
             die("Error al insertar la foto del perfil: " . $stmt_foto->error);
         }
@@ -74,7 +84,6 @@ if (isset($_FILES['logo_upload']) && $_FILES['logo_upload']['error'] == UPLOAD_E
     }
 }
 ?>
-
 
 
 <!-- ------------------------------------------------------------------------------------------------------------

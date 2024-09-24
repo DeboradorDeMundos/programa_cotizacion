@@ -34,14 +34,11 @@ BPPJ
         <label for="empresa_email">Email de la Empresa:</label> <!-- Etiqueta para el campo de entrada del email de la empresa -->
         <input type="email" id="empresa_email" name="empresa_email"> <!-- Campo de correo electrónico para ingresar el email de la empresa. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
     
-        <label for="fecha_creacion">Fecha de Creacion de empresa:</label> <!-- Etiqueta para el campo de entrada de la fecha de emisión -->
-        <input type="date" id="fecha_creacion" name="fecha_creacion" required> <!-- Campo de fecha para seleccionar la fecha de emisión. Es obligatorio -->
         
     </div> <!-- Cierra la caja de datos -->
 </div> <!-- Cierra la fila -->
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    
     // Primero, procesar el formulario de empresa
     if (isset($_POST['empresa_nombre'])) {
         // Obtener datos del formulario de empresa
@@ -53,14 +50,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email_empresa = $_POST['empresa_email'];
         $fecha_creacion = $_POST['fecha_creacion'];
         $dias_validez = $_POST['validez_cotizacion'];
-        var_dump($_POST['fecha_creacion']); // Añade esta línea para depurar
+            // Conversión de fecha
+       // Conversión de fecha
+$fecha_creacion_formateada = DateTime::createFromFormat('d-m-Y', $fecha_creacion)->format('Y-m-d');
 
         // Insertar empresa en la base de datos
-        $sql_empresa = "INSERT INTO E_Empresa (id_foto,rut_empresa, nombre_empresa, area_empresa, direccion_empresa, telefono_empresa, email_empresa, fecha_creacion, dias_validez)
-                        VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)";
-        $stmt_empresa = $mysqli->prepare($sql_empresa);
-        $stmt_empresa->bind_param("issssssis",$id_foto, $rut_empresa, $nombre_empresa, $area_empresa, $direccion_empresa, $telefono_empresa, $email_empresa, $fecha_creacion, $dias_validez);
-
+$sql_empresa = "INSERT INTO E_Empresa (id_foto, rut_empresa, nombre_empresa, area_empresa, direccion_empresa, telefono_empresa, email_empresa, fecha_creacion, dias_validez)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$stmt_empresa = $mysqli->prepare($sql_empresa);
+$stmt_empresa->bind_param("issssssis", $id_foto, $rut_empresa, $nombre_empresa, $area_empresa, $direccion_empresa, $telefono_empresa, $email_empresa, $fecha_creacion_formateada, $dias_validez);
         if ($stmt_empresa->execute()) {
             // Obtener el ID de la empresa recién insertada
             $id_empresa = $stmt_empresa->insert_id;

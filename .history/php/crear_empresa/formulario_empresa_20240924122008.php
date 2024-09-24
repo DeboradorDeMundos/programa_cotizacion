@@ -41,7 +41,9 @@ BPPJ
 </div> <!-- Cierra la fila -->
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    
+    try {
+        if ($stmt_empresa->execute()) {
+            // código de éxito...
     // Primero, procesar el formulario de empresa
     if (isset($_POST['empresa_nombre'])) {
         // Obtener datos del formulario de empresa

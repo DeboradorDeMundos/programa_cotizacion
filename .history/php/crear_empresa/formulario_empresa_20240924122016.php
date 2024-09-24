@@ -54,7 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fecha_creacion = $_POST['fecha_creacion'];
         $dias_validez = $_POST['validez_cotizacion'];
         var_dump($_POST['fecha_creacion']); // Añade esta línea para depurar
-
+        try {
+            if ($stmt_empresa->execute()) {
+                // código de éxito...
         // Insertar empresa en la base de datos
         $sql_empresa = "INSERT INTO E_Empresa (id_foto,rut_empresa, nombre_empresa, area_empresa, direccion_empresa, telefono_empresa, email_empresa, fecha_creacion, dias_validez)
                         VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)";

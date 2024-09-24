@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt_empresa = $mysqli->prepare($sql_empresa);
         $stmt_empresa->bind_param("issssssis",$id_foto, $rut_empresa, $nombre_empresa, $area_empresa, $direccion_empresa, $telefono_empresa, $email_empresa, $fecha_creacion, $dias_validez);
-
+        try {
         if ($stmt_empresa->execute()) {
             // Obtener el ID de la empresa recién insertada
             $id_empresa = $stmt_empresa->insert_id;
@@ -90,6 +90,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt_empresa->close();
     }
 
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage();
 }
 ?>
 

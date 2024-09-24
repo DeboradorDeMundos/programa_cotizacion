@@ -33,33 +33,46 @@ BPPJ
 
         <label for="empresa_email">Email de la Empresa:</label> <!-- Etiqueta para el campo de entrada del email de la empresa -->
         <input type="email" id="empresa_email" name="empresa_email"> <!-- Campo de correo electrónico para ingresar el email de la empresa. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
-    
-        <label for="fecha_creacion">Fecha de Creacion de empresa:</label> <!-- Etiqueta para el campo de entrada de la fecha de emisión -->
-        <input type="date" id="fecha_creacion" name="fecha_creacion" required> <!-- Campo de fecha para seleccionar la fecha de emisión. Es obligatorio -->
+
         
     </div> <!-- Cierra la caja de datos -->
 </div> <!-- Cierra la fila -->
+
+<div class="row">
+    <div class="box-12 data-box">
+        <!-- Campos existentes... -->
+
+        <!-- Campo oculto para la ID de la foto -->
+        <input type="hidden" name="id_foto" value="">
+    </div>
+</div>
+
+
+
 <?php
+session_start(); // Iniciar la sesión para acceder a la id_foto almacenada
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    
     // Primero, procesar el formulario de empresa
     if (isset($_POST['empresa_nombre'])) {
         // Obtener datos del formulario de empresa
-        $rut_empresa = $_POST['empresa_rut'];
+        $rut_empresa = $_POST['empresa_rut']; // Asegúrate de que este campo esté presente en tu formulario
         $nombre_empresa = $_POST['empresa_nombre'];
         $area_empresa = $_POST['empresa_area'];
         $direccion_empresa = $_POST['empresa_direccion'];
         $telefono_empresa = $_POST['empresa_telefono'];
         $email_empresa = $_POST['empresa_email'];
-        $fecha_creacion = $_POST['fecha_creacion'];
-        $dias_validez = $_POST['validez_cotizacion'];
-        var_dump($_POST['fecha_creacion']); // Añade esta línea para depurar
+        $fecha_creacion = date('Y-m-d'); // Puedes asignar la fecha actual directamente
+        $dias_validez = $_POST['validez_cotizacion']; // Este campo debe estar presente en tu formulario
+
+        // Asegúrate de que la id_foto esté disponible
+        $id_foto = isset($_SESSION['id_foto']) ? $_SESSION['id_foto'] : null;
 
         // Insertar empresa en la base de datos
-        $sql_empresa = "INSERT INTO E_Empresa (id_foto,rut_empresa, nombre_empresa, area_empresa, direccion_empresa, telefono_empresa, email_empresa, fecha_creacion, dias_validez)
-                        VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql_empresa = "INSERT INTO E_Empresa (rut_empresa, nombre_empresa, area_empresa, direccion_empresa, telefono_empresa, email_empresa, fecha_creacion, dias_validez, id_foto)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt_empresa = $mysqli->prepare($sql_empresa);
-        $stmt_empresa->bind_param("issssssis",$id_foto, $rut_empresa, $nombre_empresa, $area_empresa, $direccion_empresa, $telefono_empresa, $email_empresa, $fecha_creacion, $dias_validez);
+        $stmt_empresa->bind_param("ssssssssi", $rut_empresa, $nombre_empresa, $area_empresa, $direccion_empresa, $telefono_empresa, $email_empresa, $fecha_creacion, $dias_validez, $id_foto);
 
         if ($stmt_empresa->execute()) {
             // Obtener el ID de la empresa recién insertada
@@ -89,9 +102,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         $stmt_empresa->close();
     }
-
 }
 ?>
+
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Formulario Empresa .PHP ----------------------------------------

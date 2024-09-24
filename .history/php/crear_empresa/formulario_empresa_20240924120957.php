@@ -34,8 +34,6 @@ BPPJ
         <label for="empresa_email">Email de la Empresa:</label> <!-- Etiqueta para el campo de entrada del email de la empresa -->
         <input type="email" id="empresa_email" name="empresa_email"> <!-- Campo de correo electrónico para ingresar el email de la empresa. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
     
-        <label for="fecha_creacion">Fecha de Creacion de empresa:</label> <!-- Etiqueta para el campo de entrada de la fecha de emisión -->
-        <input type="date" id="fecha_creacion" name="fecha_creacion" required> <!-- Campo de fecha para seleccionar la fecha de emisión. Es obligatorio -->
         
     </div> <!-- Cierra la caja de datos -->
 </div> <!-- Cierra la fila -->
@@ -54,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fecha_creacion = $_POST['fecha_creacion'];
         $dias_validez = $_POST['validez_cotizacion'];
         var_dump($_POST['fecha_creacion']); // Añade esta línea para depurar
-
+        $fecha_creacion = $_POST['fecha_creacion']; // Debería estar en el formato YYYY-MM-DD
         // Insertar empresa en la base de datos
         $sql_empresa = "INSERT INTO E_Empresa (id_foto,rut_empresa, nombre_empresa, area_empresa, direccion_empresa, telefono_empresa, email_empresa, fecha_creacion, dias_validez)
                         VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)";
@@ -65,7 +63,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Obtener el ID de la empresa recién insertada
             $id_empresa = $stmt_empresa->insert_id;
             echo "Empresa insertada correctamente. ID de la empresa: " . $id_empresa . "<br>";
-
+            if (!$stmt_empresa->execute()) {
+                // Esto te dará información sobre por qué falla la inserción
+                die("Error al insertar la empresa: " . $stmt_empresa->error);
+            }
             // Ahora, procesar la cotización si se han proporcionado los datos
             if (isset($_POST['numero_cotizacion']) && isset($_POST['validez_cotizacion'])) {
                 $numero_cotizacion = $_POST['numero_cotizacion'];
