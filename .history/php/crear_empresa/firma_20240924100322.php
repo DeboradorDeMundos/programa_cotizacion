@@ -235,7 +235,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 echo "No se ha seleccionado ninguna imagen.";
             }
         }
-      
+    
+        $stmt->close();
+        $mysqli->close();
     }
 ?>
 

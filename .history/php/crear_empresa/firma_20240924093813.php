@@ -32,34 +32,35 @@ BPPJ
             <div id="auto-signature-display" class="signature-display" style="display: none;"></div>
         </div>
 
-    <!-- Opción de Firma Manual -->
-    <div class="option">
-    <input type="radio" id="manual-signature" name="signature-option" value="manual">
-    <label for="manual-signature">Firma Manual</label>
-    <div id="manual-signatures" class="signature-display" style="display: none;">
-        <div class="signature-row">
-            <input type="text" name="titulo_firma" placeholder="titulo de la firma">
-            <input type="text" name="nombre_encargado_firma" placeholder="Nombre del Encargado">
-            <input type="text" name="cargo_encargado_firma" placeholder="Cargo del Encargado">
-            <input type="text" name="telefono_encargado_firma" placeholder="Teléfono del Encargado">
-            <input type="text" name="nombre_empresa_firma" placeholder="Nombre de la Empresa">
-            <input type="text" name="area_empresa_firma" placeholder="Área de la Empresa">
-            <input type="text" name="telefono_empresa_firma" placeholder="Teléfono de la Empresa">
-            <input type="email" name="email_firma" placeholder="Email">
-            <input type="text" name="direccion_firma" placeholder="Dirección">
-            <input type="text" name="rut_firma" placeholder="RUT">
-            </div>
+<!-- Opción de Firma Manual -->
+<div class="option">
+<input type="radio" id="manual-signature" name="signature-option" value="manual">
+<label for="manual-signature">Firma Manual</label>
+<div id="manual-signatures" class="signature-display" style="display: none;">
+    <div class="signature-row">
+        <input type="text" name="titulo_firma" placeholder="titulo de la firma">
+        <input type="text" name="nombre_encargado_firma" placeholder="Nombre del Encargado">
+        <input type="text" name="cargo_encargado_firma" placeholder="Cargo del Encargado">
+        <input type="text" name="telefono_encargado_firma" placeholder="Teléfono del Encargado">
+        <input type="text" name="nombre_empresa_firma" placeholder="Nombre de la Empresa">
+        <input type="text" name="area_empresa_firma" placeholder="Área de la Empresa">
+        <input type="text" name="telefono_empresa_firma" placeholder="Teléfono de la Empresa">
+        <input type="email" name="email_firma" placeholder="Email">
+        <input type="text" name="direccion_firma" placeholder="Dirección">
+        <input type="text" name="rut_firma" placeholder="RUT">
         </div>
     </div>
+</div>
 
-                <!-- Opción de Firma Digital (Subida de Imagen) -->
-            <div class="option">
-                <input type="radio" id="image-signature" name="signature-option" value="image">
-                <label for="image-signature">Firma Digital</label>
-                <input type="file" id="signature-image" name="signature-image" accept="image/png">
-                <!-- Previsualización de la imagen de la firma -->
-                <img id="signature-preview" src="" alt="Previsualización de firma" style="display: none;">
-            </div>
+        <!-- Opción de Firma Digital (Subida de Imagen) -->
+        <div class="option">
+            <input type="radio" id="image-signature" name="signature-option" value="image">
+            <label for="image-signature">Firma Digital</label>
+            <input type="file" id="signature-image" name="signature-image" accept="image/png" style="display: none;">
+            <!-- Previsualización de la imagen de la firma -->
+            <img id="signature-preview" src="" alt="Previsualización de firma" style="display: none;">
+        </div>
+
     </div>
 
     <script src="../../js/crear_empresa/firma.js"></script>
@@ -176,67 +177,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->execute();
 
     } elseif ($firma_opcion === 'image') {
-             // Firma digital (subida de imagen)
-             if (isset($_FILES['signature-image']) && $_FILES['signature-image']['error'] === UPLOAD_ERR_OK) {
-                $target_dir = "../../imagenes/crear_empresas/firmas/";
-                $target_file = $target_dir . basename($_FILES["signature-image"]["name"]);
-                $uploadOk = 1;
-                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-    
-                // Comprobar si es una imagen válida
-                $check = getimagesize($_FILES["signature-image"]["tmp_name"]);
-                if ($check !== false) {
-                    $uploadOk = 1;
-                } else {
-                    echo "El archivo no es una imagen.";
-                    $uploadOk = 0;
-                }
-    
-                // Limitar los formatos de imagen
-                if ($imageFileType != "png") {
-                    echo "Solo se permiten archivos PNG.";
-                    $uploadOk = 0;
-                }
-    
-                // Subir el archivo si todo está bien
-                if ($uploadOk == 1) {
-                    if (move_uploaded_file($_FILES["signature-image"]["tmp_name"], $target_file)) {
-                        $firma_ruta = $target_file;
-    
-                        // Aquí todos los demás campos se insertan como NULL, excepto id_firma e id_empresa
-                        $stmt = $mysqli->prepare("INSERT INTO E_Firmas (
-                            id_empresa, 
-                            titulo_firma, 
-                            nombre_encargado_firma, 
-                            cargo_encargado_firma, 
-                            telefono_encargado_firma, 
-                            nombre_empresa_firma, 
-                            area_empresa_firma, 
-                            telefono_empresa_firma, 
-                            firma_ruta, 
-                            email_firma, 
-                            direccion_firma, 
-                            rut_firma) VALUES (?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, ?, NULL, NULL, NULL)");
-                        
-                        if ($stmt === false) {
-                            die("Error en la preparación de la consulta: " . $mysqli->error);
-                        }
-    
-                        // Insertar con los campos `id_empresa` y `firma_ruta`
-                        $stmt->bind_param("is", $id_empresa, $firma_ruta);
-                        $stmt->execute();
-    
-                        echo "Firma digital guardada con éxito.";
-                    } else {
-                        echo "Hubo un error al subir la imagen.";
-                    }
-                }
-            } else {
-                echo "No se ha seleccionado ninguna imagen.";
-            }
+        // Solo subir firma digital
+        $stmt = $mysqli->prepare("INSERT INTO E_Firmas (id_empresa, titulo_firma, nombre_encargado_firma, cargo_encargado_firma, telefono_encargado_firma, nombre_empresa_firma, area_empresa_firma, telefono_empresa_firma, firma_digital, email_firma, direccion_firma, rut_firma) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        
+        if ($stmt === false) {
+            die("Error en la preparación de la consulta: " . $mysqli->error);
         }
-      
+
+        $titulo_firma = ""; // O puedes establecerlo a un valor predeterminado
+        $nombre_encargado = ""; 
+        $cargo_encargado = "";  
+        $telefono_encargado_firma = "";
+
+        $stmt->bind_param("isssssssssss", $id_empresa, $titulo_firma, $nombre_encargado, $cargo_encargado, $telefono_encargado_firma, $empresa_nombre, $empresa_area, $empresa_telefono, $firma_digital, $empresa_email, $empresa_direccion, $empresa_rut);
+        $stmt->execute();
     }
+
+    $stmt->close();
+    
+
+    echo "Firma guardada con éxito.";
+}
 ?>
 
 <!-- ------------------------------------------------------------------------------------------------------------

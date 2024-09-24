@@ -118,6 +118,8 @@ BPPJ
         });
     });
 });
+
+
     
         // Evento para eliminar la firma manualmente ingresada
         manualSignaturesContainer.addEventListener('click', (event) => {
@@ -127,18 +129,6 @@ BPPJ
         });
     });
     
-
-    document.getElementById('signature-image').addEventListener('change', function(event) {
-        const reader = new FileReader();
-        reader.onload = function() {
-            const preview = document.getElementById('signature-preview');
-            preview.src = reader.result;
-            preview.style.display = 'block';
-        };
-        reader.readAsDataURL(event.target.files[0]);
-    });
-    
-
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Firma .JS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

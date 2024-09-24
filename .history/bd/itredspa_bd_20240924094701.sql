@@ -395,7 +395,7 @@ CREATE TABLE E_Firmas (
     nombre_empresa_firma VARCHAR(255) NULL,
     area_empresa_firma VARCHAR(255) NULL,
     telefono_empresa_firma VARCHAR(255) NULL,
-    firma_digital VARCHAR(255) NULL ,
+    firma_digitalVARCHAR(255) NULL ,
     email_firma VARCHAR(70) NULL,
     direccion_firma VARCHAR(70) NULL,
     rut_firma VARCHAR(70) NULL,
