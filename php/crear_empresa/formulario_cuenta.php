@@ -20,16 +20,32 @@ BPPJ
                 <!-- Campos de cuentas bancarias -->
                 <div class="bank-account">
                     <label for="nombre-cuenta">Nombre titular:</label>
-                    <input type="text" id="nombre-cuenta" name="nombre_cuenta" required>
+                    <input type="text" id="nombre-cuenta" name="nombre_cuenta" 
+                        placeholder="Ingresa el nombre del titular" 
+                        maxlength="50" 
+                        required 
+                        oninput="validateName(this)" 
+                        title="Por favor, ingresa solo letras y espacios.">
 
                     <label for="rut-titular">Rut titular:</label>
-                    <input type="text" id="rut-titular" name="rut_titular" required>
+                    <input type="text" id="rut-titular" placeholder="Ej: 12.345.678-9" name="rut_titular" required oninput="formatRut(this)">
 
                     <label for="celular">Celular:</label>
-                    <input type="number" id="celular" name="celular" required>
+                    <input type="text" id="celular" name="celular"
+                        placeholder="+56 9 1234 1234" 
+                        maxlength="11" 
+                        required 
+                        pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
+                        title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
+                        oninput="formatPhoneNumber(this)">
 
                     <label for="email-banco">Email:</label>
-                    <input type="email" id="email-banco" name="email_banco" required>
+                    <input type="email" id="email-banco" name="email_banco" 
+                        placeholder="ejemplo@empresa.com" 
+                        maxlength="255" 
+                        required 
+                        title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
+                        onblur="completeEmail(this)">
 
                     <label for="id-banco">Banco:</label>
                     <select id="id-banco" name="id_banco" required>

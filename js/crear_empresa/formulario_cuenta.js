@@ -133,6 +133,11 @@ BPPJ
             `${account.nombre}|${account.rut}|${account.celular}|${account.email}|${account.banco}|${account.tipoCuenta}|${account.numeroCuenta}`
         ).join(';');
     }
+
+    function validateName(input) {
+        // Eliminar caracteres no permitidos (números y caracteres especiales)
+        input.value = input.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
+    }
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Formulario Cuenta .JS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

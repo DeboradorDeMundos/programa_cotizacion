@@ -17,6 +17,11 @@ BPPJ
         // Obtiene el valor del campo y elimina los caracteres no numéricos
         let rut = input.value.replace(/\D/g, '');
     
+        // Verifica si la longitud total supera el máximo permitido
+        if (rut.length > 9) {
+            rut = rut.slice(0, 9); // Limita a 8 dígitos
+        }
+    
         // Aplica el formato de RUT
         if (rut.length > 1) {
             rut = rut.slice(0, -1).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '-' + rut.slice(-1);
@@ -24,6 +29,11 @@ BPPJ
     
         // Asigna el valor formateado de vuelta al campo de entrada
         input.value = rut;
+    
+        // Limitar longitud total considerando el formato
+        if (input.value.length > 12) {
+            input.value = input.value.slice(0, 12); // Asegura que no exceda el formato esperado
+        }
     }
     
     // Configurar los botones de agregar
@@ -100,6 +110,8 @@ BPPJ
         // Enviar el formulario
         this.submit();
     });
+
+    
     /* --------------------------------------------------------------------------------------------------------------
         ---------------------------------------- FIN ITred Spa crear_empresa .JS ---------------------------------------
         ------------------------------------------------------------------------------------------------------------- */

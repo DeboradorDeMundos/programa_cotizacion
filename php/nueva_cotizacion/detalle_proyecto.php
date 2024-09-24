@@ -23,27 +23,53 @@ BPPJ
     <div class="form-group-inline">
         <div class="form-group">
             <label for="proyecto_nombre">Nombre</label> <!-- Etiqueta para el campo de entrada del nombre del proyecto -->
-            <input type="text" id="proyecto_nombre" name="proyecto_nombre" placeholder="proyecto" required> <!-- Campo de texto para ingresar el nombre del proyecto. El atributo "required" hace que el campo sea obligatorio -->
+            <input type="text" id="proyecto_nombre" name="proyecto_nombre" required 
+                pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
+                title="Por favor, ingrese solo letras, números y caracteres como &,-."
+                placeholder="Ejemplo: Mi Proyecto 1"> <!-- Campo de texto para ingresar el nombre del proyecto. El atributo "required" hace que el campo sea obligatorio -->
         </div>
+
         <div class="form-group">
-            <label for="proyecto_codigo">Código</label> <!-- Etiqueta para el campo de entrada del código del proyecto -->
-            <input type="text" id="proyecto_codigo" name="proyecto_codigo" placeholder="1234" required> <!-- Campo de texto para ingresar el código del proyecto. También es obligatorio -->
+            <label for="proyecto_codigo">Código</label>
+            <input type="text" id="proyecto_codigo" name="proyecto_codigo" 
+                placeholder="Introduce un código único" 
+                required 
+                maxlength="10" 
+                pattern="^[a-zA-Z0-9-_]{1,10}$" 
+                title="Ingresa un código de hasta 10 caracteres (letras, números, guiones y guiones bajos).">
         </div>
+        
     </div>
     <div class="form-group-inline">
+
         <div class="form-group">
             <label for="area_trabajo">Área de Trabajo:</label> <!-- Etiqueta para el campo de entrada del área de trabajo -->
-            <input type="text" id="area_trabajo" name="area_trabajo" placeholder="tecnologia" required> <!-- Campo de texto para ingresar el área de trabajo. Este campo es obligatorio -->
+            <input type="text" id="area_trabajo" name="area_trabajo" placeholder="tecnologia" required
+                minlength="2" maxlength="50" 
+                pattern="^[A-Za-zÀ-ÿ\s&.-]*$" 
+                title="Por favor, ingrese solo letras y espacios. Los caracteres permitidos son &, - y .."
+                placeholder="Ejemplo: Tecnología"> <!-- Campo de texto para ingresar el área de trabajo. Este campo es obligatorio -->
         </div>
+
         <div class="form-group">
-            <label for="tipo_trabajo">Tipo de Trabajo:</label> <!-- Etiqueta para el campo de entrada del tipo de trabajo -->
-            <input type="text" id="tipo_trabajo" name="tipo_trabajo" placeholder="instalacion" required> <!-- Campo de texto para ingresar el tipo de trabajo. También es obligatorio -->
+            <label for="tipo_trabajo">Tipo de Trabajo:</label>
+            <input type="text" id="tipo_trabajo" name="tipo_trabajo" 
+                placeholder="Ej: Instalación" 
+                required 
+                maxlength="50" 
+                pattern="^[a-zA-ZÀ-ÿ\s]+$" 
+                title="Ingresa solo letras y espacios.">
         </div>
     </div>
 
     <div class="form-group">
-        <label for="riesgo">Riesgo:</label> <!-- Etiqueta para el campo de entrada del riesgo asociado al proyecto -->
-        <input type="text" id="riesgo" name="riesgo" placeholder="nivel de riesgo" required> <!-- Campo de texto para ingresar el nivel o tipo de riesgo. Este campo es obligatorio -->
+        <label for="riesgo">Riesgo:</label>
+        <input type="text" id="riesgo" name="riesgo" 
+            placeholder="Ej: alto, medio, bajo" 
+            required 
+            maxlength="10" 
+            pattern="^(alto|medio|bajo)$" 
+            title="Ingresa 'alto', 'medio' o 'bajo'.">
     </div>
 </fieldset>
 
@@ -68,8 +94,11 @@ BPPJ
 
     <div class="form-group-inline">
         <div class="form-group">
-            <label for="horario">Horario:</label> <!-- Etiqueta para el campo de entrada del horario -->
-            <input type="text" id="horario" name="horario" placeholder="horadia desde hasta"> <!-- Campo de texto para ingresar el horario. Este campo no es obligatorio -->
+        <label for="horario">Horario:</label>
+        <input type="text" id="horario" name="horario" 
+            placeholder="Ej: 08:00 a 18:00" 
+            pattern="^([01]?[0-9]|2[0-3]):[0-5][0-9] a ([01]?[0-9]|2[0-3]):[0-5][0-9]$" 
+            title="Ingresa un horario válido (Ej: 08:00 a 18:00)."> <!-- Campo de texto para ingresar el horario. Este campo no es obligatorio -->
         </div>
         <div class="form-group">
             <label for="colacion">Colación:</label> <!-- Etiqueta para el campo de entrada de colación -->

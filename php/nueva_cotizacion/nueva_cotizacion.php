@@ -113,8 +113,37 @@
                     } else {
                         echo "<p>Error al preparar la consulta de condiciones generales: " . $mysqli->error . "</p>";
                     }
-                    
-                    // Consulta para obtener el número de cotización más alto
+
+                    // Consulta para obtener la firma de la empresa
+                    $sql_firma = "SELECT 
+                                    titulo_firma, 
+                                    nombre_encargado_firma, 
+                                    cargo_encargado_firma, 
+                                    nombre_empresa_firma, 
+                                    direccion_firma, 
+                                    telefono_empresa_firma, 
+                                    email_firma, 
+                                    firma_digital 
+                                FROM E_Firmas 
+                                WHERE id_empresa = ? LIMIT 1";
+
+                    if ($stmt_firma = $mysqli->prepare($sql_firma)) {
+                        $stmt_firma->bind_param("i", $id);
+                        $stmt_firma->execute();
+                        $result_firma = $stmt_firma->get_result();
+
+                        if ($result_firma->num_rows == 1) {
+                            $firma = $result_firma->fetch_assoc();
+                        } else {
+                            echo "<p>No se encontró la firma de la empresa.</p>";
+                        }
+
+                        $stmt_firma->close();
+                    } else {
+                        echo "<p>Error al preparar la consulta de la firma: " . $mysqli->error . "</p>";
+                    }
+
+                    // Obtener el número de cotización más alto
                     $sql_last_cot = "SELECT numero_cotizacion FROM C_Cotizaciones WHERE id_empresa = ? ORDER BY numero_cotizacion DESC LIMIT 1";
                     if ($stmt_last_cot = $mysqli->prepare($sql_last_cot)) {
                         $stmt_last_cot->bind_param("i", $id);
@@ -232,11 +261,20 @@
             
 
 
-                <p>AQUI VIENE LA FIRMA</p>
-                <p>SIN OTRO PARTICULAR, Y ESPERANDO QUE LA PRESENTE OFERTA SEA DE SU INTERÉS, SE DESPIDE ATENTAMENTE</p> <!-- Mensaje de despedida en la oferta -->
-                <p>BARNER PATRICIO PIÑA JARA</p> <!-- Nombre del remitente -->
-                <p>JEFE DE PROYECTO TECNOLOGIA Y CONSTRUCCION</p> <!-- Cargo del remitente -->
-                <p>ITRED SPA.</p> <!-- Nombre de la empresa del remitente -->
+                <?php if (!empty($firma)): ?>
+                    <div style="text-align: center;">
+                        <?php if (!empty($firma['firma_digital'])): ?>
+                            <p><img src="<?php echo htmlspecialchars($firma['firma_digital']); ?>" alt="Firma Digital" style="max-width: 200px;"></p> <!-- Muestra la firma digital (si es una URL o archivo de imagen) -->
+                        <?php endif; ?>
+                        <p><strong><?php echo htmlspecialchars($firma['titulo_firma']); ?></strong></p> <!-- Título de la firma -->
+                        <p><strong><?php echo htmlspecialchars($firma['nombre_empresa_firma']); ?></strong></p> <!-- Nombre de la empresa -->
+                        <p><?php echo htmlspecialchars($firma['direccion_firma']); ?></p> <!-- Dirección de la empresa -->
+                        <p><?php echo htmlspecialchars($firma['telefono_empresa_firma']); ?></p> <!-- Teléfono de la empresa -->
+                        <p><?php echo htmlspecialchars($firma['email_firma']); ?></p> <!-- Email de la empresa -->
+                    </div>
+                <?php else: ?>
+                    <p>No se encontró la firma de la empresa.</p>
+                <?php endif; ?>
                 
     <script src="../../js/nueva_cotizacion/nueva_cotizacion.js"></script> <!-- Enlaza nuevamente el archivo JavaScript para manejar la lógica del formulario de cotización -->
     <script src="../../js/crear_empresa/upload_logo.js"></script>
