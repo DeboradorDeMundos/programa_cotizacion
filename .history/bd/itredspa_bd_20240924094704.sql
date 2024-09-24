@@ -362,7 +362,6 @@ CREATE TABLE E_Requisitos_Basicos (
     id_requisitos INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     indice INT NOT NULL, -- nueva tabla?
     descripcion_condiciones VARCHAR(255) NOT NULL,
-    estado BOOLEAN DEFAULT FALSE, -- Estado de la condición (por defecto, falso)
     id_empresa INT NOT NULL, -- ID de la empresa (clave foránea)
 
     FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE CASCADE -- Clave foránea hacia Empresa
@@ -378,7 +377,6 @@ CREATE TABLE E_obligaciones_cliente (
     id INT AUTO_INCREMENT PRIMARY KEY,
     indice INT NOT NULL,
     descripcion TEXT NOT NULL,
-    estado BOOLEAN DEFAULT FALSE, -- Estado de la condición (por defecto, falso)
     id_empresa INT NOT NULL,
     FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE CASCADE 
 );

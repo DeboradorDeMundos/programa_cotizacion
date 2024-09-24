@@ -57,6 +57,8 @@ BPPJ
 <script src="../../js/nueva_cotizacion/load_bancos.js"></script> 
 <script src="../../js/nueva_cotizacion/loadTipoCuenta.js"></script> 
 <script src="../../js/nueva_cotizacion/agregar_banco.js"></script>
+
+
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Obtener las cuentas bancarias del formulario
