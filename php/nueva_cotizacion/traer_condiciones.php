@@ -19,17 +19,21 @@ BPPJ
 
 <table id="conditions-table" style="display: none;">
     <tr>
-        <th style="background-color:lightgray">CONDICIONES GENERALES</th>
+        <th style="background-color:lightgray" colspan="2">CONDICIONES GENERALES</th>
     </tr>
-    <?php if (!empty($requisitos)): ?>
-        <?php foreach ($requisitos as $requisito): ?>
+    <?php if (!empty($condiciones)): ?>
+        <?php foreach ($condiciones as $condicion): ?>
             <tr>
-                <td><?php echo htmlspecialchars($requisito['indice']) . '.- ' . htmlspecialchars($requisito['descripcion_condiciones']); ?></td>
+                <td><?php echo htmlspecialchars($condicion['id_condiciones']) . '.- ' . htmlspecialchars($condicion['descripcion_condiciones']); ?></td>
+                <td>
+                    <!-- Checkbox para el estado de la condición -->
+                    <input type="checkbox" name="condicion_check[]" <?php echo isset($condicion['estado']) && $condicion['estado'] ? 'checked' : ''; ?>/>
+                </td>
             </tr>
         <?php endforeach; ?>
     <?php else: ?>
         <tr>
-            <td>No hay condiciones generales disponibles.</td>
+            <td colspan="2">No hay condiciones generales disponibles.</td>
         </tr>
     <?php endif; ?>
 </table>
