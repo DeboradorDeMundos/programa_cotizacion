@@ -47,7 +47,7 @@ BPPJ
 
 
         <label for="empresa_email">Email de la Empresa:</label> <!-- Etiqueta para el campo de entrada del email de la empresa -->
-        <input type="email" id="empresa_email" name="empresa_email" required> <!-- Campo de correo electrónico para ingresar el email de la empresa. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
+        <input type="email" id="empresa_email" name="empresa_email"> <!-- Campo de correo electrónico para ingresar el email de la empresa. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
     
         <label for="fecha_creacion">Fecha de Creacion de empresa:</label> <!-- Etiqueta para el campo de entrada de la fecha de emisión -->
         <input type="date" id="fecha_creacion" name="fecha_creacion" required> <!-- Campo de fecha para seleccionar la fecha de emisión. Es obligatorio -->
@@ -59,63 +59,57 @@ BPPJ
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
+    
+    // Primero, procesar el formulario de empresa
     if (isset($_POST['empresa_nombre'])) {
         // Obtener datos del formulario de empresa
-        $rut_empresa = isset($_POST['empresa_rut']) ? trim($_POST['empresa_rut']) : null;
-        $nombre_empresa = isset($_POST['empresa_nombre']) ? trim($_POST['empresa_nombre']) : null;
-        $area_empresa = isset($_POST['empresa_area']) ? trim($_POST['empresa_area']) : null;
-        $direccion_empresa = isset($_POST['empresa_direccion']) ? trim($_POST['empresa_direccion']) : null;
-        $telefono_empresa = isset($_POST['empresa_telefono']) ? trim($_POST['empresa_telefono']) : null;
-        $email_empresa = isset($_POST['empresa_email']) ? trim($_POST['empresa_email']) : null;
+        $rut_empresa = $_POST['empresa_rut'];
+        $nombre_empresa = $_POST['empresa_nombre'];
+        $area_empresa = $_POST['empresa_area'];
+        $direccion_empresa = $_POST['empresa_direccion'];
+        $telefono_empresa = $_POST['empresa_telefono'];
+        $email_empresa = $_POST['empresa_email'];
         $fecha_creacion = isset($_POST['fecha_creacion']) ? trim($_POST['fecha_creacion']) : null;
-        $dias_validez = isset($_POST['validez_cotizacion']) ? (int)$_POST['validez_cotizacion'] : null;
 
-        // Verificar que la fecha está bien formada antes de intentar insertarla
-        if ($fecha_creacion && preg_match('/^\d{4}-\d{2}-\d{2}$/', $fecha_creacion)) {
-            echo "Fecha de creación válida: $fecha_creacion<br>";
-        } else {
-            echo "Error: Fecha de creación no válida o no se recibió correctamente.<br>";
-            var_dump($fecha_creacion);
-            die();
-        }
 
-        // Intenta hacer una consulta directa de prueba sin bind_param
+        $dias_validez = $_POST['validez_cotizacion'];
+        var_dump($_POST['fecha_creacion']); // Añade esta línea para depurar
+
         $sql_empresa = "INSERT INTO E_Empresa (id_foto, rut_empresa, nombre_empresa, area_empresa, direccion_empresa, telefono_empresa, email_empresa, fecha_creacion, dias_validez)
-                        VALUES ($id_foto, '$rut_empresa', '$nombre_empresa', '$area_empresa', '$direccion_empresa', '$telefono_empresa', '$email_empresa', '$fecha_creacion', $dias_validez)";
-        
-        echo "Consulta SQL: " . $sql_empresa . "<br>";
-
-        if ($mysqli->query($sql_empresa) === TRUE) {
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt_empresa = $mysqli->prepare($sql_empresa);
+        $stmt_empresa->bind_param("issssssis", $id_foto, $rut_empresa, $nombre_empresa, $area_empresa, $direccion_empresa, $telefono_empresa, $email_empresa, $fecha_creacion, $dias_validez);
+        if ($stmt_empresa->execute()) {
             // Obtener el ID de la empresa recién insertada
-            $id_empresa = $mysqli->insert_id;
-            echo "Empresa insertada correctamente con ID: $id_empresa <br>";
+            $id_empresa = $stmt_empresa->insert_id;
+            echo "Empresa insertada correctamente. ID de la empresa: " . $id_empresa . "<br>";
 
             // Ahora, procesar la cotización si se han proporcionado los datos
             if (isset($_POST['numero_cotizacion']) && isset($_POST['validez_cotizacion'])) {
                 $numero_cotizacion = $_POST['numero_cotizacion'];
-                $validez_cotizacion = (int)$_POST['validez_cotizacion'];
+                $validez_cotizacion = $_POST['validez_cotizacion'];
 
                 // Insertar la cotización
                 $sql_cotizacion = "INSERT INTO c_cotizaciones (numero_cotizacion, fecha_emision, fecha_validez, id_empresa)
-                                   VALUES ('$numero_cotizacion', CURDATE(), DATE_ADD(CURDATE(), INTERVAL $validez_cotizacion DAY), $id_empresa)";
-                
-                if ($mysqli->query($sql_cotizacion) === TRUE) {
-                    echo "Cotización creada correctamente con ID: " . $mysqli->insert_id . "<br>";
+                                   VALUES (?, CURDATE(), DATE_ADD(CURDATE(), INTERVAL ? DAY), ?)";
+                $stmt_cotizacion = $mysqli->prepare($sql_cotizacion);
+                $stmt_cotizacion->bind_param("sii", $numero_cotizacion, $validez_cotizacion, $id_empresa);
+
+                if ($stmt_cotizacion->execute()) {
+                    echo "Cotización creada correctamente con el ID: " . $stmt_cotizacion->insert_id . "<br>";
                 } else {
-                    echo "Error al insertar la cotización: " . $mysqli->error . "<br>";
+                    die("Error al insertar la cotización: " . $stmt_cotizacion->error);
                 }
+                $stmt_cotizacion->close();
             }
         } else {
-            echo "Error al insertar la empresa: " . $mysqli->error . "<br>";
+            die("Error al insertar la empresa: " . $stmt_empresa->error);
         }
-    } else {
-        echo "Error: No se envió el nombre de la empresa.<br>";
+        $stmt_empresa->close();
     }
+
 }
 ?>
-
-
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Formulario Empresa .PHP ----------------------------------------

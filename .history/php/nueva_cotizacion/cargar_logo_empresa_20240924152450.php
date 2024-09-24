@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             die(".");
         }
     } else {
-        echo ".";
+        echo "No se subió una imagen.";
     }
 }
 ?>

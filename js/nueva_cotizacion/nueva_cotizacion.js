@@ -16,6 +16,7 @@ BPPJ
         document.getElementById('fecha_emision').value = new Date().toISOString().split('T')[0];
     });
     
+    
     function formatRut(input) {
         let rut = input.value.replace(/\D/g, '');
         if (rut.length > 1) {

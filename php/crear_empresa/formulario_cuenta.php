@@ -43,7 +43,6 @@ BPPJ
                     <input type="email" id="email-banco" name="email_banco" 
                         placeholder="ejemplo@empresa.com" 
                         maxlength="255" 
-                        required 
                         title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
                         onblur="completeEmail(this)">
 

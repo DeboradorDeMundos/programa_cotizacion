@@ -51,10 +51,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             $stmt_foto->close();
         } else {
-            die(".");
+            die("Error al subir la imagen.");
         }
     } else {
-        echo ".";
+        echo "No se subió una imagen.";
     }
 }
 ?>

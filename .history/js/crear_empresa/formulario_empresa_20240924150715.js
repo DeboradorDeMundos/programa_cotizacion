@@ -13,7 +13,7 @@ BPPJ
     -------------------------------------- Inicio ITred Spa Formulario Empresa .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
     document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById('fecha_creacion').value = new Date().toISOString().split('T')[0];
+        document.getElementById('fecha_emision').value = new Date().toISOString().split('T')[0];
     });
     
 
