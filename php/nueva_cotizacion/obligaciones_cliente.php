@@ -9,52 +9,49 @@ BPPJ
 -->
 
 <!-- ------------------------------------------------------------------------------------------------------------
-    ------------------------------------- INICIO ITred Spa Traer requisitos .PHP --------------------------------------
+    ------------------------------------- INICIO ITred Spa Obligaciones cliente .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
 
-
-<!-- Checkbox para mostrar/ocultar requisitos generales -->
+<!-- Checkbox para mostrar/ocultar obligaciones del cliente --> 
 <label>
-    <input type="checkbox" id="toggle-requisitos" onclick="toggleRequisitos()"> Mostrar requisitos generales
+    <input type="checkbox" id="toggle-obligaciones" onclick="toggleObligaciones()"> Mostrar obligaciones del cliente
 </label>
 
-<table id="requisitos-table" style="display: none;">
+<!-- Tabla para las obligaciones del cliente -->
+<table id="obligaciones-table" style="display: none;">
     <tr>
-        <th style="background-color:lightgray" colspan="2">REQUISITOS GENERALES</th>
+        <th style="background-color:lightgray" colspan="2">OBLIGACIONES DEL CLIENTE</th>
     </tr>
-    <?php if (!empty($requisitos)): ?>
-        <?php foreach ($requisitos as $requisito): ?>
+    <?php if (!empty($obligaciones)): ?>
+        <?php foreach ($obligaciones as $obligacion): ?>
             <tr>
                 <td>
-                    <?php echo htmlspecialchars($requisito['indice']) . '.- ' . htmlspecialchars($requisito['descripcion_condiciones']); ?>
+                    <?php echo htmlspecialchars($obligacion['indice']) . '.- ' . htmlspecialchars($obligacion['descripcion']); ?>
                 </td>
                 <td>
-                    <input type="checkbox" name="requisito_check[]"/>
+                    <input type="checkbox" name="obligacion_check[]" <?php echo $obligacion['estado'] ? 'checked' : ''; ?>/>
                 </td>
             </tr>
         <?php endforeach; ?>
     <?php else: ?>
         <tr>
-            <td colspan="2">No hay requisitos generales disponibles.</td>
+            <td colspan="2">No hay obligaciones del cliente disponibles.</td>
         </tr>
     <?php endif; ?>
 </table>
 
 <script>
-function toggleRequisitos() {
-    const checkbox = document.getElementById('toggle-requisitos');
-    const table = document.getElementById('requisitos-table');
+function toggleObligaciones() {
+    const checkbox = document.getElementById('toggle-obligaciones');
+    const table = document.getElementById('obligaciones-table');
     // Muestra u oculta la tabla según el estado del checkbox
     table.style.display = checkbox.checked ? 'table' : 'none';
 }
 </script>
 
-
-
-
      <!-- ------------------------------------------------------------------------------------------------------------
-    -------------------------------------- FIN ITred Spa Traer requisitos .PHP ----------------------------------------
+    -------------------------------------- FIN ITred Spa Obligaciones cliente .PHP ----------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
 <!--
