@@ -21,28 +21,51 @@ BPPJ
                 <label for="vendedor_rut">RUT: </label> <!-- Etiqueta para el campo de entrada del RUT del cliente -->
                 <input type="text" id="vendedor_rut" name="vendedor_rut" 
                     minlength="7" maxlength="12" 
-                    placeholder="x.xxx.xxx-x"
+                    placeholder="Ej: 12.345.678-9"
                     required oninput="formatRut(this)"> <!-- Campo de texto para ingresar el RUT del cliente. También es obligatorio -->
             </div>
             <div class="form-group">
-                <label for="vendedor_nombre">Nombre:</label><!-- Etiqueta para el campo de entrada del nombre del vendedor -->
-                <input type="text" id="vendedor_nombre" name="vendedor_nombre" required><!-- Campo de texto para ingresar el nombre del vendedor. El atributo "required" hace que el campo sea obligatorio -->
+                <label for="vendedor_nombre">Nombre:</label> <!-- Etiqueta para el campo de entrada del nombre del vendedor -->
+                <input type="text" id="vendedor_nombre" name="vendedor_nombre" 
+                    placeholder="Ej: María López" 
+                    required 
+                    minlength="3" 
+                    maxlength="50" 
+                    pattern="^[a-zA-ZÀ-ÿ\s]+$" 
+                    title="Ingresa un nombre válido (Ej: María López). Solo se permiten letras y espacios."> <!-- Campo de texto para ingresar el nombre del vendedor. El atributo "required" hace que el campo sea obligatorio -->
             </div>
         </div>
         
         <div class="form-group">
             <label for="vendedor_email">Email:</label> <!-- Etiqueta para el campo de entrada del email del vendedor -->
-            <input type="email" id="vendedor_email" name="vendedor_email" required> <!-- Campo de correo electrónico para ingresar el email del vendedor. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico. También es obligatorio -->
+            <input type="email" id="vendedor_email" name="vendedor_email"
+                placeholder="ejemplo@gmail.com" 
+                maxlength="255" 
+                required 
+                title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
+                onblur="completeEmail(this)"> <!-- Campo de correo electrónico para ingresar el email del vendedor. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico. También es obligatorio -->
         </div>
     </div>
     <div class="box-6 data-box data-box-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "data-box-left" para estilo -->
         <div class="form-group">
             <label for="vendedor_telefono">Teléfono:</label> <!-- Etiqueta para el campo de entrada del teléfono del vendedor -->
-            <input type="text" id="vendedor_telefono" name="vendedor_telefono"> <!-- Campo de texto para ingresar el teléfono del vendedor. Este campo no es obligatorio -->
+            <input type="text" id="vendedor_telefono" name="vendedor_telefono"
+                placeholder="+56 9 1234 1234" 
+                maxlength="11" 
+                required 
+                pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
+                title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
+                oninput="formatPhoneNumber(this)"> <!-- Campo de texto para ingresar el teléfono del vendedor. Este campo no es obligatorio -->
         </div>
         <div class="form-group">
         <label for="vendedor_celular">Celular:</label> <!-- Etiqueta para el campo de entrada del celular del vendedor -->
-        <input type="text" id="vendedor_celular" name="vendedor_celular"> <!-- Campo de texto para ingresar el número de celular del vendedor. Este campo no es obligatorio -->
+        <input type="text" id="vendedor_celular" name="vendedor_celular"
+            placeholder="+56 9 1234 1234" 
+            maxlength="11" 
+            required 
+            pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
+            title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
+            oninput="formatPhoneNumber(this)">  <!-- Campo de texto para ingresar el número de celular del vendedor. Este campo no es obligatorio -->
         </div>
     </div>
 </fieldset> <!-- Cierra la fila -->
