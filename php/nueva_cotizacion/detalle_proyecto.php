@@ -17,7 +17,7 @@ BPPJ
 
     
 
-
+<link rel="stylesheet" href="../../css/nueva_cotizacion/detalle_proyecto.css">
 <fieldset class="box-6 data-box"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
     <legend>Detalle proyecto</legend>
     <div class="form-group-inline">

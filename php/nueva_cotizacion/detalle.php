@@ -14,7 +14,7 @@ BPPJ
 
 
 
-
+<link rel="stylesheet" href="../../css/nueva_cotizacion/detalle.css">
 <fieldset>
     <legend>Detalle de la Cotización</legend>
     <div id="detalle-container">

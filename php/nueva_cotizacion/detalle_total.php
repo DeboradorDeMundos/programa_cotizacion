@@ -13,7 +13,7 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- -->
 
 
-
+<link rel="stylesheet" href="../../css/nueva_cotizacion/detalle_total.css">
 <div class="form-container">
     <div class="form-group-2">
         <label for="subTotal">Sub Total</label>

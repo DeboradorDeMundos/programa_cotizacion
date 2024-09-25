@@ -13,56 +13,21 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Cargar Logo Empresa .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-      
-      .container {
-        width: 100%;
-        padding: 20px;
-        box-sizing: border-box;
-      }
-      
-      .row {
-        display: flex;
-        flex-wrap: wrap;
-        margin-bottom: 20px;
-      }
-      
-      .box-6,
-      .box-12 {
-        display: flex;
-        flex-direction: column;
-      }
-      
-      .box-6 {
-        flex: 1;
-        padding: 10px;
-      }
-      
-      .box-12 {
-        flex: 1;
-        max-width: 100%;
-        padding: 10px;
-      }
-      
-      .logo-box {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      
-      .logo-container {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-      }
-      
-      .logo {
-        max-width: 300px;
-        height: auto;
-        margin-right: 10px;
-      }
-      
-      
+    .logo {
+      max-width: 300px;
+      height: auto;
+      margin-right: 10px;
+    }
 
+    .logo-container {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    
+    
+    
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Cargar Logo Empresa .CSS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

@@ -39,6 +39,7 @@ function obtener_datos_empresa($mysqli, $id) {
 }
 ?>
 
+<link rel="stylesheet" href="../../css/nueva_cotizacion/datos_empresa.css">
 <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
     <fieldset class="box-12 data-box"> <!-- Crea una caja para ingresar datos, ocupando las 12 columnas disponibles en el diseño. Esta caja contiene varios campos de entrada de datos -->
         <legend>Detalle empresa</legend>

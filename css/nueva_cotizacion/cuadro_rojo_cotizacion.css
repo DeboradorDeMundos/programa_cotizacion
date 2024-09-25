@@ -13,9 +13,45 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Cuandro rojo cotizacion.CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
+    .data-box-red {
+      border-color: red;
+    }
 
+    .data-box {
+      border: 1px solid #ddd;
+      padding: 15px;
+      background-color: #fff;
+    }
 
+    .box-6,
+    .box-12 {
+      display: flex;
+      flex-direction: column;
+    }
 
+    .box-6 {
+      flex: 1;
+      padding: 10px;
+    }
+
+    /* Asegura que los label y input tengan la misma altura */
+    .form-group {
+      display: flex;
+      align-items: stretch; /* Asegura que los elementos se estiren a la misma altura */
+      justify-content: space-between; /* Alinea el label y el input a los extremos */
+      margin-bottom: 10px;
+    }
+    
+    /* Estilo para los grupos de campos en línea */
+    .form-group-inline {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .form-group-inline .form-group {
+      flex: 1; /* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
+    }
 
 
 /* --------------------------------------------------------------------------------------------------------------
