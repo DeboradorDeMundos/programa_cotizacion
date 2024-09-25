@@ -20,10 +20,6 @@ BPPJ
 // Establece la conexión a la base de datos de ITred Spa
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
-// Verifica la conexión
-if ($mysqli->connect_error) {
-    die("Conexión fallida: " . $mysqli->connect_error);
-}
 
 // Obtiene el ID de la empresa desde la URL
 $id_empresa = isset($_GET['id']) ? intval($_GET['id']) : 0;
@@ -89,6 +85,7 @@ if ($result->num_rows > 0) {
                         <a href='ver_cotizacion.php?id=" . $row['cotizacion_id'] . "'>|Ver</a> |
                         <a href='modificar_cotizacion.php?id=" . $row['cotizacion_id'] . "'>Modificar</a> |
                         <a href='eliminar_cotizacion.php?id=" . $row['cotizacion_id'] . "'>Eliminar</a> |
+                        <a href='descargar_cotizacion.php?id=" . $row['cotizacion_id'] . "'>Descargar</a>
                      </td>";
         $mensaje .= "</tr>";
     }
