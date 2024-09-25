@@ -149,7 +149,9 @@ function addDetailRow(button) {
         <td><input type="number" name="detalle_precio_unitario[${tituloIndex}][]" step="0.01" min="0" required oninput="updateTotal(this)"></td>
         <td><input type="number" name="detalle_descuento[${tituloIndex}][]" step="1" min="0" required oninput="updateTotal(this)"></td>
         <td><input type="number" name="detalle_total[${tituloIndex}][]" step="0.01" min="0" readonly></td>
-        <td><button type="button" class="btn-eliminar" onclick="removeDetailRow(this)">Eliminar</button></td>
+        <td colspan="2">
+            <button type="button" class="btn-eliminar" onclick="removeDetailRow(this)">Eliminar</button>
+        </td>
     `;
 
     // Agregar la nueva fila de detalle al final del cuerpo de la tabla

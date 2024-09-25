@@ -13,11 +13,169 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Detalle.CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
+    fieldset legend {
+        font-size: 1.2em;
+        padding: 0 10px;
+        color: #333;
+        font-weight: bold;
+    }
 
+    .fixed-button-container {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        padding: 0 20px;
+    }
 
+    .fixed-button-container button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 
+    .detalle-content {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        text-align: center;
+    }
 
+    .detalle-content label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 1.1em;
+        color: #333;
+    }
 
+    .detalle-content input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+    }
+
+    .btn-eliminar-titulo {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .btn-eliminar-titulo  {
+        background-color: #d32f2f;
+    }
+
+    .detalle-table th, .detalle-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+        
+    .detalle-table th {
+        background-color: #f2f2f2;
+        text-align: left;
+    }
+
+    th {
+        background-color: #4CAF50;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .detalle-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px;
+        background-color: #f9f9f9;
+    }
+    
+    .detalle-buttons button {
+        flex: 1;
+        max-width: 200px;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        color: white;
+    }
+    
+    .detalle-buttons button:nth-of-type(1) {
+        background-color: #007bff;
+    }
+    
+    .detalle-buttons button:nth-of-type(1):hover {
+        background-color: #0056b3;
+    }
+    
+    .detalle-buttons button:nth-of-type(2) {
+        background-color: #f44336;
+    }
+    
+    .detalle-buttons button:nth-of-type(2):hover {
+        background-color: #d32f2f;
+    }
+    
+    .detalle-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0 auto;
+        margin-bottom: 15px;
+    }
+    
+    .detalle-table input[type="text"],
+    .detalle-table textarea,
+    .detalle-table input[type="number"] {
+        width: 100%;
+        padding: 6px;
+        box-sizing: border-box;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+    td {
+        padding: 5px;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .fixed-button-container button:hover {
+        background-color: #0056b3;
+    }
+
+    /* Asegura que los label y input tengan la misma altura */
+    .form-group {
+        display: flex;
+        align-items: stretch; /* Asegura que los elementos se estiren a la misma altura */
+        justify-content: space-between; /* Alinea el label y el input a los extremos */
+        margin-bottom: 10px;
+    }
+
+    /* Estilo para los grupos de campos en línea */
+    .form-group-inline {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .form-group-inline .form-group {
+        flex: 1; /* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
+    }
+  
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Detalle.CSS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

@@ -13,7 +13,8 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- -->
 
      
-     <body onload="calcularFechaValidez();">
+<body onload="calcularFechaValidez();">
+<link rel="stylesheet" href="../../css/nueva_cotizacion/cuadro_rojo_cotizacion.css">
 <fieldset class="box-6 data-box data-box-red"> <!-- Crea una caja para ingresar datos, ocupando otras 6 columnas. Se aplica una clase adicional para estilo -->
     <legend>Detalle Cotización</legend>
     <label for="empresa_rut">RUT de la Empresa:</label> <!-- Etiqueta para el campo de entrada del RUT de la empresa -->
