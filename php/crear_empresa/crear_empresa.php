@@ -52,6 +52,8 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
             <?php include 'formulario_empresa.php'; ?>
 
+            <?php include 'formulario_encargado.php'; ?>
+
             <!-- Fila para cuentas bancarias -->
             
             <?php include 'formulario_cuenta.php';?>

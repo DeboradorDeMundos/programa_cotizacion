@@ -65,6 +65,20 @@ CREATE TABLE E_Empresa (
     FOREIGN KEY (id_tipo_firma) REFERENCES E_tipo_firma(id) ON DELETE SET NULL -- Definición de la clave foránea para tipo de firma
 ) ENGINE=InnoDB;
 
+
+CREATE TABLE E_Encargados (
+    id_encargado INT NOT NULL AUTO_INCREMENT, -- Identificador único del encargado
+    rut_encargado VARCHAR(20), -- RUT del encargado (debe ser único)
+    nombre_encargado VARCHAR(255) NOT NULL, -- Nombre del encargado
+    email_encargado VARCHAR(100), -- Email del encargado
+    fono_encargado VARCHAR(20), -- Teléfono del encargado
+    celular_encargado VARCHAR(20), -- Celular del encargado
+    id_empresa INT, -- Identificador de la empresa a la que pertenece el encargado
+    PRIMARY KEY (id_encargado), -- Definición de la clave primaria
+    FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE SET NULL -- Clave foránea para referenciar la empresa
+) ENGINE=InnoDB;
+
+
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA CLIENTES -------------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 

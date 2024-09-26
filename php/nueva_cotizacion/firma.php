@@ -51,19 +51,22 @@ BPPJ
                             }
                             break;
 
-                        case 4: // Firma Digital
-                            echo "<h3>Tipo de Firma: Digital</h3>";
-
-                            // Generar el número de cotización
-                            $url_firma = "https://tu_dominio.com/ver_firma.php?id_cotizacion=" . $numero_cotizacion;
-
-                            // URL del generador de códigos QR
-                            $qr_url = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" . urlencode($url_firma);
-
-                            // Mostrar el código QR
-                            echo "<p>Escanea el código QR para ver la firma digital:</p>";
-                            echo "<img src='$qr_url' alt='Código QR' style='max-width: 200px;'>";
-                            break;
+                            case 4: // Firma Digital
+                                echo "<h3>Tipo de Firma: Digital</h3>";
+                            
+                                // Generar el número de cotización
+                                $url_firma = "../ver_cotizacion/ver_firma.php?id_cotizacion=" . $numero_cotizacion;
+                            
+                                // URL del generador de códigos QR
+                                $qr_url = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" . urlencode($url_firma);
+                            
+                                // Mostrar el código QR
+                                echo "<p>Escanea el código QR para ver la firma digital:</p>";
+                                echo "<img src='$qr_url' alt='Código QR' style='max-width: 200px;'>";
+                            
+                                // Botón que lleva a la firma digital
+                                echo "<p><a href='$url_firma' class='btn btn-primary' style='padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;'>Ver Firma Digital</a></p>";
+                                break;
 
                         default:
                             echo "<h3>Tipo de Firma: Desconocido</h3>";
