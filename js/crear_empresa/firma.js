@@ -15,33 +15,26 @@ BPPJ
     document.addEventListener('DOMContentLoaded', () => {
         const autoSignatureDisplay = document.getElementById('auto-signature-display');
         const manualSignaturesContainer = document.getElementById('manual-signatures');
-        const addSignatureButton = document.getElementById('add-signature');
         const signatureImageInput = document.getElementById('signature-image');
         const signaturePreview = document.getElementById('signature-preview');
+        const digitalSignatureMessage = document.getElementById('digital-signature-message'); // Contenedor del mensaje de firma digital
     
         const generateAutomaticSignature = () => {
-    const titular_predefinido = `SIN OTRO PARTICULAR, Y ESPERANDO QUE LA PRESENTE OFERTA SEA DE SU INTERÉS, SE DESPIDE ATENTAMENTE:`;
+            const titular_predefinido = `SIN OTRO PARTICULAR, Y ESPERANDO QUE LA PRESENTE OFERTA SEA DE SU INTERÉS, SE DESPIDE ATENTAMENTE:`;
     
-    const empresa_nombre = document.getElementById('empresa_nombre').value;
-    const empresa_area = document.getElementById('empresa_area').value;
-    const empresa_telefono = document.getElementById('empresa_telefono').value;
-    const empresa_email = document.getElementById('empresa_email').value; 
-    const empresa_direccion = document.getElementById('empresa_direccion').value; 
-    const empresa_rut = document.getElementById('empresa_rut').value; 
-
-    // Nuevos campos a agregar
-    const nombre_encargado = document.getElementById('nombre_encargado_firma');
-    const cargo_encargado = document.getElementById('cargo_encargado_firma');
-    const telefono_encargado = document.getElementById('telefono_encargado_firma');
-
-    // Verificar que todos los campos requeridos tengan valor
-    if (!empresa_nombre || !empresa_area || !empresa_telefono || !empresa_email || !empresa_direccion || !empresa_rut ) {
-        return "Antes debes llenar todos los campos del formulario.";
-    }
-
-    return `${titular_predefinido} \n\n${empresa_nombre} -- ${empresa_rut} \n\n${empresa_area} \n\n${empresa_telefono} \n\n${empresa_email} \n\n${empresa_direccion} `;
-};
-
+            const empresa_nombre = document.getElementById('empresa_nombre').value;
+            const empresa_area = document.getElementById('empresa_area').value;
+            const empresa_telefono = document.getElementById('empresa_telefono').value;
+            const empresa_email = document.getElementById('empresa_email').value; 
+            const empresa_direccion = document.getElementById('empresa_direccion').value; 
+            const empresa_rut = document.getElementById('empresa_rut').value; 
+    
+            if (!empresa_nombre || !empresa_area || !empresa_telefono || !empresa_email || !empresa_direccion || !empresa_rut) {
+                return "Antes debes llenar todos los campos del formulario.";
+            }
+    
+            return `${titular_predefinido} \n\n${empresa_nombre} -- ${empresa_rut} \n\n${empresa_area} \n\n${empresa_telefono} \n\n${empresa_email} \n\n${empresa_direccion}`;
+        };
     
         document.querySelectorAll('input[name="signature-option"]').forEach((input) => {
             input.addEventListener('change', () => {
@@ -58,6 +51,8 @@ BPPJ
                     manualSignaturesContainer.style.display = 'block';
                 } else if (input.value === 'image') {
                     signatureImageInput.style.display = 'block';
+                } else if (input.value === 'digital') {
+                    digitalSignatureMessage.style.display = 'block'; // Muestra el mensaje de firma digital
                 }
     
                 // Asegúrate de ocultar el campo de imagen si se selecciona otra opción
@@ -82,7 +77,6 @@ BPPJ
                 alert('Por favor selecciona un archivo PNG válido.');
             }
         });
-    
        document.addEventListener('DOMContentLoaded', () => {
     const addSignatureButton = document.getElementById('add-signature');
     const manualSignaturesContainer = document.getElementById('manual-signatures');

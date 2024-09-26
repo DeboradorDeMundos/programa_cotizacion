@@ -32,34 +32,42 @@ BPPJ
             <div id="auto-signature-display" class="signature-display" style="display: none;"></div>
         </div>
 
-    <!-- Opción de Firma Manual -->
-    <div class="option">
-    <input type="radio" id="manual-signature" name="signature-option" value="manual">
-    <label for="manual-signature">Firma Manual</label>
-    <div id="manual-signatures" class="signature-display" style="display: none;">
-        <div class="signature-row">
-            <input type="text" name="titulo_firma" placeholder="titulo de la firma">
-            <input type="text" name="nombre_encargado_firma" placeholder="Nombre del Encargado">
-            <input type="text" name="cargo_encargado_firma" placeholder="Cargo del Encargado">
-            <input type="text" name="telefono_encargado_firma" placeholder="Teléfono del Encargado">
-            <input type="text" name="nombre_empresa_firma" placeholder="Nombre de la Empresa">
-            <input type="text" name="area_empresa_firma" placeholder="Área de la Empresa">
-            <input type="text" name="telefono_empresa_firma" placeholder="Teléfono de la Empresa">
-            <input type="email" name="email_firma" placeholder="Email">
-            <input type="text" name="direccion_firma" placeholder="Dirección">
-            <input type="text" name="rut_firma" placeholder="RUT">
+        <!-- Opción de Firma Manual -->
+        <div class="option">
+        <input type="radio" id="manual-signature" name="signature-option" value="manual">
+        <label for="manual-signature">Firma Manual</label>
+        <div id="manual-signatures" class="signature-display" style="display: none;">
+            <div class="signature-row">
+                <input type="text" name="titulo_firma" placeholder="titulo de la firma">
+                <input type="text" name="nombre_encargado_firma" placeholder="Nombre del Encargado">
+                <input type="text" name="cargo_encargado_firma" placeholder="Cargo del Encargado">
+                <input type="text" name="telefono_encargado_firma" placeholder="Teléfono del Encargado">
+                <input type="text" name="nombre_empresa_firma" placeholder="Nombre de la Empresa">
+                <input type="text" name="area_empresa_firma" placeholder="Área de la Empresa">
+                <input type="text" name="telefono_empresa_firma" placeholder="Teléfono de la Empresa">
+                <input type="email" name="email_firma" placeholder="Email">
+                <input type="text" name="direccion_firma" placeholder="Dirección">
+                <input type="text" name="rut_firma" placeholder="RUT">
+                </div>
             </div>
         </div>
-    </div>
 
                 <!-- Opción de Firma Digital (Subida de Imagen) -->
-            <div class="option">
-                <input type="radio" id="image-signature" name="signature-option" value="image">
-                <label for="image-signature">Firma Digital</label>
-                <input type="file" id="signature-image" name="signature-image" accept="image/png">
-                <!-- Previsualización de la imagen de la firma -->
-                <img id="signature-preview" src="" alt="Previsualización de firma" style="display: none;">
+        <div class="option">
+            <input type="radio" id="image-signature" name="signature-option" value="image">
+            <label for="image-signature">Firma Imagen</label>
+            <input type="file" id="signature-image" name="signature-image" accept="image/png">
+            <!-- Previsualización de la imagen de la firma -->
+            <img id="signature-preview" src="" alt="Previsualización de firma" style="display: none;">
+        </div>
+
+        <div class="option">
+            <input type="radio" id="digital-signature" name="signature-option" value="digital">
+            <label for="digital-signature">Firma Digital</label>
+            <div id="digital-signature-message" class="signature-display" style="display: none;">
+                <p>Su firma se generará en su cotización.</p>
             </div>
+        </div>
     </div>
 
     <script src="../../js/crear_empresa/firma.js"></script>

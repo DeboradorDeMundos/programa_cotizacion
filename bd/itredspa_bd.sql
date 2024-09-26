@@ -39,6 +39,11 @@ CREATE TABLE E_FotosPerfil (
     PRIMARY KEY (id_foto) -- Definición de la clave primaria
 ) ENGINE=InnoDB;
 
+CREATE TABLE E_tipo_firma (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tipo VARCHAR(50) NOT NULL UNIQUE
+);
+
 -- Eliminar la tabla Empresa si existe
 DROP TABLE IF EXISTS E_Empresa;
 
@@ -49,14 +54,16 @@ CREATE TABLE E_Empresa (
     rut_empresa VARCHAR(20) UNIQUE NOT NULL, -- RUT de la empresa
     nombre_empresa VARCHAR(255) NOT NULL, -- Nombre de la empresa
     area_empresa VARCHAR(255) NOT NULL, -- Área de la empresa
-    direccion_empresa VARCHAR(255) , -- Dirección de la empresa
-    telefono_empresa VARCHAR(20) , -- Teléfono de la empresa
-    email_empresa VARCHAR(100) , -- Email de la empresa
-    fecha_creacion DATE , -- fecha de creacion de la empresa
-    dias_validez INT,
+    direccion_empresa VARCHAR(255), -- Dirección de la empresa
+    telefono_empresa VARCHAR(20), -- Teléfono de la empresa
+    email_empresa VARCHAR(100), -- Email de la empresa
+    fecha_creacion DATE, -- Fecha de creación de la empresa
+    dias_validez INT, -- Días de validez
+    id_tipo_firma INT, -- Identificador del tipo de firma
     PRIMARY KEY (id_empresa), -- Definición de la clave primaria
-    FOREIGN KEY (id_foto) REFERENCES E_FotosPerfil(id_foto) ON DELETE CASCADE -- Definición de la clave foránea
-) ENGINE=InnoDB ;
+    FOREIGN KEY (id_foto) REFERENCES E_FotosPerfil(id_foto) ON DELETE CASCADE, -- Definición de la clave foránea
+    FOREIGN KEY (id_tipo_firma) REFERENCES E_tipo_firma(id) ON DELETE SET NULL -- Definición de la clave foránea para tipo de firma
+) ENGINE=InnoDB;
 
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA CLIENTES -------------------------------------------------------
