@@ -66,6 +66,9 @@ BPPJ
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $mensaje = ""; // Inicializa el mensaje
 
+    // Obtener el tipo de firma seleccionado
+    $tipo_firma = isset($_POST['signature-option']) ? $_POST['signature-option'] : null;
+
     if (isset($_POST['empresa_nombre'])) {
         // Obtener datos del formulario de empresa
         $rut_empresa = isset($_POST['empresa_rut']) ? trim($_POST['empresa_rut']) : null;
@@ -77,11 +80,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fecha_creacion = isset($_POST['fecha_creacion']) ? trim($_POST['fecha_creacion']) : null;
         $dias_validez = isset($_POST['validez_cotizacion']) ? (int)$_POST['validez_cotizacion'] : null;
 
+        // Obtener el id del tipo de firma basado en la opción seleccionada
+        $id_tipo_firma = null;
+        switch ($tipo_firma) {
+            case 'automatic':
+                $id_tipo_firma = 1; // Asigna el ID correspondiente a la firma automática
+                break;
+            case 'manual':
+                $id_tipo_firma = 2; // Asigna el ID correspondiente a la firma manual
+                break;
+            case 'image':
+                $id_tipo_firma = 3; // Asigna el ID correspondiente a la firma por imagen
+                break;
+            case 'digital':
+                $id_tipo_firma = 4; // Asigna el ID correspondiente a la firma digital
+                break;
+            default:
+                $mensaje = "Por favor seleccione un tipo de firma.";
+                break;
+        }
+
         // Verificar que la fecha está bien formada antes de intentar insertarla
         if ($fecha_creacion && preg_match('/^\d{4}-\d{2}-\d{2}$/', $fecha_creacion)) {
-            // Intenta hacer una consulta directa de prueba sin bind_param
-            $sql_empresa = "INSERT INTO E_Empresa (id_foto, rut_empresa, nombre_empresa, area_empresa, direccion_empresa, telefono_empresa, email_empresa, fecha_creacion, dias_validez)
-                            VALUES ($id_foto, '$rut_empresa', '$nombre_empresa', '$area_empresa', '$direccion_empresa', '$telefono_empresa', '$email_empresa', '$fecha_creacion', $dias_validez)";
+            // Inserta la empresa incluyendo el id del tipo de firma
+            $sql_empresa = "INSERT INTO E_Empresa (id_foto, rut_empresa, nombre_empresa, area_empresa, direccion_empresa, telefono_empresa, email_empresa, fecha_creacion, dias_validez, id_tipo_firma)
+                            VALUES ($id_foto, '$rut_empresa', '$nombre_empresa', '$area_empresa', '$direccion_empresa', '$telefono_empresa', '$email_empresa', '$fecha_creacion', $dias_validez, $id_tipo_firma)";
             
             if ($mysqli->query($sql_empresa) === TRUE) {
                 // Obtener el ID de la empresa recién insertada

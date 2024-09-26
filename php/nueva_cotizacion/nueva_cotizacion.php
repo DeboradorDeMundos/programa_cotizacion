@@ -17,171 +17,175 @@
         ------------------------ -->
 
         <?php
-    // Establece la conexión a la base de datos de ITred Spa
-    $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-    ?>
-    <!-- ---------------------
-        -- FIN CONEXION BD --
-        --------------------- -->
-    <?php
-        // Obtener el ID de la empresa desde la URL
-        $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+// Establece la conexión a la base de datos de ITred Spa
+$mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
+// ---------------------
+// FIN CONEXION BD 
+// ---------------------
 
-        if ($id > 0) {
-            // Preparar la consulta para obtener los detalles de la empresa
-            $sql_empresa = "SELECT 
-                e.rut_empresa AS EmpresaRUT,
-                e.nombre_empresa AS EmpresaNombre,
-                e.area_empresa AS EmpresaArea,
-                e.direccion_empresa AS EmpresaDireccion,
-                e.telefono_empresa AS EmpresaTelefono,
-                e.email_empresa AS EmpresaEmail,
-                f.ruta_foto
-            FROM e_empresa e
-            LEFT JOIN e_FotosPerfil f ON f.id_foto = e.id_foto
-            WHERE e.id_empresa = ?";
+// Obtener el ID de la empresa desde la URL
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-            if ($stmt_empresa = $mysqli->prepare($sql_empresa)) {
-                $stmt_empresa->bind_param("i", $id);
-                $stmt_empresa->execute();
-                $result_empresa = $stmt_empresa->get_result();
+if ($id > 0) {
+    // Preparar la consulta para obtener los detalles de la empresa
+    $sql_empresa = "SELECT 
+        e.rut_empresa AS EmpresaRUT,
+        e.nombre_empresa AS EmpresaNombre,
+        e.area_empresa AS EmpresaArea,
+        e.direccion_empresa AS EmpresaDireccion,
+        e.telefono_empresa AS EmpresaTelefono,
+        e.email_empresa AS EmpresaEmail,
+        f.ruta_foto,
+        e.id_tipo_firma AS tipo_firma
+    FROM e_empresa e
+    LEFT JOIN e_FotosPerfil f ON f.id_foto = e.id_foto
+    WHERE e.id_empresa = ?";
 
-                if ($result_empresa->num_rows == 1) {
-                    $row = $result_empresa->fetch_assoc();
-                    // Preparar la consulta para obtener los detalles de las cuentas bancarias
-                    $sql_cuenta = "SELECT 
-                        cb.id_cuenta AS CuentaID,
-                        cb.rut_titular AS CuentaRutTitular,
-                        cb.nombre_titular AS CuentaNombreTitular,
-                        cb.numero_cuenta AS CuentaNumeroCuenta,
-                        cb.celular AS CuentaCelular,
-                        cb.email_banco AS CuentaEmailBanco,
-                        t.tipocuenta AS TipoCuentaDescripcion,
-                        b.nombre_banco AS BancoNombre
-                    FROM E_Cuenta_Bancaria cb
-                    LEFT JOIN E_Tipo_Cuenta t ON cb.id_tipocuenta = t.id_tipocuenta
-                    LEFT JOIN E_Bancos b ON cb.id_banco = b.id_banco
-                    WHERE cb.id_empresa = ?";
+    if ($stmt_empresa = $mysqli->prepare($sql_empresa)) {
+        $stmt_empresa->bind_param("i", $id);
+        $stmt_empresa->execute();
+        $result_empresa = $stmt_empresa->get_result();
 
-                    if ($stmt_cuenta = $mysqli->prepare($sql_cuenta)) {
-                        $stmt_cuenta->bind_param("i", $id);
-                        $stmt_cuenta->execute();
-                        $result_cuenta = $stmt_cuenta->get_result();
+        if ($result_empresa->num_rows == 1) {
+            $row = $result_empresa->fetch_assoc();
 
-                        $bancos = [];
-                        while ($banco = $result_cuenta->fetch_assoc()) {
-                            $bancos[] = $banco;
-                        }
+            // Almacena el tipo de firma
+            $tipo_firma = $row['tipo_firma'];
 
-                        $stmt_cuenta->close();
-                    } else {
-                        echo "<p>Error al preparar la consulta de cuenta bancaria: " . $mysqli->error . "</p>";
-                    }
+            // Preparar la consulta para obtener los detalles de las cuentas bancarias
+            $sql_cuenta = "SELECT 
+                cb.id_cuenta AS CuentaID,
+                cb.rut_titular AS CuentaRutTitular,
+                cb.nombre_titular AS CuentaNombreTitular,
+                cb.numero_cuenta AS CuentaNumeroCuenta,
+                cb.celular AS CuentaCelular,
+                cb.email_banco AS CuentaEmailBanco,
+                t.tipocuenta AS TipoCuentaDescripcion,
+                b.nombre_banco AS BancoNombre
+            FROM E_Cuenta_Bancaria cb
+            LEFT JOIN E_Tipo_Cuenta t ON cb.id_tipocuenta = t.id_tipocuenta
+            LEFT JOIN E_Bancos b ON cb.id_banco = b.id_banco
+            WHERE cb.id_empresa = ?";
 
-                    // Consulta para obtener los días de validez
-                    $sql_validez = "SELECT dias_validez FROM E_Empresa WHERE id_empresa = ? ";
-                    if ($stmt_validez = $mysqli->prepare($sql_validez)) {
-                        $stmt_validez->bind_param("i", $id);
-                        $stmt_validez->execute();
-                        $stmt_validez->bind_result($dias_validez);
-                        $stmt_validez->fetch();
-                        $stmt_validez->close();
-                    } else {
-                        echo "<p>Error al preparar la consulta de días de validez: " . $mysqli->error . "</p>";
-                    }
+            if ($stmt_cuenta = $mysqli->prepare($sql_cuenta)) {
+                $stmt_cuenta->bind_param("i", $id);
+                $stmt_cuenta->execute();
+                $result_cuenta = $stmt_cuenta->get_result();
 
-                    // Consulta para obtener los requisitos básicos
-                    $query_requisitos = "SELECT indice, descripcion_condiciones FROM E_Requisitos_Basicos WHERE id_empresa = ?";
-                    if ($stmt_req = $mysqli->prepare($query_requisitos)) {
-                        $stmt_req->bind_param('i', $id);
-                        $stmt_req->execute();
-                        $result_req = $stmt_req->get_result();
-                        $requisitos = $result_req->fetch_all(MYSQLI_ASSOC);
-                        $stmt_req->close();
-                    } else {
-                        echo "<p>Error al preparar la consulta de requisitos: " . $mysqli->error . "</p>";
-                    }
-
-                    // Consulta para obtener las condiciones generales
-                    $query_condiciones = "SELECT id_condiciones, descripcion_condiciones FROM C_Condiciones_Generales WHERE id_empresa = ?";
-                    if ($stmt_cond = $mysqli->prepare($query_condiciones)) {
-                        $stmt_cond->bind_param('i', $id);
-                        $stmt_cond->execute();
-                        $result_cond = $stmt_cond->get_result();
-                        $condiciones = $result_cond->fetch_all(MYSQLI_ASSOC);
-                        $stmt_cond->close();
-                    } else {
-                        echo "<p>Error al preparar la consulta de condiciones generales: " . $mysqli->error . "</p>";
-                    }
-
-                    // Consulta para obtener la firma de la empresa
-                    $sql_firma = "SELECT 
-                                    titulo_firma, 
-                                    nombre_encargado_firma, 
-                                    cargo_encargado_firma, 
-                                    nombre_empresa_firma, 
-                                    direccion_firma, 
-                                    telefono_empresa_firma, 
-                                    email_firma, 
-                                    firma_digital 
-                                FROM E_Firmas 
-                                WHERE id_empresa = ? LIMIT 1";
-
-                    if ($stmt_firma = $mysqli->prepare($sql_firma)) {
-                        $stmt_firma->bind_param("i", $id);
-                        $stmt_firma->execute();
-                        $result_firma = $stmt_firma->get_result();
-
-                        if ($result_firma->num_rows == 1) {
-                            $firma = $result_firma->fetch_assoc();
-                        } else {
-                            echo "<p>No se encontró la firma de la empresa.</p>";
-                        }
-
-                        $stmt_firma->close();
-                    } else {
-                        echo "<p>Error al preparar la consulta de la firma: " . $mysqli->error . "</p>";
-                    }
-
-                    // Obtener el número de cotización más alto
-                    $sql_last_cot = "SELECT numero_cotizacion FROM C_Cotizaciones WHERE id_empresa = ? ORDER BY numero_cotizacion DESC LIMIT 1";
-                    if ($stmt_last_cot = $mysqli->prepare($sql_last_cot)) {
-                        $stmt_last_cot->bind_param("i", $id);
-                        $stmt_last_cot->execute();
-                        $stmt_last_cot->bind_result($last_num_cotizacion);
-                        $stmt_last_cot->fetch();
-                        $stmt_last_cot->close();
-                        $numero_cotizacion = ($last_num_cotizacion) ? (int)$last_num_cotizacion + 1 : 1;
-                    } else {
-                        echo "<p>Error al preparar la consulta de cotización: " . $mysqli->error . "</p>";
-                    }
-
-                    // -----------------------------
-                    // Consulta para obtener las obligaciones del cliente
-                    $query_obligaciones = "SELECT indice, descripcion, estado FROM E_obligaciones_cliente WHERE id_empresa = ?";
-                    if ($stmt_obligaciones = $mysqli->prepare($query_obligaciones)) {
-                        $stmt_obligaciones->bind_param('i', $id);
-                        $stmt_obligaciones->execute();
-                        $result_obligaciones = $stmt_obligaciones->get_result();
-                        $obligaciones = $result_obligaciones->fetch_all(MYSQLI_ASSOC);
-                        $stmt_obligaciones->close();
-                    } else {
-                        echo "<p>Error al preparar la consulta de obligaciones del cliente: " . $mysqli->error . "</p>";
-                    }
-                    // -----------------------------
-
-                } else {
-                    echo "<p>No se encontró la empresa con el ID proporcionado.</p>";
+                $bancos = [];
+                while ($banco = $result_cuenta->fetch_assoc()) {
+                    $bancos[] = $banco;
                 }
 
-                $stmt_empresa->close();
+                $stmt_cuenta->close();
             } else {
-                echo "<p>Error al preparar la consulta de empresa: " . $mysqli->error . "</p>";
+                echo "<p>Error al preparar la consulta de cuenta bancaria: " . $mysqli->error . "</p>";
             }
+
+            // Consulta para obtener los días de validez
+            $sql_validez = "SELECT dias_validez FROM E_Empresa WHERE id_empresa = ? ";
+            if ($stmt_validez = $mysqli->prepare($sql_validez)) {
+                $stmt_validez->bind_param("i", $id);
+                $stmt_validez->execute();
+                $stmt_validez->bind_result($dias_validez);
+                $stmt_validez->fetch();
+                $stmt_validez->close();
+            } else {
+                echo "<p>Error al preparar la consulta de días de validez: " . $mysqli->error . "</p>";
+            }
+
+            // Consulta para obtener los requisitos básicos
+            $query_requisitos = "SELECT indice, descripcion_condiciones FROM E_Requisitos_Basicos WHERE id_empresa = ?";
+            if ($stmt_req = $mysqli->prepare($query_requisitos)) {
+                $stmt_req->bind_param('i', $id);
+                $stmt_req->execute();
+                $result_req = $stmt_req->get_result();
+                $requisitos = $result_req->fetch_all(MYSQLI_ASSOC);
+                $stmt_req->close();
+            } else {
+                echo "<p>Error al preparar la consulta de requisitos: " . $mysqli->error . "</p>";
+            }
+
+            // Consulta para obtener las condiciones generales
+            $query_condiciones = "SELECT id_condiciones, descripcion_condiciones FROM C_Condiciones_Generales WHERE id_empresa = ?";
+            if ($stmt_cond = $mysqli->prepare($query_condiciones)) {
+                $stmt_cond->bind_param('i', $id);
+                $stmt_cond->execute();
+                $result_cond = $stmt_cond->get_result();
+                $condiciones = $result_cond->fetch_all(MYSQLI_ASSOC);
+                $stmt_cond->close();
+            } else {
+                echo "<p>Error al preparar la consulta de condiciones generales: " . $mysqli->error . "</p>";
+            }
+
+            // Consulta para obtener la firma de la empresa
+            $sql_firma = "SELECT 
+                            titulo_firma, 
+                            nombre_encargado_firma, 
+                            cargo_encargado_firma, 
+                            nombre_empresa_firma, 
+                            direccion_firma, 
+                            telefono_empresa_firma, 
+                            email_firma, 
+                            firma_digital 
+                        FROM E_Firmas 
+                        WHERE id_empresa = ? LIMIT 1";
+
+            if ($stmt_firma = $mysqli->prepare($sql_firma)) {
+                $stmt_firma->bind_param("i", $id);
+                $stmt_firma->execute();
+                $result_firma = $stmt_firma->get_result();
+
+                if ($result_firma->num_rows == 1) {
+                    $firma = $result_firma->fetch_assoc();
+                } else {
+                    $firma = null; // No hay firma manual
+                }
+
+                $stmt_firma->close();
+            } else {
+                echo "<p>Error al preparar la consulta de la firma: " . $mysqli->error . "</p>";
+            }
+
+            // Obtener el número de cotización más alto
+            $sql_last_cot = "SELECT numero_cotizacion FROM C_Cotizaciones WHERE id_empresa = ? ORDER BY numero_cotizacion DESC LIMIT 1";
+            if ($stmt_last_cot = $mysqli->prepare($sql_last_cot)) {
+                $stmt_last_cot->bind_param("i", $id);
+                $stmt_last_cot->execute();
+                $stmt_last_cot->bind_result($last_num_cotizacion);
+                $stmt_last_cot->fetch();
+                $stmt_last_cot->close();
+                $numero_cotizacion = ($last_num_cotizacion) ? (int)$last_num_cotizacion + 1 : 1;
+            } else {
+                echo "<p>Error al preparar la consulta de cotización: " . $mysqli->error . "</p>";
+            }
+
+            // -----------------------------
+            // Consulta para obtener las obligaciones del cliente
+            $query_obligaciones = "SELECT indice, descripcion, estado FROM E_obligaciones_cliente WHERE id_empresa = ?";
+            if ($stmt_obligaciones = $mysqli->prepare($query_obligaciones)) {
+                $stmt_obligaciones->bind_param('i', $id);
+                $stmt_obligaciones->execute();
+                $result_obligaciones = $stmt_obligaciones->get_result();
+                $obligaciones = $result_obligaciones->fetch_all(MYSQLI_ASSOC);
+                $stmt_obligaciones->close();
+            } else {
+                echo "<p>Error al preparar la consulta de obligaciones del cliente: " . $mysqli->error . "</p>";
+            }
+            // -----------------------------
+
         } else {
-            echo "<p>ID inválido.</p>";
+            echo "<p>No se encontró la empresa con el ID proporcionado.</p>";
         }
-    ?>
+
+        $stmt_empresa->close();
+    } else {
+        echo "<p>Error al preparar la consulta de empresa: " . $mysqli->error . "</p>";
+    }
+} else {
+    echo "<p>ID inválido.</p>";
+}
+?>
 
 
     <!DOCTYPE html>
@@ -258,23 +262,8 @@
                 <?php include 'traer_datos_bancarios.php'; ?>
 
                 <div class="container">
-            
 
-
-                <?php if (!empty($firma)): ?>
-                    <div style="text-align: center;">
-                        <?php if (!empty($firma['firma_digital'])): ?>
-                            <p><img src="<?php echo htmlspecialchars($firma['firma_digital']); ?>" alt="Firma Digital" style="max-width: 200px;"></p> <!-- Muestra la firma digital (si es una URL o archivo de imagen) -->
-                        <?php endif; ?>
-                        <p><strong><?php echo htmlspecialchars($firma['titulo_firma']); ?></strong></p> <!-- Título de la firma -->
-                        <p><strong><?php echo htmlspecialchars($firma['nombre_empresa_firma']); ?></strong></p> <!-- Nombre de la empresa -->
-                        <p><?php echo htmlspecialchars($firma['direccion_firma']); ?></p> <!-- Dirección de la empresa -->
-                        <p><?php echo htmlspecialchars($firma['telefono_empresa_firma']); ?></p> <!-- Teléfono de la empresa -->
-                        <p><?php echo htmlspecialchars($firma['email_firma']); ?></p> <!-- Email de la empresa -->
-                    </div>
-                <?php else: ?>
-                    <p>No se encontró la firma de la empresa.</p>
-                <?php endif; ?>
+                <?php include 'firma.php'; ?>
                 
     <script src="../../js/nueva_cotizacion/nueva_cotizacion.js"></script> <!-- Enlaza nuevamente el archivo JavaScript para manejar la lógica del formulario de cotización -->
     <script src="../../js/crear_empresa/upload_logo.js"></script>
