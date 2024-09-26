@@ -59,44 +59,39 @@ if (isset($_GET['id'])) {
         // Contenido de la página
         $contenido_pdf .= "5 0 obj\n<< /Length 7 0 R >>\nstream\n";
 
-        // Posición del logo
         if (file_exists($ruta_logo_absoluta)) {
             $contenido_pdf .= "q\n";
-            $contenido_pdf .= "$scaled_width 0 0 $scaled_height 50 720 cm\n";  // Posición y tamaño del logo
+            $contenido_pdf .= "$scaled_width 0 0 $scaled_height 50 720 cm\n";  // Ajusta la posición y tamaño
             $contenido_pdf .= "/Im1 Do\n";
             $contenido_pdf .= "Q\n";
         }
 
-        // Cuadro rojo para los datos de la cotización
-        $contenido_pdf .= "q\n1 0 0 RG\n"; // Color rojo
-        $contenido_pdf .= "2 w\n"; // Espesor del borde
-        $contenido_pdf .= "400 700 200 80 re S\n"; // Rectángulo en la posición derecha superior
-        $contenido_pdf .= "Q\n";
-
-        // Texto de los datos de la cotización en el cuadro rojo
-        $contenido_pdf .= "BT\n/F1 12 Tf\n410 750 Td\n(Cotización N°: " . $id_cotizacion . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Fecha de Emisión: " . $row['fecha_emision'] . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Fecha de Validez: " . $row['fecha_validez'] . ") Tj\n";
-        $contenido_pdf .= "ET\n";
-
-        // Encabezado de la empresa debajo del logo
-        $contenido_pdf .= "BT\n/F1 14 Tf\n50 670 Td\n(" . $row['nombre_empresa'] . ") Tj\n"; // Nombre de la empresa
-        $contenido_pdf .= "0 -15 Td\n(RUT: " . utf8_decode($row['rut_cliente']) . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Dirección: " . utf8_decode($row['direccion_empresa']) . ") Tj\n";
+        // Comienza el contenido del PDF - Encabezado de la empresa
+        $contenido_pdf .= "BT\n/F1 14 Tf\n70 770 Td\n(" . $row['nombre_empresa'] . ") Tj\n"; // Nombre de la empresa
+        $contenido_pdf .= "0 -15 Td\n(RUT: " . $row['rut_cliente'] . ") Tj\n";  // RUT de la empresa
+        $contenido_pdf .= "0 -15 Td\n(Dirección: " . $row['direccion_empresa'] . ") Tj\n";
         $contenido_pdf .= "0 -15 Td\n(Teléfono: " . $row['telefono_empresa'] . ") Tj\n";
         $contenido_pdf .= "0 -15 Td\n(Email: " . $row['email_empresa'] . ") Tj\n";
 
+        // Título de Cotización
+        $contenido_pdf .= "0 -30 Td\n/F1 20 Tf\n(COTIZACIÓN) Tj\n";
+
+        // Datos de la cotización
+        $contenido_pdf .= "/F1 14 Tf\n0 -40 Td\n(Cotización N°: " . $id_cotizacion . ") Tj\n";
+        $contenido_pdf .= "0 -15 Td\n(Fecha de Emisión: " . $row['fecha_emision'] . ") Tj\n";
+        $contenido_pdf .= "0 -15 Td\n(Fecha de Validez: " . $row['fecha_validez'] . ") Tj\n";
+
         // Datos del cliente
-        $contenido_pdf .= "0 -40 Td\n(Cliente: " . utf8_decode($row['nombre_cliente']) . " (" . $row['rut_cliente'] . ")) Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Dirección: " . utf8_decode($row['direccion_cliente']) . ") Tj\n";
+        $contenido_pdf .= "0 -40 Td\n(Cliente: " . $row['nombre_cliente'] . " (" . $row['rut_cliente'] . ")) Tj\n";
+        $contenido_pdf .= "0 -15 Td\n(Dirección: " . $row['direccion_cliente'] . ") Tj\n";
         $contenido_pdf .= "0 -15 Td\n(Teléfono: " . $row['telefono_cliente'] . ") Tj\n";
         $contenido_pdf .= "0 -15 Td\n(Email: " . $row['email_cliente'] . ") Tj\n";
 
-        // Proyecto
-        $contenido_pdf .= "0 -40 Td\n(Proyecto: " . utf8_decode($row['nombre_proyecto']) . ") Tj\n";
+        // Detalle del Proyecto (Puedes agregar más detalles si tienes)
+        $contenido_pdf .= "0 -40 Td\n(Proyecto: " . $row['nombre_proyecto'] . ") Tj\n";
 
         // Total Final
-        $contenido_pdf .= "0 -40 Td\n(Total Final: $" . number_format($row['total_final'], 2) . ") Tj\n";
+        $contenido_pdf .= "0 -40 Td\n(Final: $" . number_format($row['total_final'], 2) . ") Tj\n";
 
         // Termina el contenido del PDF
         $contenido_pdf .= "ET\nendstream\nendobj\n";

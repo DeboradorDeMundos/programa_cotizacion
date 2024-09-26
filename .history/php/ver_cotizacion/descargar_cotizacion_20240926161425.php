@@ -26,6 +26,7 @@ if (isset($_GET['id'])) {
     $stmt->execute();
     $result = $stmt->get_result();
 
+    // Verificar si se encontró la cotización
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
 
@@ -34,23 +35,25 @@ if (isset($_GET['id'])) {
         $contenido_pdf .= "1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n";
         $contenido_pdf .= "2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 /MediaBox [0 0 612 792] >>\nendobj\n";
         $contenido_pdf .= "3 0 obj\n<< /Type /Page /Parent 2 0 R /Resources << /Font << /F1 4 0 R >> /XObject << /Im1 6 0 R >> >> /Contents 5 0 R >>\nendobj\n";
-        $contenido_pdf .= "4 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>\nendobj\n";
+        $contenido_pdf .= "4 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n";
 
         // Agregar la imagen del logo al PDF
         $ruta_logo = $row['ruta_foto'];
-        $ruta_logo_absoluta = realpath(dirname(__FILE__) . '/' . $ruta_logo);
 
+        // Asegurarse de que la ruta sea absoluta
+        $ruta_logo_absoluta = realpath(dirname(__FILE__) . '/' . $ruta_logo);
+        
         if (file_exists($ruta_logo_absoluta)) {
             $img_data = file_get_contents($ruta_logo_absoluta);
             $img_length = strlen($img_data);
             list($width, $height) = getimagesize($ruta_logo_absoluta);
-
-            // Definir imagen en el PDF
+            
+            // Definimos la imagen en el PDF
             $contenido_pdf .= "6 0 obj\n<< /Type /XObject /Subtype /Image /Width $width /Height $height /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length $img_length >>\nstream\n";
             $contenido_pdf .= $img_data;
             $contenido_pdf .= "\nendstream\nendobj\n";
 
-            // Ajustar tamaño de la imagen
+            // Ajustamos el tamaño de la imagen para que quepa en el PDF
             $scale = min(100 / $width, 100 / $height);
             $scaled_width = $width * $scale;
             $scaled_height = $height * $scale;
@@ -58,45 +61,36 @@ if (isset($_GET['id'])) {
 
         // Contenido de la página
         $contenido_pdf .= "5 0 obj\n<< /Length 7 0 R >>\nstream\n";
-
-        // Posición del logo
+        
         if (file_exists($ruta_logo_absoluta)) {
             $contenido_pdf .= "q\n";
-            $contenido_pdf .= "$scaled_width 0 0 $scaled_height 50 720 cm\n";  // Posición y tamaño del logo
+            $contenido_pdf .= "$scaled_width 0 0 $scaled_height 50 700 cm\n";
             $contenido_pdf .= "/Im1 Do\n";
             $contenido_pdf .= "Q\n";
         }
 
-        // Cuadro rojo para los datos de la cotización
-        $contenido_pdf .= "q\n1 0 0 RG\n"; // Color rojo
-        $contenido_pdf .= "2 w\n"; // Espesor del borde
-        $contenido_pdf .= "400 700 200 80 re S\n"; // Rectángulo en la posición derecha superior
-        $contenido_pdf .= "Q\n";
+        // Comienza el contenido del PDF
+        $contenido_pdf .= "BT\n/F1 14 Tf\n70 770 Td\n(" . $row['nombre_empresa'] . ") Tj\n"; // Nombre de la empresa
 
-        // Texto de los datos de la cotización en el cuadro rojo
-        $contenido_pdf .= "BT\n/F1 12 Tf\n410 750 Td\n(Cotización N°: " . $id_cotizacion . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Fecha de Emisión: " . $row['fecha_emision'] . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Fecha de Validez: " . $row['fecha_validez'] . ") Tj\n";
-        $contenido_pdf .= "ET\n";
+        // Información de la empresa
+        $contenido_pdf .= "0 -20 Td\n(Dirección: " . $row['direccion_empresa'] . ") Tj\n";
+        $contenido_pdf .= "0 -20 Td\n(Teléfono: " . $row['telefono_empresa'] . ") Tj\n";
+        $contenido_pdf .= "0 -20 Td\n(Email: " . $row['email_empresa'] . ") Tj\n";
 
-        // Encabezado de la empresa debajo del logo
-        $contenido_pdf .= "BT\n/F1 14 Tf\n50 670 Td\n(" . $row['nombre_empresa'] . ") Tj\n"; // Nombre de la empresa
-        $contenido_pdf .= "0 -15 Td\n(RUT: " . utf8_decode($row['rut_cliente']) . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Dirección: " . utf8_decode($row['direccion_empresa']) . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Teléfono: " . $row['telefono_empresa'] . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Email: " . $row['email_empresa'] . ") Tj\n";
+        // Datos de la cotización
+        $contenido_pdf .= "0 -40 Td\n(Cotización N°: " . $id_cotizacion . ") Tj\n";
+        $contenido_pdf .= "0 -20 Td\n(Fecha de Emisión: " . $row['fecha_emision'] . ") Tj\n";
+        $contenido_pdf .= "0 -20 Td\n(Fecha de Validez: " . $row['fecha_validez'] . ") Tj\n";
 
         // Datos del cliente
-        $contenido_pdf .= "0 -40 Td\n(Cliente: " . utf8_decode($row['nombre_cliente']) . " (" . $row['rut_cliente'] . ")) Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Dirección: " . utf8_decode($row['direccion_cliente']) . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Teléfono: " . $row['telefono_cliente'] . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Email: " . $row['email_cliente'] . ") Tj\n";
+        $contenido_pdf .= "0 -40 Td\n(Cliente: " . $row['nombre_cliente'] . " (" . $row['rut_cliente'] . ")) Tj\n";
+        $contenido_pdf .= "0 -20 Td\n(Dirección: " . $row['direccion_cliente'] . ") Tj\n";
+        $contenido_pdf .= "0 -20 Td\n(Teléfono: " . $row['telefono_cliente'] . ") Tj\n";
+        $contenido_pdf .= "0 -20 Td\n(Email: " . $row['email_cliente'] . ") Tj\n";
 
-        // Proyecto
-        $contenido_pdf .= "0 -40 Td\n(Proyecto: " . utf8_decode($row['nombre_proyecto']) . ") Tj\n";
-
-        // Total Final
-        $contenido_pdf .= "0 -40 Td\n(Total Final: $" . number_format($row['total_final'], 2) . ") Tj\n";
+        // Datos del proyecto
+        $contenido_pdf .= "0 -40 Td\n(Proyecto: " . $row['nombre_proyecto'] . ") Tj\n";
+        $contenido_pdf .= "0 -20 Td\n(Total Final: $" . $row['total_final'] . ") Tj\n";
 
         // Termina el contenido del PDF
         $contenido_pdf .= "ET\nendstream\nendobj\n";
