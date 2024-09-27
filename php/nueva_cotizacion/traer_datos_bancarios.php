@@ -15,51 +15,64 @@ BPPJ
 
 
 
-<h2>TRANSFERENCIAS A:</h2> <!-- Título para la sección de transferencias bancarias -->
-<table> <!-- Crea una tabla para mostrar la información bancaria para transferencias -->
-<tr>
+    <h2 style="text-align: center;">TRANSFERENCIAS A:</h2> <!-- Título para la sección de transferencias bancarias -->
+<table style="margin: 0 auto; border-collapse: collapse;"> <!-- Crea una tabla para mostrar la información bancaria para transferencias -->
+    <tr>
+        <?php if (!empty($bancos)): ?>
+            <?php foreach ($bancos as $banco): ?>
+                <th style="text-align: center; border: 1px solid #ddd; padding: 8px;">
+                    <?php echo htmlspecialchars($banco['TipoCuentaDescripcion']); ?>
+                </th>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <th colspan="3" style="text-align: center; border: 1px solid #ddd; padding: 8px;">No hay información bancaria disponible.</th>
+        <?php endif; ?>
+    </tr>
     <?php if (!empty($bancos)): ?>
-        <?php foreach ($bancos as $banco): ?>
-            <th><?php echo htmlspecialchars($banco['TipoCuentaDescripcion']); ?></th>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <th colspan="3">No hay información bancaria disponible.</th>
+        <tr>
+            <?php foreach ($bancos as $banco): ?>
+                <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
+                    BANCO: <?php echo htmlspecialchars($banco['BancoNombre']); ?>
+                </td>
+            <?php endforeach; ?>
+        </tr>
+        <tr>
+            <?php foreach ($bancos as $banco): ?>
+                <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
+                    TIPO CUENTA: <?php echo htmlspecialchars($banco['TipoCuentaDescripcion']); ?>
+                </td>
+            <?php endforeach; ?>
+        </tr>
+        <tr>
+            <?php foreach ($bancos as $banco): ?>
+                <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
+                    NUMERO CUENTA: <?php echo htmlspecialchars($banco['CuentaNumeroCuenta']); ?>
+                </td>
+            <?php endforeach; ?>
+        </tr>
+        <tr>
+            <?php foreach ($bancos as $banco): ?>
+                <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
+                    NOMBRE: <?php echo htmlspecialchars($banco['CuentaNombreTitular']); ?>
+                </td>
+            <?php endforeach; ?>
+        </tr>
+        <tr>
+            <?php foreach ($bancos as $banco): ?>
+                <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
+                    RUT: <?php echo htmlspecialchars($banco['CuentaRutTitular']); ?>
+                </td>
+            <?php endforeach; ?>
+        </tr>
+        <tr>
+            <?php foreach ($bancos as $banco): ?>
+                <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
+                    E-MAIL: <?php echo htmlspecialchars($banco['CuentaEmailBanco']); ?>
+                </td>
+            <?php endforeach; ?>
+        </tr>
     <?php endif; ?>
-</tr>
-<?php if (!empty($bancos)): ?>
-    <tr>
-        <?php foreach ($bancos as $banco): ?>
-            <td>BANCO: <?php echo htmlspecialchars($banco['BancoNombre']); ?></td>
-        <?php endforeach; ?>
-    </tr>
-    <tr>
-        <?php foreach ($bancos as $banco): ?>
-            <td>TIPO CUENTA: <?php echo htmlspecialchars($banco['TipoCuentaDescripcion']); ?></td>
-        <?php endforeach; ?>
-    </tr>
-    <tr>
-        <?php foreach ($bancos as $banco): ?>
-            <td>NUMERO CUENTA: <?php echo htmlspecialchars($banco['CuentaNumeroCuenta']); ?></td>
-        <?php endforeach; ?>
-    </tr>
-    <tr>
-        <?php foreach ($bancos as $banco): ?>
-            <td>NOMBRE: <?php echo htmlspecialchars($banco['CuentaNombreTitular']); ?></td>
-        <?php endforeach; ?>
-    </tr>
-    <tr>
-        <?php foreach ($bancos as $banco): ?>
-            <td>RUT: <?php echo htmlspecialchars($banco['CuentaRutTitular']); ?></td>
-        <?php endforeach; ?>
-    </tr>
-    <tr>
-        <?php foreach ($bancos as $banco): ?>
-            <td>E-MAIL: <?php echo htmlspecialchars($banco['CuentaEmailBanco']); ?></td>
-        <?php endforeach; ?>
-    </tr>
-<?php endif; ?>
 </table>
-
 
 
 

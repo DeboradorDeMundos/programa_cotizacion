@@ -76,6 +76,19 @@ BPPJ
         background-color: #d32f2f;
     }
 
+    .btn-eliminar {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .btn-eliminar  {
+        background-color: #d32f2f;
+    }
+
     .detalle-table th, .detalle-table td {
         border: 1px solid #ddd;
         padding: 8px;

@@ -93,6 +93,15 @@ BPPJ
             <option value="bajo">Bajo</option>
         </select>
     </div>
+
+    <div class="form-group">
+        <label for="riesgo_descripcion">Descripción de riesgo</label> <!-- Etiqueta para el campo de entrada de la descripción del riesgo -->
+        <input type="text" id="riesgo_descripcion" name="riesgo_descripcion" required 
+            pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
+            title="Por favor, ingrese solo letras, números y caracteres como &,-."
+            placeholder="Ejemplo: Riesgo de retraso en la entrega"> <!-- Campo de texto para ingresar la descripción del riesgo. El atributo "required" hace que el campo sea obligatorio -->
+    </div>
+
 </fieldset>
 
 
@@ -144,7 +153,6 @@ BPPJ
 
 
 <?php
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Recibir datos del formulario para C_Proyectos
     $proyecto_nombre = isset($_POST['proyecto_nombre']) ? trim($_POST['proyecto_nombre']) : null;
@@ -152,6 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tipo_trabajo = isset($_POST['tipo_trabajo']) ? $_POST['tipo_trabajo'] : null;
     $area_trabajo = isset($_POST['area_trabajo']) ? $_POST['area_trabajo'] : null;
     $riesgo = isset($_POST['riesgo']) ? $_POST['riesgo'] : null;
+    $riesgo_descripcion = isset($_POST['riesgo_descripcion']) ? trim($_POST['riesgo_descripcion']) : null; // Nueva variable
     $dias_compra = isset($_POST['dias_compra']) ? $_POST['dias_compra'] : null;
     $dias_trabajo = isset($_POST['dias_trabajo']) ? $_POST['dias_trabajo'] : null;
     $trabajadores = isset($_POST['trabajadores']) ? $_POST['trabajadores'] : null;
@@ -161,30 +170,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($proyecto_nombre && $proyecto_codigo) {
         // Insertar o actualizar el proyecto
-        $sql = "INSERT INTO C_Proyectos (nombre_proyecto, codigo_proyecto, tipo_trabajo, area_trabajo, riesgo_proyecto, dias_compra, dias_trabajo, trabajadores, horario, colacion, entrega)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        $sql = "INSERT INTO C_Proyectos (nombre_proyecto, codigo_proyecto, tipo_trabajo, area_trabajo, riesgo_proyecto, descripcion_riesgo, dias_compra, dias_trabajo, trabajadores, horario, colacion, entrega)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 ON DUPLICATE KEY UPDATE 
                     nombre_proyecto=VALUES(nombre_proyecto), 
                     codigo_proyecto=VALUES(codigo_proyecto), 
                     tipo_trabajo=VALUES(tipo_trabajo), 
                     area_trabajo=VALUES(area_trabajo), 
                     riesgo_proyecto=VALUES(riesgo_proyecto),
+                    descripcion_riesgo=VALUES(descripcion_riesgo),
                     dias_compra=VALUES(dias_compra),
                     dias_trabajo=VALUES(dias_trabajo),
                     trabajadores=VALUES(trabajadores),
                     horario=VALUES(horario),
                     colacion=VALUES(colacion),
                     entrega=VALUES(entrega)";
+
         $stmt = $mysqli->prepare($sql);
         if ($stmt === false) {
             die("Error en la preparación de la consulta: " . $mysqli->error);
         }
-        $stmt->bind_param("sssssiissss", 
+        $stmt->bind_param("ssssssiiisss", 
             $proyecto_nombre, 
             $proyecto_codigo, 
             $tipo_trabajo, 
             $area_trabajo, 
             $riesgo, 
+            $riesgo_descripcion, // Nueva variable para descripción de riesgo
             $dias_compra, 
             $dias_trabajo, 
             $trabajadores, 

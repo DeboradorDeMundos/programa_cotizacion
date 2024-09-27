@@ -61,7 +61,7 @@ function obtener_datos_empresa($mysqli, $id) {
         </div>
         <div class="form-group">
             <label for="empresa_telefono">Teléfono</label> <!-- Etiqueta para el campo de entrada del teléfono de la empresa -->
-            <input type="text" id="empresa_telefono" name="empresa_telefono" pattern="\+?\d{7,15}" placeholder="+1234567890" value="<?php echo htmlspecialchars($row['EmpresaTelefono']); ?>"
+            <input type="text" id="empresa_telefono" name="empresa_telefono" value="<?php echo htmlspecialchars($row['EmpresaTelefono']); ?>"
                 placeholder="+56 9 1234 1234" 
                 maxlength="11" 
                 required 

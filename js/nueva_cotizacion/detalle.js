@@ -162,7 +162,7 @@ function addDetailRow(button) {
     descriptionRow.className = 'descripcion-row';
     descriptionRow.style.display = 'none';
     descriptionRow.innerHTML = `
-        <td colspan="7">
+        <td colspan="9">
             <textarea name="detalle_descripcion[${tituloIndex}][]" placeholder="Ingrese sólo si requiere ingresar una descripción extendida del producto o servicio"></textarea>
         </td>
     `;
@@ -181,11 +181,11 @@ function agregarSubtitulo(button) {
     const newSubtitle = document.createElement('tr');
     newSubtitle.classList.add('subtitulo');
     newSubtitle.innerHTML = `
-        <td colspan="7">
+        <td colspan="8">
             <label for="subtitulo">Subtítulo:</label>
             <input type="text" name="detalle_subtitulo[${tituloIndex}][]" style="margin-right: 10px;">
         </td>
-        <td><button type="button" class="btn-eliminar-titulo" onclick="borrarSubtitulo(this)">Eliminar subtítulo</button></td>
+        <td colspan="1"><button type="button" class="btn-eliminar-titulo" onclick="borrarSubtitulo(this)">Eliminar subtítulo</button></td>
     `;
 
     // Agregar el subtítulo al final de todas las filas de detalles actuales
@@ -233,6 +233,11 @@ function removeCabeza(button) {
     calculateTotals(); // Recalcular los totales después de eliminar
 }
 
+function init() {
+    addDetailSection();
+}
+
+window.onload = init;
 
 
 /* --------------------------------------------------------------------------------------------------------------

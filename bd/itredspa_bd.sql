@@ -119,6 +119,7 @@ CREATE TABLE C_Proyectos (
     tipo_trabajo varchar(255) NOT NULL, -- Tipo de trabajo del proyecto
     area_trabajo varchar(255) NOT NULL, -- Área de trabajo del proyecto
     riesgo_proyecto varchar(255), -- Riesgo asociado al proyecto
+    descripcion_riesgo varchar(255),
     dias_compra VARCHAR(50), -- Días de compra relacionados con la cotización
     dias_trabajo VARCHAR(50), -- Días de trabajo relacionados con la cotización
     trabajadores INT, -- Número de trabajadores asignados
