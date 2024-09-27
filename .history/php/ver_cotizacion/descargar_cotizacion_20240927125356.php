@@ -76,10 +76,10 @@ if (isset($_GET['id'])) {
             $contenido_pdf .= "Q\n";
         }
 
-        // Cuadro rojo para los datos de la cotizacion
+        // Recuadro para los datos de la cotizacion
         $contenido_pdf .= "q\n1 0 0 RG\n"; // Color rojo
         $contenido_pdf .= "2 w\n"; // Espesor del borde
-        $contenido_pdf .= "400 " . (700 - $margen_superior) . " 200 100 re S\n"; // Rectangulo mas grande
+        $contenido_pdf .= "400 " . (700 - $margen_superior) . " 200 100 re S\n"; // Rectangulo para el cuadro rojo
         $contenido_pdf .= "Q\n";
 
         // Texto de los datos de la cotizacion en el cuadro rojo
@@ -94,10 +94,19 @@ if (isset($_GET['id'])) {
         $contenido_pdf .= "BT\n/F1 12 Tf\n410 " . (680 - $margen_superior) . " Td\n(Fecha de Emision: " . utf8_decode($row['fecha_emision']) . ") Tj\n";
         $contenido_pdf .= "ET\n";
 
+        // Recuadro para Detalle empresa
+        $contenido_pdf .= "q\n0 0 0 RG\n"; // Color negro
+        $contenido_pdf .= "2 w\n"; // Espesor del borde
+        $contenido_pdf .= "50 " . (640 - $margen_superior) . " 500 100 re S\n"; // Rectangulo para Detalle empresa
+        $contenido_pdf .= "Q\n";
+
         // Encabezado de los detalles de la empresa
-        $contenido_pdf .= "BT\n/F1 14 Tf\n50 " . (660 - $margen_superior) . " Td\n(Detalle empresa) Tj\n"; // Titulo de la seccion de empresa
-        $contenido_pdf .= "0 -15 Td\n(Nombre: " . utf8_decode($row['nombre_empresa']) . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Área: " . utf8_decode($row['area_empresa']) . ") Tj\n"; // Puedes cambiar el area segun necesites
+        $contenido_pdf .= "BT\n/F1 14 Tf\n50 " . (630 - $margen_superior) . " Td\n(Detalle empresa) Tj\n"; // Titulo de la seccion de empresa
+        $contenido_pdf .= "ET\n";
+
+        // Texto de los detalles de la empresa
+        $contenido_pdf .= "BT\n/F1 12 Tf\n50 " . (610 - $margen_superior) . " Td\n(Nombre: " . utf8_decode($row['nombre_empresa']) . ") Tj\n";
+        $contenido_pdf .= "0 -15 Td\n(Área: " . utf8_decode($row['area_empresa']) . ") Tj\n"; 
         $contenido_pdf .= "0 -15 Td\n(Direccion: " . utf8_decode($row['direccion_empresa']) . ") Tj\n";
         $contenido_pdf .= "0 -15 Td\n(Telefono: " . utf8_decode($row['telefono_empresa']) . ") Tj\n";
         $contenido_pdf .= "0 -15 Td\n(Email: " . utf8_decode($row['email_empresa']) . ") Tj\n";
@@ -109,44 +118,45 @@ if (isset($_GET['id'])) {
         $contenido_pdf .= "50 " . (575 - $margen_superior) . " 500 1 re S\n"; // Linea de separacion
         $contenido_pdf .= "Q\n";
 
+        // Recuadro para Detalle Proyecto
+        $contenido_pdf .= "q\n0 0 0 RG\n"; // Color negro
+        $contenido_pdf .= "2 w\n"; // Espesor del borde
+        $contenido_pdf .= "50 " . (560 - $margen_superior) . " 500 180 re S\n"; // Rectangulo para Detalle Proyecto
+        $contenido_pdf .= "Q\n";
+
         // Titulo de Detalle Proyecto
-        $contenido_pdf .= "BT\n/F1 14 Tf\n50 " . (560 - $margen_superior) . " Td\n(Detalle Proyecto) Tj\n"; // Titulo de la seccion de proyecto
+        $contenido_pdf .= "BT\n/F1 14 Tf\n50 " . (550 - $margen_superior) . " Td\n(Detalle Proyecto) Tj\n"; // Titulo de la seccion de proyecto
         $contenido_pdf .= "ET\n";
 
-        // Detalles del proyecto a la izquierda
-        $contenido_pdf .= "BT\n/F1 12 Tf\n50 " . (540 - $margen_superior) . " Td\n(Nombre: " . utf8_decode($row['nombre_proyecto']) . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Codigo: " . utf8_decode($row['codigo_proyecto']) . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Área de Trabajo: " . utf8_decode($row['area_trabajo']) . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Tipo de Trabajo: " . utf8_decode($row['tipo_trabajo']) . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Riesgo: " . utf8_decode($row['riesgo_proyecto']) . ") Tj\n";
+        // Texto de los detalles del proyecto
+        $contenido_pdf .= "BT\n/F1 12 Tf\n50 " . (530 - $margen_superior) . " Td\n(Nombre: " . utf8_decode($row['nombre_proyecto']) . ") Tj\n";
+        $contenido_pdf .= "0 -15 Td\n(Código: " . utf8_decode($row['codigo_proyecto']) . ") Tj\n"; 
+        $contenido_pdf .= "0 -15 Td\n(Área de Trabajo: " . utf8_decode($row['area_trabajo']) . ") Tj\n"; 
+        $contenido_pdf .= "0 -15 Td\n(Tipo de Trabajo: " . utf8_decode($row['tipo_trabajo']) . ") Tj\n"; 
+        $contenido_pdf .= "0 -15 Td\n(Riesgo: " . utf8_decode($row['riesgo_proyecto']) . ") Tj\n"; 
+        $contenido_pdf .= "0 -15 Td\n(Días de Compra: " . utf8_decode($row['dias_compra']) . ") Tj\n"; 
+        $contenido_pdf .= "0 -15 Td\n(Días de Trabajo: " . utf8_decode($row['dias_trabajo']) . ") Tj\n"; 
+        $contenido_pdf .= "0 -15 Td\n(Número de Trabajadores: " . utf8_decode($row['trabajadores']) . ") Tj\n"; 
+        $contenido_pdf .= "0 -15 Td\n(Horario: " . utf8_decode($row['horario']) . ") Tj\n"; 
+        $contenido_pdf .= "0 -15 Td\n(Colación: " . utf8_decode($row['colacion']) . ") Tj\n"; 
+        $contenido_pdf .= "0 -15 Td\n(Entrega: " . utf8_decode($row['entrega']) . ") Tj\n"; 
         $contenido_pdf .= "ET\n";
 
-        // Detalles del proyecto a la derecha
-        $contenido_pdf .= "BT\n/F1 12 Tf\n400 " . (540 - $margen_superior) . " Td\n(Dias de Compra: " . utf8_decode($row['dias_compra']) . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Dias de Trabajo: " . utf8_decode($row['dias_trabajo']) . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Numero de Trabajadores: " . utf8_decode($row['trabajadores']) . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Horario: " . utf8_decode($row['horario']) . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Colacion: " . utf8_decode($row['colacion']) . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Entrega: " . utf8_decode($row['entrega']) . ") Tj\n";
-        $contenido_pdf .= "ET\n";
-
-        // Finalizar el contenido del PDF
         $contenido_pdf .= "endstream\nendobj\n";
-        $contenido_pdf .= "xref\n0 1\n0000000000 65535 f \n";
-        $contenido_pdf .= "trailer\n<< /Size 1 /Root 1 0 R >>\n";
-        $contenido_pdf .= "startxref\n" . strlen($contenido_pdf) . "\n%%EOF";
 
-        // Generar el archivo PDF
+        // Finalizar el PDF
+        $contenido_pdf .= "xref\n0 7\n0000000000 65535 f \n0000000010 00000 n \n0000000078 00000 n \n0000000120 00000 n \n0000000272 00000 n \n0000000353 00000 n \n0000000634 00000 n \n";
+        $contenido_pdf .= "trailer\n<< /Root 1 0 R >>\n";
+        $contenido_pdf .= "%%EOF";
+
+        // Descargar el PDF
         header('Content-Type: application/pdf');
         header('Content-Disposition: attachment; filename="cotizacion_' . $id_cotizacion . '.pdf"');
         echo $contenido_pdf;
     } else {
-        echo "No se encontraron detalles para la cotizacion.";
+        echo "No se encontró la cotización.";
     }
-    $stmt->close();
 } else {
-    echo "ID de cotizacion no proporcionado.";
+    echo "ID de cotización no especificado.";
 }
-
-$mysqli->close();
 ?>

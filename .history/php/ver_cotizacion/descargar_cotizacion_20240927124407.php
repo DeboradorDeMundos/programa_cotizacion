@@ -85,8 +85,8 @@ if (isset($_GET['id'])) {
         // Texto de los datos de la cotizacion en el cuadro rojo
         $contenido_pdf .= "BT\n/F1 12 Tf\n410 " . (780 - $margen_superior) . " Td\n(Detalle Cotizacion) Tj\n"; // Titulo del cuadro rojo
         $contenido_pdf .= "0 -15 Td\n(RUT de la Empresa: " . utf8_decode($row['rut_empresa']) . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Numero de Cotizacion: " . $id_cotizacion . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Dias Validez: 30) Tj\n"; // Puedes cambiar los dias de validez segun necesites
+        $contenido_pdf .= "0 -15 Td\n(Número de Cotizacion: " . $id_cotizacion . ") Tj\n";
+        $contenido_pdf .= "0 -15 Td\n(Dias Validez: 30) Tj\n"; // Puedes cambiar los dias de validez según necesites
         $contenido_pdf .= "0 -15 Td\n(Fecha de Validez: " . utf8_decode($row['fecha_validez']) . ") Tj\n";
         $contenido_pdf .= "ET\n";
 
@@ -97,7 +97,7 @@ if (isset($_GET['id'])) {
         // Encabezado de los detalles de la empresa
         $contenido_pdf .= "BT\n/F1 14 Tf\n50 " . (660 - $margen_superior) . " Td\n(Detalle empresa) Tj\n"; // Titulo de la seccion de empresa
         $contenido_pdf .= "0 -15 Td\n(Nombre: " . utf8_decode($row['nombre_empresa']) . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Área: " . utf8_decode($row['area_empresa']) . ") Tj\n"; // Puedes cambiar el area segun necesites
+        $contenido_pdf .= "0 -15 Td\n(Área: " . utf8_decode($row['area_empresa']) . ") Tj\n"; // Puedes cambiar el area según necesites
         $contenido_pdf .= "0 -15 Td\n(Direccion: " . utf8_decode($row['direccion_empresa']) . ") Tj\n";
         $contenido_pdf .= "0 -15 Td\n(Telefono: " . utf8_decode($row['telefono_empresa']) . ") Tj\n";
         $contenido_pdf .= "0 -15 Td\n(Email: " . utf8_decode($row['email_empresa']) . ") Tj\n";
@@ -105,8 +105,8 @@ if (isset($_GET['id'])) {
 
         // Separador entre Detalle Empresa y Detalle Proyecto
         $contenido_pdf .= "q\n0 0 0 RG\n"; // Color negro
-        $contenido_pdf .= "1 w\n"; // Espesor del borde
-        $contenido_pdf .= "50 " . (575 - $margen_superior) . " 500 1 re S\n"; // Linea de separacion
+        $contenido_pdf .= "2 w\n"; // Espesor del borde
+        $contenido_pdf .= "50 " . (580 - $margen_superior) . " 500 1 re S\n"; // Linea de separacion
         $contenido_pdf .= "Q\n";
 
         // Titulo de Detalle Proyecto
@@ -124,7 +124,7 @@ if (isset($_GET['id'])) {
         // Detalles del proyecto a la derecha
         $contenido_pdf .= "BT\n/F1 12 Tf\n400 " . (540 - $margen_superior) . " Td\n(Dias de Compra: " . utf8_decode($row['dias_compra']) . ") Tj\n";
         $contenido_pdf .= "0 -15 Td\n(Dias de Trabajo: " . utf8_decode($row['dias_trabajo']) . ") Tj\n";
-        $contenido_pdf .= "0 -15 Td\n(Numero de Trabajadores: " . utf8_decode($row['trabajadores']) . ") Tj\n";
+        $contenido_pdf .= "0 -15 Td\n(Número de Trabajadores: " . utf8_decode($row['trabajadores']) . ") Tj\n";
         $contenido_pdf .= "0 -15 Td\n(Horario: " . utf8_decode($row['horario']) . ") Tj\n";
         $contenido_pdf .= "0 -15 Td\n(Colacion: " . utf8_decode($row['colacion']) . ") Tj\n";
         $contenido_pdf .= "0 -15 Td\n(Entrega: " . utf8_decode($row['entrega']) . ") Tj\n";

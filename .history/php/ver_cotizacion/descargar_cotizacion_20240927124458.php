@@ -105,7 +105,7 @@ if (isset($_GET['id'])) {
 
         // Separador entre Detalle Empresa y Detalle Proyecto
         $contenido_pdf .= "q\n0 0 0 RG\n"; // Color negro
-        $contenido_pdf .= "1 w\n"; // Espesor del borde
+        $contenido_pdf .= "2 w\n"; // Espesor del borde
         $contenido_pdf .= "50 " . (575 - $margen_superior) . " 500 1 re S\n"; // Linea de separacion
         $contenido_pdf .= "Q\n";
 
