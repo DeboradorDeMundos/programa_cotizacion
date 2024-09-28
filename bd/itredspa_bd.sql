@@ -432,7 +432,10 @@ CREATE TABLE E_Firmas (
 -- ------------------------------------- INSERT DATOS ----------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
 
-
+INSERT INTO E_tipo_firma (tipo) VALUES ('automatica');
+INSERT INTO E_tipo_firma (tipo) VALUES ('manual');
+INSERT INTO E_tipo_firma (tipo) VALUES ('digital');
+INSERT INTO E_tipo_firma (tipo) VALUES ('foto');
 
  -- Insertar datos en la tabla Bancos
 INSERT INTO E_Bancos (nombre_banco) VALUES
@@ -476,7 +479,7 @@ INSERT INTO p_tipo_producto (tipo_producto) VALUES ('ayudante');
 
 -- Insertar datos en la tabla E_FotosPerfil
 INSERT INTO E_FotosPerfil (id_foto, ruta_foto, fecha_subida)
-VALUES (1, '../../imagenes/programa_cotizacion/prueba2.jpg', '2024-09-09 17:25:20');
+VALUES (1, '../../imagenes/programa_cotizacion/prueba2.png', '2024-09-09 17:25:20');
 
 -- Insertar datos en la tabla E_Empresa
 INSERT INTO E_Empresa (
@@ -488,7 +491,8 @@ INSERT INTO E_Empresa (
     telefono_empresa, 
     email_empresa, 
     fecha_creacion,
-    dias_validez
+    dias_validez,
+    id_tipo_firma
 ) VALUES (
     1, -- ID de la foto asociada
     '12345678-9', -- RUT de la empresa
@@ -498,8 +502,65 @@ INSERT INTO E_Empresa (
     '1234567890', -- Teléfono de la empresa
     'contacto@itred.cl', -- Email de la empresa
     '2024-09-01', -- Fecha de creación
-    10 -- validez de cotizacion
+    10, -- validez de cotizacion
+    1
 );
+
+-- Insertar datos en la tabla E_Encargados
+INSERT INTO E_Encargados (
+    rut_encargado, 
+    nombre_encargado, 
+    email_encargado, 
+    fono_encargado, 
+    celular_encargado, 
+    id_empresa
+) VALUES (
+    '12345678-9', -- RUT del encargado
+    'Carlos Ruiz', -- Nombre del encargado
+    'carlos.ruiz@itred.cl', -- Email del encargado
+    '123456789', -- Teléfono del encargado
+    '987654321', -- Celular del encargado
+    1 -- ID de la empresa
+);
+
+-- Insertar datos en la tabla C_Condiciones_Generales
+INSERT INTO C_Condiciones_Generales (id_empresa, descripcion_condiciones, estado) VALUES
+(1, 'Condición general 1: Cumplir con todas las normativas legales vigentes.', TRUE),
+(1, 'Condición general 2: Realizar informes mensuales de avance del proyecto.', TRUE),
+(1, 'Condición general 3: Proveer acceso a la documentación necesaria para el trabajo.', TRUE),
+(1, 'Condición general 4: Garantizar la confidencialidad de la información compartida.', TRUE),
+(1, 'Condición general 5: Proporcionar un plan de trabajo detallado antes del inicio.', TRUE),
+(1, 'Condición general 6: Realizar reuniones quincenales de seguimiento con el equipo.', TRUE),
+(1, 'Condición general 7: Responder a los correos electrónicos en un plazo no mayor a 24 horas.', TRUE),
+(1, 'Condición general 8: Asegurar la disponibilidad de los recursos necesarios para el proyecto.', TRUE),
+(1, 'Condición general 9: Proveer retroalimentación constructiva durante el proceso.', TRUE),
+(1, 'Condición general 10: Cumplir con los plazos establecidos en el cronograma del proyecto.', TRUE);
+
+-- Insertar datos en la tabla E_Requisitos_Basicos
+INSERT INTO E_Requisitos_Basicos (indice, descripcion_condiciones, estado, id_empresa) VALUES
+(1, 'Requisito básico 1: Registro de la empresa en el sistema.', TRUE, 1),
+(2, 'Requisito básico 2: Presentar documentación legal actualizada.', TRUE, 1),
+(3, 'Requisito básico 3: Cumplimiento de normativas de seguridad laboral.', TRUE, 1),
+(4, 'Requisito básico 4: Tener un responsable de gestión de calidad.', TRUE, 1),
+(5, 'Requisito básico 5: Disponer de un plan de contingencia ante emergencias.', TRUE, 1),
+(6, 'Requisito básico 6: Realizar capacitaciones periódicas para los empleados.', TRUE, 1),
+(7, 'Requisito básico 7: Implementar un sistema de gestión de recursos humanos.', TRUE, 1),
+(8, 'Requisito básico 8: Mantener un inventario actualizado de los bienes.', TRUE, 1),
+(9, 'Requisito básico 9: Contar con un canal de comunicación interna eficiente.', TRUE, 1),
+(10, 'Requisito básico 10: Cumplir con las auditorías internas programadas.', TRUE, 1);
+
+-- Insertar datos en la tabla E_obligaciones_cliente
+INSERT INTO E_obligaciones_cliente (indice, descripcion, estado, id_empresa) VALUES
+(1, 'Obligación 1: Proporcionar información veraz sobre la empresa.', TRUE, 1),
+(2, 'Obligación 2: Cumplir con los plazos de pago establecidos en el contrato.', TRUE, 1),
+(3, 'Obligación 3: Colaborar en la entrega de documentación requerida.', TRUE, 1),
+(4, 'Obligación 4: Mantener actualizados los datos de contacto.', TRUE, 1),
+(5, 'Obligación 5: Notificar cambios relevantes en la operación de la empresa.', TRUE, 1),
+(6, 'Obligación 6: Garantizar el acceso a las instalaciones para auditorías.', TRUE, 1),
+(7, 'Obligación 7: Cumplir con las normativas de seguridad establecidas.', TRUE, 1),
+(8, 'Obligación 8: Proveer capacitación al personal sobre el uso de servicios.', TRUE, 1),
+(9, 'Obligación 9: Responder a las consultas realizadas por la empresa en tiempo y forma.', TRUE, 1),
+(10, 'Obligación 10: Colaborar en la implementación de mejoras sugeridas.', TRUE, 1);
 
 -- Insertar datos en la tabla C_Clientes
 INSERT INTO C_Clientes (
@@ -720,7 +781,7 @@ INSERT INTO E_Requisitos_Basicos (
     1 -- ID de la empresa
 );
 
--- Insertar una cuenta bancaria ficticia
+-- Insertar cuentas bancarias ficticias
 INSERT INTO E_Cuenta_Bancaria (
     rut_titular, 
     nombre_titular, 
@@ -730,17 +791,40 @@ INSERT INTO E_Cuenta_Bancaria (
     celular, 
     email_banco, 
     id_empresa
-) VALUES (
-    '12345678-9', -- RUT del titular
-    'Nombre del Titular', -- Nombre del titular
-    1, -- ID del banco (ajustar según el ID real del banco en E_Bancos)
-    1, -- ID del tipo de cuenta (ajustar según el ID real del tipo de cuenta en E_Tipo_Cuenta)
-    '1234567890', -- Número de cuenta ficticio
-    987654321, -- Celular ficticio
-    'banco@empresa.com', -- Email del banco
-    1 -- ID de la empresa (ajustar según el ID real en E_Empresa)
-);
+) VALUES 
+('87654321-0', 'Pedro González', 1, 1, '2345678901', 987654321, 'pedro.gonzalez@empresa.com', 1),
+('13579246-8', 'María Rodríguez', 1, 1, '3456789012', 987654321, 'maria.rodriguez@empresa.com', 1),
+('24681357-9', 'Luis Fernández', 1, 1, '4567890123', 987654321, 'luis.fernandez@empresa.com', 1),
+('35792468-0', 'Ana Torres', 1, 1, '5678901234', 987654321, 'ana.torres@empresa.com', 1);
 
+-- Insertar una firma para la empresa 1
+INSERT INTO E_Firmas (
+    id_empresa, 
+    titulo_firma, 
+    nombre_encargado_firma, 
+    cargo_encargado_firma, 
+    telefono_encargado_firma, 
+    nombre_empresa_firma, 
+    area_empresa_firma, 
+    telefono_empresa_firma, 
+    firma_digital, 
+    email_firma, 
+    direccion_firma, 
+    rut_firma
+) VALUES (
+    1, -- ID de la empresa
+    'Firma de Ejemplo', -- Título de la firma
+    'Carlos Ruiz', -- Nombre del encargado de la firma
+    'Gerente General', -- Cargo del encargado
+    '123456789', -- Teléfono del encargado
+    'ITred Spa', -- Nombre de la empresa
+    'Tecnología de Información', -- Área de la empresa
+    '9876543210', -- Teléfono de la empresa
+    'firma_digital.png', -- Ruta de la firma digital
+    'carlos.ruiz@itred.cl', -- Email del encargado
+    'Guido Reni #4190', -- Dirección de la firma
+    '12345678-9' -- RUT de la firma
+);
 
 
 -- Confirmar cambios

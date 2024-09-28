@@ -29,6 +29,18 @@ document.getElementById('logo-upload').addEventListener('change', function(event
     }
 });
 
+document.getElementById('cotizacion-form').addEventListener('submit', function(event) {
+    const logoUpload = document.getElementById('logo-upload');
+    const logoMessage = document.getElementById('logo-message');
+
+    if (!logoUpload.files.length) {
+        logoMessage.style.display = 'block'; // Muestra el mensaje si no hay logo
+        event.preventDefault(); // Evita que se envíe el formulario
+    } else {
+        logoMessage.style.display = 'none'; // Oculta el mensaje si se ha seleccionado un logo
+    }
+});
+
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Upload Logo .JS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

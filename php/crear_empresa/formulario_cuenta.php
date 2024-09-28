@@ -66,7 +66,6 @@ BPPJ
     </div>
 
     <input type="hidden" id="hidden-accounts" name="hidden_accounts" value="">
-    <button type="submit" id="submit-button" disabled>Enviar</button>
 
 <script src="../../js/crear_empresa/formulario_cuenta.js"></script>
 <script src="../../js/nueva_cotizacion/load_bancos.js"></script> 

@@ -61,37 +61,31 @@ function addcabeza(button) {
     const tableBody = section.querySelector('.detalle-contenido');
 
     // Verifica si ya hay un encabezado para evitar duplicados
-    if (!tableHead.querySelector('tr') && !tableBody.querySelector('.subtitulo')) {
-        // Crear la fila del encabezado
-        const new2row = document.createElement('tr');
-        new2row.innerHTML = `
+    if (!tableHead.querySelector('tr')) {
+        // Crear la fila del encabezado con solo la columna 'Tipo' visible inicialmente
+        const newHeaderRow = document.createElement('tr');
+        newHeaderRow.innerHTML = `
             <th>Tipo</th>
-            <th>Nombre producto</th>
-            <th>DESCRIPCIÓN</th>
-            <th>CANTIDAD</th>
-            <th>PRECIO UNI.</th>
-            <th>DESCUENTO %</th>
-            <th>TOTAL</th>
-            <th>ACCIÓN</th>
-            <th></th> <!-- Espacio para el botón de eliminar cabecera -->
+            <th class="hidden-column">Nombre producto</th>
+            <th class="hidden-column">DESCRIPCIÓN</th>
+            <th class="hidden-column">CANTIDAD</th>
+            <th class="hidden-column">PRECIO UNI.</th>
+            <th class="hidden-column">DESCUENTO %</th>
+            <th class="hidden-column">TOTAL</th>
+            <th class="hidden-column">ACCIÓN</th>
+            <th class="hidden-column"></th> <!-- Espacio para el botón de eliminar cabecera -->
         `;
-        tableHead.appendChild(new2row);
+        tableHead.appendChild(newHeaderRow);
 
-        // Crear el botón para eliminar el encabezado
-        const removeButton = document.createElement('button');
-        removeButton.type = 'button';
-        removeButton.className = 'btn-eliminar-titulo';
-        removeButton.textContent = 'Eliminar cabecera';
-        removeButton.onclick = () => removeCabeza(button);
-
-        // Añadir el botón al final de la fila
-        new2row.querySelector('th:last-child').appendChild(removeButton);
+        // Asegúrate de que solo las columnas con la clase 'hidden-column' estén ocultas
+        const hiddenColumns = tableHead.querySelectorAll('.hidden-column');
+        hiddenColumns.forEach(column => {
+            column.style.display = 'none';
+        });
     }
 }
 
-
-
-function addDetailRow(button) {
+function addDetailRow(button) { 
     const section = button.closest('.detalle-section');
     const tableBody = section.querySelector('.detalle-contenido');
     const tableHead = section.querySelector('thead');
@@ -111,7 +105,7 @@ function addDetailRow(button) {
     // Si el último elemento es un subtítulo, agregar cabecera después de él
     if (lastRow && lastRow.classList.contains('subtitulo')) {
         const newHeaderRow = document.createElement('tr');
-        newHeaderRow.innerHTML = `
+        newHeaderRow.innerHTML = `    
             <th>Tipo</th>
             <th>Nombre producto</th>
             <th>DESCRIPCIÓN</th>
@@ -123,15 +117,15 @@ function addDetailRow(button) {
             <th></th> <!-- Espacio para el botón de eliminar cabecera -->
         `;
         // Insertar la cabecera después del subtítulo
-        tableBody.insertBefore(newHeaderRow, lastRow.nextSibling);
-        
+        tableBody.insertBefore(newHeaderRow, lastRow.nextSibling);  
     }
 
     // Crear una nueva fila de detalle
     const newRow = document.createElement('tr');
     newRow.innerHTML = `
-        <td>
-            <select name="tipo_producto[${tituloIndex}][]">
+        <td colspan="9">
+            <select name="tipo_producto[${tituloIndex}][]" onchange="handleTipoChange(this)">
+                <option value="">Seleccione un tipo</option>
                 <option value="nuevo">Nuevo</option>
                 <option value="insumo">Insumo</option>
                 <option value="producto">Producto</option>
@@ -141,15 +135,27 @@ function addDetailRow(button) {
                 <option value="tecnico">Técnico</option>
                 <option value="maestro">Maestro</option>
                 <option value="ayudante">Ayudante</option>
+                <option value="producto_imagen">Producto con Imagen</option>
+                <option value="otros">Otros</option>
+                <option value="extras_proyecto">Extras del Proyecto</option>
+                <option value="horas_extras">Horas Extras</option>
+                <option value="seguro">Seguro</option>
+                <option value="viatico">Viático</option>
+                <option value="bodega">Bodega</option>
+                <option value="gastos_generales">Gastos Generales</option>
+                <option value="utilidades_empresa">Utilidades de la Empresa</option>
+                <option value="garantias">Garantías</option>
+                <option value="eventos_perdidas">Eventos o Pérdidas</option>
+                <option value="asesoria">Asesoría</option>
             </select>
         </td>
-        <td><input type="text" name="nombre_producto[${tituloIndex}][]"></td>
-        <td><input type="checkbox" onclick="toggleDescription(this)"></td>
-        <td><input type="number" name="detalle_cantidad[${tituloIndex}][]" step="1" min="1" required oninput="updateTotal(this)"></td>
-        <td><input type="number" name="detalle_precio_unitario[${tituloIndex}][]" step="0.01" min="0" required oninput="updateTotal(this)"></td>
-        <td><input type="number" name="detalle_descuento[${tituloIndex}][]" step="1" min="0" required oninput="updateTotal(this)"></td>
-        <td><input type="number" name="detalle_total[${tituloIndex}][]" step="0.01" min="0" readonly></td>
-        <td colspan="2">
+        <td class="hidden-column"><input type="text" name="nombre_producto[${tituloIndex}][]"></td>
+        <td class="hidden-column"><input type="checkbox" onclick="toggleDescription(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_cantidad[${tituloIndex}][]" step="1" min="1" required oninput="updateTotal(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_precio_unitario[${tituloIndex}][]" step="0.01" min="0" required oninput="updateTotal(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_descuento[${tituloIndex}][]" step="1" min="0" required oninput="updateTotal(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_total[${tituloIndex}][]" step="0.01" min="0" readonly></td>
+        <td colspan="2" class="hidden-column">
             <button type="button" class="btn-eliminar" onclick="removeDetailRow(this)">Eliminar</button>
         </td>
     `;
@@ -157,7 +163,7 @@ function addDetailRow(button) {
     // Agregar la nueva fila de detalle al final del cuerpo de la tabla
     tableBody.appendChild(newRow);
 
-    // Fila opcional de descripción
+    // Fila opcional de descripción, oculta inicialmente
     const descriptionRow = document.createElement('tr');
     descriptionRow.className = 'descripcion-row';
     descriptionRow.style.display = 'none';
@@ -168,9 +174,65 @@ function addDetailRow(button) {
     `;
     tableBody.appendChild(descriptionRow);
 
+    // Asegurarse de que las columnas adicionales estén ocultas desde el principio
+    const hiddenColumns = newRow.querySelectorAll('.hidden-column');
+    hiddenColumns.forEach(column => {
+        column.style.display = 'none';
+    });
+
     calculateTotals();
 }
 
+function handleTipoChange(selectElement) {
+    const row = selectElement.closest('tr');
+    const hiddenColumns = row.querySelectorAll('.hidden-column');
+    const firstCell = row.firstElementChild; // Se refiere a la celda del select
+
+    if (selectElement.value !== "") {
+        firstCell.setAttribute('colspan', '1'); // Cambiar colspan a 1
+        hiddenColumns.forEach(column => {
+            column.style.display = "none"; // Ocultar todas las columnas ocultas
+        });
+
+        // Mostrar solo los campos específicos para "otros" o "extras del proyecto"
+        if (selectElement.value === "otros" || selectElement.value === "extras_proyecto") {
+            row.querySelector('td.hidden-column:nth-of-type(2)').style.display = "table-cell"; // Nombre producto
+            row.querySelector('td.hidden-column:nth-of-type(3)').style.display = "table-cell"; // Checkbox descripción
+            row.querySelector('td.hidden-column:nth-of-type(4)').style.display = "table-cell"; // Cantidad
+            
+            // Ocultar Precio Unitario y asignar 0
+            const priceInput = row.querySelector('input[name^="detalle_precio_unitario"]');
+            priceInput.value = 0; // Asignar 0 al precio unitario
+            row.querySelector('td.hidden-column:nth-of-type(5)').style.display = "none"; // Ocultar Precio Unitario
+            
+            row.querySelector('td.hidden-column:nth-of-type(6)').style.display = "table-cell"; // Descuento
+            row.querySelector('td.hidden-column:nth-of-type(7)').style.display = "table-cell"; // Total
+            row.querySelector('td.hidden-column:nth-of-type(8)').style.display = "table-cell"; // Acción (Eliminar)
+
+            // Si existe la columna vacía, elimínala
+            const emptyPriceCell = row.querySelector('td.hidden-column:nth-of-type(9)'); // Asumiendo que la columna vacía es la 9
+            if (emptyPriceCell) {
+                row.removeChild(emptyPriceCell);
+            }
+        } else {
+            // Mostrar todas las columnas ocultas si no es "otros" ni "extras"
+            hiddenColumns.forEach(column => {
+                column.style.display = "table-cell"; 
+            });
+        }
+    } else {
+        firstCell.setAttribute('colspan', '9'); // Cambiar colspan de vuelta a 9
+        hiddenColumns.forEach(column => {
+            column.style.display = "none"; // Ocultar las columnas si se vuelve a seleccionar "Seleccione un tipo"
+        });
+    }
+
+    // Asegurarse de que las otras partes del head de la tabla estén visibles
+    const headerCells = document.querySelectorAll('thead th');
+    headerCells.forEach(cell => {
+        cell.style.display = ""; // Mostrar todas las celdas del encabezado
+    });
+}
 
 function agregarSubtitulo(button) {
     const section = button.closest('.detalle-section');

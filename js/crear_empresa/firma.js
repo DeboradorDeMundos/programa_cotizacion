@@ -131,6 +131,18 @@ BPPJ
         };
         reader.readAsDataURL(event.target.files[0]);
     });
+
+    function checkSignatureSelection() {
+        const submitButton = document.getElementById('submit-button');
+        const selectedOption = document.querySelector('input[name="signature-option"]:checked');
+        
+        // Habilitar o deshabilitar el botón de envío según la selección
+        if (selectedOption) {
+            submitButton.disabled = false; // Habilitar si hay una selección
+        } else {
+            submitButton.disabled = true; // Deshabilitar si no hay selección
+        }
+    }
     
 
 /* --------------------------------------------------------------------------------------------------------------

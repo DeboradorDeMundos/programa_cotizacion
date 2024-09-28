@@ -57,7 +57,7 @@ BPPJ
                 makeFieldsOptional();
             }
     
-            document.getElementById('submit-button').disabled = accounts.length === 0;
+            checkSignatureSelection()
     
             updateHiddenFields();
         } else {

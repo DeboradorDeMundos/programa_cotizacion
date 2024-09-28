@@ -111,6 +111,23 @@ BPPJ
         this.submit();
     });
 
+    // Función para verificar si hay una firma seleccionada
+    function checkSignatureSelection() {
+        const signatureOptions = document.querySelectorAll('input[name="signature-option"]');
+        const isAnySelected = Array.from(signatureOptions).some(option => option.checked);
+        
+        // Desactiva el botón si no hay firma seleccionada
+        document.getElementById('submit-button').disabled = !isAnySelected || accounts.length === 0;
+    }
+
+    // Agrega un event listener para cada opción de firma
+    const signatureOptions = document.querySelectorAll('input[name="signature-option"]');
+    signatureOptions.forEach(option => {
+        option.addEventListener('change', checkSignatureSelection);
+    });
+
+    // Llama a la función al cargar la página para establecer el estado inicial del botón
+    checkSignatureSelection();
     
     /* --------------------------------------------------------------------------------------------------------------
         ---------------------------------------- FIN ITred Spa crear_empresa .JS ---------------------------------------

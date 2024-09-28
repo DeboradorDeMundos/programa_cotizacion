@@ -58,6 +58,11 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
             
             <?php include 'formulario_cuenta.php';?>
 
+            <h2>TRANSFERENCIAS A:</h2>
+            <table id="accounts-table" border="1">
+                <!-- La tabla se llenará dinámicamente -->
+            </table>
+
             <?php include 'requisitos_basicos.php';?>
 
             <?php include 'condiciones_generales.php';?>
@@ -69,12 +74,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
             <button type="submit" id="submit-button" class="subir">Crear empresa</button> <!-- Botón para enviar el formulario y generar la cotización -->
         </form> <!-- Cierra el formulario -->
     </div> <!-- Cierra el contenedor principal -->
-
-    <h2>TRANSFERENCIAS A:</h2>
-    <table id="accounts-table" border="1">
-        <!-- La tabla se llenará dinámicamente -->
-    </table>
-
     <script src="../../js/crear_empresa/crear_empresa.js"></script> 
     <!-- Enlaza un archivo JavaScript externo para actualizar el logo o realizar otras actualizaciones -->
 </body>
