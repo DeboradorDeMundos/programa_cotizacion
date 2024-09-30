@@ -55,8 +55,11 @@ CREATE TABLE E_Empresa (
     nombre_empresa VARCHAR(255) NOT NULL, -- Nombre de la empresa
     area_empresa VARCHAR(255) NOT NULL, -- Área de la empresa
     direccion_empresa VARCHAR(255), -- Dirección de la empresa
+    ciudad_empresa VARCHAR(100), -- Ciudad de la empresa
+    pais_empresa VARCHAR(100), -- País de la empresa
     telefono_empresa VARCHAR(20), -- Teléfono de la empresa
     email_empresa VARCHAR(100), -- Email de la empresa
+    web_empresa VARCHAR(255), -- Sitio web de la empresa
     fecha_creacion DATE, -- Fecha de creación de la empresa
     dias_validez INT, -- Días de validez
     id_tipo_firma INT, -- Identificador del tipo de firma
@@ -70,6 +73,7 @@ CREATE TABLE E_Encargados (
     id_encargado INT NOT NULL AUTO_INCREMENT, -- Identificador único del encargado
     rut_encargado VARCHAR(20), -- RUT del encargado (debe ser único)
     nombre_encargado VARCHAR(255) NOT NULL, -- Nombre del encargado
+    cargo_encargado VARCHAR(100), -- Cargo del encargado
     email_encargado VARCHAR(100), -- Email del encargado
     fono_encargado VARCHAR(20), -- Teléfono del encargado
     celular_encargado VARCHAR(20), -- Celular del encargado
@@ -414,16 +418,19 @@ CREATE TABLE E_Firmas (
     id_empresa INT NOT NULL,
     titulo_firma VARCHAR(255) NOT NULL,
     nombre_encargado_firma VARCHAR(255) NULL,
-    cargo_encargado_firma VARCHAR(255) NULL,
-    telefono_encargado_firma VARCHAR(255) NULL,
+    cargo_encargado_firma VARCHAR(100) NULL, -- Campo de cargo del encargado
+    telefono_encargado_firma VARCHAR(20) NULL,
     nombre_empresa_firma VARCHAR(255) NULL,
     area_empresa_firma VARCHAR(255) NULL,
-    telefono_empresa_firma VARCHAR(255) NULL,
-    firma_digital VARCHAR(255) NULL ,
-    email_firma VARCHAR(70) NULL,
-    direccion_firma VARCHAR(70) NULL,
-    rut_firma VARCHAR(70) NULL,
-    FOREIGN KEY (id_empresa) REFERENCES e_Empresa(id_empresa)
+    telefono_empresa_firma VARCHAR(20) NULL,
+    firma_digital VARCHAR(255) NULL,
+    email_firma VARCHAR(100) NULL,
+    direccion_firma VARCHAR(255) NULL,
+    ciudad_firma VARCHAR(100) NULL, -- Campo para la ciudad
+    pais_firma VARCHAR(100) NULL, -- Campo para el país
+    rut_firma VARCHAR(20) NULL,
+    web_firma VARCHAR(255) NULL, -- Campo para el sitio web
+    FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa)
 );
 
 

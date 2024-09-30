@@ -28,6 +28,31 @@ BPPJ
             title="Por favor, ingrese solo letras y espacios."
             placeholder="Ejemplo: Juan Pérez">
 
+
+        <label for="cargo_encargado">Cargo:</label> <!-- Etiqueta para el campo de selección del cargo del cliente -->
+        <select id="cargo_encargado" name="cargo_encargdo" required> <!-- Campo de selección para el cargo del cliente. Este campo es obligatorio -->
+            <option value="" disabled selected>Selecciona un cargo</option> <!-- Opción por defecto -->
+            <option value="gerente">Gerente</option>
+            <option value="director">Director</option>
+            <option value="ejecutivo">Ejecutivo</option>
+            <option value="supervisor">Supervisor</option>
+            <option value="jefe_area">Jefe de Área</option>
+            <option value="coordinador">Coordinador</option>
+            <option value="analista">Analista</option>
+            <option value="asistente">Asistente</option>
+            <option value="consultor">Consultor</option>
+            <option value="ingeniero">Ingeniero</option>
+            <option value="técnico">Técnico</option>
+            <option value="auxiliar">Auxiliar</option>
+            <option value="vendedor">Vendedor</option>
+            <option value="administrativo">Administrativo</option>
+            <option value="recepcionista">Recepcionista</option>
+            <option value="operador">Operador</option>
+            <option value="contador">Contador</option>
+            <option value="encargado_rrhh">Encargado de RRHH</option>
+        </select>
+
+
         <label for="encargado_email">Email del Encargado:</label>
         <input type="email" id="encargado_email" name="encargado_email" 
             placeholder="ejemplo@empresa.com" 
@@ -68,13 +93,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Obtener datos del formulario de encargado
         $rut_encargado = isset($_POST['encargado_rut']) ? trim($_POST['encargado_rut']) : null;
         $nombre_encargado = isset($_POST['encargado_nombre']) ? trim($_POST['encargado_nombre']) : null;
+        $cargo_encargado = isset($_POST['cargo_encargado']) ? trim($_POST['cargo_encargado']) : null; // Nuevo campo
         $email_encargado = isset($_POST['encargado_email']) ? trim($_POST['encargado_email']) : null;
         $fono_encargado = isset($_POST['encargado_fono']) ? trim($_POST['encargado_fono']) : null;
         $celular_encargado = isset($_POST['encargado_celular']) ? trim($_POST['encargado_celular']) : null;
 
-        // Inserta el encargado incluyendo el id de la empresa
-        $sql_encargado = "INSERT INTO E_Encargados (rut_encargado, nombre_encargado, email_encargado, fono_encargado, celular_encargado, id_empresa)
-                          VALUES ('$rut_encargado', '$nombre_encargado', '$email_encargado', '$fono_encargado', '$celular_encargado', $id_empresa)";
+        // Inserta el encargado incluyendo el id de la empresa y el cargo
+        $sql_encargado = "INSERT INTO E_Encargados (rut_encargado, nombre_encargado, cargo_encargado, email_encargado, fono_encargado, celular_encargado, id_empresa)
+                          VALUES ('$rut_encargado', '$nombre_encargado', '$cargo_encargado', '$email_encargado', '$fono_encargado', '$celular_encargado', $id_empresa)";
         
         if ($mysqli->query($sql_encargado) === TRUE) {
             $mensaje = "Encargado creado correctamente.";
