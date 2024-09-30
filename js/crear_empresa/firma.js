@@ -40,7 +40,6 @@ BPPJ
         
             return `
                 ${titular_predefinido} 
-                \n${logo}
                 \n\n${nombre_encargado} 
                 \n${cargo_encargado} - ${empresa_nombre} 
                 \n${empresa_direccion} 
