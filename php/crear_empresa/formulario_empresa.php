@@ -28,6 +28,20 @@ BPPJ
             title="Por favor, ingrese solo letras y espacios. Los caracteres permitidos son &, - y .."
             placeholder="Ejemplo: Tecnología">
 
+        <label for="empresa_pais">País:</label>
+        <select id="empresa_pais" name="empresa_pais">
+            <option value="Chile">Chile</option>
+        </select>
+
+        <label for="empresa_ciudad">Ciudad:</label>
+        <select id="empresa_ciudad" name="empresa_ciudad">
+            <option value="Santiago">Santiago</option>
+            <option value="Valparaíso">Valparaíso</option>
+            <option value="Concepción">Concepción</option>
+            <option value="La Serena">La Serena</option>
+            <option value="Antofagasta">Antofagasta</option>
+        </select>
+
         <label for="empresa_direccion">Dirección de la Empresa:</label>
         <input type="text" id="empresa_direccion" name="empresa_direccion" 
             minlength="5" maxlength="100" 
@@ -56,6 +70,12 @@ BPPJ
     
         <label for="fecha_creacion">Fecha de Creacion de empresa:</label> <!-- Etiqueta para el campo de entrada de la fecha de emisión -->
         <input type="date" id="fecha_creacion" name="fecha_creacion" required> <!-- Campo de fecha para seleccionar la fecha de emisión. Es obligatorio -->
+
+        <label for="empresa_web">Web de la Empresa:</label>
+        <input type="url" id="empresa_web" name="empresa_web" 
+            pattern="https?://.+"
+            title="Por favor, ingrese una URL válida que comience con http:// o https://"
+            placeholder="Ejemplo: https://www.miempresa.com">
         
     </div> <!-- Cierra la caja de datos -->
 </div> <!-- Cierra la fila -->
@@ -78,6 +98,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $telefono_empresa = isset($_POST['empresa_telefono']) ? trim($_POST['empresa_telefono']) : null;
         $email_empresa = isset($_POST['empresa_email']) ? trim($_POST['empresa_email']) : null;
         $fecha_creacion = isset($_POST['fecha_creacion']) ? trim($_POST['fecha_creacion']) : null;
+        $empresa_pais = isset($_POST['empresa_pais']) ? trim($_POST['empresa_pais']) : null;
+        $empresa_ciudad = isset($_POST['empresa_ciudad']) ? trim($_POST['empresa_ciudad']) : null;
+        $empresa_web = isset($_POST['empresa_web']) ? trim($_POST['empresa_web']) : null;
         $dias_validez = isset($_POST['validez_cotizacion']) ? (int)$_POST['validez_cotizacion'] : null;
 
         // Obtener el id del tipo de firma basado en la opción seleccionada
@@ -102,9 +125,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Verificar que la fecha está bien formada antes de intentar insertarla
         if ($fecha_creacion && preg_match('/^\d{4}-\d{2}-\d{2}$/', $fecha_creacion)) {
-            // Inserta la empresa incluyendo el id del tipo de firma
-            $sql_empresa = "INSERT INTO E_Empresa (id_foto, rut_empresa, nombre_empresa, area_empresa, direccion_empresa, telefono_empresa, email_empresa, fecha_creacion, dias_validez, id_tipo_firma)
-                            VALUES ($id_foto, '$rut_empresa', '$nombre_empresa', '$area_empresa', '$direccion_empresa', '$telefono_empresa', '$email_empresa', '$fecha_creacion', $dias_validez, $id_tipo_firma)";
+            // Inserta la empresa incluyendo el id del tipo de firma y nuevos campos
+            $sql_empresa = "INSERT INTO E_Empresa (id_foto, rut_empresa, nombre_empresa, area_empresa, direccion_empresa, telefono_empresa, email_empresa, fecha_creacion, pais_empresa, ciudad_empresa, web_empresa, dias_validez, id_tipo_firma)
+                            VALUES ('$id_foto', '$rut_empresa', '$nombre_empresa', '$area_empresa', '$direccion_empresa', '$telefono_empresa', '$email_empresa', '$fecha_creacion', '$empresa_pais', '$empresa_ciudad', '$empresa_web', $dias_validez, $id_tipo_firma)";
             
             if ($mysqli->query($sql_empresa) === TRUE) {
                 // Obtener el ID de la empresa recién insertada
@@ -120,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                        VALUES ('$numero_cotizacion', CURDATE(), DATE_ADD(CURDATE(), INTERVAL $validez_cotizacion DAY), $id_empresa)";
                     
                     if ($mysqli->query($sql_cotizacion) === TRUE) {
-                        $mensaje = "Empresa creada correctamente, se redirije al home.";
+                        $mensaje = "Empresa creada correctamente, se redirige al home.";
                     } else {
                         $mensaje = "Error al insertar la cotización: " . $mysqli->error;
                     }

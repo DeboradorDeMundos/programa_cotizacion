@@ -21,19 +21,33 @@ BPPJ
     
         const generateAutomaticSignature = () => {
             const titular_predefinido = `SIN OTRO PARTICULAR, Y ESPERANDO QUE LA PRESENTE OFERTA SEA DE SU INTERÉS, SE DESPIDE ATENTAMENTE:`;
-    
+        
+            const nombre_encargado = document.getElementById('encargado_nombre').value;
+            const cargo_encargado = document.getElementById('cargo_encargado').value;
             const empresa_nombre = document.getElementById('empresa_nombre').value;
-            const empresa_area = document.getElementById('empresa_area').value;
-            const empresa_telefono = document.getElementById('empresa_telefono').value;
-            const empresa_email = document.getElementById('empresa_email').value; 
-            const empresa_direccion = document.getElementById('empresa_direccion').value; 
-            const empresa_rut = document.getElementById('empresa_rut').value; 
-    
-            if (!empresa_nombre || !empresa_area || !empresa_telefono || !empresa_email || !empresa_direccion || !empresa_rut) {
+            const empresa_direccion = document.getElementById('empresa_direccion').value;
+            const empresa_ciudad = document.getElementById('empresa_ciudad').value;
+            const empresa_pais = document.getElementById('empresa_pais').value;
+            const telefono_encargado = document.getElementById('encargado_fono').value;
+            const celular_encargado = document.getElementById('encargado_celular').value;
+            const email_encargado = document.getElementById('encargado_email').value;
+            const web_empresa = document.getElementById('empresa_web').value;
+            const logo = document.getElementById('logo-upload').src;
+        
+            if (!nombre_encargado || !cargo_encargado || !empresa_nombre || !empresa_direccion || !empresa_ciudad || !empresa_pais || !telefono_encargado || !celular_encargado || !email_encargado || !web_empresa) {
                 return "Antes debes llenar todos los campos del formulario.";
             }
-    
-            return `${titular_predefinido} \n\n${empresa_nombre} -- ${empresa_rut} \n\n${empresa_area} \n\n${empresa_telefono} \n\n${empresa_email} \n\n${empresa_direccion}`;
+        
+            return `
+                ${titular_predefinido} 
+                \n\n${nombre_encargado} 
+                \n${cargo_encargado} - ${empresa_nombre} 
+                \n${empresa_direccion} 
+                \n${empresa_ciudad}, ${empresa_pais} 
+                \nTeléfono: ${telefono_encargado} 
+                \nCelular: ${celular_encargado} 
+                \nEmail: ${email_encargado} 
+                \nWeb: ${web_empresa}`;
         };
     
         document.querySelectorAll('input[name="signature-option"]').forEach((input) => {
@@ -143,6 +157,7 @@ BPPJ
             submitButton.disabled = true; // Deshabilitar si no hay selección
         }
     }
+
     
 
 /* --------------------------------------------------------------------------------------------------------------
