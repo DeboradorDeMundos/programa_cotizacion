@@ -1,6 +1,24 @@
-<?php
-// Conectar a la base de datos
-$mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
+<!--
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Agui Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+-->
+
+<!-- ------------------------------------------------------------------------------------------------------------
+    ------------------------------------- INICIO ITred Spa Ver .PHP --------------------------------------
+    ------------------------------------------------------------------------------------------------------------- -->
+
+<!-- ------------------------
+     -- INICIO CONEXION BD --
+     ------------------------ -->
+
+     <?php
+// Establece la conexión a la base de datos de ITred Spa
+$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
 // Verificar la conexión
 if ($mysqli->connect_error) {
@@ -222,130 +240,15 @@ $mysqli->close();
 </head>
 <body>
     <div class="container">
-        <div class="header-container">
-            <img alt="Company Logo" class="logo" src="<?php echo $url_foto; ?>"/>
-            <div class="header">
-                <h1><?php echo $items[0]['nombre_empresa']; ?></h1>
-                <h2><?php echo $items[0]['nombre_empresa']; ?></h2>
-                <div class="contact-info">
-                    <p>DIRECCIÓN: <?php echo $items[0]['direccion_empresa']; ?></p>
-                    <p>TELÉFONO: <?php echo $items[0]['telefono_empresa']; ?></p>
-                    <p>E-MAIL: <?php echo $items[0]['email_empresa']; ?></p>
-                    <p>WEB: <?php echo $items[0]['web_empresa']; ?></p>
-                </div>
-            </div>
-            <div class="invoice-info">
-                <p>R.U.T.: 19.279.652-0</p>
-                <h3>FACTURA ELECTRÓNICA</h3>
-                <p>Nº: 133</p>
-                <p class="sii-info">S.I.I. - SISTEMA DE PRUEBAS</p>
-            </div>
-        </div>
-        <table class="customer-info">
-            <tbody>
-                <tr>
-                    <td>
-                        <strong>SEÑOR(ES):</strong> <?php echo $items[0]['nombre_cliente']; ?><br>
-                        <strong>RUT:</strong> <?php echo $items[0]['rut_cliente']; ?><br>
-                        <strong>DIRECCIÓN:</strong> <?php echo $items[0]['direccion_cliente']; ?><br>
-                        <strong>GIRO:</strong> <?php echo $items[0]['giro_cliente']; ?><br>
-                        <strong>COMUNA:</strong> <?php echo $items[0]['comuna_cliente']; ?><br>
-                        <strong>CIUDAD:</strong> <?php echo $items[0]['ciudad_cliente']; ?><br>
-                        <strong>TELÉFONO:</strong> <?php echo $items[0]['telefono_cliente']; ?><br>
-                        <strong>FORMA PAGO:</strong> <!-- Aquí iría la forma de pago (déjalo vacío) -->
-                    </td>
-                    <td>
-                        <strong>F. EMISIÓN:</strong> <?php echo $items[0]['fecha_emision']; ?><br>
-                        <strong>F. VENCIMIENTO:</strong> <?php echo $items[0]['fecha_validez']; ?><br>
-                        <strong>CABECERA:</strong><br>
-                        <strong>CABECERA1:</strong> <!-- Aquí puedes agregar más información si es necesario -->
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <strong>DOCUMENTOS DE REFERENCIA</strong><br>
-                        Cotización: <?php echo $id_cotizacion; ?>, Fecha: <?php echo $items[0]['fecha_emision']; ?>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="items">
-            <tr>
-                <th class="nombre_producto">CÓDIGO</th>
-                <th class="descripcion">DESCRIPCIÓN</th>
-                <th class="cant">CANT.</th>
-                <th class="precio_unitario">precio_unitario</th>
-                <th class="dscto">DSCTO.</th>
-                <th class="total">TOTAL</th>
-            </tr>
-            <tr>
-                <td>
-                    <?php foreach ($items as $item): ?>
-                        <?php echo $item['nombre_producto']; ?><br><br>
-                    <?php endforeach; ?>
-                </td>
-                <td>
-                    <?php foreach ($items as $item): ?>
-                        <?php echo $item['descripcion']; ?><br><br>
-                    <?php endforeach; ?>
-                </td>
-                <td>
-                    <?php foreach ($items as $item): ?>
-                        <?php echo $item['cantidad']; ?><br><br>
-                    <?php endforeach; ?>
-                </td>
-                <td>
-                    <?php foreach ($items as $item): ?>
-                        <?php echo $item['precio_unitario']; ?><br><br>
-                    <?php endforeach; ?>
-                </td>
-                <td>
-                    <?php foreach ($items as $item): ?>
-                        <?php echo $item['descuento_porcentaje']; ?><br><br>
-                    <?php endforeach; ?>
-                </td> <!-- Cambié 'descuento_porcentaje' a 'descuento_porcentaje' -->
-                <td>
-                    <?php foreach ($items as $item): ?>
-                        <?php echo $item['total']; ?><br><br>
-                    <?php endforeach; ?>
-                </td>
-            </tr>
-        </table>
-   <div class="totals-container">
-    <table class="observations">
-     <tr>
-      <td>
-       OBSERVACIONES
-      </td>
-     </tr>
-     <tr class="large-cell">
-      <td>
-      </td>
-     </tr>
-    </table>
-    <table class="totals">
-            <tr>
-                <td>Sub-total</td>
-                <td>$ <?php echo number_format($totales['sub_total'], 0, ',', '.'); ?></td>
-            </tr>
-            <tr>
-                <td>Monto descuento_porcentaje</td>
-                <td>$ <?php echo number_format($totales['descuento_global'], 0, ',', '.'); ?></td>
-            </tr>
-            <tr>
-                <td>19% I.V.A.</td>
-                <td>$ <?php echo number_format($totales['total_iva'], 0, ',', '.'); ?></td>
-            </tr>
-            <tr>
-                <td>Monto neto</td>
-                <td>$ <?php echo number_format($totales['monto_neto'], 0, ',', '.'); ?></td>
-            </tr>
-            <tr>
-                <td>TOTAL</td>
-                <td>$ <?php echo number_format($totales['total_final'], 0, ',', '.'); ?></td>
-            </tr>
-        </table>
-   </div>
+
+        <?php include 'header.php'; ?>
+
+        <?php include 'info_cliente.php'; ?>
+
+        <?php include 'detalle.php'; ?>
+
+        <?php include 'totales.php'; ?>
+
    <table class="totals">
     <tr class="son">
      <td colspan="2">
@@ -353,79 +256,26 @@ $mysqli->close();
      </td>
     </tr>
    </table>
-   <div class="barcode-container">
-        <!-- Tabla de información bancaria -->
-        <h3>Información de Cuentas Bancarias</h3>
-        <?php foreach ($bancos as $banco): ?>
-        <table class="bank-info">
-            <tr>
-                <td>
-                    <strong>BANCO:</strong> <?php echo $banco['nombre_banco']; ?><br>
-                    <strong>TIPO CUENTA:</strong> <?php echo $banco['tipocuenta']; ?><br>
-                    <strong>N° CUENTA:</strong> <?php echo $banco['numero_cuenta']; ?><br>
-                    <strong>RUT:</strong> <?php echo $banco['rut_titular']; ?><br>
-                    <strong>TITULAR:</strong> <?php echo $banco['nombre_titular']; ?><br>
-                    <strong>ENVIAR EMAIL A:</strong> <?php echo $banco['email_banco']; ?>
-                </td>
-            </tr>
-        </table>
-        <?php endforeach; ?>
-   </div>
+
+    <?php include 'bancos.php'; ?>
+
    <div class="barcode">
     <img alt="Barcode" height="50" src="../../imagenes/programa_cotizacion/prueba2.png" width="800"/>
    </div>
-   <?php foreach ($titulos as $titulo_id => $titulo): ?>
-    <table border="1">
-        <tr>
-            <th rowspan="15" class="vertical-text">T<br>i<br>t<br>u<br>l<br>o<br><br><?php echo $titulo['nombre']; ?></th>
-            <th>nombre_producto</th>
-            <th>descripcion</th>
-            <th>cantidad</th>
-            <th>precio_unitario</th>
-            <th>descuento_porcentaje</th>
-            <th>total</th>
-        </tr>
-
-        <tr>
-            <?php 
-            $codigos = [];
-            $descripciones = [];
-            $cantidades = [];
-            $precios = [];
-            $descuentos = [];
-            $totales_detalle = [];
-
-            foreach ($titulo['detalles'] as $detalle) {
-                $codigos[] = $detalle['nombre_producto'];
-                $descripciones[] = $detalle['descripcion'];
-                $cantidades[] = $detalle['cantidad'];
-                $precios[] = $detalle['precio_unitario'];
-                $descuentos[] = $detalle['descuento_porcentaje'];
-                $totales_detalle[] = $detalle['total'];
-            }
-
-            // Imprimir los datos en las filas correspondientes
-            ?>
-            <td><?php echo implode('<br>', $codigos); ?></td>
-            <td><?php echo implode('<br>', $descripciones); ?></td>
-            <td><?php echo implode('<br>', $cantidades); ?></td>
-            <td><?php echo implode('<br>', $precios); ?></td>
-            <td><?php echo implode('<br>', $descuentos); ?></td>
-            <td><?php echo implode('<br>', $totales_detalle); ?></td>
-        </tr>
-
-        <?php 
-        // Imprimir los subtítulos si existen
-        foreach ($titulo['detalles'] as $detalle) {
-            if (!empty($detalle['subtitulos'])) {
-                foreach ($detalle['subtitulos'] as $subtitulo) {
-                    echo "<tr><td colspan='6' class='subtitle'>{$subtitulo}</td></tr>";
-                }
-            }
-        }
-        ?>
-    </table>
-<?php endforeach; ?>
   </div>
  </body>
 </html>
+
+<!-- ------------------------------------------------------------------------------------------------------------
+    -------------------------------------- FIN ITred Spa  Ver .PHP -----------------------------------
+    ------------------------------------------------------------------------------------------------------------- -->
+
+<!--
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Agui Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+-->

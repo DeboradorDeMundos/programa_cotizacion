@@ -10,6 +10,13 @@ body {
     padding: 20px;
     border: 1px solid #000;
 }
+
+#text{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
 .header-container {
     display: flex;
     justify-content: space-between;
