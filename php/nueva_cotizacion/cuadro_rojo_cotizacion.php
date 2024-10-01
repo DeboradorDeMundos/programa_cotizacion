@@ -31,8 +31,7 @@ BPPJ
     <input type="number" id="dias_validez" name="dias_validez" required min="1" required placeholder="30" value="<?php echo htmlspecialchars($dias_validez); ?>" readonly>
     
     <label for="fecha_validez">Fecha de Validez:</label>
-    <input type="date" id="fecha_validez" name="fecha_validez" readonly> <!-- Campo de fecha de validez -->
-  
+    <input type="date" id="fecha_validez" name="fecha_validez" readonly>
 </fieldset>   
 </body>
 
