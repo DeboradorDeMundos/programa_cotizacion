@@ -278,7 +278,7 @@ CREATE TABLE C_Detalles (
     descuento_porcentaje DECIMAL(5,2) DEFAULT 0,
     total DECIMAL(10,2),
     PRIMARY KEY (id_detalle),
-    FOREIGN KEY (id_subtitulo) REFERENCES C_Subtitulos(id_subtitulo) ON DELETE CASCADE
+    FOREIGN KEY (id_subtitulo) REFERENCES C_Subtitulos(id_subtitulo) ON DELETE CASCADE,
     FOREIGN KEY (id_titulo) REFERENCES C_Titulos(id_titulo) ON DELETE CASCADE
 ) ENGINE=InnoDB ;
 
