@@ -128,51 +128,56 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $id_subtitulo_map[] = $stmt_insert_subtitulo->insert_id; // Guardar IDs de subtítulos
             }
 
-            // Insertar los detalles
-            foreach ($data['detalles'] as $detalle) {
-                // Verificar si hay subtítulos y obtener el último subtítulo insertado o NULL si no hay subtítulos
-                $id_subtitulo = !empty($id_subtitulo_map) ? array_pop($id_subtitulo_map) : null;
-            
-                // Iterar sobre cada detalle
-                foreach ($detalle['tipo'] as $index => $tipo) {
-                    $nombre_producto = isset($detalle['nombre_producto'][$index]) ? $detalle['nombre_producto'][$index] : '';
-                    $descripcion = isset($detalle['descripcion'][$index]) ? $detalle['descripcion'][$index] : '';
-                    
-                    // Asumir que cantidad, precio_unitario, descuento, y total son valores únicos
-                    $cantidad = $detalle['cantidad'];
-                    $precio_unitario = $detalle['precio_unitario'];
-                    $descuento = $detalle['descuento'];
-                    $total = $detalle['total'];
-            
-                    // Asegúrate de que todos los valores son variables
-                    $tipo = (string)$tipo;
-                    $nombre_producto = (string)$nombre_producto;
-                    $descripcion = (string)$descripcion;
-                    $cantidad = (int)$cantidad;
-                    $precio_unitario = (float)$precio_unitario;
-                    $descuento = (float)$descuento;
-                    $total = (float)$total;
-            
-                    // Ahora, bind_param debe funcionar correctamente
-                    $stmt_insert_detalle->bind_param(
-                        "iisssiddi",
-                        $id_titulo,
-                        $id_subtitulo,
-                        $tipo,
-                        $nombre_producto,
-                        $descripcion,
-                        $cantidad,
-                        $precio_unitario,
-                        $descuento,
-                        $total
-                    );
-            
-                    // Ejecutar la declaración
-                    if (!$stmt_insert_detalle->execute()) {
-                        throw new Exception("Error al insertar detalle: " . $stmt_insert_detalle->error);
-                    }
-                }
-            }
+         // Insertar los detalles
+foreach ($data['detalles'] as $detalle) {
+    // Usar un índice para recorrer los subtítulos en el orden correcto
+    static $subtitulo_index = 0;
+    $id_subtitulo = !empty($id_subtitulo_map[$subtitulo_index]) ? $id_subtitulo_map[$subtitulo_index] : null;
+    
+    // Iterar sobre cada detalle
+    foreach ($detalle['tipo'] as $index => $tipo) {
+        $nombre_producto = isset($detalle['nombre_producto'][$index]) ? $detalle['nombre_producto'][$index] : '';
+        $descripcion = isset($detalle['descripcion'][$index]) ? $detalle['descripcion'][$index] : '';
+        
+        // Asumir que cantidad, precio_unitario, descuento, y total son valores únicos
+        $cantidad = $detalle['cantidad'];
+        $precio_unitario = $detalle['precio_unitario'];
+        $descuento = $detalle['descuento'];
+        $total = $detalle['total'];
+
+        // Asegúrate de que todos los valores son variables
+        $tipo = (string)$tipo;
+        $nombre_producto = (string)$nombre_producto;
+        $descripcion = (string)$descripcion;
+        $cantidad = (int)$cantidad;
+        $precio_unitario = (float)$precio_unitario;
+        $descuento = (float)$descuento;
+        $total = (float)$total;
+
+        // Ahora, bind_param debe funcionar correctamente
+        $stmt_insert_detalle->bind_param(
+            "iisssiddi",
+            $id_titulo,
+            $id_subtitulo,
+            $tipo,
+            $nombre_producto,
+            $descripcion,
+            $cantidad,
+            $precio_unitario,
+            $descuento,
+            $total
+        );
+
+        // Ejecutar la declaración
+        if (!$stmt_insert_detalle->execute()) {
+            throw new Exception("Error al insertar detalle: " . $stmt_insert_detalle->error);
+        }
+    }
+
+    // Incrementar el índice del subtítulo para el siguiente grupo de detalles
+    $subtitulo_index++;
+}
+
         }
 
         // Confirmar la transacción

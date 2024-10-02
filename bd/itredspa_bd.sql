@@ -392,9 +392,9 @@ CREATE TABLE C_Cotizacion_Condiciones (
     id_cotizacion INT NOT NULL, -- Clave foránea hacia Cotizaciones
     id_condiciones INT NOT NULL, -- Clave foránea hacia Condiciones Generales
     FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE,
-    FOREIGN KEY (id_condiciones) REFERENCES C_Condiciones_Generales(id_condiciones) ON DELETE CASCADE,
-  --  UNIQUE KEY (id_cotizacion, id_condiciones) -- Para evitar duplicados
-) ENGINE=InnoDB;
+    FOREIGN KEY (id_condiciones) REFERENCES C_Condiciones_Generales(id_condiciones) ON DELETE CASCADE
+  --  UNIQUE KEY (id_cotizacion, id_condiciones) Para evitar duplicados
+) ENGINE=InnoDB ;
 
 
 
@@ -429,7 +429,7 @@ CREATE TABLE C_Cotizaciones_Requisitos (
     id_cotizacion INT NOT NULL, -- Clave foránea hacia Cotizaciones
     id_requisitos INT NOT NULL, -- Clave foránea hacia Requisitos Básicos
     FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE,
-    FOREIGN KEY (id_requisitos) REFERENCES E_Requisitos_Basicos(id_requisitos) ON DELETE CASCADE,
+    FOREIGN KEY (id_requisitos) REFERENCES E_Requisitos_Basicos(id_requisitos) ON DELETE CASCADE
    -- UNIQUE KEY (id_cotizacion, id_requisitos) -- Para evitar duplicados
 ) ENGINE=InnoDB;
 
@@ -462,7 +462,7 @@ CREATE TABLE C_Cotizaciones_Obligaciones (
     id_cotizacion INT NOT NULL, -- Clave foránea hacia Cotizaciones
     id_obligacion INT NOT NULL, -- Clave foránea hacia Obligaciones del Cliente
     FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE,
-    FOREIGN KEY (id_obligacion) REFERENCES E_obligaciones_cliente(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_obligacion) REFERENCES E_obligaciones_cliente(id) ON DELETE CASCADE
     -- UNIQUE KEY (id_cotizacion, id_obligacion) -- Para evitar duplicados
 ) ENGINE=InnoDB;
 
