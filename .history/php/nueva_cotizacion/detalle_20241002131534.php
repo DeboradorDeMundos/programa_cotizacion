@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql_insert_titulo = "INSERT INTO C_Titulos (id_cotizacion, nombre) VALUES (?, ?) ON DUPLICATE KEY UPDATE nombre = VALUES(nombre)";
     $sql_insert_subtitulo = "INSERT INTO C_Subtitulos (id_titulo, nombre) VALUES (?, ?) ON DUPLICATE KEY UPDATE nombre = VALUES(nombre)";
     $sql_insert_detalle = "INSERT INTO C_Detalles (id_titulo, id_subtitulo, tipo, nombre_producto, descripcion, cantidad, precio_unitario, descuento_porcentaje, total) 
-                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                           VALUES (?, IFNULL(?, NULL), ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt_insert_titulo = $mysqli->prepare($sql_insert_titulo);
     $stmt_insert_subtitulo = $mysqli->prepare($sql_insert_subtitulo);
@@ -112,8 +112,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Insertar los detalles
             foreach ($data['detalles'] as $detalle) {
-                // Verificar si hay subtítulos y obtener el último subtítulo insertado o NULL si no hay subtítulos
-                $id_subtitulo = !empty($id_subtitulo_map) ? array_pop($id_subtitulo_map) : null;
+                // Obtener el último subtítulo insertado o NULL si no hay subtítulos
+                $id_subtitulo = !empty($id_subtitulo_map) ? reset($id_subtitulo_map) : null;
 
                 $stmt_insert_detalle->bind_param(
                     "iisssiddi",
@@ -149,7 +149,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt_insert_detalle->close();
 }
 ?>
-
 
 
 

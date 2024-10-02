@@ -120,14 +120,11 @@ function addDetailRow(button) {
         tableBody.insertBefore(newHeaderRow, lastRow.nextSibling);  
     }
 
-    // Obtener el índice del subtítulo (asumiendo que la última fila subtítulo es la más reciente)
-    const subtituloIndex = Array.from(tableBody.querySelectorAll('.subtitulo')).length - 1;
-
     // Crear una nueva fila de detalle
     const newRow = document.createElement('tr');
     newRow.innerHTML = `
         <td colspan="9">
-            <select name="tipo_producto[${tituloIndex}][${subtituloIndex}][]" onchange="handleTipoChange(this)">
+            <select name="tipo_producto[${tituloIndex}][]" onchange="handleTipoChange(this)">
                 <option value="">Seleccione un tipo</option>
                 <option value="nuevo">Nuevo</option>
                 <option value="insumo">Insumo</option>
@@ -152,12 +149,12 @@ function addDetailRow(button) {
                 <option value="asesoria">Asesoría</option>
             </select>
         </td>
-        <td class="hidden-column"><input type="text" name="nombre_producto[${tituloIndex}][${subtituloIndex}][]"></td>
+        <td class="hidden-column"><input type="text" name="nombre_producto[${tituloIndex}][]"></td>
         <td class="hidden-column"><input type="checkbox" onclick="toggleDescription(this)"></td>
-        <td class="hidden-column"><input type="number" name="detalle_cantidad[${tituloIndex}][${subtituloIndex}][]" step="1" min="1" required oninput="updateTotal(this)"></td>
-        <td class="hidden-column"><input type="number" name="detalle_precio_unitario[${tituloIndex}][${subtituloIndex}][]" step="0.01" min="0" required oninput="updateTotal(this)"></td>
-        <td class="hidden-column"><input type="number" name="detalle_descuento[${tituloIndex}][${subtituloIndex}][]" step="1" min="0" required oninput="updateTotal(this)"></td>
-        <td class="hidden-column"><input type="number" name="detalle_total[${tituloIndex}][${subtituloIndex}][]" step="0.01" min="0" readonly></td>
+        <td class="hidden-column"><input type="number" name="detalle_cantidad[${tituloIndex}][]" step="1" min="1" required oninput="updateTotal(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_precio_unitario[${tituloIndex}][]" step="0.01" min="0" required oninput="updateTotal(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_descuento[${tituloIndex}][]" step="1" min="0" required oninput="updateTotal(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_total[${tituloIndex}][]" step="0.01" min="0" readonly></td>
         <td colspan="2" class="hidden-column">
             <button type="button" class="btn-eliminar" onclick="removeDetailRow(this)">Eliminar</button>
         </td>
@@ -172,7 +169,7 @@ function addDetailRow(button) {
     descriptionRow.style.display = 'none';
     descriptionRow.innerHTML = `
         <td colspan="9">
-            <textarea name="detalle_descripcion[${tituloIndex}][${subtituloIndex}][]" placeholder="Ingrese sólo si requiere ingresar una descripción extendida del producto o servicio"></textarea>
+            <textarea name="detalle_descripcion[${tituloIndex}][]" placeholder="Ingrese sólo si requiere ingresar una descripción extendida del producto o servicio"></textarea>
         </td>
     `;
     tableBody.appendChild(descriptionRow);

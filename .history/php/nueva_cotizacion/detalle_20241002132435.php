@@ -48,29 +48,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $estructura_datos[$titulo_index] = [
             'titulo' => $titulo,
             'subtitulos' => [],
-            'detalles' => [],
         ];
 
         // Asignar subtítulos correspondientes a cada título
-        foreach ($detalles_subtitulo[$titulo_index] ?? [] as $subtitulo) {
-            $estructura_datos[$titulo_index]['subtitulos'][] = $subtitulo;
-        }
-
-        // Asignar detalles correspondientes a cada título
-        foreach ($detalles_cantidad[$titulo_index] ?? [] as $detalle_index => $cantidad) {
-            $precio_unitario = floatval($detalles_precio_unitario[$titulo_index][$detalle_index] ?? 0);
-            $descuento = floatval($detalles_descuento[$titulo_index][$detalle_index] ?? 0);
-            $total = ($precio_unitario * $cantidad) - (($precio_unitario * $cantidad) * ($descuento / 100));
-
-            $estructura_datos[$titulo_index]['detalles'][] = [
-                'tipo' => $detalles_tipo[$titulo_index][$detalle_index] ?? '',
-                'nombre_producto' => $detalles_nombre_producto[$titulo_index][$detalle_index] ?? '',
-                'descripcion' => $detalles_descripcion[$titulo_index][$detalle_index] ?? '',
-                'cantidad' => intval($cantidad),
-                'precio_unitario' => $precio_unitario,
-                'descuento' => $descuento,
-                'total' => round($total, 2),
+        foreach ($detalles_subtitulo[$titulo_index] ?? [] as $subtitulo_index => $subtitulo) {
+            $estructura_datos[$titulo_index]['subtitulos'][$subtitulo_index] = [
+                'subtitulo' => $subtitulo,
+                'detalles' => [],
             ];
+
+            // Asignar detalles correspondientes a cada subtítulo
+            foreach ($detalles_cantidad[$titulo_index][$subtitulo_index] ?? [] as $detalle_index => $cantidad) {
+                $precio_unitario = floatval($detalles_precio_unitario[$titulo_index][$subtitulo_index][$detalle_index] ?? 0);
+                $descuento = floatval($detalles_descuento[$titulo_index][$subtitulo_index][$detalle_index] ?? 0);
+                $total = ($precio_unitario * $cantidad) - (($precio_unitario * $cantidad) * ($descuento / 100));
+
+                $estructura_datos[$titulo_index]['subtitulos'][$subtitulo_index]['detalles'][] = [
+                    'tipo' => $detalles_tipo[$titulo_index][$subtitulo_index][$detalle_index] ?? '',
+                    'nombre_producto' => $detalles_nombre_producto[$titulo_index][$subtitulo_index][$detalle_index] ?? '',
+                    'descripcion' => $detalles_descripcion[$titulo_index][$subtitulo_index][$detalle_index] ?? '',
+                    'cantidad' => intval($cantidad),
+                    'precio_unitario' => $precio_unitario,
+                    'descuento' => $descuento,
+                    'total' => round($total, 2),
+                ];
+            }
         }
     }
 
@@ -78,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql_insert_titulo = "INSERT INTO C_Titulos (id_cotizacion, nombre) VALUES (?, ?) ON DUPLICATE KEY UPDATE nombre = VALUES(nombre)";
     $sql_insert_subtitulo = "INSERT INTO C_Subtitulos (id_titulo, nombre) VALUES (?, ?) ON DUPLICATE KEY UPDATE nombre = VALUES(nombre)";
     $sql_insert_detalle = "INSERT INTO C_Detalles (id_titulo, id_subtitulo, tipo, nombre_producto, descripcion, cantidad, precio_unitario, descuento_porcentaje, total) 
-                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                           VALUES (?, IFNULL(?, NULL), ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt_insert_titulo = $mysqli->prepare($sql_insert_titulo);
     $stmt_insert_subtitulo = $mysqli->prepare($sql_insert_subtitulo);
@@ -102,8 +104,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Insertar los subtítulos asociados y obtener su ID
             $id_subtitulo_map = [];
-            foreach ($data['subtitulos'] as $subtitulo) {
-                $stmt_insert_subtitulo->bind_param("is", $id_titulo, $subtitulo);
+            foreach ($data['subtitulos'] as $subtitulo_data) {
+                $stmt_insert_subtitulo->bind_param("is", $id_titulo, $subtitulo_data['subtitulo']);
                 if (!$stmt_insert_subtitulo->execute()) {
                     throw new Exception("Error al insertar subtítulo: " . $stmt_insert_subtitulo->error);
                 }
@@ -111,24 +113,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             // Insertar los detalles
-            foreach ($data['detalles'] as $detalle) {
-                // Verificar si hay subtítulos y obtener el último subtítulo insertado o NULL si no hay subtítulos
-                $id_subtitulo = !empty($id_subtitulo_map) ? array_pop($id_subtitulo_map) : null;
+            foreach ($data['subtitulos'] as $subtitulo_index => $subtitulo_data) {
+                $id_subtitulo = $id_subtitulo_map[$subtitulo_index] ?? null;
 
-                $stmt_insert_detalle->bind_param(
-                    "iisssiddi",
-                    $id_titulo,
-                    $id_subtitulo,
-                    $detalle['tipo'],
-                    $detalle['nombre_producto'],
-                    $detalle['descripcion'],
-                    $detalle['cantidad'],
-                    $detalle['precio_unitario'],
-                    $detalle['descuento'],
-                    $detalle['total']
-                );
-                if (!$stmt_insert_detalle->execute()) {
-                    throw new Exception("Error al insertar detalle: " . $stmt_insert_detalle->error);
+                foreach ($subtitulo_data['detalles'] as $detalle) {
+                    $stmt_insert_detalle->bind_param(
+                        "iisssiddi",
+                        $id_titulo,
+                        $id_subtitulo,
+                        $detalle['tipo'],
+                        $detalle['nombre_producto'],
+                        $detalle['descripcion'],
+                        $detalle['cantidad'],
+                        $detalle['precio_unitario'],
+                        $detalle['descuento'],
+                        $detalle['total']
+                    );
+                    if (!$stmt_insert_detalle->execute()) {
+                        throw new Exception("Error al insertar detalle: " . $stmt_insert_detalle->error);
+                    }
                 }
             }
         }
@@ -149,7 +152,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt_insert_detalle->close();
 }
 ?>
-
 
 
 

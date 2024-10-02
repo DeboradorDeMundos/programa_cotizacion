@@ -263,7 +263,6 @@ $mysqli->close();
     <img alt="Barcode" height="50" src="../../imagenes/programa_cotizacion/prueba2.png" width="800"/>
    </div>
   </div>
-  <button onclick="window.print()">Imprimir / Guardar como PDF</button>
  </body>
 </html>
 

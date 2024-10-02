@@ -29,7 +29,8 @@ BPPJ
 </fieldset>
 
 
-<?php
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recibir datos del formulario
     $detalles_titulo = $_POST['detalle_titulo'] ?? [];
@@ -77,8 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Preparar las consultas de inserción
     $sql_insert_titulo = "INSERT INTO C_Titulos (id_cotizacion, nombre) VALUES (?, ?) ON DUPLICATE KEY UPDATE nombre = VALUES(nombre)";
     $sql_insert_subtitulo = "INSERT INTO C_Subtitulos (id_titulo, nombre) VALUES (?, ?) ON DUPLICATE KEY UPDATE nombre = VALUES(nombre)";
-    $sql_insert_detalle = "INSERT INTO C_Detalles (id_titulo, id_subtitulo, tipo, nombre_producto, descripcion, cantidad, precio_unitario, descuento_porcentaje, total) 
-                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql_insert_detalle = "INSERT INTO C_Detalles (id_titulo, tipo, nombre_producto, descripcion, cantidad, precio_unitario, descuento_porcentaje, total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt_insert_titulo = $mysqli->prepare($sql_insert_titulo);
     $stmt_insert_subtitulo = $mysqli->prepare($sql_insert_subtitulo);
@@ -100,25 +100,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             $id_titulo = $stmt_insert_titulo->insert_id;
 
-            // Insertar los subtítulos asociados y obtener su ID
-            $id_subtitulo_map = [];
+            // Insertar los subtítulos asociados
             foreach ($data['subtitulos'] as $subtitulo) {
                 $stmt_insert_subtitulo->bind_param("is", $id_titulo, $subtitulo);
                 if (!$stmt_insert_subtitulo->execute()) {
                     throw new Exception("Error al insertar subtítulo: " . $stmt_insert_subtitulo->error);
                 }
-                $id_subtitulo_map[] = $stmt_insert_subtitulo->insert_id; // Guardar IDs de subtítulos
             }
 
-            // Insertar los detalles
+            // Insertar los detalles asociados
             foreach ($data['detalles'] as $detalle) {
-                // Verificar si hay subtítulos y obtener el último subtítulo insertado o NULL si no hay subtítulos
-                $id_subtitulo = !empty($id_subtitulo_map) ? array_pop($id_subtitulo_map) : null;
-
                 $stmt_insert_detalle->bind_param(
-                    "iisssiddi",
+                    "isssiddi",
                     $id_titulo,
-                    $id_subtitulo,
                     $detalle['tipo'],
                     $detalle['nombre_producto'],
                     $detalle['descripcion'],
@@ -135,7 +129,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Confirmar la transacción
         $mysqli->commit();
-        echo "Datos insertados correctamente";
 
     } catch (Exception $e) {
         // En caso de error, deshacer la transacción
@@ -149,6 +142,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt_insert_detalle->close();
 }
 ?>
+
+
+
 
 
 

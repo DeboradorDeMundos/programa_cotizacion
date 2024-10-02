@@ -29,6 +29,7 @@ BPPJ
 </fieldset>
 
 
+
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recibir datos del formulario
@@ -51,9 +52,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             'detalles' => [],
         ];
 
-        // Asignar subtítulos correspondientes a cada título
-        foreach ($detalles_subtitulo[$titulo_index] ?? [] as $subtitulo) {
-            $estructura_datos[$titulo_index]['subtitulos'][] = $subtitulo;
+        // Asignar subtítulos correspondientes a cada título (si existen)
+        if (isset($detalles_subtitulo[$titulo_index]) && is_array($detalles_subtitulo[$titulo_index])) {
+            foreach ($detalles_subtitulo[$titulo_index] as $subtitulo) {
+                $estructura_datos[$titulo_index]['subtitulos'][] = $subtitulo;
+            }
         }
 
         // Asignar detalles correspondientes a cada título
@@ -100,42 +103,58 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             $id_titulo = $stmt_insert_titulo->insert_id;
 
-            // Insertar los subtítulos asociados y obtener su ID
-            $id_subtitulo_map = [];
-            foreach ($data['subtitulos'] as $subtitulo) {
-                $stmt_insert_subtitulo->bind_param("is", $id_titulo, $subtitulo);
-                if (!$stmt_insert_subtitulo->execute()) {
-                    throw new Exception("Error al insertar subtítulo: " . $stmt_insert_subtitulo->error);
+            // Si hay subtítulos, insertarlos y asociar los detalles al subtítulo
+            if (!empty($data['subtitulos'])) {
+                foreach ($data['subtitulos'] as $subtitulo) {
+                    $stmt_insert_subtitulo->bind_param("is", $id_titulo, $subtitulo);
+                    if (!$stmt_insert_subtitulo->execute()) {
+                        throw new Exception("Error al insertar subtítulo: " . $stmt_insert_subtitulo->error);
+                    }
+                    $id_subtitulo = $stmt_insert_subtitulo->insert_id;
+
+                    // Insertar los detalles asociados al subtítulo
+                    foreach ($data['detalles'] as $detalle) {
+                        $stmt_insert_detalle->bind_param(
+                            "iisssiddi",
+                            $id_titulo,
+                            $id_subtitulo,
+                            $detalle['tipo'],
+                            $detalle['nombre_producto'],
+                            $detalle['descripcion'],
+                            $detalle['cantidad'],
+                            $detalle['precio_unitario'],
+                            $detalle['descuento'],
+                            $detalle['total']
+                        );
+                        if (!$stmt_insert_detalle->execute()) {
+                            throw new Exception("Error al insertar detalle: " . $stmt_insert_detalle->error);
+                        }
+                    }
                 }
-                $id_subtitulo_map[] = $stmt_insert_subtitulo->insert_id; // Guardar IDs de subtítulos
-            }
-
-            // Insertar los detalles
-            foreach ($data['detalles'] as $detalle) {
-                // Verificar si hay subtítulos y obtener el último subtítulo insertado o NULL si no hay subtítulos
-                $id_subtitulo = !empty($id_subtitulo_map) ? array_pop($id_subtitulo_map) : null;
-
-                $stmt_insert_detalle->bind_param(
-                    "iisssiddi",
-                    $id_titulo,
-                    $id_subtitulo,
-                    $detalle['tipo'],
-                    $detalle['nombre_producto'],
-                    $detalle['descripcion'],
-                    $detalle['cantidad'],
-                    $detalle['precio_unitario'],
-                    $detalle['descuento'],
-                    $detalle['total']
-                );
-                if (!$stmt_insert_detalle->execute()) {
-                    throw new Exception("Error al insertar detalle: " . $stmt_insert_detalle->error);
+            } else {
+                // Si no hay subtítulos, asociar los detalles directamente al título
+                foreach ($data['detalles'] as $detalle) {
+                    $stmt_insert_detalle->bind_param(
+                        "iisssiddi",
+                        $id_titulo,
+                        $id_subtitulo = null, // Subtítulo es nulo
+                        $detalle['tipo'],
+                        $detalle['nombre_producto'],
+                        $detalle['descripcion'],
+                        $detalle['cantidad'],
+                        $detalle['precio_unitario'],
+                        $detalle['descuento'],
+                        $detalle['total']
+                    );
+                    if (!$stmt_insert_detalle->execute()) {
+                        throw new Exception("Error al insertar detalle: " . $stmt_insert_detalle->error);
+                    }
                 }
             }
         }
 
         // Confirmar la transacción
         $mysqli->commit();
-        echo "Datos insertados correctamente";
 
     } catch (Exception $e) {
         // En caso de error, deshacer la transacción
@@ -149,6 +168,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt_insert_detalle->close();
 }
 ?>
+    
 
 
 
