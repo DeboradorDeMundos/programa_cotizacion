@@ -4,13 +4,59 @@ body {
     margin: 0;
     padding: 0;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px; /* Add space between tables */
+}
+th, td {
+    border: 1px solid black;
+    padding: 4px; /* Smaller padding */
+    text-align: left;
+    vertical-align: top;
+}
+th {
+    background-color: #f2f2f2;
+}
+.vertical-text {
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.subtitle {
+    text-align: center;
+    font-weight: bold;
+}
+
+h1, h2, h3, h4, h5, h6 {
+font-size: 16px; /* Tamaño de letra más pequeño para encabezados */
+}
+
+p {
+font-size: 12px; /* Tamaño de letra más pequeño para párrafos */
+}
+
+table th, table td {
+font-size: 12px; /* Tamaño de letra más pequeño para tablas */
+}
+
+ul li {
+font-size: 12px; /* Tamaño de letra más pequeño para listas */
+}
+
+a {
+font-size: 12px; /* Tamaño de letra más pequeño para enlaces */
+}
+
 .container {
-    width: 1000px;
+    width: 1000px; /* Ancho para el tamaño oficio */
+    height: 1400px; /* Alto para el tamaño oficio */
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #000;
+    box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total */
 }
-
 #text{
     font-size: 18px;
     font-weight: bold;

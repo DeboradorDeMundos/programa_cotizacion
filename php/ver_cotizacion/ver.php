@@ -46,18 +46,10 @@ $query = "
         c.ciudad_cliente,
         c.telefono_cliente,
         cot.fecha_emision,
-        cot.fecha_validez,
-        det.nombre_producto,
-        det.descripcion,  
-        det.cantidad,   
-        det.precio_unitario,  
-        det.descuento_porcentaje AS descuento_porcentaje,  
-        det.total           
+        cot.fecha_validez          
     FROM C_Cotizaciones cot
     JOIN C_Clientes c ON cot.id_cliente = c.id_cliente
     JOIN E_Empresa e ON cot.id_empresa = e.id_empresa
-    JOIN C_Titulos tit ON cot.id_cotizacion = tit.id_cotizacion  
-    JOIN C_Detalles det ON tit.id_titulo = det.id_titulo  
     WHERE cot.id_cotizacion = ?
 ";
 
@@ -76,6 +68,22 @@ if ($result->num_rows > 0) {
     $items = $result->fetch_all(MYSQLI_ASSOC);
     $id_empresa = $items[0]['id_empresa']; // Guardar id_empresa para la siguiente consulta
     $id_foto = $items[0]['id_foto']; // Guardar id_foto para cargar la imagen
+
+    $query_foto = "SELECT ruta_foto FROM e_fotosperfil WHERE id_foto = ?";
+    $stmt_foto = $mysqli->prepare($query_foto);
+    $stmt_foto->bind_param("i", $id_foto);
+    
+    // Ejecutar la consulta para la foto
+    $stmt_foto->execute();
+    $result_foto = $stmt_foto->get_result();
+    
+    // Verificar si se encontró la foto
+    if ($result_foto->num_rows > 0) {
+        $foto = $result_foto->fetch_assoc();
+        $ruta_foto = $foto['ruta_foto']; // Obtener la ruta de la foto
+    } else {
+        $ruta_foto = null; // No se encontró la foto
+    }
 } else {
     echo "No se encontró la cotización o la empresa relacionada.";
 }
@@ -208,35 +216,6 @@ $mysqli->close();
 <html>
 <head>
     <link rel="stylesheet" href="../../css/ver_cotizacion/ver.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 12px; /* Smaller font size */
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px; /* Add space between tables */
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 4px; /* Smaller padding */
-            text-align: left;
-            vertical-align: top;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .vertical-text {
-            text-align: center;
-            vertical-align: middle;
-            white-space: nowrap;
-        }
-        .subtitle {
-            text-align: center;
-            font-weight: bold;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
