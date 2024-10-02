@@ -213,7 +213,7 @@ CREATE TABLE C_Cotizaciones (
     id_proyecto INT, 
     id_empresa INT, 
     id_vendedor INT, 
-    id_encargado INT, 
+    id_encargado INT,
     PRIMARY KEY (id_cotizacion),
     FOREIGN KEY (id_cliente) REFERENCES C_Clientes(id_cliente) ON DELETE CASCADE, 
     FOREIGN KEY (id_proyecto) REFERENCES C_Proyectos(id_proyecto) ON DELETE CASCADE, 
@@ -377,9 +377,27 @@ CREATE TABLE C_Condiciones_Generales (
     FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE CASCADE -- Clave foránea hacia Cotizaciones
 ) ENGINE=InnoDB ;
 
+-- ------------------------------------------------------------------------------------------------------------
+-- ------------------------------------- TABLA C_Cotizacion_Condiciones -----------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------ 
+
+
+-- Crear la tabla intermedia Cotizacion_Condiciones
+DROP TABLE IF EXISTS C_Cotizacion_Condiciones;
+
+CREATE TABLE C_Cotizacion_Condiciones (
+    id_cotizacion_condiciones INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_cotizacion INT NOT NULL, -- Clave foránea hacia Cotizaciones
+    id_condiciones INT NOT NULL, -- Clave foránea hacia Condiciones Generales
+    FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE,
+    FOREIGN KEY (id_condiciones) REFERENCES C_Condiciones_Generales(id_condiciones) ON DELETE CASCADE,
+  --  UNIQUE KEY (id_cotizacion, id_condiciones) -- Para evitar duplicados
+) ENGINE=InnoDB;
+
+
 
 -- ------------------------------------------------------------------------------------------------------------
--- ------------------------------------- TABLA Requisitos_Basicos -----------------------------------------------------
+-- ------------------------------------- TABLA E_Requisitos_Basicos -----------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
 
 
@@ -395,20 +413,78 @@ CREATE TABLE E_Requisitos_Basicos (
     FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE CASCADE -- Clave foránea hacia Empresa
 ) ENGINE=InnoDB ;
 
+-- ------------------------------------------------------------------------------------------------------------
+-- ------------------------------------- TABLA C_Cotizaciones_Requisitos -----------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------ 
+
+
+
+-- Crear la tabla intermedia Cotizaciones_Requisitos
+DROP TABLE IF EXISTS C_Cotizaciones_Requisitos;
+
+CREATE TABLE C_Cotizaciones_Requisitos (
+    id_cotizacion_requisito INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_cotizacion INT NOT NULL, -- Clave foránea hacia Cotizaciones
+    id_requisitos INT NOT NULL, -- Clave foránea hacia Requisitos Básicos
+    FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE,
+    FOREIGN KEY (id_requisitos) REFERENCES E_Requisitos_Basicos(id_requisitos) ON DELETE CASCADE,
+   -- UNIQUE KEY (id_cotizacion, id_requisitos) -- Para evitar duplicados
+) ENGINE=InnoDB;
+
 
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA obligaciones del cliente-----------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
 
 
-CREATE TABLE E_obligaciones_cliente (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    indice INT NOT NULL,
-    descripcion TEXT NOT NULL,
-    estado BOOLEAN DEFAULT FALSE, -- Estado de la condición (por defecto, falso)
-    id_empresa INT NOT NULL,
-    FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE CASCADE 
-);
+    CREATE TABLE E_obligaciones_cliente (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        indice INT NOT NULL,
+        descripcion TEXT NOT NULL,
+        estado BOOLEAN DEFAULT FALSE, -- Estado de la condición (por defecto, falso)
+        id_empresa INT NOT NULL,
+        FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE CASCADE 
+    );
+
+-- ------------------------------------------------------------------------------------------------------------
+-- ------------------------------------- TABLA C_Cotizaciones_Obligaciones-----------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------ 
+
+
+
+-- Crear la tabla intermedia Cotizaciones_Obligaciones
+DROP TABLE IF EXISTS C_Cotizaciones_Obligaciones;
+
+CREATE TABLE C_Cotizaciones_Obligaciones (
+    id_cotizacion_obligacion INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_cotizacion INT NOT NULL, -- Clave foránea hacia Cotizaciones
+    id_obligacion INT NOT NULL, -- Clave foránea hacia Obligaciones del Cliente
+    FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE,
+    FOREIGN KEY (id_obligacion) REFERENCES E_obligaciones_cliente(id) ON DELETE CASCADE,
+    -- UNIQUE KEY (id_cotizacion, id_obligacion) -- Para evitar duplicados
+) ENGINE=InnoDB;
+
+
+
+
+-- ------------------------------------------------------------------------------------------------------------
+-- ------------------------------------- TABLA C_Observaciones-----------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------ 
+
+
+
+-- Crear la tabla Observaciones
+DROP TABLE IF EXISTS C_Observaciones;
+
+CREATE TABLE C_Observaciones (
+    id_observacion INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_cotizacion INT NOT NULL, -- Clave foránea hacia Cotizaciones
+    observacion TEXT NOT NULL, -- Campo para guardar la observación
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP, -- Fecha de creación de la observación
+    FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+
 
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA firmas -----------------------------------------------------
