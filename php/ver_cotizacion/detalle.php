@@ -20,23 +20,20 @@ BPPJ
 // Establece la conexión a la base de datos de ITred Spa
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
-function aplicarSaltosDeLinea($texto) {
-    $letras = str_split($texto);
-    return implode('<br>', $letras);
-}
-
 foreach ($titulos as $titulo_id => $titulo): ?>
     <table border="1">
         <tr>
-            <th rowspan="15" class="vertical-text">
-                <?php echo aplicarSaltosDeLinea($titulo['nombre']); ?>
-            </th>
             <th>nombre_producto</th>
             <th>descripcion</th>
             <th>cantidad</th>
             <th>precio_unitario</th>
             <th>descuento_porcentaje</th>
             <th>total</th>
+        </tr>
+        <tr>
+            <th colspan="6" class="titulo">
+                <?php echo $titulo['nombre']; ?>
+            </th>
         </tr>
 
         <?php 
