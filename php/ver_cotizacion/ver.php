@@ -46,10 +46,22 @@ $query = "
         c.ciudad_cliente,
         c.telefono_cliente,
         cot.fecha_emision,
-        cot.fecha_validez          
+        cot.fecha_validez,
+        enc.nombre_encargado,
+        enc.rut_encargado,
+        enc.email_encargado,
+        enc.fono_encargado,
+        enc.celular_encargado,
+        ven.nombre_vendedor,
+        ven.rut_vendedor,
+        ven.email_vendedor,
+        ven.fono_vendedor,
+        ven.celular_vendedor
     FROM C_Cotizaciones cot
     JOIN C_Clientes c ON cot.id_cliente = c.id_cliente
     JOIN E_Empresa e ON cot.id_empresa = e.id_empresa
+    JOIN C_Encargados enc ON cot.id_encargado = enc.id_encargado 
+    JOIN C_Vendedores ven ON cot.id_vendedor = ven.id_vendedor 
     WHERE cot.id_cotizacion = ?
 ";
 
@@ -211,6 +223,39 @@ if ($result_bancos->num_rows > 0) {
 // Cerrar las conexiones
 $stmt->close();
 $stmt_bancos->close();
+
+$sql_firma = "SELECT 
+                    f.titulo_firma, 
+                    f.nombre_encargado_firma, 
+                    f.cargo_encargado_firma, 
+                    f.nombre_empresa_firma, 
+                    f.direccion_firma, 
+                    f.telefono_empresa_firma, 
+                    f.email_firma, 
+                    f.firma_digital,
+                    e.id_tipo_firma AS tipo_firma
+                FROM E_Firmas f
+                JOIN e_empresa e ON f.id_empresa = e.id_empresa
+                WHERE f.id_empresa = ? 
+                LIMIT 1";
+
+if ($stmt_firma = $mysqli->prepare($sql_firma)) {
+    $stmt_firma->bind_param("i", $id_empresa);
+    $stmt_firma->execute();
+    $result_firma = $stmt_firma->get_result();
+
+    if ($result_firma->num_rows == 1) {
+        $firma = $result_firma->fetch_assoc();
+        
+        $tipo_firma = $firma['tipo_firma'];
+    } else {
+        $firma = null; // No hay firma manual
+    }
+
+    $stmt_firma->close();
+} else {
+    echo "<p>Error al preparar la consulta de la firma: " . $mysqli->error . "</p>";
+}
 $mysqli->close();
 ?>
 <html>
@@ -239,7 +284,7 @@ $mysqli->close();
     <?php include 'bancos.php'; ?>
 
    <div class="barcode">
-    <img alt="Barcode" height="50" src="../../imagenes/programa_cotizacion/prueba2.png" width="800"/>
+        <?php include '../nueva_cotizacion/firma.php'; ?>
    </div>
   </div>
   <button onclick="window.print()">Imprimir / Guardar como PDF</button>

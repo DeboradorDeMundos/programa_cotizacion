@@ -46,6 +46,24 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
                 Cotización: <?php echo $id_cotizacion; ?>, Fecha: <?php echo $items[0]['fecha_emision']; ?>
             </td>
         </tr>
+        <tr>
+            <td colspan="1">
+                <strong>ENCARGADO:</strong><br>
+                <strong>NOMBRE:</strong> <?php echo $items[0]['nombre_encargado']; ?><br>
+                <strong>RUT:</strong> <?php echo $items[0]['rut_encargado']; ?><br>
+                <strong>EMAIL:</strong> <?php echo $items[0]['email_encargado']; ?><br>
+                <strong>TELÉFONO:</strong> <?php echo $items[0]['fono_encargado']; ?><br>
+                <strong>CELULAR:</strong> <?php echo $items[0]['celular_encargado']; ?><br>
+            </td>
+            <td colspan="1">
+                <strong>VENDEDOR:</strong><br>
+                <strong>NOMBRE:</strong> <?php echo $items[0]['nombre_vendedor']; ?><br>
+                <strong>RUT:</strong> <?php echo $items[0]['rut_vendedor']; ?><br>
+                <strong>EMAIL:</strong> <?php echo $items[0]['email_vendedor']; ?><br>
+                <strong>TELÉFONO:</strong> <?php echo $items[0]['fono_vendedor']; ?><br>
+                <strong>CELULAR:</strong> <?php echo $items[0]['celular_vendedor']; ?><br>
+            </td>
+        </tr>
     </tbody>
 </table>
 
