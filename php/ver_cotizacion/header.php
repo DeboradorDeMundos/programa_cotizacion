@@ -21,7 +21,7 @@ BPPJ
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 ?>
 <div class="header-container">
-    <img alt="Company Logo" class="logo" src="<?php echo $url_foto; ?>"/>
+    <img alt="Company Logo" class="logo" src="<?php echo $ruta_foto; ?>"/>
     <div class="header">
         <h1><?php echo $items[0]['nombre_empresa']; ?></h1>
         <h2><?php echo $items[0]['nombre_empresa']; ?></h2>

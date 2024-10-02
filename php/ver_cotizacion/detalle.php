@@ -19,11 +19,18 @@ BPPJ
      <?php
 // Establece la conexión a la base de datos de ITred Spa
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
-?>
-<?php foreach ($titulos as $titulo_id => $titulo): ?>
+
+function aplicarSaltosDeLinea($texto) {
+    $letras = str_split($texto);
+    return implode('<br>', $letras);
+}
+
+foreach ($titulos as $titulo_id => $titulo): ?>
     <table border="1">
         <tr>
-            <th rowspan="15" class="vertical-text">T<br>i<br>t<br>u<br>l<br>o<br><br><?php echo $titulo['nombre']; ?></th>
+            <th rowspan="15" class="vertical-text">
+                <?php echo aplicarSaltosDeLinea($titulo['nombre']); ?>
+            </th>
             <th>nombre_producto</th>
             <th>descripcion</th>
             <th>cantidad</th>
@@ -32,41 +39,50 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
             <th>total</th>
         </tr>
 
-        <tr>
-            <?php 
-            $codigos = [];
-            $descripciones = [];
-            $cantidades = [];
-            $precios = [];
-            $descuentos = [];
-            $totales_detalle = [];
-
-            foreach ($titulo['detalles'] as $detalle) {
-                $codigos[] = $detalle['nombre_producto'];
-                $descripciones[] = $detalle['descripcion'];
-                $cantidades[] = $detalle['cantidad'];
-                $precios[] = $detalle['precio_unitario'];
-                $descuentos[] = $detalle['descuento_porcentaje'];
-                $totales_detalle[] = $detalle['total'];
-            }
-
-            // Imprimir los datos en las filas correspondientes
-            ?>
-            <td><?php echo implode('<br>', $codigos); ?></td>
-            <td><?php echo implode('<br>', $descripciones); ?></td>
-            <td><?php echo implode('<br>', $cantidades); ?></td>
-            <td><?php echo implode('<br>', $precios); ?></td>
-            <td><?php echo implode('<br>', $descuentos); ?></td>
-            <td><?php echo implode('<br>', $totales_detalle); ?></td>
-        </tr>
-
         <?php 
-        // Imprimir los subtítulos si existen
+        $subtitulos_mostrados = []; // Array para rastrear subtítulos mostrados
+        $detalles_sin_subtitulo = []; // Array para almacenar detalles sin subtítulo
+
+        // Imprimir los detalles
         foreach ($titulo['detalles'] as $detalle) {
+            // Verificar si el detalle tiene subtítulos
             if (!empty($detalle['subtitulos'])) {
                 foreach ($detalle['subtitulos'] as $subtitulo) {
-                    echo "<tr><td colspan='6' class='subtitle'>{$subtitulo}</td></tr>";
+                    // Imprimir subtítulo si no se ha mostrado aún
+                    if (!in_array($subtitulo, $subtitulos_mostrados)) {
+                        echo "<tr><td colspan='6' class='subtitle'>{$subtitulo}</td></tr>";
+                        $subtitulos_mostrados[] = $subtitulo; // Marcar el subtítulo como mostrado
+                    }
                 }
+                // Imprimir los datos del detalle después del subtítulo
+                echo "<tr>";
+                echo "<td>{$detalle['nombre_producto']}</td>";
+                echo "<td>{$detalle['descripcion']}</td>";
+                echo "<td>{$detalle['cantidad']}</td>";
+                echo "<td>{$detalle['precio_unitario']}</td>";
+                echo "<td>{$detalle['descuento_porcentaje']}</td>";
+                echo "<td>{$detalle['total']}</td>";
+                echo "</tr>";
+            } else {
+                // Si no hay subtítulo, almacenar el detalle para imprimir más tarde
+                $detalles_sin_subtitulo[] = $detalle;
+            }
+        }
+
+        // Imprimir detalles sin subtítulos después de los subtítulos
+        if (!empty($detalles_sin_subtitulo)) {
+            // Solo imprimir un salto de línea si hay detalles sin subtítulo
+            echo "<tr><td colspan='6'>&nbsp;</td></tr>"; // Fila vacía para salto de línea
+
+            foreach ($detalles_sin_subtitulo as $detalle) {
+                echo "<tr>";
+                echo "<td>{$detalle['nombre_producto']}</td>";
+                echo "<td>{$detalle['descripcion']}</td>";
+                echo "<td>{$detalle['cantidad']}</td>";
+                echo "<td>{$detalle['precio_unitario']}</td>";
+                echo "<td>{$detalle['descuento_porcentaje']}</td>";
+                echo "<td>{$detalle['total']}</td>";
+                echo "</tr>";
             }
         }
         ?>
