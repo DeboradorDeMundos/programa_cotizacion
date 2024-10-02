@@ -15,6 +15,7 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 let tituloContador = 1; // Contador global para los títulos
+let subtituloContador = 1; // Contador global para los subtítulos
 
 function addDetailSection() {
     const container = document.getElementById('detalle-container');
@@ -242,16 +243,20 @@ function agregarSubtitulo(button) {
     // Crear una nueva fila de subtítulo
     const newSubtitle = document.createElement('tr');
     newSubtitle.classList.add('subtitulo');
+    newSubtitle.dataset.subtituloIndex = subtituloContador; // Asigna un índice único al subtítulo
+
     newSubtitle.innerHTML = `
         <td colspan="8">
             <label for="subtitulo">Subtítulo:</label>
-            <input type="text" name="detalle_subtitulo[${tituloIndex}][]" style="margin-right: 10px;">
+            <input type="text" name="detalle_subtitulo[${tituloIndex}][${subtituloContador}]" style="margin-right: 10px;">
         </td>
         <td colspan="1"><button type="button" class="btn-eliminar-titulo" onclick="borrarSubtitulo(this)">Eliminar subtítulo</button></td>
     `;
 
     // Agregar el subtítulo al final de todas las filas de detalles actuales
     tableBody.appendChild(newSubtitle);
+
+    subtituloContador++; // Incrementa el contador de subtítulos
 }
 
 function borrarSubtitulo(button) {

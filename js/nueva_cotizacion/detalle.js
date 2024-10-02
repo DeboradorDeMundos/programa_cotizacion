@@ -15,12 +15,15 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 let tituloContador = 1; // Contador global para los títulos
+let subtituloContador = {}; // Objeto para llevar el conteo de subtítulos por título
 
 function addDetailSection() {
     const container = document.getElementById('detalle-container');
     const newSection = document.createElement('div');
     newSection.classList.add('detalle-section');
     newSection.dataset.tituloIndex = tituloContador; // Asigna un índice único al título
+
+    subtituloContador[tituloContador] = 0; // Inicializa el contador de subtítulos para este título
 
     newSection.innerHTML = `
         <div class="detalle-content">
@@ -89,10 +92,13 @@ function addDetailRow(button) {
     const section = button.closest('.detalle-section');
     const tableBody = section.querySelector('.detalle-contenido');
     const tableHead = section.querySelector('thead');
-    const tituloIndex = section.dataset.tituloIndex; // Obtiene el índice del título
+    const tituloIndex = section.dataset.tituloIndex;
 
     // Verificar si ya existe una cabecera
-    const existeCabecera = tableHead.querySelector('tr');
+    const existeCabecera = section.querySelector('thead tr');
+
+    // Obtener el índice del subtítulo
+    const subtituloIndex = subtituloContador[tituloIndex];
 
     // Obtener la última fila del tbody
     const lastRow = tableBody.lastElementChild;
@@ -119,9 +125,6 @@ function addDetailRow(button) {
         // Insertar la cabecera después del subtítulo
         tableBody.insertBefore(newHeaderRow, lastRow.nextSibling);  
     }
-
-    // Obtener el índice del subtítulo (asumiendo que la última fila subtítulo es la más reciente)
-    const subtituloIndex = Array.from(tableBody.querySelectorAll('.subtitulo')).length - 1;
 
     // Crear una nueva fila de detalle
     const newRow = document.createElement('tr');
@@ -186,6 +189,7 @@ function addDetailRow(button) {
     calculateTotals();
 }
 
+
 function handleTipoChange(selectElement) {
     const row = selectElement.closest('tr');
     const hiddenColumns = row.querySelectorAll('.hidden-column');
@@ -242,15 +246,18 @@ function agregarSubtitulo(button) {
     const tableBody = section.querySelector('.detalle-contenido');
     const tituloIndex = section.dataset.tituloIndex; // Obtiene el índice del título
 
+    // Incrementar el contador de subtítulos para este título
+    subtituloContador[tituloIndex]++;
+
     // Crear una nueva fila de subtítulo
     const newSubtitle = document.createElement('tr');
     newSubtitle.classList.add('subtitulo');
     newSubtitle.innerHTML = `
-        <td colspan="8">
+        <td colspan="9">
             <label for="subtitulo">Subtítulo:</label>
-            <input type="text" name="detalle_subtitulo[${tituloIndex}][]" style="margin-right: 10px;">
+            <input type="text" name="detalle_subtitulo[${tituloIndex}][${subtituloContador[tituloIndex]}]" style="margin-right: 10px;">
+            <button type="button" class="btn-eliminar-titulo" onclick="borrarSubtitulo(this)">Eliminar subtítulo</button>
         </td>
-        <td colspan="1"><button type="button" class="btn-eliminar-titulo" onclick="borrarSubtitulo(this)">Eliminar subtítulo</button></td>
     `;
 
     // Agregar el subtítulo al final de todas las filas de detalles actuales
@@ -276,15 +283,13 @@ function removeDetailRow(button) {
         descriptionRow.remove();
     }
 
-    calculateTotals();
+    calcularTotal();
 }
 
 function toggleDescription(checkbox) {
     const descriptionRow = checkbox.closest('tr').nextElementSibling;
     descriptionRow.style.display = checkbox.checked ? 'table-row' : 'none';
 }
-    
-
 
 function removeCabeza(button) {
     const tableHead = button.closest('.detalle-section').querySelector('thead');
@@ -298,11 +303,62 @@ function removeCabeza(button) {
     calculateTotals(); // Recalcular los totales después de eliminar
 }
 
+function updateTotal(input) {
+    const row = input.closest('tr');
+    const cantidad = row.querySelector('input[name*="detalle_cantidad"]').value;
+    const precioUnitario = row.querySelector('input[name*="detalle_precio_unitario"]').value;
+    const descuento = row.querySelector('input[name*="detalle_descuento"]').value;
+
+    // Calcular el total
+    const total = (cantidad * precioUnitario) - (cantidad * precioUnitario * (descuento / 100));
+    row.querySelector('input[name*="detalle_total"]').value = total.toFixed(2);
+
+    calcularTotal();
+}
+
+function calcularTotal() {
+    const totalInputs = document.querySelectorAll('input[name*="detalle_total"]');
+    let totalGeneral = 0;
+
+    totalInputs.forEach(input => {
+        totalGeneral += parseFloat(input.value) || 0;
+    });
+
+    document.getElementById('totalGeneral').textContent = totalGeneral.toFixed(2);
+}
+
 function init() {
     addDetailSection();
 }
 
 window.onload = init;
+
+
+
+function updateTotal(input) {
+    const row = input.closest('tr');
+    const cantidad = row.querySelector('input[name*="detalle_cantidad"]').value;
+    const precioUnitario = row.querySelector('input[name*="detalle_precio_unitario"]').value;
+    const descuento = row.querySelector('input[name*="detalle_descuento"]').value;
+
+    // Calcular el total
+    const total = (cantidad * precioUnitario) - (cantidad * precioUnitario * (descuento / 100));
+    row.querySelector('input[name*="detalle_total"]').value = total.toFixed(2);
+
+    calcularTotal();
+}
+
+function calcularTotal() {
+    const totalInputs = document.querySelectorAll('input[name*="detalle_total"]');
+    let totalGeneral = 0;
+
+    totalInputs.forEach(input => {
+        totalGeneral += parseFloat(input.value) || 0;
+    });
+
+    document.getElementById('totalGeneral').textContent = totalGeneral.toFixed(2);
+}
+
 
 
 /* --------------------------------------------------------------------------------------------------------------
