@@ -19,12 +19,14 @@ function updateTotal(input) {
     const row = input.closest('tr');
     const section = row.closest('.detalle-section');
     const tituloIndex = section.dataset.tituloIndex; // Obtiene el índice del título
-    const subtituloIndex = row.closest('.subtitulo-section').dataset.subtituloIndex; // Obtiene el índice del subtítulo
+    const subtituloIndex = Array.from(section.querySelectorAll('.detalle-contenido tr')).length - 1; // Calcula el subtituloIndex
 
-    const cantidad = parseFloat(row.querySelector(`input[name="detalle_cantidad[${tituloIndex}][${subtituloIndex}]"]`).value) || 0;
-    const precioUnitario = parseFloat(row.querySelector(`input[name="detalle_precio_unitario[${tituloIndex}][${subtituloIndex}]"]`).value) || 0;
-    const descuento = parseFloat(row.querySelector(`input[name="detalle_descuento[${tituloIndex}][${subtituloIndex}]"]`).value) || 0;
-    const totalInput = row.querySelector(`input[name="detalle_total[${tituloIndex}][${subtituloIndex}]"]`);
+    console.log(tituloIndex, subtituloIndex);
+
+    const cantidad = parseFloat(row.querySelector(`input[name="detalle_cantidad[${tituloIndex}][${subtituloIndex}][]"]`).value) || 0;
+    const precioUnitario = parseFloat(row.querySelector(`input[name="detalle_precio_unitario[${tituloIndex}][${subtituloIndex}][]"]`).value) || 0;
+    const descuento = parseFloat(row.querySelector(`input[name="detalle_descuento[${tituloIndex}][${subtituloIndex}][]"]`).value) || 0;
+    const totalInput = row.querySelector(`input[name="detalle_total[${tituloIndex}][${subtituloIndex}][]"]`);
 
     const desc = (precioUnitario * (descuento / 100));
     const total = (cantidad * (precioUnitario - desc)).toFixed(2);
@@ -32,7 +34,6 @@ function updateTotal(input) {
 
     calculateTotals();
 }
-
 
 function calculateTotals() {
     const rows = document.querySelectorAll('.detalle-section .detalle-table tbody tr');

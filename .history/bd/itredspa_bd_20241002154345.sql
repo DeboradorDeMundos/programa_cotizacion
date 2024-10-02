@@ -297,9 +297,9 @@ DROP TABLE IF EXISTS C_Totales;
 CREATE TABLE C_Totales (
     id_total INT NOT NULL AUTO_INCREMENT,
     id_cotizacion INT NOT NULL,
-    sub_total INT,                 
-    descuento_global INT,           
-    monto_neto INT,                 
+    sub_total INT,                   -- Cambiado a INT
+    descuento_global INT,            -- Cambiado a INT
+    monto_neto INT,                 -- Cambiado a INT
     iva_valor INT,             
     total_iva INT,                
     total_final INT,                

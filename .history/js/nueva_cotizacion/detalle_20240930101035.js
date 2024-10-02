@@ -15,15 +15,13 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 let tituloContador = 1; // Contador global para los títulos
-let subtituloContador = {}; // Objeto para llevar el conteo de subtítulos por título
+let subtituloContador = 1; // Contador global para los subtítulos
 
 function addDetailSection() {
     const container = document.getElementById('detalle-container');
     const newSection = document.createElement('div');
     newSection.classList.add('detalle-section');
     newSection.dataset.tituloIndex = tituloContador; // Asigna un índice único al título
-
-    subtituloContador[tituloContador] = 0; // Inicializa el contador de subtítulos para este título
 
     newSection.innerHTML = `
         <div class="detalle-content">
@@ -92,13 +90,10 @@ function addDetailRow(button) {
     const section = button.closest('.detalle-section');
     const tableBody = section.querySelector('.detalle-contenido');
     const tableHead = section.querySelector('thead');
-    const tituloIndex = section.dataset.tituloIndex;
+    const tituloIndex = section.dataset.tituloIndex; // Obtiene el índice del título
 
     // Verificar si ya existe una cabecera
-    const existeCabecera = section.querySelector('thead tr');
-
-    // Obtener el índice del subtítulo
-    const subtituloIndex = subtituloContador[tituloIndex];
+    const existeCabecera = tableHead.querySelector('tr');
 
     // Obtener la última fila del tbody
     const lastRow = tableBody.lastElementChild;
@@ -130,7 +125,7 @@ function addDetailRow(button) {
     const newRow = document.createElement('tr');
     newRow.innerHTML = `
         <td colspan="9">
-            <select name="tipo_producto[${tituloIndex}][${subtituloIndex}][]" onchange="handleTipoChange(this)">
+            <select name="tipo_producto[${tituloIndex}][]" onchange="handleTipoChange(this)">
                 <option value="">Seleccione un tipo</option>
                 <option value="nuevo">Nuevo</option>
                 <option value="insumo">Insumo</option>
@@ -155,12 +150,12 @@ function addDetailRow(button) {
                 <option value="asesoria">Asesoría</option>
             </select>
         </td>
-        <td class="hidden-column"><input type="text" name="nombre_producto[${tituloIndex}][${subtituloIndex}][]"></td>
+        <td class="hidden-column"><input type="text" name="nombre_producto[${tituloIndex}][]"></td>
         <td class="hidden-column"><input type="checkbox" onclick="toggleDescription(this)"></td>
-        <td class="hidden-column"><input type="number" name="detalle_cantidad[${tituloIndex}][${subtituloIndex}][]" step="1" min="1" required oninput="updateTotal(this)"></td>
-        <td class="hidden-column"><input type="number" name="detalle_precio_unitario[${tituloIndex}][${subtituloIndex}][]" step="0.01" min="0" required oninput="updateTotal(this)"></td>
-        <td class="hidden-column"><input type="number" name="detalle_descuento[${tituloIndex}][${subtituloIndex}][]" step="1" min="0" required oninput="updateTotal(this)"></td>
-        <td class="hidden-column"><input type="number" name="detalle_total[${tituloIndex}][${subtituloIndex}][]" step="0.01" min="0" readonly></td>
+        <td class="hidden-column"><input type="number" name="detalle_cantidad[${tituloIndex}][]" step="1" min="1" required oninput="updateTotal(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_precio_unitario[${tituloIndex}][]" step="0.01" min="0" required oninput="updateTotal(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_descuento[${tituloIndex}][]" step="1" min="0" required oninput="updateTotal(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_total[${tituloIndex}][]" step="0.01" min="0" readonly></td>
         <td colspan="2" class="hidden-column">
             <button type="button" class="btn-eliminar" onclick="removeDetailRow(this)">Eliminar</button>
         </td>
@@ -175,7 +170,7 @@ function addDetailRow(button) {
     descriptionRow.style.display = 'none';
     descriptionRow.innerHTML = `
         <td colspan="9">
-            <textarea name="detalle_descripcion[${tituloIndex}][${subtituloIndex}][]" placeholder="Ingrese sólo si requiere ingresar una descripción extendida del producto o servicio"></textarea>
+            <textarea name="detalle_descripcion[${tituloIndex}][]" placeholder="Ingrese sólo si requiere ingresar una descripción extendida del producto o servicio"></textarea>
         </td>
     `;
     tableBody.appendChild(descriptionRow);
@@ -188,7 +183,6 @@ function addDetailRow(button) {
 
     calculateTotals();
 }
-
 
 function handleTipoChange(selectElement) {
     const row = selectElement.closest('tr');
@@ -246,22 +240,23 @@ function agregarSubtitulo(button) {
     const tableBody = section.querySelector('.detalle-contenido');
     const tituloIndex = section.dataset.tituloIndex; // Obtiene el índice del título
 
-    // Incrementar el contador de subtítulos para este título
-    subtituloContador[tituloIndex]++;
-
     // Crear una nueva fila de subtítulo
     const newSubtitle = document.createElement('tr');
     newSubtitle.classList.add('subtitulo');
+    newSubtitle.dataset.subtituloIndex = subtituloContador; // Asigna un índice único al subtítulo
+
     newSubtitle.innerHTML = `
-        <td colspan="9">
+        <td colspan="8">
             <label for="subtitulo">Subtítulo:</label>
-            <input type="text" name="detalle_subtitulo[${tituloIndex}][${subtituloContador[tituloIndex]}]" style="margin-right: 10px;">
-            <button type="button" class="btn-eliminar-titulo" onclick="borrarSubtitulo(this)">Eliminar subtítulo</button>
+            <input type="text" name="detalle_subtitulo[${tituloIndex}][${subtituloContador}]" style="margin-right: 10px;">
         </td>
+        <td colspan="1"><button type="button" class="btn-eliminar-titulo" onclick="borrarSubtitulo(this)">Eliminar subtítulo</button></td>
     `;
 
     // Agregar el subtítulo al final de todas las filas de detalles actuales
     tableBody.appendChild(newSubtitle);
+
+    subtituloContador++; // Incrementa el contador de subtítulos
 }
 
 function borrarSubtitulo(button) {
@@ -283,13 +278,15 @@ function removeDetailRow(button) {
         descriptionRow.remove();
     }
 
-    calcularTotal();
+    calculateTotals();
 }
 
 function toggleDescription(checkbox) {
     const descriptionRow = checkbox.closest('tr').nextElementSibling;
     descriptionRow.style.display = checkbox.checked ? 'table-row' : 'none';
 }
+    
+
 
 function removeCabeza(button) {
     const tableHead = button.closest('.detalle-section').querySelector('thead');
@@ -303,62 +300,11 @@ function removeCabeza(button) {
     calculateTotals(); // Recalcular los totales después de eliminar
 }
 
-function updateTotal(input) {
-    const row = input.closest('tr');
-    const cantidad = row.querySelector('input[name*="detalle_cantidad"]').value;
-    const precioUnitario = row.querySelector('input[name*="detalle_precio_unitario"]').value;
-    const descuento = row.querySelector('input[name*="detalle_descuento"]').value;
-
-    // Calcular el total
-    const total = (cantidad * precioUnitario) - (cantidad * precioUnitario * (descuento / 100));
-    row.querySelector('input[name*="detalle_total"]').value = total.toFixed(2);
-
-    calcularTotal();
-}
-
-function calcularTotal() {
-    const totalInputs = document.querySelectorAll('input[name*="detalle_total"]');
-    let totalGeneral = 0;
-
-    totalInputs.forEach(input => {
-        totalGeneral += parseFloat(input.value) || 0;
-    });
-
-    document.getElementById('totalGeneral').textContent = totalGeneral.toFixed(2);
-}
-
 function init() {
     addDetailSection();
 }
 
 window.onload = init;
-
-
-
-function updateTotal(input) {
-    const row = input.closest('tr');
-    const cantidad = row.querySelector('input[name*="detalle_cantidad"]').value;
-    const precioUnitario = row.querySelector('input[name*="detalle_precio_unitario"]').value;
-    const descuento = row.querySelector('input[name*="detalle_descuento"]').value;
-
-    // Calcular el total
-    const total = (cantidad * precioUnitario) - (cantidad * precioUnitario * (descuento / 100));
-    row.querySelector('input[name*="detalle_total"]').value = total.toFixed(2);
-
-    calcularTotal();
-}
-
-function calcularTotal() {
-    const totalInputs = document.querySelectorAll('input[name*="detalle_total"]');
-    let totalGeneral = 0;
-
-    totalInputs.forEach(input => {
-        totalGeneral += parseFloat(input.value) || 0;
-    });
-
-    document.getElementById('totalGeneral').textContent = totalGeneral.toFixed(2);
-}
-
 
 
 /* --------------------------------------------------------------------------------------------------------------

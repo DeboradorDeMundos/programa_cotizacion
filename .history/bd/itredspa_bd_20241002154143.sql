@@ -297,16 +297,17 @@ DROP TABLE IF EXISTS C_Totales;
 CREATE TABLE C_Totales (
     id_total INT NOT NULL AUTO_INCREMENT,
     id_cotizacion INT NOT NULL,
-    sub_total INT,                 
-    descuento_global INT,           
-    monto_neto INT,                 
-    iva_valor INT,             
-    total_iva INT,                
-    total_final INT,                
-    total_final_letras VARCHAR(100),
+    sub_total DECIMAL(10,2),
+    descuento_global DECIMAL(5,2),
+    monto_neto DECIMAL(10,2),
+    iva_valor DECIMAL(5,2),
+    total_iva DECIMAL(10,2),
+    total_final DECIMAL(10,2),
+    total_final_letras varchar(100),
     PRIMARY KEY (id_total),
     FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE
-) ENGINE=InnoDB;
+) ENGINE=InnoDB ;
+
 
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA DETALLE p_tipo_producto ----------------------------------------------

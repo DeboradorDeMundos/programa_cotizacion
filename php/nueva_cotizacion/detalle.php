@@ -53,20 +53,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Asignar subtítulos correspondientes a cada título
         foreach ($detalles_subtitulo[$titulo_index] ?? [] as $subtitulo) {
-            $estructura_datos[$titulo_index]['subtitulos'][] = $subtitulo;
+            // Asegurarse de que el subtitulo sea un string
+            if (is_array($subtitulo)) {
+                $estructura_datos[$titulo_index]['subtitulos'][] = implode(", ", $subtitulo); // Convertir a string
+            } else {
+                $estructura_datos[$titulo_index]['subtitulos'][] = $subtitulo; // Ya es un string
+            }
         }
 
         // Asignar detalles correspondientes a cada título
         foreach ($detalles_cantidad[$titulo_index] ?? [] as $detalle_index => $cantidad) {
+            // Asegúrate de que las variables se obtienen correctamente
+            $tipo = $detalles_tipo[$titulo_index][$detalle_index] ?? ''; // Debe ser una cadena
+            $nombre_producto = $detalles_nombre_producto[$titulo_index][$detalle_index] ?? ''; // Debe ser una cadena
+            $descripcion = $detalles_descripcion[$titulo_index][$detalle_index] ?? ''; // Debe ser una cadena
             $precio_unitario = floatval($detalles_precio_unitario[$titulo_index][$detalle_index] ?? 0);
             $descuento = floatval($detalles_descuento[$titulo_index][$detalle_index] ?? 0);
+            $cantidad = intval($cantidad); // Asegúrate de que esto sea un entero
+        
+            // Calcular el total
             $total = ($precio_unitario * $cantidad) - (($precio_unitario * $cantidad) * ($descuento / 100));
-
+        
+            // Verifica que no estás intentando usar un array aquí
             $estructura_datos[$titulo_index]['detalles'][] = [
-                'tipo' => $detalles_tipo[$titulo_index][$detalle_index] ?? '',
-                'nombre_producto' => $detalles_nombre_producto[$titulo_index][$detalle_index] ?? '',
-                'descripcion' => $detalles_descripcion[$titulo_index][$detalle_index] ?? '',
-                'cantidad' => intval($cantidad),
+                'tipo' => $tipo, // Verifica que esto sea un string
+                'nombre_producto' => $nombre_producto, // Verifica que esto sea un string
+                'descripcion' => $descripcion, // Verifica que esto sea un string
+                'cantidad' => $cantidad,
                 'precio_unitario' => $precio_unitario,
                 'descuento' => $descuento,
                 'total' => round($total, 2),
@@ -103,6 +116,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Insertar los subtítulos asociados y obtener su ID
             $id_subtitulo_map = [];
             foreach ($data['subtitulos'] as $subtitulo) {
+                // Verificar que el subtitulo sea un string
+                if (is_array($subtitulo)) {
+                    $subtitulo = implode(", ", $subtitulo); // Convertir a string si es un array
+                }
+
                 $stmt_insert_subtitulo->bind_param("is", $id_titulo, $subtitulo);
                 if (!$stmt_insert_subtitulo->execute()) {
                     throw new Exception("Error al insertar subtítulo: " . $stmt_insert_subtitulo->error);
@@ -114,21 +132,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             foreach ($data['detalles'] as $detalle) {
                 // Verificar si hay subtítulos y obtener el último subtítulo insertado o NULL si no hay subtítulos
                 $id_subtitulo = !empty($id_subtitulo_map) ? array_pop($id_subtitulo_map) : null;
-
-                $stmt_insert_detalle->bind_param(
-                    "iisssiddi",
-                    $id_titulo,
-                    $id_subtitulo,
-                    $detalle['tipo'],
-                    $detalle['nombre_producto'],
-                    $detalle['descripcion'],
-                    $detalle['cantidad'],
-                    $detalle['precio_unitario'],
-                    $detalle['descuento'],
-                    $detalle['total']
-                );
-                if (!$stmt_insert_detalle->execute()) {
-                    throw new Exception("Error al insertar detalle: " . $stmt_insert_detalle->error);
+            
+                // Iterar sobre cada detalle
+                foreach ($detalle['tipo'] as $index => $tipo) {
+                    $nombre_producto = isset($detalle['nombre_producto'][$index]) ? $detalle['nombre_producto'][$index] : '';
+                    $descripcion = isset($detalle['descripcion'][$index]) ? $detalle['descripcion'][$index] : '';
+                    
+                    // Asumir que cantidad, precio_unitario, descuento, y total son valores únicos
+                    $cantidad = $detalle['cantidad'];
+                    $precio_unitario = $detalle['precio_unitario'];
+                    $descuento = $detalle['descuento'];
+                    $total = $detalle['total'];
+            
+                    // Asegúrate de que todos los valores son variables
+                    $tipo = (string)$tipo;
+                    $nombre_producto = (string)$nombre_producto;
+                    $descripcion = (string)$descripcion;
+                    $cantidad = (int)$cantidad;
+                    $precio_unitario = (float)$precio_unitario;
+                    $descuento = (float)$descuento;
+                    $total = (float)$total;
+            
+                    // Ahora, bind_param debe funcionar correctamente
+                    $stmt_insert_detalle->bind_param(
+                        "iisssiddi",
+                        $id_titulo,
+                        $id_subtitulo,
+                        $tipo,
+                        $nombre_producto,
+                        $descripcion,
+                        $cantidad,
+                        $precio_unitario,
+                        $descuento,
+                        $total
+                    );
+            
+                    // Ejecutar la declaración
+                    if (!$stmt_insert_detalle->execute()) {
+                        throw new Exception("Error al insertar detalle: " . $stmt_insert_detalle->error);
+                    }
                 }
             }
         }
