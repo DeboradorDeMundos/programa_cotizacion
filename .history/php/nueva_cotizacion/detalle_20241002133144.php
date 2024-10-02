@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $estructura_datos[$titulo_index]['subtitulos'][] = $subtitulo;
         }
 
-        // Asignar detalles correspondientes a cada título
+        // Asignar detalles
         foreach ($detalles_cantidad[$titulo_index] ?? [] as $detalle_index => $cantidad) {
             $precio_unitario = floatval($detalles_precio_unitario[$titulo_index][$detalle_index] ?? 0);
             $descuento = floatval($detalles_descuento[$titulo_index][$detalle_index] ?? 0);
@@ -70,6 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 'precio_unitario' => $precio_unitario,
                 'descuento' => $descuento,
                 'total' => round($total, 2),
+                'subtitulo_index' => $_POST['subtitulo_index'][$titulo_index][$detalle_index] ?? null // Indice del subtitulo
             ];
         }
     }
@@ -78,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql_insert_titulo = "INSERT INTO C_Titulos (id_cotizacion, nombre) VALUES (?, ?) ON DUPLICATE KEY UPDATE nombre = VALUES(nombre)";
     $sql_insert_subtitulo = "INSERT INTO C_Subtitulos (id_titulo, nombre) VALUES (?, ?) ON DUPLICATE KEY UPDATE nombre = VALUES(nombre)";
     $sql_insert_detalle = "INSERT INTO C_Detalles (id_titulo, id_subtitulo, tipo, nombre_producto, descripcion, cantidad, precio_unitario, descuento_porcentaje, total) 
-                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                           VALUES (?, IFNULL(?, NULL), ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt_insert_titulo = $mysqli->prepare($sql_insert_titulo);
     $stmt_insert_subtitulo = $mysqli->prepare($sql_insert_subtitulo);
@@ -112,8 +113,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Insertar los detalles
             foreach ($data['detalles'] as $detalle) {
-                // Verificar si hay subtítulos y obtener el último subtítulo insertado o NULL si no hay subtítulos
-                $id_subtitulo = !empty($id_subtitulo_map) ? array_pop($id_subtitulo_map) : null;
+                // Obtener el ID del subtítulo correspondiente
+                $id_subtitulo = null;
+                if (isset($detalle['subtitulo_index'])) {
+                    $subtitulo_index = $detalle['subtitulo_index'];
+                    $id_subtitulo = isset($id_subtitulo_map[$subtitulo_index]) ? $id_subtitulo_map[$subtitulo_index] : null;
+                }
 
                 $stmt_insert_detalle->bind_param(
                     "iisssiddi",
@@ -149,7 +154,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt_insert_detalle->close();
 }
 ?>
-
 
 
 

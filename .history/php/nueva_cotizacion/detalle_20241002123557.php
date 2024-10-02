@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql_insert_titulo = "INSERT INTO C_Titulos (id_cotizacion, nombre) VALUES (?, ?) ON DUPLICATE KEY UPDATE nombre = VALUES(nombre)";
     $sql_insert_subtitulo = "INSERT INTO C_Subtitulos (id_titulo, nombre) VALUES (?, ?) ON DUPLICATE KEY UPDATE nombre = VALUES(nombre)";
     $sql_insert_detalle = "INSERT INTO C_Detalles (id_titulo, id_subtitulo, tipo, nombre_producto, descripcion, cantidad, precio_unitario, descuento_porcentaje, total) 
-                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                           VALUES (?, IFNULL(?, NULL), ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt_insert_titulo = $mysqli->prepare($sql_insert_titulo);
     $stmt_insert_subtitulo = $mysqli->prepare($sql_insert_subtitulo);
@@ -100,25 +100,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             $id_titulo = $stmt_insert_titulo->insert_id;
 
-            // Insertar los subtítulos asociados y obtener su ID
-            $id_subtitulo_map = [];
+            // Insertar subtítulos y obtener sus IDs
+            $id_subtitulo_actual = null;
+            $detalle_index = 0; // Controlar el índice de detalles
+
+            // Procesar los subtítulos y detalles asociados
             foreach ($data['subtitulos'] as $subtitulo) {
+                // Insertar subtítulo y obtener su ID
                 $stmt_insert_subtitulo->bind_param("is", $id_titulo, $subtitulo);
                 if (!$stmt_insert_subtitulo->execute()) {
                     throw new Exception("Error al insertar subtítulo: " . $stmt_insert_subtitulo->error);
                 }
-                $id_subtitulo_map[] = $stmt_insert_subtitulo->insert_id; // Guardar IDs de subtítulos
+                $id_subtitulo_actual = $stmt_insert_subtitulo->insert_id;
+
+                // Insertar los detalles para este subtítulo
+                while (isset($data['detalles'][$detalle_index])) {
+                    $detalle = $data['detalles'][$detalle_index];
+
+                    // Verificar si este detalle pertenece a este subtítulo
+                    if ($detalle_index < count($data['detalles']) - 1) {
+                        // Si el siguiente detalle está bajo un nuevo subtítulo, salir del bucle
+                        if (isset($data['subtitulos'][$subtitulo + 1])) {
+                            break;
+                        }
+                    }
+
+                    $stmt_insert_detalle->bind_param(
+                        "iisssiddi",
+                        $id_titulo,
+                        $id_subtitulo_actual,
+                        $detalle['tipo'],
+                        $detalle['nombre_producto'],
+                        $detalle['descripcion'],
+                        $detalle['cantidad'],
+                        $detalle['precio_unitario'],
+                        $detalle['descuento'],
+                        $detalle['total']
+                    );
+                    if (!$stmt_insert_detalle->execute()) {
+                        throw new Exception("Error al insertar detalle: " . $stmt_insert_detalle->error);
+                    }
+                    $detalle_index++;
+                }
             }
 
-            // Insertar los detalles
-            foreach ($data['detalles'] as $detalle) {
-                // Verificar si hay subtítulos y obtener el último subtítulo insertado o NULL si no hay subtítulos
-                $id_subtitulo = !empty($id_subtitulo_map) ? array_pop($id_subtitulo_map) : null;
-
+            // Si no hay más subtítulos, insertar detalles directamente bajo el título
+            while (isset($data['detalles'][$detalle_index])) {
+                $detalle = $data['detalles'][$detalle_index];
                 $stmt_insert_detalle->bind_param(
                     "iisssiddi",
                     $id_titulo,
-                    $id_subtitulo,
+                    null,  // Sin subtítulo
                     $detalle['tipo'],
                     $detalle['nombre_producto'],
                     $detalle['descripcion'],
@@ -130,6 +162,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (!$stmt_insert_detalle->execute()) {
                     throw new Exception("Error al insertar detalle: " . $stmt_insert_detalle->error);
                 }
+                $detalle_index++;
             }
         }
 
@@ -149,6 +182,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt_insert_detalle->close();
 }
 ?>
+
 
 
 

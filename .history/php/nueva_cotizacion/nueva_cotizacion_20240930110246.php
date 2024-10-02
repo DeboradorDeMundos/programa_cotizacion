@@ -251,7 +251,7 @@ if ($id > 0) {
                 <?php include 'traer_requisitos.php'; ?>
 
                 <?php include 'obligaciones_cliente.php'; ?>
-       
+                <button onclick="window.print()">Imprimir / Guardar como PDF</button>
                 <button type="submit" class="submit">Crear cotizacion</button> <!-- Botón para enviar el formulario y generar la cotización -->
                 </form> <!-- Cierra el formulario -->
                 </div> <!-- Cierra el contenedor principal -->

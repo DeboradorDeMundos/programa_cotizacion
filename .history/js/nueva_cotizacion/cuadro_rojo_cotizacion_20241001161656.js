@@ -13,6 +13,7 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa cuadro rojo cotizacion.JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
+
     function calcularFechaValidez() {
         // Obtener el valor de los días de validez
         let diasValidezInput = document.getElementById('dias_validez').value;
@@ -29,7 +30,7 @@ BPPJ
     
             // Formatear la fecha de validez en formato yyyy-mm-dd
             let anio = fechaEmision.getFullYear();
-            let mes = ('0' + (fechaEmision.getMonth() + 1)).slice(-2);
+            let mes = ('0' + (fechaEmision.getMonth() + 1)).slice(-2); // Los meses van de 0 a 11 en JS
             let dia = ('0' + fechaEmision.getDate()).slice(-2);
     
             let fechaValidez = `${anio}-${mes}-${dia}`;

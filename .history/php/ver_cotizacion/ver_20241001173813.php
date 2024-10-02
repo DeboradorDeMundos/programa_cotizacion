@@ -47,21 +47,17 @@ $query = "
         c.telefono_cliente,
         cot.fecha_emision,
         cot.fecha_validez,
-        enc.nombre_encargado,
-        enc.rut_encargado,
-        enc.email_encargado,
-        enc.fono_encargado,
-        enc.celular_encargado,
-        ven.nombre_vendedor,
-        ven.rut_vendedor,
-        ven.email_vendedor,
-        ven.fono_vendedor,
-        ven.celular_vendedor
+        det.nombre_producto,
+        det.descripcion,  
+        det.cantidad,   
+        det.precio_unitario,  
+        det.descuento_porcentaje AS descuento_porcentaje,  
+        det.total           
     FROM C_Cotizaciones cot
     JOIN C_Clientes c ON cot.id_cliente = c.id_cliente
     JOIN E_Empresa e ON cot.id_empresa = e.id_empresa
-    JOIN C_Encargados enc ON cot.id_encargado = enc.id_encargado 
-    JOIN C_Vendedores ven ON cot.id_vendedor = ven.id_vendedor 
+    JOIN C_Titulos tit ON cot.id_cotizacion = tit.id_cotizacion  
+    JOIN C_Detalles det ON tit.id_titulo = det.id_titulo  
     WHERE cot.id_cotizacion = ?
 ";
 
@@ -80,22 +76,6 @@ if ($result->num_rows > 0) {
     $items = $result->fetch_all(MYSQLI_ASSOC);
     $id_empresa = $items[0]['id_empresa']; // Guardar id_empresa para la siguiente consulta
     $id_foto = $items[0]['id_foto']; // Guardar id_foto para cargar la imagen
-
-    $query_foto = "SELECT ruta_foto FROM e_fotosperfil WHERE id_foto = ?";
-    $stmt_foto = $mysqli->prepare($query_foto);
-    $stmt_foto->bind_param("i", $id_foto);
-    
-    // Ejecutar la consulta para la foto
-    $stmt_foto->execute();
-    $result_foto = $stmt_foto->get_result();
-    
-    // Verificar si se encontró la foto
-    if ($result_foto->num_rows > 0) {
-        $foto = $result_foto->fetch_assoc();
-        $ruta_foto = $foto['ruta_foto']; // Obtener la ruta de la foto
-    } else {
-        $ruta_foto = null; // No se encontró la foto
-    }
 } else {
     echo "No se encontró la cotización o la empresa relacionada.";
 }
@@ -223,44 +203,40 @@ if ($result_bancos->num_rows > 0) {
 // Cerrar las conexiones
 $stmt->close();
 $stmt_bancos->close();
-
-$sql_firma = "SELECT 
-                    f.titulo_firma, 
-                    f.nombre_encargado_firma, 
-                    f.cargo_encargado_firma, 
-                    f.nombre_empresa_firma, 
-                    f.direccion_firma, 
-                    f.telefono_empresa_firma, 
-                    f.email_firma, 
-                    f.firma_digital,
-                    e.id_tipo_firma AS tipo_firma
-                FROM E_Firmas f
-                JOIN e_empresa e ON f.id_empresa = e.id_empresa
-                WHERE f.id_empresa = ? 
-                LIMIT 1";
-
-if ($stmt_firma = $mysqli->prepare($sql_firma)) {
-    $stmt_firma->bind_param("i", $id_empresa);
-    $stmt_firma->execute();
-    $result_firma = $stmt_firma->get_result();
-
-    if ($result_firma->num_rows == 1) {
-        $firma = $result_firma->fetch_assoc();
-        
-        $tipo_firma = $firma['tipo_firma'];
-    } else {
-        $firma = null; // No hay firma manual
-    }
-
-    $stmt_firma->close();
-} else {
-    echo "<p>Error al preparar la consulta de la firma: " . $mysqli->error . "</p>";
-}
 $mysqli->close();
 ?>
 <html>
 <head>
     <link rel="stylesheet" href="../../css/ver_cotizacion/ver.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12px; /* Smaller font size */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px; /* Add space between tables */
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 4px; /* Smaller padding */
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .vertical-text {
+            text-align: center;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+        .subtitle {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -284,10 +260,9 @@ $mysqli->close();
     <?php include 'bancos.php'; ?>
 
    <div class="barcode">
-        <?php include '../nueva_cotizacion/firma.php'; ?>
+    <img alt="Barcode" height="50" src="../../imagenes/programa_cotizacion/prueba2.png" width="800"/>
    </div>
   </div>
-  <button onclick="window.print()">Imprimir / Guardar como PDF</button>
  </body>
 </html>
 

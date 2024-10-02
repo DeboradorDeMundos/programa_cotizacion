@@ -29,6 +29,7 @@ BPPJ
 </fieldset>
 
 
+
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recibir datos del formulario
@@ -57,10 +58,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Asignar detalles correspondientes a cada título
+        $current_subtitulo_index = 0; // Índice del subtítulo actual
+
         foreach ($detalles_cantidad[$titulo_index] ?? [] as $detalle_index => $cantidad) {
+            // Comprobar si hay subtítulos y si el índice actual es válido
+            if ($current_subtitulo_index < count($estructura_datos[$titulo_index]['subtitulos'])) {
+                $subtitulo = $estructura_datos[$titulo_index]['subtitulos'][$current_subtitulo_index];
+            } else {
+                $subtitulo = null; // No hay subtítulo disponible
+            }
+
             $precio_unitario = floatval($detalles_precio_unitario[$titulo_index][$detalle_index] ?? 0);
             $descuento = floatval($detalles_descuento[$titulo_index][$detalle_index] ?? 0);
-            $total = ($precio_unitario * $cantidad) - (($precio_unitario * $cantidad) * ($descuento / 100));
+            $total = ($precio_unitario * intval($cantidad)) - (($precio_unitario * intval($cantidad)) * ($descuento / 100));
 
             $estructura_datos[$titulo_index]['detalles'][] = [
                 'tipo' => $detalles_tipo[$titulo_index][$detalle_index] ?? '',
@@ -70,7 +80,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 'precio_unitario' => $precio_unitario,
                 'descuento' => $descuento,
                 'total' => round($total, 2),
+                'subtitulo' => $subtitulo // Almacenar el subtítulo asociado
             ];
+
+            // Si hemos procesado todos los detalles de un subtítulo, avanzar al siguiente
+            if ($detalle_index + 1 < count($detalles_cantidad[$titulo_index]) && !empty($detalles_subtitulo[$titulo_index][$current_subtitulo_index + 1])) {
+                $current_subtitulo_index++;
+            }
         }
     }
 
@@ -78,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql_insert_titulo = "INSERT INTO C_Titulos (id_cotizacion, nombre) VALUES (?, ?) ON DUPLICATE KEY UPDATE nombre = VALUES(nombre)";
     $sql_insert_subtitulo = "INSERT INTO C_Subtitulos (id_titulo, nombre) VALUES (?, ?) ON DUPLICATE KEY UPDATE nombre = VALUES(nombre)";
     $sql_insert_detalle = "INSERT INTO C_Detalles (id_titulo, id_subtitulo, tipo, nombre_producto, descripcion, cantidad, precio_unitario, descuento_porcentaje, total) 
-                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                           VALUES (?, IFNULL(?, NULL), ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt_insert_titulo = $mysqli->prepare($sql_insert_titulo);
     $stmt_insert_subtitulo = $mysqli->prepare($sql_insert_subtitulo);
@@ -101,20 +117,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $id_titulo = $stmt_insert_titulo->insert_id;
 
             // Insertar los subtítulos asociados y obtener su ID
-            $id_subtitulo_map = [];
+            $id_subtitulo = null;
             foreach ($data['subtitulos'] as $subtitulo) {
                 $stmt_insert_subtitulo->bind_param("is", $id_titulo, $subtitulo);
                 if (!$stmt_insert_subtitulo->execute()) {
                     throw new Exception("Error al insertar subtítulo: " . $stmt_insert_subtitulo->error);
                 }
-                $id_subtitulo_map[] = $stmt_insert_subtitulo->insert_id; // Guardar IDs de subtítulos
+                $id_subtitulo = $stmt_insert_subtitulo->insert_id;
             }
 
-            // Insertar los detalles
+            // Insertar los detalles: si hay subtítulo, se usa su ID; si no, se usa solo el título
             foreach ($data['detalles'] as $detalle) {
-                // Verificar si hay subtítulos y obtener el último subtítulo insertado o NULL si no hay subtítulos
-                $id_subtitulo = !empty($id_subtitulo_map) ? array_pop($id_subtitulo_map) : null;
-
                 $stmt_insert_detalle->bind_param(
                     "iisssiddi",
                     $id_titulo,
@@ -149,6 +162,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt_insert_detalle->close();
 }
 ?>
+
 
 
 
