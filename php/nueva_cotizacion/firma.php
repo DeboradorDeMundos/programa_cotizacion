@@ -11,7 +11,7 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Firma .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-    <div style="text-align: left;">
+    <div style="text-align: center;">
         <?php
         // Verifica si hay un tipo de firma
         if ($tipo_firma) {
@@ -19,10 +19,14 @@ BPPJ
                 case 1: // Firma Automática
                     echo "<h3>Tipo de Firma: Automática</h3>";
                     echo "<p><strong>" . htmlspecialchars($firma['titulo_firma']) . "</strong></p>";
-                    echo "<p><strong>" . htmlspecialchars($firma['nombre_empresa_firma']) . "</strong></p>";
+                    echo "<p>" . htmlspecialchars($firma['nombre_encargado_firma']) . "</p>";
+                    echo "<p>" . htmlspecialchars($firma['cargo_encargado_firma']) . " - " . htmlspecialchars($firma['nombre_empresa_firma']) . "</p>";
                     echo "<p>" . htmlspecialchars($firma['direccion_firma']) . "</p>";
-                    echo "<p>" . htmlspecialchars($firma['telefono_empresa_firma']) . "</p>";
-                    echo "<p>" . htmlspecialchars($firma['email_firma']) . "</p>";
+                    echo "<p>" . htmlspecialchars($firma['ciudad_firma']) . ", " . htmlspecialchars($firma['pais_firma']) . "</p>";
+                    echo "<p>Teléfono: " . htmlspecialchars($firma['telefono_empresa_firma']) . "</p>";
+                    echo "<p>Celular: " . htmlspecialchars($firma['telefono_encargado_firma']) . "</p>"; // Asegúrate de que 'telefono_encargado_firma' sea el campo correcto para el celular
+                    echo "<p>Email: " . htmlspecialchars($firma['email_firma']) . "</p>";
+                    echo "<p>Web: " . htmlspecialchars($firma['web_firma']) . "</p>";
                     break;
 
                 case 2: // Firma Manual

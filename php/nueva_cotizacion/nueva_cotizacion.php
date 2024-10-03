@@ -119,17 +119,26 @@ if ($id > 0) {
             }
 
             // Consulta para obtener la firma de la empresa
-            $sql_firma = "SELECT 
-                            titulo_firma, 
-                            nombre_encargado_firma, 
-                            cargo_encargado_firma, 
-                            nombre_empresa_firma, 
-                            direccion_firma, 
-                            telefono_empresa_firma, 
-                            email_firma, 
-                            firma_digital 
-                        FROM E_Firmas 
-                        WHERE id_empresa = ? LIMIT 1";
+            $sql_firma = "
+            SELECT 
+                f.id_firma,
+                f.id_empresa,
+                f.titulo_firma, 
+                f.nombre_encargado_firma, 
+                f.cargo_encargado_firma, 
+                f.telefono_encargado_firma,
+                f.nombre_empresa_firma, 
+                f.area_empresa_firma,
+                f.telefono_empresa_firma, 
+                f.firma_digital,
+                f.email_firma, 
+                f.direccion_firma, 
+                f.ciudad_firma,
+                f.pais_firma,
+                f.rut_firma,
+                f.web_firma
+            FROM E_Firmas f
+            WHERE f.id_empresa = ?";
 
             if ($stmt_firma = $mysqli->prepare($sql_firma)) {
                 $stmt_firma->bind_param("i", $id);
