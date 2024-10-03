@@ -263,6 +263,87 @@ if ($stmt_firma = $mysqli->prepare($sql_firma)) {
 } else {
     echo "<p>Error al preparar la consulta de la firma: " . $mysqli->error . "</p>";
 }
+
+$query_requisitos = "
+    SELECT r.id_requisitos,r.indice, r.descripcion_condiciones
+    FROM e_requisitos_basicos AS r
+    JOIN c_cotizaciones_requisitos AS cr ON r.id_requisitos = cr.id_requisitos
+    WHERE cr.id_cotizacion = ?
+";
+
+// Preparar y ejecutar la consulta para obtener requisitos
+$stmt_requisitos = $mysqli->prepare($query_requisitos);
+$stmt_requisitos->bind_param("i", $id_cotizacion);
+$stmt_requisitos->execute();
+$result_requisitos = $stmt_requisitos->get_result();
+
+// Verificar si hay resultados de requisitos
+$requisitos = [];
+if ($result_requisitos->num_rows > 0) {
+    while ($row = $result_requisitos->fetch_assoc()) {
+        $requisitos[] = $row; // Guardar los requisitos en el array
+    }
+} else {
+    echo "No se encontraron requisitos seleccionados para esta cotización.";
+}
+
+// Cerrar la conexión de la consulta de requisitos
+$stmt_requisitos->close();
+
+$query_condiciones = "
+    SELECT r.id_condiciones, r.descripcion_condiciones
+    FROM c_condiciones_generales AS r
+    JOIN c_cotizacion_condiciones AS cr ON r.id_condiciones = cr.id_condiciones
+    WHERE cr.id_cotizacion = ?
+";
+
+// Preparar y ejecutar la consulta para obtener requisitos
+$stmt_condiciones = $mysqli->prepare($query_condiciones);
+$stmt_condiciones->bind_param("i", $id_cotizacion);
+$stmt_condiciones->execute();
+$result_condiciones = $stmt_condiciones->get_result();
+
+// Verificar si hay resultados de requisitos
+$condiciones = [];
+if ($result_condiciones->num_rows > 0) {
+    while ($row = $result_condiciones->fetch_assoc()) {
+        $condiciones[] = $row; // Guardar los requisitos en el array
+    }
+} else {
+    echo "No se encontraron condiciones seleccionados para esta cotización.";
+}
+
+// Cerrar la conexión de la consulta de requisitos
+$stmt_condiciones->close();
+
+$query_obligaciones = "
+    SELECT r.id, indice,  r.descripcion
+    FROM e_obligaciones_cliente AS r
+    JOIN c_cotizaciones_obligaciones AS cr ON r.id = cr.id_obligacion
+    WHERE cr.id_cotizacion = ?
+";
+
+// Preparar y ejecutar la consulta para obtener requisitos
+$stmt_obligaciones = $mysqli->prepare($query_obligaciones);
+$stmt_obligaciones->bind_param("i", $id_cotizacion);
+$stmt_obligaciones->execute();
+$result_obligaciones = $stmt_obligaciones->get_result();
+
+// Verificar si hay resultados de requisitos
+$obligaciones = [];
+if ($result_obligaciones->num_rows > 0) {
+    while ($row = $result_obligaciones->fetch_assoc()) {
+        $obligaciones[] = $row; // Guardar los requisitos en el array
+    }
+} else {
+    echo "No se encontraron obligaciones seleccionados para esta cotización.";
+}
+
+// Cerrar la conexión de la consulta de requisitos
+$stmt_obligaciones->close();
+
+
+// Cerrar la conexión principal al final
 $mysqli->close();
 ?>
 <html>
@@ -289,6 +370,20 @@ $mysqli->close();
    </table>
 
     <?php include 'bancos.php'; ?>
+
+    <table>
+    <tr>
+        <td>
+            <?php include 'ver_requisitos.php'; ?>
+        </td>
+        <td>
+            <?php include 'ver_condiciones.php'; ?>
+        </td>
+        <td>
+            <?php include 'ver_obligaciones.php'; ?>
+        </td>
+    </tr>
+    </table>
 
    <div class="barcode">
         <?php include '../nueva_cotizacion/firma.php'; ?>
