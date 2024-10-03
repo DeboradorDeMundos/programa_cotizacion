@@ -58,18 +58,35 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
             
             <?php include 'formulario_cuenta.php';?>
 
-            <h2>TRANSFERENCIAS A:</h2>
-            <table id="accounts-table" border="1">
-                <!-- La tabla se llenará dinámicamente -->
-            </table>
+            <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
+                <div class="box-12 data-box">
+                    <h2>TRANSFERENCIAS A:</h2>
+                    <table id="accounts-table" border="1">
+                        <!-- La tabla se llenará dinámicamente -->
+                    </table>
+                </div>
+            </div>
 
-            <?php include 'requisitos_basicos.php';?>
 
-            <?php include 'condiciones_generales.php';?>
+            <div class="row">
+                <div class="box-12_1">
+                    <div class="data-box_1">
+                        <?php include 'requisitos_basicos.php';?>
+                    </div>
+                    <div class="data-box_1">
+                        <?php include 'condiciones_generales.php';?>
+                    </div>
+                    <div class="data-box_1">
+                        <?php include 'obligaciones_cliente.php';?>
+                    </div>
+                </div>
+            </div>
 
-            <?php include 'obligaciones_cliente.php';?>
-
-            <?php include 'firma.php';?>
+            <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
+                <div class="box-12 data-box">
+                    <?php include 'firma.php';?>
+                </div>
+            </div>
 
             <button type="submit" id="submit-button" class="subir">Crear empresa</button> <!-- Botón para enviar el formulario y generar la cotización -->
         </form> <!-- Cierra el formulario -->

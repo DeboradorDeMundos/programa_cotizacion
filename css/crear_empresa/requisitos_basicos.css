@@ -73,6 +73,23 @@ BPPJ
       background-color: #218838; /* Color de fondo al pasar el ratón (verde más oscuro) */
     }
 
+    .box-12_1 {
+      display: flex;
+      flex-direction: row; /* Disposición horizontal */
+      justify-content: space-between; /* Coloca uno a la izquierda, otro al centro y otro a la derecha */
+      flex: 1;
+      max-width: 100%;
+      padding: 10px;
+  }
+  
+  .data-box_1 {
+      border: 1px solid #ddd;
+      padding: 15px;
+      background-color: #fff;
+      border-radius: 12px;
+      flex: 1; /* Todos los módulos ocupan un espacio igual */
+      margin: 0 10px; /* Margen lateral para un poco de espacio adicional entre los módulos */
+  }
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Requisitos basicos .CSS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

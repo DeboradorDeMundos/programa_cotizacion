@@ -31,7 +31,7 @@ BPPJ
                     <?php echo htmlspecialchars($obligacion['indice']) . '.- ' . htmlspecialchars($obligacion['descripcion']); ?>
                 </td>
                 <td>
-                    <input type="checkbox" name="obligacion_check[]" <?php echo $obligacion['estado'] ? 'checked' : ''; ?>/>
+                    <input type="checkbox" name="obligacion_check[]" value="<?php echo htmlspecialchars($obligacion['id']); ?>" />
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -46,10 +46,40 @@ BPPJ
 function toggleObligaciones() {
     const checkbox = document.getElementById('toggle-obligaciones');
     const table = document.getElementById('obligaciones-table');
-    // Muestra u oculta la tabla según el estado del checkbox
     table.style.display = checkbox.checked ? 'table' : 'none';
 }
 </script>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Suponiendo que ya manejas la creación de la cotización aquí
+    // Una vez que tengas el ID de la cotización recién creada:
+    
+    // Ahora manejamos las obligaciones del cliente seleccionadas
+    if (!empty($_POST['obligacion_check'])) {
+        $obligaciones_seleccionadas = $_POST['obligacion_check']; // Obligaciones marcadas
+        
+        // Elimina cualquier obligación previamente almacenada para esta cotización
+        $sql_delete = "DELETE FROM c_cotizaciones_obligaciones WHERE id_cotizacion = ?";
+        $stmt_delete = $mysqli->prepare($sql_delete);
+        $stmt_delete->bind_param('i', $id_cotizacion);
+        $stmt_delete->execute();
+
+        // Inserta las nuevas obligaciones seleccionadas
+        $sql_insert = "INSERT INTO c_cotizaciones_obligaciones (id_cotizacion, id_obligacion) VALUES (?, ?)";
+        $stmt_insert = $mysqli->prepare($sql_insert);
+
+        foreach ($obligaciones_seleccionadas as $id_obligacion) {
+            $stmt_insert->bind_param('ii', $id_cotizacion, $id_obligacion);
+            $stmt_insert->execute();
+        }
+
+        $stmt_insert->close();
+    }
+    
+    // Continuar con el resto del flujo de creación de la cotización
+    echo "Cotización y obligaciones del cliente guardadas correctamente.";
+}
+?>
 
      <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Obligaciones cliente .PHP ----------------------------------------
