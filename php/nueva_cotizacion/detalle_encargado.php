@@ -56,7 +56,7 @@ BPPJ
 
             <input type="text" id="enc-fono" name="enc_fono" 
                 placeholder="+56 9 1234 1234" 
-                maxlength="11" 
+                maxlength="16" 
                 required 
                 pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
                 title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
@@ -74,7 +74,7 @@ BPPJ
 
             <input type="text" id="en-_celular" name="enc_celular"
                 placeholder="+56 9 1234 1234" 
-                maxlength="11" 
+                maxlength="16" 
                 required 
                 pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
                 title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
