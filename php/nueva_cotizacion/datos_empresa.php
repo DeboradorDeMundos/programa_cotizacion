@@ -42,7 +42,7 @@ function obtener_datos_empresa($mysqli, $id) {
 <link rel="stylesheet" href="../../css/nueva_cotizacion/datos_empresa.css">
 <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
     <fieldset class="box-12 data-box"> <!-- Crea una caja para ingresar datos, ocupando las 12 columnas disponibles en el diseño. Esta caja contiene varios campos de entrada de datos -->
-        <legend>Detalle empresa</legend>
+        <legend> Mi Empresa</legend>
 
         <input type="text" id="empresa-id" name="empresa_id" value="<?php echo htmlspecialchars($id); ?>" hidden> <!-- Campo de texto para ingresar el nombre de la empresa. El atributo "required" hace que el campo sea obligatorio -->
         
@@ -59,16 +59,26 @@ function obtener_datos_empresa($mysqli, $id) {
             <label for="empresa_direccion">Dirección</label> <!-- Etiqueta para el campo de entrada de la dirección de la empresa -->
             <input type="text" id="empresa_direccion" name="empresa_direccion" value="<?php echo htmlspecialchars($row['EmpresaDireccion']); ?>"> <!-- Campo de texto para ingresar la dirección de la empresa. Este campo no es obligatorio -->
         </div>
-        <div class="form-group">
-            <label for="empresa_telefono">Teléfono</label> <!-- Etiqueta para el campo de entrada del teléfono de la empresa -->
-            <input type="text" id="empresa_telefono" name="empresa_telefono" value="<?php echo htmlspecialchars($row['EmpresaTelefono']); ?>"
+                
+        <div class="form-group" style="display: flex; align-items: center;">
+            <label for="empresa_telefono" style="margin-right: 10px;">Teléfono</label>
+
+            <!-- Imagen de la bandera -->
+            <img id="flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
+                alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
+
+            <!-- Campo de entrada de texto -->
+            <input type="text" id="empresa_telefono" name="empresa_telefono" 
+                value="<?php echo htmlspecialchars($row['EmpresaTelefono']); ?>"
                 placeholder="+56 9 1234 1234" 
-                maxlength="11" 
+                maxlength="15" 
                 required 
                 pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
                 title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                oninput="formatPhoneNumber(this)">  <!-- Campo de texto para ingresar el teléfono de la empresa. Este campo no es obligatorio -->
+                oninput="ensurePlusAndDetectCountry(this)"> 
         </div>
+
+
         <div class="form-group">
             <label for="empresa_email">Email</label> <!-- Etiqueta para el campo de entrada del email de la empresa -->
             <input type="email" id="empresa_email" name="empresa_email" value="<?php echo htmlspecialchars($row['EmpresaEmail']); ?>"> <!-- Campo de correo electrónico para ingresar el email de la empresa. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
@@ -76,7 +86,7 @@ function obtener_datos_empresa($mysqli, $id) {
     </fieldset> <!-- Cierra la caja de datos -->
 </div> <!-- Cierra la fila -->
 
-
+<script src="../../js/nueva_cotizacion/datos_empresa.js"></script> 
 
 <?php
 

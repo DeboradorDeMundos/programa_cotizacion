@@ -19,7 +19,7 @@ BPPJ
 
 <link rel="stylesheet" href="../../css/nueva_cotizacion/detalle_proyecto.css">
 <fieldset class="box-6 data-box"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
-    <legend>Detalle proyecto</legend>
+    <legend>Datos proyecto</legend>
     <div class="form-group-inline">
         <div class="form-group">
             <label for="proyecto_nombre">Nombre</label> <!-- Etiqueta para el campo de entrada del nombre del proyecto -->
@@ -106,7 +106,7 @@ BPPJ
 
 
 <fieldset class="box-6 data-box data-box-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "data-box-left" para estilo -->
-    <legend>Detalle</legend>
+    <legend>-</legend>
     <div class="form-group-inline">
         <div class="form-group">
             <label for="dias_compra">Días de Compra:</label> <!-- Etiqueta para el campo de entrada de los días de compra -->

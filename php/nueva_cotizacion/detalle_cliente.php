@@ -16,7 +16,7 @@ BPPJ
 
 <link rel="stylesheet" href="../../css/nueva_cotizacion/detalle_cliente.css">
 <fieldset class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
-    <legend>Detalle cliente</legend>
+    <legend>Datos cliente</legend>
     <div class="box-6 data-box"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
         <div class="form-group-inline">
             <div class="form-group">
@@ -66,16 +66,24 @@ BPPJ
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="cliente_fono">Teléfono:</label> <!-- Etiqueta para el campo de entrada del teléfono del cliente -->
-            <input type="text" id="cliente_fono" name="cliente_fono"
-                placeholder="+56 9 1234 1234" 
-                maxlength="11" 
-                required 
-                pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
-                title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                oninput="formatPhoneNumber(this)"> <!-- Campo de texto para ingresar el teléfono del cliente. Este campo no es obligatorio -->
-        </div>
+        <div class="form-group" style="display: flex; align-items: center;">
+    <label for="cliente_fono" style="margin-right: 10px;">Teléfono:</label> <!-- Etiqueta para el campo de entrada del teléfono del cliente -->
+    
+    <!-- Imagen de la bandera -->
+    <img id="flag_cliente" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
+         alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
+
+    <!-- Campo de entrada de texto -->
+    <input type="text" id="cliente_fono" name="cliente_fono"
+           placeholder="+56 9 1234 1234" 
+           maxlength="13" 
+           required 
+           pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
+           title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)" oninput="asegurarMasYDetectarPais(this)">
+</div>
+
+
+
     </div>
     <div class="box-6 data-box data-box-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "data-box-left" para estilo -->
         

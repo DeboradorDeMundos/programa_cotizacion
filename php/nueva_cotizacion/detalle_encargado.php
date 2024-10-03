@@ -15,7 +15,7 @@ BPPJ
 
 <link rel="stylesheet" href="../../css/nueva_cotizacion/detalle_encargado.css">
 <fieldset class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
-    <legend>Detalle encargado</legend>
+    <legend>Datos encargado</legend>
     <div class="box-6 data-box"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
         <div class="form-group-inline">
             <div class="form-group">
@@ -48,27 +48,39 @@ BPPJ
                 onblur="completeEmail(this)"> <!-- Campo de correo electrónico para ingresar el email del encargado. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
         </div>
         <div class="form-group">
-        <label for="enc_fono">Teléfono:</label> <!-- Etiqueta para el campo de entrada del teléfono del encargado -->
-        <input type="text" id="enc-fono" name="enc_fono" 
-            placeholder="+56 9 1234 1234" 
-            maxlength="11" 
-            required 
-            pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
-            title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-            oninput="formatPhoneNumber(this)"> <!-- Campo de texto para ingresar el teléfono del encargado. Este campo no es obligatorio -->
+            <label for="enc_fono">Teléfono:</label> <!-- Etiqueta para el campo de entrada del teléfono del encargado -->
+            
+            <!-- Imagen de la bandera -->
+            <img id="flag_encargado" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
+                alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
+
+            <input type="text" id="enc-fono" name="enc_fono" 
+                placeholder="+56 9 1234 1234" 
+                maxlength="11" 
+                required 
+                pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
+                title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
+                oninput="asegurarMasYDetectarPais2(this)"> <!-- Campo de texto para ingresar el teléfono del encargado -->
         </div>
+
     </div>
     <div class="box-6 data-box data-box-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "data-box-left" para estilo -->
         <div class="form-group">
             <label for="enc_celular">Celular:</label> <!-- Etiqueta para el campo de entrada del celular del encargado -->
+            
+            <!-- Imagen de la bandera -->
+            <img id="flag_encargado_celular" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
+                alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
+
             <input type="text" id="en-_celular" name="enc_celular"
                 placeholder="+56 9 1234 1234" 
-                    maxlength="11" 
-                    required 
-                    pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
-                    title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                    oninput="formatPhoneNumber(this)"> <!-- Campo de texto para ingresar el número de celular del encargado. Este campo no es obligatorio -->
+                maxlength="11" 
+                required 
+                pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
+                title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
+                oninput="asegurarMasYDetectarPais3(this)"> <!-- Campo de texto para ingresar el número de celular del encargado -->
         </div>
+
         <div class="form-group">
             <label for="enc_proyecto">Proyecto Asignado:</label> <!-- Etiqueta para el campo de entrada del proyecto asignado al encargado -->
             <input type="text" id="enc-proyecto" name="enc_proyecto" 
@@ -81,7 +93,7 @@ BPPJ
     </div>
 </fieldset> <!-- Cierra la fila -->
 
-
+<script src="../../js/nueva_cotizacion/detalle_encargado.js"></script> 
 
 <?php
 

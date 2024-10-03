@@ -14,7 +14,7 @@ BPPJ
 
 <link rel="stylesheet" href="../../css/nueva_cotizacion/detalle_vendedor.css">
 <fieldset class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
-    <legend>Detalle vendedor</legend>
+    <legend>Datos vendedor</legend>
     <div class="box-6 data-box"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
         <div class="form-group-inline">
             <div class="form-group">
@@ -49,27 +49,40 @@ BPPJ
     <div class="box-6 data-box data-box-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "data-box-left" para estilo -->
         <div class="form-group">
             <label for="vendedor_telefono">Teléfono:</label> <!-- Etiqueta para el campo de entrada del teléfono del vendedor -->
+            
+            <!-- Imagen de la bandera -->
+            <img id="flag_vendedor_telefono" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
+                alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
+
             <input type="text" id="vendedor_telefono" name="vendedor_telefono"
                 placeholder="+56 9 1234 1234" 
                 maxlength="11" 
                 required 
                 pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
                 title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                oninput="formatPhoneNumber(this)"> <!-- Campo de texto para ingresar el teléfono del vendedor. Este campo no es obligatorio -->
+                oninput="asegurarMasYDetectarPais4(this)"> <!-- Campo de texto para ingresar el teléfono del vendedor -->
         </div>
+
         <div class="form-group">
-        <label for="vendedor_celular">Celular:</label> <!-- Etiqueta para el campo de entrada del celular del vendedor -->
-        <input type="text" id="vendedor_celular" name="vendedor_celular"
-            placeholder="+56 9 1234 1234" 
-            maxlength="11" 
-            required 
-            pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
-            title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-            oninput="formatPhoneNumber(this)">  <!-- Campo de texto para ingresar el número de celular del vendedor. Este campo no es obligatorio -->
-        </div>
+    <label for="vendedor_celular">Celular:</label> <!-- Etiqueta para el campo de entrada del celular del vendedor -->
+    
+    <!-- Imagen de la bandera -->
+    <img id="flag_vendedor_celular" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
+         alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
+
+    <input type="text" id="vendedor_celular" name="vendedor_celular"
+        placeholder="+56 9 1234 1234" 
+        maxlength="11" 
+        required 
+        pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
+        title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
+        oninput="asegurarMasYDetectarPais5(this)"> <!-- Campo de texto para ingresar el número de celular del vendedor -->
+</div>
+
     </div>
 </fieldset> <!-- Cierra la fila -->
 
+<script src="../../js/nueva_cotizacion/detalle_vendedor.js"></script> 
 
 <?php
 // Verifica si el formulario ha sido enviado
