@@ -305,16 +305,18 @@ function removeCabeza(button) {
 
 function updateTotal(input) {
     const row = input.closest('tr');
-    const cantidad = row.querySelector('input[name*="detalle_cantidad"]').value;
-    const precioUnitario = row.querySelector('input[name*="detalle_precio_unitario"]').value;
-    const descuento = row.querySelector('input[name*="detalle_descuento"]').value;
+    const cantidad = parseFloat(row.querySelector('input[name*="detalle_cantidad"]').value) || 0;
+    const precioUnitario = parseFloat(row.querySelector('input[name*="detalle_precio_unitario"]').value) || 0;
+    const descuento = parseFloat(row.querySelector('input[name*="detalle_descuento"]').value) || 0;
 
-    // Calcular el total
+    // Calcular el total solo si cantidad y precio unitario son válidos
     const total = (cantidad * precioUnitario) - (cantidad * precioUnitario * (descuento / 100));
     row.querySelector('input[name*="detalle_total"]').value = total.toFixed(2);
 
     calcularTotal();
 }
+
+
 function calcularTotal() {
     const totalInputs = document.querySelectorAll('input[name*="detalle_total"]');
 
