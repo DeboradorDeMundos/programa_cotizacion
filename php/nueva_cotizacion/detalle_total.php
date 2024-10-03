@@ -52,6 +52,8 @@ BPPJ
         <label for="total_final">Total final</label>
         <input type="number" id="total_final" name="total_final" step="1" min="0" readonly>
     </div>
+
+    <?php include 'numero_text.php'; ?>
     
 </div>
 <script src="../../js/nueva_cotizacion/detalle_total.js"></script> 

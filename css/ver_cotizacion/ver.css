@@ -187,3 +187,41 @@ font-size: 12px; /* Tamaño de letra más pequeño para enlaces */
     width: 48%;
     text-align: center;
 }
+/* Estilos para el contenedor de los botones */
+.button-container {
+    position: fixed; /* Fijo en la pantalla */
+    top: 20px; /* Espacio desde el borde superior */
+    left: 20px; /* Espacio desde el borde izquierdo */
+    display: flex;
+    flex-direction: column; /* Alinea los botones en columna */
+    gap: 15px; /* Espacio entre botones */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+/* Estilos para los botones */
+.button {
+    padding: 12px 20px; /* Espacio interior del botón */
+    border: none; /* Sin bordes */
+    border-radius: 8px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-size: 18px; /* Tamaño de la fuente */
+    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+    width: 120px; /* Ancho fijo para los botones */
+    color: white; /* Texto blanco */
+}
+
+.volver {
+    background-color: #4CAF50; /* Color verde */
+}
+
+.volver:hover {
+    background-color: #45a049; /* Color verde más oscuro al pasar el ratón */
+}
+
+.imprimir {
+    background-color: #2196F3; /* Color azul */
+}
+
+.imprimir:hover {
+    background-color: #1976D2; /* Color azul más oscuro al pasar el ratón */
+}

@@ -41,12 +41,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
             </td>
         </tr>
         <tr>
-            <td colspan="2">
-                <strong>DOCUMENTOS DE REFERENCIA</strong><br>
-                Cotización: <?php echo $id_cotizacion; ?>, Fecha: <?php echo $items[0]['fecha_emision']; ?>
-            </td>
-        </tr>
-        <tr>
             <td colspan="1">
                 <strong>ENCARGADO:</strong><br>
                 <strong>NOMBRE:</strong> <?php echo $items[0]['nombre_encargado']; ?><br>
