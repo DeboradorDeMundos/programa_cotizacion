@@ -25,13 +25,12 @@ if ($mysqli->connect_error) {
     die('Error de conexión (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
 }
 
-if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-    $id_cotizacion = (int) $_GET['id'];
-    // Ejecutar consulta SQL con el ID recibido
-} else {
-    die("Error: ID de cotización no válida.");
-}
+$id_cotizacion = isset($_GET['id_cotizacion']) ? intval($_GET['id_cotizacion']) : 0;
 
+// Verificar si se obtuvo una id válida
+if ($id_cotizacion == 0) {
+    die('Error: ID de cotización no válida.');
+}
 
 // Consulta para obtener los datos de la empresa, cliente y detalles de la cotización
 $query = "

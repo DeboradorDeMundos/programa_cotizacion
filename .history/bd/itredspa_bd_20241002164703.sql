@@ -482,6 +482,7 @@ CREATE TABLE C_Observaciones (
     id_observacion INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     id_cotizacion INT NOT NULL, -- Clave foránea hacia Cotizaciones
     observacion TEXT NOT NULL, -- Campo para guardar la observación
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP, -- Fecha de creación de la observación
     FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 

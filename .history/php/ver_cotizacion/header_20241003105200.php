@@ -33,10 +33,10 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
         </div>
     </div>
     <div class="invoice-info">
-        <p>R.U.T.: <?php echo $items[0]['rut_empresa']; ?></p>
-        <h3>COTIZACIÓN</h3>
-        <p>Nº: <?php echo $items[0]['numero_cotizacion']; ?></p>
-        <p class="sii-info"> SISTEMA DE PRUEBAS</p>
+        <p>R.U.T.: 19.279.652-0</p>
+        <h3>COTIZACION</h3>
+        <p>Nº: 133</p>
+        <p class="sii-info">S.I.I. - SISTEMA DE PRUEBAS</p>
     </div>
 </div>
 
