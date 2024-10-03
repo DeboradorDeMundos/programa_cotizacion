@@ -312,6 +312,7 @@ function updateTotal(input) {
     // Calcular el total solo si cantidad y precio unitario son válidos
     const total = (cantidad * precioUnitario) - (cantidad * precioUnitario * (descuento / 100));
     row.querySelector('input[name*="detalle_total"]').value = total.toFixed(2);
+    console.log("Total calculado:", total);
 
     calcularTotal();
 }

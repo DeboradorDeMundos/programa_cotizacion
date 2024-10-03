@@ -31,6 +31,10 @@ BPPJ
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
     // Recibir datos del formulario
     $detalles_titulo = $_POST['detalle_titulo'] ?? [];
     $detalles_subtitulo = $_POST['detalle_subtitulo'] ?? [];
@@ -40,6 +44,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $detalles_descuento = $_POST['detalle_descuento'] ?? [];
     $detalles_tipo = $_POST['tipo_producto'] ?? [];
     $detalles_nombre_producto = $_POST['nombre_producto'] ?? [];
+
+
+    
 
     // Estructurar los datos en arrays anidados
     $estructura_datos = [];
@@ -92,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql_insert_subtitulo = "INSERT INTO C_Subtitulos (id_titulo, nombre) VALUES (?, ?) ON DUPLICATE KEY UPDATE nombre = VALUES(nombre)";
     $sql_insert_detalle = "INSERT INTO C_Detalles (id_titulo, id_subtitulo, tipo, nombre_producto, descripcion, cantidad, precio_unitario, descuento_porcentaje, total) 
                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+    echo $sql; // Para ver la consulta que se ejecutará 
     $stmt_insert_titulo = $mysqli->prepare($sql_insert_titulo);
     $stmt_insert_subtitulo = $mysqli->prepare($sql_insert_subtitulo);
     $stmt_insert_detalle = $mysqli->prepare($sql_insert_detalle);
