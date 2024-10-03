@@ -342,6 +342,8 @@ function calcularTotal() {
     document.getElementById('total_iva').value = ivaValor;
     document.getElementById('total_final').value = totalFinal;
 
+    convertirTotalATexto(); // Convertir el número actual a texto
+
     calcularPago();
 }
 function init() {

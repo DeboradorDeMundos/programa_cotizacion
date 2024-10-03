@@ -360,6 +360,12 @@ $mysqli->close();
     <link rel="stylesheet" href="../../css/ver_cotizacion/ver.css">
 </head>
 <body>
+        <!-- Contenedor de botones -->
+    <!-- Contenedor de botones -->
+    <div class="button-container">
+        <button class="button volver" onclick="window.history.back()">Volver</button>
+        <button class="button imprimir" onclick="imprimir()">Imprimir</button>
+    </div>
     <div class="container">
 
         <?php include 'header.php'; ?>
@@ -405,8 +411,9 @@ $mysqli->close();
 
     
   </div>
-  <button onclick="window.print()">Imprimir / Guardar como PDF</button>
+    <button onclick="imprimir()">Imprimir</button>
  </body>
+ <script src="../../js/ver_cotizacion/ver.js"></script> 
 </html>
 
 <!-- ------------------------------------------------------------------------------------------------------------
