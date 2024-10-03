@@ -315,49 +315,41 @@ function updateTotal(input) {
 
     calcularTotal();
 }
-
 function calcularTotal() {
     const totalInputs = document.querySelectorAll('input[name*="detalle_total"]');
-    let totalGeneral = 0;
 
-    totalInputs.forEach(input => {
-        totalGeneral += parseFloat(input.value) || 0;
+    let subTotal = 0;
+    let descuentoGlobalPorcentaje = parseFloat(document.getElementById('descuento_global_porcentaje').value) || 0;
+    let descuentoGlobalMonto = 0;
+    let ivaValor = 0;
+    let totalFinal = 0;
+
+    totalInputs.forEach(totalInput => {
+            const totalItem = parseFloat(totalInput.value) || 0;
+            subTotal += totalItem;
     });
 
-    document.getElementById('totalGeneral').textContent = totalGeneral.toFixed(2);
-}
+    descuentoGlobalMonto = Math.round(subTotal * (descuentoGlobalPorcentaje / 100));
+    ivaValor = ((subTotal - descuentoGlobalMonto) * 0.19).toFixed(2);  // 19% IVA
+    totalFinal = Math.round(subTotal - descuentoGlobalMonto + parseFloat(ivaValor));
 
+    document.getElementById('sub_total').value = Math.round(subTotal);
+    document.getElementById('descuento_global_monto').value = descuentoGlobalMonto;
+    document.getElementById('monto_neto').value = Math.round(subTotal - descuentoGlobalMonto);
+    document.getElementById('total_iva').value = ivaValor;
+    document.getElementById('total_final').value = totalFinal;
+
+    calcularPago();
+}
 function init() {
     addDetailSection();
 }
 
+
+
 window.onload = init;
 
 
-
-function updateTotal(input) {
-    const row = input.closest('tr');
-    const cantidad = row.querySelector('input[name*="detalle_cantidad"]').value;
-    const precioUnitario = row.querySelector('input[name*="detalle_precio_unitario"]').value;
-    const descuento = row.querySelector('input[name*="detalle_descuento"]').value;
-
-    // Calcular el total
-    const total = (cantidad * precioUnitario) - (cantidad * precioUnitario * (descuento / 100));
-    row.querySelector('input[name*="detalle_total"]').value = total.toFixed(2);
-
-    calcularTotal();
-}
-
-function calcularTotal() {
-    const totalInputs = document.querySelectorAll('input[name*="detalle_total"]');
-    let totalGeneral = 0;
-
-    totalInputs.forEach(input => {
-        totalGeneral += parseFloat(input.value) || 0;
-    });
-
-    document.getElementById('totalGeneral').textContent = totalGeneral.toFixed(2);
-}
 
 
 
