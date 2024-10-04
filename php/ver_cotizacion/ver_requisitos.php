@@ -14,7 +14,6 @@ BPPJ
 <?php if (!empty($requisitos)): ?>
     <strong>requisitos:</strong><br><br>
     <?php foreach ($requisitos as $requisito): ?>
-        <?php echo htmlspecialchars($requisito['indice']); ?>
         <?php echo htmlspecialchars($requisito['descripcion_condiciones']); ?><br>
     <?php endforeach; ?>
 <?php else: ?>

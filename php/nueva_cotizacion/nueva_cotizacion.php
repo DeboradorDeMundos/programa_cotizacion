@@ -248,11 +248,13 @@ if ($id > 0) {
                 <!-- Sección para los cálculos finales -->
 
                 <?php include 'detalle_total.php'; ?>
-
+            <!-- Sección para los observaciones -->
+                <?php include 'observaciones.php'; ?>
                 <br>
                 <!-- Sección para los Pagos -->
                 <?php include 'pago.php'; ?>
-
+                
+               
                 <br>
                 
                 <?php include 'traer_condiciones.php'; ?>
@@ -263,7 +265,7 @@ if ($id > 0) {
        
                 <button type="submit" class="submit">Crear cotizacion</button> <!-- Botón para enviar el formulario y generar la cotización -->
                 </form> <!-- Cierra el formulario -->
-                </div> <!-- Cierra el contenedor principal -->
+                </div> 
                 </div> <!-- Cierra el contenedor principal -->
 
 

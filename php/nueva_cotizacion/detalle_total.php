@@ -53,14 +53,17 @@ BPPJ
         <input type="number" id="total_final" name="total_final" step="1" min="0" readonly>
     </div>
 
+
+     <label>Son:</label> 
+    
     <?php include 'numero_text.php'; ?>
+  
     
 </div>
 <script src="../../js/nueva_cotizacion/detalle_total.js"></script> 
 
 
 <?php
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sub_total = isset($_POST['sub_total']) ? floatval($_POST['sub_total']) : 0;
     $descuento_global = isset($_POST['descuento_global_porcentaje']) ? floatval($_POST['descuento_global_porcentaje']) : 0;
@@ -68,19 +71,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $iva_valor = isset($_POST['iva_porcentaje']) ? floatval($_POST['iva_porcentaje']) : 0;
     $total_iva = isset($_POST['total_iva']) ? floatval($_POST['total_iva']) : 0;
     $total_final = isset($_POST['total_final']) ? floatval($_POST['total_final']) : 0;
+    $total_en_texto = isset($_POST['total-en-texto']) ? $_POST['total-en-texto'] : 'fallo';
+    
+    // Verifica si el valor se recibió correctamente
+    echo "Total en texto recibido: " . htmlspecialchars($total_en_texto);
 
+    
     // Verificación básica para asegurar que se ha proporcionado un ID de cotización válido
     if ($id_cotizacion > 0) {
         // Inserta o actualiza los totales
-        $sql_insert_totales = "INSERT INTO C_Totales (id_cotizacion, sub_total, descuento_global, monto_neto, iva_valor, total_iva, total_final) 
-                               VALUES (?, ?, ?, ?, ?, ?, ?)
+        $sql_insert_totales = "INSERT INTO C_Totales (id_cotizacion, sub_total, descuento_global, monto_neto, iva_valor, total_iva, total_final, total_final_letras) 
+                               VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                                ON DUPLICATE KEY UPDATE 
                                sub_total = VALUES(sub_total), 
                                descuento_global = VALUES(descuento_global), 
                                monto_neto = VALUES(monto_neto),
                                iva_valor = VALUES(iva_valor), 
                                total_iva = VALUES(total_iva), 
-                               total_final = VALUES(total_final)";
+                               total_final = VALUES(total_final),
+                               total_final_letras = VALUES(total_final_letras)";
 
         $stmt = $mysqli->prepare($sql_insert_totales);
 
@@ -88,14 +97,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Error al preparar la consulta: " . $mysqli->error);
         }
 
-        $stmt->bind_param("idididd", 
+        $stmt->bind_param("idididds", 
             $id_cotizacion, 
             $sub_total, 
             $descuento_global, 
             $monto_neto, 
             $iva_valor, 
             $total_iva, 
-            $total_final
+            $total_final,
+            $total_en_texto
         );
 
         if ($stmt->execute()) {
@@ -110,8 +120,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error: ID de cotización no válido.";
     }
 }
-
-
 ?>
 
 

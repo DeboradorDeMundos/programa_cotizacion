@@ -34,6 +34,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     </tr>
 </table>
 <table class="totals">
+    
         <tr>
             <td>Sub-total</td>
             <td>$ <?php echo number_format($totales['sub_total'], 0, ',', '.'); ?></td>
@@ -51,12 +52,15 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
             <td>$ <?php echo number_format($totales['monto_neto'], 0, ',', '.'); ?></td>
         </tr>
         <tr>
-            <td>TOTAL</td>
+        <td>TOTAL</td>
             <td>$ <?php echo number_format($totales['total_final'], 0, ',', '.'); ?></td>
         </tr>
+
     </table>
 </div>
 
+
+<script src="../../js/ver_cotizacion/totales.js"></script> 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa  totales .PHP -----------------------------------
     ------------------------------------------------------------------------------------------------------------- -->

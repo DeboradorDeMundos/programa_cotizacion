@@ -48,16 +48,20 @@ BPPJ
             pattern="^[A-Za-z0-9À-ÿ\s#,-.]*$" 
             title="Por favor, ingrese una dirección válida. Se permiten letras, números, espacios y los caracteres #, -, , y .."
             placeholder="Ejemplo: Av. Siempre Viva 742">
-
-
+            
         <label for="empresa_telefono">Teléfono de la Empresa:</label>
+
+        <!-- Imagen de la bandera -->
+        <img id="flag_empresa" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
+                alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
+
         <input type="text" id="empresa_telefono" name="empresa_telefono" 
-            placeholder="+56 9 1234 1234" 
-            maxlength="11" 
-            required 
-            pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
-            title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-            oninput="formatPhoneNumber(this)">
+        placeholder="+56 9 1234 1234" 
+        maxlength="11" 
+        required 
+        title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
+        oninput="asegurarMasYDetectarPais(this)">
+
 
 
         <label for="empresa_email">Email de la Empresa:</label> <!-- Etiqueta para el campo de entrada del email de la empresa -->

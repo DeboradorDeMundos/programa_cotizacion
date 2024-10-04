@@ -42,8 +42,8 @@ function addDetailSection() {
             </table>
         </div>
         <div class="detalle-buttons">
-            <button type="button" onclick="addDetailRow(this)">Agregar detalles</button>
             <button type="button" onclick="agregarSubtitulo(this)">Agregar subtítulo</button>
+            <button type="button" onclick="addDetailRow(this)">Agregar detalles</button>
         </div>
     `;
     container.appendChild(newSection);

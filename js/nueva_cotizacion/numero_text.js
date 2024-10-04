@@ -68,22 +68,66 @@ BPPJ
     
         return 'Número fuera de rango';
     }
+
     
-    // Función para obtener el valor del input y convertirlo a texto
-    function convertirTotalATexto() {
-        const totalFinalInput = document.getElementById('total_final');
-        const totalEnTexto = document.getElementById('total_en_texto');
+// Función para obtener el valor del input y convertirlo a texto
+function convertirTotalATexto() {
+    const totalFinalInput = document.getElementById('total_final');
+    const totalEnTextoInput = document.getElementById('total-en-texto'); // Campo oculto
+    
+    console.log("Valor del input:", totalFinalInput.value); // Depuración
+    
+    // Eliminar cualquier carácter que no sea dígito, punto o coma
+    let valorLimpio = totalFinalInput.value.replace(/[^\d.,]/g, '');
+    
+    // Reemplazar coma por punto para asegurar un formato numérico válido
+    valorLimpio = valorLimpio.replace(',', '.');
+    
+    console.log("Valor limpio:", valorLimpio); // Depuración
+    
+    const numero = parseFloat(valorLimpio);
+    
+    console.log("Número parseado:", numero); // Depuración
+    
+    if (!isNaN(numero)) {
+        const numeroRedondeado = Math.round(numero);
+        console.log("Número redondeado:", numeroRedondeado); // Depuración
         
-        const numero = parseInt(totalFinalInput.value, 10); // Convertir el valor del input a un número entero
-        if (!isNaN(numero)) {
-            totalEnTexto.textContent = numeroATexto(numero); // Mostrar el número en texto
-        } else {
-            totalEnTexto.textContent = ''; // Si el valor no es válido, limpiar el texto
+        const textoConvertido = numeroATexto(numeroRedondeado);
+        totalEnTextoInput.value = textoConvertido;
+        
+        console.log("Texto convertido:", textoConvertido); // Depuración
+        
+        // Mostrar el número en texto en el DOM (si es necesario)
+        const totalEnTextoDisplay = document.getElementById('total-en-texto-display');
+        if (totalEnTextoDisplay) {
+            totalEnTextoDisplay.textContent = textoConvertido;
+        }
+    } else {
+        console.log("Valor inválido ingresado"); // Depuración
+        totalEnTextoInput.value = '';
+        
+        const totalEnTextoDisplay = document.getElementById('total-en-texto-display');
+        if (totalEnTextoDisplay) {
+            totalEnTextoDisplay.textContent = '';
         }
     }
-    
-    // Detectar cuando el valor del input cambia
-    document.getElementById('total_final').addEventListener('input', convertirTotalATexto);
+}
+
+// Función para inicializar el evento y realizar la conversión inicial
+function inicializarConversion() {
+    const totalFinalInput = document.getElementById('total_final');
+    if (totalFinalInput) {
+        totalFinalInput.addEventListener('input', convertirTotalATexto);
+        // Realizar la conversión inicial si hay un valor
+        convertirTotalATexto();
+    } else {
+        console.error("No se encontró el elemento con id 'total_final'");
+    }
+}
+
+// Asegurarse de que la función se ejecute cuando se carga la página
+document.addEventListener('DOMContentLoaded', inicializarConversion);
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Numero text .JS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

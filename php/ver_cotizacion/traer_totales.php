@@ -97,6 +97,11 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
         <label for="total_final">Total final</label>
         <input type="number" id="total_final" name="total_final" step="1" min="0" value="<?php echo $total_final; ?>" readonly>
     </div>
+
+    <div class="form-group-2">
+        
+    </div>
+    
 </div>
 
 <script src="../../js/nueva_cotizacion/detalle_total.js"></script>

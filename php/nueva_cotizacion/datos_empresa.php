@@ -71,7 +71,7 @@ function obtener_datos_empresa($mysqli, $id) {
             <input type="text" id="empresa_telefono" name="empresa_telefono" 
                 value="<?php echo htmlspecialchars($row['EmpresaTelefono']); ?>"
                 placeholder="+56 9 1234 1234" 
-                maxlength="15" 
+                maxlength="13" 
                 required 
                 oninput="removeInvalidChars(this)"
                 title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"

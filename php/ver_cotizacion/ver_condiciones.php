@@ -14,7 +14,6 @@ BPPJ
 <?php if (!empty($condiciones)): ?>
     <strong>Condiciones: </strong><br><br>
     <?php foreach ($condiciones as $condicion): ?>
-        <?php echo htmlspecialchars($condicion['id_condiciones']); ?>
         <?php echo htmlspecialchars($condicion['descripcion_condiciones']); ?><br>
     <?php endforeach; ?>
 <?php else: ?>
