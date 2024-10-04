@@ -123,23 +123,25 @@ BPPJ
         cursor: pointer;
         color: white;
     }
-    
-    .detalle-buttons button:nth-of-type(1) {
-        background-color: #007bff;
-    }
-    
+
     .detalle-buttons button:nth-of-type(1):hover {
-        background-color: #0056b3;
+        background-color: #755483; /* Morado oscuro */
+    }
+    .detalle-buttons button:nth-of-type(1) {
+        background-color: #9c27b0; /* Morado vibrante */
     }
     
     .detalle-buttons button:nth-of-type(2) {
-        background-color: #f44336;
+        background-color: #149279; /* Rosa intenso */
     }
     
     .detalle-buttons button:nth-of-type(2):hover {
-        background-color: #d32f2f;
+        background-color: #1ba226; /* Rosa más oscuro */
     }
     
+    .detalle-buttons button:nth-of-type(3) {
+        background-color: #4caf50; /* Verde lima */
+    }
     .detalle-table {
         width: 100%;
         border-collapse: collapse;

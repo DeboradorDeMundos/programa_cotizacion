@@ -114,7 +114,8 @@ $query_totales = "
         total.descuento_global,
         total.total_iva,
         total.monto_neto,
-        total.total_final
+        total.total_final,
+        upper(total.total_final_letras) AS total_final_letras
     FROM C_Totales total
     JOIN C_Cotizaciones cot ON total.id_cotizacion = cot.id_cotizacion
     WHERE cot.id_cotizacion = ?
@@ -376,13 +377,15 @@ $mysqli->close();
 
         <?php include 'totales.php'; ?>
 
-   <table class="totals">
+
+        <table class="totals">
     <tr class="son">
-     <td colspan="2">
-      SON: QUINIENTOS NOVENTA Y CINCO PESOS
-     </td>
+        <td colspan="2">
+            <strong>SON:</strong> <span id="total_final_letras"><?php echo htmlspecialchars($totales['total_final_letras']); ?></span> PESOS
+        </td>
     </tr>
-   </table>
+</table>
+
 
     <?php include 'bancos.php'; ?>
 

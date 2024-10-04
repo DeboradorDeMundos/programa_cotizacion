@@ -14,7 +14,6 @@ BPPJ
 <?php if (!empty($obligaciones)): ?>
     <strong>obligaciones: </strong><br><br>
     <?php foreach ($obligaciones as $obligacion): ?>
-        <?php echo htmlspecialchars($obligacion['indice']); ?>
         <?php echo htmlspecialchars($obligacion['descripcion']); ?><br>
     <?php endforeach; ?>
 <?php else: ?>

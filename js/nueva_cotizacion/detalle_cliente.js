@@ -99,6 +99,11 @@ function asegurarMasYDetectarPais(input) {
         input.value = '+' + input.value.replace(/^\+/, ''); // Agregar '+' al inicio
     }
 
+
+     // Permitir solo números después del '+' y mantener el '+'
+     const validCharacters = input.value.replace(/[^0-9]/g, ''); // Eliminar caracteres no válidos, excepto '+'
+     input.value = input.value[0] + validCharacters; // Mantener el '+' y agregar solo los números
+ 
     // Llamar a la función de detección de la bandera
     detectarPais(input);
 }

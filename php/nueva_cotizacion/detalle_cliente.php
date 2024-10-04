@@ -78,7 +78,6 @@ BPPJ
            placeholder="+56 9 1234 1234" 
            maxlength="16" 
            required 
-           pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
            title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)" oninput="asegurarMasYDetectarPais(this)">
 </div>
 
