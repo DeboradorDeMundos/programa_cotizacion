@@ -24,15 +24,26 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 <div class="totals-container">
 <table class="observations">
     <tr>
-    <td>
-    OBSERVACIONES
-    </td>
+        <td>
+            <strong>OBSERVACIONES</strong>
+        </td>
     </tr>
     <tr class="large-cell">
-    <td>
-    </td>
+        <td>
+            <?php
+            // Verificar si hay observaciones
+            if (!empty($observaciones)) {
+                foreach ($observaciones as $observacion) {
+                    echo htmlspecialchars($observacion['observacion']) . "<br>"; // Mostrar cada observación
+                }
+            } else {
+                echo "Sin observaciones extras."; // Mensaje por defecto si no hay observaciones
+            }
+            ?>
+        </td>
     </tr>
 </table>
+
 <table class="totals">
     
         <tr>

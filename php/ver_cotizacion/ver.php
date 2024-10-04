@@ -353,8 +353,34 @@ if ($result_obligaciones->num_rows > 0) {
 $stmt_obligaciones->close();
 
 
-// Cerrar la conexión principal al final
-$mysqli->close();
+// Consulta para obtener observaciones
+$query_observaciones = "
+    SELECT o.id_observacion, o.observacion
+    FROM C_Observaciones AS o
+    WHERE o.id_cotizacion = ?
+";
+
+// Preparar y ejecutar la consulta para obtener observaciones
+$stmt_observaciones = $mysqli->prepare($query_observaciones);
+$stmt_observaciones->bind_param("i", $id_cotizacion);
+$stmt_observaciones->execute();
+$result_observaciones = $stmt_observaciones->get_result();
+
+// Verificar si hay resultados de observaciones
+$observaciones = [];
+if ($result_observaciones->num_rows > 0) {
+    while ($row = $result_observaciones->fetch_assoc()) {
+        $observaciones[] = $row; // Guardar las observaciones en el array
+    }
+} else {
+    echo "No se encontraron observaciones para esta cotización.";
+}
+
+// Cerrar la conexión de la consulta de observaciones
+$stmt_observaciones->close();
+
+
+
 ?>
 <html>
 <head>
@@ -375,6 +401,7 @@ $mysqli->close();
 
         <?php include 'detalle.php'; ?>
 
+        
         <?php include 'totales.php'; ?>
 
 
@@ -419,6 +446,12 @@ $mysqli->close();
  <script src="../../js/ver_cotizacion/ver.js"></script> 
 </html>
 
+
+<?php 
+
+// Cerrar la conexión principal al final
+$mysqli->close();
+?>
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa  Ver .PHP -----------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
