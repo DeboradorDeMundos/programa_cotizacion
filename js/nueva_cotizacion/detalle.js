@@ -29,7 +29,7 @@ function addDetailSection() {
         <div class="detalle-content">
             <div class="titulo-container" style="display: flex; align-items: center;">
                 <label for="titulo">Título:</label>
-                <input type="text" name="detalle_titulo[${tituloContador}]" required style="margin-right: 10px;">
+                <input type="text" name="detalle_titulo[${tituloContador}]" required style="margin-right: 10px;" oninput="removeInvalidChars(this)">
                 <button type="button" class="btn-eliminar-titulo" onclick="removeDetailSection(this)">Eliminar Título</button>
             </div>
             <table class="detalle-table">
@@ -155,11 +155,11 @@ function addDetailRow(button) {
                 <option value="asesoria">Asesoría</option>
             </select>
         </td>
-        <td class="hidden-column"><input type="text" name="nombre_producto[${tituloIndex}][${subtituloIndex}][]"></td>
+        <td class="hidden-column"><input type="text" name="nombre_producto[${tituloIndex}][${subtituloIndex}][]" oninput="removeInvalidChars(this)"></td>
         <td class="hidden-column"><input type="checkbox" onclick="toggleDescription(this)"></td>
-        <td class="hidden-column"><input type="number" name="detalle_cantidad[${tituloIndex}][${subtituloIndex}][]" step="1" min="1" required oninput="updateTotal(this)"></td>
-        <td class="hidden-column"><input type="number" name="detalle_precio_unitario[${tituloIndex}][${subtituloIndex}][]" step="0.01" min="0" required oninput="updateTotal(this)"></td>
-        <td class="hidden-column"><input type="number" name="detalle_descuento[${tituloIndex}][${subtituloIndex}][]" step="1" min="0" required oninput="updateTotal(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_cantidad[${tituloIndex}][${subtituloIndex}][]" step="1" min="1" required oninput="updateTotal(this)" oninput="removeInvalidChars(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_precio_unitario[${tituloIndex}][${subtituloIndex}][]" step="0.01" min="0" required oninput="updateTotal(this)" oninput="removeInvalidChars(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_descuento[${tituloIndex}][${subtituloIndex}][]" step="1" min="0" required oninput="updateTotal(this)" oninput="removeInvalidChars(this)"></td>
         <td class="hidden-column"><input type="number" name="detalle_total[${tituloIndex}][${subtituloIndex}][]" step="0.01" min="0" readonly></td>
         <td colspan="2" class="hidden-column">
             <button type="button" class="btn-eliminar" onclick="removeDetailRow(this)">Eliminar</button>
@@ -175,7 +175,7 @@ function addDetailRow(button) {
     descriptionRow.style.display = 'none';
     descriptionRow.innerHTML = `
         <td colspan="9">
-            <textarea name="detalle_descripcion[${tituloIndex}][${subtituloIndex}][]" placeholder="Ingrese sólo si requiere ingresar una descripción extendida del producto o servicio"></textarea>
+            <textarea name="detalle_descripcion[${tituloIndex}][${subtituloIndex}][]" placeholder="Ingrese sólo si requiere ingresar una descripción extendida del producto o servicio" oninput="removeInvalidChars(this)"></textarea>
         </td>
     `;
     tableBody.appendChild(descriptionRow);
@@ -255,7 +255,7 @@ function agregarSubtitulo(button) {
     newSubtitle.innerHTML = `
         <td colspan="9">
             <label for="subtitulo">Subtítulo:</label>
-            <input type="text" name="detalle_subtitulo[${tituloIndex}][${subtituloContador[tituloIndex]}]" style="margin-right: 10px;">
+            <input type="text" name="detalle_subtitulo[${tituloIndex}][${subtituloContador[tituloIndex]}]" style="margin-right: 10px;" oninput="removeInvalidChars(this)">
             <button type="button" class="btn-eliminar-titulo" onclick="borrarSubtitulo(this)">Eliminar subtítulo</button>
         </td>
     `;

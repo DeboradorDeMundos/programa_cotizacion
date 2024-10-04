@@ -22,6 +22,7 @@ BPPJ
                 <input type="text" id="vendedor_rut" name="vendedor_rut" 
                     minlength="7" maxlength="12" 
                     placeholder="Ej: 12.345.678-9"
+                    oninput="removeInvalidChars(this)"
                     required oninput="formatRut(this)"> <!-- Campo de texto para ingresar el RUT del cliente. También es obligatorio -->
             </div>
             <div class="form-group">
@@ -32,6 +33,7 @@ BPPJ
                     minlength="3" 
                     maxlength="50" 
                     pattern="^[a-zA-ZÀ-ÿ\s]+$" 
+                    oninput="removeInvalidChars(this)"
                     title="Ingresa un nombre válido (Ej: María López). Solo se permiten letras y espacios."> <!-- Campo de texto para ingresar el nombre del vendedor. El atributo "required" hace que el campo sea obligatorio -->
             </div>
         </div>
@@ -43,6 +45,7 @@ BPPJ
                 maxlength="255" 
                 required 
                 title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
+                oninput="removeInvalidChars(this)"
                 onblur="completeEmail(this)"> <!-- Campo de correo electrónico para ingresar el email del vendedor. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico. También es obligatorio -->
         </div>
     </div>
@@ -59,6 +62,7 @@ BPPJ
                 maxlength="16" 
                 required 
                 title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
+                oninput="removeInvalidChars(this)"
                 oninput="asegurarMasYDetectarPais4(this)"> <!-- Campo de texto para ingresar el teléfono del vendedor -->
         </div>
 
@@ -74,6 +78,7 @@ BPPJ
         maxlength="16" 
         required 
         title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
+        oninput="removeInvalidChars(this)"
         oninput="asegurarMasYDetectarPais5(this)"> <!-- Campo de texto para ingresar el número de celular del vendedor -->
 </div>
 

@@ -29,7 +29,7 @@ BPPJ
         // Crear el HTML con el botón de eliminar al lado del input
         conditionDiv.innerHTML = `
             <span class="condition-number">${conditionCount}-. </span>
-            <input type="text" name="condition_${conditionCount}" placeholder="Ingrese condición ${conditionCount}" />
+            <input type="text" name="condition_${conditionCount}" placeholder="Ingrese condición ${conditionCount}" oninput="removeInvalidChars(this)"/>
             <button type="button" class="remove-condition-btn" onclick="removeCondition(this)">Eliminar</button>
         `;
     

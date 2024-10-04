@@ -29,7 +29,7 @@
             // Crear el HTML con el botón de eliminar al lado del input
             obligacionesDiv.innerHTML = `
                 <span class="obligaciones-number">${obligacionesCount}-. </span>
-                <input type="text" name="obligacion_${obligacionesCount}" placeholder="Ingrese obligación ${obligacionesCount}" />
+                <input type="text" name="obligacion_${obligacionesCount}" placeholder="Ingrese obligación ${obligacionesCount}" oninput="removeInvalidChars(this)"s />
                 <button type="button" class="remove-obligaciones-btn" onclick="removeObligaciones(this)">Eliminar</button>
             `;
         

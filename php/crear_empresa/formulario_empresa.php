@@ -65,6 +65,7 @@ BPPJ
             placeholder="ejemplo@empresa.com" 
             maxlength="255" 
             required 
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
             title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
             onblur="completeEmail(this)"> <!-- Campo de correo electrónico para ingresar el email de la empresa. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
     
@@ -73,9 +74,10 @@ BPPJ
 
         <label for="empresa_web">Web de la Empresa:</label>
         <input type="url" id="empresa_web" name="empresa_web" 
-            pattern="https?://.+"
+            pattern="https?://[^'\"]+" 
             title="Por favor, ingrese una URL válida que comience con http:// o https://"
-            placeholder="Ejemplo: https://www.miempresa.com">
+            placeholder="Ejemplo: https://www.miempresa.com"
+            oninput="removeInvalidChars(this)">
         
     </div> <!-- Cierra la caja de datos -->
 </div> <!-- Cierra la fila -->

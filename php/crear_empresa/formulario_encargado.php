@@ -20,13 +20,15 @@ BPPJ
             pattern="^[0-9]+[-kK0-9]{1}$" 
             title="Por favor, ingrese un RUT válido."
             placeholder="Ejemplo: 12345678-9"
-            oninput="formatRut(this)">
+            oninput="formatRut(this)"
+            oninput="removeInvalidChars(this)">
 
         <label for="encargado_nombre">Nombre del Encargado:</label>
         <input type="text" id="encargado_nombre" name="encargado_nombre" required minlength="3" maxlength="255" 
             pattern="^[A-Za-zÀ-ÿ\s.-]+$" 
             title="Por favor, ingrese solo letras y espacios."
-            placeholder="Ejemplo: Juan Pérez">
+            placeholder="Ejemplo: Juan Pérez"
+            oninput="removeInvalidChars(this)">
 
 
         <label for="cargo_encargado">Cargo:</label> <!-- Etiqueta para el campo de selección del cargo del cliente -->

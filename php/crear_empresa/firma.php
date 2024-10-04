@@ -38,16 +38,21 @@ BPPJ
         <label for="manual-signature">Firma Manual</label>
         <div id="manual-signatures" class="signature-display" style="display: none;">
             <div class="signature-row">
-                <input type="text" name="titulo_firma" placeholder="titulo de la firma">
-                <input type="text" name="nombre_encargado_firma" placeholder="Nombre del Encargado">
-                <input type="text" name="cargo_encargado_firma" placeholder="Cargo del Encargado">
-                <input type="text" name="telefono_encargado_firma" placeholder="Teléfono del Encargado">
-                <input type="text" name="nombre_empresa_firma" placeholder="Nombre de la Empresa">
-                <input type="text" name="area_empresa_firma" placeholder="Área de la Empresa">
-                <input type="text" name="telefono_empresa_firma" placeholder="Teléfono de la Empresa">
-                <input type="email" name="email_firma" placeholder="Email">
-                <input type="text" name="direccion_firma" placeholder="Dirección">
-                <input type="text" name="rut_firma" placeholder="RUT">
+                <input type="text" name="titulo_firma" placeholder="titulo de la firma" oninput="removeInvalidChars(this)">
+                <input type="text" name="nombre_encargado_firma" placeholder="Nombre del Encargado" oninput="removeInvalidChars(this)">
+                <input type="text" name="cargo_encargado_firma" placeholder="Cargo del Encargado" oninput="removeInvalidChars(this)">
+                <input type="text" name="telefono_encargado_firma" placeholder="Teléfono del Encargado" oninput="removeInvalidChars(this)">
+                <input type="text" name="nombre_empresa_firma" placeholder="Nombre de la Empresa" oninput="removeInvalidChars(this)">
+                <input type="text" name="area_empresa_firma" placeholder="Área de la Empresa" oninput="removeInvalidChars(this)">
+                <input type="text" name="telefono_empresa_firma" placeholder="Teléfono de la Empresa" oninput="removeInvalidChars(this)">
+                <input type="email" name="email_firma" placeholder="Email" onblur="completeEmail(this)">
+                <input type="text" name="direccion_firma" placeholder="Dirección" oninput="removeInvalidChars(this)">
+                <input type="text" name="rut_firma" placeholder="RUT" minlength="3" maxlength="20"           
+                    pattern="^[0-9]+[-kK0-9]{1}$" 
+                    title="Por favor, ingrese un RUT válido."
+                    placeholder="Ejemplo: 12345678-9"
+                    oninput="formatRut(this)"
+                    oninput="removeInvalidChars(this)">
                 </div>
             </div>
         </div>

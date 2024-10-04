@@ -56,6 +56,9 @@ BPPJ
     }
 
     function completeEmail(input) {
+        // Eliminar comillas simples y dobles de la entrada
+        input.value = input.value.replace(/['"]/g, '');
+    
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expresión regular para validar el correo electrónico
         
         // Verificar si el correo tiene un formato válido
@@ -68,6 +71,13 @@ BPPJ
             }
         }
     }
+
+    function removeInvalidChars(input) {
+        // Eliminar comillas simples, dobles y cualquier otro carácter no deseado
+        input.value = input.value.replace(/['"]/g, '');
+    }
+
+    
     
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Formulario Empresa .JS ---------------------------------------

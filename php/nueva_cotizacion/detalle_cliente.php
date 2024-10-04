@@ -24,6 +24,7 @@ BPPJ
                 <input type="text" id="cliente_rut" name="cliente_rut" 
                     minlength="7" maxlength="12" 
                     placeholder="Ej: 12.345.678-9"
+                    oninput="removeInvalidChars(this)"
                     required oninput="formatRut(this)"> <!-- Campo de texto para ingresar el RUT del cliente. También es obligatorio -->
             </div>
             <div class="form-group">
@@ -31,6 +32,7 @@ BPPJ
                 <input type="text" id="cliente_nombre" name="cliente_nombre" required
                     pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
                     title="Por favor, ingrese solo letras, números y caracteres como &,-."
+                    oninput="removeInvalidChars(this)"
                     placeholder="Ejemplo: Pedro Perez"> <!-- Campo de texto para ingresar el nombre del cliente. El atributo "required" hace que el campo sea obligatorio -->
             </div>
         </div>
@@ -40,6 +42,7 @@ BPPJ
             <input type="text" id="cliente_empresa" name="cliente_empresa" required minlength="3" maxlength="100"
                 pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
                 title="Por favor, ingrese solo letras, números y caracteres como &,-."
+                oninput="removeInvalidChars(this)"
                 placeholder="Ejemplo: Mi Empresa S.A."> <!-- Campo de texto para ingresar el nombre de la empresa del cliente. Este campo no es obligatorio -->
         </div>
 
@@ -49,6 +52,7 @@ BPPJ
                 <input type="text" id="cliente_direccion" name="cliente_direccion"
                     minlength="5" maxlength="100" 
                     pattern="^[A-Za-z0-9À-ÿ\s#,-.]*$" 
+                    oninput="removeInvalidChars(this)"
                     title="Por favor, ingrese una dirección válida. Se permiten letras, números, espacios y los caracteres #, -, , y .."
                     placeholder="Ejemplo: Av. Siempre Viva 742"> <!-- Campo de texto para ingresar la dirección del cliente. No es obligatorio -->
             </div>
@@ -79,6 +83,7 @@ BPPJ
            maxlength="16" 
            required 
            pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
+           oninput="removeInvalidChars(this)"
            title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)" oninput="asegurarMasYDetectarPais(this)">
 </div>
 
@@ -94,6 +99,7 @@ BPPJ
                 maxlength="255" 
                 required 
                 title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
+                oninput="removeInvalidChars(this)"
                 onblur="completeEmail(this)"> <!-- Campo de correo electrónico para ingresar el email del cliente. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
         </div>
 
@@ -154,6 +160,7 @@ BPPJ
                     minlength="3" 
                     maxlength="50" 
                     pattern="^[a-zA-ZÀ-ÿ\s]+$" 
+                    oninput="removeInvalidChars(this)"
                     title="Ingresa una comuna válida (Ej: La Reina, Providencia). Solo se permiten letras y espacios."> <!-- Campo de texto para ingresar la comuna del cliente. Este campo no es obligatorio -->
             </div>
             <div class="form-group">
@@ -164,6 +171,7 @@ BPPJ
                     minlength="3" 
                     maxlength="50" 
                     pattern="^[a-zA-ZÀ-ÿ\s]+$" 
+                    oninput="removeInvalidChars(this)"
                     title="Ingresa una ciudad válida (Ej: Santiago, Valparaíso). Solo se permiten letras y espacios."> <!-- Campo de texto para ingresar la ciudad del cliente. Este campo no es obligatorio -->
             </div>
         </div>

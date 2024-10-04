@@ -30,7 +30,7 @@ function addRequisito() {
     // Crear el HTML con el botón de eliminar al lado del input
     requisitoDiv.innerHTML = `
         <span class="requisito-number">${requisitoCount}-. </span>
-        <input type="text" name="requisito_${requisitoCount}" placeholder="Ingrese requisito ${requisitoCount}" />
+        <input type="text" name="requisito_${requisitoCount}" placeholder="Ingrese requisito ${requisitoCount}" oninput="removeInvalidChars(this)" />
         <button type="button" class="remove-requisito-btn" onclick="removeRequisito(this)">Eliminar</button>
     `;
 

@@ -42,11 +42,11 @@ BPPJ
     
         // Generar el HTML para un nuevo pago dentro de la tabla
         paymentRow.innerHTML = `
-            <td><input type="number" name="numero_pago[]" required></td>
-            <td><textarea name="descripcion_pago[]" placeholder="Descripción del pago"></textarea></td>
-            <td><input type="number" id="porcentaje-pago" name="porcentaje_pago[]" min="0" max="${100 - totalPorcentaje}" required oninput="calcularPago(this)"></td>
-            <td><input type="number" id="monto-pago" name="monto_pago[]" min="0" required readonly></td>
-            <td><input type="date" name="fecha_pago[]" required></td>
+            <td><input type="number" name="numero_pago[]" required oninput="removeInvalidChars(this)"></td>
+            <td><textarea name="descripcion_pago[]" placeholder="Descripción del pago" oninput="removeInvalidChars(this)"></textarea></td>
+            <td><input type="number" id="porcentaje-pago" name="porcentaje_pago[]" min="0" max="${100 - totalPorcentaje}" required oninput="calcularPago(this)" oninput="removeInvalidChars(this)"></td>
+            <td><input type="number" id="monto-pago" name="monto_pago[]" min="0" required readonly oninput="removeInvalidChars(this)"></td>
+            <td><input type="date" name="fecha_pago[]" required oninput="removeInvalidChars(this)"></td>
             <td><button type="button" onclick="removePayment(this)">Eliminar</button></td>
         `;
     

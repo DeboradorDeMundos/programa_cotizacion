@@ -57,7 +57,7 @@ BPPJ
                     </select>
 
                     <label for="numero-cuenta">Número de Cuenta:</label>
-                    <input type="text" id="numero-cuenta" name="numero_cuenta" required>
+                    <input type="text" id="numero-cuenta" name="numero_cuenta" required oninput="removeInvalidChars(this)">
                 </div>
                 
                 <button type="button" id="add-account-button" onclick="addAccount()">Agregar otra cuenta</button>
