@@ -73,7 +73,6 @@ function obtener_datos_empresa($mysqli, $id) {
                 placeholder="+56 9 1234 1234" 
                 maxlength="13" 
                 required 
-                oninput="removeInvalidChars(this)"
                 title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
                 oninput="ensurePlusAndDetectCountry(this)"> 
         </div>

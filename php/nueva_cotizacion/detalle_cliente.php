@@ -24,8 +24,9 @@ BPPJ
                 <input type="text" id="cliente_rut" name="cliente_rut" 
                     minlength="7" maxlength="12" 
                     placeholder="Ej: 12.345.678-9"
+                    oninput="formatRut(this)"
                     oninput="removeInvalidChars(this)"
-                    required oninput="formatRut(this)"> <!-- Campo de texto para ingresar el RUT del cliente. También es obligatorio -->
+                    required> <!-- Campo de texto para ingresar el RUT del cliente. También es obligatorio -->
             </div>
             <div class="form-group">
                 <label for="cliente_nombre">Nombre:</label> <!-- Etiqueta para el campo de entrada del nombre del cliente -->
@@ -83,8 +84,9 @@ BPPJ
            maxlength="16" 
            required 
            pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
-           oninput="removeInvalidChars(this)"
-           title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)" oninput="asegurarMasYDetectarPais(this)">
+            oninput="formatPhoneNumber(this)"
+           title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)" oninput="asegurarMasYDetectarPais(this)"
+           oninput="removeInvalidChars(this)">
 </div>
 
 

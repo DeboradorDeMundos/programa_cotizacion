@@ -23,8 +23,9 @@ BPPJ
                 <input type="text" id="encargado-rut" name="encargado_rut" 
                     minlength="7" maxlength="12" 
                     placeholder="Ej: 12.345.678-9"
+                    oninput="formatRut(this)"
                     oninput="removeInvalidChars(this)"
-                    required oninput="formatRut(this)"> <!-- Campo de texto para ingresar el RUT del cliente. También es obligatorio -->
+                    required> <!-- Campo de texto para ingresar el RUT del cliente. También es obligatorio -->
             </div>
             <div class="form-group">
                 <label for="enc_nombre">Nombre:</label> <!-- Etiqueta para el campo de entrada del nombre del encargado -->
@@ -62,7 +63,6 @@ BPPJ
                 maxlength="16" 
                 required 
                 title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                oninput="removeInvalidChars(this)"
                 oninput="asegurarMasYDetectarPais2(this)"> <!-- Campo de texto para ingresar el teléfono del encargado -->
         </div>
 
@@ -80,7 +80,6 @@ BPPJ
                 maxlength="16" 
                 required 
                 title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                oninput="removeInvalidChars(this)"
                 oninput="asegurarMasYDetectarPais3(this)"> <!-- Campo de texto para ingresar el número de celular del encargado -->
         </div>
 
