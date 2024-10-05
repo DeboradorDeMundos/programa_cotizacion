@@ -12,11 +12,14 @@ BPPJ
     ------------------------------------- INICIO ITred Spa observaciones.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
      
-
-     <fieldset class="observaciones-box">
-    <label for="observacion">Observaciones:</label>
-    <textarea id="observacion" name="observacion" rows="4" cols="50" placeholder="Agrega cualquier comentario adicional (OPCIONAL)..."></textarea>
+    <link rel="stylesheet" href="../../css/nueva_cotizacion/observaciones.css">
+<fieldset class="observaciones-box">
+    <div class="form-group">
+        <label for="observacion">Observaciones:</label>
+        <textarea id="observacion" name="observacion" rows="4" cols="50" placeholder="Agrega cualquier comentario adicional (OPCIONAL)..."></textarea>
+    </div>        
 </fieldset>
+
 
 
 

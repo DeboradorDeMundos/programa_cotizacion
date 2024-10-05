@@ -240,13 +240,12 @@ if ($id > 0) {
                 <!-- Fila 6 -->
                 <?php include 'detalle_vendedor.php'; ?>
 
-                                    <!-- Sección que guarda los datos de la cotizacion -->
+                <!-- Sección que guarda los datos de la cotizacion -->
                 <?php include 'detalle_cotizacion.php'; ?>
                 <!-- sección para Detalle de Cotización -->
                 <?php include 'detalle.php'; ?>
                 
                 <!-- Sección para los cálculos finales -->
-
                 <?php include 'detalle_total.php'; ?>
             <!-- Sección para los observaciones -->
                 <?php include 'observaciones.php'; ?>

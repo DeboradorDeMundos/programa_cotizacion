@@ -744,7 +744,7 @@ INSERT INTO C_Cotizaciones (
     id_vendedor, 
     id_encargado
 ) VALUES (
-    'COT-001', -- Número de cotización
+    '1', -- Número de cotización
     '2024-09-01', -- Fecha de emisión
     '2024-09-30', -- Fecha de validez
     1, -- ID del cliente
