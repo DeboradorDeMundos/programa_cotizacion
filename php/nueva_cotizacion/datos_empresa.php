@@ -1,7 +1,7 @@
 <!--
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
@@ -12,33 +12,6 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Datos empresa.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
      
-<?php
-function obtener_datos_empresa($mysqli, $id) {
-    $sql_empresa = "SELECT 
-        e.rut_empresa AS EmpresaRUT,
-        e.nombre_empresa AS EmpresaNombre,
-        e.area_empresa AS EmpresaArea,
-        e.direccion_empresa AS EmpresaDireccion,
-        e.telefono_empresa AS EmpresaTelefono,
-        e.email_empresa AS EmpresaEmail,
-        f.ruta_foto
-    FROM e_empresa e
-    LEFT JOIN e_FotosPerfil f ON f.id_foto = e.id_foto
-    WHERE e.id_empresa = ?";
-
-    if ($stmt_empresa = $mysqli->prepare($sql_empresa)) {
-        $stmt_empresa->bind_param("i", $id);
-        $stmt_empresa->execute();
-        $result_empresa = $stmt_empresa->get_result();
-        $stmt_empresa->close();
-        return $result_empresa->fetch_assoc();
-    } else {
-        echo "<p>Error al preparar la consulta de empresa: " . $mysqli->error . "</p>";
-        return null;
-    }
-}
-?>
-
 <link rel="stylesheet" href="../../css/nueva_cotizacion/datos_empresa.css">
 <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
     <fieldset class="box-12 data-box"> <!-- Crea una caja para ingresar datos, ocupando las 12 columnas disponibles en el diseño. Esta caja contiene varios campos de entrada de datos -->
@@ -135,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!--
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.

@@ -20,7 +20,7 @@ BPPJ
         font-weight: bold;
     }
 
-    .fixed-button-container {
+    .fixed-button-contenedor {
         position: absolute;
         bottom: 10px;
         left: 0;
@@ -29,7 +29,7 @@ BPPJ
         padding: 0 20px;
     }
 
-    .fixed-button-container button {
+    .fixed-button-contenedor button {
         background-color: #007bff;
         color: white;
         border: none;
@@ -168,7 +168,7 @@ BPPJ
         border-bottom: 1px solid #ddd;
     }
     
-    .fixed-button-container button:hover {
+    .fixed-button-contenedor button:hover {
         background-color: #0056b3;
     }
 

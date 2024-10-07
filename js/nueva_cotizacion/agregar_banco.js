@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.addEventListener('DOMContentLoaded', function() {
         let IndiceCuentas = 1;
-        const container = document.getElementById('bank-accounts');
+        const contenedor = document.getElementById('bank-accounts');
     
         function CargarOpcionSeleccionada() {
             fetch('get_select_options.php')
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <label for="email-banco-${IndiceCuentas}">Email del Banco:</label>
                     <input type="email" id="email-banco-${IndiceCuentas}" name="email_banco[]" required>
                 `;
-                container.appendChild(NuevaCuenta);
+                contenedor.appendChild(NuevaCuenta);
     
                 // Cargar opciones para los nuevos selects
                 CargarOpcionSeleccionada();

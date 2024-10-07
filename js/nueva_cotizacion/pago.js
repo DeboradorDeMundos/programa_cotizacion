@@ -16,8 +16,8 @@ BPPJ
 
 
     function AgregarPago() {
-        const container = document.getElementById('payments-container');
-        const porcentajeInputs = container.querySelectorAll('input[name="porcentaje_pago[]"]');
+        const contenedor = document.getElementById('payments-contenedor');
+        const porcentajeInputs = contenedor.querySelectorAll('input[name="porcentaje_pago[]"]');
         let totalPorcentaje = 0;
     
         // Sumar todos los porcentajes existentes
@@ -51,7 +51,7 @@ BPPJ
         `;
     
         // Agregar la nueva fila de pago al cuerpo de la tabla
-        container.appendChild(LineaPago);
+        contenedor.appendChild(LineaPago);
     }
     
     function EliminarPago(button) {
@@ -60,8 +60,8 @@ BPPJ
         row.remove();
     
         // Ocultar la tabla si no quedan filas
-        const container = document.getElementById('payments-container');
-        if (container.children.length === 0) {
+        const contenedor = document.getElementById('payments-contenedor');
+        if (contenedor.children.length === 0) {
             document.getElementById('payment-table').style.display = 'none';
         }
     }
@@ -82,8 +82,8 @@ BPPJ
     }
     
     function verificarTotalPorcentajes(input) {
-        const container = document.getElementById('payments-container');
-        const porcentajeInputs = container.querySelectorAll('input[name="porcentaje_pago[]"]');
+        const contenedor = document.getElementById('payments-contenedor');
+        const porcentajeInputs = contenedor.querySelectorAll('input[name="porcentaje_pago[]"]');
         let totalPorcentaje = 0;
     
         // Sumar todos los porcentajes existentes

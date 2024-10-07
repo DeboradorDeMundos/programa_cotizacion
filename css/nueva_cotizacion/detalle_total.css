@@ -13,7 +13,7 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Detalle total.CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-    .form-container {
+    .form-contenedor {
         background-color: #f9f9f9;
         padding: 20px;
         border: 1px solid #ddd;
@@ -48,7 +48,7 @@ BPPJ
         gap: 10px;
     }
 
-    .form-container-2 {
+    .form-contenedor-2 {
         background-color: #f9f9f9;
         padding: 20px;
         border: 1px solid #ddd;

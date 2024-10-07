@@ -131,20 +131,31 @@ function AgregarLineaDeDetalle(button) {
     const NuevaFila = document.createElement('tr');
     NuevaFila.innerHTML = `
         <td colspan="9">
-            <select name="tipo_producto[${IndiceTitulo}][${subIndiceTitulo}][]" onchange="CapturarTipoYCambiar(this)">
-                <option value="">Seleccione un tipo</option>
+        <select name="tipo_producto[${IndiceTitulo}][${subIndiceTitulo}][]" onchange="CapturarTipoYCambiar(this)">
+            <option value="">Seleccione un tipo</option>
+            
+            <optgroup label="Productos">
                 <option value="nuevo">Nuevo</option>
                 <option value="insumo">Insumo</option>
                 <option value="producto">Producto</option>
                 <option value="material">Material</option>
                 <option value="ferreteria">Ferretería</option>
+            </optgroup>
+            
+            <optgroup label="Personal">
                 <option value="profesional">Profesional</option>
                 <option value="tecnico">Técnico</option>
                 <option value="maestro">Maestro</option>
                 <option value="ayudante">Ayudante</option>
+            </optgroup>
+
+            <optgroup label="Otros productos">
                 <option value="producto_imagen">Producto con Imagen</option>
                 <option value="otros">Otros</option>
                 <option value="extras_proyecto">Extras del Proyecto</option>
+            </optgroup>
+            
+            <optgroup label="Costos adicionales">
                 <option value="horas_extras">Horas Extras</option>
                 <option value="seguro">Seguro</option>
                 <option value="viatico">Viático</option>
@@ -154,7 +165,8 @@ function AgregarLineaDeDetalle(button) {
                 <option value="garantias">Garantías</option>
                 <option value="eventos_perdidas">Eventos o Pérdidas</option>
                 <option value="asesoria">Asesoría</option>
-            </select>
+            </optgroup>
+        </select>
         </td>
         <td class="hidden-column"><input type="text" name="nombre_producto[${IndiceTitulo}][${subIndiceTitulo}][]" oninput="QuitarCaracteresInvalidos(this)"></td>
         <td class="hidden-column"><input type="checkbox" onclick="MostrarDescripcion(this)"></td>
