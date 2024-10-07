@@ -15,22 +15,22 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 // Función para previsualizar la imagen
-function previewImage(event) {
-    const input = event.target;
-    const reader = new FileReader();
+function PrevisualizarImagen(event) {
+    const Entrada = event.target;
+    const Lector = new FileReader();
 
-    reader.onload = function() {
+    Lector.onload = function() {
         const preview = document.getElementById('logo-preview');
-        preview.src = reader.result;
+        preview.src = Lector.result;
     };
 
-    if (input.files && input.files[0]) {
-        reader.readAsDataURL(input.files[0]);
+    if (Entrada.files && Entrada.files[0]) {
+        Lector.readAsDataURL(Entrada.files[0]);
     }
 }
 
-// Escuchar cuando el input de archivo cambia para mostrar la previsualización
-document.getElementById('logo-upload').addEventListener('change', previewImage);
+// Escuchar cuando el Entrada de archivo cambia para mostrar la previsualización
+document.getElementById('logo-upload').addEventListener('change', PrevisualizarImagen);
 
 
 /* --------------------------------------------------------------------------------------------------------------

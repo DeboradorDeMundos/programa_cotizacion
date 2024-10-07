@@ -11,7 +11,40 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Cuadro rojo cotizacion.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
+<?php
+if ($row !== null) {
+    // Aquí va lo que quieres que haga si $row no es null
+    // Por ejemplo, mostrar datos:
 
+    // Consulta para obtener los días de validez
+    $sql_validez = "SELECT dias_validez FROM E_Empresa WHERE id_empresa = ? ";
+    if ($stmt_validez = $mysqli->prepare($sql_validez)) {
+        $stmt_validez->bind_param("i", $id);
+        $stmt_validez->execute();
+        $stmt_validez->bind_result($dias_validez);
+        $stmt_validez->fetch();
+        $stmt_validez->close();
+    } else {
+        echo "<p>Error al preparar la consulta de días de validez: " . $mysqli->error . "</p>";
+    }
+
+    // Obtener el número de cotización más alto
+    $sql_last_cot = "SELECT numero_cotizacion FROM C_Cotizaciones WHERE id_empresa = ? ORDER BY numero_cotizacion DESC LIMIT 1";
+    if ($stmt_last_cot = $mysqli->prepare($sql_last_cot)) {
+        $stmt_last_cot->bind_param("i", $id);
+        $stmt_last_cot->execute();
+        $stmt_last_cot->bind_result($last_num_cotizacion);
+        $stmt_last_cot->fetch();
+        $stmt_last_cot->close();
+        $numero_cotizacion = ($last_num_cotizacion) ? (int)$last_num_cotizacion + 1 : 1;
+    } else {
+        echo "<p>Error al preparar la consulta de cotización: " . $mysqli->error . "</p>";
+    }
+} else {
+    echo "<p>No se encontró la empresa con el ID proporcionado.</p>";
+}
+
+?>
      
 <body onload="calcularFechaValidez();">
 <link rel="stylesheet" href="../../css/nueva_cotizacion/cuadro_rojo_cotizacion.css">
@@ -20,7 +53,7 @@ BPPJ
     <label for="empresa_rut">RUT de la Empresa:</label> <!-- Etiqueta para el campo de entrada del RUT de la empresa -->
     <input type="text" id="empresa_rut" name="empresa_rut" 
         minlength="7" maxlength="12" 
-        required oninput="formatRut(this)" 
+        required oninput="FormatearRut(this)" 
         value="<?php echo htmlspecialchars($row['EmpresaRUT']); ?>"> <!-- Campo de texto para ingresar el RUT de la empresa. El atributo "required" hace que el campo sea obligatorio -->
     
     <label for="numero_cotizacion">Número de Cotización:</label> <!-- Etiqueta para el campo de entrada del número de cotización -->

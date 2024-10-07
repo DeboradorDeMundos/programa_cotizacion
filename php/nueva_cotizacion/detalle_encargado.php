@@ -23,8 +23,8 @@ BPPJ
                 <input type="text" id="encargado-rut" name="encargado_rut" 
                     minlength="7" maxlength="12" 
                     placeholder="Ej: 12.345.678-9"
-                    oninput="formatRut(this)"
-                    oninput="removeInvalidChars(this)"
+                    oninput="FormatearRut(this)"
+                    oninput="QuitarCaracteresInvalidos(this)"
                     required> <!-- Campo de texto para ingresar el RUT del cliente. También es obligatorio -->
             </div>
             <div class="form-group">
@@ -35,7 +35,7 @@ BPPJ
                     minlength="3" 
                     maxlength="50" 
                     pattern="^[a-zA-ZÀ-ÿ\s]+$" 
-                    oninput="removeInvalidChars(this)"
+                    oninput="QuitarCaracteresInvalidos(this)"
                     title="Ingresa un nombre válido (Ej: Juan Pérez). Solo se permiten letras y espacios."> <!-- Campo de texto para ingresar el nombre del encargado. Este campo no es obligatorio -->
             </div>
         </div>
@@ -48,8 +48,8 @@ BPPJ
                 maxlength="255" 
                 required 
                 title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
-                oninput="removeInvalidChars(this)"
-                onblur="completeEmail(this)"> <!-- Campo de correo electrónico para ingresar el email del encargado. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
+                oninput="QuitarCaracteresInvalidos(this)"
+                onblur="CompletarEmail(this)"> <!-- Campo de correo electrónico para ingresar el email del encargado. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
         </div>
         <div class="form-group">
             <label for="enc_fono">Teléfono:</label> <!-- Etiqueta para el campo de entrada del teléfono del encargado -->
@@ -90,7 +90,7 @@ BPPJ
                 minlength="3" 
                 maxlength="100" 
                 pattern="^[a-zA-ZÀ-ÿ0-9\s\-]+$" 
-                oninput="removeInvalidChars(this)"
+                oninput="QuitarCaracteresInvalidos(this)"
                 title="Ingresa un nombre de proyecto válido (Ej: Proyecto XYZ). Solo se permiten letras, números, espacios y guiones."> <!-- Campo de texto para ingresar el nombre del proyecto asignado al encargado. No es obligatorio -->
         </div>
     </div>

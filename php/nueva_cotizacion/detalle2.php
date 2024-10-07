@@ -23,7 +23,7 @@ BPPJ
         </div>
 
         <div class="fixed-button-container">
-            <button type="button" onclick="addDetailSection()">Agregar un nuevo título</button>
+            <button type="button" onclick="AgregarSeccionDeDetalle()">Agregar un nuevo título</button>
         </div>
     </div>
 </fieldset>

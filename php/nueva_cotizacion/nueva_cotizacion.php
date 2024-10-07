@@ -52,72 +52,6 @@ if ($id > 0) {
             // Almacena el tipo de firma
             $tipo_firma = $row['tipo_firma'];
 
-            // Preparar la consulta para obtener los detalles de las cuentas bancarias
-            $sql_cuenta = "SELECT 
-                cb.id_cuenta AS CuentaID,
-                cb.rut_titular AS CuentaRutTitular,
-                cb.nombre_titular AS CuentaNombreTitular,
-                cb.numero_cuenta AS CuentaNumeroCuenta,
-                cb.celular AS CuentaCelular,
-                cb.email_banco AS CuentaEmailBanco,
-                t.tipocuenta AS TipoCuentaDescripcion,
-                b.nombre_banco AS BancoNombre
-            FROM E_Cuenta_Bancaria cb
-            LEFT JOIN E_Tipo_Cuenta t ON cb.id_tipocuenta = t.id_tipocuenta
-            LEFT JOIN E_Bancos b ON cb.id_banco = b.id_banco
-            WHERE cb.id_empresa = ?";
-
-            if ($stmt_cuenta = $mysqli->prepare($sql_cuenta)) {
-                $stmt_cuenta->bind_param("i", $id);
-                $stmt_cuenta->execute();
-                $result_cuenta = $stmt_cuenta->get_result();
-
-                $bancos = [];
-                while ($banco = $result_cuenta->fetch_assoc()) {
-                    $bancos[] = $banco;
-                }
-
-                $stmt_cuenta->close();
-            } else {
-                echo "<p>Error al preparar la consulta de cuenta bancaria: " . $mysqli->error . "</p>";
-            }
-
-            // Consulta para obtener los días de validez
-            $sql_validez = "SELECT dias_validez FROM E_Empresa WHERE id_empresa = ? ";
-            if ($stmt_validez = $mysqli->prepare($sql_validez)) {
-                $stmt_validez->bind_param("i", $id);
-                $stmt_validez->execute();
-                $stmt_validez->bind_result($dias_validez);
-                $stmt_validez->fetch();
-                $stmt_validez->close();
-            } else {
-                echo "<p>Error al preparar la consulta de días de validez: " . $mysqli->error . "</p>";
-            }
-
-            // Consulta para obtener los requisitos básicos
-            $query_requisitos = "SELECT id_requisitos, indice, descripcion_condiciones FROM E_Requisitos_Basicos WHERE id_empresa = ?";
-            if ($stmt_req = $mysqli->prepare($query_requisitos)) {
-                $stmt_req->bind_param('i', $id);
-                $stmt_req->execute();
-                $result_req = $stmt_req->get_result();
-                $requisitos = $result_req->fetch_all(MYSQLI_ASSOC);
-                $stmt_req->close();
-            } else {
-                echo "<p>Error al preparar la consulta de requisitos: " . $mysqli->error . "</p>";
-            }
-
-            // Consulta para obtener las condiciones generales
-            $query_condiciones = "SELECT id_condiciones, descripcion_condiciones FROM C_Condiciones_Generales WHERE id_empresa = ?";
-            if ($stmt_cond = $mysqli->prepare($query_condiciones)) {
-                $stmt_cond->bind_param('i', $id);
-                $stmt_cond->execute();
-                $result_cond = $stmt_cond->get_result();
-                $condiciones = $result_cond->fetch_all(MYSQLI_ASSOC);
-                $stmt_cond->close();
-            } else {
-                echo "<p>Error al preparar la consulta de condiciones generales: " . $mysqli->error . "</p>";
-            }
-
             // Consulta para obtener la firma de la empresa
             $sql_firma = "
             SELECT 
@@ -155,39 +89,10 @@ if ($id > 0) {
             } else {
                 echo "<p>Error al preparar la consulta de la firma: " . $mysqli->error . "</p>";
             }
-
-            // Obtener el número de cotización más alto
-            $sql_last_cot = "SELECT numero_cotizacion FROM C_Cotizaciones WHERE id_empresa = ? ORDER BY numero_cotizacion DESC LIMIT 1";
-            if ($stmt_last_cot = $mysqli->prepare($sql_last_cot)) {
-                $stmt_last_cot->bind_param("i", $id);
-                $stmt_last_cot->execute();
-                $stmt_last_cot->bind_result($last_num_cotizacion);
-                $stmt_last_cot->fetch();
-                $stmt_last_cot->close();
-                $numero_cotizacion = ($last_num_cotizacion) ? (int)$last_num_cotizacion + 1 : 1;
-            } else {
-                echo "<p>Error al preparar la consulta de cotización: " . $mysqli->error . "</p>";
-            }
-
-            // -----------------------------
-            // Consulta para obtener las obligaciones del cliente
-            $query_obligaciones = "SELECT id, indice, descripcion, estado FROM E_obligaciones_cliente WHERE id_empresa = ?";
-            if ($stmt_obligaciones = $mysqli->prepare($query_obligaciones)) {
-                $stmt_obligaciones->bind_param('i', $id);
-                $stmt_obligaciones->execute();
-                $result_obligaciones = $stmt_obligaciones->get_result();
-                $obligaciones = $result_obligaciones->fetch_all(MYSQLI_ASSOC);
-                $stmt_obligaciones->close();
-            } else {
-                echo "<p>Error al preparar la consulta de obligaciones del cliente: " . $mysqli->error . "</p>";
-            }
-            // -----------------------------
-
         } else {
             echo "<p>No se encontró la empresa con el ID proporcionado.</p>";
         }
 
-        $stmt_empresa->close();
     } else {
         echo "<p>Error al preparar la consulta de empresa: " . $mysqli->error . "</p>";
     }

@@ -16,7 +16,7 @@ BPPJ
 <link rel="stylesheet" href="../../css/nueva_cotizacion/pago.css">
 <fieldset id="payment-section">
     <legend>Información de pago</legend>
-    <button type="button" onclick="addPayment()">Agregar Pago</button>
+    <button type="button" onclick="AgregarPago()">Agregar Pago</button>
     <table id="payment-table" style="display: none;"> <!-- Inicialmente oculto -->
         <thead>
             <tr>

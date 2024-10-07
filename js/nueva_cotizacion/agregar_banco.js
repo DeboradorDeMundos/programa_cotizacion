@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
 
     document.addEventListener('DOMContentLoaded', function() {
-        let accountIndex = 1;
+        let IndiceCuentas = 1;
         const container = document.getElementById('bank-accounts');
     
-        function loadSelectOptions() {
+        function CargarOpcionSeleccionada() {
             fetch('get_select_options.php')
                 .then(response => response.json())
                 .then(data => {
@@ -49,50 +49,50 @@ document.addEventListener('DOMContentLoaded', function() {
                 .catch(error => console.error('Error al cargar las opciones:', error));
         }
     
-        function addAccount() {
-            if (accountIndex < 3) { // Limitar a un máximo de 3 cuentas
-                accountIndex++;
-                const newAccount = document.createElement('div');
-                newAccount.className = 'bank-account';
-                newAccount.innerHTML = `
-                    <label for="nombre-cuenta-${accountIndex}">Nombre de la Cuenta:</label>
-                    <input type="text" id="nombre-cuenta-${accountIndex}" name="nombre_cuenta[]" required>
+        function Agregarcuenta() {
+            if (IndiceCuentas < 3) { // Limitar a un máximo de 3 cuentas
+                IndiceCuentas++;
+                const NuevaCuenta = document.createElement('div');
+                NuevaCuenta.className = 'bank-account';
+                NuevaCuenta.innerHTML = `
+                    <label for="nombre-cuenta-${IndiceCuentas}">Nombre de la Cuenta:</label>
+                    <input type="text" id="nombre-cuenta-${IndiceCuentas}" name="nombre_cuenta[]" required>
     
-                    <label for="id-banco-${accountIndex}">Banco:</label>
-                    <select id="id-banco-${accountIndex}" name="id_banco[]" required>
+                    <label for="id-banco-${IndiceCuentas}">Banco:</label>
+                    <select id="id-banco-${IndiceCuentas}" name="id_banco[]" required>
                         <!-- Opciones se llenarán con los datos de la tabla Bancos -->
                     </select>
     
-                    <label for="id-tipocuenta-${accountIndex}">Tipo de Cuenta:</label>
-                    <select id="id-tipocuenta-${accountIndex}" name="id_tipocuenta[]" required>
+                    <label for="id-tipocuenta-${IndiceCuentas}">Tipo de Cuenta:</label>
+                    <select id="id-tipocuenta-${IndiceCuentas}" name="id_tipocuenta[]" required>
                         <!-- Opciones se llenarán con los datos de la tabla Tipo_Cuenta -->
                     </select>
     
-                    <label for="numero-cuenta-${accountIndex}">Número de Cuenta:</label>
-                    <input type="text" id="numero-cuenta-${accountIndex}" name="numero_cuenta[]" required>
+                    <label for="numero-cuenta-${IndiceCuentas}">Número de Cuenta:</label>
+                    <input type="text" id="numero-cuenta-${IndiceCuentas}" name="numero_cuenta[]" required>
     
-                    <label for="nombre-encargado-${accountIndex}">Nombre del Encargado:</label>
-                    <input type="text" id="nombre-encargado-${accountIndex}" name="nombre_encargado[]" required>
+                    <label for="nombre-encargado-${IndiceCuentas}">Nombre del Encargado:</label>
+                    <input type="text" id="nombre-encargado-${IndiceCuentas}" name="nombre_encargado[]" required>
     
-                    <label for="rut-banco-${accountIndex}">RUT del Banco:</label>
-                    <input type="text" id="rut-banco-${accountIndex}" name="rut_banco[]" required>
+                    <label for="rut-banco-${IndiceCuentas}">RUT del Banco:</label>
+                    <input type="text" id="rut-banco-${IndiceCuentas}" name="rut_banco[]" required>
     
-                    <label for="email-banco-${accountIndex}">Email del Banco:</label>
-                    <input type="email" id="email-banco-${accountIndex}" name="email_banco[]" required>
+                    <label for="email-banco-${IndiceCuentas}">Email del Banco:</label>
+                    <input type="email" id="email-banco-${IndiceCuentas}" name="email_banco[]" required>
                 `;
-                container.appendChild(newAccount);
+                container.appendChild(NuevaCuenta);
     
                 // Cargar opciones para los nuevos selects
-                loadSelectOptions();
+                CargarOpcionSeleccionada();
             } else {
                 alert('No se pueden agregar más de 3 cuentas bancarias.');
             }
         }
     
-        document.getElementById('add-account-btn').addEventListener('click', addAccount);
+        document.getElementById('add-account-btn').addEventListener('click', Agregarcuenta);
     
         // Inicializar las opciones de selección en la carga de la página
-        loadSelectOptions();
+        CargarOpcionSeleccionada();
     });
     
 

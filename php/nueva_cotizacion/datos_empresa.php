@@ -12,7 +12,7 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Datos empresa.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
      
-     <?php
+<?php
 function obtener_datos_empresa($mysqli, $id) {
     $sql_empresa = "SELECT 
         e.rut_empresa AS EmpresaRUT,
@@ -48,16 +48,16 @@ function obtener_datos_empresa($mysqli, $id) {
         
         <div class="form-group">
             <label for="empresa_nombre">Nombre</label> <!-- Etiqueta para el campo de entrada del nombre de la empresa -->
-            <input type="text" id="empresa_nombre" name="empresa_nombre" value="<?php echo htmlspecialchars($row['EmpresaNombre']); ?>" oninput="removeInvalidChars(this)"> <!-- Campo de texto para ingresar el nombre de la empresa. El atributo "required" hace que el campo sea obligatorio -->
+            <input type="text" id="empresa_nombre" name="empresa_nombre" value="<?php echo htmlspecialchars($row['EmpresaNombre']); ?>" oninput="QuitarCaracteresInvalidos(this)"> <!-- Campo de texto para ingresar el nombre de la empresa. El atributo "required" hace que el campo sea obligatorio -->
         </div>
 
         <div class="form-group">
             <label for="empresa_area">Área</label> <!-- Etiqueta para el campo de entrada del área de la empresa -->
-            <input type="text" id="empresa_area" name="empresa_area" value="<?php echo htmlspecialchars($row['EmpresaArea']); ?>" oninput="removeInvalidChars(this)"> <!-- Campo de texto para ingresar el área de la empresa. Este campo no es obligatorio -->
+            <input type="text" id="empresa_area" name="empresa_area" value="<?php echo htmlspecialchars($row['EmpresaArea']); ?>" oninput="QuitarCaracteresInvalidos(this)"> <!-- Campo de texto para ingresar el área de la empresa. Este campo no es obligatorio -->
         </div>
         <div class="form-group">
             <label for="empresa_direccion">Dirección</label> <!-- Etiqueta para el campo de entrada de la dirección de la empresa -->
-            <input type="text" id="empresa_direccion" name="empresa_direccion" value="<?php echo htmlspecialchars($row['EmpresaDireccion']); ?>" oninput="removeInvalidChars(this)"> <!-- Campo de texto para ingresar la dirección de la empresa. Este campo no es obligatorio -->
+            <input type="text" id="empresa_direccion" name="empresa_direccion" value="<?php echo htmlspecialchars($row['EmpresaDireccion']); ?>" oninput="QuitarCaracteresInvalidos(this)"> <!-- Campo de texto para ingresar la dirección de la empresa. Este campo no es obligatorio -->
         </div>
                 
         <div class="form-group" style="display: flex; align-items: center;">
@@ -74,13 +74,13 @@ function obtener_datos_empresa($mysqli, $id) {
                 maxlength="13" 
                 required 
                 title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                oninput="ensurePlusAndDetectCountry(this)"> 
+                oninput="QuitarCaracteresInvalidos(this)"> 
         </div>
 
 
         <div class="form-group">
             <label for="empresa_email">Email</label> <!-- Etiqueta para el campo de entrada del email de la empresa -->
-            <input type="email" id="empresa_email" name="empresa_email" value="<?php echo htmlspecialchars($row['EmpresaEmail']); ?>" oninput="removeInvalidChars(this)"> <!-- Campo de correo electrónico para ingresar el email de la empresa. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
+            <input type="email" id="empresa_email" name="empresa_email" value="<?php echo htmlspecialchars($row['EmpresaEmail']); ?>" oninput="QuitarCaracteresInvalidos(this)"> <!-- Campo de correo electrónico para ingresar el email de la empresa. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
         </div>
     </fieldset> <!-- Cierra la caja de datos -->
 </div> <!-- Cierra la fila -->

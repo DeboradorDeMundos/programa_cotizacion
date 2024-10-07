@@ -15,7 +15,7 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 
-    function previewImage(event) {
+    function VerImagen(event) {
         const reader = new FileReader();
         reader.onload = function() {
             const output = document.getElementById('logo-preview');

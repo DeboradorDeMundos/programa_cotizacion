@@ -23,7 +23,7 @@ BPPJ
     <div class="form-group-inline-2">
         <div class="form-group-2">
             <label for="descuentoGlobal">Descuento</label>
-            <input type="number" id="descuento_global_porcentaje" name="descuento_global_porcentaje" oninput="calculateTotals()" oninput="removeInvalidChars(this)" step="1" min="0" max="100" value="0" >
+            <input type="number" id="descuento_global_porcentaje" name="descuento_global_porcentaje" oninput="CalcularTotales()" oninput="QuitarCaracteresInvalidos(this)" step="1" min="0" max="100" value="0" >
             <span>%</span>
         </div>
         <div class="form-group-2">

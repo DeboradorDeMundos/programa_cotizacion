@@ -12,7 +12,19 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Obligaciones cliente .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-
+<?php
+    // Consulta para obtener las obligaciones del cliente
+    $query_obligaciones = "SELECT id, indice, descripcion, estado FROM E_obligaciones_cliente WHERE id_empresa = ?";
+    if ($stmt_obligaciones = $mysqli->prepare($query_obligaciones)) {
+        $stmt_obligaciones->bind_param('i', $id);
+        $stmt_obligaciones->execute();
+        $result_obligaciones = $stmt_obligaciones->get_result();
+        $obligaciones = $result_obligaciones->fetch_all(MYSQLI_ASSOC);
+        $stmt_obligaciones->close();
+    } else {
+        echo "<p>Error al preparar la consulta de obligaciones del cliente: " . $mysqli->error . "</p>";
+    }
+?> 
 <!-- Checkbox para mostrar/ocultar obligaciones del cliente --> 
 <link rel="stylesheet" href="../../css/nueva_cotizacion/obligaciones_cliente.css">
 <label>

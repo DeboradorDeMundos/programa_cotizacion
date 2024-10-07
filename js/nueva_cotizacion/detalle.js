@@ -17,20 +17,20 @@ BPPJ
 let tituloContador = 1; // Contador global para los títulos
 let subtituloContador = {}; // Objeto para llevar el conteo de subtítulos por título
 
-function addDetailSection() {
+function AgregarSeccionDeDetalle() {
     const container = document.getElementById('detalle-container');
-    const newSection = document.createElement('div');
-    newSection.classList.add('detalle-section');
-    newSection.dataset.tituloIndex = tituloContador; // Asigna un índice único al título
+    const NuevaSeccion = document.createElement('div');
+    NuevaSeccion.classList.add('detalle-section');
+    NuevaSeccion.dataset.IndiceTitulo = tituloContador; // Asigna un índice único al título
 
     subtituloContador[tituloContador] = 0; // Inicializa el contador de subtítulos para este título
 
-    newSection.innerHTML = `
+    NuevaSeccion.innerHTML = `
         <div class="detalle-content">
             <div class="titulo-container" style="display: flex; align-items: center;">
                 <label for="titulo">Título:</label>
-                <input type="text" name="detalle_titulo[${tituloContador}]" required style="margin-right: 10px;" oninput="removeInvalidChars(this)">
-                <button type="button" class="btn-eliminar-titulo" onclick="removeDetailSection(this)">Eliminar Título</button>
+                <input type="text" name="detalle_titulo[${tituloContador}]" required style="margin-right: 10px;" oninput="QuitarCaracteresInvalidos(this)">
+                <button type="button" class="btn-eliminar-titulo" onclick="QuitarSeccionDeDetalle(this)">Eliminar Título</button>
             </div>
             <table class="detalle-table">
                 <thead>
@@ -43,31 +43,32 @@ function addDetailSection() {
         </div>
         <div class="detalle-buttons">
             <button type="button" onclick="agregarSubtitulo(this)">Agregar subtítulo</button>
-            <button type="button" onclick="addDetailRow(this)">Agregar detalles</button>
+            <button type="button" onclick="AgregarLineaDeDetalle(this)">Agregar detalles</button>
         </div>
     `;
-    container.appendChild(newSection);
+    container.appendChild(NuevaSeccion);
     tituloContador++; // Incrementa el contador de títulos
 }
 
-function removeDetailSection(button) {
+function QuitarSeccionDeDetalle(button) {
     if (confirm('¿Estás seguro de que quieres eliminar esta sección?')) {
         const section = button.closest('.detalle-section');
         section.remove();
-        calculateTotals();
+        CalcularTotales();
     }
 }
 
-function addcabeza(button) {   
+function AgregarCabeza(button) {   
     const section = button.closest('.detalle-section');
-    const tableHead = section.querySelector('thead');
-    const tableBody = section.querySelector('.detalle-contenido');
+
+    const CabeceraTabla = section.querySelector('thead');
+    const CuerpoTabla = section.querySelector('.detalle-contenido');
 
     // Verifica si ya hay un encabezado para evitar duplicados
-    if (!tableHead.querySelector('tr')) {
+    if (!CabeceraTabla.querySelector('tr')) {
         // Crear la fila del encabezado con solo la columna 'Tipo' visible inicialmente
-        const newHeaderRow = document.createElement('tr');
-        newHeaderRow.innerHTML = `
+        const NuevaLineaDeCabecera = document.createElement('tr');
+        NuevaLineaDeCabecera.innerHTML = `
             <th>Tipo</th>
             <th class="hidden-column">Nombre producto</th>
             <th class="hidden-column">DESCRIPCIÓN</th>
@@ -78,40 +79,40 @@ function addcabeza(button) {
             <th class="hidden-column">ACCIÓN</th>
             <th class="hidden-column"></th> <!-- Espacio para el botón de eliminar cabecera -->
         `;
-        tableHead.appendChild(newHeaderRow);
+        CabeceraTabla.appendChild(NuevaLineaDeCabecera);
 
         // Asegúrate de que solo las columnas con la clase 'hidden-column' estén ocultas
-        const hiddenColumns = tableHead.querySelectorAll('.hidden-column');
-        hiddenColumns.forEach(column => {
+        const ColumnasOcultas = CabeceraTabla.querySelectorAll('.hidden-column');
+        ColumnasOcultas.forEach(column => {
             column.style.display = 'none';
         });
     }
 }
 
-function addDetailRow(button) { 
+function AgregarLineaDeDetalle(button) { 
     const section = button.closest('.detalle-section');
-    const tableBody = section.querySelector('.detalle-contenido');
-    const tableHead = section.querySelector('thead');
-    const tituloIndex = section.dataset.tituloIndex;
+    const CuerpoTabla = section.querySelector('.detalle-contenido');
+    const CabeceraTabla = section.querySelector('thead');
+    const IndiceTitulo = section.dataset.IndiceTitulo;
 
     // Verificar si ya existe una cabecera
     const existeCabecera = section.querySelector('thead tr');
 
     // Obtener el índice del subtítulo
-    const subtituloIndex = subtituloContador[tituloIndex];
+    const subIndiceTitulo = subtituloContador[IndiceTitulo];
 
     // Obtener la última fila del tbody
-    const lastRow = tableBody.lastElementChild;
+    const UltimaFila = CuerpoTabla.lastElementChild;
 
     // Si no hay cabecera y no es un subtítulo, agregarla
-    if (!existeCabecera && (!lastRow || !lastRow.classList.contains('subtitulo'))) {
-        addcabeza(button);
+    if (!existeCabecera && (!UltimaFila || !UltimaFila.classList.contains('subtitulo'))) {
+        AgregarCabeza(button);
     }
 
     // Si el último elemento es un subtítulo, agregar cabecera después de él
-    if (lastRow && lastRow.classList.contains('subtitulo')) {
-        const newHeaderRow = document.createElement('tr');
-        newHeaderRow.innerHTML = `    
+    if (UltimaFila && UltimaFila.classList.contains('subtitulo')) {
+        const NuevaLineaDeCabecera = document.createElement('tr');
+        NuevaLineaDeCabecera.innerHTML = `    
             <th>Tipo</th>
             <th>Nombre producto</th>
             <th>DESCRIPCIÓN</th>
@@ -123,14 +124,14 @@ function addDetailRow(button) {
             <th></th> <!-- Espacio para el botón de eliminar cabecera -->
         `;
         // Insertar la cabecera después del subtítulo
-        tableBody.insertBefore(newHeaderRow, lastRow.nextSibling);  
+        CuerpoTabla.insertBefore(NuevaLineaDeCabecera, UltimaFila.nextSibling);  
     }
 
     // Crear una nueva fila de detalle
-    const newRow = document.createElement('tr');
-    newRow.innerHTML = `
+    const NuevaFila = document.createElement('tr');
+    NuevaFila.innerHTML = `
         <td colspan="9">
-            <select name="tipo_producto[${tituloIndex}][${subtituloIndex}][]" onchange="handleTipoChange(this)">
+            <select name="tipo_producto[${IndiceTitulo}][${subIndiceTitulo}][]" onchange="CapturarTipoYCambiar(this)">
                 <option value="">Seleccione un tipo</option>
                 <option value="nuevo">Nuevo</option>
                 <option value="insumo">Insumo</option>
@@ -155,49 +156,49 @@ function addDetailRow(button) {
                 <option value="asesoria">Asesoría</option>
             </select>
         </td>
-        <td class="hidden-column"><input type="text" name="nombre_producto[${tituloIndex}][${subtituloIndex}][]" oninput="removeInvalidChars(this)"></td>
-        <td class="hidden-column"><input type="checkbox" onclick="toggleDescription(this)"></td>
-        <td class="hidden-column"><input type="number" name="detalle_cantidad[${tituloIndex}][${subtituloIndex}][]" step="1" min="1" required oninput="updateTotal(this)" oninput="removeInvalidChars(this)"></td>
-        <td class="hidden-column"><input type="number" name="detalle_precio_unitario[${tituloIndex}][${subtituloIndex}][]" step="0.01" min="0" required oninput="updateTotal(this)" oninput="removeInvalidChars(this)"></td>
-        <td class="hidden-column"><input type="number" name="detalle_descuento[${tituloIndex}][${subtituloIndex}][]" step="1" min="0" required oninput="updateTotal(this)" oninput="removeInvalidChars(this)"></td>
-        <td class="hidden-column"><input type="number" name="detalle_total[${tituloIndex}][${subtituloIndex}][]" step="0.01" min="0" readonly></td>
+        <td class="hidden-column"><input type="text" name="nombre_producto[${IndiceTitulo}][${subIndiceTitulo}][]" oninput="QuitarCaracteresInvalidos(this)"></td>
+        <td class="hidden-column"><input type="checkbox" onclick="MostrarDescripcion(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_cantidad[${IndiceTitulo}][${subIndiceTitulo}][]" step="1" min="1" required oninput="ActualizarTotal(this)" oninput="QuitarCaracteresInvalidos(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_precio_unitario[${IndiceTitulo}][${subIndiceTitulo}][]" step="0.01" min="0" required oninput="ActualizarTotal(this)" oninput="QuitarCaracteresInvalidos(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_descuento[${IndiceTitulo}][${subIndiceTitulo}][]" step="1" min="0" required oninput="ActualizarTotal(this)" oninput="QuitarCaracteresInvalidos(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_total[${IndiceTitulo}][${subIndiceTitulo}][]" step="0.01" min="0" readonly></td>
         <td colspan="2" class="hidden-column">
-            <button type="button" class="btn-eliminar" onclick="removeDetailRow(this)">Eliminar</button>
+            <button type="button" class="btn-eliminar" onclick="QuitarLineaDeDetalle(this)">Eliminar</button>
         </td>
     `;
 
     // Agregar la nueva fila de detalle al final del cuerpo de la tabla
-    tableBody.appendChild(newRow);
+    CuerpoTabla.appendChild(NuevaFila);
 
     // Fila opcional de descripción, oculta inicialmente
-    const descriptionRow = document.createElement('tr');
-    descriptionRow.className = 'descripcion-row';
-    descriptionRow.style.display = 'none';
-    descriptionRow.innerHTML = `
+    const LineaDeDescripcion = document.createElement('tr');
+    LineaDeDescripcion.className = 'descripcion-row';
+    LineaDeDescripcion.style.display = 'none';
+    LineaDeDescripcion.innerHTML = `
         <td colspan="9">
-            <textarea name="detalle_descripcion[${tituloIndex}][${subtituloIndex}][]" placeholder="Ingrese sólo si requiere ingresar una descripción extendida del producto o servicio" oninput="removeInvalidChars(this)"></textarea>
+            <textarea name="detalle_descripcion[${IndiceTitulo}][${subIndiceTitulo}][]" placeholder="Ingrese sólo si requiere ingresar una descripción extendida del producto o servicio" oninput="QuitarCaracteresInvalidos(this)"></textarea>
         </td>
     `;
-    tableBody.appendChild(descriptionRow);
+    CuerpoTabla.appendChild(LineaDeDescripcion);
 
     // Asegurarse de que las columnas adicionales estén ocultas desde el principio
-    const hiddenColumns = newRow.querySelectorAll('.hidden-column');
-    hiddenColumns.forEach(column => {
+    const ColumnasOcultas = NuevaFila.querySelectorAll('.hidden-column');
+    ColumnasOcultas.forEach(column => {
         column.style.display = 'none';
     });
 
-    calculateTotals();
+    CalcularTotales();
 }
 
 
-function handleTipoChange(selectElement) {
+function CapturarTipoYCambiar(selectElement) {
     const row = selectElement.closest('tr');
-    const hiddenColumns = row.querySelectorAll('.hidden-column');
-    const firstCell = row.firstElementChild; // Se refiere a la celda del select
+    const ColumnasOcultas = row.querySelectorAll('.hidden-column');
+    const PrimeraCelda = row.firstElementChild; // Se refiere a la celda del select
 
     if (selectElement.value !== "") {
-        firstCell.setAttribute('colspan', '1'); // Cambiar colspan a 1
-        hiddenColumns.forEach(column => {
+        PrimeraCelda.AplicarAtributo('colspan', '1'); // Cambiar colspan a 1
+        ColumnasOcultas.forEach(column => {
             column.style.display = "none"; // Ocultar todas las columnas ocultas
         });
 
@@ -223,45 +224,45 @@ function handleTipoChange(selectElement) {
             }
         } else {
             // Mostrar todas las columnas ocultas si no es "otros" ni "extras"
-            hiddenColumns.forEach(column => {
+            ColumnasOcultas.forEach(column => {
                 column.style.display = "table-cell"; 
             });
         }
     } else {
-        firstCell.setAttribute('colspan', '9'); // Cambiar colspan de vuelta a 9
-        hiddenColumns.forEach(column => {
+        PrimeraCelda.AplicarAtributo('colspan', '9'); // Cambiar colspan de vuelta a 9
+        ColumnasOcultas.forEach(column => {
             column.style.display = "none"; // Ocultar las columnas si se vuelve a seleccionar "Seleccione un tipo"
         });
     }
 
     // Asegurarse de que las otras partes del head de la tabla estén visibles
-    const headerCells = document.querySelectorAll('thead th');
-    headerCells.forEach(cell => {
+    const CeldasCabecera = document.querySelectorAll('thead th');
+    CeldasCabecera.forEach(cell => {
         cell.style.display = ""; // Mostrar todas las celdas del encabezado
     });
 }
 
 function agregarSubtitulo(button) {
     const section = button.closest('.detalle-section');
-    const tableBody = section.querySelector('.detalle-contenido');
-    const tituloIndex = section.dataset.tituloIndex; // Obtiene el índice del título
+    const CuerpoTabla = section.querySelector('.detalle-contenido');
+    const IndiceTitulo = section.dataset.IndiceTitulo; // Obtiene el índice del título
 
     // Incrementar el contador de subtítulos para este título
-    subtituloContador[tituloIndex]++;
+    subtituloContador[IndiceTitulo]++;
 
     // Crear una nueva fila de subtítulo
-    const newSubtitle = document.createElement('tr');
-    newSubtitle.classList.add('subtitulo');
-    newSubtitle.innerHTML = `
+    const NuevoSubtitulo = document.createElement('tr');
+    NuevoSubtitulo.classList.add('subtitulo');
+    NuevoSubtitulo.innerHTML = `
         <td colspan="9">
             <label for="subtitulo">Subtítulo:</label>
-            <input type="text" name="detalle_subtitulo[${tituloIndex}][${subtituloContador[tituloIndex]}]" style="margin-right: 10px;" oninput="removeInvalidChars(this)">
+            <input type="text" name="detalle_subtitulo[${IndiceTitulo}][${subtituloContador[IndiceTitulo]}]" style="margin-right: 10px;" oninput="QuitarCaracteresInvalidos(this)">
             <button type="button" class="btn-eliminar-titulo" onclick="borrarSubtitulo(this)">Eliminar subtítulo</button>
         </td>
     `;
 
     // Agregar el subtítulo al final de todas las filas de detalles actuales
-    tableBody.appendChild(newSubtitle);
+    CuerpoTabla.appendChild(NuevoSubtitulo);
 }
 
 function borrarSubtitulo(button) {
@@ -274,36 +275,36 @@ function borrarSubtitulo(button) {
     }
 }
 
-function removeDetailRow(button) {
+function QuitarLineaDeDetalle(button) {
     const row = button.closest('tr');
-    const descriptionRow = row.nextElementSibling;
+    const LineaDeDescripcion = row.nextElementSibling;
 
     row.remove();
-    if (descriptionRow && descriptionRow.classList.contains('descripcion-row')) {
-        descriptionRow.remove();
+    if (LineaDeDescripcion && LineaDeDescripcion.classList.contains('descripcion-row')) {
+        LineaDeDescripcion.remove();
     }
 
     calcularTotal();
 }
 
-function toggleDescription(checkbox) {
-    const descriptionRow = checkbox.closest('tr').nextElementSibling;
-    descriptionRow.style.display = checkbox.checked ? 'table-row' : 'none';
+function MostrarDescripcion(checkbox) {
+    const LineaDeDescripcion = checkbox.closest('tr').nextElementSibling;
+    LineaDeDescripcion.style.display = checkbox.checked ? 'table-row' : 'none';
 }
 
 function removeCabeza(button) {
-    const tableHead = button.closest('.detalle-section').querySelector('thead');
+    const CabeceraTabla = button.closest('.detalle-section').querySelector('thead');
 
     // Verifica si hay una fila para eliminar
-    const row = tableHead.querySelector('tr');
+    const row = CabeceraTabla.querySelector('tr');
     if (row) {
         row.remove(); // Elimina la fila del encabezado
     }
 
-    calculateTotals(); // Recalcular los totales después de eliminar
+    CalcularTotales(); // Recalcular los totales después de eliminar
 }
 
-function updateTotal(input) {
+function ActualizarTotal(input) {
     const row = input.closest('tr');
     const cantidad = parseFloat(row.querySelector('input[name*="detalle_cantidad"]').value) || 0;
     const precioUnitario = parseFloat(row.querySelector('input[name*="detalle_precio_unitario"]').value) || 0;
@@ -347,7 +348,7 @@ function calcularTotal() {
     calcularPago();
 }
 function init() {
-    addDetailSection();
+    AgregarSeccionDeDetalle();
 }
 
 

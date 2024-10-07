@@ -17,7 +17,7 @@ BPPJ
 
 
     document.addEventListener('DOMContentLoaded', function() {
-        function loadTipoCuenta() {
+        function CargarTipoCuenta() {
             fetch('../../php/crear_empresa/get_tipos_cuenta.php')
                 .then(response => response.text())  // Leer el contenido como texto (HTML)
                 .then(data => {
@@ -27,7 +27,7 @@ BPPJ
                 .catch(error => console.error('Error al cargar tipo de cuenta:', error));
         }
     
-        loadTipoCuenta();
+        CargarTipoCuenta();
     });
     
     
