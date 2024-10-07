@@ -15,7 +15,7 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 // calculations.js
-function updateTotal(input) {
+function ActualizarTotal(input) {
     const row = input.closest('tr');
     const section = row.closest('.detalle-section');
     const tituloIndex = section.dataset.tituloIndex; // Obtiene el índice del título
@@ -32,10 +32,10 @@ function updateTotal(input) {
     const total = (cantidad * (precioUnitario - desc)).toFixed(2);
     totalInput.value = total;
 
-    calculateTotals();
+    CalcularTotales();
 }
 
-function calculateTotals() {
+function CalcularTotales() {
     const rows = document.querySelectorAll('.detalle-section .detalle-table tbody tr');
 
     let subTotal = 0;

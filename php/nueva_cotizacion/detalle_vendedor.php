@@ -1,7 +1,7 @@
 <!--
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
@@ -22,8 +22,8 @@ BPPJ
                 <input type="text" id="vendedor_rut" name="vendedor_rut" 
                     minlength="7" maxlength="12" 
                     placeholder="Ej: 12.345.678-9"
-                    oninput="formatRut(this)"
-                    oninput="removeInvalidChars(this)"
+                    oninput="FormatearRut(this)"
+                    oninput="QuitarCaracteresInvalidos(this)"
                     required> <!-- Campo de texto para ingresar el RUT del cliente. También es obligatorio -->
             </div>
             <div class="form-group">
@@ -34,7 +34,7 @@ BPPJ
                     minlength="3" 
                     maxlength="50" 
                     pattern="^[a-zA-ZÀ-ÿ\s]+$" 
-                    oninput="removeInvalidChars(this)"
+                    oninput="QuitarCaracteresInvalidos(this)"
                     title="Ingresa un nombre válido (Ej: María López). Solo se permiten letras y espacios."> <!-- Campo de texto para ingresar el nombre del vendedor. El atributo "required" hace que el campo sea obligatorio -->
             </div>
         </div>
@@ -46,8 +46,8 @@ BPPJ
                 maxlength="255" 
                 required 
                 title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
-                oninput="removeInvalidChars(this)"
-                onblur="completeEmail(this)"> <!-- Campo de correo electrónico para ingresar el email del vendedor. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico. También es obligatorio -->
+                oninput="QuitarCaracteresInvalidos(this)"
+                onblur="CompletarEmail(this)"> <!-- Campo de correo electrónico para ingresar el email del vendedor. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico. También es obligatorio -->
         </div>
     </div>
     <div class="box-6 data-box data-box-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "data-box-left" para estilo -->
@@ -147,7 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!--
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.

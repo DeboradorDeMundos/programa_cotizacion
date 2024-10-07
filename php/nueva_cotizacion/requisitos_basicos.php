@@ -1,7 +1,7 @@
 <!--
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
@@ -11,8 +11,19 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Requisitos basicos.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-
-
+<?php
+    // Consulta para obtener los requisitos básicos
+    $query_requisitos = "SELECT id_requisitos, indice, descripcion_condiciones FROM E_Requisitos_Basicos WHERE id_empresa = ?";
+    if ($stmt_req = $mysqli->prepare($query_requisitos)) {
+        $stmt_req->bind_param('i', $id);
+        $stmt_req->execute();
+        $result_req = $stmt_req->get_result();
+        $requisitos = $result_req->fetch_all(MYSQLI_ASSOC);
+        $stmt_req->close();
+    } else {
+        echo "<p>Error al preparar la consulta de requisitos: " . $mysqli->error . "</p>";
+    }
+?> 
 <div id="requisitos-basicos" class="data-box">
     <h3>Requisitos Básicos</h3>
     <div class="field">
@@ -39,7 +50,7 @@ BPPJ
 <!--
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.

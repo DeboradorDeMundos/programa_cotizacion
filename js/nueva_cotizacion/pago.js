@@ -15,9 +15,9 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 
-    function addPayment() {
-        const container = document.getElementById('payments-container');
-        const porcentajeInputs = container.querySelectorAll('input[name="porcentaje_pago[]"]');
+    function AgregarPago() {
+        const contenedor = document.getElementById('payments-contenedor');
+        const porcentajeInputs = contenedor.querySelectorAll('input[name="porcentaje_pago[]"]');
         let totalPorcentaje = 0;
     
         // Sumar todos los porcentajes existentes
@@ -38,30 +38,30 @@ BPPJ
         }
     
         // Crear un nuevo bloque de pago
-        const paymentRow = document.createElement('tr');
+        const LineaPago = document.createElement('tr');
     
         // Generar el HTML para un nuevo pago dentro de la tabla
-        paymentRow.innerHTML = `
-            <td><input type="number" name="numero_pago[]" required oninput="removeInvalidChars(this)"></td>
-            <td><textarea name="descripcion_pago[]" placeholder="Descripción del pago" oninput="removeInvalidChars(this)"></textarea></td>
-            <td><input type="number" id="porcentaje-pago" name="porcentaje_pago[]" min="0" max="${100 - totalPorcentaje}" required oninput="calcularPago(this)" oninput="removeInvalidChars(this)"></td>
-            <td><input type="number" id="monto-pago" name="monto_pago[]" min="0" required readonly oninput="removeInvalidChars(this)"></td>
-            <td><input type="date" name="fecha_pago[]" required oninput="removeInvalidChars(this)"></td>
-            <td><button type="button" onclick="removePayment(this)">Eliminar</button></td>
+        LineaPago.innerHTML = `
+            <td><input type="number" name="numero_pago[]" required oninput="QuitarCaracteresInvalidos(this)"></td>
+            <td><textarea name="descripcion_pago[]" placeholder="Descripción del pago" oninput="QuitarCaracteresInvalidos(this)"></textarea></td>
+            <td><input type="number" id="porcentaje-pago" name="porcentaje_pago[]" min="0" max="${100 - totalPorcentaje}" required oninput="calcularPago(this)" oninput="QuitarCaracteresInvalidos(this)"></td>
+            <td><input type="number" id="monto-pago" name="monto_pago[]" min="0" required readonly oninput="QuitarCaracteresInvalidos(this)"></td>
+            <td><input type="date" name="fecha_pago[]" required oninput="QuitarCaracteresInvalidos(this)"></td>
+            <td><button type="button" onclick="EliminarPago(this)">Eliminar</button></td>
         `;
     
         // Agregar la nueva fila de pago al cuerpo de la tabla
-        container.appendChild(paymentRow);
+        contenedor.appendChild(LineaPago);
     }
     
-    function removePayment(button) {
+    function EliminarPago(button) {
         // Eliminar la fila correspondiente
         const row = button.closest('tr');
         row.remove();
     
         // Ocultar la tabla si no quedan filas
-        const container = document.getElementById('payments-container');
-        if (container.children.length === 0) {
+        const contenedor = document.getElementById('payments-contenedor');
+        if (contenedor.children.length === 0) {
             document.getElementById('payment-table').style.display = 'none';
         }
     }
@@ -82,8 +82,8 @@ BPPJ
     }
     
     function verificarTotalPorcentajes(input) {
-        const container = document.getElementById('payments-container');
-        const porcentajeInputs = container.querySelectorAll('input[name="porcentaje_pago[]"]');
+        const contenedor = document.getElementById('payments-contenedor');
+        const porcentajeInputs = contenedor.querySelectorAll('input[name="porcentaje_pago[]"]');
         let totalPorcentaje = 0;
     
         // Sumar todos los porcentajes existentes

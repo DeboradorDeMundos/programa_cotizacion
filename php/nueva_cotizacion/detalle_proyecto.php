@@ -1,7 +1,7 @@
 <!--
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
@@ -26,7 +26,7 @@ BPPJ
             <input type="text" id="proyecto_nombre" name="proyecto_nombre" required 
                 pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
                 title="Por favor, ingrese solo letras, números y caracteres como &,-."
-                oninput="removeInvalidChars(this)"
+                oninput="QuitarCaracteresInvalidos(this)"
                 placeholder="Ejemplo: Mi Proyecto 1"> <!-- Campo de texto para ingresar el nombre del proyecto. El atributo "required" hace que el campo sea obligatorio -->
         </div>
 
@@ -37,7 +37,7 @@ BPPJ
                 required 
                 maxlength="10" 
                 pattern="^[a-zA-Z0-9-_]{1,10}$" 
-                oninput="removeInvalidChars(this)"
+                oninput="QuitarCaracteresInvalidos(this)"
                 title="Ingresa un código de hasta 10 caracteres (letras, números, guiones y guiones bajos).">
         </div>
         
@@ -101,7 +101,7 @@ BPPJ
         <input type="text" id="riesgo_descripcion" name="riesgo_descripcion" required 
             pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
             title="Por favor, ingrese solo letras, números y caracteres como &,-."
-            oninput="removeInvalidChars(this)"
+            oninput="QuitarCaracteresInvalidos(this)"
             placeholder="Ejemplo: Riesgo de retraso en la entrega"> <!-- Campo de texto para ingresar la descripción del riesgo. El atributo "required" hace que el campo sea obligatorio -->
     </div>
 
@@ -113,17 +113,17 @@ BPPJ
     <div class="form-group-inline">
         <div class="form-group">
             <label for="dias_compra">Días de Compra:</label> <!-- Etiqueta para el campo de entrada de los días de compra -->
-            <input type="number" id="dias_compra" name="dias_compra" placeholder="ingrese N° de dias" oninput="removeInvalidChars(this)"> <!-- Campo de número para ingresar la cantidad de días de compra. Este campo no es obligatorio -->
+            <input type="number" id="dias_compra" name="dias_compra" placeholder="ingrese N° de dias" oninput="QuitarCaracteresInvalidos(this)"> <!-- Campo de número para ingresar la cantidad de días de compra. Este campo no es obligatorio -->
         </div>
         <div class="form-group">
             <label for="dias_trabajo">Días de Trabajo:</label> <!-- Etiqueta para el campo de entrada de los días de trabajo -->
-            <input type="number" id="dias_trabajo" name="dias_trabajo" placeholder="ingrese N° de dias" oninput="removeInvalidChars(this)"> <!-- Campo de número para ingresar la cantidad de días de trabajo. No es obligatorio -->
+            <input type="number" id="dias_trabajo" name="dias_trabajo" placeholder="ingrese N° de dias" oninput="QuitarCaracteresInvalidos(this)"> <!-- Campo de número para ingresar la cantidad de días de trabajo. No es obligatorio -->
         </div>
     </div>
 
     <div class="form-group">
         <label for="trabajadores">Número de Trabajadores:</label> <!-- Etiqueta para el campo de entrada del número de trabajadores -->
-        <input type="number" id="trabajadores" name="trabajadores" placeholder="N° trabajadores" oninput="removeInvalidChars(this)"> <!-- Campo de número para ingresar la cantidad de trabajadores. Este campo no es obligatorio -->
+        <input type="number" id="trabajadores" name="trabajadores" placeholder="N° trabajadores" oninput="QuitarCaracteresInvalidos(this)"> <!-- Campo de número para ingresar la cantidad de trabajadores. Este campo no es obligatorio -->
     </div>
 
     <div class="form-group-inline">
@@ -132,7 +132,7 @@ BPPJ
         <input type="text" id="horario" name="horario" 
             placeholder="Ej: 08:00 a 18:00" 
             pattern="^([01]?[0-9]|2[0-3]):[0-5][0-9] a ([01]?[0-9]|2[0-3]):[0-5][0-9]$" 
-            oninput="removeInvalidChars(this)"
+            oninput="QuitarCaracteresInvalidos(this)"
             title="Ingresa un horario válido (Ej: 08:00 a 18:00)."> <!-- Campo de texto para ingresar el horario. Este campo no es obligatorio -->
         </div>
         <div class="form-group">
@@ -140,7 +140,7 @@ BPPJ
             <input type="text" id="colacion" name="colacion" 
                 placeholder="Ej: Sí o No" 
                 pattern="^[a-zA-Z0-9-_]{1,10}$" 
-                oninput="removeInvalidChars(this)"
+                oninput="QuitarCaracteresInvalidos(this)"
                 title="Ingresa 'Sí' o 'No'." /> <!-- Campo de texto para ingresar la información sobre la colación. No es obligatorio -->
         </div>
     </div>
@@ -151,7 +151,7 @@ BPPJ
             placeholder="Ej: Lunes, Martes" 
             required 
             pattern="^[a-zA-Z0-9-_]{1,10}$" 
-            oninput="removeInvalidChars(this)"
+            oninput="QuitarCaracteresInvalidos(this)"
             title="Ingresa un día de la semana (Ej: Lunes, Martes, etc.). Solo se permiten nombres de días."> <!-- Campo de texto para ingresar detalles sobre la entrega. Este campo no es obligatorio -->
     </div>
 </fieldset>
@@ -230,7 +230,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!--
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.

@@ -16,7 +16,7 @@ BPPJ
 
 
 // Objeto que asocia códigos de país de América con imágenes de banderas
-const countryFlags = {
+const BanderasPaises = {
     "+1": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/32px-Flag_of_United_States.svg.png", // USA
     "+52": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/32px-Flag_of_Mexico.svg.png", // Mexico
     "+56": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_of_Chile.svg/32px-Flag_of_Chile.svg.png", // Chile
@@ -42,41 +42,41 @@ const countryFlags = {
 const defaultFlag = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/World_Flag_%282004%29.svg/640px-World_Flag_%282004%29.svg.png"; // Bandera por defecto
 
 // Función para detectar el país según el número de teléfono ingresado
-function detectCountry(input) {
-    const phoneNumber = input.value.trim(); // Asegúrate de eliminar espacios
-    const flagImg = document.getElementById("flag");
+function DetectarPais(input) {
+    const NumeroDeTelefono = input.value.trim(); // Asegúrate de eliminar espacios
+    const ImagenBandera = document.getElementById("flag");
     
     // Itera sobre los códigos de país para detectar el correcto
-    for (const code in countryFlags) {
-        if (phoneNumber.startsWith(code)) {
-            flagImg.src = countryFlags[code];
-            flagImg.style.display = "inline"; // Mostrar la imagen de la bandera
+    for (const Codigo in BanderasPaises) {
+        if (NumeroDeTelefono.startsWith(Codigo)) {
+            ImagenBandera.src = BanderasPaises[Codigo];
+            ImagenBandera.style.display = "inline"; // Mostrar la imagen de la bandera
             return; // Detener la función si se encuentra el país
         }
     }
     // Si no se encuentra un código de país coincidente, muestra la bandera por defecto
-    flagImg.src = defaultFlag;
-    flagImg.style.display = "inline";
+    ImagenBandera.src = defaultFlag;
+    ImagenBandera.style.display = "inline";
 }
 
-function ensurePlusAndDetectCountry(input) {
+function AgregarMasYDetectarPais(input) {
     // Comprobar si el valor ya comienza con '+', si no, agregarlo
     if (!input.value.startsWith('+')) {
         input.value = '+' + input.value.replace(/^\+/, ''); // Asegurarse de que solo haya un '+'
     }
 
     // Permitir solo números después del '+' y mantener el '+'
-    const validCharacters = input.value.replace(/[^0-9]/g, ''); // Eliminar caracteres no válidos, excepto '+'
-    input.value = input.value[0] + validCharacters; // Mantener el '+' y agregar solo los números
+    const CaracteresValidos = input.value.replace(/[^0-9]/g, ''); // Eliminar caracteres no válidos, excepto '+'
+    input.value = input.value[0] + CaracteresValidos; // Mantener el '+' y agregar solo los números
 
     // Llamar a la función de detección de la bandera
-    detectCountry(input);
+    DetectarPais(input);
 }
 
 // Asegúrate de que la bandera se actualice al cargar la página
 window.onload = function() {
     const inputField = document.getElementById('empresa_telefono');
-    ensurePlusAndDetectCountry(inputField); // Llama a la función para asegurar "+" y detectar el país
+    AgregarMasYDetectarPais(inputField); // Llama a la función para asegurar "+" y detectar el país
 };
 
 

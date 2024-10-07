@@ -16,16 +16,16 @@ BPPJ
   
     document.addEventListener('DOMContentLoaded', function() {
         var customSelect = document.querySelector('.custom-select');
-        var selectedOption = customSelect.querySelector('.selected-option');
-        var optionList = customSelect.querySelector('#option-list');
-        var selectElement = customSelect.querySelector('select');
-        var hiddenInput = document.getElementById('selected-empresa');
+        var OpcionSeleccionada = customSelect.querySelector('.selected-option');
+        var ListaDeOpciones = customSelect.querySelector('#option-list');
+        var ElementoSeleccionado = customSelect.querySelector('select');
+        var InputOculto = document.getElementById('selected-empresa');
 
-        selectedOption.addEventListener('click', function() {
-            optionList.style.display = optionList.style.display === 'block' ? 'none' : 'block';
+        OpcionSeleccionada.addEventListener('click', function() {
+            ListaDeOpciones.style.display = ListaDeOpciones.style.display === 'block' ? 'none' : 'block';
         });
 
-        optionList.addEventListener('click', function(event) {
+        ListaDeOpciones.addEventListener('click', function(event) {
             var target = event.target;
             while (target && !target.hasAttribute('data-value')) {
                 target = target.parentElement;
@@ -33,16 +33,16 @@ BPPJ
             if (target) {
                 var value = target.getAttribute('data-value');
                 var text = target.textContent.trim();
-                selectedOption.textContent = text;
-                hiddenInput.value = value;
-                selectElement.value = value;
-                optionList.style.display = 'none';
+                OpcionSeleccionada.textContent = text;
+                InputOculto.value = value;
+                ElementoSeleccionado.value = value;
+                ListaDeOpciones.style.display = 'none';
             }
         });
 
         document.addEventListener('click', function(event) {
             if (!customSelect.contains(event.target)) {
-                optionList.style.display = 'none';
+                ListaDeOpciones.style.display = 'none';
             }
         });
     });

@@ -14,29 +14,29 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 
-    function toggleMenu(isLoggedIn) {
-        const form = document.getElementById('empresaForm');
+    function ExpandirMenu(isLoggedIn) {
+        const Formulario = document.getElementById('empresaForm');
         const menu = document.getElementById('menuNavegacion');
         const btnSalir = document.getElementById('btnSalir');
         
         if (isLoggedIn) {
-            form.classList.add('hidden');
+            Formulario.classList.add('hidden');
             menu.classList.remove('hidden');
             btnSalir.classList.remove('hidden');
         } else {
-            form.classList.remove('hidden');
+            Formulario.classList.remove('hidden');
             menu.classList.add('hidden');
             btnSalir.classList.add('hidden');
         }
     }
     
     function salir() {
-        toggleMenu(false);
+        ExpandirMenu(false);
     }
     
     document.addEventListener('DOMContentLoaded', () => {
         if (document.querySelector('nav#menuNavegacion')) {
-            toggleMenu(true);
+            ExpandirMenu(true);
         }
     });
     

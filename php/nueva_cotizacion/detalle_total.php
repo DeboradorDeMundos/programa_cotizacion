@@ -1,7 +1,7 @@
 <!--
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
@@ -23,7 +23,7 @@ BPPJ
     <div class="form-group-inline-2">
         <div class="form-group-2">
             <label for="descuentoGlobal">Descuento</label>
-            <input type="number" id="descuento_global_porcentaje" name="descuento_global_porcentaje" oninput="calculateTotals()" oninput="removeInvalidChars(this)" step="1" min="0" max="100" value="0" >
+            <input type="number" id="descuento_global_porcentaje" name="descuento_global_porcentaje" oninput="CalcularTotales()" oninput="QuitarCaracteresInvalidos(this)" step="1" min="0" max="100" value="0" >
             <span>%</span>
         </div>
         <div class="form-group-2">
@@ -131,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!--
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.

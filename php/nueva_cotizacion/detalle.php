@@ -17,13 +17,13 @@ BPPJ
 <link rel="stylesheet" href="../../css/nueva_cotizacion/detalle.css">
 <fieldset>
     <legend>Detalle de la Cotización</legend>
-    <div id="detalle-container">
+    <div id="detalle-contenedor">
         <div class="detalle-section">
             <!-- Aquí se agregarán las secciones dinámicamente -->
         </div>
 
-        <div class="fixed-button-container">
-            <button type="button" onclick="addDetailSection()">Agregar un nuevo título</button>
+        <div class="fixed-button-contenedor">
+            <button type="button" onclick="AgregarSeccionDeDetalle()">Agregar un nuevo título</button>
         </div>
     </div>
 </fieldset>

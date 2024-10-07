@@ -14,7 +14,7 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Detalle cliente.JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-    function formatPhoneNumber(input) {
+    function FormatoNumeroTelefono(input) {
         // Eliminar todo lo que no sea número o espacio
         let value = input.value.replace(/[^\d]/g, '');
         
@@ -33,14 +33,14 @@ BPPJ
         input.value = value; // Actualizar el valor del campo de entrada
     }
 
-    function completeEmail(input) {
+    function CompletarEmail(input) {
         // Eliminar comillas simples y dobles de la entrada
         input.value = input.value.replace(/['"]/g, '');
     
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expresión regular para validar el correo electrónico
+        const PatronEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expresión regular para validar el correo electrónico
         
         // Verificar si el correo tiene un formato válido
-        if (!emailPattern.test(input.value)) {
+        if (!PatronEmail.test(input.value)) {
             // Comprobar si el valor no contiene '@'
             if (!input.value.includes('@')) {
                 input.value += '@gmail.com'; // Añadir '@gmail.com' si no se ingresó
@@ -50,7 +50,7 @@ BPPJ
         }
     }
 
-    function removeInvalidChars(input) {
+    function QuitarCaracteresInvalidos(input) {
         // Eliminar comillas simples, dobles y cualquier otro carácter no deseado
         input.value = input.value.replace(/['"]/g, '');
     }

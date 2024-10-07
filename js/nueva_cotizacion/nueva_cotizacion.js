@@ -17,7 +17,7 @@ BPPJ
     });
     
     
-    function formatRut(input) {
+    function FormatearRut(input) {
         let rut = input.value.replace(/\D/g, '');
         if (rut.length > 1) {
             rut = rut.slice(0, -1).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '-' + rut.slice(-1);
@@ -27,17 +27,17 @@ BPPJ
     
 
     
-    function togglePaymentInfo(checkbox) {
+    function MostrarInformacionDePago(checkbox) {
         const table = checkbox.closest('table');
-        const paymentInfoContainer = table.querySelector('.payment-info');
-        const paymentHeader = table.querySelector('.payment-header');
+        const ContenedorDePago = table.querySelector('.payment-info');
+        const CabeceraPago = table.querySelector('.payment-header');
     
         if (checkbox.checked) {
-            paymentInfoContainer.style.display = 'table-row-group';
-            paymentHeader.style.display = 'table-row';
+            ContenedorDePago.style.display = 'table-row-group';
+            CabeceraPago.style.display = 'table-row';
         } else {
-            paymentInfoContainer.style.display = 'none';
-            paymentHeader.style.display = 'none';
+            ContenedorDePago.style.display = 'none';
+            CabeceraPago.style.display = 'none';
         }
     }
     

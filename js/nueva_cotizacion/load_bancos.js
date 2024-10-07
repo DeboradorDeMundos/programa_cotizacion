@@ -14,7 +14,7 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
     document.addEventListener('DOMContentLoaded', function() {
         // Función para llenar el select de bancos
-        function loadBancos() {
+        function CargarBancos() {
             fetch('../../php/crear_empresa/get_bancos.php')
                 .then(response => response.text())  // Leer el contenido como texto (HTML)
                 .then(data => {
@@ -25,7 +25,7 @@ BPPJ
         }
     
         // Cargar bancos al cargar la página
-        loadBancos();
+        CargarBancos();
     });
 
 /* --------------------------------------------------------------------------------------------------------------

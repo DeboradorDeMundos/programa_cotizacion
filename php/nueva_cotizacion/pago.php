@@ -1,7 +1,7 @@
 <!--
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
@@ -16,7 +16,7 @@ BPPJ
 <link rel="stylesheet" href="../../css/nueva_cotizacion/pago.css">
 <fieldset id="payment-section">
     <legend>Información de pago</legend>
-    <button type="button" onclick="addPayment()">Agregar Pago</button>
+    <button type="button" onclick="AgregarPago()">Agregar Pago</button>
     <table id="payment-table" style="display: none;"> <!-- Inicialmente oculto -->
         <thead>
             <tr>
@@ -28,7 +28,7 @@ BPPJ
                 <th>Acción</th>
             </tr>
         </thead>
-        <tbody id="payments-container">
+        <tbody id="payments-contenedor">
             <!-- Aquí se agregarán dinámicamente los pagos -->
         </tbody>
     </table>
@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!--
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.

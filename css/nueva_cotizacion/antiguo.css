@@ -19,14 +19,14 @@ BPPJ
 /* formulario_cotizacion.css */
 
 /* Establece la fuente predeterminada, elimina márgenes y rellenos, y define el color de fondo de la página */
-body {
+  body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
   }
   
-  .container {
+  .contenedor {
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
@@ -61,7 +61,7 @@ body {
     justify-content: center;
   }
   
-  .logo-container {
+  .logo-contenedor {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -257,12 +257,12 @@ body {
     font-weight: bold;
   }
   
-  #detalle-container {
+  #detalle-contenedor {
     position: relative;
     padding-bottom: 50px;
   }
   
-  .fixed-button-container {
+  .fixed-button-contenedor {
     position: absolute;
     bottom: 10px;
     left: 0;
@@ -271,7 +271,7 @@ body {
     padding: 0 20px;
   }
   
-  .fixed-button-container button {
+  .fixed-button-contenedor button {
     background-color: #007bff;
     color: white;
     border: none;
@@ -281,7 +281,7 @@ body {
     cursor: pointer;
   }
   
-  .fixed-button-container button:hover {
+  .fixed-button-contenedor button:hover {
     background-color: #0056b3;
   }
   
@@ -313,7 +313,7 @@ body {
     background-color: #ff4500;
   }
   
-  .form-container {
+  .form-contenedor {
     background-color: #f9f9f9;
     padding: 20px;
     border: 1px solid #ddd;
@@ -410,7 +410,7 @@ body {
     color: #333;
   }
   
-  .form-container-2 {
+  .form-contenedor-2 {
     background-color: #f9f9f9;
     padding: 20px;
     border: 1px solid #ddd;
