@@ -21,23 +21,23 @@ BPPJ
     <title>Firma</title>
 </head>
 <body>
-    <div class="signature-container">
+    <div class=".contenedor-firma">
         <h1>Selecciona una opción de firma</h1>
         <h3>¡Crea una firma automática, manual o sube tu propia firma digital!</h3>
 
         <!-- Opción de Firma Automática -->
-        <div class="option">
-            <input type="radio" id="auto-signature" name="signature-option" value="automatic">
-            <label for="auto-signature">Firma Automática</label>
-            <div id="auto-signature-display" class="signature-display" style="display: none;"></div>
+        <div class="opcion">
+            <input type="radio" id="auto-firma" name="opcion-firma" value="automatica">
+            <label for="auto-firma">Firma Automática</label>
+            <div id="auto-desplegar-firma" class="desplegar-firma" style="display: none;"></div>
         </div>
 
         <!-- Opción de Firma Manual -->
-        <div class="option">
-        <input type="radio" id="manual-signature" name="signature-option" value="manual">
-        <label for="manual-signature">Firma Manual</label>
-        <div id="manual-signatures" class="signature-display" style="display: none;">
-            <div class="signature-row">
+        <div class="opcion">
+        <input type="radio" id="manual-firma" name="opcion-firma" value="manual">
+        <label for="manual-firma">Firma Manual</label>
+        <div id="firma-manual" class="desplegar-firma" style="display: none;">
+            <div class="fila-firma">
                 <input type="text" name="titulo_firma" placeholder="titulo de la firma" oninput="removeInvalidChars(this)">
                 <input type="text" name="nombre_encargado_firma" placeholder="Nombre del Encargado" oninput="removeInvalidChars(this)">
                 <input type="text" name="cargo_encargado_firma" placeholder="Cargo del Encargado" oninput="removeInvalidChars(this)">
@@ -58,18 +58,18 @@ BPPJ
         </div>
 
                 <!-- Opción de Firma Digital (Subida de Imagen) -->
-        <div class="option">
-            <input type="radio" id="image-signature" name="signature-option" value="image">
-            <label for="image-signature">Firma Imagen</label>
-            <input type="file" id="signature-image" name="signature-image" accept="image/png">
+        <div class="opcion">
+            <input type="radio" id="imagen-firma" name="opcion-firma" value="imagen">
+            <label for="imagen-firma">Firma Imagen</label>
+            <input type="file" id="firma-imagen" name="firma-imagen" accept="image/png">
             <!-- Previsualización de la imagen de la firma -->
-            <img id="signature-preview" src="" alt="Previsualización de firma" style="display: none;">
+            <img id="firma-preview" src="" alt="Previsualización de firma" style="display: none;">
         </div>
 
-        <div class="option">
-            <input type="radio" id="digital-signature" name="signature-option" value="digital">
-            <label for="digital-signature">Firma Digital</label>
-            <div id="digital-signature-message" class="signature-display" style="display: none;">
+        <div class="opcion">
+            <input type="radio" id="digital-firma" name="opcion-firma" value="digital">
+            <label for="digital-firma">Firma Digital</label>
+            <div id="digital-firma-message" class="desplegar-firma" style="display: none;">
                 <p>Su firma se generará en su cotización.</p>
             </div>
         </div>
@@ -99,9 +99,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Verificar qué opción de firma se seleccionó
-    $firma_opcion = $_POST['signature-option'];
+    $firma_opcion = $_POST['opcion-firma'];
 
-    if ($firma_opcion === 'automatic') {
+    if ($firma_opcion === 'automatica') {
         // Insertar firma automática con datos predefinidos
         $titulo_firma = "SIN OTRO PARTICULAR, Y ESPERANDO QUE LA PRESENTE OFERTA SEA DE SU INTERÉS, SE DESPIDE ATENTAMENTE:";
         $nombre_encargado = ""; // Dejar vacío si no hay encargado
@@ -188,16 +188,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $rut_firma);
         $stmt->execute();
 
-    } elseif ($firma_opcion === 'image') {
+    } elseif ($firma_opcion === 'imagen') {
              // Firma digital (subida de imagen)
-             if (isset($_FILES['signature-image']) && $_FILES['signature-image']['error'] === UPLOAD_ERR_OK) {
+             if (isset($_FILES['firma-imagen']) && $_FILES['firma-imagen']['error'] === UPLOAD_ERR_OK) {
                 $target_dir = "../../imagenes/crear_empresa/firma/";
-                $target_file = $target_dir . basename($_FILES["signature-image"]["name"]);
+                $target_file = $target_dir . basename($_FILES["firma-imagen"]["name"]);
                 $uploadOk = 1;
                 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     
                 // Comprobar si es una imagen válida
-                $check = getimagesize($_FILES["signature-image"]["tmp_name"]);
+                $check = getimagesize($_FILES["firma-imagen"]["tmp_name"]);
                 if ($check !== false) {
                     $uploadOk = 1;
                 } else {
@@ -213,7 +213,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
                 // Subir el archivo si todo está bien
                 if ($uploadOk == 1) {
-                    if (move_uploaded_file($_FILES["signature-image"]["tmp_name"], $target_file)) {
+                    if (move_uploaded_file($_FILES["firma-imagen"]["tmp_name"], $target_file)) {
                         $firma_ruta = $target_file;
     
                         // Aquí todos los demás campos se insertan como NULL, excepto id_firma e id_empresa
