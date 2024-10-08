@@ -17,8 +17,8 @@ BPPJ
 
 
         function imprimir() {
-            // Obtener el contenido de la clase "contenedor"
-            const contenido = document.querySelector('.contenedor').innerHTML;
+            // Obtener el contenido de la clase "container"
+            const contenido = document.querySelector('.container').innerHTML;
 
             // Crear una nueva ventana
             const ventanaImpresion = window.open('', '', 'width=850,height=1300'); // Ajusta el tamaño para hoja oficio
@@ -34,7 +34,7 @@ BPPJ
                                 margin: 0; /* Sin márgenes */
                                 padding: 0; /* Sin relleno */
                             }
-                            .contenedor {
+                            .container {
                                 width: 100%; 
                                 height: auto; 
                                 page-break-after: always;
@@ -48,7 +48,7 @@ BPPJ
                     </style>
                 </head>
                 <body>
-                    <div class="contenedor">${contenido}</div>
+                    <div class="container">${contenido}</div>
                     <script>
                         window.onload = function() {
                             window.print();

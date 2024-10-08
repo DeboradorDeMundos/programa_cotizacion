@@ -1,46 +1,45 @@
+
 /* 
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Aguirre Cerda - Santiago - Chile
+Pedro Agui Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
 BPPJ 
 */
 
+
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Cuadro Rojo .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
+/* Estilos comunes */
 
-/* Estilos comunes para la estructura del sitio */
-
-/* Clase 'box-6' utilizada para controlar el ancho máximo de un contenedor y su relleno interno */
 .box-6 {
-    flex: 1; /* Permite que el contenedor crezca para llenar el espacio disponible en un diseño flexible */
-    max-width: 50%; /* Limita el ancho máximo al 50% del contenedor padre */
-    padding: 10px; /* Agrega un espacio interno de 10px alrededor del contenido del contenedor */
+    flex: 1;
+    max-width: 50%;
+    padding: 10px;
 }
 
-.cuadro-datos {
+.data-box {
     border: 1px solid #ddd;
     padding: 15px;
     background-color: #fff;
     border-radius: 12px;
 }
 
-.cuadro-datos-rojo {
+.data-box-red {
     border-color: red;
     border-radius: 12px;
 }
 
-/* Estilo para los campos de entrada en el formulario */
 input {
-    width: calc(100% - 20px); /* Establece el ancho al 100% menos 20px para evitar desbordamientos */
-    padding: 10px; /* Aplica un relleno de 10px dentro del campo */
-    margin-bottom: 20px; /* Añade un margen inferior de 20px para separar los campos entre sí */
-    border: 1px solid #ddd; /* Aplica un borde de 1px de color gris claro */
-    border-radius: 5px; /* Redondea las esquinas del campo con un radio de 5px */
-    box-sizing: border-box; /* Asegura que el relleno y el borde se incluyan dentro del ancho total */
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
 /* --------------------------------------------------------------------------------------------------------------
@@ -51,7 +50,7 @@ input {
 /*
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Aguirre Cerda - Santiago - Chile
+Pedro Agui Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.

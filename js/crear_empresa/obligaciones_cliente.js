@@ -19,7 +19,7 @@
         function addObligaciones() {
             obligacionesCount++;
         
-            const contenedor_o = document.getElementById('obligaciones-contenedor');
+            const contenedor_o = document.getElementById('obligaciones-container');
         
             // Crear nueva fila de obligación
             const obligacionesDiv = document.createElement('div');
@@ -45,7 +45,7 @@
         
         // Función para eliminar obligaciones
         function removeObligaciones(button) {
-            const contenedor_o = document.getElementById('obligaciones-contenedor');
+            const contenedor_o = document.getElementById('obligaciones-container');
             const obligacionesDiv = button.parentElement;
         
             if (obligacionesDiv) {

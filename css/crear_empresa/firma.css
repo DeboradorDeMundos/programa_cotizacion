@@ -15,19 +15,19 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 
-    .contenedor-firma {
+    .signature-container {
         margin: 20px;
     }
     
-    .opcion {
+    .option {
         margin-bottom: 15px;
     }
     
-    .opcion label {
+    .option label {
         font-weight: bold;
     }
     
-    .desplegar-firma {
+    .signature-display {
         width: 100%;
         margin-top: 10px;
         padding: 10px;

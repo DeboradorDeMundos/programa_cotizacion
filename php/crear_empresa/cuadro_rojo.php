@@ -1,7 +1,7 @@
 <!--
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Aguirre Cerda - Santiago - Chile
+Pedro Agui Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
@@ -14,7 +14,7 @@ BPPJ
 
 <!-- falta php de esto -->
 <link rel="stylesheet" href="../../css/crear_empresa/cuadro_rojo.css">
-<div class="box-6 cuadro-datos cuadro-datos-rojo"> <!-- Crea una caja para ingresar datos, ocupando otras 6 columnas. Se aplica una clase adicional para estilo -->
+<div class="box-6 data-box data-box-red"> <!-- Crea una caja para ingresar datos, ocupando otras 6 columnas. Se aplica una clase adicional para estilo -->
     <label for="empresa_rut">RUT de la Empresa:</label> <!-- Etiqueta para el campo de entrada del RUT de la empresa -->
     <input type="text" id="empresa_rut" name="empresa_rut" placeholder="Ej: 12.345.678-9" required oninput="formatRut(this)"> <!-- Campo de texto para ingresar el RUT de la empresa. El atributo "required" hace que el campo sea obligatorio -->
     
@@ -34,7 +34,7 @@ BPPJ
 <!--
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Aguirre Cerda - Santiago - Chile
+Pedro Agui Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.

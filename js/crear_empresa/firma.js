@@ -13,13 +13,13 @@ BPPJ
     -------------------------------------- Inicio ITred Spa Firma .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
     document.addEventListener('DOMContentLoaded', () => {
-        const MostrarFirmaAutomatica = document.getElementById('auto-desplegar-firma');
-        const MostrarFirmaManual = document.getElementById('firma-manual');
-        const CampoFirmaImagen = document.getElementById('firma-imagen');
-        const VistaFirma = document.getElementById('firma-preview');
-        const MensajeFirmaDigital = document.getElementById('digital-firma-message'); // Contenedor del mensaje de firma digital
+        const autoSignatureDisplay = document.getElementById('auto-signature-display');
+        const manualSignaturesContainer = document.getElementById('manual-signatures');
+        const signatureImageInput = document.getElementById('signature-image');
+        const signaturePreview = document.getElementById('signature-preview');
+        const digitalSignatureMessage = document.getElementById('digital-signature-message'); // Contenedor del mensaje de firma digital
     
-        const GenerarFimaAutomatica = () => {
+        const generateAutomaticSignature = () => {
             const titular_predefinido = `SIN OTRO PARTICULAR, Y ESPERANDO QUE LA PRESENTE OFERTA SEA DE SU INTERÉS, SE DESPIDE ATENTAMENTE:`;
         
             const nombre_encargado = document.getElementById('encargado_nombre').value;
@@ -37,108 +37,109 @@ BPPJ
             if (!nombre_encargado || !cargo_encargado || !empresa_nombre || !empresa_direccion || !empresa_ciudad || !empresa_pais || !telefono_encargado || !celular_encargado || !email_encargado || !web_empresa) {
                 return "Antes debes llenar todos los campos del formulario.";
             }
-    
+        
             return `
-                ${titularPredefinido} 
-                \n\n${nombreEncargado} 
-                \n${cargoEncargado} - ${nombreEmpresa} 
-                \n${direccionEmpresa} 
-                \nTeléfono: ${telefonoEncargado} 
-                \nCelular: ${celularEncargado} 
-                \nEmail: ${emailEncargado} 
-                \nWeb: ${webEmpresa}`;
+                ${titular_predefinido} 
+                \n\n${nombre_encargado} 
+                \n${cargo_encargado} - ${empresa_nombre} 
+                \n${empresa_direccion} 
+                \n${empresa_ciudad}, ${empresa_pais} 
+                \nTeléfono: ${telefono_encargado} 
+                \nCelular: ${celular_encargado} 
+                \nEmail: ${email_encargado} 
+                \nWeb: ${web_empresa}`;
         };
     
-        document.querySelectorAll('input[name="opcion-firma"]').forEach((input) => {
+        document.querySelectorAll('input[name="signature-option"]').forEach((input) => {
             input.addEventListener('change', () => {
                 // Oculta todas las secciones de firma
-                document.querySelectorAll('.desplegar-firma').forEach((element) => {
+                document.querySelectorAll('.signature-display').forEach((element) => {
                     element.style.display = 'none';
                 });
     
                 // Muestra la sección correspondiente según la opción seleccionada
-                if (input.value === 'automatica') {
-                    MostrarFirmaAutomatica.innerText = GenerarFimaAutomatica();
-                    MostrarFirmaAutomatica.style.display = 'block';
+                if (input.value === 'automatic') {
+                    autoSignatureDisplay.innerText = generateAutomaticSignature();
+                    autoSignatureDisplay.style.display = 'block';
                 } else if (input.value === 'manual') {
-                    MostrarFirmaManual.style.display = 'block';
-                } else if (input.value === 'imagen') {
-                    CampoFirmaImagen.style.display = 'block';
+                    manualSignaturesContainer.style.display = 'block';
+                } else if (input.value === 'image') {
+                    signatureImageInput.style.display = 'block';
                 } else if (input.value === 'digital') {
-                    MensajeFirmaDigital.style.display = 'block'; // Muestra el mensaje de firma digital
+                    digitalSignatureMessage.style.display = 'block'; // Muestra el mensaje de firma digital
                 }
     
                 // Asegúrate de ocultar el campo de imagen si se selecciona otra opción
-                if (input.value !== 'imagen') {
-                    CampoFirmaImagen.style.display = 'none';
-                    VistaFirma.style.display = 'none'; // Oculta la previsualización de la imagen si se elige otra opción
+                if (input.value !== 'image') {
+                    signatureImageInput.style.display = 'none';
+                    signaturePreview.style.display = 'none'; // Oculta la previsualización de la imagen si se elige otra opción
                 }
             });
         });
     
         // Evento para manejar la subida de la imagen y mostrar la previsualización
-        CampoFirmaImagen.addEventListener('change', (event) => {
+        signatureImageInput.addEventListener('change', (event) => {
             const file = event.target.files[0];
             if (file && file.type === 'image/png') {
                 const reader = new FileReader();
                 reader.onload = (e) => {
-                    VistaFirma.src = e.target.result;
-                    VistaFirma.style.display = 'block';
+                    signaturePreview.src = e.target.result;
+                    signaturePreview.style.display = 'block';
                 };
-                reader.readAsDataURL(archivo);
+                reader.readAsDataURL(file);
             } else {
                 alert('Por favor selecciona un archivo PNG válido.');
             }
         });
        document.addEventListener('DOMContentLoaded', () => {
-    const BotonAgregarFirma = document.getElementById('agregar-firma');
-    const MostrarFirmaManual = document.getElementById('firma-manual');
+    const addSignatureButton = document.getElementById('add-signature');
+    const manualSignaturesContainer = document.getElementById('manual-signatures');
 
     // Escuchar el evento para agregar una nueva fila de firma manual
-    BotonAgregarFirma.addEventListener('click', () => {
-        const FilaNuevaFirma = document.createElement('div');
-        FilaNuevaFirma.classList.add('fila-firma');
-        FilaNuevaFirma.style.display = 'flex'; 
-        FilaNuevaFirma.style.flexDirection = 'column'; 
-        FilaNuevaFirma.style.marginBottom = '10px'; 
+    addSignatureButton.addEventListener('click', () => {
+        const newSignatureRow = document.createElement('div');
+        newSignatureRow.classList.add('signature-row');
+        newSignatureRow.style.display = 'flex'; 
+        newSignatureRow.style.flexDirection = 'column'; 
+        newSignatureRow.style.marginBottom = '10px'; 
 
         // Crear campos para nombre, cargo, empresa, área, teléfono, email, dirección y RUT
-        FilaNuevaFirma.innerHTML = `
-            <input type="text" class="manual-firma-input" name="nombre_encargado[]" placeholder="Nombre del Encargado" style="margin-bottom: 5px;">
-            <input type="text" class="manual-firma-input" name="cargo_encargado[]" placeholder="Cargo del Encargado" style="margin-bottom: 5px;">
-            <input type="text" class="manual-firma-input" name="nombre_empresa[]" placeholder="Nombre de la Empresa" style="margin-bottom: 5px;">
-            <input type="text" class="manual-firma-input" name="area_empresa[]" placeholder="Área de la Empresa" style="margin-bottom: 5px;">
-            <input type="text" class="manual-firma-input" name="telefono[]" placeholder="Teléfono" style="margin-bottom: 5px;">
-            <input type="email" class="manual-firma-input" name="email[]" placeholder="Email" style="margin-bottom: 5px;">
-            <input type="text" class="manual-firma-input" name="direccion[]" placeholder="Dirección" style="margin-bottom: 5px;">
-            <input type="text" class="manual-firma-input" name="rut[]" placeholder="RUT" style="margin-bottom: 5px;">
-            <button type="button" class="remove-firma" style="background-color: red; color: white; border: none; cursor: pointer; padding: 5px 10px;">Eliminar</button>
+        newSignatureRow.innerHTML = `
+            <input type="text" class="manual-signature-input" name="nombre_encargado[]" placeholder="Nombre del Encargado" style="margin-bottom: 5px;">
+            <input type="text" class="manual-signature-input" name="cargo_encargado[]" placeholder="Cargo del Encargado" style="margin-bottom: 5px;">
+            <input type="text" class="manual-signature-input" name="nombre_empresa[]" placeholder="Nombre de la Empresa" style="margin-bottom: 5px;">
+            <input type="text" class="manual-signature-input" name="area_empresa[]" placeholder="Área de la Empresa" style="margin-bottom: 5px;">
+            <input type="text" class="manual-signature-input" name="telefono[]" placeholder="Teléfono" style="margin-bottom: 5px;">
+            <input type="email" class="manual-signature-input" name="email[]" placeholder="Email" style="margin-bottom: 5px;">
+            <input type="text" class="manual-signature-input" name="direccion[]" placeholder="Dirección" style="margin-bottom: 5px;">
+            <input type="text" class="manual-signature-input" name="rut[]" placeholder="RUT" style="margin-bottom: 5px;">
+            <button type="button" class="remove-signature" style="background-color: red; color: white; border: none; cursor: pointer; padding: 5px 10px;">Eliminar</button>
         `;
 
         // Agregar la nueva fila antes del botón de agregar más firmas
-        MostrarFirmaManual.insertBefore(FilaNuevaFirma, BotonAgregarFirma);
+        manualSignaturesContainer.insertBefore(newSignatureRow, addSignatureButton);
 
         // Agregar funcionalidad para eliminar una fila
-        const removeButton = FilaNuevaFirma.querySelector('.remove-firma');
+        const removeButton = newSignatureRow.querySelector('.remove-signature');
         removeButton.addEventListener('click', () => {
-            MostrarFirmaManual.removeChild(FilaNuevaFirma);
+            manualSignaturesContainer.removeChild(newSignatureRow);
         });
     });
 });
     
         // Evento para eliminar la firma manualmente ingresada
-        MostrarFirmaManual.addEventListener('click', (event) => {
-            if (event.target.classList.contains('remove-firma')) {
+        manualSignaturesContainer.addEventListener('click', (event) => {
+            if (event.target.classList.contains('remove-signature')) {
                 event.target.parentElement.remove();
             }
         });
     });
     
 
-    document.getElementById('firma-imagen').addEventListener('change', function(event) {
+    document.getElementById('signature-image').addEventListener('change', function(event) {
         const reader = new FileReader();
         reader.onload = function() {
-            const preview = document.getElementById('firma-preview');
+            const preview = document.getElementById('signature-preview');
             preview.src = reader.result;
             preview.style.display = 'block';
         };
@@ -146,14 +147,14 @@ BPPJ
     });
 
     function checkSignatureSelection() {
-        const botonsubir = document.getElementById('submit-button');
-        const seleccionaropcion = document.querySelector('input[name="opcion-firma"]:checked');
+        const submitButton = document.getElementById('submit-button');
+        const selectedOption = document.querySelector('input[name="signature-option"]:checked');
         
         // Habilitar o deshabilitar el botón de envío según la selección
-        if (seleccionaropcion) {
-            botonsubir.disabled = false; // Habilitar si hay una selección
+        if (selectedOption) {
+            submitButton.disabled = false; // Habilitar si hay una selección
         } else {
-            botonsubir.disabled = true; // Deshabilitar si no hay selección
+            submitButton.disabled = true; // Deshabilitar si no hay selección
         }
     }
 

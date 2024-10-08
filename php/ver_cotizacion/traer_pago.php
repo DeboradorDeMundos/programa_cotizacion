@@ -113,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script>
     function addPayment() {
         // Contenedor donde se agregan los pagos
-        const contenedor = document.getElementById('payments-contenedor');
+        const container = document.getElementById('payments-container');
     
         // Crear un nuevo bloque de pago
         const paymentBlock = document.createElement('div');
@@ -136,7 +136,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         `;
     
         // Agregar el bloque al contenedor
-        contenedor.appendChild(paymentBlock);
+        container.appendChild(paymentBlock);
     }
     
     function calcularPago() {
@@ -166,7 +166,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <fieldset id="payment-section">
             <legend>Información de pago</legend>
             <button type="button" onclick="addPayment()">Agregar Pago</button>
-            <div id="payments-contenedor">
+            <div id="payments-container">
                 <?php
                 if (!empty($pagos)) {
                     foreach ($pagos as $index => $pago) {

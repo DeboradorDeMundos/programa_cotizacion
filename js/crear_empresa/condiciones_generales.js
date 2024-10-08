@@ -1,71 +1,73 @@
 /* 
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Aguirre Cerda - Santiago - Chile
+Pedro Agui Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
 BPPJ 
 */
 
+
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- Inicio ITred Spa Condiciones Generales .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
     
-    let contadorCondiciones = 0;
+    let conditionCount = 0;
 
-    // Función para agregar una nueva condición
-    function agregarCondicion() {
-        contadorCondiciones++;
+    // Agregar Condición
+    function addCondition() {
+        conditionCount++;
     
-        const contenedor = document.getElementById('contenedor-condiciones');
+        const container = document.getElementById('conditions-container');
     
         // Crear nueva fila de condición
-        const divCondicion = document.createElement('div');
-        divCondicion.className = 'fila-condicion';
-        divCondicion.dataset.index = contadorCondiciones;
+        const conditionDiv = document.createElement('div');
+        conditionDiv.className = 'condition-row';
+        conditionDiv.dataset.index = conditionCount;
     
         // Crear el HTML con el botón de eliminar al lado del input
-        divCondicion.innerHTML = `
-            <span class="numero-condicion">${contadorCondiciones}-. </span>
-            <input type="text" name="condicion_${contadorCondiciones}" placeholder="Ingrese condición ${contadorCondiciones}" oninput="eliminarCaracteresInvalidos(this)"/>
-            <button type="button" class="btn-eliminar-condicion" onclick="eliminarCondicion(this)">Eliminar</button>
+        conditionDiv.innerHTML = `
+            <span class="condition-number">${conditionCount}-. </span>
+            <input type="text" name="condition_${conditionCount}" placeholder="Ingrese condición ${conditionCount}" oninput="removeInvalidChars(this)"/>
+            <button type="button" class="remove-condition-btn" onclick="removeCondition(this)">Eliminar</button>
         `;
     
-        contenedor.appendChild(divCondicion);
+        container.appendChild(conditionDiv);
     
         // Hacer readonly la condición anterior
-        if (contadorCondiciones > 1) {
-            const condicionAnterior = contenedor.children[contadorCondiciones - 2];
-            const campoInput = condicionAnterior.querySelector('input');
-            campoInput.setAttribute('readonly', 'readonly');
+        if (conditionCount > 1) {
+            const previousCondition = container.children[conditionCount - 2];
+            const inputField = previousCondition.querySelector('input');
+            inputField.setAttribute('readonly', 'readonly');
         }
     }
     
-    // Función para eliminar una condición
-    function eliminarCondicion(boton) {
-        const contenedor = document.getElementById('contenedor-condiciones');
-        const divCondicion = boton.parentElement;
+    // Función para eliminar condiciones
+    function removeCondition(button) {
+        const container = document.getElementById('conditions-container');
+        const conditionDiv = button.parentElement;
     
-        if (divCondicion) {
-            divCondicion.remove(); // Elimina la condición seleccionada
-            contadorCondiciones--;
+        if (conditionDiv) {
+            conditionDiv.remove(); // Elimina la condición seleccionada
+            conditionCount--;
     
             // Ajustar la numeración
-            actualizarNumeracion(contenedor, 'condicion');
+            updateNumeration(container, 'condition');
         }
     }
-    /* --------------------------------------------------------------------------------------------------------------
-        ---------------------------------------- FIN ITred Spa Condiciones Generales .JS ---------------------------------------
-        ------------------------------------------------------------------------------------------------------------- */
-    
-    /*
-    Sitio Web Creado por ITred Spa.
-    Direccion: Guido Reni #4190
-    Pedro Aguirre Cerda - Santiago - Chile
-    contacto@itred.cl o itred.spa@gmail.com
-    https://www.itred.cl
-    Creado, Programado y Diseñado por ITred Spa.
-    BPPJ
-    */
-    
+
+/* --------------------------------------------------------------------------------------------------------------
+    ---------------------------------------- FIN ITred Spa Condiciones Generales .JS ---------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+
+/*
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Agui Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+*/

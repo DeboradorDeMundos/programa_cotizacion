@@ -11,9 +11,9 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Formulario encargado .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-    <link rel="stylesheet" href="../../css/crear_empresa/formulario_encargado.css">
+    <link rel="stylesheet" href="../../css/crear_encargado/formulario_encargado.css">
 <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
-    <div class="box-12 cuadro-datos"> <!-- Crea una caja para ingresar datos, ocupando las 12 columnas disponibles en el diseño. Esta caja contiene varios campos de entrada de datos -->
+    <div class="box-12 data-box"> <!-- Crea una caja para ingresar datos, ocupando las 12 columnas disponibles en el diseño. Esta caja contiene varios campos de entrada de datos -->
 
         <label for="encargado_rut">RUT del Encargado:</label>
         <input type="text" id="encargado_rut" name="encargado_rut" required minlength="3" maxlength="20" 
@@ -85,7 +85,7 @@ BPPJ
         
     </div> <!-- Cierra la caja de datos -->
 </div> <!-- Cierra la fila -->
-<script src="../../js/crear_empresa/formulario_encargado.js"></script>
+<script src="../../js/crear_encargado/formulario_encargado.js"></script>
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

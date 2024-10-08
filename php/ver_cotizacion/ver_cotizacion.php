@@ -209,7 +209,7 @@ $conn->close();
     <title>Cotización</title>
     <style>
         body { font-family: 'Arial', sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
-        .cotizacion-contenedor { width: 800px; margin: 20px auto; background-color: #ffffff; padding: 20px; border: 1px solid #cccccc; }
+        .cotizacion-container { width: 800px; margin: 20px auto; background-color: #ffffff; padding: 20px; border: 1px solid #cccccc; }
         header { display: flex; justify-content: space-between; align-items: center; }
         .header-left { font-size: 14px; }
         .header-left h2 { font-size: 28px; color: #007bff; margin: 0; }
@@ -217,8 +217,8 @@ $conn->close();
         .section { margin-top: 20px; }
         h3 { font-size: 14px; color: #007bff; margin-bottom: 5px; }
         .info { padding: 10px 0; }
-        .section-contenedor { display: flex; flex-wrap: wrap; gap: 20px; }
-        .section-contenedor .section { flex: 1 1 calc(50% - 20px); box-sizing: border-box; }
+        .section-container { display: flex; flex-wrap: wrap; gap: 20px; }
+        .section-container .section { flex: 1 1 calc(50% - 20px); box-sizing: border-box; }
         .tabla-productos { width: 100%; margin-top: 20px; border-collapse: collapse; }
         .tabla-productos th, .tabla-productos td { padding: 10px; border: 1px solid #dddddd; text-align: left; }
         .tabla-productos th { background-color: #007bff; color: #ffffff; }
@@ -232,7 +232,7 @@ $conn->close();
     </style>
 </head>
 <body>
-    <div class="cotizacion-contenedor">
+    <div class="cotizacion-container">
         <header>
             <div class="header-left">
                 <h2>COTIZACIÓN</h2>
@@ -246,7 +246,7 @@ $conn->close();
         </header>
 
         <!-- Sección de Detalles -->
-        <div class="section-contenedor">
+        <div class="section-container">
             <!-- Detalles de la Empresa -->
 
             <?php include 'detalles_empresa.php'; ?>

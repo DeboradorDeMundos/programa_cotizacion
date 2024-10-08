@@ -22,7 +22,7 @@ h2 {
 }
 
 /* Contenedor para las condiciones */
-#conditions-contenedor {
+#conditions-container {
   margin-top: 20px; /* Espaciado superior */
 }
 
@@ -79,7 +79,7 @@ h2 {
 }
 
 /* Botón de agregar condición */
-#btn-agregar-condicion {
+#add-condition-btn {
   background-color: #28a745; /* Fondo verde */
 }
 
@@ -89,7 +89,7 @@ h2 {
 }
 
 /* Botón de eliminar última condición */
-#btn-eliminar-condicion {
+#remove-condition-btn {
   background-color: #dc3545; /* Fondo rojo */
   display: none; /* Oculto por defecto */
 }

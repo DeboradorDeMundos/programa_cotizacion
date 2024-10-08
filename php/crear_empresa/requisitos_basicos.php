@@ -19,7 +19,7 @@ BPPJ
 
 <link rel="stylesheet" href="../../css/crear_empresa/requisitos_basicos.css">
 <h2>Requisitos basicos</h2>
-<div id="requisito-contenedor">
+<div id="requisito-container">
     
         <!-- Aquí se agregarán dinámicamente las filas de condiciones -->
 </div>

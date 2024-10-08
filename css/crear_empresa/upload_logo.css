@@ -20,7 +20,7 @@ BPPJ
   justify-content: center;
 }
 
-.logo-contenedor {
+.logo-container {
   display: flex;
   align-items: center;
   cursor: pointer;
