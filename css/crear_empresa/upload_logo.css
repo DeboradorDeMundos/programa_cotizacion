@@ -14,13 +14,13 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
  /* Estilos comunes */
 
- .logo-box {
+ .caja-logo {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.logo-container {
+.contenedor-logo {
   display: flex;
   align-items: center;
   cursor: pointer;

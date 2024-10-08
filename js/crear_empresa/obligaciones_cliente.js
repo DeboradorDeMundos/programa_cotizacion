@@ -13,47 +13,47 @@
         -------------------------------------- Inicio ITred Spa Obligaciones cliente .JS --------------------------------------
         ------------------------------------------------------------------------------------------------------------- */
 
-        let obligacionesCount = 0;
+        let ContadorObligaciones = 0;
 
         // Agregar Obligaciones
-        function addObligaciones() {
-            obligacionesCount++;
+        function AgregarObligacion() {
+            ContadorObligaciones++;
         
-            const contenedor_o = document.getElementById('obligaciones-container');
+            const contenedor_o = document.getElementById('obligaciones-contenedor');
         
             // Crear nueva fila de obligación
             const obligacionesDiv = document.createElement('div');
-            obligacionesDiv.className = 'obligaciones-row';
-            obligacionesDiv.dataset.index = obligacionesCount;
+            obligacionesDiv.className = 'fila-obligaciones';
+            obligacionesDiv.dataset.index = ContadorObligaciones;
         
             // Crear el HTML con el botón de eliminar al lado del input
             obligacionesDiv.innerHTML = `
-                <span class="obligaciones-number">${obligacionesCount}-. </span>
-                <input type="text" name="obligacion_${obligacionesCount}" placeholder="Ingrese obligación ${obligacionesCount}" oninput="removeInvalidChars(this)"s />
-                <button type="button" class="remove-obligaciones-btn" onclick="removeObligaciones(this)">Eliminar</button>
+                <span class="numero-obligaciones">${ContadorObligaciones}-. </span>
+                <input type="text" name="obligacion_${ContadorObligaciones}" placeholder="Ingrese obligación ${ContadorObligaciones}" oninput="QuitarCaracteresInvalidos(this)"s />
+                <button type="button" class="boton-eliminar-obligacion" onclick="QuitarObligacion(this)">Eliminar</button>
             `;
         
             contenedor_o.appendChild(obligacionesDiv);
         
             // Hacer readonly la obligación anterior
-            if (obligacionesCount > 1) {
-                const previousObligacion = contenedor_o.children[obligacionesCount - 2];
-                const inputField = previousObligacion.querySelector('input');
-                inputField.setAttribute('readonly', 'readonly');
+            if (ContadorObligaciones > 1) {
+                const ObligacionPrevia = contenedor_o.children[ContadorObligaciones - 2];
+                const CampoInput = ObligacionPrevia.querySelector('input');
+                CampoInput.setAttribute('readonly', 'readonly');
             }
         }
         
         // Función para eliminar obligaciones
-        function removeObligaciones(button) {
-            const contenedor_o = document.getElementById('obligaciones-container');
+        function QuitarObligacion(button) {
+            const contenedor_o = document.getElementById('obligaciones-contenedor');
             const obligacionesDiv = button.parentElement;
         
             if (obligacionesDiv) {
                 obligacionesDiv.remove(); // Elimina la obligación seleccionada
-                obligacionesCount--;
+                ContadorObligaciones--;
         
                 // Ajustar la numeración
-                updateNumeration(contenedor_o, 'obligacion');
+                ActualizarNumeracion(contenedor_o, 'obligacion');
             }
         }
         

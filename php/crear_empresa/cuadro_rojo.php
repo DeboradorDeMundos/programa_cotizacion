@@ -16,7 +16,7 @@ BPPJ
 <link rel="stylesheet" href="../../css/crear_empresa/cuadro_rojo.css">
 <div class="box-6 data-box data-box-red"> <!-- Crea una caja para ingresar datos, ocupando otras 6 columnas. Se aplica una clase adicional para estilo -->
     <label for="empresa_rut">RUT de la Empresa:</label> <!-- Etiqueta para el campo de entrada del RUT de la empresa -->
-    <input type="text" id="empresa_rut" name="empresa_rut" placeholder="Ej: 12.345.678-9" required oninput="formatRut(this)"> <!-- Campo de texto para ingresar el RUT de la empresa. El atributo "required" hace que el campo sea obligatorio -->
+    <input type="text" id="empresa_rut" name="empresa_rut" placeholder="Ej: 12.345.678-9" required oninput="formatoRut(this)"> <!-- Campo de texto para ingresar el RUT de la empresa. El atributo "required" hace que el campo sea obligatorio -->
     
     <label for="numero_cotizacion">Número de Cotización:</label> <!-- Etiqueta para el campo de entrada del número de cotización -->
     <input type="number" id="numero_cotizacion" name="numero_cotizacion" min="1" required placeholder="30"> <!-- Campo de texto para ingresar el número de cotización. También es obligatorio -->

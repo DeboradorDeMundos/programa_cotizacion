@@ -71,7 +71,7 @@ BPPJ
             required 
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
             title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
-            onblur="completeEmail(this)"> <!-- Campo de correo electrónico para ingresar el email de la empresa. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
+            onblur="CompletarEmail(this)"> <!-- Campo de correo electrónico para ingresar el email de la empresa. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
     
         <label for="fecha_creacion">Fecha de Creacion de empresa:</label> <!-- Etiqueta para el campo de entrada de la fecha de emisión -->
         <input type="date" id="fecha_creacion" name="fecha_creacion" required> <!-- Campo de fecha para seleccionar la fecha de emisión. Es obligatorio -->
@@ -81,7 +81,7 @@ BPPJ
             pattern="https?://[^'\"]+" 
             title="Por favor, ingrese una URL válida que comience con http:// o https://"
             placeholder="Ejemplo: https://www.miempresa.com"
-            oninput="removeInvalidChars(this)">
+            oninput="QuitarCaracteresInvalidos(this)">
         
     </div> <!-- Cierra la caja de datos -->
 </div> <!-- Cierra la fila -->
@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $mensaje = ""; // Inicializa el mensaje
 
     // Obtener el tipo de firma seleccionado
-    $tipo_firma = isset($_POST['signature-option']) ? $_POST['signature-option'] : null;
+    $tipo_firma = isset($_POST['opcion-firma']) ? $_POST['opcion-firma'] : null;
 
     if (isset($_POST['empresa_nombre'])) {
         // Obtener datos del formulario de empresa

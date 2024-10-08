@@ -75,8 +75,8 @@ function AgregarMasYDetectarPais(input) {
 
 // Asegúrate de que la bandera se actualice al cargar la página
 window.onload = function() {
-    const inputField = document.getElementById('empresa_telefono');
-    AgregarMasYDetectarPais(inputField); // Llama a la función para asegurar "+" y detectar el país
+    const CampoInput = document.getElementById('empresa_telefono');
+    AgregarMasYDetectarPais(CampoInput); // Llama a la función para asegurar "+" y detectar el país
 };
 
 

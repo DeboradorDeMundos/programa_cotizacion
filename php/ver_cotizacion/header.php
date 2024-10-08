@@ -20,7 +20,7 @@ BPPJ
 // Establece la conexión a la base de datos de ITred Spa
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 ?>
-<div class="header-container">
+<div class="header-contenedor">
     <img alt="Company Logo" class="logo" src="<?php echo $ruta_foto; ?>"/>
     <div class="header">
         <h1><?php echo $items[0]['nombre_empresa']; ?></h1>

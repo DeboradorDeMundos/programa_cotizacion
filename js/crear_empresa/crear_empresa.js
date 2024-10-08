@@ -13,7 +13,7 @@ BPPJ
     -------------------------------------- INICIO ITred Spa crear_empresa .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
     
-    function formatRut(input) {
+    function formatoRut(input) {
         // Obtiene el valor del campo y elimina los caracteres no numéricos
         let rut = input.value.replace(/\D/g, '');
     
@@ -37,97 +37,97 @@ BPPJ
     }
     
     // Configurar los botones de agregar
-    document.getElementById('add-requisito-btn').addEventListener('click', addRequisito);
-    document.getElementById('add-obligaciones-btn').addEventListener('click', addObligaciones);
-    document.getElementById('add-condition-btn').addEventListener('click', addCondition);
+    document.getElementById('boton-agregar-requisito').addEventListener('click', AgregarRequisito);
+    document.getElementById('boton-agregar-obligacion').addEventListener('click', AgregarObligacion);
+    document.getElementById('boton-agregar-condicion').addEventListener('click', AgregarCondicion);
     
-    document.getElementById('cotizacion-form').addEventListener('submit', function(event) {
+    document.getElementById('formulario-cotizacion').addEventListener('submit', function(event) {
         event.preventDefault();
     
         // Crear cadenas delimitadas para cada tipo de datos
-        let conditionsString = '';
-        document.querySelectorAll('#conditions-container .condition-row').forEach((conditionDiv, index) => {
-            const inputField = conditionDiv.querySelector('input');
-            if (inputField) {
-                conditionsString += (index > 0 ? '|' : '') + inputField.value;
+        let StringCondiciones = '';
+        document.querySelectorAll('#contenedor-condiciones .fila-condiciones').forEach((DivCondiciones, index) => {
+            const CampoInput = DivCondiciones.querySelector('input');
+            if (CampoInput) {
+                StringCondiciones += (index > 0 ? '|' : '') + CampoInput.value;
             }
         });
     
         let requisitosString = '';
-        document.querySelectorAll('#requisito-container .requisito-row').forEach((requisitoDiv, index) => {
-            const inputField = requisitoDiv.querySelector('input');
-            if (inputField) {
-                requisitosString += (index > 0 ? '|' : '') + inputField.value;
+        document.querySelectorAll('#contenedor-requistos .fila-requisitos').forEach((requisitoDiv, index) => {
+            const CampoInput = requisitoDiv.querySelector('input');
+            if (CampoInput) {
+                requisitosString += (index > 0 ? '|' : '') + CampoInput.value;
             }
         });
     
         let obligacionesString = '';
-        document.querySelectorAll('#obligaciones-container .obligaciones-row').forEach((obligacionesDiv, index) => {
-            const inputField = obligacionesDiv.querySelector('input');
-            if (inputField) {
-                obligacionesString += (index > 0 ? '|' : '') + inputField.value;
+        document.querySelectorAll('#obligaciones-contenedor .fila-obligaciones').forEach((obligacionesDiv, index) => {
+            const CampoInput = obligacionesDiv.querySelector('input');
+            if (CampoInput) {
+                obligacionesString += (index > 0 ? '|' : '') + CampoInput.value;
             }
         });
     
         // Verificar si hay cuentas bancarias antes de enviar el formulario
-        if (accounts.length === 0) {
+        if (cuentas.length === 0) {
             alert('Debe agregar al menos una cuenta bancaria antes de enviar el formulario.');
             return;
         }
     
         // Crear cadena delimitada para cuentas bancarias
         let cuentasString = '';
-        accounts.forEach((account, index) => {
+        cuentas.forEach((account, index) => {
             cuentasString += (index > 0 ? '|' : '') +
                 `${account.nombre},${account.rut},${account.celular},${account.email},${account.banco},${account.tipoCuenta},${account.numeroCuenta}`;
         });
     
         // Crear campos ocultos en el formulario con los datos
-        const hiddenInputCuentas = document.createElement('input');
-        hiddenInputCuentas.type = 'hidden';
-        hiddenInputCuentas.name = 'cuentas_bancarias';
-        hiddenInputCuentas.value = cuentasString;
-        this.appendChild(hiddenInputCuentas);
+        const InputsOcultosCuentas = document.createElement('input');
+        InputsOcultosCuentas.type = 'hidden';
+        InputsOcultosCuentas.name = 'cuentas_bancarias';
+        InputsOcultosCuentas.value = cuentasString;
+        this.appendChild(InputsOcultosCuentas);
     
-        const hiddenInputConditions = document.createElement('input');
-        hiddenInputConditions.type = 'hidden';
-        hiddenInputConditions.name = 'condiciones';
-        hiddenInputConditions.value = conditionsString;
-        this.appendChild(hiddenInputConditions);
+        const InputsOcultosCondiciones = document.createElement('input');
+        InputsOcultosCondiciones.type = 'hidden';
+        InputsOcultosCondiciones.name = 'condiciones';
+        InputsOcultosCondiciones.value = StringCondiciones;
+        this.appendChild(InputsOcultosCondiciones);
     
-        const hiddenInputRequisitos = document.createElement('input');
-        hiddenInputRequisitos.type = 'hidden';
-        hiddenInputRequisitos.name = 'requisitos';
-        hiddenInputRequisitos.value = requisitosString;
-        this.appendChild(hiddenInputRequisitos);
+        const InputsOcultosRequisitos = document.createElement('input');
+        InputsOcultosRequisitos.type = 'hidden';
+        InputsOcultosRequisitos.name = 'requisitos';
+        InputsOcultosRequisitos.value = requisitosString;
+        this.appendChild(InputsOcultosRequisitos);
     
-        const hiddenInputObligaciones = document.createElement('input');
-        hiddenInputObligaciones.type = 'hidden';
-        hiddenInputObligaciones.name = 'obligaciones';
-        hiddenInputObligaciones.value = obligacionesString;
-        this.appendChild(hiddenInputObligaciones);
+        const InputsOcultosObligaciones = document.createElement('input');
+        InputsOcultosObligaciones.type = 'hidden';
+        InputsOcultosObligaciones.name = 'obligaciones';
+        InputsOcultosObligaciones.value = obligacionesString;
+        this.appendChild(InputsOcultosObligaciones);
     
         // Enviar el formulario
         this.submit();
     });
 
     // Función para verificar si hay una firma seleccionada
-    function checkSignatureSelection() {
-        const signatureOptions = document.querySelectorAll('input[name="signature-option"]');
-        const isAnySelected = Array.from(signatureOptions).some(option => option.checked);
+    function VerificarSeleccionFirma() {
+        const OpcionFirma = document.querySelectorAll('input[name="opcion-firma"]');
+        const HayAlgoSeleccionado = Array.from(OpcionFirma).some(option => option.checked);
         
         // Desactiva el botón si no hay firma seleccionada
-        document.getElementById('submit-button').disabled = !isAnySelected || accounts.length === 0;
+        document.getElementById('boton-subir').disabled = !HayAlgoSeleccionado || cuentas.length === 0;
     }
 
     // Agrega un event listener para cada opción de firma
-    const signatureOptions = document.querySelectorAll('input[name="signature-option"]');
-    signatureOptions.forEach(option => {
-        option.addEventListener('change', checkSignatureSelection);
+    const OpcionFirma = document.querySelectorAll('input[name="opcion-firma"]');
+    OpcionFirma.forEach(option => {
+        option.addEventListener('change', VerificarSeleccionFirma);
     });
 
     // Llama a la función al cargar la página para establecer el estado inicial del botón
-    checkSignatureSelection();
+    VerificarSeleccionFirma();
     
     /* --------------------------------------------------------------------------------------------------------------
         ---------------------------------------- FIN ITred Spa crear_empresa .JS ---------------------------------------

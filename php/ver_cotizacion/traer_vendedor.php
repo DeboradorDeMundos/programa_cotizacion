@@ -124,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     minlength="7" maxlength="12" 
                     placeholder="x.xxx.xxx-x"
                     value="<?php echo htmlspecialchars($vendedor_rut); ?>" 
-                    required oninput="formatRut(this)"> <!-- Campo de texto para ingresar el RUT del vendedor. También es obligatorio -->
+                    required oninput="formatoRut(this)"> <!-- Campo de texto para ingresar el RUT del vendedor. También es obligatorio -->
             </div>
             <div class="form-group">
                 <label for="vendedor_nombre">Nombre:</label> <!-- Etiqueta para el campo de entrada del nombre del vendedor -->

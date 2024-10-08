@@ -14,63 +14,63 @@
         ------------------------------------------------------------------------------------------------------------- */
 
 
-let requisitoCount = 0;
+let ContadorRequisitos = 0;
 
 // Agregar Requisito
-function addRequisito() {
-    requisitoCount++;
+function AgregarRequisito() {
+    ContadorRequisitos++;
 
-    const contenedor = document.getElementById('requisito-container');
+    const contenedor = document.getElementById('contenedor-requistos');
 
     // Crear nueva fila de requisito
     const requisitoDiv = document.createElement('div');
-    requisitoDiv.className = 'requisito-row';
-    requisitoDiv.dataset.index = requisitoCount;
+    requisitoDiv.className = 'fila-requisitos';
+    requisitoDiv.dataset.index = ContadorRequisitos;
 
     // Crear el HTML con el botón de eliminar al lado del input
     requisitoDiv.innerHTML = `
-        <span class="requisito-number">${requisitoCount}-. </span>
-        <input type="text" name="requisito_${requisitoCount}" placeholder="Ingrese requisito ${requisitoCount}" oninput="removeInvalidChars(this)" />
-        <button type="button" class="remove-requisito-btn" onclick="removeRequisito(this)">Eliminar</button>
+        <span class="requisito-number">${ContadorRequisitos}-. </span>
+        <input type="text" name="requisito_${ContadorRequisitos}" placeholder="Ingrese requisito ${ContadorRequisitos}" oninput="QuitarCaracteresInvalidos(this)" />
+        <button type="button" class="boton-eliminar-obligacion" onclick="EliminarRequisito(this)">Eliminar</button>
     `;
 
     contenedor.appendChild(requisitoDiv);
 
     // Hacer readonly el requisito anterior
-    if (requisitoCount > 1) {
-        const previousrequisito = contenedor.children[requisitoCount - 2];
-        const inputField = previousrequisito.querySelector('input');
-        inputField.setAttribute('readonly', 'readonly');
+    if (ContadorRequisitos > 1) {
+        const RequisitoPrevio = contenedor.children[ContadorRequisitos - 2];
+        const CampoInput = RequisitoPrevio.querySelector('input');
+        CampoInput.setAttribute('readonly', 'readonly');
     }
 }
 
 // Función para eliminar requisitos
-function removeRequisito(button) {
-    const contenedor = document.getElementById('requisito-container');
+function EliminarRequisito(button) {
+    const contenedor = document.getElementById('contenedor-requistos');
     const requisitoDiv = button.parentElement;
 
     if (requisitoDiv) {
         requisitoDiv.remove(); // Elimina el requisito seleccionado
-        requisitoCount--;
+        ContadorRequisitos--;
 
         // Ajustar la numeración
-        updateNumeration(contenedor, 'requisito');
+        ActualizarNumeracion(contenedor, 'requisito');
     }
 }
 
 // Función para actualizar la numeración después de eliminar
-function updateNumeration(container, type) {
-    Array.from(container.children).forEach((itemDiv, newIndex) => {
-        const numberSpan = itemDiv.querySelector(`.${type}-number`);
-        const inputField = itemDiv.querySelector('input');
+function ActualizarNumeracion(contenedor, type) {
+    Array.from(contenedor.children).forEach((itemDiv, newIndex) => {
+        const SpanNumeros = itemDiv.querySelector(`.${type}-number`);
+        const CampoInput = itemDiv.querySelector('input');
 
-        const updatedIndex = newIndex + 1;
-        numberSpan.textContent = `${updatedIndex}-. `;
-        inputField.setAttribute('name', `${type}_${updatedIndex}`);
-        inputField.setAttribute('placeholder', `Ingrese ${type} ${updatedIndex}`);
+        const ActualizarIndice = newIndex + 1;
+        SpanNumeros.textContent = `${ActualizarIndice}-. `;
+        CampoInput.setAttribute('name', `${type}_${ActualizarIndice}`);
+        CampoInput.setAttribute('placeholder', `Ingrese ${type} ${ActualizarIndice}`);
 
         // Actualizar el dataset del div
-        itemDiv.dataset.index = updatedIndex;
+        itemDiv.dataset.index = ActualizarIndice;
     });
 }
 

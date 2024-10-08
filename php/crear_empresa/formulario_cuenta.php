@@ -14,21 +14,21 @@ BPPJ
     <!-- Otros campos del formulario -->
     <link rel="stylesheet" href="../../css/crear_empresa/formulario_cuenta.css">
     <div class="row">
-        <div class="box-12 data-box bank-account-container">
+        <div class="box-12 data-box contenedor-cuentas-bancarias">
             <h2>Agrega tu cuenta bancaria:</h2>
-            <div id="bank-accounts">
+            <div id="bank-cuentas">
                 <!-- Campos de cuentas bancarias -->
-                <div class="bank-account">
+                <div class="cuenta-bancaria">
                     <label for="nombre-cuenta">Nombre titular:</label>
                     <input type="text" id="nombre-cuenta" name="nombre_cuenta" 
                         placeholder="Ingresa el nombre del titular" 
                         maxlength="50" 
                         required 
-                        oninput="validateName(this)" 
+                        oninput="ValidarNombre(this)" 
                         title="Por favor, ingresa solo letras y espacios.">
 
                     <label for="rut-titular">Rut titular:</label>
-                    <input type="text" id="rut-titular" placeholder="Ej: 12.345.678-9" name="rut_titular" required oninput="formatRut(this)">
+                    <input type="text" id="rut-titular" placeholder="Ej: 12.345.678-9" name="rut_titular" required oninput="formatoRut(this)">
 
                     <label for="celular">Celular:</label>
                     <input type="text" id="celular" name="celular"
@@ -37,14 +37,14 @@ BPPJ
                         required 
                         pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
                         title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                        oninput="formatPhoneNumber(this)">
+                        oninput="FormatearNumeroTelefono(this)">
 
                     <label for="email-banco">Email:</label>
                     <input type="email" id="email-banco" name="email_banco" 
                         placeholder="ejemplo@empresa.com" 
                         maxlength="255" 
                         title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
-                        onblur="completeEmail(this)">
+                        onblur="CompletarEmail(this)">
 
                     <label for="id-banco">Banco:</label>
                     <select id="id-banco" name="id_banco" required>
@@ -57,15 +57,15 @@ BPPJ
                     </select>
 
                     <label for="numero-cuenta">Número de Cuenta:</label>
-                    <input type="text" id="numero-cuenta" name="numero_cuenta" required oninput="removeInvalidChars(this)">
+                    <input type="text" id="numero-cuenta" name="numero_cuenta" required oninput="QuitarCaracteresInvalidos(this)">
                 </div>
                 
-                <button type="button" id="add-account-button" onclick="addAccount()">Agregar otra cuenta</button>
+                <button type="button" id="boton-agregar-boton" onclick="AgregarCuenta()">Agregar otra cuenta</button>
             </div>
         </div>
     </div>
 
-    <input type="hidden" id="hidden-accounts" name="hidden_accounts" value="">
+    <input type="hidden" id="hidden-cuentas" name="hidden_accounts" value="">
 
 <script src="../../js/crear_empresa/formulario_cuenta.js"></script>
 <script src="../../js/nueva_cotizacion/load_bancos.js"></script> 

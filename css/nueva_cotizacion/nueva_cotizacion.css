@@ -32,13 +32,13 @@ body {
   box-sizing: border-box;
 }
 
-.logo-box {
+.caja-logo {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.btn-fixed {
+.boton-fijado {
   position: fixed;
   top: 20px;
   left: 20px;
@@ -52,7 +52,7 @@ body {
   z-index: 1000;
 }
 
-.btn-fixed:hover {
+.boton-fijado:hover {
   background-color: #0056b3;
 }
 

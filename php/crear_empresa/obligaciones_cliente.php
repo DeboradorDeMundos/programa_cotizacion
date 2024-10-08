@@ -14,14 +14,14 @@ BPPJ
 <!-- falta php de esta funcion -->
 <link rel="stylesheet" href="../../css/crear_empresa/obligaciones_clientes.css">
 <h2>Obligaciones cliente</h2>
-<div id="obligaciones-container">
+<div id="obligaciones-contenedor">
     
         <!-- Aquí se agregarán dinámicamente las filas de condiciones -->
 </div>
 
 <div style="margin-top: 10px;">
-    <button id="add-obligaciones-btn" type="button">Agregar nueva obligacion</button>
-    <button id="remove-obligaciones-btn" type="button" style="display: none;">Eliminar última obligacion</button>
+    <button id="boton-agregar-obligacion" type="button">Agregar nueva obligacion</button>
+    <button id="boton-eliminar-obligacion" type="button" style="display: none;">Eliminar última obligacion</button>
 </div>
 <script src="../../js/crear_empresa/obligaciones_cliente.js"></script>
 <?php

@@ -19,7 +19,7 @@ BPPJ
       margin-top: 0;
     }
     
-    .obligaciones-row, .requisito-row {
+    .fila-obligaciones, .fila-requisitos {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -29,12 +29,12 @@ BPPJ
       border-radius: 5px;
     }
     
-    .obligaciones-row input, .requisito-row input {
+    .fila-obligaciones input, .fila-requisitos input {
       flex-grow: 1;
       margin-right: 10px;
     }
     
-    .remove-obligaciones-btn, .remove-requisito-btn {
+    .boton-eliminar-obligacion, .boton-eliminar-obligacion {
       background-color: #dc3545; /* Color rojo */
       border: none;
       color: white;
@@ -43,11 +43,11 @@ BPPJ
       border-radius: 5px;
     }
     
-    .remove-obligaciones-btn:hover, .remove-requisito-btn:hover {
+    .boton-eliminar-obligacion:hover, .boton-eliminar-obligacion:hover {
       background-color: #c82333; /* Rojo más oscuro al hacer hover */
     }
     
-    #add-obligaciones-btn, #add-requisito-btn {
+    #boton-agregar-obligacion, #boton-agregar-requisito {
       font-size: 14px; /* Tamaño de fuente pequeño */
       padding: 8px 16px; /* Espaciado interno */
       border: none; /* Sin borde */
@@ -57,19 +57,19 @@ BPPJ
       transition: background-color 0.3s; /* Transición para el color de fondo */
     }
     
-    #add-obligaciones-btn {
+    #boton-agregar-obligacion {
       background-color: #28a745; /* Color de fondo llamativo (verde) */
     }
     
-    #add-obligaciones-btn:hover {
+    #boton-agregar-obligacion:hover {
       background-color: #218838; /* Color de fondo al pasar el ratón (verde más oscuro) */
     }
     
-    #add-requisito-btn {
+    #boton-agregar-requisito {
       background-color: #28a745; /* Color de fondo llamativo (verde) */
     }
     
-    #add-requisito-btn:hover {
+    #boton-agregar-requisito:hover {
       background-color: #218838; /* Color de fondo al pasar el ratón (verde más oscuro) */
     }
 

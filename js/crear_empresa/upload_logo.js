@@ -14,30 +14,30 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 
-document.querySelector('.logo-container').addEventListener('click', function() {
-    document.getElementById('logo-upload').click();
+document.querySelector('.contenedor-logo').addEventListener('click', function() {
+    document.getElementById('subir-logo').click();
 });
 
-document.getElementById('logo-upload').addEventListener('change', function(event) {
+document.getElementById('subir-logo').addEventListener('change', function(event) {
     const file = event.target.files[0];
     if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            document.getElementById('logo-preview').src = e.target.result;
+        const Lector = new FileReader();
+        Lector.onload = function(e) {
+            document.getElementById('Previsualizar-logo').src = e.target.result;
         };
-        reader.readAsDataURL(file);
+        Lector.LeerComoDatoURL(file);
     }
 });
 
-document.getElementById('cotizacion-form').addEventListener('submit', function(event) {
-    const logoUpload = document.getElementById('logo-upload');
-    const logoMessage = document.getElementById('logo-message');
+document.getElementById('formulario-cotizacion').addEventListener('submit', function(event) {
+    const SubirLogo = document.getElementById('subir-logo');
+    const MensajeLogo = document.getElementById('mensaje-logo');
 
-    if (!logoUpload.files.length) {
-        logoMessage.style.display = 'block'; // Muestra el mensaje si no hay logo
+    if (!SubirLogo.files.length) {
+        MensajeLogo.style.display = 'block'; // Muestra el mensaje si no hay logo
         event.preventDefault(); // Evita que se envíe el formulario
     } else {
-        logoMessage.style.display = 'none'; // Oculta el mensaje si se ha seleccionado un logo
+        MensajeLogo.style.display = 'none'; // Oculta el mensaje si se ha seleccionado un logo
     }
 });
 
