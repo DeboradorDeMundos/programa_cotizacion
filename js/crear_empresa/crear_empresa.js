@@ -38,7 +38,7 @@ BPPJ
     // Configura los botones para agregar requisitos, obligaciones y condiciones
     document.getElementById('add-requisito-btn').addEventListener('click', addRequisito);
     document.getElementById('add-obligaciones-btn').addEventListener('click', addObligaciones);
-    document.getElementById('add-condition-btn').addEventListener('click', addCondition);
+    document.getElementById('btn-agregar-condicion').addEventListener('click', agregarCondicion);
     
     // Configura la acción cuando se envía el formulario
     document.getElementById('cotizacion-form').addEventListener('submit', function(event) {
@@ -46,7 +46,7 @@ BPPJ
     
         // Crea cadenas delimitadas por "|" para cada tipo de dato (condiciones, requisitos, obligaciones)
         let conditionsString = '';
-        document.querySelectorAll('#contenedor-condicion .condition-row').forEach((conditionDiv, index) => {
+        document.querySelectorAll('#contenedor-condicion .fila-condicion').forEach((conditionDiv, index) => {
             const inputField = conditionDiv.querySelector('input');
             if (inputField) {
                 conditionsString += (index > 0 ? '|' : '') + inputField.value;
