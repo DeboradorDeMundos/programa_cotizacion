@@ -24,7 +24,7 @@ BPPJ
                         placeholder="Ingresa el nombre del titular" 
                         maxlength="50" 
                         required 
-                        oninput="validateName(this)" 
+                        oninput="validarNombre(this)" 
                         title="Por favor, ingresa solo letras y espacios.">
 
                     <label for="rut-titular">Rut titular:</label>
@@ -37,14 +37,14 @@ BPPJ
                         required 
                         pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
                         title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                        oninput="formatPhoneNumber(this)">
+                        oninput="FomatoNumeroCelular(this)">
 
                     <label for="email-banco">Email:</label>
                     <input type="email" id="email-banco" name="email_banco" 
                         placeholder="ejemplo@empresa.com" 
                         maxlength="255" 
                         title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
-                        onblur="completeEmail(this)">
+                        onblur="formatoEmail(this)">
 
                     <label for="id-banco">Banco:</label>
                     <select id="id-banco" name="id_banco" required>
@@ -57,10 +57,10 @@ BPPJ
                     </select>
 
                     <label for="numero-cuenta">Número de Cuenta:</label>
-                    <input type="text" id="numero-cuenta" name="numero_cuenta" required oninput="removeInvalidChars(this)">
+                    <input type="text" id="numero-cuenta" name="numero_cuenta" required oninput="removerCaracteresInvalidos(this)">
                 </div>
                 
-                <button type="button" id="add-account-button" onclick="addAccount()">Agregar otra cuenta</button>
+                <button type="button" id="boton-agrega-cuenta" onclick="agregarCuenta()">Agregar otra cuenta</button>
             </div>
         </div>
     </div>

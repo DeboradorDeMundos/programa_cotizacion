@@ -30,7 +30,7 @@
             obligacionesDiv.innerHTML = `
                 <span class="obligaciones-number">${obligacionesCount}-. </span>
                 <input type="text" name="obligacion_${obligacionesCount}" placeholder="Ingrese obligación ${obligacionesCount}" oninput="removeInvalidChars(this)"s />
-                <button type="button" class="remove-obligaciones-btn" onclick="removeObligaciones(this)">Eliminar</button>
+                <button type="button" class="remove-obligaciones-btn" onclick="removerObligaciones(this)">Eliminar</button>
             `;
         
             contenedor_o.appendChild(obligacionesDiv);

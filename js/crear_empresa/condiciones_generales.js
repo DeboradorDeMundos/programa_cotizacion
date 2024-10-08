@@ -15,7 +15,7 @@ BPPJ
     let contadorCondiciones = 0;
 
     // Función para agregar una nueva condición
-    function agregarCondicion() {
+    function addCondicion() {
         contadorCondiciones++;
     
         const contenedor = document.getElementById('contenedor-condiciones');
