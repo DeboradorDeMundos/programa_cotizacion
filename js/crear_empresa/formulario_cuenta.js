@@ -16,7 +16,7 @@ BPPJ
     let cuenta = false;
     
     // Función para agregar una cuenta
-    function addAccount() {
+    function agregarCuenta() {
         const nombreCuenta = document.getElementById('nombre-cuenta').value;
         const rutTitular = document.getElementById('rut-titular').value;
         const celular = document.getElementById('celular').value;
@@ -41,7 +41,7 @@ BPPJ
                 numeroCuenta: numeroCuenta
             });
     
-            updateTable();
+            actualizarTabla();
     
             // Limpiar campos
             document.getElementById('nombre-cuenta').value = '';
@@ -54,18 +54,18 @@ BPPJ
     
             if (!cuenta) {
                 cuenta = true;
-                makeFieldsOptional();
+                contruirArchivoOpcional();
             }
     
             checkSignatureSelection()
     
-            updateHiddenFields();
+            actualizarOcultoArchivos();
         } else {
             alert('Por favor, complete todos los campos.');
         }
     }
     
-    function makeFieldsOptional() {
+    function contruirArchivoOpcional() {
         const fields = ['nombre-cuenta', 'rut-titular', 'celular', 'email-banco', 'id-banco', 'id-tipocuenta', 'numero-cuenta'];
         fields.forEach(fieldId => {
             const field = document.getElementById(fieldId);
@@ -74,7 +74,7 @@ BPPJ
     }
     
     // Función para actualizar la tabla
-    function updateTable() {
+    function actualizarTabla() {
         const table = document.getElementById('accounts-table');
         table.innerHTML = '';
     
@@ -127,14 +127,14 @@ BPPJ
         });
     }
     
-    function updateHiddenFields() {
+    function actualizarOcultoArchivos() {
         const hiddenInput = document.getElementById('hidden-accounts');
         hiddenInput.value = accounts.map(account => 
             `${account.nombre}|${account.rut}|${account.celular}|${account.email}|${account.banco}|${account.tipoCuenta}|${account.numeroCuenta}`
         ).join(';');
     }
 
-    function validateName(input) {
+    function validarNombre(input) {
         // Eliminar caracteres no permitidos (números y caracteres especiales)
         input.value = input.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
     }

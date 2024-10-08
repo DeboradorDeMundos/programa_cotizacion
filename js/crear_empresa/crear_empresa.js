@@ -12,7 +12,7 @@ BPPJ
     -------------------------------------- INICIO ITred Spa crear_empresa .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
     
-    function formatRut(input) {
+    function formatoRut(input) {
         // Obtiene el valor del campo y elimina cualquier carácter que no sea numérico
         let rut = input.value.replace(/\D/g, '');
     

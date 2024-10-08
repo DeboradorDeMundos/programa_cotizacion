@@ -36,7 +36,7 @@ BPPJ
         input.value = input.value.replace(/[^A-Za-z0-9À-ÿ\s#,-.]/g, '');
     });
 
-    function formatPhoneNumber(input) {
+    function FomatoNumeroCelular(input) {
         // Eliminar todo lo que no sea número o espacio
         let value = input.value.replace(/[^\d]/g, '');
         
@@ -55,7 +55,7 @@ BPPJ
         input.value = value; // Actualizar el valor del campo de entrada
     }
 
-    function completeEmail(input) {
+    function formatoEmail(input) {
         // Eliminar comillas simples y dobles de la entrada
         input.value = input.value.replace(/['"]/g, '');
     
@@ -72,7 +72,7 @@ BPPJ
         }
     }
 
-    function removeInvalidChars(input) {
+    function removerCaracteresInvalidos(input) {
         // Eliminar comillas simples, dobles y cualquier otro carácter no deseado
         input.value = input.value.replace(/['"]/g, '');
     }
