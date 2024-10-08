@@ -16,7 +16,7 @@ BPPJ
      
 
 <link rel="stylesheet" href="../../css/nueva_cotizacion/cargar_logo_empresa.css">
-<div class="box-6 logo-box">
+<div class="box-6 caja-logo">
 <?php
 // Procesar la subida de la imagen cuando se envía el formulario
 $upload_dir = '../../imagenes/cotizacion/'; // Ruta relativa desde el archivo PHP
@@ -58,13 +58,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-    <label for="logo-upload" class="logo-contenedor">
+    <label for="subir-logo" class="contenedor-logo">
         <?php if (isset($row['ruta_foto']) && !empty($row['ruta_foto'])): ?>
-            <img src="<?php echo htmlspecialchars($row['ruta_foto'], ENT_QUOTES, 'UTF-8'); ?>" alt="Foto de perfil" id="logo-preview" class="logo" onclick="document.getElementById('logo-upload').click();" />
+            <img src="<?php echo htmlspecialchars($row['ruta_foto'], ENT_QUOTES, 'UTF-8'); ?>" alt="Foto de perfil" id="Previsualizar-logo" class="logo" onclick="document.getElementById('subir-logo').click();" />
         <?php else: ?>
-            <span id="logo-text" onclick="document.getElementById('logo-upload').click();">Cargar Logo de Empresa</span>
+            <span id="logo-text" onclick="document.getElementById('subir-logo').click();">Cargar Logo de Empresa</span>
         <?php endif; ?>
-        <input type="file" id="logo-upload" name="logo_upload" accept="image/*" style="display:none;" onchange="previewImage(event)">
+        <input type="file" id="subir-logo" name="logo_upload" accept="image/*" style="display:none;" onchange="previewImage(event)">
     </label>
 </div>
 

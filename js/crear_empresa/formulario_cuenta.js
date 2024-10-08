@@ -12,11 +12,11 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- Inicio ITred Spa Formulario Cuenta .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-    let accounts = [];
+    let cuentas = [];
     let cuenta = false;
     
     // Función para agregar una cuenta
-    function addAccount() {
+    function AgregarCuenta() {
         const nombreCuenta = document.getElementById('nombre-cuenta').value;
         const rutTitular = document.getElementById('rut-titular').value;
         const celular = document.getElementById('celular').value;
@@ -26,12 +26,12 @@ BPPJ
         const numeroCuenta = document.getElementById('numero-cuenta').value;
     
         if (nombreCuenta && rutTitular && celular && emailBanco && idBanco && tipoCuenta && numeroCuenta) {
-            if (accounts.length >= 4) {
+            if (cuentas.length >= 4) {
                 alert('Solo puedes agregar un máximo de 4 cuentas bancarias.');
                 return;
             }
     
-            accounts.push({
+            cuentas.push({
                 nombre: nombreCuenta,
                 rut: rutTitular,
                 celular: celular,
@@ -41,7 +41,7 @@ BPPJ
                 numeroCuenta: numeroCuenta
             });
     
-            updateTable();
+            ActualizarTabla();
     
             // Limpiar campos
             document.getElementById('nombre-cuenta').value = '';
@@ -54,39 +54,39 @@ BPPJ
     
             if (!cuenta) {
                 cuenta = true;
-                makeFieldsOptional();
+                HacerCampoOpcional();
             }
     
-            checkSignatureSelection()
+            VerificarSeleccionFirma()
     
-            updateHiddenFields();
+            ActualizarCamposOcultos();
         } else {
             alert('Por favor, complete todos los campos.');
         }
     }
     
-    function makeFieldsOptional() {
-        const fields = ['nombre-cuenta', 'rut-titular', 'celular', 'email-banco', 'id-banco', 'id-tipocuenta', 'numero-cuenta'];
-        fields.forEach(fieldId => {
+    function HacerCampoOpcional() {
+        const campos = ['nombre-cuenta', 'rut-titular', 'celular', 'email-banco', 'id-banco', 'id-tipocuenta', 'numero-cuenta'];
+        campos.forEach(fieldId => {
             const field = document.getElementById(fieldId);
             field.removeAttribute('required');
         });
     }
     
     // Función para actualizar la tabla
-    function updateTable() {
-        const table = document.getElementById('accounts-table');
+    function ActualizarTabla() {
+        const table = document.getElementById('tabla-cuentas');
         table.innerHTML = '';
     
-        if (accounts.length === 0) return;
+        if (cuentas.length === 0) return;
     
-        const headerRow = document.createElement('tr');
-        accounts.forEach(account => {
+        const FilaCabecera = document.createElement('tr');
+        cuentas.forEach(account => {
             const th = document.createElement('th');
             th.innerText = `${account.tipoCuenta} - ${account.nombre}`;
-            headerRow.appendChild(th);
+            FilaCabecera.appendChild(th);
         });
-        table.appendChild(headerRow);
+        table.appendChild(FilaCabecera);
     
         const rows = [
             'Banco',
@@ -99,7 +99,7 @@ BPPJ
     
         rows.forEach(rowTitle => {
             const row = document.createElement('tr');
-            accounts.forEach(account => {
+            cuentas.forEach(account => {
                 const cell = document.createElement('td');
                 switch (rowTitle) {
                     case 'Banco':
@@ -127,14 +127,14 @@ BPPJ
         });
     }
     
-    function updateHiddenFields() {
-        const hiddenInput = document.getElementById('hidden-accounts');
-        hiddenInput.value = accounts.map(account => 
+    function ActualizarCamposOcultos() {
+        const hiddenInput = document.getElementById('hidden-cuentas');
+        hiddenInput.value = cuentas.map(account => 
             `${account.nombre}|${account.rut}|${account.celular}|${account.email}|${account.banco}|${account.tipoCuenta}|${account.numeroCuenta}`
         ).join(';');
     }
 
-    function validateName(input) {
+    function ValidarNombre(input) {
         // Eliminar caracteres no permitidos (números y caracteres especiales)
         input.value = input.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
     }

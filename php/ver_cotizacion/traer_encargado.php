@@ -125,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     minlength="7" maxlength="12" 
                     placeholder="x.xxx.xxx-x"
                     value="<?php echo htmlspecialchars($enc_rut); ?>" 
-                    required oninput="formatRut(this)"> <!-- Campo de texto para ingresar el RUT del encargado. También es obligatorio -->
+                    required oninput="formatoRut(this)"> <!-- Campo de texto para ingresar el RUT del encargado. También es obligatorio -->
             </div>
             <div class="form-group">
                 <label for="enc_nombre">Nombre:</label> <!-- Etiqueta para el campo de entrada del nombre del encargado -->

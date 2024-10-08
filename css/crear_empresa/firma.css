@@ -15,7 +15,7 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 
-    .signature-container {
+    .contenedor-firma {
         margin: 20px;
     }
     
@@ -27,7 +27,7 @@ BPPJ
         font-weight: bold;
     }
     
-    .signature-display {
+    .desplegar-firma {
         width: 100%;
         margin-top: 10px;
         padding: 10px;

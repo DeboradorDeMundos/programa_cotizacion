@@ -35,8 +35,8 @@ $conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
     <link rel="stylesheet" href="../../css/crear_producto/crear_producto.css">
 </head>
 <body>
-    <div class="container">
-        <div class="form-container">
+    <div class="contenedor">
+        <div class="form-contenedor">
             <?php include 'formulario_creacion_producto.php'; ?>
         </div>
     </div>

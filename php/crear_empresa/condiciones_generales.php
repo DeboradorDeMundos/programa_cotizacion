@@ -17,14 +17,14 @@ BPPJ
 <!-- falta php de esta funcion -->
 <link rel="stylesheet" href="../../css/crear_empresa/condiciones_generales.css"> <!-- Enlaza una hoja de estilo externa que se encuentra en la ruta especificada para estilizar el contenido de la página -->
 <h2>condiciones generaes</h2>
-<div id="conditions-container">
+<div id="contenedor-condiciones">
     
         <!-- Aquí se agregarán dinámicamente las filas de condiciones -->
 </div>
 
 <div style="margin-top: 10px;">
-    <button id="add-condition-btn" type="button">Agregar nueva condición</button>
-    <button id="remove-condition-btn" type="button" style="display: none;">Eliminar última condición</button>
+    <button id="boton-agregar-condicion" type="button">Agregar nueva condición</button>
+    <button id="boton-eliminar-condicion" type="button" style="display: none;">Eliminar última condición</button>
 </div>
 
 <script src="../../js/crear_empresa/condiciones_generales.js"></script>

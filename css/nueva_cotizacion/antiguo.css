@@ -55,13 +55,13 @@ BPPJ
     padding: 10px;
   }
   
-  .logo-box {
+  .caja-logo {
     display: flex;
     align-items: center;
     justify-content: center;
   }
   
-  .logo-contenedor {
+  .contenedor-logo {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -105,11 +105,11 @@ BPPJ
     border-bottom: 1px solid #ddd;
   }
   
-  .submit-row {
+  .fila-subir {
     text-align: center;
   }
   
-  .submit-row input[type="submit"] {
+  .fila-subir input[type="submit"] {
     padding: 10px 20px;
     font-size: 16px;
     background-color: #007bff;
@@ -118,7 +118,7 @@ BPPJ
     cursor: pointer;
   }
   
-  .btn-fixed {
+  .boton-fijado {
     position: fixed;
     top: 20px;
     left: 20px;
@@ -132,7 +132,7 @@ BPPJ
     z-index: 1000;
   }
   
-  .btn-fixed:hover {
+  .boton-fijado:hover {
     background-color: #0056b3;
   }
   

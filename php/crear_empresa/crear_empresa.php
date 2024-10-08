@@ -35,10 +35,10 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     <link rel="stylesheet" href="../../css/crear_empresa/crear_empresa.css"> <!-- Enlaza una hoja de estilo externa que se encuentra en la ruta especificada para estilizar el contenido de la página -->
 </head> <!-- Cierra el elemento de cabecera -->
 <body> <!-- Abre el elemento del cuerpo de la página donde se coloca el contenido visible -->
-    <div class="container"> <!-- Contenedor principal que puede ayudar a centrar y organizar el contenido en la página -->
-        <form id="cotizacion-form" method="POST" action="" enctype="multipart/form-data">
-            <!-- Formulario con ID "cotizacion-form". Usa el método POST para enviar los datos al servidor. El atributo "action" define el archivo al que se enviarán los datos. "enctype" especifica que el formulario puede enviar archivos -->
-            <a href="javascript:history.back()" class="btn-fixed">Volver</a>
+    <div class="contenedor"> <!-- Contenedor principal que puede ayudar a centrar y organizar el contenido en la página -->
+        <form id="formulario-cotizacion" method="POST" action="" enctype="multipart/form-data">
+            <!-- Formulario con ID "formulario-cotizacion". Usa el método POST para enviar los datos al servidor. El atributo "action" define el archivo al que se enviarán los datos. "enctype" especifica que el formulario puede enviar archivos -->
+            <a href="javascript:history.back()" class="boton-fijado">Volver</a>
             <!-- Fila 1 -->
             <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
 
@@ -61,7 +61,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
             <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
                 <div class="box-12 data-box">
                     <h2>TRANSFERENCIAS A:</h2>
-                    <table id="accounts-table" border="1">
+                    <table id="tabla-cuentas" border="1">
                         <!-- La tabla se llenará dinámicamente -->
                     </table>
                 </div>
@@ -88,7 +88,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
                 </div>
             </div>
 
-            <button type="submit" id="submit-button" class="subir">Crear empresa</button> <!-- Botón para enviar el formulario y generar la cotización -->
+            <button type="submit" id="boton-subir" class="subir">Crear empresa</button> <!-- Botón para enviar el formulario y generar la cotización -->
         </form> <!-- Cierra el formulario -->
     </div> <!-- Cierra el contenedor principal -->
     <script src="../../js/crear_empresa/crear_empresa.js"></script> 

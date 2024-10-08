@@ -26,7 +26,7 @@ body {
   }
   
   /* Define el contenedor principal del formulario */
-  .container {
+  .contenedor {
     width: 100%; /* El contenedor ocupa el 100% del ancho de la página */
     padding: 20px; /* Agrega un relleno de 20 píxeles alrededor del contenido */
     box-sizing: border-box; /* Incluye el relleno y el borde en el ancho y alto total del elemento */
@@ -61,14 +61,14 @@ body {
   }
   
   /* Define el contenedor del logo */
-  .logo-box {
+  .caja-logo {
     display: flex; /* Usa el modelo de caja flexible para organizar los elementos hijos */
     align-items: center; /* Alinea los elementos hijos verticalmente en el centro */
     justify-content: center; /* Alinea los elementos hijos horizontalmente en el centro */
   }
   
   /* Define el contenedor interactivo del logo */
-  .logo-container {
+  .contenedor-logo {
     display: flex; /* Usa el modelo de caja flexible para organizar los elementos hijos */
     align-items: center; /* Alinea los elementos hijos verticalmente en el centro */
     cursor: pointer; /* Cambia el cursor a una mano para indicar que es interactivo */
@@ -119,12 +119,12 @@ body {
   }
   
   /* Define el estilo de la fila de envío */
-  .submit-row {
+  .fila-subir {
     text-align: center; /* Centra el contenido horizontalmente */
   }
   
   /* Define el estilo del botón de envío */
-  .submit-row input[type="submit"] {
+  .fila-subir input[type="submit"] {
     padding: 10px 20px; /* Agrega un relleno de 10 píxeles vertical y 20 píxeles horizontal */
     font-size: 16px; /* Ajusta el tamaño de la fuente */
     background-color: #007bff; /* Establece un color de fondo azul */
@@ -134,7 +134,7 @@ body {
   }
   
   /* Define el estilo del botón de envío cuando se pasa el cursor por encima */
-  .submit-row input[type="submit"]:hover {
+  .fila-subir input[type="submit"]:hover {
     background-color: #0056b3; /* Cambia el color de fondo a un azul más oscuro */
   }
   
@@ -154,7 +154,7 @@ body {
         padding: 6px; /* Ajusta el relleno para pantallas más pequeñas */
     }
   
-    .submit-row input[type="submit"] {
+    .fila-subir input[type="submit"] {
         padding: 8px 16px; /* Ajusta el relleno del botón para pantallas más pequeñas */
         font-size: 14px; /* Ajusta el tamaño de fuente del botón para pantallas más pequeñas */
     }

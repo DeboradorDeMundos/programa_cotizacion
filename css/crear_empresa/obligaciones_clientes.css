@@ -21,11 +21,11 @@ BPPJ
       margin-top: 0;
     }
     
-    #obligaciones-container {
+    #obligaciones-contenedor {
       margin-bottom: 20px;
     }
     
-    .obligaciones-row {
+    .fila-obligaciones {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -35,7 +35,7 @@ BPPJ
       border-radius: 5px;
     }
     
-    .obligaciones-number {
+    .numero-obligaciones {
       font-weight: bold;
     }
     
@@ -52,11 +52,11 @@ BPPJ
       background-color: #0056b3;
     }
     
-    .remove-obligaciones-btn {
+    .boton-eliminar-obligacion {
       background-color: #dc3545; /* Color rojo */
     }
     
-    .remove-obligaciones-btn:hover {
+    .boton-eliminar-obligacion:hover {
       background-color: #c82333; /* Rojo más oscuro al hacer hover */
     }
 

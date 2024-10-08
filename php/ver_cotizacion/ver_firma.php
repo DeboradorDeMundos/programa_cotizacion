@@ -22,7 +22,7 @@ if ($id_cotizacion > 0) {
 </head>
 <body>
 
-<div class="container">
+<div class="contenedor">
     <h1>Firma y Cotización</h1>
     <p>Elige una opción para ver los detalles de la cotización o la firma.</p>
 

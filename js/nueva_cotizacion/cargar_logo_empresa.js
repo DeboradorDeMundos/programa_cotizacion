@@ -20,17 +20,17 @@ function PrevisualizarImagen(event) {
     const Lector = new FileReader();
 
     Lector.onload = function() {
-        const preview = document.getElementById('logo-preview');
-        preview.src = Lector.result;
+        const Previsualizacion = document.getElementById('Previsualizar-logo');
+        Previsualizacion.src = Lector.result;
     };
 
     if (Entrada.files && Entrada.files[0]) {
-        Lector.readAsDataURL(Entrada.files[0]);
+        Lector.LeerComoDatoURL(Entrada.files[0]);
     }
 }
 
 // Escuchar cuando el Entrada de archivo cambia para mostrar la previsualización
-document.getElementById('logo-upload').addEventListener('change', PrevisualizarImagen);
+document.getElementById('subir-logo').addEventListener('change', PrevisualizarImagen);
 
 
 /* --------------------------------------------------------------------------------------------------------------

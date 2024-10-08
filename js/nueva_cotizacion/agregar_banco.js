@@ -14,12 +14,12 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Agregar Banco .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('cotizacion-form').addEventListener('submit', function(event) {
+    document.getElementById('formulario-cotizacion').addEventListener('submit', function(event) {
         event.preventDefault();
 
     document.addEventListener('DOMContentLoaded', function() {
         let IndiceCuentas = 1;
-        const contenedor = document.getElementById('bank-accounts');
+        const contenedor = document.getElementById('bank-cuentas');
     
         function CargarOpcionSeleccionada() {
             fetch('get_select_options.php')
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (IndiceCuentas < 3) { // Limitar a un máximo de 3 cuentas
                 IndiceCuentas++;
                 const NuevaCuenta = document.createElement('div');
-                NuevaCuenta.className = 'bank-account';
+                NuevaCuenta.className = 'cuenta-bancaria';
                 NuevaCuenta.innerHTML = `
                     <label for="nombre-cuenta-${IndiceCuentas}">Nombre de la Cuenta:</label>
                     <input type="text" id="nombre-cuenta-${IndiceCuentas}" name="nombre_cuenta[]" required>

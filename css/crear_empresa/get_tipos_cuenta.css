@@ -22,7 +22,7 @@ body {
     background-color: #f9f9f9;
   }
   
-  .container {
+  .contenedor {
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
@@ -87,7 +87,7 @@ body {
   }
   
   /* Botones comunes */
-  .submit-row input[type="submit"],
+  .fila-subir input[type="submit"],
   .subir {
     width: calc(100% - 20px);
     padding: 10px;
@@ -97,7 +97,7 @@ body {
     color: white;
   }
   
-  .submit-row input[type="submit"]:hover,
+  .fila-subir input[type="submit"]:hover,
   .subir:hover {
     background-color: #0056b3;
   }

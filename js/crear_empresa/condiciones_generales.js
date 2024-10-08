@@ -13,47 +13,47 @@ BPPJ
     -------------------------------------- Inicio ITred Spa Condiciones Generales .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
     
-    let conditionCount = 0;
+    let ContadorCondiciones = 0;
 
     // Agregar Condición
-    function addCondition() {
-        conditionCount++;
+    function AgregarCondicion() {
+        ContadorCondiciones++;
     
-        const container = document.getElementById('conditions-container');
+        const contenedor = document.getElementById('contenedor-condiciones');
     
         // Crear nueva fila de condición
-        const conditionDiv = document.createElement('div');
-        conditionDiv.className = 'condition-row';
-        conditionDiv.dataset.index = conditionCount;
+        const DivCondiciones = document.createElement('div');
+        DivCondiciones.className = 'fila-condiciones';
+        DivCondiciones.dataset.index = ContadorCondiciones;
     
         // Crear el HTML con el botón de eliminar al lado del input
-        conditionDiv.innerHTML = `
-            <span class="condition-number">${conditionCount}-. </span>
-            <input type="text" name="condition_${conditionCount}" placeholder="Ingrese condición ${conditionCount}" oninput="removeInvalidChars(this)"/>
-            <button type="button" class="remove-condition-btn" onclick="removeCondition(this)">Eliminar</button>
+        DivCondiciones.innerHTML = `
+            <span class="condition-number">${ContadorCondiciones}-. </span>
+            <input type="text" name="condition_${ContadorCondiciones}" placeholder="Ingrese condición ${ContadorCondiciones}" oninput="QuitarCaracteresInvalidos(this)"/>
+            <button type="button" class="boton-eliminar-condicion" onclick="QuitarCondicion(this)">Eliminar</button>
         `;
     
-        container.appendChild(conditionDiv);
+        contenedor.appendChild(DivCondiciones);
     
         // Hacer readonly la condición anterior
-        if (conditionCount > 1) {
-            const previousCondition = container.children[conditionCount - 2];
-            const inputField = previousCondition.querySelector('input');
-            inputField.setAttribute('readonly', 'readonly');
+        if (ContadorCondiciones > 1) {
+            const CondicionPrevia = contenedor.children[ContadorCondiciones - 2];
+            const CampoInput = CondicionPrevia.querySelector('input');
+            CampoInput.setAttribute('readonly', 'readonly');
         }
     }
     
     // Función para eliminar condiciones
-    function removeCondition(button) {
-        const container = document.getElementById('conditions-container');
-        const conditionDiv = button.parentElement;
+    function QuitarCondicion(button) {
+        const contenedor = document.getElementById('contenedor-condiciones');
+        const DivCondiciones = button.parentElement;
     
-        if (conditionDiv) {
-            conditionDiv.remove(); // Elimina la condición seleccionada
-            conditionCount--;
+        if (DivCondiciones) {
+            DivCondiciones.remove(); // Elimina la condición seleccionada
+            ContadorCondiciones--;
     
             // Ajustar la numeración
-            updateNumeration(container, 'condition');
+            ActualizarNumeracion(contenedor, 'condition');
         }
     }
 

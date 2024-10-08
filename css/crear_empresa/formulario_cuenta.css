@@ -29,17 +29,17 @@ BPPJ
     border-radius: 12px;
 }
 
-.bank-account-container {
+.contenedor-cuentas-bancarias {
     margin-top: 20px;
 }
 
-.bank-account label {
+.cuenta-bancaria label {
     display: block;
     margin-bottom: 8px;
 }
 
-.bank-account input,
-.bank-account select {
+.cuenta-bancaria input,
+.cuenta-bancaria select {
     width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 20px;
@@ -48,7 +48,7 @@ BPPJ
     box-sizing: border-box;
 }
 
-#add-account-button {
+#boton-agregar-boton {
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
@@ -57,11 +57,11 @@ BPPJ
     cursor: pointer;
 }
 
-#add-account-button:hover {
+#boton-agregar-boton:hover {
     background-color: #0056b3;
 }
 
-#submit-button {
+#boton-subir {
     padding: 10px 20px;
     background-color: #28a745;
     color: white;
@@ -70,27 +70,27 @@ BPPJ
     cursor: pointer;
 }
 
-#submit-button:disabled {
+#boton-subir:disabled {
     background-color: #6c757d;
     cursor: not-allowed;
 }
 
-#accounts-table {
+#tabla-cuentas {
     width: 100%;
     border-collapse: collapse;
 }
 
-#accounts-table th,
-#accounts-table td {
+#tabla-cuentas th,
+#tabla-cuentas td {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
-#accounts-table th {
+#tabla-cuentas th {
     background-color: #f2f2f2;
 }
 
-.bank-account-container h2 {
+.contenedor-cuentas-bancarias h2 {
     margin-bottom: 20px;
 }
 

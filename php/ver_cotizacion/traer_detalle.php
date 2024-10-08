@@ -81,11 +81,11 @@ $mysqli->close();
 <body>
     <fieldset>
         <legend>Detalle de la Cotización</legend>
-        <div id="detalle-container">
+        <div id="detalle-contenedor">
             <?php foreach ($titulos as $titulo_index => $titulo_data): ?>
                 <div class="detalle-section" data-titulo-index="<?php echo $titulo_index; ?>">
                     <div class="detalle-content">
-                        <div class="titulo-container" style="display: flex; align-items: center;">
+                        <div class="titulo-contenedor" style="display: flex; align-items: center;">
                             <label for="titulo">Título:</label>
                             <input type="text" name="detalle_titulo[<?php echo $titulo_index; ?>]" value="<?php echo htmlspecialchars($titulo_data['titulo']['nombre']); ?>" required style="margin-right: 10px;">
                             <button type="button" class="btn-eliminar-titulo" onclick="removeDetailSection(this)">Eliminar Título</button>
@@ -126,7 +126,7 @@ $mysqli->close();
                     </div>
                 </div>
             <?php endforeach; ?>
-            <div class="fixed-button-container">
+            <div class="fixed-button-contenedor">
                 <button type="button" onclick="addDetailSection()">Agregar un nuevo título</button>
             </div>
         </div>

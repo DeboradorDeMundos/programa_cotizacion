@@ -20,15 +20,15 @@ BPPJ
             pattern="^[0-9]+[-kK0-9]{1}$" 
             title="Por favor, ingrese un RUT válido."
             placeholder="Ejemplo: 12345678-9"
-            oninput="formatRut(this)"
-            oninput="removeInvalidChars(this)">
+            oninput="formatoRut(this)"
+            oninput="QuitarCaracteresInvalidos(this)">
 
         <label for="encargado_nombre">Nombre del Encargado:</label>
         <input type="text" id="encargado_nombre" name="encargado_nombre" required minlength="3" maxlength="255" 
             pattern="^[A-Za-zÀ-ÿ\s.-]+$" 
             title="Por favor, ingrese solo letras y espacios."
             placeholder="Ejemplo: Juan Pérez"
-            oninput="removeInvalidChars(this)">
+            oninput="QuitarCaracteresInvalidos(this)">
 
 
         <label for="cargo_encargado">Cargo:</label> <!-- Etiqueta para el campo de selección del cargo del cliente -->
@@ -61,7 +61,7 @@ BPPJ
             maxlength="255" 
             required 
             title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
-            onblur="completeEmail(this)">
+            onblur="CompletarEmail(this)">
 
         <label for="encargado_fono">Teléfono del Encargado:</label>
         <input type="text" id="encargado_fono" name="encargado_fono" 
@@ -70,7 +70,7 @@ BPPJ
             required 
             pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
             title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-            oninput="formatPhoneNumber(this)">
+            oninput="FormatearNumeroTelefono(this)">
 
         <label for="encargado_celular">Celular del Encargado:</label>
         <input type="text" id="encargado_celular" name="encargado_celular" 
@@ -79,7 +79,7 @@ BPPJ
             required 
             pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
             title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-            oninput="formatPhoneNumber(this)">
+            oninput="FormatearNumeroTelefono(this)">
 
         <input type="hidden" name="id_empresa" value="<?php echo $id_empresa; ?>"> <!-- Agregar el ID de la empresa aquí -->
         

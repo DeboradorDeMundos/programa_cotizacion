@@ -21,7 +21,7 @@ BPPJ
       background-color: #f9f9f9;
     }
     
-    .container {
+    .contenedor {
       width: 100%;
       padding: 20px;
       box-sizing: border-box;
@@ -38,13 +38,13 @@ BPPJ
       text-align: center;
     }
     
-    .logo-box {
+    .caja-logo {
       display: flex;
       align-items: center;
       justify-content: center;
     }
     
-    .logo-container {
+    .contenedor-logo {
       display: flex;
       align-items: center;
       cursor: pointer;
@@ -72,7 +72,7 @@ BPPJ
       background-color: #555;
     }
     
-    .btn-fixed {
+    .boton-fijado {
       position: fixed;
       top: 100px;
       left: 20px;
