@@ -15,29 +15,29 @@ BPPJ
 
 
 document.querySelector('.logo-contenedor').addEventListener('click', function() {
-    document.getElementById('logo-upload').click();
+    document.getElementById('cargar-logo').click();
 });
 
-document.getElementById('logo-upload').addEventListener('change', function(event) {
+document.getElementById('cargar-logo').addEventListener('change', function(event) {
     const file = event.target.files[0];
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
-            document.getElementById('logo-preview').src = e.target.result;
+            document.getElementById('logo-previsualizar').src = e.target.result;
         };
         reader.readAsDataURL(file);
     }
 });
 
 document.getElementById('cotizacion-form').addEventListener('submit', function(event) {
-    const logoUpload = document.getElementById('logo-upload');
-    const logoMessage = document.getElementById('logo-message');
+    const cargarLogo = document.getElementById('cargar-logo');
+    const mensajeLogo = document.getElementById('logo-mensaje');
 
-    if (!logoUpload.files.length) {
-        logoMessage.style.display = 'block'; // Muestra el mensaje si no hay logo
+    if (!cargarLogo.files.length) {
+        mensajeLogo.style.display = 'block'; // Muestra el mensaje si no hay logo
         event.preventDefault(); // Evita que se envíe el formulario
     } else {
-        logoMessage.style.display = 'none'; // Oculta el mensaje si se ha seleccionado un logo
+        mensajeLogo.style.display = 'none'; // Oculta el mensaje si se ha seleccionado un logo
     }
 });
 

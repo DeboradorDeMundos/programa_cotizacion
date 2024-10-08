@@ -1,99 +1,109 @@
-
 /* 
 Sitio Web Creado por ITred Spa.
-Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Dirección: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
 BPPJ 
 */
 
-
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa crear_empresa .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
+    /* Estilos generales del cuerpo */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f9f9f9;
+      background-color: #f9f9f9; /* Color de fondo claro para todo el sitio */
     }
-    
+
+    /* Contenedor principal */
     .contenedor {
-      width: 100%;
-      padding: 20px;
-      box-sizing: border-box;
+      width: 100%; /* Ancho completo del contenedor */
+      padding: 20px; /* Espaciado interno de 20px */
+      box-sizing: border-box; /* Asegura que el padding esté incluido en el ancho total */
     }
-    
+
+    /* Títulos principales (h2) */
     h2 {
-      color: #333;
-      margin-top: 0;
+      color: #333; /* Color del texto para títulos */
+      margin-top: 0; /* Sin margen superior */
     }
-    
+
+    /* Párrafos de texto */
     p {
-      color: #666;
-      line-height: 1.6;
-      text-align: center;
+      color: #666; /* Color gris para el texto */
+      line-height: 1.6; /* Espaciado entre líneas del texto */
+      text-align: center; /* Alineación centrada */
     }
-    
-    .logo-box {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
+    /* Caja que contiene el logo */
+    .caja-logo {
+      display: flex; /* Flexbox para centrar los elementos */
+      align-items: center; /* Alineación vertical al centro */
+      justify-content: center; /* Alineación horizontal al centro */
     }
-    
-    .logo-contenedor {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
+
+    /* Contenedor del logo */
+    .contenedor-logo {
+      display: flex; /* Flexbox para el logo */
+      align-items: center; /* Alineación centrada verticalmente */
+      cursor: pointer; /* Cambia el cursor al pasar sobre el logo */
     }
-    
+
+    /* Estilo del logo */
     .logo {
-      max-width: 300px;
-      height: auto;
-      margin-right: 10px;
-      border-radius: 5px;
+      max-width: 300px; /* Ancho máximo del logo */
+      height: auto; /* Mantener proporciones */
+      margin-right: 10px; /* Margen derecho de 10px */
+      border-radius: 5px; /* Bordes redondeados */
     }
-    
+
+    /* Botón de subir archivo */
     .subir {
-      background-color: #333;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 100%;
-      margin-top: 40px;
+      background-color: #333; /* Color de fondo oscuro */
+      color: #fff; /* Color del texto blanco */
+      padding: 10px 20px; /* Espaciado interno del botón */
+      border: none; /* Sin borde */
+      border-radius: 5px; /* Bordes redondeados */
+      cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+      width: 100%; /* Botón ocupa el ancho completo */
+      margin-top: 40px; /* Margen superior de 40px */
     }
-    
+
+    /* Cambio de color al pasar el cursor sobre el botón */
     .subir:hover {
-      background-color: #555;
+      background-color: #555; /* Color de fondo más claro al pasar el cursor */
     }
-    
-    .btn-fixed {
-      position: fixed;
-      top: 100px;
-      left: 20px;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      border-radius: 5px;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-      z-index: 1000;
+
+    /* Botón fijo en la parte superior izquierda de la pantalla */
+    .boton-fijo {
+      position: fixed; /* Fijar el botón en la pantalla */
+      top: 100px; /* Posición a 100px desde la parte superior */
+      left: 20px; /* Posición a 20px desde la izquierda */
+      padding: 10px 20px; /* Espaciado interno del botón */
+      background-color: #007bff; /* Color de fondo azul */
+      color: white; /* Color de texto blanco */
+      text-align: center; /* Texto centrado */
+      text-decoration: none; /* Sin subrayado en el enlace */
+      border-radius: 5px; /* Bordes redondeados */
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra del botón */
+      z-index: 1000; /* Colocar el botón en la capa más alta */
     }
-  /* --------------------------------------------------------------------------------------------------------------
-      ---------------------------------------- FIN ITred Spa crear_empresa .CSS ---------------------------------------
-      ------------------------------------------------------------------------------------------------------------- */
-  
-  
-  /*
-  Sitio Web Creado por ITred Spa.
-  Direccion: Guido Reni #4190
-  Pedro Agui Cerda - Santiago - Chile
-  contacto@itred.cl o itred.spa@gmail.com
-  https://www.itred.cl
-  Creado, Programado y Diseñado por ITred Spa.BPPJ*/
+
+/* --------------------------------------------------------------------------------------------------------------
+    ---------------------------------------- FIN ITred Spa crear_empresa .CSS ---------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+/*
+Sitio Web Creado por ITred Spa.
+Dirección: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+*/

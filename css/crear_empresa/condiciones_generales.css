@@ -79,7 +79,7 @@ h2 {
 }
 
 /* Botón de agregar condición */
-#add-condition-btn {
+#btn-agregar-condicion {
   background-color: #28a745; /* Fondo verde */
 }
 
@@ -89,7 +89,7 @@ h2 {
 }
 
 /* Botón de eliminar última condición */
-#remove-condition-btn {
+#btn-eliminar-condicion {
   background-color: #dc3545; /* Fondo rojo */
   display: none; /* Oculto por defecto */
 }
