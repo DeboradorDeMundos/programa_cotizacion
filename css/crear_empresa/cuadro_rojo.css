@@ -21,18 +21,16 @@ BPPJ
     padding: 10px; /* Agrega un espacio interno de 10px alrededor del contenido del contenedor */
 }
 
-/* Clase 'data-box' define el estilo básico para cajas de datos */
-.data-box {
-    border: 1px solid #ddd; /* Aplica un borde de 1px de grosor y color gris claro (#ddd) */
-    padding: 15px; /* Agrega un espacio interno de 15px dentro de la caja */
-    background-color: #fff; /* Establece el color de fondo en blanco */
-    border-radius: 12px; /* Redondea las esquinas del borde con un radio de 12px */
+.cuadro-datos {
+    border: 1px solid #ddd;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 12px;
 }
 
-/* Clase 'data-box-red' extiende 'data-box' y cambia el color del borde a rojo */
-.data-box-red {
-    border-color: red; /* Cambia el color del borde a rojo */
-    border-radius: 12px; /* Mantiene el borde redondeado de 12px */
+.cuadro-datos-rojo {
+    border-color: red;
+    border-radius: 12px;
 }
 
 /* Estilo para los campos de entrada en el formulario */

@@ -58,7 +58,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
 }
 ?>
 
-<div class="form-container">
+<div class="form-contenedor">
     <div class="form-group-2">
         <label for="subTotal">Sub Total</label>
         <input type="number" id="sub_total" name="sub_total" step="1" min="0" value="<?php echo $sub_total; ?>" readonly>

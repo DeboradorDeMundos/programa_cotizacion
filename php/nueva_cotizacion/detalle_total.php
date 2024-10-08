@@ -14,7 +14,7 @@ BPPJ
 
 
 <link rel="stylesheet" href="../../css/nueva_cotizacion/detalle_total.css">
-<div class="form-container">
+<div class="form-contenedor">
     <div class="form-group-2">
         <label for="subTotal">Sub Total</label>
         <input type="number" id="sub_total" name="sub_total" step="1" min="0" readonly>

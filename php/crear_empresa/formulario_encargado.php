@@ -13,7 +13,7 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- -->
     <link rel="stylesheet" href="../../css/crear_empresa/formulario_encargado.css">
 <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
-    <div class="box-12 data-box"> <!-- Crea una caja para ingresar datos, ocupando las 12 columnas disponibles en el diseño. Esta caja contiene varios campos de entrada de datos -->
+    <div class="box-12 cuadro-datos"> <!-- Crea una caja para ingresar datos, ocupando las 12 columnas disponibles en el diseño. Esta caja contiene varios campos de entrada de datos -->
 
         <label for="encargado_rut">RUT del Encargado:</label>
         <input type="text" id="encargado_rut" name="encargado_rut" required minlength="3" maxlength="20" 

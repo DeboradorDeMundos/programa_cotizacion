@@ -20,7 +20,7 @@ let requisitoCount = 0;
 function addRequisito() {
     requisitoCount++;
 
-    const contenedor = document.getElementById('requisito-container');
+    const contenedor = document.getElementById('requisito-contenedor');
 
     // Crear nueva fila de requisito
     const requisitoDiv = document.createElement('div');
@@ -46,7 +46,7 @@ function addRequisito() {
 
 // Función para eliminar requisitos
 function removeRequisito(button) {
-    const contenedor = document.getElementById('requisito-container');
+    const contenedor = document.getElementById('requisito-contenedor');
     const requisitoDiv = button.parentElement;
 
     if (requisitoDiv) {
@@ -59,8 +59,8 @@ function removeRequisito(button) {
 }
 
 // Función para actualizar la numeración después de eliminar
-function updateNumeration(container, type) {
-    Array.from(container.children).forEach((itemDiv, newIndex) => {
+function updateNumeration(contenedor, type) {
+    Array.from(contenedor.children).forEach((itemDiv, newIndex) => {
         const numberSpan = itemDiv.querySelector(`.${type}-number`);
         const inputField = itemDiv.querySelector('input');
 

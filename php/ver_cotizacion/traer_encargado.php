@@ -117,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <fieldset class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
     <legend>Detalle encargado</legend>
-    <div class="box-6 data-box"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
+    <div class="box-6 cuadro-datos"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
         <div class="form-group-inline">
             <div class="form-group">
                 <label for="encargado_rut">RUT: </label> <!-- Etiqueta para el campo de entrada del RUT del encargado -->
@@ -148,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 value="<?php echo htmlspecialchars($enc_fono); ?>"> <!-- Campo de texto para ingresar el teléfono del encargado. Este campo no es obligatorio -->
         </div>
     </div>
-    <div class="box-6 data-box data-box-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "data-box-left" para estilo -->
+    <div class="box-6 cuadro-datos cuadro-datos-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "cuadro-datos-left" para estilo -->
         <div class="form-group">
             <label for="enc_celular">Celular:</label> <!-- Etiqueta para el campo de entrada del celular del encargado -->
             <input type="text" id="enc_celular" name="enc_celular" 

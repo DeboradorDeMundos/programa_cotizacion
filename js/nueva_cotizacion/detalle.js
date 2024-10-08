@@ -18,16 +18,16 @@ let tituloContador = 1; // Contador global para los títulos
 let subtituloContador = {}; // Objeto para llevar el conteo de subtítulos por título
 
 function AgregarSeccionDeDetalle() {
-    const container = document.getElementById('detalle-container');
+    const contenedor = document.getElementById('detalle-contenedor');
     const NuevaSeccion = document.createElement('div');
-    NuevaSeccion.classList.add('detalle-section');
+    NuevaSeccion.classList.add('seccion-detalle');
     NuevaSeccion.dataset.IndiceTitulo = tituloContador; // Asigna un índice único al título
 
     subtituloContador[tituloContador] = 0; // Inicializa el contador de subtítulos para este título
 
     NuevaSeccion.innerHTML = `
         <div class="detalle-content">
-            <div class="titulo-container" style="display: flex; align-items: center;">
+            <div class="titulo-contenedor" style="display: flex; align-items: center;">
                 <label for="titulo">Título:</label>
                 <input type="text" name="detalle_titulo[${tituloContador}]" required style="margin-right: 10px;" oninput="QuitarCaracteresInvalidos(this)">
                 <button type="button" class="btn-eliminar-titulo" onclick="QuitarSeccionDeDetalle(this)">Eliminar Título</button>
@@ -46,20 +46,20 @@ function AgregarSeccionDeDetalle() {
             <button type="button" onclick="AgregarLineaDeDetalle(this)">Agregar detalles</button>
         </div>
     `;
-    container.appendChild(NuevaSeccion);
+    contenedor.appendChild(NuevaSeccion);
     tituloContador++; // Incrementa el contador de títulos
 }
 
 function QuitarSeccionDeDetalle(button) {
     if (confirm('¿Estás seguro de que quieres eliminar esta sección?')) {
-        const section = button.closest('.detalle-section');
+        const section = button.closest('.seccion-detalle');
         section.remove();
         CalcularTotales();
     }
 }
 
 function AgregarCabeza(button) {   
-    const section = button.closest('.detalle-section');
+    const section = button.closest('.seccion-detalle');
 
     const CabeceraTabla = section.querySelector('thead');
     const CuerpoTabla = section.querySelector('.detalle-contenido');
@@ -90,7 +90,7 @@ function AgregarCabeza(button) {
 }
 
 function AgregarLineaDeDetalle(button) { 
-    const section = button.closest('.detalle-section');
+    const section = button.closest('.seccion-detalle');
     const CuerpoTabla = section.querySelector('.detalle-contenido');
     const CabeceraTabla = section.querySelector('thead');
     const IndiceTitulo = section.dataset.IndiceTitulo;
@@ -209,7 +209,7 @@ function CapturarTipoYCambiar(selectElement) {
     const PrimeraCelda = row.firstElementChild; // Se refiere a la celda del select
 
     if (selectElement.value !== "") {
-        PrimeraCelda.AplicarAtributo('colspan', '1'); // Cambiar colspan a 1
+        PrimeraCelda.setAttribute('colspan', '1'); // Cambiar colspan a 1
         ColumnasOcultas.forEach(column => {
             column.style.display = "none"; // Ocultar todas las columnas ocultas
         });
@@ -241,7 +241,7 @@ function CapturarTipoYCambiar(selectElement) {
             });
         }
     } else {
-        PrimeraCelda.AplicarAtributo('colspan', '9'); // Cambiar colspan de vuelta a 9
+        PrimeraCelda.setAttribute('colspan', '9'); // Cambiar colspan de vuelta a 9
         ColumnasOcultas.forEach(column => {
             column.style.display = "none"; // Ocultar las columnas si se vuelve a seleccionar "Seleccione un tipo"
         });
@@ -255,7 +255,7 @@ function CapturarTipoYCambiar(selectElement) {
 }
 
 function agregarSubtitulo(button) {
-    const section = button.closest('.detalle-section');
+    const section = button.closest('.seccion-detalle');
     const CuerpoTabla = section.querySelector('.detalle-contenido');
     const IndiceTitulo = section.dataset.IndiceTitulo; // Obtiene el índice del título
 
@@ -305,7 +305,7 @@ function MostrarDescripcion(checkbox) {
 }
 
 function removeCabeza(button) {
-    const CabeceraTabla = button.closest('.detalle-section').querySelector('thead');
+    const CabeceraTabla = button.closest('.seccion-detalle').querySelector('thead');
 
     // Verifica si hay una fila para eliminar
     const row = CabeceraTabla.querySelector('tr');

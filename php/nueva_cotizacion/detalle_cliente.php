@@ -17,7 +17,7 @@ BPPJ
 <link rel="stylesheet" href="../../css/nueva_cotizacion/detalle_cliente.css">
 <fieldset class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
     <legend>Datos cliente</legend>
-    <div class="box-6 data-box"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
+    <div class="box-6 cuadro-datos"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
         <div class="form-group-inline">
             <div class="form-group">
                 <label for="cliente_rut">RUT: </label> <!-- Etiqueta para el campo de entrada del RUT del cliente -->
@@ -92,7 +92,7 @@ BPPJ
 
 
     </div>
-    <div class="box-6 data-box data-box-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "data-box-left" para estilo -->
+    <div class="box-6 cuadro-datos cuadro-datos-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "cuadro-datos-left" para estilo -->
         
         <div class="form-group">
             <label for="cliente_email">Email:</label> <!-- Etiqueta para el campo de entrada del email del cliente -->

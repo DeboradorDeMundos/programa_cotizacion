@@ -46,7 +46,7 @@ BPPJ
     
         // Crea cadenas delimitadas por "|" para cada tipo de dato (condiciones, requisitos, obligaciones)
         let conditionsString = '';
-        document.querySelectorAll('#conditions-container .condition-row').forEach((conditionDiv, index) => {
+        document.querySelectorAll('#contenedor-condicion .condition-row').forEach((conditionDiv, index) => {
             const inputField = conditionDiv.querySelector('input');
             if (inputField) {
                 conditionsString += (index > 0 ? '|' : '') + inputField.value;
@@ -54,7 +54,7 @@ BPPJ
         });
     
         let requisitosString = '';
-        document.querySelectorAll('#requisito-container .requisito-row').forEach((requisitoDiv, index) => {
+        document.querySelectorAll('#requisito-contenedor .requisito-row').forEach((requisitoDiv, index) => {
             const inputField = requisitoDiv.querySelector('input');
             if (inputField) {
                 requisitosString += (index > 0 ? '|' : '') + inputField.value;
@@ -62,7 +62,7 @@ BPPJ
         });
     
         let obligacionesString = '';
-        document.querySelectorAll('#obligaciones-container .obligaciones-row').forEach((obligacionesDiv, index) => {
+        document.querySelectorAll('#obligaciones-contenedor .obligaciones-row').forEach((obligacionesDiv, index) => {
             const inputField = obligacionesDiv.querySelector('input');
             if (inputField) {
                 obligacionesString += (index > 0 ? '|' : '') + inputField.value;

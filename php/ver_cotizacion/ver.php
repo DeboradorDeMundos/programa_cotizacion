@@ -389,11 +389,11 @@ $stmt_observaciones->close();
 <body>
         <!-- Contenedor de botones -->
     <!-- Contenedor de botones -->
-    <div class="button-container">
+    <div class="button-contenedor">
         <button class="button volver" onclick="window.history.back()">Volver</button>
         <button class="button imprimir" onclick="imprimir()">Imprimir</button>
     </div>
-    <div class="container">
+    <div class="contenedor">
 
         <?php include 'header.php'; ?>
 

@@ -15,7 +15,7 @@ BPPJ
 <link rel="stylesheet" href="../../css/nueva_cotizacion/detalle_vendedor.css">
 <fieldset class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
     <legend>Datos vendedor</legend>
-    <div class="box-6 data-box"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
+    <div class="box-6 cuadro-datos"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
         <div class="form-group-inline">
             <div class="form-group">
                 <label for="vendedor_rut">RUT: </label> <!-- Etiqueta para el campo de entrada del RUT del cliente -->
@@ -50,7 +50,7 @@ BPPJ
                 onblur="CompletarEmail(this)"> <!-- Campo de correo electrónico para ingresar el email del vendedor. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico. También es obligatorio -->
         </div>
     </div>
-    <div class="box-6 data-box data-box-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "data-box-left" para estilo -->
+    <div class="box-6 cuadro-datos cuadro-datos-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "cuadro-datos-left" para estilo -->
         <div class="form-group">
             <label for="vendedor_telefono">Teléfono:</label> <!-- Etiqueta para el campo de entrada del teléfono del vendedor -->
             

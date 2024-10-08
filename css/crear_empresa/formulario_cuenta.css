@@ -22,14 +22,14 @@ BPPJ
     padding: 10px;
 }
 
-.data-box {
+.cuadro-datos {
     border: 1px solid #ddd;
     padding: 15px;
     background-color: #fff;
     border-radius: 12px;
 }
 
-.contenedor-cuenta-banco {
+.bank-account-contenedor {
     margin-top: 20px;
 }
 
@@ -90,7 +90,7 @@ BPPJ
     background-color: #f2f2f2;
 }
 
-.contenedor-cuenta-banco h2 {
+.bank-account-contenedor h2 {
     margin-bottom: 20px;
 }
 

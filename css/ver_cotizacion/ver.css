@@ -49,7 +49,7 @@ a {
 font-size: 12px; /* Tamaño de letra más pequeño para enlaces */
 }
 
-.container {
+.contenedor {
     width: 1000px; /* Ancho para el tamaño oficio */
     height: 1400px; /* Alto para el tamaño oficio */
     margin: 0 auto;
@@ -63,7 +63,7 @@ font-size: 12px; /* Tamaño de letra más pequeño para enlaces */
     margin-bottom: 10px;
 }
 
-.header-container {
+.header-contenedor {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -143,7 +143,7 @@ font-size: 12px; /* Tamaño de letra más pequeño para enlaces */
 .items .unid, .items .cant, .items .precio, .items .dscto, .items .total {
     width: 10%;
 }
-.totals-container {
+.totals-contenedor {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
@@ -160,7 +160,7 @@ font-size: 12px; /* Tamaño de letra más pequeño para enlaces */
 .observations .large-cell {
     height: 100px;
 }
-.barcode-container {
+.barcode-contenedor {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -188,7 +188,7 @@ font-size: 12px; /* Tamaño de letra más pequeño para enlaces */
     text-align: center;
 }
 /* Estilos para el contenedor de los botones */
-.button-container {
+.button-contenedor {
     position: fixed; /* Fijo en la pantalla */
     top: 20px; /* Espacio desde el borde superior */
     left: 20px; /* Espacio desde el borde izquierdo */

@@ -18,7 +18,7 @@ BPPJ
     
 
 <link rel="stylesheet" href="../../css/nueva_cotizacion/detalle_proyecto.css">
-<fieldset class="box-6 data-box"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
+<fieldset class="box-6 cuadro-datos"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
     <legend>Datos proyecto</legend>
     <div class="form-group-inline">
         <div class="form-group">
@@ -108,7 +108,7 @@ BPPJ
 </fieldset>
 
 
-<fieldset class="box-6 data-box data-box-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "data-box-left" para estilo -->
+<fieldset class="box-6 cuadro-datos cuadro-datos-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "cuadro-datos-left" para estilo -->
     <legend>-</legend>
     <div class="form-group-inline">
         <div class="form-group">

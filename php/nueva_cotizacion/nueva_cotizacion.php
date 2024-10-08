@@ -45,7 +45,7 @@ BPPJ
 
                 <?php include 'cuadro_rojo_cotizacion.php'; ?>
 
-                <fieldset class="box-6 data-box"> 
+                <fieldset class="box-6 cuadro-datos"> 
                     <label for="fecha_emision">Fecha de Emisión:</label> <!-- Etiqueta para el campo de entrada de la fecha de emisión -->
                     <input type="date" id="fecha_emision" name="fecha_emision" required> <!-- Campo de fecha para seleccionar la fecha de emisión. Es obligatorio --> 
                 </fieldset>

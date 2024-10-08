@@ -14,7 +14,7 @@ BPPJ
 <!-- falta php de esta funcion -->
 <link rel="stylesheet" href="../../css/crear_empresa/obligaciones_clientes.css">
 <h2>Obligaciones cliente</h2>
-<div id="obligaciones-container">
+<div id="obligaciones-contenedor">
     
         <!-- Aquí se agregarán dinámicamente las filas de condiciones -->
 </div>

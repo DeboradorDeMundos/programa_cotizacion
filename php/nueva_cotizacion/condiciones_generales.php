@@ -30,7 +30,7 @@ if ($row !== null) {
 }
 ?> 
 
-<div id="condiciones-generales" class="data-box">
+<div id="condiciones-generales" class="cuadro-datos">
     <h3>Condiciones Generales</h3>
     <div class="field">
         <label for="descripcion_condiciones">Descripción:</label>

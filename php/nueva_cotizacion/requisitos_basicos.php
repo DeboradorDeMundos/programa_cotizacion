@@ -24,7 +24,7 @@ BPPJ
         echo "<p>Error al preparar la consulta de requisitos: " . $mysqli->error . "</p>";
     }
 ?> 
-<div id="requisitos-basicos" class="data-box">
+<div id="requisitos-basicos" class="cuadro-datos">
     <h3>Requisitos Básicos</h3>
     <div class="field">
         <label for="primer_titulo_1">Primer Título:</label>
