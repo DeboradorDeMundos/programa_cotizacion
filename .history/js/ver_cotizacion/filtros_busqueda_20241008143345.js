@@ -14,17 +14,7 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Filtro Busqueda.JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-    document.getElementById('filtro-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Serializa los datos del formulario
-        var formData = new FormData(this);
-        var queryString = new URLSearchParams(formData).toString();
-        
-        // Redirige a la misma página con los filtros aplicados
-        window.location.href = window.location.pathname + '?' + queryString;
-    });
-    
+
 
   
 

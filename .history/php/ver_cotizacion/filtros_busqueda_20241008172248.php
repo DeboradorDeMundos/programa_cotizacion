@@ -22,7 +22,7 @@ BPPJ
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ver Cotizaciones</title>
-    <link rel="stylesheet" href="../../css/ver_cotizacion/filtros_busqueda.css">
+    <link rel="stylesheet" href="../../css/programa_cotizacion/filtros_busqueda.css">
 </head>
 <form id="filtro-form">
     <label for="numero_cotizacion">Número de Cotización:</label>
@@ -46,7 +46,7 @@ BPPJ
 </form>
 
 
-<script src="../../js/ver_cotizacion/filtros_busqueda.js"></script> 
+<script src="../../js/ver_cotizacion/ver_listado.js"></script> 
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Filtro Busqueda .PHP -----------------------------------

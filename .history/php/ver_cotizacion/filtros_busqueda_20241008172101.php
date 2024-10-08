@@ -16,14 +16,11 @@ BPPJ
 <!-- ------------------------
      -- INICIO CONEXION BD --
      ------------------------ -->
-     <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ver Cotizaciones</title>
-    <link rel="stylesheet" href="../../css/ver_cotizacion/filtros_busqueda.css">
-</head>
+
+<?php
+// Establece la conexión a la base de datos de ITred Spa
+$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+
 <form id="filtro-form">
     <label for="numero_cotizacion">Número de Cotización:</label>
     <input type="text" id="numero_cotizacion" name="numero_cotizacion">
@@ -46,7 +43,6 @@ BPPJ
 </form>
 
 
-<script src="../../js/ver_cotizacion/filtros_busqueda.js"></script> 
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Filtro Busqueda .PHP -----------------------------------

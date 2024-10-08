@@ -16,7 +16,7 @@ BPPJ
      -- INICIO CONEXION BD --
      ------------------------ -->
 
- <?php
+     <?php
 // Establece la conexión a la base de datos
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
@@ -136,7 +136,7 @@ $mysqli->close();
     <title>Ver Cotizaciones</title>
     <link rel="stylesheet" href="../../css/programa_cotizacion/ver_listado.css">
 </head>
-    
+
 
 <!DOCTYPE html>
 <html lang="es">

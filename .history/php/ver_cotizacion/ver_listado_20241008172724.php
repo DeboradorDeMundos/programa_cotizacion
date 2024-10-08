@@ -136,7 +136,7 @@ $mysqli->close();
     <title>Ver Cotizaciones</title>
     <link rel="stylesheet" href="../../css/programa_cotizacion/ver_listado.css">
 </head>
-    
+
 
 <!DOCTYPE html>
 <html lang="es">

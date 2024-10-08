@@ -136,19 +136,34 @@ $mysqli->close();
     <title>Ver Cotizaciones</title>
     <link rel="stylesheet" href="../../css/programa_cotizacion/ver_listado.css">
 </head>
-    
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ver Cotizaciones</title>
-    <link rel="stylesheet" href="../../css/programa_cotizacion/ver_listado.css">
-</head>
 <body>
-<div><?php include 'filtros_busqueda.php'; ?></div>
-    <?php echo $mensaje; ?>
+
+    <!-- Formulario para Filtros -->
+    <form method="GET" action="ver_listado.php">
+        <label for="numero_cotizacion">Número de Cotización:</label>
+        <input type="text" name="numero_cotizacion" id="numero_cotizacion" value="<?php echo isset($_GET['numero_cotizacion']) ? htmlspecialchars($_GET['numero_cotizacion']) : ''; ?>">
+
+        <label for="estado">Estado:</label>
+        <select name="estado" id="estado">
+            <option value="">Todos</option>
+            <option value="Pendiente" <?php echo (isset($_GET['estado']) && $_GET['estado'] == 'Pendiente') ? 'selected' : ''; ?>>Pendiente</option>
+            <option value="Aprobada" <?php echo (isset($_GET['estado']) && $_GET['estado'] == 'Aprobada') ? 'selected' : ''; ?>>Aprobada</option>
+        </select>
+
+        <label for="fecha_inicio">Fecha Inicio:</label>
+        <input type="date" name="fecha_inicio" id="fecha_inicio" value="<?php echo isset($_GET['fecha_inicio']) ? htmlspecialchars($_GET['fecha_inicio']) : ''; ?>">
+
+        <label for="fecha_fin">Fecha Fin:</label>
+        <input type="date" name="fecha_fin" id="fecha_fin" value="<?php echo isset($_GET['fecha_fin']) ? htmlspecialchars($_GET['fecha_fin']) : ''; ?>">
+
+        <input type="submit" value="Buscar">
+    </form>
+
+    <?php
+        // Incluimos aquí la lógica para mostrar los resultados filtrados
+        echo $mensaje;
+    ?>
+
     <ul>
         <li><a href="../nueva_cotizacion/nueva_cotizacion.php?id=<?php echo $id_empresa; ?>">Crear Cotización</a></li>
         <li><a href="../../programa_cotizacion.php">Volver al Menú</a></li>
@@ -156,8 +171,6 @@ $mysqli->close();
 </body>
 </html>
 
-
-<script src="../../js/ver_cotizacion/ver_listado.js"></script> 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa  Ver Listado .PHP -----------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
