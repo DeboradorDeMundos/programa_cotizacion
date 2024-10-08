@@ -21,14 +21,14 @@ BPPJ
     padding: 10px;
 }
 
-.data-box {
+.cuadro-datos {
     border: 1px solid #ddd;
     padding: 15px;
     background-color: #fff;
     border-radius: 12px;
 }
 
-.data-box-red {
+.cuadro-datos-rojo {
     border-color: red;
     border-radius: 12px;
 }

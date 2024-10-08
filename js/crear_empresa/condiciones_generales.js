@@ -19,7 +19,7 @@ BPPJ
     function addCondition() {
         conditionCount++;
     
-        const container = document.getElementById('conditions-container');
+        const contenedor = document.getElementById('contenedor-condicion');
     
         // Crear nueva fila de condición
         const conditionDiv = document.createElement('div');
@@ -33,11 +33,11 @@ BPPJ
             <button type="button" class="remove-condition-btn" onclick="removeCondition(this)">Eliminar</button>
         `;
     
-        container.appendChild(conditionDiv);
+        contenedor.appendChild(conditionDiv);
     
         // Hacer readonly la condición anterior
         if (conditionCount > 1) {
-            const previousCondition = container.children[conditionCount - 2];
+            const previousCondition = contenedor.children[conditionCount - 2];
             const inputField = previousCondition.querySelector('input');
             inputField.setAttribute('readonly', 'readonly');
         }
@@ -45,7 +45,7 @@ BPPJ
     
     // Función para eliminar condiciones
     function removeCondition(button) {
-        const container = document.getElementById('conditions-container');
+        const contenedor = document.getElementById('contenedor-condicion');
         const conditionDiv = button.parentElement;
     
         if (conditionDiv) {
@@ -53,7 +53,7 @@ BPPJ
             conditionCount--;
     
             // Ajustar la numeración
-            updateNumeration(container, 'condition');
+            updateNumeration(contenedor, 'condition');
         }
     }
 

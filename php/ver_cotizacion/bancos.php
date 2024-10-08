@@ -20,7 +20,7 @@ BPPJ
 // Establece la conexión a la base de datos de ITred Spa
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 ?>
-<div class="barcode-container">
+<div class="barcode-contenedor">
 
 <table>
     <tr>

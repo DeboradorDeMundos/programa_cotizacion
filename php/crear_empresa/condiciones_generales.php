@@ -17,7 +17,7 @@ BPPJ
 <!-- falta php de esta funcion -->
 <link rel="stylesheet" href="../../css/crear_empresa/condiciones_generales.css"> <!-- Enlaza una hoja de estilo externa que se encuentra en la ruta especificada para estilizar el contenido de la página -->
 <h2>condiciones generaes</h2>
-<div id="conditions-container">
+<div id="contenedor-condicion">
     
         <!-- Aquí se agregarán dinámicamente las filas de condiciones -->
 </div>

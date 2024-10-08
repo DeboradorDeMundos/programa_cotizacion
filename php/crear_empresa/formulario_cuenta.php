@@ -14,7 +14,7 @@ BPPJ
     <!-- Otros campos del formulario -->
     <link rel="stylesheet" href="../../css/crear_empresa/formulario_cuenta.css">
     <div class="row">
-        <div class="box-12 data-box bank-account-container">
+        <div class="box-12 cuadro-datos bank-account-contenedor">
             <h2>Agrega tu cuenta bancaria:</h2>
             <div id="bank-accounts">
                 <!-- Campos de cuentas bancarias -->

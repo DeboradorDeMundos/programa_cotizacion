@@ -17,7 +17,7 @@ BPPJ
 // calculations.js
 function ActualizarTotal(input) {
     const row = input.closest('tr');
-    const section = row.closest('.detalle-section');
+    const section = row.closest('.seccion-detalle');
     const tituloIndex = section.dataset.tituloIndex; // Obtiene el índice del título
     const subtituloIndex = Array.from(section.querySelectorAll('.detalle-contenido tr')).length - 1; // Calcula el subtituloIndex
 
@@ -36,7 +36,7 @@ function ActualizarTotal(input) {
 }
 
 function CalcularTotales() {
-    const rows = document.querySelectorAll('.detalle-section .detalle-table tbody tr');
+    const rows = document.querySelectorAll('.seccion-detalle .detalle-table tbody tr');
 
     let subTotal = 0;
     let descuentoGlobalPorcentaje = parseFloat(document.getElementById('descuento_global_porcentaje').value) || 0;

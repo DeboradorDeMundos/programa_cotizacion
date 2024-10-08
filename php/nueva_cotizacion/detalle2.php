@@ -18,7 +18,7 @@ BPPJ
 <fieldset>
     <legend>Detalle de la Cotización</legend>
     <div id="detalle-contenedor">
-        <div class="detalle-section">
+        <div class="seccion-detalle">
             <!-- Aquí se agregarán las secciones dinámicamente -->
         </div>
 

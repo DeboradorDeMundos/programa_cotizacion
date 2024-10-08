@@ -141,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <fieldset class="row">
     <legend>Detalle cliente</legend>
-    <div class="box-6 data-box">
+    <div class="box-6 cuadro-datos">
         <div class="form-group-inline">
             <div class="form-group">
                 <label for="cliente_nombre">Nombre:</label>
@@ -182,7 +182,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 value="<?php echo htmlspecialchars($cliente_fono); ?>">
         </div>
     </div>
-    <div class="box-6 data-box data-box-left">
+    <div class="box-6 cuadro-datos cuadro-datos-left">
         <div class="form-group">
             <label for="cliente_email">Email:</label>
             <input type="email" id="cliente_email" name="cliente_email" 

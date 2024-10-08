@@ -80,7 +80,7 @@ $conn->close();
             margin: 0;
             padding: 0;
         }
-        .container {
+        .contenedor {
             max-width: 800px;
             margin: 50px auto;
             background-color: #fff;
@@ -139,7 +139,7 @@ $conn->close();
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="contenedor">
         <h1>Firma de la Empresa</h1>
 
         <div class="firma">

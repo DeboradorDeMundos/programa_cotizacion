@@ -26,7 +26,7 @@ body {
   }
   
   /* Define el contenedor principal del formulario */
-  .container {
+  .contenedor {
     width: 100%; /* El contenedor ocupa el 100% del ancho de la página */
     padding: 20px; /* Agrega un relleno de 20 píxeles alrededor del contenido */
     box-sizing: border-box; /* Incluye el relleno y el borde en el ancho y alto total del elemento */
@@ -68,7 +68,7 @@ body {
   }
   
   /* Define el contenedor interactivo del logo */
-  .logo-container {
+  .logo-contenedor {
     display: flex; /* Usa el modelo de caja flexible para organizar los elementos hijos */
     align-items: center; /* Alinea los elementos hijos verticalmente en el centro */
     cursor: pointer; /* Cambia el cursor a una mano para indicar que es interactivo */
@@ -82,14 +82,14 @@ body {
   }
   
   /* Define el estilo de las cajas de datos */
-  .data-box {
+  .cuadro-datos {
     border: 1px solid #ddd; /* Agrega un borde de 1 píxel de color gris claro */
     padding: 15px; /* Agrega un relleno de 15 píxeles alrededor del contenido */
     background-color: #fff; /* Establece un color de fondo blanco */
   }
   
   /* Define una variante de la caja de datos con borde rojo */
-  .data-box-red {
+  .cuadro-datos-rojo {
     border-color: red; /* Cambia el color del borde a rojo */
   }
   

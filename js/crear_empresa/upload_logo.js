@@ -14,7 +14,7 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 
-document.querySelector('.logo-container').addEventListener('click', function() {
+document.querySelector('.logo-contenedor').addEventListener('click', function() {
     document.getElementById('logo-upload').click();
 });
 

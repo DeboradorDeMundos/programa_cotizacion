@@ -21,7 +21,7 @@ BPPJ
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 ?>
 
-<div class="totals-container">
+<div class="totals-contenedor">
 <table class="observations">
     <tr>
         <td>
