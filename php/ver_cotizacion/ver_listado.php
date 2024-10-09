@@ -107,6 +107,8 @@ $mysqli->close();
     <link rel="stylesheet" href="../../css/programa_cotizacion/ver_listado.css">
 </head>
 <body>
+    <div>   <?php include 'filtros_busqueda.php'; ?></div>
+    
     <?php echo $mensaje; ?>
     <ul>
         <li><a href="../nueva_cotizacion/nueva_cotizacion.php?id=<?php echo $id_empresa; ?>">Crear Cotización</a></li>

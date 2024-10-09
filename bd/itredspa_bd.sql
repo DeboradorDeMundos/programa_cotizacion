@@ -209,6 +209,7 @@ CREATE TABLE C_Cotizaciones (
     numero_cotizacion VARCHAR(50) NOT NULL,
     fecha_emision DATE, 
     fecha_validez DATE, 
+    estado varchar(50),
     id_cliente INT, 
     id_proyecto INT, 
     id_empresa INT, 
