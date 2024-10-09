@@ -11,78 +11,101 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Formulario Creacion Porductos .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-
 <!-- ------------------------
      -- INICIO CONEXION BD --
      ------------------------ -->
 
-<?php
+     <?php
 // Establece la conexión a la base de datos de ITred Spa
 $conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
 ?>
 <!-- ---------------------
      -- FIN CONEXION BD --
      --------------------- -->
+
 <?php
 // Obtener el ID de la empresa desde la URL
 $id_empresa = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-// Obtener los tipos de productos
+// Consultar los tipos de productos disponibles en la base de datos
 $sql = "SELECT id_tipo_producto, tipo_producto FROM p_tipo_producto";
 $result = $conn->query($sql);
 
-// Preparar opciones para el select
+// Preparar opciones para el select de tipos de productos
 $options = "";
 if ($result->num_rows > 0) {
+    // Si hay tipos de productos, agregar cada uno como una opción en el select
     while ($row = $result->fetch_assoc()) {
         $options .= "<option value=\"" . $row["id_tipo_producto"] . "\">" . htmlspecialchars($row["tipo_producto"]) . "</option>";
     }
 } else {
+    // Si no hay tipos de productos, mostrar un mensaje en la opción
     $options = "<option value=\"\">No hay tipos de productos disponibles</option>";
 }
 
+// Cierra la conexión a la base de datos después de obtener los tipos de productos
 $conn->close();
 ?>
-<h2>Crear Productos</h2>
-<form id="productos-form" action="procesar_productos.php" method="post" enctype="multipart/form-data">
-                <fieldset>
-                    <legend>Detalles del Producto</legend>
-                    <table id="productos-table">
-                        <thead>
-                            <tr>
-                                <th>Nombre del Producto</th>
-                                <th>Descripción</th>
-                                <th>Precio</th>
-                                <th>Foto</th>
-                                <th>Tipo de Producto</th>
-                                <th>Acción</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="text" name="nombre_producto[]" required></td>
-                                <td><textarea name="descripcion_producto[]" rows="4"></textarea></td>
-                                <td><input type="number" step="0.01" name="precio_producto[]" required></td>
-                                <td><input type="file" name="foto_producto[]" accept="image/*"></td>
-                                <td>
-                                    <select name="id_tipo_producto[]" required>
-                                        <?php echo $options; ?>
-                                    </select>
-                                </td>
-                                <td><button type="button" onclick="removeRow(this)">Eliminar</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <!-- Campo oculto para el ID de la empresa -->
-                    <input type="hidden" name="id_empresa" value="<?php echo htmlspecialchars($id_empresa); ?>">
-                    <div class="form-group">
-                        <button type="button" class="btn-nuevo" onclick="addRow()">Nuevo Producto</button>
-                        <button type="submit" class="btn-guardar">Guardar Productos</button>
-                    </div>
-                </fieldset>
-            </form>
 
-            <script src="../../js/crear_producto/crear_producto.js"></script> 
+<h2>Crear Productos</h2>
+<!-- Formulario para la creación de productos -->
+<form id="productos-form" action="procesar_productos.php" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <legend>Detalles del Producto</legend>
+        <table id="productos-table">
+            <thead>
+                <tr>
+                    <!-- Columna para cada elemento -->
+                    <th>Nombre del Producto</th> 
+                    <th>Descripción</th> 
+                    <th>Precio</th> 
+                    <th>Foto</th> 
+                    <th>Tipo de Producto</th> 
+                    <th>Acción</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <!-- Campo para el nombre del producto -->
+                    <td><input type="text" name="nombre_producto[]" required></td>
+                    
+                    <!-- Campo para la descripción del producto -->
+                    <td><textarea name="descripcion_producto[]" rows="4"></textarea></td>
+                    
+                    <!-- Campo para el precio del producto -->
+                    <td><input type="number" step="0.01" name="precio_producto[]" required></td>
+                    
+                    <!-- Campo para subir la foto del producto -->
+                    <td><input type="file" name="foto_producto[]" accept="image/*"></td>
+                    
+                    <!-- Select para elegir el tipo de producto -->
+                    <td>
+                        <select name="id_tipo_producto[]" required>
+                            <?php echo $options; ?> <!-- Opciones generadas desde la consulta a la base de datos -->
+                        </select>
+                    </td>
+                    
+                    <!-- Botón para eliminar la fila actual -->
+                    <td><button type="button" onclick="removeRow(this)">Eliminar</button></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Campo oculto para el ID de la empresa, que se enviará con el formulario -->
+        <input type="hidden" name="id_empresa" value="<?php echo htmlspecialchars($id_empresa); ?>">
+        
+        <div class="form-group">
+            <!-- Botón para agregar un nuevo producto -->
+            <button type="button" class="btn-nuevo" onclick="addRow()">Nuevo Producto</button>
+            
+            <!-- Botón para enviar el formulario y guardar los productos -->
+            <button type="submit" class="btn-guardar">Guardar Productos</button>
+        </div>
+    </fieldset>
+</form>
+
+<!-- Script para la funcionalidad del formulario, como agregar y eliminar filas -->
+<script src="../../js/crear_producto/crear_producto.js"></script>
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Formulario creacion producto .PHP ----------------------------------------
