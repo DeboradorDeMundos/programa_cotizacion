@@ -2,7 +2,7 @@
 /* 
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
@@ -14,85 +14,98 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Formulario Cuenta .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-/* Estilos comunes */
 
+/* Estilo para la caja flexible que ocupa todo el ancho disponible */
 .box-12 {
-    flex: 1;
-    max-width: 100%;
-    padding: 10px;
+    flex: 1; /* Permite que el contenedor se expanda para ocupar espacio disponible */
+    max-width: 100%; /* Ancho máximo del 100% del contenedor padre */
+    padding: 10px; /* Espaciado interno de 10px */
 }
 
+/* Estilo para un cuadro de datos con borde y fondo blanco */
 .data-box {
-    border: 1px solid #ddd;
-    padding: 15px;
-    background-color: #fff;
-    border-radius: 12px;
+    border: 1px solid #ddd; /* Borde gris claro */
+    padding: 15px; /* Espaciado interno de 15px */
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 12px; /* Bordes redondeados */
 }
 
+/* Estilo para el contenedor de las cuentas bancarias */
 .contenedor-cuentas-bancarias {
-    margin-top: 20px;
+    margin-top: 20px; /* Separación superior de 20px */
 }
 
+/* Estilo para las etiquetas de las cuentas bancarias */
 .cuenta-bancaria label {
-    display: block;
-    margin-bottom: 8px;
+    display: block; /* La etiqueta ocupa toda la línea */
+    margin-bottom: 8px; /* Espaciado inferior de 8px */
 }
 
+/* Estilo para los campos de entrada y selección de cuentas bancarias */
 .cuenta-bancaria input,
 .cuenta-bancaria select {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
+    width: calc(100% - 20px); /* El ancho es el 100% menos 20px de margen */
+    padding: 10px; /* Espaciado interno de 10px */
+    margin-bottom: 20px; /* Margen inferior de 20px entre elementos */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye el borde y el padding dentro del ancho total */
 }
 
+/* Estilo para el botón de agregar */
 #boton-agregar-boton {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 10px 20px; /* Espaciado interno */
+    background-color: #007bff; /* Fondo azul */
+    color: white; /* Texto en blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima */
 }
 
+/* Cambiar color de fondo del botón de agregar al pasar el cursor */
 #boton-agregar-boton:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Fondo azul más oscuro */
 }
 
+/* Estilo para el botón de subir */
 #boton-subir {
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 10px 20px; /* Espaciado interno */
+    background-color: #28a745; /* Fondo verde */
+    color: white; /* Texto en blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima */
 }
 
+/* Estilo para el botón de subir cuando está deshabilitado */
 #boton-subir:disabled {
-    background-color: #6c757d;
-    cursor: not-allowed;
+    background-color: #6c757d; /* Fondo gris oscuro */
+    cursor: not-allowed; /* El cursor cambia para indicar que está deshabilitado */
 }
 
+/* Estilo para la tabla de cuentas bancarias */
 #tabla-cuentas {
-    width: 100%;
-    border-collapse: collapse;
+    width: 100%; /* La tabla ocupa el 100% del contenedor */
+    border-collapse: collapse; /* Colapsar los bordes de las celdas */
 }
 
+/* Estilo para las celdas de la tabla (th y td) */
 #tabla-cuentas th,
 #tabla-cuentas td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: 1px solid #ddd; /* Borde gris claro alrededor de las celdas */
+    padding: 8px; /* Espaciado interno de 8px */
 }
 
+/* Estilo para las cabeceras de la tabla */
 #tabla-cuentas th {
-    background-color: #f2f2f2;
+    background-color: #f2f2f2; /* Fondo gris claro */
 }
 
+/* Estilo para el título de la sección de cuentas bancarias */
 .contenedor-cuentas-bancarias h2 {
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Separación inferior de 20px */
 }
+
 
 
 
@@ -108,7 +121,7 @@ BPPJ
 /*
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.

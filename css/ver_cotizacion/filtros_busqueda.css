@@ -2,7 +2,7 @@
 /* 
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
@@ -15,6 +15,34 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 
+    /* Estilo del formulario de filtro */
+#filtro-form {
+    margin-bottom: 20px; /* Margen inferior del formulario */
+}
+
+#filtro-form label {
+    display: inline-block; /* Muestra la etiqueta en línea */
+    width: 150px; /* Ancho fijo para las etiquetas */
+}
+
+#filtro-form input, #filtro-form select {
+    margin-bottom: 10px; /* Margen inferior de los campos de entrada y selección */
+    padding: 5px; /* Espaciado interno de los campos */
+}
+
+/* Estilo del botón de envío del formulario */
+button[type="submit"] {
+    padding: 5px 15px; /* Espaciado interno del botón */
+    background-color: #4CAF50; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none; /* Sin borde en el botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+/* Efecto hover para el botón de envío */
+button[type="submit"]:hover {
+    background-color: #45a049; /* Color de fondo del botón al pasar el ratón */
+}
 
 
 
@@ -26,7 +54,7 @@ BPPJ
 /*
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.

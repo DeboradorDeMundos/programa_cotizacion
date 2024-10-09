@@ -1,7 +1,7 @@
 <!--
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
@@ -20,10 +20,6 @@ BPPJ
 // Establece la conexión a la base de datos de ITred Spa
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
-// Verificar la conexión
-if ($mysqli->connect_error) {
-    die('Error de conexión (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
-}
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id_cotizacion = (int) $_GET['id'];
@@ -459,7 +455,7 @@ $mysqli->close();
 <!--
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.

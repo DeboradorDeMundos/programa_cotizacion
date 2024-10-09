@@ -2,7 +2,7 @@
 /* 
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
@@ -13,92 +13,90 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Ver Listado .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-
-
 /* Estilos generales */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f7f7f7;
-    color: #666; /* Color gris */
-    margin: 0;
-    padding: 20px;
+    font-family: 'Arial', sans-serif; /* Fuente utilizada en el cuerpo del documento */
+    background-color: #f7f7f7; /* Color de fondo */
+    color: #666; /* Color gris para el texto */
+    margin: 0; /* Sin márgenes en el cuerpo */
+    padding: 20px; /* Espaciado interno del cuerpo */
     font-size: 14px; /* Tamaño de letra más pequeño */
 }
 
 h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
+    text-align: center; /* Alineación centrada del encabezado */
+    color: #333; /* Color del texto del encabezado */
+    margin-bottom: 20px; /* Margen inferior del encabezado */
 }
 
 /* Estilo de la tabla */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ancho completo de la tabla */
+    border-collapse: collapse; /* Colapsa los bordes de las celdas */
+    margin: 20px 0; /* Margen superior e inferior de la tabla */
+    background-color: #fff; /* Color de fondo de la tabla */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra de la tabla */
 }
 
 table th, table td {
-    padding: 10px 12px; /* Espaciado reducido */
-    text-align: left;
+    padding: 10px 12px; /* Espaciado reducido en las celdas */
+    text-align: left; /* Alineación a la izquierda del texto */
     font-size: 13px; /* Tamaño de letra más pequeño */
 }
 
 table th {
-    background-color: #4CAF50;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 12px; /* Tamaño de letra más pequeño */
+    background-color: #4CAF50; /* Color de fondo de las cabeceras */
+    color: #fff; /* Color del texto de las cabeceras */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    font-size: 12px; /* Tamaño de letra más pequeño para las cabeceras */
 }
 
 table tr {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd; /* Línea inferior entre filas */
 }
 
 table tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #f2f2f2; /* Color de fondo para filas pares */
 }
 
 table tr:hover {
-    background-color: #f1f1f1;
-    transition: background-color 0.2s ease-in-out;
+    background-color: #f1f1f1; /* Color de fondo al pasar el ratón sobre una fila */
+    transition: background-color 0.2s ease-in-out; /* Transición suave del color de fondo */
 }
 
 table td a {
-    color: #4CAF50;
-    text-decoration: none;
-    font-weight: normal;
-    font-size: 13px; /* Tamaño de letra más pequeño */
+    color: #4CAF50; /* Color del enlace en la tabla */
+    text-decoration: none; /* Sin subrayado en el enlace */
+    font-weight: normal; /* Peso de fuente normal */
+    font-size: 13px; /* Tamaño de letra más pequeño para enlaces */
 }
 
 table td a:hover {
-    text-decoration: underline;
+    text-decoration: underline; /* Subrayado al pasar el ratón sobre el enlace */
 }
 
 /* Estilo de la lista de enlaces */
 ul {
-    list-style-type: none;
-    padding: 0;
-    text-align: center;
-    margin-top: 20px;
+    list-style-type: none; /* Sin viñetas en la lista */
+    padding: 0; /* Sin espaciado interno */
+    text-align: center; /* Alineación centrada de la lista */
+    margin-top: 20px; /* Margen superior de la lista */
 }
 
 ul li {
-    display: inline-block;
-    margin: 0 10px;
+    display: inline-block; /* Elementos de la lista en línea */
+    margin: 0 10px; /* Espaciado lateral entre elementos de la lista */
 }
 
 ul li a {
-    color: #4CAF50;
-    text-decoration: none;
-    font-weight: normal;
-    font-size: 14px; /* Tamaño de letra reducido */
+    color: #4CAF50; /* Color del enlace en la lista */
+    text-decoration: none; /* Sin subrayado en el enlace */
+    font-weight: normal; /* Peso de fuente normal */
+    font-size: 14px; /* Tamaño de letra reducido para enlaces */
 }
 
 ul li a:hover {
-    text-decoration: underline;
+    text-decoration: underline; /* Subrayado al pasar el ratón sobre el enlace */
 }
 
 /* --------------------------------------------------------------------------------------------------------------
@@ -109,7 +107,7 @@ ul li a:hover {
 /*
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.

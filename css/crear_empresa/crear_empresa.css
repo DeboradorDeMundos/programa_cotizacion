@@ -2,7 +2,7 @@
 /* 
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
@@ -14,77 +14,88 @@ BPPJ
     -------------------------------------- INICIO ITred Spa crear_empresa .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
-    }
-    
-    .contenedor {
-      width: 100%;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-    
-    h2 {
-      color: #333;
-      margin-top: 0;
-    }
-    
-    p {
-      color: #666;
-      line-height: 1.6;
-      text-align: center;
-    }
-    
-    .caja-logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .contenedor-logo {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-    }
-    
-    .logo {
-      max-width: 300px;
-      height: auto;
-      margin-right: 10px;
-      border-radius: 5px;
-    }
-    
-    .subir {
-      background-color: #333;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 100%;
-      margin-top: 40px;
-    }
-    
-    .subir:hover {
-      background-color: #555;
-    }
-    
-    .boton-fijado {
-      position: fixed;
-      top: 100px;
-      left: 20px;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      border-radius: 5px;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-      z-index: 1000;
-    }
+    /* Estilo global para el cuerpo del documento */
+body {
+  font-family: Arial, sans-serif; /* Tipografía base */
+  margin: 0; /* Eliminar margen predeterminado */
+  padding: 0; /* Eliminar padding predeterminado */
+  background-color: #f9f9f9; /* Color de fondo claro */
+}
+
+/* Estilo para el contenedor principal */
+.contenedor {
+  width: 100%; /* Ancho completo de la página */
+  padding: 20px; /* Espaciado interno uniforme */
+  box-sizing: border-box; /* Incluir padding y borde en el ancho total */
+}
+
+/* Estilo para los títulos (h2) */
+h2 {
+  color: #333; /* Color del texto gris oscuro */
+  margin-top: 0; /* Eliminar margen superior */
+}
+
+/* Estilo para los párrafos */
+p {
+  color: #666; /* Color del texto gris claro */
+  line-height: 1.6; /* Altura de línea más espaciosa para mejor legibilidad */
+  text-align: center; /* Alinear texto al centro */
+}
+
+/* Contenedor de logo centrado horizontalmente */
+.caja-logo {
+  display: flex; /* Utiliza flexbox para alineación */
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
+}
+
+/* Contenedor para el logo con efecto de puntero */
+.contenedor-logo {
+  display: flex; /* Flexbox para alinear elementos internos */
+  align-items: center; /* Alinear logo y otros elementos verticalmente */
+  cursor: pointer; /* Cambiar cursor al pasar sobre el contenedor */
+}
+
+/* Estilo para el logo */
+.logo {
+  max-width: 300px; /* Ancho máximo del logo */
+  height: auto; /* Ajustar altura proporcionalmente */
+  margin-right: 10px; /* Margen derecho para separar del contenido */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Botón de subida */
+.subir {
+  background-color: #333; /* Fondo gris oscuro */
+  color: #fff; /* Texto en blanco */
+  padding: 10px 20px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambiar el cursor al pasar por encima */
+  width: 100%; /* Ancho completo */
+  margin-top: 40px; /* Separación superior */
+}
+
+/* Cambiar el color del botón al pasar el cursor */
+.subir:hover {
+  background-color: #555; /* Fondo gris más claro */
+}
+
+/* Estilo para un botón fijo en la pantalla */
+.boton-fijado {
+  position: fixed; /* Fijar el botón en la pantalla */
+  top: 100px; /* Separación desde el borde superior */
+  left: 20px; /* Separación desde el borde izquierdo */
+  padding: 10px 20px; /* Espaciado interno */
+  background-color: #007bff; /* Fondo azul */
+  color: white; /* Texto en blanco */
+  text-align: center; /* Alinear texto al centro */
+  text-decoration: none; /* Eliminar subrayado del enlace */
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidad */
+  z-index: 1000; /* Prioridad sobre otros elementos */
+}
+
   /* --------------------------------------------------------------------------------------------------------------
       ---------------------------------------- FIN ITred Spa crear_empresa .CSS ---------------------------------------
       ------------------------------------------------------------------------------------------------------------- */
@@ -93,7 +104,7 @@ BPPJ
   /*
   Sitio Web Creado por ITred Spa.
   Direccion: Guido Reni #4190
-  Pedro Agui Cerda - Santiago - Chile
+  Pedro Aguirre Cerda - Santiago - Chile
   contacto@itred.cl o itred.spa@gmail.com
   https://www.itred.cl
   Creado, Programado y Diseñado por ITred Spa.BPPJ*/

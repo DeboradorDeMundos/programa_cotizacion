@@ -3,7 +3,7 @@
 /* 
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
@@ -14,51 +14,57 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Obligaciones clientes .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
+/* Estilos para los encabezados h2 */
+h2 {
+  color: #333; /* Color de texto gris oscuro */
+  margin-top: 0; /* Sin margen superior */
+}
 
+/* Contenedor para las obligaciones */
+#obligaciones-contenedor {
+  margin-bottom: 20px; /* Margen inferior de 20px */
+}
 
-    h2 {
-      color: #333;
-      margin-top: 0;
-    }
-    
-    #obligaciones-contenedor {
-      margin-bottom: 20px;
-    }
-    
-    .fila-obligaciones {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-      padding: 5px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-    
-    .numero-obligaciones {
-      font-weight: bold;
-    }
-    
-    button {
-      background-color: #007bff;
-      color: white;
-      padding: 5px 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    
-    button:hover {
-      background-color: #0056b3;
-    }
-    
-    .boton-eliminar-obligacion {
-      background-color: #dc3545; /* Color rojo */
-    }
-    
-    .boton-eliminar-obligacion:hover {
-      background-color: #c82333; /* Rojo más oscuro al hacer hover */
-    }
+/* Estilo para filas de obligaciones */
+.fila-obligaciones {
+  display: flex; /* Usar flexbox para alinear elementos */
+  align-items: center; /* Centra los elementos verticalmente */
+  gap: 10px; /* Espacio de 10px entre los elementos */
+  margin-bottom: 10px; /* Margen inferior de 10px */
+  padding: 5px; /* Relleno interno de 5px */
+  border: 1px solid #ddd; /* Borde gris claro */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Estilo para el número de obligaciones */
+.numero-obligaciones {
+  font-weight: bold; /* Texto en negrita */
+}
+
+/* Estilos generales para botones */
+button {
+  background-color: #007bff; /* Color de fondo azul */
+  color: white; /* Texto blanco */
+  padding: 5px 10px; /* Relleno interno de 5px vertical y 10px horizontal */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+/* Efecto hover para los botones */
+button:hover {
+  background-color: #0056b3; /* Fondo azul oscuro al pasar el ratón */
+}
+
+/* Estilos específicos para el botón de eliminar obligaciones */
+.boton-eliminar-obligacion {
+  background-color: #dc3545; /* Color rojo */
+}
+
+/* Efecto hover para el botón de eliminar obligaciones */
+.boton-eliminar-obligacion:hover {
+  background-color: #c82333; /* Rojo más oscuro al hacer hover */
+}
 
 
 
@@ -70,7 +76,7 @@ BPPJ
 /*
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.

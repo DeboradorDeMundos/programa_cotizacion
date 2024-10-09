@@ -2,7 +2,7 @@
 /* 
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
@@ -13,101 +13,112 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Get Tipo Cuenta .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-
-/* Estilos comunes */
+/* Estilos básicos para el cuerpo del documento */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-  }
-  
-  .contenedor {
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
-  
-  .box-6, .box-12 {
-    padding: 10px;
-  }
-  
+  font-family: Arial, sans-serif; /* Tipografía Arial */
+  margin: 0; /* Sin margen externo */
+  padding: 0; /* Sin relleno externo */
+  background-color: #f9f9f9; /* Color de fondo gris claro */
+}
+
+/* Contenedor principal que ocupa todo el ancho disponible */
+.contenedor {
+  width: 100%; /* Ancho completo del contenedor */
+  padding: 20px; /* Relleno interno de 20px */
+  box-sizing: border-box; /* Incluye borde y padding dentro del ancho total */
+}
+
+/* Estilo para las filas flexibles */
+.row {
+  display: flex; /* Usar flexbox para organizar en fila */
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en líneas si es necesario */
+  margin-bottom: 20px; /* Margen inferior de 20px */
+}
+
+/* Estilo para las cajas flexibles con diferentes anchos */
+.box-6, .box-12 {
+  padding: 10px; /* Relleno interno de 10px */
+}
+
+/* Caja con ancho máximo del 50% */
+.box-6 {
+  flex: 1; /* Se adapta para ocupar el espacio disponible */
+  max-width: 50%; /* Ancho máximo del 50% */
+}
+
+/* Caja con ancho máximo del 100% */
+.box-12 {
+  flex: 1; /* Se adapta para ocupar el espacio disponible */
+  max-width: 100%; /* Ancho máximo del 100% */
+}
+
+/* Estilos comunes para campos de entrada y selectores */
+input, select {
+  width: calc(100% - 20px); /* Ancho total menos 20px para espacio interno */
+  padding: 10px; /* Relleno interno de 10px */
+  margin-bottom: 20px; /* Margen inferior de 20px */
+  border: 1px solid #ddd; /* Borde gris claro */
+  border-radius: 5px; /* Bordes redondeados */
+  box-sizing: border-box; /* Incluye borde y relleno dentro del ancho total */
+}
+
+/* Estilos para las tablas */
+table {
+  width: 100%; /* Ancho completo de la tabla */
+  border-collapse: collapse; /* Colapsa los bordes de las celdas */
+  margin: 20px 0; /* Margen superior e inferior de 20px */
+}
+
+/* Estilos para los encabezados de las tablas */
+th {
+  background-color: #4CAF50; /* Fondo verde para los encabezados */
+  color: white; /* Texto blanco */
+  padding: 10px; /* Relleno interno de 10px */
+  text-align: center; /* Texto centrado */
+}
+
+/* Estilos para las celdas de las tablas */
+td {
+  padding: 5px; /* Relleno interno de 5px */
+  border-bottom: 1px solid #ddd; /* Borde inferior gris claro */
+}
+
+/* Estilos para los títulos */
+h2 {
+  color: #333; /* Color de texto gris oscuro */
+  margin-top: 0; /* Sin margen superior */
+}
+
+/* Estilos para los párrafos */
+p {
+  color: #666; /* Color de texto gris medio */
+  line-height: 1.6; /* Altura de línea aumentada para mejor legibilidad */
+  text-align: center; /* Texto centrado */
+}
+
+/* Botones comunes para subir archivos */
+.fila-subir input[type="submit"],
+.subir {
+  width: calc(100% - 20px); /* Ancho total menos 20px */
+  padding: 10px; /* Relleno interno de 10px */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  color: white; /* Texto blanco */
+}
+
+/* Efecto hover para los botones */
+.fila-subir input[type="submit"]:hover,
+.subir:hover {
+  background-color: #0056b3; /* Fondo azul oscuro en hover */
+}
+
+/* Media Query para dispositivos con un ancho máximo de 768px */
+@media (max-width: 768px) {
   .box-6 {
-    flex: 1;
-    max-width: 50%;
+      max-width: 100%; /* La caja ocupará el 100% del ancho en pantallas pequeñas */
   }
-  
-  .box-12 {
-    flex: 1;
-    max-width: 100%;
-  }
-  
-  input, select {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-  }
-  
-  th {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  td {
-    padding: 5px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  h2 {
-    color: #333;
-    margin-top: 0;
-  }
-  
-  p {
-    color: #666;
-    line-height: 1.6;
-    text-align: center;
-  }
-  
-  /* Botones comunes */
-  .fila-subir input[type="submit"],
-  .subir {
-    width: calc(100% - 20px);
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: white;
-  }
-  
-  .fila-subir input[type="submit"]:hover,
-  .subir:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Media Queries */
-  @media (max-width: 768px) {
-    .box-6 {
-      max-width: 100%;
-    }
-  }
+}
 
 
 
@@ -119,7 +130,7 @@ body {
 /*
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.

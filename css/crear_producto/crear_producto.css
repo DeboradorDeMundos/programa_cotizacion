@@ -1,7 +1,7 @@
 /* 
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
@@ -11,89 +11,138 @@ BPPJ
 /* -------------------------------------------------------------------------------------------------------------
    ------------------------------------- INICIO ITred Spa Crear Producto .CSS -------------------------------------
    ------------------------------------------------------------------------------------------------------------- */
-
+/* Estilos generales para el cuerpo del documento */
 body {
-    background-color: #f0f0f0;
-    color: #333333;
-    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Color de fondo claro */
+    color: #333333; /* Color del texto oscuro */
+    font-family: Arial, sans-serif; /* Fuente utilizada para el texto */
 }
+
+/* Contenedor principal que centra su contenido */
 .contenedor {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    display: flex; /* Usar flexbox para alinear elementos */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    height: 100vh; /* Altura del contenedor al 100% de la ventana */
 }
+
+/* Contenedor del formulario con fondo blanco y estilo */
 .form-contenedor {
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; /* Color de fondo blanco */
+    padding: 40px; /* Espaciado interno de 40px */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
+
+/* Estilos para el título del formulario */
 .form-contenedor h2 {
-    margin-bottom: 20px;
-    color: #333333;
+    margin-bottom: 20px; /* Margen inferior de 20px */
+    color: #333333; /* Color del texto del título */
 }
+
+/* Estilos para grupos de formulario */
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 15px; /* Margen inferior de 15px */
 }
+
+/* Estilos para las etiquetas de los campos */
 .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #666666;
+    display: block; /* Hacer que la etiqueta ocupe toda la línea */
+    margin-bottom: 5px; /* Margen inferior de 5px */
+    color: #666666; /* Color de texto gris */
 }
+
+/* Estilos para los campos de entrada y área de texto */
 .form-group input, .form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #f9f9f9;
-    color: #333333;
+    width: 100%; /* Ancho del 100% */
+    padding: 10px; /* Espaciado interno de 10px */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 4px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Color de fondo gris muy claro */
+    color: #333333; /* Color del texto oscuro */
 }
+
+/* Estilo específico para el área de texto */
 .form-group textarea {
-    resize: vertical;
+    resize: vertical; /* Permitir redimensionar solo verticalmente */
 }
 
-
-/* Agregar estilos básicos para la tabla y el fieldset */
+/* Estilos básicos para las tablas */
 table {
-    width: 100%;
-    border-collapse: collapse;
+    width: 100%; /* Ancho del 100% */
+    border-collapse: collapse; /* Colapsar bordes para evitar duplicados */
 }
+
+/* Estilos para celdas de la tabla */
 th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
+    padding: 10px; /* Espaciado interno de 10px */
+    border: 1px solid #ddd; /* Borde gris claro */
 }
+
+/* Estilos para fieldset */
 fieldset {
-    border: 1px solid #ccc;
-    padding: 10px;
+    border: 1px solid #ccc; /* Borde gris claro */
+    padding: 10px; /* Espaciado interno de 10px */
 }
+
+/* Estilo para el legend del fieldset */
 legend {
-    font-weight: bold;
+    font-weight: bold; /* Negrita para el título del fieldset */
 }
-/* Estilos para los botones */
+
+/* Estilos para los botones dentro del formulario */
 .form-group {
-    margin-top: 10px;
+    margin-top: 10px; /* Margen superior de 10px */
 }
+
+/* Estilos generales para los botones */
 .form-group button {
-    padding: 8px 15px; /* Tamaño más pequeño */
-    border: none;
-    border-radius: 4px;
+    padding: 8px 15px; /* Tamaño de los botones */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
     font-size: 14px; /* Tamaño de fuente más pequeño */
-    cursor: pointer;
-    margin-right: 10px;
-    transition: background-color 0.3s;
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    margin-right: 10px; /* Margen derecho de 10px */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
 }
+
+/* Estilos específicos para el botón "Nuevo" */
 .form-group .btn-nuevo {
     background-color: #007bff; /* Color de fondo azul */
-    color: white;
+    color: white; /* Color del texto blanco */
 }
+
+/* Efecto hover para el botón "Nuevo" */
 .form-group .btn-nuevo:hover {
-    background-color: #0056b3; /* Color de fondo azul oscuro en hover */
+    background-color: #0056b3; /* Color de fondo azul oscuro al pasar el ratón */
 }
+
+/* Estilos específicos para el botón "Guardar" */
 .form-group .btn-guardar {
     background-color: #28a745; /* Color de fondo verde */
-    color: white;
+    color: white; /* Color del texto blanco */
 }
+
+/* Efecto hover para el botón "Guardar" */
 .form-group .btn-guardar:hover {
-    background-color: #218838; /* Color de fondo verde oscuro en hover */
+    background-color: #218838; /* Color de fondo verde oscuro al pasar el ratón */
 }
+
+
+
+
+
+/* --------------------------------------------------------------------------------------------------------------
+    ---------------------------------------- FIN ITred Spa Procesar Crear Producto .CSS ---------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+
+/*
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+*/

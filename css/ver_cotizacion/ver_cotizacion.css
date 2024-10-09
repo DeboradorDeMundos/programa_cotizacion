@@ -2,7 +2,7 @@
 /* 
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
@@ -34,134 +34,153 @@ h1, h2, h3, h4, h5, h6 {
 h2 {
     font-size: 24px;
 }
-
+/* Estilo para los encabezados h3 */
 h3 {
-    font-size: 18px;
+    font-size: 18px; /* Tamaño de fuente para h3 */
 }
 
+/* Estilo para los encabezados h4 */
 h4 {
-    font-size: 16px;
+    font-size: 16px; /* Tamaño de fuente para h4 */
 }
 
+/* Estilo para los párrafos */
 p {
-    margin: 0 0 10px 0;
-    padding: 0;
+    margin: 0 0 10px 0; /* Margen inferior de 10px */
+    padding: 0; /* Sin relleno interno */
 }
 
+/* Estilo para los enlaces */
 a {
-    color: #4CAF50;
-    text-decoration: none;
-    font-weight: normal;
+    color: #4CAF50; /* Color del enlace */
+    text-decoration: none; /* Sin subrayado */
+    font-weight: normal; /* Peso normal de la fuente */
 }
 
+/* Efecto hover para los enlaces */
 a:hover {
-    text-decoration: underline;
+    text-decoration: underline; /* Subrayado al pasar el ratón */
 }
 
 /* Estilos para la tabla */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ancho completo */
+    border-collapse: collapse; /* Elimina el espacio entre bordes */
+    margin: 20px 0; /* Margen superior e inferior */
+    background-color: #fff; /* Color de fondo blanco */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
+/* Estilo para las celdas de la tabla */
 table th, table td {
-    padding: 10px 12px; /* Espaciado reducido */
-    text-align: left;
+    padding: 10px 12px; /* Espaciado interno reducido */
+    text-align: left; /* Alineación del texto a la izquierda */
     font-size: 13px; /* Tamaño de letra más pequeño */
     border: 1px solid #ddd; /* Borde de las celdas */
 }
 
+/* Estilo para los encabezados de la tabla */
 table th {
-    background-color: #4CAF50;
-    color: #fff;
-    text-transform: uppercase;
+    background-color: #4CAF50; /* Color de fondo verde */
+    color: #fff; /* Color del texto blanco */
+    text-transform: uppercase; /* Texto en mayúsculas */
     font-size: 12px; /* Tamaño de letra más pequeño */
 }
 
+/* Estilo para las filas pares de la tabla */
 table tr:nth-child(even) {
-    background-color: #f2f2f2; /* Fila par */
+    background-color: #f2f2f2; /* Color de fondo gris claro para filas pares */
 }
 
+/* Efecto hover para las filas de la tabla */
 table tr:hover {
-    background-color: #f1f1f1;
-    transition: background-color 0.2s ease-in-out;
+    background-color: #f1f1f1; /* Color de fondo al pasar el ratón */
+    transition: background-color 0.2s ease-in-out; /* Transición suave */
 }
 
 /* Estilos para la información de la cabecera */
 .header-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+    display: flex; /* Usa un contenedor flex */
+    justify-content: space-between; /* Espacio entre elementos */
+    align-items: center; /* Alinea verticalmente los elementos */
+    margin-bottom: 20px; /* Margen inferior */
 }
 
+/* Estilo para los divs dentro de la cabecera */
 .header-info div {
-    flex: 1;
+    flex: 1; /* Los divs ocupan el mismo espacio */
 }
 
+/* Estilo para las imágenes dentro de la cabecera */
 .header-info img {
-    width: 100px;
+    width: 100px; /* Ancho fijo para la imagen */
 }
 
+/* Estilo para el título de la cabecera */
 .header-info h2 {
-    margin: 0;
-    font-size: 24px;
+    margin: 0; /* Sin margen */
+    font-size: 24px; /* Tamaño de fuente para el título */
 }
 
+/* Estilo para los párrafos dentro de la cabecera */
 .header-info p {
-    margin: 0;
-    font-size: 12px;
+    margin: 0; /* Sin margen */
+    font-size: 12px; /* Tamaño de fuente más pequeño */
 }
 
 /* Estilos para los bloques de información */
 .info-block {
-    margin-top: 20px;
+    margin-top: 20px; /* Margen superior */
 }
 
+/* Estilo para los títulos de sección dentro de los bloques de información */
 .info-block .section-title {
-    margin-bottom: 10px;
-    color: #333;
-    font-size: 18px;
-    font-weight: bold;
+    margin-bottom: 10px; /* Margen inferior */
+    color: #333; /* Color del texto */
+    font-size: 18px; /* Tamaño de fuente para el título de sección */
+    font-weight: bold; /* Peso de fuente en negrita */
 }
 
+/* Estilo para las tablas dentro de los bloques de información */
 .info-block table {
-    width: 100%;
-    margin-top: 10px;
+    width: 100%; /* Ancho completo */
+    margin-top: 10px; /* Margen superior */
 }
 
+/* Estilo para las celdas dentro de los bloques de información */
 .info-block td {
-    padding: 5px 10px;
+    padding: 5px 10px; /* Espaciado interno */
 }
 
+/* Estilo para la primera celda dentro de los bloques de información */
 .info-block td:first-child {
-    font-weight: bold;
+    font-weight: bold; /* Peso de fuente en negrita */
 }
 
-/* Estilos para la lista de enlaces */
+/* Estilos para las listas no ordenadas */
 ul {
-    list-style-type: none;
-    padding: 0;
-    text-align: center;
+    list-style-type: none; /* Sin estilo de lista */
+    padding: 0; /* Sin relleno */
+    text-align: center; /* Alineación de la lista al centro */
 }
 
+/* Estilo para los elementos de la lista */
 ul li {
-    display: inline-block;
-    margin: 0 10px;
+    display: inline-block; /* Muestra los elementos en línea */
+    margin: 0 10px; /* Margen lateral */
 }
 
+/* Estilo para los enlaces dentro de la lista */
 ul li a {
-    color: #4CAF50;
-    text-decoration: none;
-    font-weight: normal;
+    color: #4CAF50; /* Color del enlace */
+    text-decoration: none; /* Sin subrayado */
+    font-weight: normal; /* Peso normal de la fuente */
     font-size: 14px; /* Tamaño de letra reducido */
 }
 
+/* Efecto hover para los enlaces dentro de la lista */
 ul li a:hover {
-    text-decoration: underline;
+    text-decoration: underline; /* Subrayado al pasar el ratón */
 }
 
 
@@ -174,7 +193,7 @@ ul li a:hover {
 /*
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.

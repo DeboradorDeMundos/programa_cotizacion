@@ -2,7 +2,7 @@
 /* 
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
@@ -13,183 +13,213 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Detalle.CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-    fieldset legend {
-        font-size: 1.2em;
-        padding: 0 10px;
-        color: #333;
-        font-weight: bold;
-    }
+   /* Estilo para leyendas de fieldsets */
+fieldset legend {
+    font-size: 1.2em; /* Tamaño de fuente de la leyenda */
+    padding: 0 10px; /* Espaciado horizontal */
+    color: #333; /* Color de texto */
+    font-weight: bold; /* Negrita */
+}
 
-    .fixed-button-contenedor {
-        position: absolute;
-        bottom: 10px;
-        left: 0;
-        right: 0;
-        text-align: center;
-        padding: 0 20px;
-    }
+/* Contenedor para botones fijos */
+.fixed-button-contenedor {
+    position: absolute; /* Posición absoluta */
+    bottom: 10px; /* Espaciado desde la parte inferior */
+    left: 0; /* Alineado a la izquierda */
+    right: 0; /* Alineado a la derecha */
+    text-align: center; /* Centrado */
+    padding: 0 20px; /* Espaciado horizontal */
+}
 
-    .fixed-button-contenedor button {
-        background-color: #007bff;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+/* Estilo para botones dentro del contenedor fijo */
+.fixed-button-contenedor button {
+    background-color: #007bff; /* Color de fondo azul */
+    color: white; /* Color de texto blanco */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
 
-    .detalle-content {
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-        text-align: center;
-    }
+/* Estilo para el contenido de detalles */
+.detalle-content {
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    margin-bottom: 20px; /* Espaciado inferior */
+    text-align: center; /* Centrado */
+}
 
-    .detalle-content label {
-        display: block;
-        margin-bottom: 10px;
-        font-size: 1.1em;
-        color: #333;
-    }
+/* Estilo para etiquetas dentro del contenido de detalles */
+.detalle-content label {
+    display: block; /* Muestra como bloque */
+    margin-bottom: 10px; /* Espaciado inferior */
+    font-size: 1.1em; /* Tamaño de fuente */
+    color: #333; /* Color de texto */
+}
 
-    .detalle-content input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        box-sizing: border-box;
-        margin-bottom: 20px;
-    }
+/* Estilo para inputs de texto dentro del contenido de detalles */
+.detalle-content input[type="text"] {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
+    margin-bottom: 20px; /* Espaciado inferior */
+}
 
-    .btn-eliminar-titulo {
-        background-color: #f44336;
-        color: white;
-        border: none;
-        padding: 5px 10px;
-        cursor: pointer;
-        border-radius: 5px;
-    }
+/* Estilo para botones de eliminar título */
+.btn-eliminar-titulo {
+    background-color: #f44336; /* Color de fondo rojo */
+    color: white; /* Color de texto blanco */
+    border: none; /* Sin borde */
+    padding: 5px 10px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    border-radius: 5px; /* Bordes redondeados */
+}
 
-    .btn-eliminar-titulo  {
-        background-color: #d32f2f;
-    }
+/* Variación del estilo para el botón de eliminar título */
+.btn-eliminar-titulo {
+    background-color: #d32f2f; /* Color rojo más oscuro */
+}
 
-    .btn-eliminar {
-        background-color: #f44336;
-        color: white;
-        border: none;
-        padding: 5px 10px;
-        cursor: pointer;
-        border-radius: 5px;
-    }
+/* Estilo para botones de eliminar */
+.btn-eliminar {
+    background-color: #f44336; /* Color de fondo rojo */
+    color: white; /* Color de texto blanco */
+    border: none; /* Sin borde */
+    padding: 5px 10px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    border-radius: 5px; /* Bordes redondeados */
+}
 
-    .btn-eliminar  {
-        background-color: #d32f2f;
-    }
+/* Variación del estilo para el botón de eliminar */
+.btn-eliminar {
+    background-color: #d32f2f; /* Color rojo más oscuro */
+}
 
-    .detalle-table th, .detalle-table td {
-        border: 1px solid #ddd;
-        padding: 8px;
-    }
-        
-    .detalle-table th {
-        background-color: #f2f2f2;
-        text-align: left;
-    }
+/* Estilo para tablas de detalles */
+.detalle-table th,
+.detalle-table td {
+    border: 1px solid #ddd; /* Borde gris claro */
+    padding: 8px; /* Espaciado interno */
+}
 
-    th {
-        background-color: #4CAF50;
-        padding: 10px;
-        text-align: center;
-    }
+/* Estilo para encabezados de tablas de detalles */
+.detalle-table th {
+    background-color: #f2f2f2; /* Fondo gris claro */
+    text-align: left; /* Alineación a la izquierda */
+}
 
-    .detalle-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        padding: 10px;
-        background-color: #f9f9f9;
-    }
-    
-    .detalle-buttons button {
-        flex: 1;
-        max-width: 200px;
-        padding: 10px;
-        font-size: 16px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        color: white;
-    }
+/* Estilo para todos los encabezados de tablas */
+th {
+    background-color: #4CAF50; /* Color verde */
+    padding: 10px; /* Espaciado interno */
+    text-align: center; /* Alineación al centro */
+}
 
-    .detalle-buttons button:nth-of-type(1):hover {
-        background-color: #755483; /* Morado oscuro */
-    }
-    .detalle-buttons button:nth-of-type(1) {
-        background-color: #9c27b0; /* Morado vibrante */
-    }
-    
-    .detalle-buttons button:nth-of-type(2) {
-        background-color: #149279; /* Rosa intenso */
-    }
-    
-    .detalle-buttons button:nth-of-type(2):hover {
-        background-color: #1ba226; /* Rosa más oscuro */
-    }
-    
-    .detalle-buttons button:nth-of-type(3) {
-        background-color: #4caf50; /* Verde lima */
-    }
-    .detalle-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 0 auto;
-        margin-bottom: 15px;
-    }
-    
-    .detalle-table input[type="text"],
-    .detalle-table textarea,
-    .detalle-table input[type="number"] {
-        width: 100%;
-        padding: 6px;
-        box-sizing: border-box;
-    }
-    
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 20px 0;
-    }
+/* Estilo para botones de detalles */
+.detalle-buttons {
+    display: flex; /* Usa flexbox para la disposición */
+    justify-content: center; /* Centrado */
+    gap: 10px; /* Espacio entre botones */
+    padding: 10px; /* Espaciado interno */
+    background-color: #f9f9f9; /* Fondo gris claro */
+}
 
-    td {
-        padding: 5px;
-        border-bottom: 1px solid #ddd;
-    }
-    
-    .fixed-button-contenedor button:hover {
-        background-color: #0056b3;
-    }
+/* Estilo para botones dentro del contenedor de detalles */
+.detalle-buttons button {
+    flex: 1; /* Se expande para ocupar el espacio disponible */
+    max-width: 200px; /* Ancho máximo de 200px */
+    padding: 10px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    color: white; /* Color de texto blanco */
+}
 
-    /* Asegura que los label y input tengan la misma altura */
-    .form-group {
-        display: flex;
-        align-items: stretch; /* Asegura que los elementos se estiren a la misma altura */
-        justify-content: space-between; /* Alinea el label y el input a los extremos */
-        margin-bottom: 10px;
-    }
+/* Efecto hover para el primer botón */
+.detalle-buttons button:nth-of-type(1):hover {
+    background-color: #755483; /* Morado oscuro al pasar el mouse */
+}
 
-    /* Estilo para los grupos de campos en línea */
-    .form-group-inline {
-        display: flex;
-        justify-content: space-between;
-        gap: 10px;
-    }
+/* Estilo para el primer botón */
+.detalle-buttons button:nth-of-type(1) {
+    background-color: #9c27b0; /* Morado vibrante */
+}
 
-    .form-group-inline .form-group {
-        flex: 1; /* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
-    }
+/* Estilo para el segundo botón */
+.detalle-buttons button:nth-of-type(2) {
+    background-color: #149279; /* Rosa intenso */
+}
+
+/* Efecto hover para el segundo botón */
+.detalle-buttons button:nth-of-type(2):hover {
+    background-color: #1ba226; /* Rosa más oscuro al pasar el mouse */
+}
+
+/* Estilo para el tercer botón */
+.detalle-buttons button:nth-of-type(3) {
+    background-color: #4caf50; /* Verde lima */
+}
+
+/* Estilo para tablas de detalles */
+.detalle-table {
+    width: 100%; /* Ancho completo */
+    border-collapse: collapse; /* Colapsar bordes */
+    margin: 0 auto; /* Centrado */
+    margin-bottom: 15px; /* Espaciado inferior */
+}
+
+/* Estilo para inputs dentro de tablas de detalles */
+.detalle-table input[type="text"],
+.detalle-table textarea,
+.detalle-table input[type="number"] {
+    width: 100%; /* Ancho completo */
+    padding: 6px; /* Espaciado interno */
+    box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
+}
+
+/* Estilo general para tablas */
+table {
+    width: 100%; /* Ancho completo */
+    border-collapse: collapse; /* Colapsar bordes */
+    margin: 20px 0; /* Espaciado vertical */
+}
+
+/* Estilo para celdas de tabla */
+td {
+    padding: 5px; /* Espaciado interno */
+    border-bottom: 1px solid #ddd; /* Borde inferior */
+}
+
+/* Efecto hover para el botón del contenedor fijo */
+.fixed-button-contenedor button:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+}
+
+/* Asegura que los label y input tengan la misma altura */
+.form-group {
+    display: flex; /* Usa flexbox para alinear los elementos */
+    align-items: stretch; /* Estira los elementos para que tengan la misma altura */
+    justify-content: space-between; /* Alinea el label y el input a los extremos */
+    margin-bottom: 10px; /* Espaciado inferior */
+}
+
+/* Estilo para grupos de campos en línea */
+.form-group-inline {
+    display: flex; /* Usa flexbox para organizar elementos en línea */
+    justify-content: space-between; /* Alinea los elementos a los extremos */
+    gap: 10px; /* Espacio entre los elementos */
+}
+
+/* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
+.form-group-inline .form-group {
+    flex: 1; /* Se expande para ocupar el espacio disponible */
+}
+
   
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Detalle.CSS ---------------------------------------
@@ -199,7 +229,7 @@ BPPJ
 /*
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.

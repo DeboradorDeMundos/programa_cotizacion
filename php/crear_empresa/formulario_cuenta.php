@@ -1,7 +1,7 @@
 <!--
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
@@ -11,64 +11,74 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Formulario Cuenta.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-    <!-- Otros campos del formulario -->
     <link rel="stylesheet" href="../../css/crear_empresa/formulario_cuenta.css">
-    <div class="row">
-        <div class="box-12 data-box contenedor-cuentas-bancarias">
-            <h2>Agrega tu cuenta bancaria:</h2>
-            <div id="bank-cuentas">
-                <!-- Campos de cuentas bancarias -->
-                <div class="cuenta-bancaria">
-                    <label for="nombre-cuenta">Nombre titular:</label>
-                    <input type="text" id="nombre-cuenta" name="nombre_cuenta" 
-                        placeholder="Ingresa el nombre del titular" 
-                        maxlength="50" 
-                        required 
-                        oninput="ValidarNombre(this)" 
-                        title="Por favor, ingresa solo letras y espacios.">
 
-                    <label for="rut-titular">Rut titular:</label>
-                    <input type="text" id="rut-titular" placeholder="Ej: 12.345.678-9" name="rut_titular" required oninput="formatoRut(this)">
+<div class="row">
+    <div class="box-12 data-box contenedor-cuentas-bancarias">
+        <h2>Agrega tu cuenta bancaria:</h2>
+        <div id="bank-cuentas">
+            <!-- Campos de cuentas bancarias -->
+            <div class="cuenta-bancaria">
 
-                    <label for="celular">Celular:</label>
-                    <input type="text" id="celular" name="celular"
-                        placeholder="+56 9 1234 1234" 
-                        maxlength="11" 
-                        required 
-                        pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
-                        title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                        oninput="FormatearNumeroTelefono(this)">
+                <!-- Etiqueta y campo para el nombre del titular -->
+                <label for="nombre-cuenta">Nombre titular:</label>
+                <input type="text" id="nombre-cuenta" name="nombre_cuenta" 
+                    placeholder="Ingresa el nombre del titular" 
+                    maxlength="50" 
+                    required 
+                    oninput="ValidarNombre(this)" 
+                    title="Por favor, ingresa solo letras y espacios.">
 
-                    <label for="email-banco">Email:</label>
-                    <input type="email" id="email-banco" name="email_banco" 
-                        placeholder="ejemplo@empresa.com" 
-                        maxlength="255" 
-                        title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
-                        onblur="CompletarEmail(this)">
+                <!-- Etiqueta y campo para el RUT del titular -->
+                <label for="rut-titular">Rut titular:</label>
+                <input type="text" id="rut-titular" placeholder="Ej: 12.345.678-9" name="rut_titular" required oninput="formatoRut(this)">
 
-                    <label for="id-banco">Banco:</label>
-                    <select id="id-banco" name="id_banco" required>
-                        <!-- Opciones se llenarán con los datos de la tabla Bancos -->
-                    </select>
+                <!-- Etiqueta y campo para el celular -->
+                <label for="celular">Celular:</label>
+                <input type="text" id="celular" name="celular"
+                    placeholder="+56 9 1234 1234" 
+                    maxlength="11" 
+                    required 
+                    pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
+                    title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
+                    oninput="FormatearNumeroTelefono(this)">
 
-                    <label for="id-tipocuenta">Tipo de Cuenta:</label>
-                    <select id="id-tipocuenta" name="id_tipocuenta" required>
-                        <!-- Opciones se llenarán con los datos de la tabla Tipo_Cuenta -->
-                    </select>
+                <!-- Etiqueta y campo para el email -->
+                <label for="email-banco">Email:</label>
+                <input type="email" id="email-banco" name="email_banco" 
+                    placeholder="ejemplo@empresa.com" 
+                    maxlength="255" 
+                    title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
+                    onblur="CompletarEmail(this)">
 
-                    <label for="numero-cuenta">Número de Cuenta:</label>
-                    <input type="text" id="numero-cuenta" name="numero_cuenta" required oninput="QuitarCaracteresInvalidos(this)">
-                </div>
-                
-                <button type="button" id="boton-agregar-boton" onclick="AgregarCuenta()">Agregar otra cuenta</button>
+                <!-- Etiqueta y campo para seleccionar el banco -->
+                <label for="id-banco">Banco:</label>
+                <select id="id-banco" name="id_banco" required>
+                    <!-- Opciones se llenarán con los datos de la tabla Bancos -->
+                </select>
+
+                <!-- Etiqueta y campo para seleccionar el tipo de cuenta -->
+                <label for="id-tipocuenta">Tipo de Cuenta:</label>
+                <select id="id-tipocuenta" name="id_tipocuenta" required>
+                    <!-- Opciones se llenarán con los datos de la tabla Tipo_Cuenta -->
+                </select>
+
+                <!-- Etiqueta y campo para el número de cuenta -->
+                <label for="numero-cuenta">Número de Cuenta:</label>
+                <input type="text" id="numero-cuenta" name="numero_cuenta" required oninput="QuitarCaracteresInvalidos(this)">
             </div>
+            
+            <!-- Botón para agregar otra cuenta -->
+            <button type="button" id="boton-agregar-boton" onclick="AgregarCuenta()">Agregar otra cuenta</button>
         </div>
     </div>
+</div>
 
-    <input type="hidden" id="hidden-cuentas" name="hidden_accounts" value="">
+<!-- Campo oculto para cuentas -->
+<input type="hidden" id="hidden-cuentas" name="hidden_accounts" value="">
 
+<!-- Scripts relacionados con el formulario de cuentas bancarias -->
 <script src="../../js/crear_empresa/formulario_cuenta.js"></script>
-
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -157,7 +167,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!--
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
-Pedro Agui Cerda - Santiago - Chile
+Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
