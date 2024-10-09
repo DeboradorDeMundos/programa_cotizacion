@@ -33,7 +33,6 @@ BPPJ
         </tbody>
     </table>
 </fieldset>
-<script src="../../js/nueva_cotizacion/detalle.js"></script>
 
 
 <?php

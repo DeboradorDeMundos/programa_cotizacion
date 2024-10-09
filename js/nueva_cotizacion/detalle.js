@@ -14,6 +14,11 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Detalle.JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("El DOM está completamente cargado");
+    AgregarSeccionDeDetalle();
+});
+
 let tituloContador = 1; // Contador global para los títulos
 let subtituloContador = {}; // Objeto para llevar el conteo de subtítulos por título
 
@@ -359,14 +364,6 @@ function calcularTotal() {
 
     calcularPago();
 }
-function init() {
-    AgregarSeccionDeDetalle();
-}
-
-
-
-window.onload = init;
-
 
 
 
