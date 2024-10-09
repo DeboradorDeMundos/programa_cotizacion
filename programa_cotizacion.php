@@ -52,8 +52,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
         
         <!-- Carga el archivo JavaScript para la funcionalidad del formulario -->
         <script src="js/programa_cotizacion/programa_cotizacion.js"></script> 
-        <script src="js/programa_cotizacion/menu.js"></script> 
-        <script src="js/programa_cotizacion/seleccionar_empresa.js"></script> 
 
     </body>
 </html>

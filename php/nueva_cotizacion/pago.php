@@ -34,6 +34,7 @@ BPPJ
     </table>
 </fieldset>
 
+<script src="../../js/nueva_cotizacion/pago.js"></script> 
 
 <?php
 

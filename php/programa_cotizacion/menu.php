@@ -41,7 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <?php endif; ?>
 
 <!-- Menú de navegación -->
-<nav> 
+
+<link rel="stylesheet" href="../../css/nueva_cotizacion/menu.css">
+<nav>  
     <ul class="menu">
         <!-- Enlaces del menú que se habilitan solo si se ha seleccionado una empresa -->
         <li><a href="php/nueva_cotizacion/nueva_cotizacion.php?id=<?php echo isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : ''; ?>" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">Nueva Cotización</a></li>
@@ -52,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </ul>
 </nav>
 
-
+<script src="../../js/nueva_cotizacion/traer_requisitos.js"></script> 
 
 
 

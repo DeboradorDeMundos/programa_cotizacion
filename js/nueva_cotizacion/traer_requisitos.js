@@ -14,7 +14,12 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Traer requisitos.JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-
+    function toggleRequisitos() {
+        const checkbox = document.getElementById('toggle-requisitos');
+        const table = document.getElementById('requisitos-table');
+        // Muestra u oculta la tabla según el estado del checkbox
+        table.style.display = checkbox.checked ? 'table' : 'none';
+    }
 
 
 

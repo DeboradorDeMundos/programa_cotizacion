@@ -14,7 +14,11 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Traer condiciones.JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-
+    function toggleConditions() {
+        const checkbox = document.getElementById('toggle-conditions');
+        const table = document.getElementById('conditions-table');
+        table.style.display = checkbox.checked ? 'table' : 'none';
+    }
 
 
 

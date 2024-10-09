@@ -54,13 +54,9 @@ BPPJ
     <?php endif; ?>
 </table>
 
-<script>
-function toggleObligaciones() {
-    const checkbox = document.getElementById('toggle-obligaciones');
-    const table = document.getElementById('obligaciones-table');
-    table.style.display = checkbox.checked ? 'table' : 'none';
-}
-</script>
+<script src="../../js/nueva_cotizacion/obligaciones_cliente.js"></script> 
+
+
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Suponiendo que ya manejas la creación de la cotización aquí

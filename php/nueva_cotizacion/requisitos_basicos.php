@@ -41,7 +41,7 @@ BPPJ
     <!-- Puedes duplicar el bloque anterior para más requisitos básicos -->
 </div>
 
-
+<script src="../../js/nueva_cotizacion/requisitos_basicos.js"></script> 
 
      <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Requisitos basicos.PHP ----------------------------------------

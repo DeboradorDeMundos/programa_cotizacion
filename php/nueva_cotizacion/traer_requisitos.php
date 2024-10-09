@@ -13,7 +13,7 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- -->
 
 
-
+    <link rel="stylesheet" href="../../css/nueva_cotizacion/traer_requisitos.css">
 <!-- Checkbox para mostrar/ocultar requisitos generales -->
 <label>
     <input type="checkbox" id="toggle-requisitos" onclick="toggleRequisitos()"> Mostrar requisitos generales
@@ -42,14 +42,10 @@ BPPJ
     <?php endif; ?>
 </table>
 
-<script>
-function toggleRequisitos() {
-    const checkbox = document.getElementById('toggle-requisitos');
-    const table = document.getElementById('requisitos-table');
-    // Muestra u oculta la tabla según el estado del checkbox
-    table.style.display = checkbox.checked ? 'table' : 'none';
-}
-</script>
+
+
+
+<script src="../../js/nueva_cotizacion/traer_requisitos.js"></script> 
 
 <?php
 

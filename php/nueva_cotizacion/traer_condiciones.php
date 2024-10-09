@@ -12,7 +12,7 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Traer condiciones.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-<!-- Checkbox para mostrar/ocultar condiciones generales -->
+
 <!-- Checkbox para mostrar/ocultar condiciones generales -->
 <label>
     <input type="checkbox" id="toggle-conditions" onclick="toggleConditions()"> Agregar condiciones generales
@@ -39,14 +39,7 @@ BPPJ
     <?php endif; ?>
 </table>
 
-<script>
-function toggleConditions() {
-    const checkbox = document.getElementById('toggle-conditions');
-    const table = document.getElementById('conditions-table');
-    table.style.display = checkbox.checked ? 'table' : 'none';
-}
-</script>
-
+<script src="../../js/nueva_cotizacion/traer_condiciones.js"></script> 
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

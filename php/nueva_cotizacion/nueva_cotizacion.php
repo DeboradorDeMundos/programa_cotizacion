@@ -87,20 +87,19 @@ BPPJ
             <?php include 'traer_requisitos.php'; ?>
 
             <?php include 'obligaciones_cliente.php'; ?>
-    
-            <button type="submit" class="submit">Crear cotizacion</button> <!-- Botón para enviar el formulario y generar la cotización -->
+    <!-- Botón para enviar el formulario y generar la cotización -->
+            <button type="submit" class="submit">Crear cotizacion</button> 
         </form> <!-- Cierra el formulario -->
     </div> <!-- Cierra el contenedor principal -->
 
     <?php include 'traer_datos_bancarios.php'; ?>
 
     <?php include 'firma.php'; ?>
-            
-    <script src="../../js/nueva_cotizacion/nueva_cotizacion.js"></script> <!-- Enlaza nuevamente el archivo JavaScript para manejar la lógica del formulario de cotización -->
-    <script src="../../js/crear_empresa/upload_logo.js"></script>
-    <script src="../../js/nueva_cotizacion/cargar_logo_empresa.js"></script> 
-    <script src="../../js/nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
-    <script src="../../js/nueva_cotizacion/pago.js"></script> 
+     <!-- Enlaza nuevamente el archivo JavaScript para manejar la lógica del formulario de cotización -->       
+    <script src="../../js/nueva_cotizacion/nueva_cotizacion.js"></script> 
+  
+   
+    
 </body>
 </html>
 <!-- ---------------------

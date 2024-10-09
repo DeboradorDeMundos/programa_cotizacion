@@ -20,7 +20,7 @@ BPPJ
     </div>        
 </fieldset>
 
-
+<script src="../../js/nueva_cotizacion/observaciones.js"></script> 
 
 
      <!-- ---------------------

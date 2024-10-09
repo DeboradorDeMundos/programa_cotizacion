@@ -101,7 +101,7 @@ BPPJ
     <?php endif; ?>
 </table>
 
-
+<script src="../../js/nueva_cotizacion/traer_datos_bancarios.js"></script> 
 
      <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Traer datos bancarios.PHP ----------------------------------------

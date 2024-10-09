@@ -11,7 +11,7 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Formulario encargado .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-    <link rel="stylesheet" href="../../css/crear_encargado/formulario_encargado.css"> 
+    <link rel="stylesheet" href="../../css/crear_empresa/formulario_encargado.css"> 
 <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
 <div class="row"> 
     <!-- Crea una caja para ingresar datos, ocupando las 12 columnas disponibles en el diseño. Esta caja contiene varios campos de entrada de datos -->
@@ -84,9 +84,8 @@ BPPJ
             placeholder="+56 9 1234 1234" 
             maxlength="11" 
             required 
-            pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
             title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-            oninput="FormatearNumeroTelefono(this)">
+            oninput="asegurarMasYDetectarPais3(this)">
 
         <!-- Etiqueta para el campo de entrada del celular del encargado -->
         <label for="encargado_celular">Celular del Encargado:</label>
@@ -96,9 +95,8 @@ BPPJ
             placeholder="+56 9 1234 1234" 
             maxlength="11" 
             required 
-            pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
             title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-            oninput="FormatearNumeroTelefono(this)">
+            oninput="asegurarMasYDetectarPais4(this)">
 
         <!-- Campo oculto para almacenar el ID de la empresa -->
         <input type="hidden" name="id_empresa" value="<?php echo $id_empresa; ?>"> 
@@ -107,7 +105,7 @@ BPPJ
     <!-- Cierra la fila -->
 </div>
 <!-- Js correspondiente a formulario_encargado -->
-<script src="../../js/crear_encargado/formulario_encargado.js"></script>
+<script src="../../js/crear_empresa/formulario_encargado.js"></script>
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

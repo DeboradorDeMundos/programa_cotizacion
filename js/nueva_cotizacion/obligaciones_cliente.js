@@ -14,7 +14,11 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Obligaciones cliente .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-
+    function toggleObligaciones() {
+        const checkbox = document.getElementById('toggle-obligaciones');
+        const table = document.getElementById('obligaciones-table');
+        table.style.display = checkbox.checked ? 'table' : 'none';
+    }
 
 
 

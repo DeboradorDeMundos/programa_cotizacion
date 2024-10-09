@@ -39,9 +39,8 @@ BPPJ
                     placeholder="+56 9 1234 1234" 
                     maxlength="11" 
                     required 
-                    pattern="^\+\d{2}\s\d{1}\s\d{4}\s\d{4}$" 
                     title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                    oninput="FormatearNumeroTelefono(this)">
+                    oninput="asegurarMas(this)">
 
                 <!-- Etiqueta y campo para el email -->
                 <label for="email-banco">Email:</label>
@@ -69,7 +68,7 @@ BPPJ
             </div>
             
             <!-- Botón para agregar otra cuenta -->
-            <button type="button" id="boton-agregar-boton" onclick="AgregarCuenta()">Agregar otra cuenta</button>
+            <button type="button" id="boton-agregar-cuenta" onclick="AgregarCuenta()">Agregar otra cuenta</button>
         </div>
     </div>
 </div>

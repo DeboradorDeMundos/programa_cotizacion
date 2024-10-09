@@ -69,7 +69,7 @@ BPPJ
         maxlength="11" 
         required 
         title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-        oninput="asegurarMasYDetectarPais(this)">
+        oninput="asegurarMasYDetectarPais6(this)">
 
         <!-- Etiqueta para el campo de entrada del email de la empresa -->
         <label for="empresa_email">Email de la Empresa:</label>
