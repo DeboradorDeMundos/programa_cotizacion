@@ -1,0 +1,117 @@
+
+/* 
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Agui Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ 
+*/
+
+
+/* --------------------------------------------------------------------------------------------------------------
+    -------------------------------------- INICIO ITred Spa Ver Listado .CSS --------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    color: #666; /* Color gris */
+    margin: 0;
+    padding: 20px;
+    font-size: 14px; /* Tamaño de letra más pequeño */
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilo de la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+    padding: 10px 12px; /* Espaciado reducido */
+    text-align: left;
+    font-size: 13px; /* Tamaño de letra más pequeño */
+}
+
+table th {
+    background-color: #4CAF50;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 12px; /* Tamaño de letra más pequeño */
+}
+
+table tr {
+    border-bottom: 1px solid #ddd;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+    transition: background-color 0.2s ease-in-out;
+}
+
+table td a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 13px; /* Tamaño de letra más pequeño */
+}
+
+table td a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo de la lista de enlaces */
+ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    margin-top: 20px;
+}
+
+ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+ul li a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 14px; /* Tamaño de letra reducido */
+}
+
+ul li a:hover {
+    text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------------------------------------------
+    ---------------------------------------- FIN ITred Spa Ver Listado .CSS ---------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+
+/*
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Agui Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+*/

@@ -1,0 +1,99 @@
+/* 
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Agui Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ 
+*/
+
+/* -------------------------------------------------------------------------------------------------------------
+   ------------------------------------- INICIO ITred Spa Crear Producto .CSS -------------------------------------
+   ------------------------------------------------------------------------------------------------------------- */
+
+body {
+    background-color: #f0f0f0;
+    color: #333333;
+    font-family: Arial, sans-serif;
+}
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.form-contenedor {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.form-contenedor h2 {
+    margin-bottom: 20px;
+    color: #333333;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666666;
+}
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    color: #333333;
+}
+.form-group textarea {
+    resize: vertical;
+}
+
+
+/* Agregar estilos básicos para la tabla y el fieldset */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+fieldset {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+legend {
+    font-weight: bold;
+}
+/* Estilos para los botones */
+.form-group {
+    margin-top: 10px;
+}
+.form-group button {
+    padding: 8px 15px; /* Tamaño más pequeño */
+    border: none;
+    border-radius: 4px;
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+}
+.form-group .btn-nuevo {
+    background-color: #007bff; /* Color de fondo azul */
+    color: white;
+}
+.form-group .btn-nuevo:hover {
+    background-color: #0056b3; /* Color de fondo azul oscuro en hover */
+}
+.form-group .btn-guardar {
+    background-color: #28a745; /* Color de fondo verde */
+    color: white;
+}
+.form-group .btn-guardar:hover {
+    background-color: #218838; /* Color de fondo verde oscuro en hover */
+}

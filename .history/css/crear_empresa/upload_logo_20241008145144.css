@@ -1,0 +1,63 @@
+/* 
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Agui Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ 
+*/
+
+
+/* --------------------------------------------------------------------------------------------------------------
+    -------------------------------------- Inicio ITred Spa Upload Logo .CSS --------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+ /* Estilos comunes */
+
+ .caja-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contenedor-logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo {
+  max-width: 300px;
+  height: auto;
+  margin-right: 10px;
+}
+
+button.logo {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto;
+}
+
+button.logo:hover {
+  background-color: #555;
+}
+    
+    
+    /* --------------------------------------------------------------------------------------------------------------
+    ---------------------------------------- FIN ITred Spa Upload Logo .CSS ---------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+
+/*
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Agui Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+*/

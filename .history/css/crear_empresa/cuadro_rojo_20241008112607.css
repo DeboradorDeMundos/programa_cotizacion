@@ -1,0 +1,58 @@
+
+/* 
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Agui Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ 
+*/
+
+
+/* --------------------------------------------------------------------------------------------------------------
+    -------------------------------------- INICIO ITred Spa Cuadro Rojo .CSS --------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+/* Estilos comunes */
+
+.box-6 {
+    flex: 1;
+    max-width: 50%;
+    padding: 10px;
+}
+
+.data-box {
+    border: 1px solid #ddd;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 12px;
+}
+
+.data-box-red {
+    border-color: red;
+    border-radius: 12px;
+}
+
+input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------------------------------------------
+    ---------------------------------------- FIN ITred Spa Cuadro Rojo .CSS ---------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+
+/*
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Agui Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+*/
