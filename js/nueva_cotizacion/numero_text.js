@@ -15,6 +15,7 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
     function numeroATexto(numero) {
+        // Arreglos para las diferentes unidades, decenas y centenas
         const unidades = [
             '', 'uno', 'dos', 'tres', 'cuatro', 'cinco',
             'seis', 'siete', 'ocho', 'nueve', 'diez',
@@ -35,6 +36,7 @@ BPPJ
             'ochocientos', 'novecientos'
         ];
     
+        // Casos básicos
         if (numero === 0) {
             return 'cero';
         } else if (numero < 20) {
@@ -68,66 +70,66 @@ BPPJ
     
         return 'Número fuera de rango';
     }
-
     
-// Función para obtener el valor del input y convertirlo a texto
-function convertirTotalATexto() {
-    const totalFinalInput = document.getElementById('total_final');
-    const totalEnTextoInput = document.getElementById('total-en-texto'); // Campo oculto
-    
-    console.log("Valor del input:", totalFinalInput.value); // Depuración
-    
-    // Eliminar cualquier carácter que no sea dígito, punto o coma
-    let valorLimpio = totalFinalInput.value.replace(/[^\d.,]/g, '');
-    
-    // Reemplazar coma por punto para asegurar un formato numérico válido
-    valorLimpio = valorLimpio.replace(',', '.');
-    
-    console.log("Valor limpio:", valorLimpio); // Depuración
-    
-    const numero = parseFloat(valorLimpio);
-    
-    console.log("Número parseado:", numero); // Depuración
-    
-    if (!isNaN(numero)) {
-        const numeroRedondeado = Math.round(numero);
-        console.log("Número redondeado:", numeroRedondeado); // Depuración
+    // Función para obtener el valor del input y convertirlo a texto
+    function convertirTotalATexto() {
+        const totalFinalInput = document.getElementById('total_final');
+        const totalEnTextoInput = document.getElementById('total-en-texto'); // Campo oculto
         
-        const textoConvertido = numeroATexto(numeroRedondeado);
-        totalEnTextoInput.value = textoConvertido;
+        console.log("Valor del input:", totalFinalInput.value); // Depuración
         
-        console.log("Texto convertido:", textoConvertido); // Depuración
+        // Eliminar cualquier carácter que no sea dígito, punto o coma
+        let valorLimpio = totalFinalInput.value.replace(/[^\d.,]/g, '');
         
-        // Mostrar el número en texto en el DOM (si es necesario)
-        const totalEnTextoDisplay = document.getElementById('total-en-texto-display');
-        if (totalEnTextoDisplay) {
-            totalEnTextoDisplay.textContent = textoConvertido;
-        }
-    } else {
-        console.log("Valor inválido ingresado"); // Depuración
-        totalEnTextoInput.value = '';
+        // Reemplazar coma por punto para asegurar un formato numérico válido
+        valorLimpio = valorLimpio.replace(',', '.');
         
-        const totalEnTextoDisplay = document.getElementById('total-en-texto-display');
-        if (totalEnTextoDisplay) {
-            totalEnTextoDisplay.textContent = '';
+        console.log("Valor limpio:", valorLimpio); // Depuración
+        
+        const numero = parseFloat(valorLimpio);
+        
+        console.log("Número parseado:", numero); // Depuración
+        
+        if (!isNaN(numero)) {
+            const numeroRedondeado = Math.round(numero);
+            console.log("Número redondeado:", numeroRedondeado); // Depuración
+            
+            const textoConvertido = numeroATexto(numeroRedondeado);
+            totalEnTextoInput.value = textoConvertido;
+            
+            console.log("Texto convertido:", textoConvertido); // Depuración
+            
+            // Mostrar el número en texto en el DOM (si es necesario)
+            const totalEnTextoDisplay = document.getElementById('total-en-texto-display');
+            if (totalEnTextoDisplay) {
+                totalEnTextoDisplay.textContent = textoConvertido;
+            }
+        } else {
+            console.log("Valor inválido ingresado"); // Depuración
+            totalEnTextoInput.value = '';
+            
+            const totalEnTextoDisplay = document.getElementById('total-en-texto-display');
+            if (totalEnTextoDisplay) {
+                totalEnTextoDisplay.textContent = '';
+            }
         }
     }
-}
-
-// Función para inicializar el evento y realizar la conversión inicial
-function inicializarConversion() {
-    const totalFinalInput = document.getElementById('total_final');
-    if (totalFinalInput) {
-        totalFinalInput.addEventListener('input', convertirTotalATexto);
-        // Realizar la conversión inicial si hay un valor
-        convertirTotalATexto();
-    } else {
-        console.error("No se encontró el elemento con id 'total_final'");
+    
+    // Función para inicializar el evento y realizar la conversión inicial
+    function inicializarConversion() {
+        const totalFinalInput = document.getElementById('total_final');
+        if (totalFinalInput) {
+            totalFinalInput.addEventListener('input', convertirTotalATexto);
+            // Realizar la conversión inicial si hay un valor
+            convertirTotalATexto();
+        } else {
+            console.error("No se encontró el elemento con id 'total_final'");
+        }
     }
-}
-
-// Asegurarse de que la función se ejecute cuando se carga la página
-document.addEventListener('DOMContentLoaded', inicializarConversion);
+    
+    // Asegurarse de que la función se ejecute cuando se carga la página
+    document.addEventListener('DOMContentLoaded', inicializarConversion);
+    
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Numero text .JS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

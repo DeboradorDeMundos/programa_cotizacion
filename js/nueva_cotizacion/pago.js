@@ -14,7 +14,6 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Adelanto.JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-
     function AgregarPago() {
         const contenedor = document.getElementById('payments-contenedor');
         const porcentajeInputs = contenedor.querySelectorAll('input[name="porcentaje_pago[]"]');
@@ -22,19 +21,19 @@ BPPJ
     
         // Sumar todos los porcentajes existentes
         porcentajeInputs.forEach(input => {
-            totalPorcentaje += parseFloat(input.value) || 0;
+            totalPorcentaje += parseFloat(input.value) || 0; // Sumar los porcentajes, considerando valor por defecto 0
         });
     
         // Verificar si el total ya alcanza o supera el 100%
         if (totalPorcentaje >= 100) {
             alert("Ya se ha alcanzado el 100% de los pagos. No se pueden agregar más pagos.");
-            return;
+            return; // Salir de la función si se ha alcanzado el límite
         }
     
         // Mostrar la tabla si está oculta
         const table = document.getElementById('payment-table');
         if (table.style.display === 'none') {
-            table.style.display = 'table';
+            table.style.display = 'table'; // Cambiar a modo de visualización de tabla
         }
     
         // Crear un nuevo bloque de pago
@@ -62,20 +61,20 @@ BPPJ
         // Ocultar la tabla si no quedan filas
         const contenedor = document.getElementById('payments-contenedor');
         if (contenedor.children.length === 0) {
-            document.getElementById('payment-table').style.display = 'none';
+            document.getElementById('payment-table').style.display = 'none'; // Ocultar tabla si no hay filas
         }
     }
     
     function calcularPago(input) {
-        const row = input.closest('tr');
-        const montoPagoInput = row.querySelector('#monto-pago');
-        const totalFinalInput = document.getElementById('total_final');
+        const row = input.closest('tr'); // Obtener la fila actual
+        const montoPagoInput = row.querySelector('#monto-pago'); // Obtener el input de monto
+        const totalFinalInput = document.getElementById('total_final'); // Obtener el total final
     
-        const porcentajeAdelanto = parseFloat(input.value) || 0;
-        const totalFinal = parseFloat(totalFinalInput.value) || 0;
+        const porcentajeAdelanto = parseFloat(input.value) || 0; // Obtener porcentaje del input
+        const totalFinal = parseFloat(totalFinalInput.value) || 0; // Obtener el total final
     
-        const montoAdelanto = (totalFinal * (porcentajeAdelanto / 100)).toFixed(2);
-        montoPagoInput.value = montoAdelanto;
+        const montoAdelanto = (totalFinal * (porcentajeAdelanto / 100)).toFixed(2); // Calcular monto del pago
+        montoPagoInput.value = montoAdelanto; // Asignar monto al input correspondiente
     
         // Verificar si la suma de todos los porcentajes excede el 100%
         verificarTotalPorcentajes(input);
@@ -88,14 +87,14 @@ BPPJ
     
         // Sumar todos los porcentajes existentes
         porcentajeInputs.forEach(porcentajeInput => {
-            totalPorcentaje += parseFloat(porcentajeInput.value) || 0;
+            totalPorcentaje += parseFloat(porcentajeInput.value) || 0; // Sumar porcentajes
         });
     
         // Si el total supera el 100%, restablecer el último valor y mostrar alerta
         if (totalPorcentaje > 100) {
             // Restablecer el valor del campo actual para no exceder el 100%
             const porcentajeActual = parseFloat(input.value);
-            const maxValorPermitido = 100 - (totalPorcentaje - porcentajeActual);
+            const maxValorPermitido = 100 - (totalPorcentaje - porcentajeActual); // Calcular el máximo permitido
             input.value = Math.max(0, maxValorPermitido);  // Limitar el valor al máximo permitido
     
             alert("La suma de los porcentajes no puede exceder el 100%. Por favor, ajusta los pagos existentes.");

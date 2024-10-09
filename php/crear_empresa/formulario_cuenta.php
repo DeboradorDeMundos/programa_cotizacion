@@ -68,9 +68,6 @@ BPPJ
     <input type="hidden" id="hidden-cuentas" name="hidden_accounts" value="">
 
 <script src="../../js/crear_empresa/formulario_cuenta.js"></script>
-<script src="../../js/nueva_cotizacion/load_bancos.js"></script> 
-<script src="../../js/nueva_cotizacion/loadTipoCuenta.js"></script> 
-<script src="../../js/nueva_cotizacion/agregar_banco.js"></script>
 
 
 <?php

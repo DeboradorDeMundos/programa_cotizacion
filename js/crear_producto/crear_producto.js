@@ -14,58 +14,55 @@ BPPJ
     -------------------------------------- Inicio ITred Spa Crear Producto .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
+    // Función para obtener las opciones del select desde el servidor
+    function loadSelectOptions(callback) {
+        var xhr = new XMLHttpRequest(); // Crea un nuevo objeto XMLHttpRequest
+        xhr.open('GET', '../../php/crear_producto/get_tipo_productos.php', true); // Configura la solicitud GET
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                callback(xhr.responseText); // Llama a la función callback con la respuesta del servidor
+            } else {
+                console.error("Error al cargar las opciones del select: " + xhr.statusText); // Muestra un error en la consola si la carga falla
+            }
+        };
+        xhr.send(); // Envía la solicitud al servidor
+    }
 
+    // Función para agregar una nueva fila a la tabla de productos
+    function addRow() {
+        var table = document.getElementById('productos-table').getElementsByTagName('tbody')[0]; // Obtiene el cuerpo de la tabla
+        var row = table.insertRow(); // Inserta una nueva fila en el cuerpo de la tabla
 
-// Función para obtener las opciones del select
-function loadSelectOptions(callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '../../php/crear_producto/get_tipo_productos.php', true); // Ajusta la ruta si es necesario
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            callback(xhr.responseText);
-        } else {
-            console.error("Error al cargar las opciones del select: " + xhr.statusText);
-        }
+        // Cargar las opciones del select
+        loadSelectOptions(function(selectOptions) {
+            row.innerHTML = ` // Establece el contenido HTML de la nueva fila
+                <td><input type="text" name="nombre_producto[]" required></td>
+                <td><textarea name="descripcion_producto[]" rows="4"></textarea></td>
+                <td><input type="number" step="0.01" name="precio_producto[]" required></td>
+                <td><input type="file" name="foto_producto[]" accept="image/*"></td>
+                <td>
+                    <select name="id_tipo_producto[]" required>
+                        ${selectOptions} // Inserta las opciones del select obtenidas del servidor
+                    </select>
+                </td>
+                <td><button type="button" onclick="removeRow(this)">Eliminar</button></td>
+            `;
+        });
+    }
+
+    // Función para eliminar una fila de la tabla
+    function removeRow(button) {
+        var row = button.parentNode.parentNode; // Obtiene la fila correspondiente al botón presionado
+        row.parentNode.removeChild(row); // Elimina la fila del DOM
+    }
+
+    // Inicializar el primer select al cargar la página
+    window.onload = function() {
+        loadSelectOptions(function(selectOptions) {
+            var firstSelect = document.querySelector('#productos-table tbody tr select'); // Selecciona el primer select en la tabla
+            firstSelect.innerHTML = selectOptions; // Inserta las opciones del select obtenidas del servidor
+        });
     };
-    xhr.send();
-}
-
-function addRow() {
-    var table = document.getElementById('productos-table').getElementsByTagName('tbody')[0];
-    var row = table.insertRow();
-
-    // Cargar las opciones del select
-    loadSelectOptions(function(selectOptions) {
-        row.innerHTML = `
-            <td><input type="text" name="nombre_producto[]" required></td>
-            <td><textarea name="descripcion_producto[]" rows="4"></textarea></td>
-            <td><input type="number" step="0.01" name="precio_producto[]" required></td>
-            <td><input type="file" name="foto_producto[]" accept="image/*"></td>
-            <td>
-                <select name="id_tipo_producto[]" required>
-                    ${selectOptions}
-                </select>
-            </td>
-            <td><button type="button" onclick="removeRow(this)">Eliminar</button></td>
-        `;
-    });
-}
-
-function removeRow(button) {
-    var row = button.parentNode.parentNode;
-    row.parentNode.removeChild(row);
-}
-
-// Inicializar el primer select al cargar la página
-window.onload = function() {
-    loadSelectOptions(function(selectOptions) {
-        var firstSelect = document.querySelector('#productos-table tbody tr select');
-        firstSelect.innerHTML = selectOptions;
-    });
-};
-
-    
-
     
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Crear Producto .JS ---------------------------------------

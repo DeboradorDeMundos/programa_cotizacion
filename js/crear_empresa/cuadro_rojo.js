@@ -14,8 +14,9 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
     document.getElementById('empresa_nombre').addEventListener('input', function () {
-        const input = this;
-        // Elimina caracteres no válidos
+        const input = this; // Se refiere al campo de entrada donde el usuario está escribiendo
+    
+        // Elimina cualquier carácter que no sea letras, números, espacios, '&', '.', o '-'
         input.value = input.value.replace(/[^A-Za-zÀ-ÿ0-9\s&.-]/g, '');
     });
     
