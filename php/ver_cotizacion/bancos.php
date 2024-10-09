@@ -16,10 +16,45 @@ BPPJ
      -- INICIO CONEXION BD --
      ------------------------ -->
 
-     <?php
-// Establece la conexión a la base de datos de ITred Spa
-$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+<?php
+    // Consulta para obtener las cuentas bancarias de la empresa
+    $query_bancos = "
+        SELECT 
+            cb.rut_titular,
+            cb.nombre_titular,
+            cb.numero_cuenta,
+            cb.email_banco,
+            b.nombre_banco,
+            tc.tipocuenta
+        FROM E_Cuenta_Bancaria cb
+        JOIN E_Bancos b ON cb.id_banco = b.id_banco
+        JOIN E_Tipo_Cuenta tc ON cb.id_tipocuenta = tc.id_tipocuenta
+        WHERE cb.id_empresa = ?
+    ";
+
+    // Preparar la consulta de cuentas bancarias
+    $stmt_bancos = $mysqli->prepare($query_bancos);
+    $stmt_bancos->bind_param("i", $id_empresa);
+
+    // Ejecutar la consulta de cuentas bancarias
+    $stmt_bancos->execute();
+
+    // Obtener los resultados de cuentas bancarias
+    $result_bancos = $stmt_bancos->get_result();
+
+    // Verificar si hay resultados de cuentas bancarias
+    $bancos = [];
+    if ($result_bancos->num_rows > 0) {
+        $bancos = $result_bancos->fetch_all(MYSQLI_ASSOC);
+    } else {
+        echo "No se encontraron cuentas bancarias para esta empresa.";
+    }
+
+    // Cerrar las conexiones
+    $stmt->close();
+    $stmt_bancos->close();
 ?>
+
 <div class="barcode-contenedor">
 
 <table>

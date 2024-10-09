@@ -15,10 +15,61 @@ BPPJ
 <!-- ------------------------
      -- INICIO CONEXION BD --
      ------------------------ -->
+<?php
+// Consulta para obtener los títulos, detalles y subtítulos relacionados con la cotización
+$query_titulos = "
+    SELECT 
+        t.id_titulo AS titulo_id,
+        t.nombre,
+        d.id_detalle AS detalle_id,
+        d.nombre_producto,
+        d.descripcion,
+        d.cantidad,
+        d.precio_unitario,
+        d.descuento_porcentaje,
+        d.total,
+        s.nombre AS subtitulo_nombre
+    FROM C_Cotizaciones c
+    JOIN C_Titulos t ON t.id_cotizacion = c.id_cotizacion
+    JOIN C_Detalles d ON d.id_titulo = t.id_titulo
+    LEFT JOIN C_Subtitulos s ON s.id_subtitulo = d.id_subtitulo
+    WHERE c.id_cotizacion = ?
+";
 
-     <?php
-// Establece la conexión a la base de datos de ITred Spa
-$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+// Preparar y ejecutar la consulta
+$stmt_titulos = $mysqli->prepare($query_titulos);
+$stmt_titulos->bind_param("i", $id_cotizacion);
+$stmt_titulos->execute();
+$result_titulos = $stmt_titulos->get_result();
+
+// Estructura para almacenar los datos
+$titulos = [];
+while ($row = $result_titulos->fetch_assoc()) {
+    $titulo_id = $row['titulo_id'];
+
+    // Si el título no existe aún en el array, lo agregamos
+    if (!isset($titulos[$titulo_id])) {
+        $titulos[$titulo_id] = [
+            'nombre' => $row['nombre'],
+            'detalles' => []
+        ];
+    }
+
+    // Añadir detalles y subtítulos
+    $titulos[$titulo_id]['detalles'][$row['detalle_id']]['nombre_producto'] = $row['nombre_producto'];
+    $titulos[$titulo_id]['detalles'][$row['detalle_id']]['descripcion'] = $row['descripcion'];
+    $titulos[$titulo_id]['detalles'][$row['detalle_id']]['cantidad'] = $row['cantidad'];
+    $titulos[$titulo_id]['detalles'][$row['detalle_id']]['precio_unitario'] = $row['precio_unitario'];
+    $titulos[$titulo_id]['detalles'][$row['detalle_id']]['descuento_porcentaje'] = $row['descuento_porcentaje'];
+    $titulos[$titulo_id]['detalles'][$row['detalle_id']]['total'] = $row['total'];
+    
+    if (!empty($row['subtitulo_nombre'])) {
+        $titulos[$titulo_id]['detalles'][$row['detalle_id']]['subtitulos'][] = $row['subtitulo_nombre'];
+    }
+}
+
+// Cerrar la conexión de la consulta de títulos
+$stmt_titulos->close();
 
 foreach ($titulos as $titulo_id => $titulo): ?>
     <table border="1">

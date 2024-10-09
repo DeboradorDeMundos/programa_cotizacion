@@ -16,7 +16,16 @@ BPPJ
 
     function imprimir() {
         // Obtener el contenido de la clase "contenedor"
-        const contenido = document.querySelector('.contenedor').innerHTML;
+        const contenedor = document.querySelector('.contenedor');
+        
+        // Clonar el contenido del contenedor para no alterar el original
+        const contenidoClonado = contenedor.cloneNode(true);
+    
+        // Eliminar los elementos de alineación (radio buttons y sus etiquetas)
+        const opcionesAlineacion = contenidoClonado.querySelectorAll('input[name="alineacion"], label');
+        opcionesAlineacion.forEach(opcion => {
+            opcion.style.display = 'none'; // Ocultar las opciones
+        });
     
         // Crear una nueva ventana para la impresión
         const ventanaImpresion = window.open('', '', 'width=850,height=1300'); // Ajusta el tamaño para hoja oficio
@@ -30,14 +39,14 @@ BPPJ
                 <style>
                     @media print {
                         body {
-                            font-family: Arial, sans-serif; // Establecer fuente
+                            font-family: Arial, sans-serif; /* Establecer fuente */
                             margin: 0; /* Sin márgenes */
                             padding: 0; /* Sin relleno */
                         }
                         .contenedor {
                             width: 100%; 
                             height: auto; 
-                            page-break-after: always; // Saltar página después de cada contenedor
+                            page-break-after: always; /* Saltar página después de cada contenedor */
                         }
                         button { display: none; } /* Oculta el botón al imprimir */
                         @page {
@@ -48,7 +57,7 @@ BPPJ
                 </style>
             </head>
             <body>
-                <div class="contenedor">${contenido}</div> <!-- Incluir el contenido a imprimir -->
+                <div class="contenedor">${contenidoClonado.innerHTML}</div> <!-- Incluir el contenido a imprimir -->
                 <script>
                     window.onload = function() {
                         window.print(); // Imprimir cuando la ventana se carga
@@ -58,7 +67,7 @@ BPPJ
             </body>
             </html>
         `);
-        
+    
         ventanaImpresion.document.close(); // Cerrar el documento para que se renderice
     }
 

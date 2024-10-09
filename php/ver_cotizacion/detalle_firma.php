@@ -1,11 +1,7 @@
 <?php
 // Conexión a la base de datos
-$conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
+$mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
 
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
 
 // Obtener el ID de la cotización desde la URL
 $id_cotizacion = isset($_GET['id']) ? (int) $_GET['id'] : 0;
@@ -36,7 +32,7 @@ if ($id_cotizacion > 0) {
         JOIN C_Encargados en ON ct.id_encargado = en.id_encargado
     WHERE ct.id_cotizacion = ?";
     
-    $stmt = $conn->prepare($sql_cotizacion);
+    $stmt = $mysqli->prepare($sql_cotizacion);
     $stmt->bind_param("i", $id_cotizacion);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -64,7 +60,7 @@ if ($id_cotizacion > 0) {
     echo "<p class='error'>ID de cotización no válido.</p>";
     exit;
 }
-$conn->close();
+$mysqli->close();
 ?>
 
 <!DOCTYPE html>

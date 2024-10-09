@@ -11,6 +11,35 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Ver condiciones .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
+
+<?php
+    $query_condiciones = "
+    SELECT r.id_condiciones, r.descripcion_condiciones
+    FROM c_condiciones_generales AS r
+    JOIN c_cotizacion_condiciones AS cr ON r.id_condiciones = cr.id_condiciones
+    WHERE cr.id_cotizacion = ?
+    ";
+
+    // Preparar y ejecutar la consulta para obtener requisitos
+    $stmt_condiciones = $mysqli->prepare($query_condiciones);
+    $stmt_condiciones->bind_param("i", $id_cotizacion);
+    $stmt_condiciones->execute();
+    $result_condiciones = $stmt_condiciones->get_result();
+
+    // Verificar si hay resultados de requisitos
+    $condiciones = [];
+    if ($result_condiciones->num_rows > 0) {
+    while ($row = $result_condiciones->fetch_assoc()) {
+        $condiciones[] = $row; // Guardar los requisitos en el array
+    }
+    } else {
+    echo "No se encontraron condiciones seleccionados para esta cotización.";
+    }
+
+    // Cerrar la conexión de la consulta de requisitos
+    $stmt_condiciones->close();
+?>
+
 <?php if (!empty($condiciones)): ?>
     <strong>Condiciones: </strong><br><br>
     <?php foreach ($condiciones as $condicion): ?>

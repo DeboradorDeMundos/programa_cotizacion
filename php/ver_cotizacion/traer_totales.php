@@ -13,18 +13,6 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Traer proyecto .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-<!-- ------------------------
-     -- INICIO CONEXION BD --
-     ------------------------ -->
-
-     <?php
-// Establece la conexión a la base de datos de ITred Spa
-$mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-?>
-<!-- ---------------------
-// FIN CONEXION BD --
-// --------------------- -->
-
 <?php
 
 if (isset($_GET['id']) && intval($_GET['id']) > 0) {

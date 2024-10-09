@@ -12,17 +12,6 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Traer cliente .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-<!-- ------------------------
-     -- INICIO CONEXION BD --
-     ------------------------ -->
-<?php
-// Establece la conexión a la base de datos de ITred Spa
-$mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-?>
-<!-- ---------------------
-// FIN CONEXION BD --
-// --------------------- -->
-
 <?php
 // Inicializa las variables con valores por defecto
 $cliente_nombre = $cliente_empresa = $cliente_direccion = $cliente_lugar = '';
