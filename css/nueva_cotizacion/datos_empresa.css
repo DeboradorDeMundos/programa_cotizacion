@@ -13,77 +13,86 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Datos empresa.CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-    .cuadro-datos {
-      border: 1px solid #ddd;
-      padding: 15px;
-      background-color: #fff;
-    }
+   /* Estilo general para cuadros de datos */
+.cuadro-datos {
+  border: 1px solid #ddd; /* Borde gris claro de 1px */
+  padding: 15px; /* Espaciado interno de 15px */
+  background-color: #fff; /* Fondo blanco */
+}
 
-    .box-6,
-    .box-12 {
-      display: flex;
-      flex-direction: column;
-    }
+/* Estilos para contenedores flexibles de diferentes tamaños */
+.box-6,
+.box-12 {
+  display: flex; /* Usa flexbox para organizar los elementos */
+  flex-direction: column; /* Disposición vertical de los elementos */
+}
 
-    .box-12 {
-      flex: 1;
-      max-width: 100%;
-      padding: 10px;
-    }
+/* Estilo específico para la caja de tamaño 12 */
+.box-12 {
+  flex: 1; /* Permite que esta caja ocupe el espacio disponible */
+  max-width: 100%; /* Asegura que no exceda el ancho del contenedor */
+  padding: 10px; /* Espaciado interno de 10px */
+}
 
-    .form-group label {
-      width: 20%;
-      font-size: 14px;
-      background-color: #d4d4d4;
-      padding: 5px;
-      border-radius: 3px 0px 0px 3px;
-      text-align: left;
-    }
+/* Estilo para etiquetas en el grupo de formularios */
+.form-group label {
+  width: 20%; /* Ancho del label */
+  font-size: 14px; /* Tamaño de fuente */
+  background-color: #d4d4d4; /* Fondo gris claro para el label */
+  padding: 5px; /* Espaciado interno del label */
+  border-radius: 3px 0px 0px 3px; /* Bordes redondeados a la izquierda */
+  text-align: left; /* Alineación del texto a la izquierda */
+}
 
-    .form-group label,
-    .form-group select,
-    .form-group input {
-      display: flex;
-      align-items: center; /* Centra el contenido de los label e input */
-    }
+/* Estilo para el contenido dentro del grupo de formularios */
+.form-group label,
+.form-group select,
+.form-group input {
+  display: flex; /* Usa flexbox para organizar el contenido */
+  align-items: center; /* Centra el contenido de los label e input */
+}
 
-    .form-group select,
-    .form-group input {
-      flex: 2; /* Hace que el input ocupe 2 partes del espacio disponible */
-      padding: 5px;
-      border: 1px solid #ddd;
-      border-radius: 0px 3px 3px 0px;
-      font-size: 14px;
-      text-align: left;
-      background-color: #fff;
-      box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el tamaño total del input */
-    }
+/* Estilo para selectores e inputs en el grupo de formularios */
+.form-group select,
+.form-group input {
+  flex: 2; /* Hace que el input ocupe 2 partes del espacio disponible */
+  padding: 5px; /* Espaciado interno de 5px */
+  border: 1px solid #ddd; /* Borde gris claro de 1px */
+  border-radius: 0px 3px 3px 0px; /* Bordes redondeados a la derecha */
+  font-size: 14px; /* Tamaño de fuente */
+  text-align: left; /* Alineación del texto a la izquierda */
+  background-color: #fff; /* Fondo blanco */
+  box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el tamaño total del input */
+}
 
-    fieldset legend {
-      font-size: 1.2em;
-      padding: 0 10px;
-      color: #333;
-      font-weight: bold;
-    }
+/* Estilo para el legend de los fieldsets */
+fieldset legend {
+  font-size: 1.2em; /* Tamaño de fuente para el legend */
+  padding: 0 10px; /* Espaciado lateral del legend */
+  color: #333; /* Color del texto */
+  font-weight: bold; /* Negrita para el texto */
+}
 
-        /* Asegura que los label y input tengan la misma altura */
-    .form-group {
-      display: flex;
-      align-items: stretch; /* Asegura que los elementos se estiren a la misma altura */
-      justify-content: space-between; /* Alinea el label y el input a los extremos */
-      margin-bottom: 10px;
-    }
+/* Asegura que los label y input tengan la misma altura */
+.form-group {
+  display: flex; /* Usa flexbox para alinear elementos */
+  align-items: stretch; /* Estira los elementos para que tengan la misma altura */
+  justify-content: space-between; /* Alinea el label y el input a los extremos */
+  margin-bottom: 10px; /* Espaciado inferior de 10px */
+}
 
-    /* Estilo para los grupos de campos en línea */
-    .form-group-inline {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-    }
+/* Estilo para grupos de campos en línea */
+.form-group-inline {
+  display: flex; /* Usa flexbox para organizar elementos en línea */
+  justify-content: space-between; /* Alinea los elementos a los extremos */
+  gap: 10px; /* Espacio entre los elementos */
+}
 
-    .form-group-inline .form-group {
-      flex: 1; /* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
-    }
+/* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
+.form-group-inline .form-group {
+  flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
+}
+
 
 
 /* --------------------------------------------------------------------------------------------------------------

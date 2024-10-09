@@ -13,141 +13,159 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Traer detalle.CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-
-
+/* Estilo general del cuerpo del documento */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-  }
-  
-  .contenedor {
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  
-  .detalle-content {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .detalle-content label {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 1.1em;
-    color: #333;
-  }
-  
-  .detalle-content input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-  }
-  
-  .detalle-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding: 10px;
-    background-color: #f9f9f9;
-  }
-  
-  .detalle-buttons button {
-    flex: 1;
-    max-width: 200px;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: white;
-  }
-  
-  .detalle-buttons button:nth-of-type(1) {
-    background-color: #007bff;
-  }
-  
-  .detalle-buttons button:nth-of-type(1):hover {
-    background-color: #0056b3;
-  }
-  
-  .detalle-buttons button:nth-of-type(2) {
-    background-color: #f44336;
-  }
-  
-  .detalle-buttons button:nth-of-type(2):hover {
-    background-color: #d32f2f;
-  }
-  
-  .detalle-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0 auto;
-    margin-bottom: 15px;
-  }
-  
-  .detalle-table th, .detalle-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  .detalle-table th {
-    background-color: #f2f2f2;
-    text-align: left;
-  }
-  
-  .detalle-table input[type="text"],
-  .detalle-table textarea,
-  .detalle-table input[type="number"] {
-    width: 100%;
-    padding: 6px;
-    box-sizing: border-box;
-  }
-  
-  .detalle-table button {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .detalle-table button:hover {
-    background-color: #d32f2f;
-  }
-  
-  .submit {
-    width: 80%;
-    padding: 10px 20px;
-    background-color: #ff6f61;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-  }
-  
-  .submit:hover {
-    background-color: #ff4500;
-  }
-  
-  fieldset legend {
-    font-size: 1.2em;
-    padding: 0 10px;
-    color: #333;
-    font-weight: bold;
-  }
+  font-family: Arial, sans-serif; /* Fuente utilizada */
+  margin: 0; /* Margen externo del cuerpo */
+  padding: 0; /* Relleno interno del cuerpo */
+  background-color: #f9f9f9; /* Color de fondo del cuerpo */
+}
+
+/* Estilo para el contenedor principal */
+.contenedor {
+  width: 100%; /* Ancho completo */
+  padding: 20px; /* Espaciado interno del contenedor */
+  box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+/* Estilo para el contenido detallado */
+.detalle-content {
+  background-color: #fff; /* Color de fondo blanco */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  margin-bottom: 20px; /* Margen inferior */
+  text-align: center; /* Alineación de texto al centro */
+}
+
+/* Estilo para las etiquetas dentro del contenido detallado */
+.detalle-content label {
+  display: block; /* Muestra la etiqueta como un bloque */
+  margin-bottom: 10px; /* Margen inferior de la etiqueta */
+  font-size: 1.1em; /* Tamaño de fuente ligeramente mayor */
+  color: #333; /* Color del texto */
+}
+
+/* Estilo para los campos de texto dentro del contenido detallado */
+.detalle-content input[type="text"] {
+  width: 100%; /* Ancho completo */
+  padding: 10px; /* Espaciado interno del campo */
+  border: 1px solid #ddd; /* Borde gris claro */
+  border-radius: 5px; /* Bordes redondeados */
+  box-sizing: border-box; /* Incluye el padding en el ancho total */
+  margin-bottom: 20px; /* Margen inferior */
+}
+
+/* Estilo para los botones de detalle */
+.detalle-buttons {
+  display: flex; /* Usa un contenedor flex para alinear botones */
+  justify-content: center; /* Centra los botones */
+  gap: 10px; /* Espacio entre botones */
+  padding: 10px; /* Espaciado interno */
+  background-color: #f9f9f9; /* Color de fondo del contenedor de botones */
+}
+
+/* Estilo para cada botón de detalle */
+.detalle-buttons button {
+  flex: 1; /* Los botones ocupan el mismo espacio */
+  max-width: 200px; /* Ancho máximo para los botones */
+  padding: 10px; /* Espaciado interno del botón */
+  font-size: 16px; /* Tamaño de fuente del botón */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  color: white; /* Color del texto del botón */
+}
+
+/* Estilo para el primer botón (ej. Aceptar) */
+.detalle-buttons button:nth-of-type(1) {
+  background-color: #007bff; /* Color de fondo azul */
+}
+
+/* Efecto hover para el primer botón */
+.detalle-buttons button:nth-of-type(1):hover {
+  background-color: #0056b3; /* Color de fondo al pasar el ratón */
+}
+
+/* Estilo para el segundo botón (ej. Cancelar) */
+.detalle-buttons button:nth-of-type(2) {
+  background-color: #f44336; /* Color de fondo rojo */
+}
+
+/* Efecto hover para el segundo botón */
+.detalle-buttons button:nth-of-type(2):hover {
+  background-color: #d32f2f; /* Color de fondo al pasar el ratón */
+}
+
+/* Estilo para la tabla de detalles */
+.detalle-table {
+  width: 100%; /* Ancho completo */
+  border-collapse: collapse; /* Elimina el espacio entre bordes */
+  margin: 0 auto; /* Centra la tabla */
+  margin-bottom: 15px; /* Margen inferior de la tabla */
+}
+
+/* Estilo para las celdas de la tabla */
+.detalle-table th, .detalle-table td {
+  border: 1px solid #ddd; /* Borde gris claro */
+  padding: 8px; /* Espaciado interno de las celdas */
+}
+
+/* Estilo para los encabezados de la tabla */
+.detalle-table th {
+  background-color: #f2f2f2; /* Color de fondo gris claro */
+  text-align: left; /* Alineación del texto a la izquierda */
+}
+
+/* Estilo para campos de texto, textarea y campos numéricos en la tabla */
+.detalle-table input[type="text"],
+.detalle-table textarea,
+.detalle-table input[type="number"] {
+  width: 100%; /* Ancho completo */
+  padding: 6px; /* Espaciado interno */
+  box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+/* Estilo para los botones dentro de la tabla */
+.detalle-table button {
+  background-color: #f44336; /* Color de fondo rojo */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  padding: 5px 10px; /* Espaciado interno del botón */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Efecto hover para los botones dentro de la tabla */
+.detalle-table button:hover {
+  background-color: #d32f2f; /* Color de fondo al pasar el ratón */
+}
+
+/* Estilo para el botón de envío */
+.submit {
+  width: 80%; /* Ancho del botón */
+  padding: 10px 20px; /* Espaciado interno del botón */
+  background-color: #ff6f61; /* Color de fondo */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  display: block; /* Muestra el botón como bloque */
+  margin: 20px auto; /* Margen superior e inferior automático */
+  text-align: center; /* Alineación del texto al centro */
+}
+
+/* Efecto hover para el botón de envío */
+.submit:hover {
+  background-color: #ff4500; /* Color de fondo al pasar el ratón */
+}
+
+/* Estilo para los leyendas de los fieldsets */
+fieldset legend {
+  font-size: 1.2em; /* Tamaño de fuente mayor */
+  padding: 0 10px; /* Espaciado horizontal */
+  color: #333; /* Color del texto */
+  font-weight: bold; /* Peso de fuente en negrita */
+}
 
 
 /* --------------------------------------------------------------------------------------------------------------

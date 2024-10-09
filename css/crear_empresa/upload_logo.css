@@ -13,39 +13,43 @@ BPPJ
     -------------------------------------- Inicio ITred Spa Upload Logo .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
  /* Estilos comunes */
-
- .caja-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Estilos para la caja que contiene el logo */
+.caja-logo {
+  display: flex; /* Usar flexbox para alinear elementos */
+  align-items: center; /* Centrar verticalmente los elementos dentro de la caja */
+  justify-content: center; /* Centrar horizontalmente los elementos dentro de la caja */
 }
 
+/* Estilos para el contenedor del logo */
 .contenedor-logo {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+  display: flex; /* Usar flexbox para alinear elementos */
+  align-items: center; /* Centrar verticalmente los elementos dentro del contenedor */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el contenedor */
 }
 
+/* Estilos para la imagen del logo */
 .logo {
-  max-width: 300px;
-  height: auto;
-  margin-right: 10px;
+  max-width: 300px; /* Ancho máximo del logo */
+  height: auto; /* Altura automática para mantener la proporción */
+  margin-right: 10px; /* Margen derecho de 10px para separar del siguiente elemento */
 }
 
+/* Estilos para el botón asociado al logo */
 button.logo {
-  background-color: #333;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  width: auto;
+  background-color: #333; /* Color de fondo gris oscuro */
+  color: #fff; /* Color del texto en blanco */
+  padding: 10px 20px; /* Relleno interno de 10px vertical y 20px horizontal */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  width: auto; /* Ancho automático según el contenido */
 }
 
+/* Efecto hover para el botón asociado al logo */
 button.logo:hover {
-  background-color: #555;
+  background-color: #555; /* Color de fondo gris más claro al hacer hover */
 }
-    
+
     
     /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Upload Logo .CSS ---------------------------------------

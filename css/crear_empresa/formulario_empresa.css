@@ -13,54 +13,60 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Formulario Empresa .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
+/* Estilo para las filas flexibles */
+.row {
+  display: flex; /* Utiliza el modelo flexbox para distribuir elementos en fila */
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan si exceden el ancho disponible */
+  margin-bottom: 20px; /* Margen inferior de 20px entre las filas */
+}
 
-    .row {
-        display: flex;
-        flex-wrap: wrap;
-        margin-bottom: 20px;
-      }
-      
-      .box-12 {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        max-width: 100%;
-        padding: 10px;
-      }
-      
-      .data-box {
-        border: 1px solid #ddd;
-        padding: 15px;
-        background-color: #fff;
-        border-radius: 12px;
-      }
-      
-      input {
-        width: calc(100% - 20px);
-        padding: 10px;
-        margin-bottom: 20px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        box-sizing: border-box;
-      }
-      
-      input[type="email"] {
-        width: calc(100% - 20px);
-        padding: 10px;
-        margin-bottom: 20px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        box-sizing: border-box;
-      }
+/* Estilo para una caja flexible que ocupa todo el ancho disponible */
+.box-12 {
+  display: flex; /* Utiliza flexbox para la distribución interna */
+  flex-direction: column; /* Los elementos internos se apilan verticalmente */
+  flex: 1; /* Permite que la caja se expanda para ocupar espacio disponible */
+  max-width: 100%; /* Ancho máximo del 100% del contenedor padre */
+  padding: 10px; /* Espaciado interno de 10px */
+}
 
-      select {
-        width: calc(100% - 20px);
-        padding: 10px;
-        margin-bottom: 20px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        box-sizing: border-box;
-      }
+/* Estilo para un cuadro de datos con borde y fondo blanco */
+.data-box {
+  border: 1px solid #ddd; /* Borde gris claro */
+  padding: 15px; /* Espaciado interno de 15px */
+  background-color: #fff; /* Fondo blanco */
+  border-radius: 12px; /* Bordes redondeados */
+}
+
+/* Estilo general para los campos de entrada */
+input {
+  width: calc(100% - 20px); /* Ancho del 100% menos 20px de margen */
+  padding: 10px; /* Espaciado interno de 10px */
+  margin-bottom: 20px; /* Margen inferior de 20px entre elementos */
+  border: 1px solid #ddd; /* Borde gris claro */
+  border-radius: 5px; /* Bordes redondeados */
+  box-sizing: border-box; /* Incluye el borde y el padding dentro del ancho total */
+}
+
+/* Estilo específico para los campos de entrada de tipo email */
+input[type="email"] {
+  width: calc(100% - 20px); /* Ancho del 100% menos 20px de margen */
+  padding: 10px; /* Espaciado interno de 10px */
+  margin-bottom: 20px; /* Margen inferior de 20px entre elementos */
+  border: 1px solid #ddd; /* Borde gris claro */
+  border-radius: 5px; /* Bordes redondeados */
+  box-sizing: border-box; /* Incluye el borde y el padding dentro del ancho total */
+}
+
+/* Estilo para los elementos select (desplegables) */
+select {
+  width: calc(100% - 20px); /* Ancho del 100% menos 20px de margen */
+  padding: 10px; /* Espaciado interno de 10px */
+  margin-bottom: 20px; /* Margen inferior de 20px entre elementos */
+  border: 1px solid #ddd; /* Borde gris claro */
+  border-radius: 5px; /* Bordes redondeados */
+  box-sizing: border-box; /* Incluye el borde y el padding dentro del ancho total */
+}
+
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Formulario Empresa .CSS ---------------------------------------

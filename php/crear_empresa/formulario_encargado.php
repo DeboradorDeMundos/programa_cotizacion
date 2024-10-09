@@ -11,11 +11,16 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Formulario encargado .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-    <link rel="stylesheet" href="../../css/crear_encargado/formulario_encargado.css">
-<div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
-    <div class="box-12 data-box"> <!-- Crea una caja para ingresar datos, ocupando las 12 columnas disponibles en el diseño. Esta caja contiene varios campos de entrada de datos -->
+    <link rel="stylesheet" href="../../css/crear_encargado/formulario_encargado.css"> 
+<!-- Crea una fila para organizar los elementos en una disposición horizontal -->
+<div class="row"> 
+    <!-- Crea una caja para ingresar datos, ocupando las 12 columnas disponibles en el diseño. Esta caja contiene varios campos de entrada de datos -->
+    <div class="box-12 data-box"> 
 
+        <!-- Etiqueta para el campo de entrada del RUT del encargado -->
         <label for="encargado_rut">RUT del Encargado:</label>
+        
+        <!-- Campo de entrada para el RUT del encargado. Es obligatorio y tiene un patrón específico para validarlo -->
         <input type="text" id="encargado_rut" name="encargado_rut" required minlength="3" maxlength="20" 
             pattern="^[0-9]+[-kK0-9]{1}$" 
             title="Por favor, ingrese un RUT válido."
@@ -23,17 +28,23 @@ BPPJ
             oninput="formatoRut(this)"
             oninput="QuitarCaracteresInvalidos(this)">
 
+        <!-- Etiqueta para el campo de entrada del nombre del encargado -->
         <label for="encargado_nombre">Nombre del Encargado:</label>
+        
+        <!-- Campo de entrada para el nombre del encargado. Es obligatorio y debe contener solo letras y espacios -->
         <input type="text" id="encargado_nombre" name="encargado_nombre" required minlength="3" maxlength="255" 
             pattern="^[A-Za-zÀ-ÿ\s.-]+$" 
             title="Por favor, ingrese solo letras y espacios."
             placeholder="Ejemplo: Juan Pérez"
             oninput="QuitarCaracteresInvalidos(this)">
 
-
-        <label for="cargo_encargado">Cargo:</label> <!-- Etiqueta para el campo de selección del cargo del cliente -->
-        <select id="cargo_encargado" name="cargo_encargdo" required> <!-- Campo de selección para el cargo del cliente. Este campo es obligatorio -->
-            <option value="" disabled selected>Selecciona un cargo</option> <!-- Opción por defecto -->
+        <!-- Etiqueta para el campo de selección del cargo del encargado -->
+        <label for="cargo_encargado">Cargo:</label> 
+        
+        <!-- Campo de selección para el cargo del encargado. Este campo es obligatorio -->
+        <select id="cargo_encargado" name="cargo_encargdo" required> 
+            <!-- Opción por defecto -->
+            <option value="" disabled selected>Selecciona un cargo</option> 
             <option value="gerente">Gerente</option>
             <option value="director">Director</option>
             <option value="ejecutivo">Ejecutivo</option>
@@ -54,8 +65,10 @@ BPPJ
             <option value="encargado_rrhh">Encargado de RRHH</option>
         </select>
 
-
+        <!-- Etiqueta para el campo de entrada del email del encargado -->
         <label for="encargado_email">Email del Encargado:</label>
+        
+        <!-- Campo de entrada para el email del encargado. Es obligatorio y debe ser un correo válido -->
         <input type="email" id="encargado_email" name="encargado_email" 
             placeholder="ejemplo@empresa.com" 
             maxlength="255" 
@@ -63,7 +76,10 @@ BPPJ
             title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
             onblur="CompletarEmail(this)">
 
+        <!-- Etiqueta para el campo de entrada del teléfono del encargado -->
         <label for="encargado_fono">Teléfono del Encargado:</label>
+        
+        <!-- Campo de entrada para el teléfono del encargado. Es obligatorio y tiene un patrón específico para validarlo -->
         <input type="text" id="encargado_fono" name="encargado_fono" 
             placeholder="+56 9 1234 1234" 
             maxlength="11" 
@@ -72,7 +88,10 @@ BPPJ
             title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
             oninput="FormatearNumeroTelefono(this)">
 
+        <!-- Etiqueta para el campo de entrada del celular del encargado -->
         <label for="encargado_celular">Celular del Encargado:</label>
+        
+        <!-- Campo de entrada para el celular del encargado. Es obligatorio y tiene un patrón específico para validarlo -->
         <input type="text" id="encargado_celular" name="encargado_celular" 
             placeholder="+56 9 1234 1234" 
             maxlength="11" 
@@ -81,10 +100,13 @@ BPPJ
             title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
             oninput="FormatearNumeroTelefono(this)">
 
-        <input type="hidden" name="id_empresa" value="<?php echo $id_empresa; ?>"> <!-- Agregar el ID de la empresa aquí -->
-        
-    </div> <!-- Cierra la caja de datos -->
-</div> <!-- Cierra la fila -->
+        <!-- Campo oculto para almacenar el ID de la empresa -->
+        <input type="hidden" name="id_empresa" value="<?php echo $id_empresa; ?>"> 
+        <!-- Cierra la caja de datos -->  
+    </div> 
+    <!-- Cierra la fila -->
+</div>
+<!-- Js correspondiente a formulario_encargado -->
 <script src="../../js/crear_encargado/formulario_encargado.js"></script>
 
 <?php

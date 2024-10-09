@@ -13,83 +13,95 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Requisitos basicos .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
+/* Estilos para los encabezados h2 */
+h2 {
+  color: #333; /* Color de texto gris oscuro */
+  margin-top: 0; /* Sin margen superior */
+}
 
-    h2 {
-      color: #333;
-      margin-top: 0;
-    }
-    
-    .fila-obligaciones, .fila-requisitos {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-      padding: 5px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-    
-    .fila-obligaciones input, .fila-requisitos input {
-      flex-grow: 1;
-      margin-right: 10px;
-    }
-    
-    .boton-eliminar-obligacion, .boton-eliminar-obligacion {
-      background-color: #dc3545; /* Color rojo */
-      border: none;
-      color: white;
-      padding: 5px 10px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    
-    .boton-eliminar-obligacion:hover, .boton-eliminar-obligacion:hover {
-      background-color: #c82333; /* Rojo más oscuro al hacer hover */
-    }
-    
-    #boton-agregar-obligacion, #boton-agregar-requisito {
-      font-size: 14px; /* Tamaño de fuente pequeño */
-      padding: 8px 16px; /* Espaciado interno */
-      border: none; /* Sin borde */
-      border-radius: 5px; /* Bordes redondeados */
-      color: #fff; /* Color del texto */
-      cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-      transition: background-color 0.3s; /* Transición para el color de fondo */
-    }
-    
-    #boton-agregar-obligacion {
-      background-color: #28a745; /* Color de fondo llamativo (verde) */
-    }
-    
-    #boton-agregar-obligacion:hover {
-      background-color: #218838; /* Color de fondo al pasar el ratón (verde más oscuro) */
-    }
-    
-    #boton-agregar-requisito {
-      background-color: #28a745; /* Color de fondo llamativo (verde) */
-    }
-    
-    #boton-agregar-requisito:hover {
-      background-color: #218838; /* Color de fondo al pasar el ratón (verde más oscuro) */
-    }
+/* Estilos para filas de obligaciones y requisitos */
+.fila-obligaciones, .fila-requisitos {
+  display: flex; /* Usar flexbox para alinear elementos */
+  align-items: center; /* Centra los elementos verticalmente */
+  gap: 10px; /* Espacio de 10px entre los elementos */
+  margin-bottom: 10px; /* Margen inferior de 10px */
+  padding: 5px; /* Relleno interno de 5px */
+  border: 1px solid #ddd; /* Borde gris claro */
+  border-radius: 5px; /* Bordes redondeados */
+}
 
-    .box-12_1 {
-      display: flex;
-      flex-direction: row; /* Disposición horizontal */
-      justify-content: space-between; /* Coloca uno a la izquierda, otro al centro y otro a la derecha */
-      flex: 1;
-      max-width: 100%;
-      padding: 10px;
-  }
-  
-  .data-box_1 {
-      border: 1px solid #ddd;
-      padding: 15px;
-      background-color: #fff;
-      border-radius: 12px;
-      flex: 1; /* Todos los módulos ocupan un espacio igual */
-      margin: 0 10px; /* Margen lateral para un poco de espacio adicional entre los módulos */
-  }
+/* Estilo para los inputs dentro de las filas de obligaciones y requisitos */
+.fila-obligaciones input, .fila-requisitos input {
+  flex-grow: 1; /* El input ocupará el espacio disponible */
+  margin-right: 10px; /* Margen a la derecha del input */
+}
+
+/* Estilos para el botón de eliminar obligaciones */
+.boton-eliminar-obligacion {
+  background-color: #dc3545; /* Color rojo */
+  border: none; /* Sin borde */
+  color: white; /* Texto blanco */
+  padding: 5px 10px; /* Relleno interno de 5px vertical y 10px horizontal */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Efecto hover para el botón de eliminar obligaciones */
+.boton-eliminar-obligacion:hover {
+  background-color: #c82333; /* Rojo más oscuro al hacer hover */
+}
+
+/* Estilos para los botones de agregar obligación y requisito */
+#boton-agregar-obligacion, #boton-agregar-requisito {
+  font-size: 14px; /* Tamaño de fuente pequeño */
+  padding: 8px 16px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  color: #fff; /* Color del texto */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s; /* Transición para el color de fondo */
+}
+
+/* Estilos específicos para el botón de agregar obligación */
+#boton-agregar-obligacion {
+  background-color: #28a745; /* Color de fondo llamativo (verde) */
+}
+
+/* Efecto hover para el botón de agregar obligación */
+#boton-agregar-obligacion:hover {
+  background-color: #218838; /* Color de fondo al pasar el ratón (verde más oscuro) */
+}
+
+/* Estilos específicos para el botón de agregar requisito */
+#boton-agregar-requisito {
+  background-color: #28a745; /* Color de fondo llamativo (verde) */
+}
+
+/* Efecto hover para el botón de agregar requisito */
+#boton-agregar-requisito:hover {
+  background-color: #218838; /* Color de fondo al pasar el ratón (verde más oscuro) */
+}
+
+/* Estilos para la clase box-12_1 */
+.box-12_1 {
+  display: flex; /* Usar flexbox para la disposición de elementos */
+  flex-direction: row; /* Disposición horizontal */
+  justify-content: space-between; /* Coloca uno a la izquierda, otro al centro y otro a la derecha */
+  flex: 1; /* Toma el espacio disponible */
+  max-width: 100%; /* Ancho máximo del 100% */
+  padding: 10px; /* Relleno interno de 10px */
+}
+
+/* Estilos para los módulos de datos dentro de la clase data-box_1 */
+.data-box_1 {
+  border: 1px solid #ddd; /* Borde gris claro */
+  padding: 15px; /* Relleno interno de 15px */
+  background-color: #fff; /* Color de fondo blanco */
+  border-radius: 12px; /* Bordes redondeados */
+  flex: 1; /* Todos los módulos ocupan un espacio igual */
+  margin: 0 10px; /* Margen lateral para un poco de espacio adicional entre los módulos */
+}
+
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Requisitos basicos .CSS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

@@ -13,75 +13,70 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Formulario Cotizacion .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-
-
-
-/* formulario_cotizacion.css */
-
 /* Establece la fuente predeterminada, elimina márgenes y rellenos, y define el color de fondo de la página */
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f9f9f9;
+  font-family: Arial, sans-serif; /* Fuente predeterminada */
+  margin: 0; /* Eliminar márgenes */
+  padding: 0; /* Eliminar rellenos */
+  background-color: #f9f9f9; /* Color de fondo */
 }
 
 .contenedor {
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
+  width: 100%; /* Ancho del contenedor */
+  padding: 20px; /* Relleno interno */
+  box-sizing: border-box; /* Incluye el padding en el ancho total */
 }
 
 .caja-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; /* Usar flexbox */
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
 }
 
 .boton-fijado {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 5px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
+  position: fixed; /* Posición fija en la pantalla */
+  top: 20px; /* Distancia desde la parte superior */
+  left: 20px; /* Distancia desde la izquierda */
+  padding: 10px 20px; /* Relleno del botón */
+  background-color: #007bff; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  text-align: center; /* Centrar texto */
+  text-decoration: none; /* Sin subrayado */
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra del botón */
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
 }
 
 .boton-fijado:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Color de fondo en hover */
 }
 
-
 #detalle-contenedor {
-  position: relative;
-  padding-bottom: 50px;
+  position: relative; /* Posición relativa para el contenedor */
+  padding-bottom: 50px; /* Relleno inferior para el contenido */
 }
 
 .submit {
-  width: 80%;
-  padding: 10px 20px;
-  background-color: #ff6f61;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  display: block;
-  margin: 20px auto;
-  text-align: center;
+  width: 80%; /* Ancho del botón de envío */
+  padding: 10px 20px; /* Relleno del botón */
+  background-color: #ff6f61; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambiar cursor a puntero */
+  display: block; /* Mostrar como bloque */
+  margin: 20px auto; /* Margen superior e inferior, centrar horizontalmente */
+  text-align: center; /* Centrar texto */
 }
 
 .submit:hover {
-  background-color: #ff4500;
+  background-color: #ff4500; /* Color de fondo en hover */
 }
 
 .bancos td {
-  text-align: center;
+  text-align: center; /* Centrar texto en celdas de la tabla */
 }
+
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Formulario Cotizacion .CSS ---------------------------------------

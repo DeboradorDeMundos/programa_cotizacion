@@ -12,72 +12,101 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Firma .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-    <!DOCTYPE html>
+  <!-- Define el tipo de documento como HTML5 -->
+<!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Establece la codificación de caracteres como UTF-8 para asegurar la correcta visualización de caracteres especiales -->
     <meta charset="UTF-8">
+    <!-- Configura la vista en dispositivos móviles para que la página se ajuste al ancho de la pantalla del dispositivo -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Enlaza una hoja de estilo externa para estilizar el contenido de la firma -->
     <link rel="stylesheet" href="../../css/crear_empresa/firma.css">
+    <!-- Define el título de la página que se muestra en la pestaña del navegador -->
     <title>Firma</title>
 </head>
 <body>
+    <!-- Contenedor principal para la sección de firmas -->
     <div class="contenedor-firma">
+        <!-- Título principal de la sección -->
         <h1>Selecciona una opción de firma</h1>
+        <!-- Subtítulo que indica las opciones disponibles para crear una firma -->
         <h3>¡Crea una firma automática, manual o sube tu propia firma digital!</h3>
 
         <!-- Opción de Firma Automática -->
         <div class="option">
+            <!-- Botón de opción para seleccionar firma automática -->
             <input type="radio" id="auto-signature" name="opcion-firma" value="automatic">
             <label for="auto-signature">Firma Automática</label>
+            <!-- Contenedor para desplegar la firma automática, inicialmente oculto -->
             <div id="auto-desplegar-firma" class="desplegar-firma" style="display: none;"></div>
         </div>
 
         <!-- Opción de Firma Manual -->
         <div class="option">
-        <input type="radio" id="manual-signature" name="opcion-firma" value="manual">
-        <label for="manual-signature">Firma Manual</label>
-        <div id="firma-manual" class="desplegar-firma" style="display: none;">
-            <div class="signature-row">
-                <input type="text" name="titulo_firma" placeholder="titulo de la firma" oninput="QuitarCaracteresInvalidos(this)">
-                <input type="text" name="nombre_encargado_firma" placeholder="Nombre del Encargado" oninput="QuitarCaracteresInvalidos(this)">
-                <input type="text" name="cargo_encargado_firma" placeholder="Cargo del Encargado" oninput="QuitarCaracteresInvalidos(this)">
-                <input type="text" name="telefono_encargado_firma" placeholder="Teléfono del Encargado" oninput="QuitarCaracteresInvalidos(this)">
-                <input type="text" name="nombre_empresa_firma" placeholder="Nombre de la Empresa" oninput="QuitarCaracteresInvalidos(this)">
-                <input type="text" name="area_empresa_firma" placeholder="Área de la Empresa" oninput="QuitarCaracteresInvalidos(this)">
-                <input type="text" name="telefono_empresa_firma" placeholder="Teléfono de la Empresa" oninput="QuitarCaracteresInvalidos(this)">
-                <input type="email" name="email_firma" placeholder="Email" onblur="CompletarEmail(this)">
-                <input type="text" name="direccion_firma" placeholder="Dirección" oninput="QuitarCaracteresInvalidos(this)">
-                <input type="text" name="rut_firma" placeholder="RUT" minlength="3" maxlength="20"           
-                    pattern="^[0-9]+[-kK0-9]{1}$" 
-                    title="Por favor, ingrese un RUT válido."
-                    placeholder="Ejemplo: 12345678-9"
-                    oninput="formatoRut(this)"
-                    oninput="QuitarCaracteresInvalidos(this)">
+            <!-- Botón de opción para seleccionar firma manual -->
+            <input type="radio" id="manual-signature" name="opcion-firma" value="manual">
+            <label for="manual-signature">Firma Manual</label>
+            <!-- Contenedor para los campos de entrada de la firma manual, inicialmente oculto -->
+            <div id="firma-manual" class="desplegar-firma" style="display: none;">
+                <div class="signature-row">
+                    <!-- Campo de entrada para el título de la firma -->
+                    <input type="text" name="titulo_firma" placeholder="título de la firma" oninput="QuitarCaracteresInvalidos(this)">
+                    <!-- Campo de entrada para el nombre del encargado -->
+                    <input type="text" name="nombre_encargado_firma" placeholder="Nombre del Encargado" oninput="QuitarCaracteresInvalidos(this)">
+                    <!-- Campo de entrada para el cargo del encargado -->
+                    <input type="text" name="cargo_encargado_firma" placeholder="Cargo del Encargado" oninput="QuitarCaracteresInvalidos(this)">
+                    <!-- Campo de entrada para el teléfono del encargado -->
+                    <input type="text" name="telefono_encargado_firma" placeholder="Teléfono del Encargado" oninput="QuitarCaracteresInvalidos(this)">
+                    <!-- Campo de entrada para el nombre de la empresa -->
+                    <input type="text" name="nombre_empresa_firma" placeholder="Nombre de la Empresa" oninput="QuitarCaracteresInvalidos(this)">
+                    <!-- Campo de entrada para el área de la empresa -->
+                    <input type="text" name="area_empresa_firma" placeholder="Área de la Empresa" oninput="QuitarCaracteresInvalidos(this)">
+                    <!-- Campo de entrada para el teléfono de la empresa -->
+                    <input type="text" name="telefono_empresa_firma" placeholder="Teléfono de la Empresa" oninput="QuitarCaracteresInvalidos(this)">
+                    <!-- Campo de entrada para el correo electrónico -->
+                    <input type="email" name="email_firma" placeholder="Email" onblur="CompletarEmail(this)">
+                    <!-- Campo de entrada para la dirección -->
+                    <input type="text" name="direccion_firma" placeholder="Dirección" oninput="QuitarCaracteresInvalidos(this)">
+                    <!-- Campo de entrada para el RUT -->
+                    <input type="text" name="rut_firma" placeholder="RUT" minlength="3" maxlength="20"           
+                        pattern="^[0-9]+[-kK0-9]{1}$" 
+                        title="Por favor, ingrese un RUT válido."
+                        placeholder="Ejemplo: 12345678-9"
+                        oninput="formatoRut(this)"
+                        oninput="QuitarCaracteresInvalidos(this)">
                 </div>
             </div>
         </div>
 
-                <!-- Opción de Firma Digital (Subida de Imagen) -->
+        <!-- Opción de Firma Digital (Subida de Imagen) -->
         <div class="option">
+            <!-- Botón de opción para seleccionar firma por imagen -->
             <input type="radio" id="image-signature" name="opcion-firma" value="image">
             <label for="image-signature">Firma Imagen</label>
+            <!-- Campo para subir una imagen de la firma -->
             <input type="file" id="firma-imagen" name="firma-imagen" accept="image/png">
-            <!-- Previsualización de la imagen de la firma -->
+            <!-- Previsualización de la imagen de la firma, inicialmente oculta -->
             <img id="previsualizacion-firma" src="" alt="Previsualización de firma" style="display: none;">
         </div>
 
+        <!-- Opción de Firma Digital -->
         <div class="option">
+            <!-- Botón de opción para seleccionar firma digital -->
             <input type="radio" id="digital-signature" name="opcion-firma" value="digital">
             <label for="digital-signature">Firma Digital</label>
+            <!-- Contenedor para el mensaje relacionado con la firma digital, inicialmente oculto -->
             <div id="Mensaje-Firma-Digital" class="desplegar-firma" style="display: none;">
                 <p>Su firma se generará en su cotización.</p>
             </div>
         </div>
     </div>
 
+    <!-- Enlaza un archivo JavaScript externo para manejar la lógica de las firmas -->
     <script src="../../js/crear_empresa/firma.js"></script>
 </body>
 </html>
+
 
 
 

@@ -13,81 +13,83 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Detalle vendedor.CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-    .cuadro-datos {
-        border: 1px solid #ddd;
-        padding: 15px;
-        background-color: #fff;
-      }
-  
-      .box-6,
-      .box-12 {
-        display: flex;
-        flex-direction: column;
-      }
-  
-      .row {
-        display: flex;
-        flex-wrap: wrap;
-        margin-bottom: 20px;
-      }
-  
-      .box-6 {
-        flex: 1;
-        padding: 10px;
-      }
-      .box-6, .box-12 {
-          display: flex;
-          flex-direction: column;
-      }
-  
-      .cuadro-datos {
-          border: 1px solid #ddd;
-          padding: 15px;
-          background-color: #fff;
-      }
-  
-      .form-group label {
-        width: 20%;
-        font-size: 14px;
-        background-color: #d4d4d4;
-        padding: 5px;
-        border-radius: 3px 0px 0px 3px;
-        text-align: left;
-      }
-      .form-group label, .form-group select, .form-group input {
-          display: flex;
-          align-items: center;
-      }
-  
-      .form-group select, .form-group input {
-        flex: 2;
-        padding: 5px;
-        border: 1px solid #ddd;
-        border-radius: 0px 3px 3px 0px;
-        font-size: 14px;
-        text-align: left;
-        background-color: #fff;
-        box-sizing: border-box;
-      }
+ /* Estilo para cuadros de datos */
+.cuadro-datos {
+  border: 1px solid #ddd; /* Borde gris claro de 1px */
+  padding: 15px; /* Espaciado interno de 15px */
+  background-color: #fff; /* Fondo blanco */
+}
 
-      /* Asegura que los label y input tengan la misma altura */
-      .form-group {
-        display: flex;
-        align-items: stretch; /* Asegura que los elementos se estiren a la misma altura */
-        justify-content: space-between; /* Alinea el label y el input a los extremos */
-        margin-bottom: 10px;
-      }
+/* Estilos para columnas de diseño flexible */
+.box-6,
+.box-12 {
+  display: flex; /* Usa flexbox para la disposición de los elementos */
+  flex-direction: column; /* Los elementos se apilan en columna */
+}
 
-      /* Estilo para los grupos de campos en línea */
-      .form-group-inline {
-        display: flex;
-        justify-content: space-between;
-        gap: 10px;
-      }
+/* Estilo para filas de elementos */
+.row {
+  display: flex; /* Usa flexbox para la disposición de los elementos */
+  flex-wrap: wrap; /* Permite que los elementos se ajusten en múltiples líneas */
+  margin-bottom: 20px; /* Espaciado inferior de 20px */
+}
 
-      .form-group-inline .form-group {
-        flex: 1; /* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
-      }
+/* Estilo para columnas específicas */
+.box-6 {
+  flex: 1; /* Se expande para ocupar el espacio disponible */
+  padding: 10px; /* Espaciado interno de 10px */
+}
+
+/* Agrupación de estilos para labels en formularios */
+.form-group label {
+  width: 20%; /* Ancho del label */
+  font-size: 14px; /* Tamaño de fuente */
+  background-color: #d4d4d4; /* Fondo gris claro para el label */
+  padding: 5px; /* Espaciado interno del label */
+  border-radius: 3px 0px 0px 3px; /* Bordes redondeados a la izquierda */
+}
+
+/* Estilo común para labels, selects e inputs en formularios */
+.form-group label,
+.form-group select,
+.form-group input {
+  display: flex; /* Usa flexbox para alinear los elementos */
+  align-items: center; /* Centra verticalmente los elementos */
+}
+
+/* Estilo para selects e inputs en formularios */
+.form-group select,
+.form-group input {
+  flex: 2; /* Se expande para ocupar el espacio disponible */
+  padding: 5px; /* Espaciado interno de 5px */
+  border: 1px solid #ddd; /* Borde gris claro de 1px */
+  border-radius: 0px 3px 3px 0px; /* Bordes redondeados a la derecha */
+  font-size: 14px; /* Tamaño de fuente */
+  text-align: left; /* Alineación del texto a la izquierda */
+  background-color: #fff; /* Fondo blanco */
+  box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
+}
+
+/* Asegura que los label y input tengan la misma altura */
+.form-group {
+  display: flex; /* Usa flexbox para alinear los elementos */
+  align-items: stretch; /* Estira los elementos para que tengan la misma altura */
+  justify-content: space-between; /* Alinea el label y el input a los extremos */
+  margin-bottom: 10px; /* Espaciado inferior de 10px */
+}
+
+/* Estilo para grupos de campos en línea */
+.form-group-inline {
+  display: flex; /* Usa flexbox para organizar elementos en línea */
+  justify-content: space-between; /* Alinea los elementos a los extremos */
+  gap: 10px; /* Espacio entre los elementos */
+}
+
+/* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
+.form-group-inline .form-group {
+  flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
+}
+
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Detalle vendedor.CSS ---------------------------------------

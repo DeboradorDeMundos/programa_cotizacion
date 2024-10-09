@@ -13,27 +13,33 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Pago .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-    th {
-        background-color: #4CAF50;
-        padding: 10px;
-        text-align: center;
-    }
 
-    textarea {
-        resize: vertical;
-    }
+/* Estilo de las celdas de encabezado */
+th {
+    background-color: #4CAF50; /* Color de fondo para las celdas de encabezado */
+    padding: 10px; /* Relleno interno de las celdas de encabezado */
+    text-align: center; /* Centrar el texto en las celdas de encabezado */
+}
 
-    td {
-        padding: 5px;
-        border-bottom: 1px solid #ddd;
-    }
+/* Estilo del área de texto */
+textarea {
+    resize: vertical; /* Permitir redimensionar el área de texto solo en la dirección vertical */
+}
 
-    fieldset legend {
-        font-size: 1.2em;
-        padding: 0 10px;
-        color: #333;
-        font-weight: bold;
-    }
+/* Estilo de las celdas de la tabla */
+td {
+    padding: 5px; /* Relleno interno de las celdas de la tabla */
+    border-bottom: 1px solid #ddd; /* Borde inferior de las celdas de la tabla */
+}
+
+/* Estilo del legend en fieldset */
+fieldset legend {
+    font-size: 1.2em; /* Tamaño de fuente del legend en fieldset */
+    padding: 0 10px; /* Relleno interno del legend */
+    color: #333; /* Color del texto del legend */
+    font-weight: bold; /* Negrita para el texto del legend */
+}
+
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Pago .CSS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

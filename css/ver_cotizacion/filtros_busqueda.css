@@ -15,32 +15,35 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 
-    #filtro-form {
-        margin-bottom: 20px;
-    }
-    
-    #filtro-form label {
-        display: inline-block;
-        width: 150px;
-    }
-    
-    #filtro-form input, #filtro-form select {
-        margin-bottom: 10px;
-        padding: 5px;
-    }
-    
-    button[type="submit"] {
-        padding: 5px 15px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
-    
-    button[type="submit"]:hover {
-        background-color: #45a049;
-    }
-    
+    /* Estilo del formulario de filtro */
+#filtro-form {
+    margin-bottom: 20px; /* Margen inferior del formulario */
+}
+
+#filtro-form label {
+    display: inline-block; /* Muestra la etiqueta en línea */
+    width: 150px; /* Ancho fijo para las etiquetas */
+}
+
+#filtro-form input, #filtro-form select {
+    margin-bottom: 10px; /* Margen inferior de los campos de entrada y selección */
+    padding: 5px; /* Espaciado interno de los campos */
+}
+
+/* Estilo del botón de envío del formulario */
+button[type="submit"] {
+    padding: 5px 15px; /* Espaciado interno del botón */
+    background-color: #4CAF50; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none; /* Sin borde en el botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+/* Efecto hover para el botón de envío */
+button[type="submit"]:hover {
+    background-color: #45a049; /* Color de fondo del botón al pasar el ratón */
+}
+
 
 
 /* --------------------------------------------------------------------------------------------------------------
