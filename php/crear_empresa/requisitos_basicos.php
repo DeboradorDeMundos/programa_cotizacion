@@ -11,50 +11,64 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Requisitos basicos.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-
 <!-- ------------------------
      -- INICIO CONEXION BD --
      ------------------------ -->
-<!-- falta php de esta funcion -->
 
-<link rel="stylesheet" href="../../css/crear_empresa/requisitos_basicos.css">
-<h2>Requisitos basicos</h2>
-<div id="contenedor-requistos">
-    
-        <!-- Aquí se agregarán dinámicamente las filas de condiciones -->
+     <link rel="stylesheet" href="../../css/crear_empresa/requisitos_basicos.css">
+<h2>Requisitos básicos</h2>
+
+<!-- Contenedor para los requisitos -->
+<div id="contenedor-requisitos">
+    <!-- Aquí se agregarán dinámicamente las filas de condiciones -->
 </div>
 
 <div style="margin-top: 10px;">
+    <!-- Botón para agregar un nuevo requisito -->
     <button id="boton-agregar-requisito" type="button">Agregar nuevo requisito</button>
+    <!-- Botón para eliminar el último requisito, inicialmente oculto -->
     <button id="boton-eliminar-obligacion" type="button" style="display: none;">Eliminar último requisito</button>
 </div>
 
 <script src="../../js/crear_empresa/requisitos_basicos.js"></script>
+
 <?php
+// Verifica si el método de la solicitud es POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Obtiene la cadena de requisitos desde el formulario
     $requisitosString = $_POST['requisitos'];
-    
+
+    // Convierte la cadena en un array
     $requisitosArray = explode('|', $requisitosString);
+    
+    // Comprueba si el array de requisitos no está vacío
     if (!empty($requisitosArray)) {
+        // Prepara la consulta para insertar requisitos en la base de datos
         $stmt = $mysqli->prepare("INSERT INTO E_Requisitos_Basicos (indice, descripcion_condiciones, id_empresa) VALUES (?, ?, ?)");
 
+        // Verifica si la preparación de la consulta fue exitosa
         if (!$stmt) {
             die("Error al preparar la consulta: " . $mysqli->error);
         }
 
+        // Inserta cada requisito en la base de datos
         foreach ($requisitosArray as $index => $requisito) {
-            $indice = $index + 1;
+            $indice = $index + 1; // Incrementa el índice para cada requisito
             $stmt->bind_param("isi", $indice, $requisito, $id_empresa);
             if (!$stmt->execute()) {
+                // Muestra un mensaje de error si la inserción falla
                 echo "Error al insertar requisito: " . $stmt->error;
             }
         }
+        // Cierra la declaración
         $stmt->close();
     } else {
+        // Mensaje si no hay requisitos para insertar
         echo "No hay requisitos para insertar.";
     }
 }
 ?>
+
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Requisitos basicos .PHP ----------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->

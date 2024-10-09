@@ -32,16 +32,19 @@ $conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Creación de Productos</title>
+    <!-- Enlace a la hoja de estilos para el formulario de creación de productos -->
     <link rel="stylesheet" href="../../css/crear_producto/crear_producto.css">
 </head>
 <body>
     <div class="contenedor">
         <div class="form-contenedor">
+            <!-- Incluye el formulario de creación de producto -->
             <?php include 'formulario_creacion_producto.php'; ?>
         </div>
     </div>
 </body>
 </html>
+
 <!-- ------------------------------------------------------------------------------------------------------------
 -------------------------------------- FIN ITred Spa Creacion producto .PHP -----------------------------------
 ------------------------------------------------------------------------------------------------------------- -->
