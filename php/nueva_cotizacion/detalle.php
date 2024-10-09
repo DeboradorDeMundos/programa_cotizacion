@@ -27,6 +27,7 @@ BPPJ
         </div>
     </div>
 </fieldset>
+<script src="../../js/nueva_cotizacion/detalle.js"></script>
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
