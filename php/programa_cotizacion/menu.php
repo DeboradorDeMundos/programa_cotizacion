@@ -57,7 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </nav>
 
 <script src="js/programa_cotizacion/menu.js"></script> 
-<script src="js/programa_cotizacion/menu.js"></script> 
 
 
 

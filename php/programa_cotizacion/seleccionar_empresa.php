@@ -72,7 +72,6 @@ BPPJ
             </div>
 
             <script src="js/programa_cotizacion/seleccionar_empresa.js"></script> 
-            <script src="js/programa_cotizacion/seleccionar_empresa.js"></script> 
             
      <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa seleccionar empresa .PHP ----------------------------------------

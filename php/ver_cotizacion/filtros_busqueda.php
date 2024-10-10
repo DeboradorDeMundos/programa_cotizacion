@@ -27,6 +27,8 @@ BPPJ
     <link rel="stylesheet" href="../../css/ver_cotizacion/filtros_busqueda.css">
 </head>
 <form id="filtro-form">
+    <input type="text" hidden id="id" name="id" value="<?php echo isset($_GET['id']) ? $_GET['id'] : ''; ?>">
+
     <label for="numero_cotizacion">Número de Cotización:</label>
     <input type="text" id="numero_cotizacion" name="numero_cotizacion">
     
