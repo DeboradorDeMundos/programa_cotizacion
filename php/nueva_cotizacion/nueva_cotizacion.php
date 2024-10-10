@@ -97,7 +97,7 @@ BPPJ
     <?php include 'firma.php'; ?>
      <!-- Enlaza nuevamente el archivo JavaScript para manejar la lógica del formulario de cotización -->       
     <script src="../../js/nueva_cotizacion/nueva_cotizacion.js"></script> 
-  
+    <script src="../../js/nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
    
     
 </body>

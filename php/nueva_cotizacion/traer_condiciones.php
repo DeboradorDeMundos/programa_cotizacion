@@ -11,7 +11,33 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Traer condiciones.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-
+    <?php
+// Verificar si $row no es nulo antes de realizar la consulta
+if ($row !== null) {
+    // Consulta para obtener las condiciones generales de la empresa
+    $query_condiciones = "SELECT id_condiciones, descripcion_condiciones FROM C_Condiciones_Generales WHERE id_empresa = ?";
+    
+    // Preparar la consulta
+    if ($stmt_cond = $mysqli->prepare($query_condiciones)) {
+        // Vincular el parámetro de la consulta
+        $stmt_cond->bind_param('i', $id);
+        // Ejecutar la consulta
+        $stmt_cond->execute();
+        // Obtener el resultado de la consulta
+        $result_cond = $stmt_cond->get_result();
+        // Obtener todas las condiciones como un arreglo asociativo
+        $condiciones = $result_cond->fetch_all(MYSQLI_ASSOC);
+        // Cerrar la declaración
+        $stmt_cond->close();
+    } else {
+        // Mostrar error si no se pudo preparar la consulta
+        echo "<p>Error al preparar la consulta de condiciones generales: " . $mysqli->error . "</p>";
+    }
+} else {
+    // Mostrar mensaje si no se encontró la empresa
+    echo "<p>No se encontró la empresa con el ID proporcionado.</p>";
+}
+?> 
 
 <!-- Checkbox para mostrar/ocultar condiciones generales -->
 <label>
@@ -23,12 +49,14 @@ BPPJ
     <tr>
         <th style="background-color:lightgray" colspan="2">CONDICIONES GENERALES</th>
     </tr>
-    <?php if (!empty($condiciones)): ?>
+    <?php if (isset($condiciones) && !empty($condiciones)): // Verificar si $condiciones está definido ?>
         <?php foreach ($condiciones as $condicion): ?>
             <tr>
-                <td><?php echo htmlspecialchars($condicion['id_condiciones']) . '.- ' . htmlspecialchars($condicion['descripcion_condiciones']); ?></td>
                 <td>
-                    <input type="checkbox" name="condicion_check[]" value="<?php echo $condicion['id_condiciones']; ?>" />
+                    <?php echo htmlspecialchars($condicion['id_condiciones']) . '.- ' . htmlspecialchars($condicion['descripcion_condiciones']); ?>
+                </td>
+                <td>
+                    <input type="checkbox" name="condicion_check[]" value="<?php echo htmlspecialchars($condicion['id_condiciones']); ?>" />
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -40,10 +68,9 @@ BPPJ
 </table>
 
 <script src="../../js/nueva_cotizacion/traer_condiciones.js"></script> 
+
 <?php
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     // Ahora manejamos las condiciones generales seleccionadas
     if (!empty($_POST['condicion_check'])) {
         $condiciones_seleccionadas = $_POST['condicion_check']; // Condiciones marcadas
@@ -69,6 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "Cotización y condiciones generales guardadas correctamente.";
 }
 ?>
+
 
 
      <!-- ------------------------------------------------------------------------------------------------------------

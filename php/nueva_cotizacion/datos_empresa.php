@@ -56,7 +56,7 @@ BPPJ
                 maxlength="13" 
                 required 
                 title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                oninput="QuitarCaracteresInvalidos(this)"> 
+                oninput="AgregarMasYDetectarPais(this)"> 
         </div>
 
         <div class="form-group">

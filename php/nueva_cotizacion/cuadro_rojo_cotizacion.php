@@ -11,8 +11,10 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Cuadro rojo cotizacion.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-    <body onload="calcularFechaValidez();"> <!-- Ejecuta la función calcularFechaValidez al cargar la página -->
+    
     <link rel="stylesheet" href="../../css/nueva_cotizacion/cuadro_rojo_cotizacion.css"> <!-- Enlaza el archivo CSS para estilizar el cuadro de cotización -->
+    <body onload="calcularFechaValidez();"> <!-- Ejecuta la función calcularFechaValidez al cargar la página -->
+
 
     <!-- Crea una caja para ingresar datos, ocupando otras 6 columnas. Se aplica una clase adicional para estilo -->
     <fieldset class="box-6 cuadro-datos cuadro-datos-rojo"> 
@@ -22,9 +24,10 @@ BPPJ
         <label for="empresa_rut">RUT de la Empresa:</label> 
         <!-- Campo de texto para ingresar el RUT de la empresa. El atributo "required" hace que el campo sea obligatorio -->
         <input type="text" id="empresa_rut" name="empresa_rut" 
-            minlength="7" maxlength="12" 
-            required oninput="FormatearRut(this)" 
-            value="<?php echo htmlspecialchars($row['EmpresaRUT']); ?>"> 
+        minlength="7" maxlength="12" 
+        title="El RUT debe contener entre 7 y 12 caracteres numéricos o 'K'." 
+        required oninput="FormatearRut(this)" 
+        value="<?php echo htmlspecialchars($row['EmpresaRUT']); ?>"> 
         
         <!-- Etiqueta para el campo de entrada del número de cotización -->
         <label for="numero_cotizacion">Número de Cotización:</label> 
@@ -44,7 +47,7 @@ BPPJ
 </body>
 
 <!-- Enlaza el archivo JavaScript para manejar la lógica del formulario de cotización -->
-<script src="../../js/nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
+
 
 
 <!-- ------------------------------------------------------------------------------------------------------------

@@ -75,9 +75,9 @@ BPPJ
             <img id="flag_encargado_celular" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
                 alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
 
-            <input type="text" id="en-_celular" name="enc_celular"
+            <input type="text" id="enc_celular" name="enc_celular"
                 placeholder="+56 9 1234 1234" 
-                maxlength="16" 
+                maxlength="15" 
                 required 
                 title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
                 oninput="asegurarMasYDetectarPais3(this)"> <!-- Campo de texto para ingresar el número de celular del encargado -->
