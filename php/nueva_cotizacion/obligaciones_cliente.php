@@ -59,8 +59,6 @@ BPPJ
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Suponiendo que ya manejas la creación de la cotización aquí
-    // Una vez que tengas el ID de la cotización recién creada:
     
     // Ahora manejamos las obligaciones del cliente seleccionadas
     if (!empty($_POST['obligacion_check'])) {
@@ -85,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     
     // Continuar con el resto del flujo de creación de la cotización
-    echo "Cotización y obligaciones del cliente guardadas correctamente.";
+    echo "obligaciones del cliente guardadas correctamente.";
 }
 ?>
 

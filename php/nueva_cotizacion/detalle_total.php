@@ -40,12 +40,12 @@ BPPJ
     <div class="form-group-inline-2">
         <div class="form-group-2">
             <label for="iva">IVA</label>
-            <input type="number" id="iva_porcentaje" name="iva_porcentaje" step="0.01" min="0" max="100" value="19" readonly>
+            <input type="number" id="iva_porcentaje" name="iva_porcentaje" step="0" min="0" max="100" value="19" readonly>
             <span>%</span>
         </div>
         <div class="form-group-2">
             <label for="totalIva">Total IVA</label>
-            <input type="number" id="total_iva" name="total_iva" step="0.01" min="0" readonly>
+            <input type="number" id="total_iva" name="total_iva" step="0" min="0" readonly>
         </div>
     </div>
     <div class="form-group-2">

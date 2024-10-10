@@ -25,7 +25,6 @@ BPPJ
         <!-- Campo de texto para ingresar el RUT de la empresa. El atributo "required" hace que el campo sea obligatorio -->
         <input type="text" id="empresa_rut" name="empresa_rut" 
         minlength="7" maxlength="12" 
-        pattern="[0-9kK]{7,12}" 
         title="El RUT debe contener entre 7 y 12 caracteres numéricos o 'K'." 
         required oninput="FormatearRut(this)" 
         value="<?php echo htmlspecialchars($row['EmpresaRUT']); ?>"> 
