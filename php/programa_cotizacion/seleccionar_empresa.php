@@ -12,7 +12,7 @@ BPPJ
     ------------------------------------- INICIO ITred Spa seleccionar empresa.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-    <link rel="stylesheet" href="../../css/nueva_cotizacion/seleccionar_empresa.css">
+<link rel="stylesheet" href="css/programa_cotizacion/seleccionar_empresa.css">
 <!-- NOMRBE DEL FORMULARIO -->
 <label for="empresa">Seleccione la Empresa:</label>
         <!-- Combo Box selecionar empresa -->
@@ -71,7 +71,7 @@ BPPJ
             </div>
             </div>
 
-            <script src="../../js/nueva_cotizacion/seleccionar_empresa.js"></script> 
+            <script src="js/programa_cotizacion/seleccionar_empresa.js"></script> 
             
      <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa seleccionar empresa .PHP ----------------------------------------
