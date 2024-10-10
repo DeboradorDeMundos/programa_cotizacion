@@ -98,7 +98,7 @@ BPPJ
         });
 
         // Añadir una nueva firma manual al hacer clic en el botón
-        const BotonAgregarFirma = document.getElementById('add-signature');
+        const BotonAgregarFirma = document.getElementById('BotonAgregarFirma');
         BotonAgregarFirma.addEventListener('click', () => {
             const NuevaFilaFirma = document.createElement('div');
             NuevaFilaFirma.classList.add('signature-row');

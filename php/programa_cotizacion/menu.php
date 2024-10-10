@@ -41,8 +41,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <?php endif; ?>
 
 <!-- Menú de navegación -->
+<head>
+<link rel="stylesheet" href="css/programa_cotizacion/menu.css">
+</head>
 
-<link rel="stylesheet" href="../../css/nueva_cotizacion/menu.css">
 <nav>  
     <ul class="menu">
         <!-- Enlaces del menú que se habilitan solo si se ha seleccionado una empresa -->
@@ -54,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </ul>
 </nav>
 
-<script src="../../js/nueva_cotizacion/traer_requisitos.js"></script> 
+<script src="js/programa_cotizacion/menu.js"></script> 
 
 
 

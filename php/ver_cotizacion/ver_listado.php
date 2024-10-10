@@ -128,14 +128,6 @@ if ($result->num_rows > 0) {
 $mysqli->close();
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ver Cotizaciones</title>
-    <link rel="stylesheet" href="../../css/programa_cotizacion/ver_listado.css">
-</head>
     
 
 <!DOCTYPE html>
@@ -144,7 +136,7 @@ $mysqli->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ver Cotizaciones</title>
-    <link rel="stylesheet" href="../../css/programa_cotizacion/ver_listado.css">
+    <link rel="stylesheet" href="../../css/ver_cotizacion/ver_listado.css">
 </head>
 <body>
 <div><?php include 'filtros_busqueda.php'; ?></div>

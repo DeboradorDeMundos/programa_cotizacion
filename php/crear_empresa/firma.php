@@ -76,7 +76,10 @@ BPPJ
                         oninput="formatoRut(this)"
                         oninput="QuitarCaracteresInvalidos(this)">
                 </div>
+              
+                <button type="button" class="BotonAgregarFirma"  id="BotonAgregarFirma" style="background-color: green; color: white; border: none; cursor: pointer; padding: 5px 10px;">Agregar Firma</button>
             </div>
+
         </div>
 
         <!-- Opción de Firma Digital (Subida de Imagen) -->
