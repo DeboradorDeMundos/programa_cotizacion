@@ -108,7 +108,7 @@ BPPJ
     // Función para detectar el país según el número de teléfono ingresado
     function detectarPais5(input) {
         const numeroTelefono5 = input.value.trim(); // Asegúrate de eliminar espacios
-        const imagenBandera5 = document.getElementById("flag_vendedor_telefono"); // Asegúrate de tener la imagen con este ID
+        const imagenBandera5 = document.getElementById("flag_vendedor_celular"); // Asegúrate de tener la imagen con este ID
         
         // Itera sobre los códigos de país para detectar el correcto
         for (const codigo in banderasPais5) {
@@ -140,7 +140,7 @@ BPPJ
 
     // Asegúrate de que la bandera se actualice al cargar la página
     window.onload = function() {
-        const campoTelefono5 = document.getElementById('vendedor_telefono'); // Obtiene el campo de teléfono
+        const campoTelefono5 = document.getElementById('vendedor_celular'); // Obtiene el campo de teléfono
         asegurarMasYDetectarPais5(campoTelefono5); // Llama a la función para asegurar "+" y detectar el país
     };
 

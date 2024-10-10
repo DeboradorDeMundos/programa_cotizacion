@@ -15,7 +15,17 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 
-
+    document.getElementById('observacion').addEventListener('input', function() {
+        // Expresión regular para evitar caracteres peligrosos (puedes ajustar según tus necesidades)
+        const pattern = /['"<>;\\]/g;
+        
+        // Si el texto contiene caracteres no permitidos, los elimina
+        if (pattern.test(this.value)) {
+            this.value = this.value.replace(pattern, '');
+            alert('Se han eliminado caracteres no permitidos se borraran.');
+        }
+    });
+    
 
 
 /* --------------------------------------------------------------------------------------------------------------

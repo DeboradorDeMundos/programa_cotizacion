@@ -71,7 +71,7 @@ BPPJ
             </div>
             </div>
 
-            <script src="js/programa_cotizacion/seleccionar_empresa.js"></script> 
+
             <script src="js/programa_cotizacion/seleccionar_empresa.js"></script> 
             
      <!-- ------------------------------------------------------------------------------------------------------------
