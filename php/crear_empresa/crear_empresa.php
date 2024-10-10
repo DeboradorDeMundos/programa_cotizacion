@@ -41,7 +41,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     <div class="contenedor"> <!-- Contenedor principal que puede ayudar a centrar y organizar el contenido en la página -->
         <form id="formulario-cotizacion" method="POST" action="" enctype="multipart/form-data">
             <!-- Formulario con ID "formulario-cotizacion". Usa el método POST para enviar los datos al servidor. El atributo "action" define el archivo al que se enviarán los datos. "enctype" especifica que el formulario puede enviar archivos -->
-            <a href="javascript:history.back()" class="boton-fijado">Volver</a>
+            <a href="../../programa_cotizacion.php" class="boton-fijado">Volver</a>
             <!-- Fila 1 -->
              <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
             <div class="row"> 
@@ -76,20 +76,24 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
                 </div>
             </div>
 
-            <div class="row">
-                <div class="box-12_1">
-                    <div class="data-box_1">
-                        <!-- Incluye el archivo para los requisitos básicos -->
-                        <?php include 'requisitos_basicos.php';?>
-                    </div>
-                    <div class="data-box_1">
-                        <!-- Incluye el archivo para las condiciones generales -->
-                        <?php include 'condiciones_generales.php';?>
-                    </div>
-                    <div class="data-box_1">
-                        <!-- Incluye el archivo para las obligaciones del cliente -->
-                        <?php include 'obligaciones_cliente.php';?>
-                    </div>
+            <div class="row"> 
+                <div class="box-12 data-box">
+                    <!-- Incluye el archivo para los requisitos básicos -->
+                    <?php include 'requisitos_basicos.php';?>
+                </div>
+            </div>
+
+            <div class="row"> 
+                <div class="box-12 data-box">
+                    <!-- Incluye el archivo para las condiciones generales -->
+                    <?php include 'condiciones_generales.php';?>
+                </div>
+            </div>
+            
+            <div class="row"> 
+                <div class="box-12 data-box">
+                    <!-- Incluye el archivo para las obligaciones del cliente -->
+                    <?php include 'obligaciones_cliente.php';?>
                 </div>
             </div>
             <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
