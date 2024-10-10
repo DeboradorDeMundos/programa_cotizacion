@@ -97,16 +97,27 @@ BPPJ
             }
         });
 
-        // Añadir una nueva firma manual al hacer clic en el botón
-        const BotonAgregarFirma = document.getElementById('BotonAgregarFirma');
-        BotonAgregarFirma.addEventListener('click', () => {
+        document.getElementById('BotonAgregarFirma').addEventListener('click', function() {
+            // Obtener todos los inputs dentro del contenedor de firmas
+            const inputs = document.querySelectorAll('#firma-manual input');
+            
+            // Validar que cada input no esté vacío
+            for (const input of inputs) {
+                if (input.value.trim() === '') {
+                    alert('Por favor, completa todos los campos antes de agregar una firma.');
+                    input.focus(); // Enfoca el campo vacío
+                    return; // Detiene la ejecución si hay algún campo vacío
+                }
+            }
+        
+            // Si todos los campos están completos, se agrega una nueva fila de firma
             const NuevaFilaFirma = document.createElement('div');
             NuevaFilaFirma.classList.add('signature-row');
             NuevaFilaFirma.style.display = 'flex'; 
             NuevaFilaFirma.style.flexDirection = 'column'; 
             NuevaFilaFirma.style.marginBottom = '10px'; 
-
-            // Crear campos para nombre, cargo, empresa, área, teléfono, email, dirección y RUT
+        
+            // Añadir los campos a la nueva fila
             NuevaFilaFirma.innerHTML = `
                 <input type="text" class="manual-signature-input" name="nombre_encargado[]" placeholder="Nombre del Encargado" style="margin-bottom: 5px;">
                 <input type="text" class="manual-signature-input" name="cargo_encargado[]" placeholder="Cargo del Encargado" style="margin-bottom: 5px;">
@@ -118,14 +129,14 @@ BPPJ
                 <input type="text" class="manual-signature-input" name="rut[]" placeholder="RUT" style="margin-bottom: 5px;">
                 <button type="button" class="remove-signature" style="background-color: red; color: white; border: none; cursor: pointer; padding: 5px 10px;">Eliminar</button>
             `;
-
+        
             // Agregar la nueva fila antes del botón de agregar más firmas
-            ContenedorFirmaManual.insertBefore(NuevaFilaFirma, BotonAgregarFirma);
-
+            document.getElementById('firma-manual').insertBefore(NuevaFilaFirma, BotonAgregarFirma);
+        
             // Agregar funcionalidad para eliminar una fila
             const BotonQuitar = NuevaFilaFirma.querySelector('.remove-signature');
             BotonQuitar.addEventListener('click', () => {
-                ContenedorFirmaManual.removeChild(NuevaFilaFirma);
+                document.getElementById('firma-manual').removeChild(NuevaFilaFirma);
             });
         });
 

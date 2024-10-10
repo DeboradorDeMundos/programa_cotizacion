@@ -55,8 +55,24 @@
             ContadorObligaciones--; // Decrementa el contador de obligaciones
 
             // Ajustar la numeración de las obligaciones restantes
-            ActualizarNumeracion(contenedor_o, 'obligacion');
+            ActualizarNumeraciones(contenedor_o, 'obligaciones');
         }
+    }
+
+    function ActualizarNumeraciones(contenedor, type) {
+        // Convierte la colección de hijos en un array y actualiza la numeración
+        Array.from(contenedor.children).forEach((itemDiv, newIndex) => {
+            const SpanNumeros = itemDiv.querySelector(`.numero-${type}`); // Selecciona el span de la numeración
+            const CampoInput = itemDiv.querySelector('input'); // Selecciona el input
+
+            const ActualizarIndice = newIndex + 1; // Calcula el nuevo índice
+            SpanNumeros.textContent = `${ActualizarIndice}-. `; // Actualiza el texto del span
+            CampoInput.setAttribute('name', `${type}_${ActualizarIndice}`); // Actualiza el nombre del input
+            CampoInput.setAttribute('placeholder', `Ingrese ${type} ${ActualizarIndice}`); // Actualiza el placeholder del input
+
+            // Actualizar el dataset del div
+            itemDiv.dataset.index = ActualizarIndice; // Actualiza el índice en el dataset
+        });
     }
     /* --------------------------------------------------------------------------------------------------------------
         ---------------------------------------- FIN ITred Spa Obligaciones cliente .JS ---------------------------------------

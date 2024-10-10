@@ -15,28 +15,6 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
     // Función para actualizar el total de una fila cuando cambia algún valor
-    function ActualizarTotal(input) {
-        const row = input.closest('tr'); // Encuentra la fila más cercana al input que ha cambiado
-        const section = row.closest('.seccion-detalle'); // Encuentra la sección de detalle más cercana
-        const tituloIndex = section.dataset.tituloIndex; // Obtiene el índice del título de la sección
-        const subtituloIndex = Array.from(section.querySelectorAll('.detalle-contenido tr')).length - 1; // Calcula el índice del subtítulo
-
-        console.log(tituloIndex, subtituloIndex); // Muestra en consola los índices para depuración
-
-        // Obtiene los valores de cantidad, precio unitario y descuento de los inputs de la fila
-        const cantidad = parseFloat(row.querySelector(`input[name="detalle_cantidad[${tituloIndex}][${subtituloIndex}][]"]`).value) || 0;
-        const precioUnitario = parseFloat(row.querySelector(`input[name="detalle_precio_unitario[${tituloIndex}][${subtituloIndex}][]"]`).value) || 0;
-        const descuento = parseFloat(row.querySelector(`input[name="detalle_descuento[${tituloIndex}][${subtituloIndex}][]"]`).value) || 0;
-        const totalInput = row.querySelector(`input[name="detalle_total[${tituloIndex}][${subtituloIndex}][]"]`); // Input donde se mostrará el total
-
-        // Calcula el descuento en base al precio unitario y el porcentaje de descuento
-        const desc = (precioUnitario * (descuento / 100));
-        const total = (cantidad * (precioUnitario - desc)).toFixed(2); // Calcula el total y lo redondea a 2 decimales
-        totalInput.value = total; // Asigna el total al input correspondiente
-
-        // Llama a la función que recalcula los totales globales
-        CalcularTotales();
-    }
 
     // Función para calcular los totales globales después de actualizar los valores de las filas
     function CalcularTotales() {

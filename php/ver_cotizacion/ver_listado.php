@@ -84,21 +84,23 @@ $result = $stmt->get_result();
 
 $mensaje = "";
 
-// Verifica si se obtuvieron filas de la consulta
 if ($result->num_rows > 0) {
     $mensaje .= "<h1>Listado de Cotizaciones</h1>";
-    $mensaje .= "<table border='1'>";
-    $mensaje .= "<tr>
-                    <th>Numero Cotización</th>
-                    <th>Fecha Emisión</th>
-                    <th>Fecha Validez</th>
-                    <th>Total</th>
-                    <th>Proyecto</th>
-                    <th>Cliente</th>
-                    <th>Vendedor</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>";
+    $mensaje .= "<table id='tabla-cotizaciones' border='1'>";
+    $mensaje .= "<thead>
+                    <tr>
+                        <th data-type='number' class='sortable'>Numero Cotización <span class='arrow'></span></th>
+                        <th data-type='date' class='sortable'>Fecha Emisión <span class='arrow'></span></th>
+                        <th data-type='date' class='sortable'>Fecha Validez <span class='arrow'></span></th>
+                        <th data-type='number' class='sortable'>Total <span class='arrow'></span></th>
+                        <th data-type='text' class='sortable'>Proyecto <span class='arrow'></span></th>
+                        <th data-type='text' class='sortable'>Cliente <span class='arrow'></span></th>
+                        <th data-type='text' class='sortable'>Vendedor <span class='arrow'></span></th>
+                        <th data-type='text' class='sortable'>Estado <span class='arrow'></span></th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>";
+    $mensaje .= "<tbody>";
 
     // Itera sobre cada fila del resultado de la consulta
     while ($row = $result->fetch_assoc()) {
@@ -119,6 +121,8 @@ if ($result->num_rows > 0) {
                      </td>";
         $mensaje .= "</tr>";
     }
+
+    $mensaje .= "</tbody>";
     $mensaje .= "</table>";
 } else {
     $mensaje = "<p>No hay cotizaciones que coincidan con los filtros.</p>";
