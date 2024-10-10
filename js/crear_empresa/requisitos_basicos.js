@@ -20,7 +20,7 @@
     function AgregarRequisito() {
         ContadorRequisitos++; // Incrementa el contador de requisitos
 
-        const contenedor = document.getElementById('contenedor-requistos');
+        const contenedor = document.getElementById('contenedor-requisitos');
 
         // Crear un nuevo contenedor para el requisito
         const requisitoDiv = document.createElement('div');
@@ -47,7 +47,7 @@
 
     // Función para eliminar requisitos
     function EliminarRequisito(button) {
-        const contenedor = document.getElementById('contenedor-requistos');
+        const contenedor = document.getElementById('contenedor-requisitos');
         const requisitoDiv = button.parentElement; // Obtiene el contenedor del requisito a eliminar
 
         if (requisitoDiv) {
