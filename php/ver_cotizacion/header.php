@@ -28,6 +28,7 @@ $query = "
         cot.id_empresa,
         cot.numero_cotizacion,
         e.nombre_empresa,
+        e.area_empresa,
         e.direccion_empresa,
         e.telefono_empresa,
         e.email_empresa,
@@ -143,7 +144,7 @@ if ($stmt_firma = $mysqli->prepare($sql_firma)) {
     <img alt="Company Logo" class="logo" src="<?php echo $ruta_foto; ?>"/>
     <div class="header">
         <h1><?php echo $items[0]['nombre_empresa']; ?></h1>
-        <h2><?php echo $items[0]['nombre_empresa']; ?></h2>
+        <h2><?php echo $items[0]['area_empresa']; ?></h2>
         <div class="contact-info">
             <p>DIRECCIÓN: <?php echo $items[0]['direccion_empresa']; ?></p>
             <p>TELÉFONO: <?php echo $items[0]['telefono_empresa']; ?></p>

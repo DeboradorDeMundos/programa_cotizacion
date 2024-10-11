@@ -99,6 +99,28 @@ ul li a:hover {
     text-decoration: underline; /* Subrayado al pasar el ratón sobre el enlace */
 }
 
+/* Colores para los diferentes estados */
+.estado-aprobada {
+    color: rgb(40, 170, 40);
+    font-weight: bold;
+    background-color:rgb(233, 233, 233);
+}
+
+.estado-rechazada {
+    color: red;
+    font-weight: bold;
+    background-color:rgb(233, 233, 233);
+}
+
+.estado-pendiente {
+    color: rgba(173, 173, 0, 0.87);
+    font-weight: Arial;
+    text-shadow: 0px 0px 0px rgb(70, 70, 70); /* Contorno negro */
+    background-color:rgb(233, 233, 233);
+}
+
+
+
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Ver Listado .CSS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

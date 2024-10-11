@@ -12,9 +12,7 @@ BPPJ
     ------------------------------------- INICIO ITred Spa bancos .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-<!-- ------------------------
-     -- INICIO CONEXION BD --
-     ------------------------ -->
+
 
 <?php
     // Consulta para obtener las cuentas bancarias de la empresa
@@ -49,10 +47,6 @@ BPPJ
     } else {
         echo "No se encontraron cuentas bancarias para esta empresa.";
     }
-
-    // Cerrar las conexiones
-    $stmt->close();
-    $stmt_bancos->close();
 ?>
 
 <div class="barcode-contenedor">

@@ -23,9 +23,7 @@ BPPJ
 <script src="../../js/nueva_cotizacion/observaciones.js"></script> 
 
 
-     <!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
+
      <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -60,9 +58,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
 
 
      <!-- ------------------------------------------------------------------------------------------------------------

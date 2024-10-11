@@ -487,6 +487,20 @@ CREATE TABLE C_Observaciones (
 ) ENGINE=InnoDB;
 
 
+-- ------------------------------------------------------------------------------------------------------------
+-- ------------------------------------- TABLA C_Mensaje_Despedida -----------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------ 
+
+-- Crear la tabla C_Mensaje_Despedida
+DROP TABLE IF EXISTS C_mensaje_despedida;
+
+CREATE TABLE C_Mensaje_Despedida (
+    id_mensaje_despedida INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_cotizacion INT NOT NULL, -- Clave foránea hacia Cotizaciones
+    mensaje_despedida TEXT , -- Campo para guardar el mensaje
+    FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
 
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA firmas -----------------------------------------------------
@@ -574,8 +588,11 @@ INSERT INTO E_Empresa (
     nombre_empresa, 
     area_empresa, 
     direccion_empresa, 
+    ciudad_empresa,
+    pais_empresa,
     telefono_empresa, 
     email_empresa, 
+    web_empresa,
     fecha_creacion,
     dias_validez,
     id_tipo_firma
@@ -585,8 +602,11 @@ INSERT INTO E_Empresa (
     'ITred Spa', -- Nombre de la empresa
     'Tecnología de Información', -- Área de la empresa
     'Guido Reni #4190', -- Dirección de la empresa
+    'Pedro Aguirre Cerda', -- Ciudad de la empresa
+    'Chile', -- Pais de la empresa
     '1234567890', -- Teléfono de la empresa
     'contacto@itred.cl', -- Email de la empresa
+    'www.Iteredspa.cl', -- web de la empresa
     '2024-09-01', -- Fecha de creación
     10, -- validez de cotizacion
     1
@@ -755,6 +775,9 @@ INSERT INTO C_Cotizaciones (
     1 -- ID del encargado
 );
 
+
+
+
 -- Insertar datos en la tabla C_Titulos
 INSERT INTO C_Titulos (
     id_cotizacion, 
@@ -802,7 +825,8 @@ INSERT INTO C_Totales (
     monto_neto, 
     iva_valor, 
     total_iva, 
-    total_final
+    total_final,
+    total_final_letras
 ) VALUES (
     1, -- ID de la cotización
     950.00, -- Sub total
@@ -810,7 +834,8 @@ INSERT INTO C_Totales (
     900.00, -- Monto neto
     19.00, -- IVA valor
     171.00, -- Total IVA
-    1071.00 -- Total final
+    1071.00, -- Total final
+    'MIL SETENTA y UN'
 );
 
 -- Insertar datos en la tabla P_Productos
@@ -896,7 +921,10 @@ INSERT INTO E_Firmas (
     firma_digital, 
     email_firma, 
     direccion_firma, 
-    rut_firma
+    ciudad_firma,
+    pais_firma,
+    rut_firma,
+    web_firma
 ) VALUES (
     1, -- ID de la empresa
     'Firma de Ejemplo', -- Título de la firma
@@ -909,9 +937,19 @@ INSERT INTO E_Firmas (
     'firma_digital.png', -- Ruta de la firma digital
     'carlos.ruiz@itred.cl', -- Email del encargado
     'Guido Reni #4190', -- Dirección de la firma
-    '12345678-9' -- RUT de la firma
+    'Pedro Aguirre Cerda', -- Ciudad firma 
+    'Santiago-Chile', -- País de la firma
+    '12345678-9', -- RUT de la firma
+    'www.Itredspa.cl' -- web firma
 );
 
+INSERT INTO C_Mensaje_Despedida (
+    id_cotizacion, 
+    mensaje_despedida
+) VALUES (
+    1, -- ID de la cotización
+    'SI EL CLIENTE, NO PUEDE CUMPLIR CON ALGUNO DE LOS REQUISITOS ANTES MENCIONADOS, POR FAVOR, COMUNICAR AL MOMENTO DE ACEPTAR EL PRESUPUESTO, PARA DAR SOLUCIÓN, ANTES DE COMENZAR LOS TRABAJOS Y DE SER NECESARIO AGREGAR LOS GASTOS EXTRAS Y RECALCULAR EL PRESUPUESTO'
+);
 
 -- Confirmar cambios
 COMMIT;

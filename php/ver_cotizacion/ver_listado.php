@@ -15,10 +15,21 @@ BPPJ
 <!-- ------------------------
      -- INICIO CONEXION BD --
      ------------------------ -->
-
- <?php
+     <?php
 // Establece la conexión a la base de datos
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+
+// Verifica si el formulario de actualización de estado ha sido enviado
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cotizacion_id'], $_POST['nuevo_estado'])) {
+    $id_cotizacion = intval($_POST['cotizacion_id']);
+    $nuevo_estado = $_POST['nuevo_estado'];
+
+    // Actualiza el estado de la cotización en la base de datos
+    $stmt_update = $mysqli->prepare("UPDATE C_Cotizaciones SET estado = ? WHERE id_cotizacion = ?");
+    $stmt_update->bind_param('si', $nuevo_estado, $id_cotizacion);
+    $stmt_update->execute();
+    $stmt_update->close();
+}
 
 // Obtiene el ID de la empresa desde la URL
 $id_empresa = isset($_GET['id']) ? intval($_GET['id']) : 0;
@@ -112,12 +123,20 @@ if ($result->num_rows > 0) {
         $mensaje .= "<td>" . htmlspecialchars($row['proyecto_descripcion']) . "</td>";
         $mensaje .= "<td>" . htmlspecialchars($row['cliente_nombre']) . "</td>";
         $mensaje .= "<td>" . htmlspecialchars($row['vendedor_nombre']) . "</td>";
-        $mensaje .= "<td>" . htmlspecialchars($row['estado']) . "</td>";
+        $mensaje .= "<td class='estado-" . strtolower($row['estado']) . "'>" . htmlspecialchars($row['estado']) . "</td>";
         $mensaje .= "<td>
-                        <a href='ver.php?id=" . $row['cotizacion_id'] . "'>|Ver</a> |
-                        <a href='modificar_cotizacion.php?id=" . $row['cotizacion_id'] . "'>Modificar</a> |
-                        <a href='eliminar_cotizacion.php?id=" . $row['cotizacion_id'] . "'>Eliminar</a> |
-                        <a href='descargar_cotizacion.php?id=" . $row['cotizacion_id'] . "'>Descargar</a>
+                <a href='ver.php?id=" . $row['cotizacion_id'] . "'>| Ver</a> |
+                <a href='modificar_cotizacion.php?id=" . $row['cotizacion_id'] . "'>Modificar</a> |
+                <a href='eliminar_cotizacion.php?id=" . $row['cotizacion_id'] . "'>Eliminar</a> |
+                        <form method='POST'>
+                            <input type='hidden' name='cotizacion_id' value='" . $row['cotizacion_id'] . "'>
+                            <select name='nuevo_estado'>
+                                <option value='pendiente' " . ($row['estado'] == 'rendiente' ? 'selected' : '') . ">Pendiente</option>
+                                <option value='aprobada' " . ($row['estado'] == 'aprobada' ? 'selected' : '') . ">Aprobada</option>
+                                <option value='rechazada' " . ($row['estado'] == 'rechazada' ? 'selected' : '') . ">Rechazada</option>
+                            </select>
+                            <button type='submit'>Actualizar</button>
+                        </form>
                      </td>";
         $mensaje .= "</tr>";
     }
@@ -131,6 +150,7 @@ if ($result->num_rows > 0) {
 // Cierra la conexión a la base de datos
 $mysqli->close();
 ?>
+
 
     
 
@@ -154,6 +174,8 @@ $mysqli->close();
 
 
 <script src="../../js/ver_cotizacion/ver_listado.js"></script> 
+
+
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa  Ver Listado .PHP -----------------------------------
     ------------------------------------------------------------------------------------------------------------- -->

@@ -12,10 +12,7 @@ BPPJ
     ------------------------------------- INICIO ITred Spa detalle .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-<!-- ------------------------
-     -- INICIO CONEXION BD --
-     ------------------------ -->
-<?php
+    <?php
 // Consulta para obtener los títulos, detalles y subtítulos relacionados con la cotización
 $query_titulos = "
     SELECT 
@@ -107,9 +104,9 @@ foreach ($titulos as $titulo_id => $titulo): ?>
                 echo "<td>{$detalle['nombre_producto']}</td>";
                 echo "<td>{$detalle['descripcion']}</td>";
                 echo "<td>{$detalle['cantidad']}</td>";
-                echo "<td>{$detalle['precio_unitario']}</td>";
+                echo "<td>$ " . (int)$detalle['precio_unitario'] . "</td>"; // Muestra sin decimales
                 echo "<td>{$detalle['descuento_porcentaje']}</td>";
-                echo "<td>{$detalle['total']}</td>";
+                echo "<td>$ " . (int)$detalle['total'] . "</td>"; // Muestra sin decimales
                 echo "</tr>";
             } else {
                 // Si no hay subtítulo, almacenar el detalle para imprimir más tarde
@@ -127,9 +124,9 @@ foreach ($titulos as $titulo_id => $titulo): ?>
                 echo "<td>{$detalle['nombre_producto']}</td>";
                 echo "<td>{$detalle['descripcion']}</td>";
                 echo "<td>{$detalle['cantidad']}</td>";
-                echo "<td>{$detalle['precio_unitario']}</td>";
+                echo "<td>$ " . (int)$detalle['precio_unitario'] . "</td>"; // Muestra sin decimales
                 echo "<td>{$detalle['descuento_porcentaje']}</td>";
-                echo "<td>{$detalle['total']}</td>";
+                echo "<td>$ " . (int)$detalle['total'] . "</td>"; // Muestra sin decimales
                 echo "</tr>";
             }
         }

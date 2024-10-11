@@ -62,8 +62,6 @@ BPPJ
     while ($row = $result_observaciones->fetch_assoc()) {
         $observaciones[] = $row; // Guardar las observaciones en el array
     }
-    } else {
-    echo "No se encontraron observaciones para esta cotización.";
     }
 
     // Cerrar la conexión de la consulta de observaciones
@@ -112,7 +110,8 @@ BPPJ
             <td>$ <?php echo number_format($totales['monto_neto'], 0, ',', '.'); ?></td>
         </tr>
         <tr>
-        <td>TOTAL</td>
+
+        <td><strong> TOTAL FINAL </strong></td>
             <td>$ <?php echo number_format($totales['total_final'], 0, ',', '.'); ?></td>
         </tr>
 

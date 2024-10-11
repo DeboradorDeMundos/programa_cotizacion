@@ -20,6 +20,11 @@ BPPJ
 // Establece la conexión a la base de datos de ITred Spa
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 ?>
+
+<!-- ------------------------
+     -- FINAL CONEXION BD --
+     ------------------------ -->
+     
 <html>
 <head>
     <link rel="stylesheet" href="../../css/ver_cotizacion/ver.css">
@@ -51,9 +56,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     </tr>
 </table>
 
-
-    <?php include 'bancos.php'; ?>
-
     <table>
     <tr>
         <td>
@@ -71,11 +73,16 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
         </td>
     </tr>
     </table>
+<div>
+    <?php include 'mensaje_despedida.php'; ?>
+    </div>
+    <?php include 'bancos.php'; ?>
 
     <table>
     <tr>
+        
         <td>
-            <?php include '../nueva_cotizacion/firma.php'; ?>
+            <?php include 'posicionar_firma.php'; ?>
 
         </td>
     </tr>
@@ -83,7 +90,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
     
   </div>
-    <button onclick="imprimir()">Imprimir</button>
  </body>
  <script src="../../js/ver_cotizacion/ver.js"></script> 
 </html>

@@ -88,7 +88,10 @@ BPPJ
 
             <?php include 'obligaciones_cliente.php'; ?>
     <!-- Botón para enviar el formulario y generar la cotización -->
-            <button type="submit" class="submit">Crear cotizacion</button> 
+        <div>
+        <?php include 'mensaje_despedida.php'; ?>            
+        </div>
+        <button type="submit" class="submit">Crear cotizacion</button> 
         </form> <!-- Cierra el formulario -->
     </div> <!-- Cierra el contenedor principal -->
 

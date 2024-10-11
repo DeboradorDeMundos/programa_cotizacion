@@ -29,8 +29,8 @@ BPPJ
                     <tr>
                         <td><?php echo $producto['nombre_producto']; ?></td>
                         <td><?php echo $producto['cantidad']; ?></td>
-                        <td><?php echo $producto['precio_unitario']; ?></td>
-                        <td><?php echo $producto['total']; ?></td>
+                        <td>$<?php echo $producto['precio_unitario']; ?></td>
+                        <td>$<?php echo $producto['total']; ?></td>
                     </tr>
                 <?php endforeach; ?>
             <?php else: ?>

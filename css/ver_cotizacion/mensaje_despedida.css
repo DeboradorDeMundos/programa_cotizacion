@@ -1,0 +1,79 @@
+
+/* 
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ 
+*/
+
+
+/* --------------------------------------------------------------------------------------------------------------
+    -------------------------------------- INICIO ITred Spa mensaje despedida .CSS --------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+
+    .mensaje_despedida-box {
+        border: 2px solid #4a4a4a; /* Borde gris oscuro */
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 10px;
+        background-color: #f9f9f9; /* Fondo claro */
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    }
+    
+    .mensaje_despedida-box legend {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #2c3e50; /* Color azul oscuro */
+        padding: 0 10px;
+    }
+    
+    .form-group label {
+        font-weight: bold;
+        font-size: 1em;
+        color: #333333; /* Color oscuro para el texto */
+        margin-bottom: 8px;
+        display: block;
+    }
+    
+    textarea {
+        width: 100%;
+        padding: 10px;
+        font-family: "Arial", sans-serif;
+        font-size: 0.95em;
+        border: 1px solid #cccccc;
+        border-radius: 8px;
+        background-color: #ffffff;
+        color: #333333;
+        resize: none; /* Desactivar el redimensionado manual */
+        box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.1);
+        min-height: 80px; /* Altura mínima */
+        max-height: 300px; /* Altura máxima, ajustable */
+        overflow-y: auto; /* Agregar barra de desplazamiento si el contenido es largo */
+    }
+    
+    textarea:focus {
+        outline: none;
+        border-color: #2980b9;
+        box-shadow: 0px 0px 8px rgba(41, 128, 185, 0.5);
+    }
+    
+
+
+/* --------------------------------------------------------------------------------------------------------------
+    ---------------------------------------- FIN ITred Spa mensaje despedida .CSS ---------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+
+/*
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+*/
