@@ -253,9 +253,20 @@ CREATE TABLE C_Subtitulos (
     id_subtitulo INT NOT NULL AUTO_INCREMENT,
     id_titulo INT NOT NULL,     -- ID del título
     nombre VARCHAR(255),
+    color VARCHAR(255),
     PRIMARY KEY (id_subtitulo),
     FOREIGN KEY (id_titulo) REFERENCES C_Titulos(id_titulo) ON DELETE CASCADE
 ) ENGINE=InnoDB ;
+
+
+CREATE TABLE C_Notas (
+    id_nota INT NOT NULL AUTO_INCREMENT,    -- ID de la nota
+    id_titulo INT NOT NULL,                 -- ID del título (relación con C_Titulos)
+    contenido TEXT,                         -- Contenido de la nota
+    color VARCHAR(50),                      -- Color de la nota
+    PRIMARY KEY (id_nota),
+    FOREIGN KEY (id_titulo) REFERENCES C_Titulos(id_titulo) ON DELETE CASCADE
+) ENGINE=InnoDB;
 
 
 
@@ -277,6 +288,7 @@ CREATE TABLE C_Detalles (
     cantidad INT NOT NULL,
     precio_unitario DECIMAL(10,2) NOT NULL,
     descuento_porcentaje DECIMAL(5,2) DEFAULT 0,
+    color VARCHAR(255),
     total DECIMAL(10,2),
     PRIMARY KEY (id_detalle),
     FOREIGN KEY (id_subtitulo) REFERENCES C_Subtitulos(id_subtitulo) ON DELETE CASCADE,

@@ -63,27 +63,33 @@ BPPJ
         const section = button.closest('.seccion-detalle');
         const indiceTitulo = section.dataset.IndiceTitulo;
         const notasContenedor = section.querySelector('.notas-contenedor');
-
+    
         // Verificar si ya existe una nota de cada color
         const existingNotes = Array.from(notasContenedor.querySelectorAll('.nota'));
         const colorsUsed = existingNotes.map(note => note.querySelector('select').value);
-
+    
         if (colorsUsed.length >= 3) {
             alert('Ya se han agregado notas de todos los colores.');
             return;
         }
-
+    
         const nota = document.createElement('div');
         nota.classList.add('nota', 'input-group');
+    
+        // Usar un contador similar al de los subtítulos para cada nota
+        const contadorNota = existingNotes.length + 1; // o puedes usar una variable global similar a subtituloContador
+    
         nota.innerHTML = `
-            <select name="nota_color[${indiceTitulo}]" required onchange="actualizarColoresDisponibles(this)">
+            <select name="nota_color[${indiceTitulo}][${contadorNota}]" required onchange="actualizarColoresDisponibles(this)">
                 <option value="" disabled selected>Seleccione color</option>
                 <option value="rojo" style="color: red;" ${colorsUsed.includes('rojo') ? 'disabled' : ''}>Rojo</option>
                 <option value="naranjo" style="color: orange;" ${colorsUsed.includes('naranjo') ? 'disabled' : ''}>Naranjo</option>
                 <option value="verde" style="color: green;" ${colorsUsed.includes('verde') ? 'disabled' : ''}>Verde</option>
             </select>
-            <input type="text" name="nota_texto[${indiceTitulo}]">
+            <input type="text" name="nota_texto[${indiceTitulo}][${contadorNota}]" required>
+            <button type="button" class="btn-eliminar-nota" onclick="borrarNota(this)">Eliminar nota</button>
         `;
+        
         notasContenedor.appendChild(nota); // Inserta la nota en el contenedor de notas
     }
     
@@ -318,28 +324,37 @@ BPPJ
     }
     
     function agregarSubtitulo(button) {
+        // Obtener la sección más cercana al botón que fue presionado
         const section = button.closest('.seccion-detalle');
-        const cuerpoTabla = section.querySelector('.detalle-contenido');
-        const indiceTitulo = section.dataset.IndiceTitulo;
+        // Seleccionar el cuerpo de la tabla dentro de la sección
+        const CuerpoTabla = section.querySelector('.detalle-contenido');
+        // Obtener el índice del título de la sección
+        const IndiceTitulo = section.dataset.IndiceTitulo; // Obtiene el índice del título
     
-        subtituloContador[indiceTitulo]++;
+        // Incrementar el contador de subtítulos para este título
+        subtituloContador[IndiceTitulo]++;
     
-        const subtitulo = document.createElement('tr');
-        subtitulo.classList.add('subtitulo');
-        subtitulo.innerHTML = `
-            <td>
-                <div class="input-group">
-                    <select name="subtitulo_color[${indiceTitulo}]" required>
-                        <option value="" disabled selected>Seleccione color</option>
-                        <option value="rojo" style="color: red;">Rojo</option>
-                        <option value="naranjo" style="color: orange;">Naranjo</option>
-                        <option value="verde" style="color: green;">Verde</option>
-                    </select>
-                    <input type="text" name="subtitulo_texto[${indiceTitulo}]">
-                </div>
+        // Crear una nueva fila de subtítulo
+        const NuevoSubtitulo = document.createElement('tr');
+        NuevoSubtitulo.classList.add('subtitulo'); // Agregar clase 'subtitulo' a la fila
+        
+        // Definir el contenido HTML de la nueva fila, manteniendo la estructura de antes
+        NuevoSubtitulo.innerHTML = `
+            <td colspan="9">
+                <label for="subtitulo">Subtítulo:</label>
+                <input type="text" name="detalle_subtitulo[${IndiceTitulo}][${subtituloContador[IndiceTitulo]}]" style="margin-right: 10px;" oninput="QuitarCaracteresInvalidos(this)">
+                <select name="color_subtitulo[${IndiceTitulo}][${subtituloContador[IndiceTitulo]}]" class="color-subtitulo" required style="margin-left: 10px;">
+                    <option value="negro" selected>Negro</option>
+                    <option value="rojo">Rojo</option>
+                    <option value="naranjo">Naranjo</option>
+                    <option value="verde">Verde</option>
+                </select>
+                <button type="button" class="btn-eliminar-titulo" onclick="borrarSubtitulo(this)">Eliminar subtítulo</button>
             </td>
         `;
-        cuerpoTabla.appendChild(subtitulo);
+    
+        // Agregar el subtítulo al final de todas las filas de detalles actuales
+        CuerpoTabla.appendChild(NuevoSubtitulo);
     }
     
     function borrarSubtitulo(button) {

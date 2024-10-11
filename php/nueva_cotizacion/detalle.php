@@ -34,12 +34,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Recibir los datos desde el método POST
     $detalles_titulo = $_POST['detalle_titulo'] ?? [];
     $detalles_subtitulo = $_POST['detalle_subtitulo'] ?? [];
+    $detalles_subtitulo_color = $_POST['color_subtitulo'] ?? [];
+    $detalles_notas_text = $_POST['nota_texto'] ?? [];
+    $detalles_notas_color = $_POST['nota_color']?? [];
     $detalles_cantidad = $_POST['detalle_cantidad'] ?? [];
     $detalles_descripcion = $_POST['detalle_descripcion'] ?? [];
     $detalles_precio_unitario = $_POST['detalle_precio_unitario'] ?? [];
     $detalles_descuento = $_POST['detalle_descuento'] ?? [];
     $detalles_tipo = $_POST['tipo_producto'] ?? [];
     $detalles_nombre_producto = $_POST['nombre_producto'] ?? [];
+    $detalles_color = $_POST['color'] ?? [];
 
     // Array para almacenar los resultados
     $resultado_detalles = [];
@@ -48,10 +52,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     foreach ($detalles_titulo as $key => $titulo) {
         $titulo_array = [
             'titulo' => $titulo,
+            'notas' => [],
             'subtitulos' => [] // Inicializamos un array para los subtítulos
         ];
 
+        $notas  = $detalles_notas_text[$key] ?? [];
+        $color_notas = $detalles_notas_color[$key]?? [];
+
+        if (!empty($notas)) {
+            foreach ($notas as $not_key => $nota) {
+                $nota_array = [
+                    'nota' => $nota,
+                    'color' =>  $color_notas[$not_key] ?? ''
+                ];
+
+                $titulo_array['notas'][] = $nota_array; // Añadimos el detalle del subtítulo al título
+            }
+        }
+
+
         $subtitulos = $detalles_subtitulo[$key] ?? [];
+        $color_subtitulo = $detalles_subtitulo_color[$key] ?? [];
 
         // Crear un array para "Sin subtítulo" inicialmente vacío
         $detalle_sin_subtitulo = [
@@ -64,6 +85,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             foreach ($subtitulos as $sub_key => $subtitulo) {
                 $detalle_array = [
                     'subtitulo' => $subtitulo,
+                    'color' =>  $color_subtitulo[$sub_key] ?? '',
+
                     'detalles' => []
                 ];
 
@@ -82,6 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         'descuento' => $descuento,
                         'tipo' => $detalles_tipo[$key][$sub_key][$index] ?? '',
                         'nombre_producto' => $detalles_nombre_producto[$key][$sub_key][$index] ?? '',
+                        'color' => $detalles_color[$key][$sub_key][$index] ?? '',
                         'total' => round($total, 2) // Añadir el total al detalle
                     ];
                 }
@@ -111,6 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     'descuento' => $descuento,
                     'tipo' => $detalles_tipo[$key][$sub_key][0] ?? '',
                     'nombre_producto' => $detalles_nombre_producto[$key][$sub_key][0] ?? '',
+                    'color' => $detalles_color[$key][$sub_key][0] ?? '',
                     'total' => round($total, 2) // Añadir el total al detalle
                 ];
             }
@@ -131,15 +156,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "</pre>";
 
     $sql_insert_titulo = "INSERT INTO C_Titulos (id_cotizacion, nombre) VALUES (?, ?) ON DUPLICATE KEY UPDATE nombre = VALUES(nombre)";
-    $sql_insert_subtitulo = "INSERT INTO C_Subtitulos (id_titulo, nombre) VALUES (?, ?) ON DUPLICATE KEY UPDATE nombre = VALUES(nombre)";
-    $sql_insert_detalle = "INSERT INTO C_Detalles (id_titulo, id_subtitulo, tipo, nombre_producto, descripcion, cantidad, precio_unitario, descuento_porcentaje, total) 
-                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql_insert_nota = "INSERT INTO C_notas (id_titulo, contenido, color) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE contenido = VALUES(contenido), color = VALUES(color)";
+    $sql_insert_subtitulo = "INSERT INTO C_Subtitulos (id_titulo, nombre, color) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE nombre = VALUES(nombre)";
+    $sql_insert_detalle = "INSERT INTO C_Detalles (id_titulo, id_subtitulo, tipo, nombre_producto, descripcion, cantidad, precio_unitario, descuento_porcentaje, color,  total) 
+                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt_insert_titulo = $mysqli->prepare($sql_insert_titulo);
+    $stmt_insert_nota = $mysqli->prepare($sql_insert_nota);
     $stmt_insert_subtitulo = $mysqli->prepare($sql_insert_subtitulo);
     $stmt_insert_detalle = $mysqli->prepare($sql_insert_detalle);
 
-    if (!$stmt_insert_titulo || !$stmt_insert_subtitulo || !$stmt_insert_detalle) {
+    if (!$stmt_insert_titulo ||  !$stmt_insert_nota || !$stmt_insert_subtitulo || !$stmt_insert_detalle) {
         die("Error al preparar las consultas: " . $mysqli->error);
     }
 
@@ -154,15 +181,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 throw new Exception("Error al insertar título: " . $stmt_insert_titulo->error);
             }
             $id_titulo = $stmt_insert_titulo->insert_id;
+
+            $id_nota_map = [];
+            foreach ($titulo_data['notas'] as $nota_data) {
+                $nota = $nota_data['nota'];
+                $color = $nota_data['color'];
+                
+                // Solo insertar subtítulos que no sean "Sin subtítulo"
+                $stmt_insert_nota->bind_param("iss", $id_titulo, $nota, $color);
+                if (!$stmt_insert_nota->execute()) {
+                    throw new Exception("Error al insertar subtítulo: " . $stmt_insert_nota->error);
+                }
+            }
         
             // Insertar los subtítulos asociados y obtener su ID
             $id_subtitulo_map = [];
             foreach ($titulo_data['subtitulos'] as $subtitulo_data) {
                 $subtitulo = $subtitulo_data['subtitulo'];
-                
+                $sub_color =  $subtitulo_data['color'];
+
                 // Solo insertar subtítulos que no sean "Sin subtítulo"
                 if ($subtitulo !== 'Sin subtítulo') {
-                    $stmt_insert_subtitulo->bind_param("is", $id_titulo, $subtitulo);
+                    $stmt_insert_subtitulo->bind_param("iss", $id_titulo, $subtitulo, $sub_color);
                     if (!$stmt_insert_subtitulo->execute()) {
                         throw new Exception("Error al insertar subtítulo: " . $stmt_insert_subtitulo->error);
                     }
@@ -188,6 +228,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $cantidad = $detalle['cantidad'];
                         $precio_unitario = $detalle['precio_unitario'];
                         $descuento = $detalle['descuento'];
+                        $det_color = $detalle['color'];
                         $total = $detalle['total'];
             
                         // Asegúrate de que todos los valores son variables
@@ -197,11 +238,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $cantidad = (int)$cantidad;
                         $precio_unitario = (float)$precio_unitario;
                         $descuento = (float)$descuento;
+                        $det_color = (string)$det_color;
                         $total = (float)$total;
             
                         // Insertar detalle con subtítulo
                         $stmt_insert_detalle->bind_param(
-                            "iisssiddi",
+                            "iisssiddsi",
                             $id_titulo,
                             $id_subtitulo,
                             $tipo,
@@ -210,6 +252,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             $cantidad,
                             $precio_unitario,
                             $descuento,
+                            $det_color,
                             $total
                         );
             
@@ -232,6 +275,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $cantidad = $detalle['cantidad'];
                         $precio_unitario = $detalle['precio_unitario'];
                         $descuento = $detalle['descuento'];
+                        $det_color = $detalle['color'];
                         $total = $detalle['total'];
         
                         // Asegúrate de que todos los valores son variables
@@ -241,11 +285,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $cantidad = (int)$cantidad;
                         $precio_unitario = (float)$precio_unitario;
                         $descuento = (float)$descuento;
+                        $det_color = (string)$det_color;
                         $total = (float)$total;
         
                         $id_subtitulo = null; // Usar null para detalles sin subtítulo
                         $stmt_insert_detalle->bind_param(
-                            "iisssiddi",
+                            "iisssiddsi",
                             $id_titulo,
                             $id_subtitulo,
                             $tipo,
