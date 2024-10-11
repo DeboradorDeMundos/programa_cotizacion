@@ -19,23 +19,26 @@ BPPJ
         AgregarSeccionDeDetalle();
     });
     
-    let tituloContador = 1; // Contador global para los títulos
-    let subtituloContador = {}; // Objeto para llevar el conteo de subtítulos por título
-    
+    let tituloContador = 0;
+    let subtituloContador = {};
+
     function AgregarSeccionDeDetalle() {
         const contenedor = document.getElementById('detalle-contenedor');
         const NuevaSeccion = document.createElement('div');
         NuevaSeccion.classList.add('seccion-detalle');
         NuevaSeccion.dataset.IndiceTitulo = tituloContador; // Asigna un índice único al título
-    
+
         subtituloContador[tituloContador] = 0; // Inicializa el contador de subtítulos para este título
-    
+
         NuevaSeccion.innerHTML = `
             <div class="detalle-content">
                 <div class="titulo-contenedor" style="display: flex; align-items: center;">
                     <label for="titulo">Título:</label>
                     <input type="text" name="detalle_titulo[${tituloContador}]" required style="margin-right: 10px;" oninput="QuitarCaracteresInvalidos(this)">
                     <button type="button" class="btn-eliminar-titulo" onclick="QuitarSeccionDeDetalle(this)">Eliminar Título</button>
+                </div>
+                <div class="notas-contenedor">
+                    <!-- Las notas se agregarán aquí -->
                 </div>
                 <table class="detalle-table">
                     <thead>
@@ -49,11 +52,56 @@ BPPJ
             <div class="detalle-buttons">
                 <button type="button" onclick="agregarSubtitulo(this)">Agregar subtítulo</button>
                 <button type="button" onclick="AgregarLineaDeDetalle(this)">Agregar detalles</button>
+                <button type="button" onclick="agregarNota(this)">Agregar nota</button>
             </div>
         `;
         contenedor.appendChild(NuevaSeccion);
         tituloContador++; // Incrementa el contador de títulos
     }
+
+    function agregarNota(button) {
+        const section = button.closest('.seccion-detalle');
+        const indiceTitulo = section.dataset.IndiceTitulo;
+        const notasContenedor = section.querySelector('.notas-contenedor');
+
+        // Verificar si ya existe una nota de cada color
+        const existingNotes = Array.from(notasContenedor.querySelectorAll('.nota'));
+        const colorsUsed = existingNotes.map(note => note.querySelector('select').value);
+
+        if (colorsUsed.length >= 3) {
+            alert('Ya se han agregado notas de todos los colores.');
+            return;
+        }
+
+        const nota = document.createElement('div');
+        nota.classList.add('nota', 'input-group');
+        nota.innerHTML = `
+            <select name="nota_color[${indiceTitulo}]" required onchange="actualizarColoresDisponibles(this)">
+                <option value="" disabled selected>Seleccione color</option>
+                <option value="rojo" style="color: red;" ${colorsUsed.includes('rojo') ? 'disabled' : ''}>Rojo</option>
+                <option value="naranjo" style="color: orange;" ${colorsUsed.includes('naranjo') ? 'disabled' : ''}>Naranjo</option>
+                <option value="verde" style="color: green;" ${colorsUsed.includes('verde') ? 'disabled' : ''}>Verde</option>
+            </select>
+            <input type="text" name="nota_texto[${indiceTitulo}]">
+        `;
+        notasContenedor.appendChild(nota); // Inserta la nota en el contenedor de notas
+    }
+    
+    function actualizarColoresDisponibles(selectElement) {
+        const section = selectElement.closest('.seccion-detalle');
+        const notasContenedor = section.querySelector('.notas-contenedor');
+        const existingNotes = Array.from(notasContenedor.querySelectorAll('.nota select'));
+    
+        // Actualizar la disponibilidad de colores
+        const colorsUsed = existingNotes.map(note => note.value);
+        existingNotes.forEach(note => {
+            const options = note.querySelectorAll('option');
+            options.forEach(option => {
+                option.disabled = colorsUsed.includes(option.value) && option.value !== note.value;
+            });
+        });
+    }
+
     
     function QuitarSeccionDeDetalle(button) {
         if (confirm('¿Estás seguro de que quieres eliminar esta sección?')) {
@@ -80,6 +128,7 @@ BPPJ
                 <th class="hidden-column">PRECIO UNI.</th>
                 <th class="hidden-column">DESCUENTO %</th>
                 <th class="hidden-column">TOTAL</th>
+                <th class="hidden-column">COLOR</th>
                 <th class="hidden-column">ACCIÓN</th>
                 <th class="hidden-column"></th> <!-- Espacio para el botón de eliminar cabecera -->
             `;
@@ -124,6 +173,7 @@ BPPJ
                 <th>PRECIO UNI.</th>
                 <th>DESCUENTO %</th>
                 <th>TOTAL</th>
+                <th>COLOR</th>
                 <th>ACCIÓN</th>
                 <th></th> <!-- Espacio para el botón de eliminar cabecera -->
             `;
@@ -174,6 +224,14 @@ BPPJ
             <td class="hidden-column"><input type="number" name="detalle_precio_unitario[${IndiceTitulo}][${subIndiceTitulo}][]" step="0" min="0" required oninput="ActualizarTotal(this)" oninput="QuitarCaracteresInvalidos(this)"></td>
             <td class="hidden-column"><input type="number" name="detalle_descuento[${IndiceTitulo}][${subIndiceTitulo}][]" step="1" min="0" required oninput="ActualizarTotal(this)" oninput="QuitarCaracteresInvalidos(this)"></td>
             <td class="hidden-column"><input type="number" name="detalle_total[${IndiceTitulo}][${subIndiceTitulo}][]" step="0" min="0" readonly></td>
+            <td class="hidden-column">
+                <select name="color[${IndiceTitulo}][${subIndiceTitulo}][]">
+                    <option value="negro" style="color: black;" selected>Negro</option>
+                    <option value="verde" style="color: green;">Verde</option>
+                    <option value="naranjo" style="color: orange;">Naranjo</option>
+                    <option value="rojo" style="color: red;">Rojo</option>
+                </select>
+            </td>
             <td colspan="2" class="hidden-column">
                 <button type="button" class="btn-eliminar" onclick="QuitarLineaDeDetalle(this)">Eliminar</button>
             </td>
@@ -232,6 +290,7 @@ BPPJ
                 row.querySelector('td.hidden-column:nth-of-type(6)').style.display = "table-cell"; // Descuento
                 row.querySelector('td.hidden-column:nth-of-type(7)').style.display = "table-cell"; // Total
                 row.querySelector('td.hidden-column:nth-of-type(8)').style.display = "table-cell"; // Acción (Eliminar)
+                row.querySelector('td.hidden-column:nth-of-type(9)').style.display = "table-cell"; // Total
     
                 // Si existe la columna vacía, elimínala
                 const emptyPriceCell = row.querySelector('td.hidden-column:nth-of-type(9)'); // Asumiendo que la columna vacía es la 9
@@ -259,30 +318,28 @@ BPPJ
     }
     
     function agregarSubtitulo(button) {
-        // Obtener la sección más cercana al botón que fue presionado
         const section = button.closest('.seccion-detalle');
-        // Seleccionar el cuerpo de la tabla dentro de la sección
-        const CuerpoTabla = section.querySelector('.detalle-contenido');
-        // Obtener el índice del título de la sección
-        const IndiceTitulo = section.dataset.IndiceTitulo; // Obtiene el índice del título
+        const cuerpoTabla = section.querySelector('.detalle-contenido');
+        const indiceTitulo = section.dataset.IndiceTitulo;
     
-        // Incrementar el contador de subtítulos para este título
-        subtituloContador[IndiceTitulo]++;
+        subtituloContador[indiceTitulo]++;
     
-        // Crear una nueva fila de subtítulo
-        const NuevoSubtitulo = document.createElement('tr');
-        NuevoSubtitulo.classList.add('subtitulo'); // Agregar clase 'subtitulo' a la fila
-        // Definir el contenido HTML de la nueva fila
-        NuevoSubtitulo.innerHTML = `
-            <td colspan="9">
-                <label for="subtitulo">Subtítulo:</label>
-                <input type="text" name="detalle_subtitulo[${IndiceTitulo}][${subtituloContador[IndiceTitulo]}]" style="margin-right: 10px;" oninput="QuitarCaracteresInvalidos(this)">
-                <button type="button" class="btn-eliminar-titulo" onclick="borrarSubtitulo(this)">Eliminar subtítulo</button>
+        const subtitulo = document.createElement('tr');
+        subtitulo.classList.add('subtitulo');
+        subtitulo.innerHTML = `
+            <td>
+                <div class="input-group">
+                    <select name="subtitulo_color[${indiceTitulo}]" required>
+                        <option value="" disabled selected>Seleccione color</option>
+                        <option value="rojo" style="color: red;">Rojo</option>
+                        <option value="naranjo" style="color: orange;">Naranjo</option>
+                        <option value="verde" style="color: green;">Verde</option>
+                    </select>
+                    <input type="text" name="subtitulo_texto[${indiceTitulo}]">
+                </div>
             </td>
         `;
-    
-        // Agregar el subtítulo al final de todas las filas de detalles actuales
-        CuerpoTabla.appendChild(NuevoSubtitulo);
+        cuerpoTabla.appendChild(subtitulo);
     }
     
     function borrarSubtitulo(button) {

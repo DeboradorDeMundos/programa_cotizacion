@@ -220,6 +220,20 @@ td {
     flex: 1; /* Se expande para ocupar el espacio disponible */
 }
 
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.input-group select {
+    margin-right: 5px;
+}
+
+.input-group input[type="text"] {
+    flex: 1;
+}
+
   
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Detalle.CSS ---------------------------------------
