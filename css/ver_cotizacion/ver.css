@@ -83,7 +83,6 @@ a {
 /* Estilo para el contenedor principal */
 .contenedor {
     width: 1000px; /* Ancho para el tamaño oficio */
-    height: 1400px; /* Alto para el tamaño oficio */
     margin: 0 auto; /* Centra el contenedor horizontalmente */
     padding: 20px; /* Espaciado interno */
     border: 1px solid #000; /* Borde negro */

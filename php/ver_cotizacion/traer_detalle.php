@@ -12,7 +12,7 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Traer detalle .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
     
-<?php
+    <?php
 
 $id_cotizacion = $_GET['id'] ?? 0; // Obtener el ID de la cotización
 
@@ -55,7 +55,6 @@ while ($titulo = $titulos_result->fetch_assoc()) {
 $stmt_titulos->close();
 $stmt_subtitulos->close();
 $stmt_detalles->close();
-$mysqli->close();
 ?>
 
 <!DOCTYPE html>
@@ -64,13 +63,13 @@ $mysqli->close();
     <meta charset="UTF-8">
     <title>Detalles de la Cotización</title>
     <link rel="stylesheet" href="../../css/ver_cotizacion/traer_detalle.css"> <!-- Estilo CSS -->
-    <script src="details.js" defer></script> <!-- Script JavaScript -->
+    <script src="../../js/ver_cotizacion/traer_detalle.js" defer></script> <!-- Script JavaScript -->
 </head>
 <body>
-    <fieldset>
-        <legend>Detalle de la Cotización</legend>
-        <div id="detalle-contenedor">
-            <?php foreach ($titulos as $titulo_index => $titulo_data): ?>
+        <fieldset>
+            <legend>Detalle de la Cotización</legend>
+            <div id="detalle-contenedor">
+                <?php foreach ($titulos as $titulo_index => $titulo_data): ?>
                 <div class="detalle-section" data-titulo-index="<?php echo $titulo_index; ?>">
                     <div class="detalle-content">
                         <div class="titulo-contenedor" style="display: flex; align-items: center;">
@@ -80,27 +79,37 @@ $mysqli->close();
                         </div>
                         <table class="detalle-table">
                             <thead>
-                                <!-- Aquí se agregará dinámicamente la cabecera si no existe -->
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Nombre Producto</th>
+                                    <th>Descripción</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio Unitario</th>
+                                    <th>Descuento %</th>
+                                    <th>Total</th>
+                                    <th>Acción</th>
+                                </tr>
                             </thead>
                             <tbody class="detalle-contenido">
-                                <?php foreach ($titulo_data['detalles'] as $detalle): ?>
+                                <?php foreach ($titulo_data['detalles'] as $detalle_index => $detalle): ?>
                                     <tr>
                                         <td><?php echo htmlspecialchars($detalle['tipo']); ?></td>
                                         <td><?php echo htmlspecialchars($detalle['nombre_producto']); ?></td>
-                                        <td><input type="checkbox" <?php echo $detalle['descripcion'] ? 'checked' : ''; ?> onclick="toggleDescription(this)"></td>
-                                        <td><?php echo htmlspecialchars($detalle['cantidad']); ?></td>
-                                        <td><?php echo htmlspecialchars($detalle['precio_unitario']); ?></td>
-                                        <td><?php echo htmlspecialchars($detalle['descuento_porcentaje']); ?></td>
+                                        <td><input type="checkbox" name="detalle_descripcion[<?php echo $titulo_index; ?>][<?php echo $detalle_index; ?>]" <?php echo $detalle['descripcion'] ? 'checked' : ''; ?> onclick="toggleDescription(this)"></td>
+                                        <td><input type="number" name="detalle_cantidad[<?php echo $titulo_index; ?>][<?php echo $detalle_index; ?>]" value="<?php echo htmlspecialchars($detalle['cantidad']); ?>" required></td>
+                                        <td><input type="number" name="detalle_precio_unitario[<?php echo $titulo_index; ?>][<?php echo $detalle_index; ?>]" value="<?php echo htmlspecialchars($detalle['precio_unitario']); ?>" required></td>
+                                        <td><input type="number" name="detalle_descuento[<?php echo $titulo_index; ?>][<?php echo $detalle_index; ?>]" value="<?php echo htmlspecialchars($detalle['descuento_porcentaje']); ?>" required></td>
                                         <td><?php echo htmlspecialchars($detalle['total']); ?></td>
                                         <td><button type="button" class="btn-eliminar" onclick="removeDetailRow(this)">Eliminar</button></td>
                                     </tr>
                                     <tr class="descripcion-row" style="<?php echo $detalle['descripcion'] ? 'table-row' : 'none'; ?>">
-                                        <td colspan="7"><textarea name="detalle_descripcion[<?php echo $titulo_index; ?>][]"><?php echo htmlspecialchars($detalle['descripcion']); ?></textarea></td>
+                                        <td colspan="7"><textarea name="detalle_descripcion_texto[<?php echo $titulo_index; ?>][<?php echo $detalle_index; ?>]"><?php echo htmlspecialchars($detalle['descripcion']); ?></textarea></td>
                                     </tr>
                                 <?php endforeach; ?>
-                                <?php foreach ($titulo_data['subtitulos'] as $subtitulo): ?>
+                                <!-- Aquí se muestran los subtítulos después de los detalles -->
+                                <?php foreach ($titulo_data['subtitulos'] as $subtitulo_index => $subtitulo): ?>
                                     <tr class="subtitulo">
-                                        <td colspan="7"><?php echo htmlspecialchars($subtitulo['nombre']); ?></td>
+                                        <td colspan="7" style="background-color: #f9f9f9; font-weight: bold; padding: 10px; margin: 5px 0;"><?php echo htmlspecialchars($subtitulo['nombre']); ?></td>
                                         <td><button type="button" class="btn-eliminar-titulo" onclick="removeSubtitleRow(this)">Eliminar subtítulo</button></td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -114,11 +123,14 @@ $mysqli->close();
                     </div>
                 </div>
             <?php endforeach; ?>
-            <div class="fixed-button-contenedor">
-                <button type="button" onclick="addDetailSection()">Agregar un nuevo título</button>
+                <div class="fixed-button-contenedor">
+                    <button type="button" onclick="addDetailSection()">Agregar un nuevo título</button>
+                </div>
             </div>
-        </div>
-    </fieldset>
+            <div>
+                <button type="submit">Guardar Cotización</button> <!-- Botón para enviar el formulario -->
+            </div>
+        </fieldset>
 </body>
 </html>
 

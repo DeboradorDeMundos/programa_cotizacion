@@ -26,7 +26,9 @@ if ($mysqli->connect_error) {
 }
 
 // Obtener el ID de la cotización desde la URL
+
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+$id_empresa = isset($_GET['id_empresa']) ? intval($_GET['id_empresa']) : 0;
 
 if ($id > 0) {
     // Preparar la consulta para eliminar la cotización
@@ -36,7 +38,7 @@ if ($id > 0) {
 
     if ($stmt->execute()) {
         // Redirigir a la página de lista de cotizaciones
-        header("Location: ver_listado.php");
+        header("Location: ver_listado.php?id=" . $id_empresa);
         exit(); // Asegurarse de que no se ejecute ningún código adicional
     } else {
         echo "Error al eliminar la cotización.";

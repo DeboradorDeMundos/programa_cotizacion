@@ -198,8 +198,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id_subtitulo_map = [];
             foreach ($titulo_data['subtitulos'] as $subtitulo_data) {
                 $subtitulo = $subtitulo_data['subtitulo'];
-                $sub_color =  $subtitulo_data['color'];
-
+                $sub_color = isset($subtitulo_data['color']) ? $subtitulo_data['color'] : 'negro'; // Asignar negro por defecto
+            
                 // Solo insertar subtítulos que no sean "Sin subtítulo"
                 if ($subtitulo !== 'Sin subtítulo') {
                     $stmt_insert_subtitulo->bind_param("iss", $id_titulo, $subtitulo, $sub_color);
@@ -299,6 +299,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             $cantidad,
                             $precio_unitario,
                             $descuento,
+                            $det_color,
                             $total
                         );
         

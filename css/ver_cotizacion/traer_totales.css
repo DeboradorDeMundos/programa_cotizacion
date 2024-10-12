@@ -15,7 +15,95 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 
-
+    .form-contenedor {
+        background-color: #f9f9f9; /* Fondo gris claro */
+        padding: 20px; /* Espaciado interno de 20px */
+        border: 1px solid #ddd; /* Borde gris claro de 1px */
+        max-width: 500px; /* Ancho máximo de 500px */
+        margin-left: auto; /* Centra el contenedor horizontalmente */
+        border-radius: 5px; /* Bordes redondeados de 5px */
+        font-family: Arial, sans-serif; /* Fuente del formulario */
+    }
+    
+    /* Estilo para etiquetas en el grupo de formularios */
+    .form-group-2 label {
+        width: 40%; /* Ancho del label */
+        font-size: 14px; /* Tamaño de fuente */
+        color: #333; /* Color de texto de la etiqueta */
+        background-color: #d4d4d4; /* Fondo gris claro para el label */
+        padding: 5px; /* Espaciado interno del label */
+        border-radius: 3px 0px 0px 3px; /* Bordes redondeados a la izquierda */
+    }
+    
+    /* Estilo para inputs en el grupo de formularios */
+    .form-group-2 input {
+        width: 60%; /* Ancho del input */
+        padding: 5px 10px; /* Espaciado interno de 5px arriba/abajo y 10px a los lados */
+        border: 1px solid #ddd; /* Borde gris claro de 1px */
+        border-radius: 3px; /* Bordes redondeados */
+        font-size: 14px; /* Tamaño de fuente */
+        text-align: right; /* Alineación del texto a la derecha */
+        background-color: #fff; /* Fondo blanco */
+    }
+    
+    /* Estilo para grupos de campos en línea */
+    .form-group-inline-2 {
+        display: flex; /* Usa flexbox para organizar elementos en línea */
+        justify-content: space-between; /* Alinea los elementos a los extremos */
+        gap: 10px; /* Espacio entre los elementos */
+    }
+    
+    /* Contenedor secundario del formulario */
+    .form-contenedor-2 {
+        background-color: #f9f9f9; /* Fondo gris claro */
+        padding: 20px; /* Espaciado interno de 20px */
+        border: 1px solid #ddd; /* Borde gris claro de 1px */
+        max-width: 400px; /* Ancho máximo de 400px */
+        margin: 0 auto; /* Centra el contenedor horizontalmente */
+        margin-top: 20px; /* Espaciado superior de 20px */
+        border-radius: 5px; /* Bordes redondeados de 5px */
+        font-family: Arial, sans-serif; /* Fuente del formulario */
+    }
+    
+    /* Estilo para el grupo de formularios */
+    .form-group-2 {
+        display: flex; /* Usa flexbox para alinear elementos */
+        align-items: center; /* Centra verticalmente los elementos */
+        margin-bottom: 10px; /* Espaciado inferior de 10px */
+    }
+    
+    /* Estilo para grupos de campos en línea dentro de form-group-inline-2 */
+    .form-group-inline-2 .form-group {
+        flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
+    }
+    
+    /* Estilo para texto adicional dentro del grupo de formularios */
+    .form-group-2 span {
+        margin-left: 5px; /* Espaciado a la izquierda de 5px */
+        font-weight: bold; /* Texto en negrita */
+        color: #333; /* Color de texto oscuro */
+    }
+    
+    /* Asegura que los label y input tengan la misma altura */
+    .form-group {
+        display: flex; /* Usa flexbox para alinear elementos */
+        align-items: stretch; /* Estira los elementos para que tengan la misma altura */
+        justify-content: space-between; /* Alinea el label y el input a los extremos */
+        margin-bottom: 10px; /* Espaciado inferior de 10px */
+    }
+    
+    /* Estilo para grupos de campos en línea */
+    .form-group-inline {
+        display: flex; /* Usa flexbox para organizar elementos en línea */
+        justify-content: space-between; /* Alinea los elementos a los extremos */
+        gap: 10px; /* Espacio entre los elementos */
+    }
+    
+    /* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
+    .form-group-inline .form-group {
+        flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
+    }
+    
 
 
 /* --------------------------------------------------------------------------------------------------------------

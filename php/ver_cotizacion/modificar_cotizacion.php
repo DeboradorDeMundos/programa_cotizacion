@@ -116,18 +116,17 @@ if ($id_cotizacion > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar Cotización</title>
-    <link rel="stylesheet" href="../../css/nueva_cotizacion/nueva_cotizacion.css">
+    <link rel="stylesheet" href="../../css/ver_cotizacion/modificar_cotizacion.css">
 </head>
 <body>
     <?php echo isset($mensaje) ? $mensaje : ''; ?>
     
     <?php if (isset($row)): ?>
-    <h1>Modificar Cotización</h1>
     <form method="POST" action="procesar_modificacion.php" enctype="multipart/form-data">
         <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
-            <?php include '../nueva_cotizacion/cargar_logo_empresa.php'; ?>
+            <?php include 'cargar_logo_empresa.php'; ?>
 
-            <?php include '../nueva_cotizacion/cuadro_rojo_cotizacion.php'; ?>
+            <?php include 'cuadro_rojo_cotizacion.php'; ?>
 
             <fieldset class="box-6 data-box"> 
                 <label for="fecha_emision">Fecha de Emisión:</label> <!-- Etiqueta para el campo de entrada de la fecha de emisión -->
@@ -136,7 +135,7 @@ if ($id_cotizacion > 0) {
         </div> <!-- Cierra la fila -->
 
         <!-- Fila 2 -->
-        <?php include '../nueva_cotizacion/datos_empresa.php'; ?>
+        <?php include 'datos_empresa.php'; ?>
 
         <!-- Fila 3 -->
         <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
@@ -159,23 +158,31 @@ if ($id_cotizacion > 0) {
         <!-- Sección para los cálculos finales -->
          <?php include 'traer_totales.php'; ?>
 
+         <?php include 'observaciones.php'; ?>
+
          <?php include 'traer_pago.php'; ?>
 
          <button type="submit" class="submit">Guardar cambios</button> <!-- Botón para enviar el formulario y generar la cotización -->
         
         </form> <!-- Cierra el formulario -->
         </div> <!-- Cierra el contenedor principal -->
-        <?php include '../nueva_cotizacion/traer_condiciones.php'; ?>
+        <?php include 'traer_condiciones.php'; ?>
 
-        <?php include '../nueva_cotizacion/traer_requisitos.php'; ?>
+        <?php include 'traer_requisitos.php'; ?>
 
-        <?php include '../nueva_cotizacion/traer_datos_bancarios.php'; ?>
+        <?php include 'obligaciones_cliente.php'; ?>
 
-        <p>AQUI VIENE LA FIRMA</p>
-        <p>SIN OTRO PARTICULAR, Y ESPERANDO QUE LA PRESENTE OFERTA SEA DE SU INTERÉS, SE DESPIDE ATENTAMENTE</p> <!-- Mensaje de despedida en la oferta -->
-        <p>BARNER PATRICIO PIÑA JARA</p> <!-- Nombre del remitente -->
-        <p>JEFE DE PROYECTO TECNOLOGIA Y CONSTRUCCION</p> <!-- Cargo del remitente -->
-        <p>ITRED SPA.</p> <!-- Nombre de la empresa del remitente -->
+        <?php include 'traer_datos_bancarios.php'; ?>
+
+        <table>
+        <tr>
+            
+            <td>
+                <?php include 'posicionar_firma.php'; ?>
+
+            </td>
+        </tr>
+        </table>
     <?php endif; ?>
 
     <ul>

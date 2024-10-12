@@ -128,23 +128,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+<link rel="stylesheet" href="../../css/ver_cotizacion/traer_cliente.css">
 <fieldset class="row">
-    <legend>Detalle cliente</legend>
-    <div class="box-6 data-box">
+    <legend>Datos cliente</legend>
+    <div class="box-6 cuadro-datos">
         <div class="form-group-inline">
             <div class="form-group">
-                <label for="cliente_nombre">Nombre:</label>
-                <input type="text" id="cliente_nombre" name="cliente_nombre" 
-                    placeholder="nombre cliente" 
-                    value="<?php echo htmlspecialchars($cliente_nombre); ?>" 
+                <label for="cliente_rut">RUT:</label>
+                <input type="text" id="cliente_rut" name="cliente_rut"
+                    placeholder="Ej: 12.345.678-9"
+                    value="<?php echo htmlspecialchars($cliente_rut); ?>" 
+                    minlength="7" maxlength="12" 
+                    oninput="FormatearRut(this)"
+                    oninput="QuitarCaracteresInvalidos(this)"
                     required>
+            </div>
+            <div class="form-group">
+                <label for="cliente_nombre">Nombre:</label>
+                <input type="text" id="cliente_nombre" name="cliente_nombre"
+                    placeholder="Ejemplo: Pedro Perez"
+                    value="<?php echo htmlspecialchars($cliente_nombre); ?>" 
+                    required
+                    pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
+                    title="Por favor, ingrese solo letras, números y caracteres como &,-."
+                    oninput="QuitarCaracteresInvalidos(this)">
             </div>
         </div>
 
         <div class="form-group">
             <label for="cliente_empresa">Empresa:</label>
             <input type="text" id="cliente_empresa" name="cliente_empresa" 
-                placeholder="cliente empresa" 
+                placeholder="Ejemplo: Mi Empresa S.A."
                 value="<?php echo htmlspecialchars($cliente_empresa); ?>">
         </div>
 
@@ -152,45 +166,83 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="form-group">
                 <label for="cliente_direccion">Dirección:</label>
                 <input type="text" id="cliente_direccion" name="cliente_direccion" 
-                    placeholder="pasaje x #1234" 
+                    placeholder="Ejemplo: Av. Siempre Viva 742"
                     value="<?php echo htmlspecialchars($cliente_direccion); ?>">
             </div>
             <div class="form-group">
                 <label for="cliente_lugar">Lugar:</label>
-                <input type="text" id="cliente_lugar" name="cliente_lugar" 
-                    placeholder="casa/Oficina" 
-                    value="<?php echo htmlspecialchars($cliente_lugar); ?>">
+                <select id="cliente_lugar" name="cliente_lugar" required>
+                    <option value="" disabled <?php echo $cliente_lugar ? '' : 'selected'; ?>>Selecciona un lugar</option>
+                    <option value="casa" <?php echo $cliente_lugar === 'casa' ? 'selected' : ''; ?>>Casa</option>
+                    <option value="oficina" <?php echo $cliente_lugar === 'oficina' ? 'selected' : ''; ?>>Oficina</option>
+                    <option value="local_comercial" <?php echo $cliente_lugar === 'local_comercial' ? 'selected' : ''; ?>>Local Comercial</option>
+                    <option value="almacen" <?php echo $cliente_lugar === 'almacen' ? 'selected' : ''; ?>>Almacén</option>
+                    <option value="bodega" <?php echo $cliente_lugar === 'bodega' ? 'selected' : ''; ?>>Bodega</option>
+                    <option value="fabrica" <?php echo $cliente_lugar === 'fabrica' ? 'selected' : ''; ?>>Fábrica</option>
+                </select>
             </div>
         </div>
 
         <div class="form-group">
             <label for="cliente_fono">Teléfono:</label>
-            <input type="text" id="cliente_fono" name="cliente_fono" 
+            <input type="text" id="cliente_fono" name="cliente_fono"
                 pattern="\+?\d{7,15}" 
                 placeholder="+1234567890" 
                 value="<?php echo htmlspecialchars($cliente_fono); ?>">
         </div>
     </div>
-    <div class="box-6 data-box data-box-left">
+
+    <div class="box-6 cuadro-datos cuadro-datos-left">
         <div class="form-group">
             <label for="cliente_email">Email:</label>
-            <input type="email" id="cliente_email" name="cliente_email" 
-                placeholder="cliente@gmail.com" 
+            <input type="email" id="cliente_email" name="cliente_email"
+                placeholder="ejemplo@gmail.com" 
                 value="<?php echo htmlspecialchars($cliente_email); ?>">
         </div>
 
         <div class="form-group">
             <label for="cliente_cargo">Cargo:</label>
-            <input type="text" id="cliente_cargo" name="cliente_cargo" 
-                placeholder="cargo cliente" 
-                value="<?php echo htmlspecialchars($cliente_cargo); ?>">
+            <select id="cliente_cargo" name="cliente_cargo" required>
+                <option value="" disabled <?php echo $cliente_cargo ? '' : 'selected'; ?>>Selecciona un cargo</option>
+                <option value="gerente" <?php echo $cliente_cargo === 'gerente' ? 'selected' : ''; ?>>Gerente</option>
+                <option value="director" <?php echo $cliente_cargo === 'director' ? 'selected' : ''; ?>>Director</option>
+                <option value="ejecutivo" <?php echo $cliente_cargo === 'ejecutivo' ? 'selected' : ''; ?>>Ejecutivo</option>
+                <option value="supervisor" <?php echo $cliente_cargo === 'supervisor' ? 'selected' : ''; ?>>Supervisor</option>
+                <option value="jefe_area" <?php echo $cliente_cargo === 'jefe_area' ? 'selected' : ''; ?>>Jefe de Área</option>
+                <option value="coordinador" <?php echo $cliente_cargo === 'coordinador' ? 'selected' : ''; ?>>Coordinador</option>
+                <option value="analista" <?php echo $cliente_cargo === 'analista' ? 'selected' : ''; ?>>Analista</option>
+                <option value="asistente" <?php echo $cliente_cargo === 'asistente' ? 'selected' : ''; ?>>Asistente</option>
+                <option value="consultor" <?php echo $cliente_cargo === 'consultor' ? 'selected' : ''; ?>>Consultor</option>
+                <option value="ingeniero" <?php echo $cliente_cargo === 'ingeniero' ? 'selected' : ''; ?>>Ingeniero</option>
+                <option value="técnico" <?php echo $cliente_cargo === 'técnico' ? 'selected' : ''; ?>>Técnico</option>
+                <option value="auxiliar" <?php echo $cliente_cargo === 'auxiliar' ? 'selected' : ''; ?>>Auxiliar</option>
+                <option value="vendedor" <?php echo $cliente_cargo === 'vendedor' ? 'selected' : ''; ?>>Vendedor</option>
+                <option value="administrativo" <?php echo $cliente_cargo === 'administrativo' ? 'selected' : ''; ?>>Administrativo</option>
+                <option value="recepcionista" <?php echo $cliente_cargo === 'recepcionista' ? 'selected' : ''; ?>>Recepcionista</option>
+                <option value="operador" <?php echo $cliente_cargo === 'operador' ? 'selected' : ''; ?>>Operador</option>
+                <option value="contador" <?php echo $cliente_cargo === 'contador' ? 'selected' : ''; ?>>Contador</option>
+                <option value="encargado_rrhh" <?php echo $cliente_cargo === 'encargado_rrhh' ? 'selected' : ''; ?>>Encargado de RRHH</option>
+            </select>
         </div>
 
         <div class="form-group">
             <label for="cliente_giro">Giro:</label>
-            <input type="text" id="cliente_giro" name="cliente_giro" 
-                placeholder="giro cliente" 
-                value="<?php echo htmlspecialchars($cliente_giro); ?>">
+            <select id="cliente_giro" name="cliente_giro" required>
+                <option value="" disabled <?php echo $cliente_giro ? '' : 'selected'; ?>>Selecciona un giro</option>
+                <option value="comercio" <?php echo $cliente_giro === 'comercio' ? 'selected' : ''; ?>>Comercio</option>
+                <option value="servicios" <?php echo $cliente_giro === 'servicios' ? 'selected' : ''; ?>>Servicios</option>
+                <option value="manufactura" <?php echo $cliente_giro === 'manufactura' ? 'selected' : ''; ?>>Manufactura</option>
+                <option value="construccion" <?php echo $cliente_giro === 'construccion' ? 'selected' : ''; ?>>Construcción</option>
+                <option value="tecnologia" <?php echo $cliente_giro === 'tecnologia' ? 'selected' : ''; ?>>Tecnología</option>
+                <option value="alimentos_bebidas" <?php echo $cliente_giro === 'alimentos_bebidas' ? 'selected' : ''; ?>>Alimentos y Bebidas</option>
+                <option value="educacion" <?php echo $cliente_giro === 'educacion' ? 'selected' : ''; ?>>Educación</option>
+                <option value="salud" <?php echo $cliente_giro === 'salud' ? 'selected' : ''; ?>>Salud</option>
+                <option value="finanzas" <?php echo $cliente_giro === 'finanzas' ? 'selected' : ''; ?>>Finanzas</option>
+                <option value="agricultura" <?php echo $cliente_giro === 'agricultura' ? 'selected' : ''; ?>>Agricultura</option>
+                <option value="logistica_transporte" <?php echo $cliente_giro === 'logistica_transporte' ? 'selected' : ''; ?>>Logística y Transporte</option>
+                <option value="inmobiliario" <?php echo $cliente_giro === 'inmobiliario' ? 'selected' : ''; ?>>Inmobiliario</option>
+                <option value="energia" <?php echo $cliente_giro === 'energia' ? 'selected' : ''; ?>>Energía</option>
+            </select>
         </div>
 
         <div class="form-group-inline">
@@ -210,9 +262,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div class="form-group">
             <label for="cliente_tipo">Tipo:</label>
-            <input type="text" id="cliente_tipo" name="cliente_tipo" 
-                placeholder="tipo cliente" 
-                value="<?php echo htmlspecialchars($cliente_tipo); ?>">
+            <select id="cliente_tipo" name="cliente_tipo" required>
+                <option value="" disabled selected>Selecciona un tipo de cliente</option>
+                <option value="persona_natural" <?php echo ($cliente_tipo == 'persona_natural') ? 'selected' : ''; ?>>Persona Natural</option>
+                <option value="empresa" <?php echo ($cliente_tipo == 'empresa') ? 'selected' : ''; ?>>Empresa</option>
+                <option value="organizacion_sin_fines_de_lucro" <?php echo ($cliente_tipo == 'organizacion_sin_fines_de_lucro') ? 'selected' : ''; ?>>Organización Sin Fines de Lucro</option>
+                <option value="institucion_gubernamental" <?php echo ($cliente_tipo == 'institucion_gubernamental') ? 'selected' : ''; ?>>Institución Gubernamental</option>
+                <option value="institucion_educativa" <?php echo ($cliente_tipo == 'institucion_educativa') ? 'selected' : ''; ?>>Institución Educativa</option>
+                <option value="multinacional" <?php echo ($cliente_tipo == 'multinacional') ? 'selected' : ''; ?>>Multinacional</option>
+            </select>
         </div>
     </div>
 </fieldset>
