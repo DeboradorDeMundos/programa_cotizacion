@@ -28,6 +28,32 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
      <html>
 <head>
     <link rel="stylesheet" href="../../css/ver_cotizacion/ver.css">
+    <style>
+    /* Estilos existentes... */
+
+    /* Estilos para impresión */
+    @media print {
+        /* Ocultar los radio buttons */
+        input[type="radio"],
+        input[type="file"],
+        input[type="text"],
+        select,
+        input[type="range"],
+        #tamanoValor {
+            display: none !important; /* Asegúrate de que se oculten */
+        }
+
+        /* También puedes ocultar el formulario si es necesario */
+        #form-marca-agua {
+            display: none !important;
+        }
+
+        /* Asegúrate de que la marca de agua se imprima */
+        .watermark {
+            display: block !important; /* Asegúrate de que la marca de agua se imprima */
+        }
+    }
+</style>
 </head>
 <body>
     <!-- Contenedor de botones -->
