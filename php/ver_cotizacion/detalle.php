@@ -25,10 +25,13 @@ $query_titulos = "
         d.precio_unitario,
         d.descuento_porcentaje,
         d.total,
-        s.nombre AS subtitulo_nombre
+        s.nombre AS subtitulo_nombre,
+        n.contenido,
+        n.color
     FROM C_Cotizaciones c
     JOIN C_Titulos t ON t.id_cotizacion = c.id_cotizacion
     JOIN C_Detalles d ON d.id_titulo = t.id_titulo
+    JOIN C_Notas n ON n.id_titulo = t.id_titulo
     LEFT JOIN C_Subtitulos s ON s.id_subtitulo = d.id_subtitulo
     WHERE c.id_cotizacion = ?
 ";

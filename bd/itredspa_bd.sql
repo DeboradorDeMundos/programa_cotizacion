@@ -770,7 +770,8 @@ INSERT INTO C_Vendedores (
 INSERT INTO C_Cotizaciones (
     numero_cotizacion, 
     fecha_emision, 
-    fecha_validez, 
+    fecha_validez,
+    estado, 
     id_cliente, 
     id_proyecto, 
     id_empresa, 
@@ -780,6 +781,7 @@ INSERT INTO C_Cotizaciones (
     '1', -- Número de cotización
     '2024-09-01', -- Fecha de emisión
     '2024-09-30', -- Fecha de validez
+    'Pendiente',
     1, -- ID del cliente
     1, -- ID del proyecto
     1, -- ID de la empresa
