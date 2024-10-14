@@ -26,6 +26,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
         email_encargado,
         fono_encargado,
         celular_encargado
+        
     FROM C_Encargados
     WHERE id_encargado = ?";
 
@@ -104,53 +105,69 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <fieldset class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
-    <legend>Detalle encargado</legend>
-    <div class="box-6 data-box"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
+    <legend>Modificar Datos Encargado</legend>
+    <div class="box-6 cuadro-datos"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
         <div class="form-group-inline">
             <div class="form-group">
                 <label for="encargado_rut">RUT: </label> <!-- Etiqueta para el campo de entrada del RUT del encargado -->
                 <input type="text" id="encargado_rut" name="encargado_rut" 
                     minlength="7" maxlength="12" 
-                    placeholder="x.xxx.xxx-x"
+                    placeholder="Ej: 12.345.678-9" 
                     value="<?php echo htmlspecialchars($enc_rut); ?>" 
-                    required oninput="formatoRut(this)"> <!-- Campo de texto para ingresar el RUT del encargado. También es obligatorio -->
+                    required oninput="FormatearRut(this)"> <!-- Campo de texto para ingresar el RUT del encargado. También es obligatorio -->
             </div>
             <div class="form-group">
                 <label for="enc_nombre">Nombre:</label> <!-- Etiqueta para el campo de entrada del nombre del encargado -->
                 <input type="text" id="enc_nombre" name="enc_nombre" 
+                    placeholder="Ej: Juan Pérez" 
                     value="<?php echo htmlspecialchars($enc_nombre); ?>" 
-                    required> <!-- Campo de texto para ingresar el nombre del encargado. El atributo "required" hace que el campo sea obligatorio -->
+                    required 
+                    minlength="3" 
+                    maxlength="50" 
+                    pattern="^[a-zA-ZÀ-ÿ\s]+$" 
+                    title="Ingresa un nombre válido (Ej: Juan Pérez). Solo se permiten letras y espacios."> <!-- Campo de texto para ingresar el nombre del encargado. Este campo es obligatorio -->
             </div>
         </div>
 
         <div class="form-group">
             <label for="enc_email">Email:</label> <!-- Etiqueta para el campo de entrada del email del encargado -->
             <input type="email" id="enc_email" name="enc_email" 
-                value="<?php echo htmlspecialchars($enc_email); ?>"> <!-- Campo de correo electrónico para ingresar el email del encargado. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
+                placeholder="ejemplo@gmail.com" 
+                maxlength="255" 
+                value="<?php echo htmlspecialchars($enc_email); ?>" 
+                required 
+                title="Ingresa un correo electrónico válido, como ejemplo@empresa.com"> <!-- Campo de correo electrónico para ingresar el email del encargado. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
         </div>
         <div class="form-group">
             <label for="enc_fono">Teléfono:</label> <!-- Etiqueta para el campo de entrada del teléfono del encargado -->
             <input type="text" id="enc_fono" name="enc_fono" 
                 pattern="\+?\d{7,15}" 
-                placeholder="+1234567890" 
-                value="<?php echo htmlspecialchars($enc_fono); ?>"> <!-- Campo de texto para ingresar el teléfono del encargado. Este campo no es obligatorio -->
+                placeholder="+56 9 1234 1234" 
+                value="<?php echo htmlspecialchars($enc_fono); ?>" 
+                required 
+                title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"> <!-- Campo de texto para ingresar el teléfono del encargado -->
         </div>
     </div>
-    <div class="box-6 data-box data-box-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "data-box-left" para estilo -->
+    <div class="box-6 cuadro-datos cuadro-datos-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "cuadro-datos-left" para estilo -->
         <div class="form-group">
             <label for="enc_celular">Celular:</label> <!-- Etiqueta para el campo de entrada del celular del encargado -->
             <input type="text" id="enc_celular" name="enc_celular" 
                 pattern="\+?\d{7,15}" 
-                placeholder="+1234567890" 
+                placeholder="+56 9 1234 1234" 
                 value="<?php echo htmlspecialchars($enc_celular); ?>"> <!-- Campo de texto para ingresar el número de celular del encargado. Este campo no es obligatorio -->
         </div>
         <div class="form-group">
             <label for="enc_proyecto">Proyecto Asignado:</label> <!-- Etiqueta para el campo de entrada del proyecto asignado al encargado -->
             <input type="text" id="enc_proyecto" name="enc_proyecto" 
-                value=""> <!-- Campo de texto para ingresar el nombre del proyecto asignado al encargado. No es obligatorio -->
+                placeholder="Ej: Proyecto XYZ" 
+                value="<?php echo htmlspecialchars($enc_proyecto); ?>" 
+                minlength="3" 
+                maxlength="100" 
+                pattern="^[a-zA-ZÀ-ÿ0-9\s\-]+$" 
+                title="Ingresa un nombre de proyecto válido (Ej: Proyecto XYZ). Solo se permiten letras, números, espacios y guiones."> <!-- Campo de texto para ingresar el nombre del proyecto asignado al encargado. No es obligatorio -->
         </div>
     </div>
-</fieldset>
+</fieldset> <!-- Cierra la fila -->
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Traer encargado .PHP ----------------------------------------

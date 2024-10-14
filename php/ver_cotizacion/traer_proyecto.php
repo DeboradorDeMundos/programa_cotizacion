@@ -28,6 +28,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
         p.tipo_trabajo,
         p.area_trabajo,
         p.riesgo_proyecto,
+        p.descripcion_riesgo,
         p.dias_compra,
         p.dias_trabajo,
         p.trabajadores,
@@ -51,6 +52,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
             $tipo_trabajo = $row['tipo_trabajo'];
             $area_trabajo = $row['area_trabajo'];
             $riesgo = $row['riesgo_proyecto'];
+            $riesgo_descripcion = $row['descripcion_riesgo'];
             $dias_compra = $row['dias_compra'];
             $dias_trabajo = $row['dias_trabajo'];
             $trabajadores = $row['trabajadores'];
@@ -67,6 +69,149 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
     }
 }
 
+?>
+
+<link rel="stylesheet" href="../../css/ver_cotizacion/traer_proyecto.css">
+<fieldset class="box-6 cuadro-datos">
+    <legend>Detalle proyecto</legend>
+    <div class="form-group-inline">
+        <div class="form-group">
+            <label for="proyecto_nombre">Nombre</label>
+            <input type="text" id="proyecto_nombre" name="proyecto_nombre" required 
+                pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
+                title="Por favor, ingrese solo letras, números y caracteres como &,-."
+                oninput="QuitarCaracteresInvalidos(this)"
+                placeholder="Ejemplo: Mi Proyecto 1"
+                value="<?php echo htmlspecialchars($proyecto_nombre); ?>">
+        </div>
+        <div class="form-group">
+            <label for="proyecto_codigo">Código</label>
+            <input type="text" id="proyecto_codigo" name="proyecto_codigo" required 
+                maxlength="10" 
+                pattern="^[a-zA-Z0-9-_]{1,10}$" 
+                oninput="QuitarCaracteresInvalidos(this)" 
+                title="Ingresa un código de hasta 10 caracteres (letras, números, guiones y guiones bajos)."
+                placeholder="Introduce un código único"
+                value="<?php echo htmlspecialchars($proyecto_codigo); ?>">
+        </div>
+    </div>
+
+    <div class="form-group-inline">
+        <div class="form-group">
+            <label for="area_trabajo">Área de Trabajo:</label>
+            <select id="area_trabajo" name="area_trabajo" required>
+                <option value="" disabled selected>Selecciona un área</option>
+                <option value="tecnologia" <?php if ($area_trabajo == 'tecnologia') echo 'selected'; ?>>Tecnología</option>
+                <option value="salud" <?php if ($area_trabajo == 'salud') echo 'selected'; ?>>Salud</option>
+                <option value="educacion" <?php if ($area_trabajo == 'educacion') echo 'selected'; ?>>Educación</option>
+                <option value="construccion" <?php if ($area_trabajo == 'construccion') echo 'selected'; ?>>Construcción</option>
+                <option value="marketing" <?php if ($area_trabajo == 'marketing') echo 'selected'; ?>>Marketing</option>
+                <option value="finanzas" <?php if ($area_trabajo == 'finanzas') echo 'selected'; ?>>Finanzas</option>
+                <option value="logistica" <?php if ($area_trabajo == 'logistica') echo 'selected'; ?>>Logística</option>
+                <option value="administracion" <?php if ($area_trabajo == 'administracion') echo 'selected'; ?>>Administración</option>
+                <option value="recursos_humanos" <?php if ($area_trabajo == 'recursos_humanos') echo 'selected'; ?>>Recursos Humanos</option>
+                <option value="ventas" <?php if ($area_trabajo == 'ventas') echo 'selected'; ?>>Ventas</option>
+                <option value="diseño" <?php if ($area_trabajo == 'diseño') echo 'selected'; ?>>Diseño</option>
+                <option value="investigacion" <?php if ($area_trabajo == 'investigacion') echo 'selected'; ?>>Investigación</option>
+                <option value="arte" <?php if ($area_trabajo == 'arte') echo 'selected'; ?>>Arte</option>
+                <option value="turismo" <?php if ($area_trabajo == 'turismo') echo 'selected'; ?>>Turismo</option>
+                <option value="comercio" <?php if ($area_trabajo == 'comercio') echo 'selected'; ?>>Comercio</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="tipo_trabajo">Tipo de Trabajo:</label>
+            <select id="tipo_trabajo" name="tipo_trabajo" required>
+                <option value="" disabled selected>Selecciona un tipo de trabajo</option>
+                <option value="instalacion" <?php if ($tipo_trabajo == 'instalacion') echo 'selected'; ?>>Instalación</option>
+                <option value="mantenimiento" <?php if ($tipo_trabajo == 'mantenimiento') echo 'selected'; ?>>Mantenimiento</option>
+                <option value="reparacion" <?php if ($tipo_trabajo == 'reparacion') echo 'selected'; ?>>Reparación</option>
+                <option value="consultoria" <?php if ($tipo_trabajo == 'consultoria') echo 'selected'; ?>>Consultoría</option>
+                <option value="desarrollo" <?php if ($tipo_trabajo == 'desarrollo') echo 'selected'; ?>>Desarrollo</option>
+                <option value="diseño" <?php if ($tipo_trabajo == 'diseño') echo 'selected'; ?>>Diseño</option>
+                <option value="gestión" <?php if ($tipo_trabajo == 'gestión') echo 'selected'; ?>>Gestión</option>
+                <option value="soporte" <?php if ($tipo_trabajo == 'soporte') echo 'selected'; ?>>Soporte</option>
+                <option value="capacitación" <?php if ($tipo_trabajo == 'capacitación') echo 'selected'; ?>>Capacitación</option>
+                <option value="investigacion" <?php if ($tipo_trabajo == 'investigacion') echo 'selected'; ?>>Investigación</option>
+                <option value="logistica" <?php if ($tipo_trabajo == 'logistica') echo 'selected'; ?>>Logística</option>
+                <option value="ventas" <?php if ($tipo_trabajo == 'ventas') echo 'selected'; ?>>Ventas</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="riesgo">Riesgo:</label>
+        <select id="riesgo" name="riesgo" required>
+            <option value="" disabled selected>Selecciona un nivel de riesgo</option>
+            <option value="alto" <?php if ($riesgo == 'alto') echo 'selected'; ?>>Alto</option>
+            <option value="medio" <?php if ($riesgo == 'medio') echo 'selected'; ?>>Medio</option>
+            <option value="bajo" <?php if ($riesgo == 'bajo') echo 'selected'; ?>>Bajo</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="riesgo_descripcion">Descripción de riesgo</label>
+        <input type="text" id="riesgo_descripcion" name="riesgo_descripcion" required 
+            pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
+            title="Por favor, ingrese solo letras, números y caracteres como &,-."
+            oninput="QuitarCaracteresInvalidos(this)"
+            placeholder="Ejemplo: Riesgo de retraso en la entrega"
+            value="<?php echo htmlspecialchars($riesgo_descripcion); ?>">
+    </div>
+</fieldset>
+
+<fieldset class="box-6 cuadro-datos cuadro-datos-left">
+    <legend>Detalle</legend>
+    <div class="form-group-inline">
+        <div class="form-group">
+            <label for="dias_compra">Días de Compra:</label>
+            <input type="number" id="dias_compra" name="dias_compra" placeholder="Ingrese N° de días" 
+                oninput="QuitarCaracteresInvalidos(this)"
+                value="<?php echo htmlspecialchars($dias_compra); ?>">
+        </div>
+        <div class="form-group">
+            <label for="dias_trabajo">Días de Trabajo:</label>
+            <input type="number" id="dias_trabajo" name="dias_trabajo" placeholder="Ingrese N° de días" 
+                oninput="QuitarCaracteresInvalidos(this)"
+                value="<?php echo htmlspecialchars($dias_trabajo); ?>">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="trabajadores">Número de Trabajadores:</label>
+        <input type="number" id="trabajadores" name="trabajadores" placeholder="N° trabajadores" 
+            oninput="QuitarCaracteresInvalidos(this)"
+            value="<?php echo htmlspecialchars($trabajadores); ?>">
+    </div>
+
+    <div class="form-group-inline">
+        <div class="form-group">
+            <label for="horario">Horario:</label>
+            <input type="text" id="horario" name="horario" 
+                pattern="^([01]?[0-9]|2[0-3]):[0-5][0-9] a ([01]?[0-9]|2[0-3]):[0-5][0-9]$" 
+                title="Ingresa un horario válido (Ej: 08:00 a 18:00)." 
+                placeholder="Ej: 08:00 a 18:00"
+                value="<?php echo htmlspecialchars($horario); ?>">
+        </div>
+        <div class="form-group">
+            <label for="colacion">Colación:</label>
+            <input type="text" id="colacion" name="colacion" placeholder="Ej: Sí o No"
+                pattern="^[a-zA-Z]{2}$"
+                title="Ingresa 'Sí' o 'No'."
+                value="<?php echo htmlspecialchars($colacion); ?>">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="entrega">Entrega:</label>
+        <input type="text" id="entrega" name="entrega" placeholder="Ej: Lunes, Martes"
+            required 
+            pattern="^[a-zA-Z0-9-_]{1,10}$"
+            title="Ingresa un día o rango de días válido."
+            value="<?php echo htmlspecialchars($entrega); ?>">
+    </div>
+</fieldset>
+
+<?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Recibir datos del formulario para C_Proyectos
     $proyecto_nombre = isset($_POST['proyecto_nombre']) ? trim($_POST['proyecto_nombre']) : null;
@@ -126,71 +271,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
-<fieldset class="box-6 data-box"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
-    <legend>Detalle proyecto</legend>
-    <div class="form-group-inline">
-        <div class="form-group">
-            <label for="proyecto_nombre">Nombre</label> <!-- Etiqueta para el campo de entrada del nombre del proyecto -->
-            <input type="text" id="proyecto_nombre" name="proyecto_nombre" placeholder="proyecto" value="<?php echo htmlspecialchars($proyecto_nombre); ?>" required> <!-- Campo de texto para ingresar el nombre del proyecto. El atributo "required" hace que el campo sea obligatorio -->
-        </div>
-        <div class="form-group">
-            <label for="proyecto_codigo">Código</label> <!-- Etiqueta para el campo de entrada del código del proyecto -->
-            <input type="text" id="proyecto_codigo" name="proyecto_codigo" placeholder="1234" value="<?php echo htmlspecialchars($proyecto_codigo); ?>" required> <!-- Campo de texto para ingresar el código del proyecto. También es obligatorio -->
-        </div>
-    </div>
-    <div class="form-group-inline">
-        <div class="form-group">
-            <label for="area_trabajo">Área de Trabajo:</label> <!-- Etiqueta para el campo de entrada del área de trabajo -->
-            <input type="text" id="area_trabajo" name="area_trabajo" placeholder="tecnologia" value="<?php echo htmlspecialchars($area_trabajo); ?>" required> <!-- Campo de texto para ingresar el área de trabajo. Este campo es obligatorio -->
-        </div>
-        <div class="form-group">
-            <label for="tipo_trabajo">Tipo de Trabajo:</label> <!-- Etiqueta para el campo de entrada del tipo de trabajo -->
-            <input type="text" id="tipo_trabajo" name="tipo_trabajo" placeholder="instalacion" value="<?php echo htmlspecialchars($tipo_trabajo); ?>" required> <!-- Campo de texto para ingresar el tipo de trabajo. También es obligatorio -->
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="riesgo">Riesgo:</label> <!-- Etiqueta para el campo de entrada del riesgo asociado al proyecto -->
-        <input type="text" id="riesgo" name="riesgo" placeholder="nivel de riesgo" value="<?php echo htmlspecialchars($riesgo); ?>" required> <!-- Campo de texto para ingresar el nivel o tipo de riesgo. Este campo es obligatorio -->
-    </div>
-</fieldset>
-
-
-<fieldset class="box-6 data-box data-box-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "data-box-left" para estilo -->
-    <legend>Detalle</legend>
-    <div class="form-group-inline">
-        <div class="form-group">
-            <label for="dias_compra">Días de Compra:</label> <!-- Etiqueta para el campo de entrada de los días de compra -->
-            <input type="number" id="dias_compra" name="dias_compra" placeholder="ingrese N° de dias" value="<?php echo htmlspecialchars($dias_compra); ?>"> <!-- Campo de número para ingresar la cantidad de días de compra. Este campo no es obligatorio -->
-        </div>
-        <div class="form-group">
-            <label for="dias_trabajo">Días de Trabajo:</label> <!-- Etiqueta para el campo de entrada de los días de trabajo -->
-            <input type="number" id="dias_trabajo" name="dias_trabajo" placeholder="ingrese N° de dias" value="<?php echo htmlspecialchars($dias_trabajo); ?>"> <!-- Campo de número para ingresar la cantidad de días de trabajo. No es obligatorio -->
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="trabajadores">Número de Trabajadores:</label> <!-- Etiqueta para el campo de entrada del número de trabajadores -->
-        <input type="number" id="trabajadores" name="trabajadores" placeholder="N° trabajadores" value="<?php echo htmlspecialchars($trabajadores); ?>"> <!-- Campo de número para ingresar la cantidad de trabajadores. Este campo no es obligatorio -->
-    </div>
-
-    <div class="form-group-inline">
-        <div class="form-group">
-            <label for="horario">Horario:</label> <!-- Etiqueta para el campo de entrada del horario -->
-            <input type="text" id="horario" name="horario" placeholder="horadia desde hasta" value="<?php echo htmlspecialchars($horario); ?>"> <!-- Campo de texto para ingresar el horario. Este campo no es obligatorio -->
-        </div>
-        <div class="form-group">
-            <label for="colacion">Colación:</label> <!-- Etiqueta para el campo de entrada de colación -->
-            <input type="text" id="colacion" name="colacion" placeholder="Si/No" value="<?php echo htmlspecialchars($colacion); ?>"> <!-- Campo de texto para ingresar la información sobre la colación. No es obligatorio -->
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="entrega">Entrega:</label> <!-- Etiqueta para el campo de entrada de la entrega -->
-        <input type="text" id="entrega" name="entrega" placeholder="Dia entrega" value="<?php echo htmlspecialchars($entrega); ?>"> <!-- Campo de texto para ingresar detalles sobre la entrega. Este campo no es obligatorio -->
-    </div>
-</fieldset>
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Traer proyecto .PHP ----------------------------------------

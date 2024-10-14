@@ -9,7 +9,7 @@ BPPJ
 -->
 
 <!-- ------------------------------------------------------------------------------------------------------------
-    ------------------------------------- INICIO ITred Spa Traer pago .PHP --------------------------------------
+    ------------------------------------- INICIO ITred Spa Traer traer_pago .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
 <?php
@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Faltan datos obligatorios en una de las entradas.");
         }
 
-        // Insertar o actualizar datos en la tabla pago
+        // Insertar o actualizar datos en la tabla traer_pago
         $sql = "INSERT INTO C_pago (id_cotizacion, numero_pago, descripcion, porcentaje_pago, monto_pago, fecha_pago)
                 VALUES (?, ?, ?, ?, ?, ?)
                 ON DUPLICATE KEY UPDATE 
@@ -93,94 +93,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalles de Pago</title>
-    <script>
-    function addPayment() {
-        // Contenedor donde se agregan los pagos
-        const contenedor = document.getElementById('payments-contenedor');
-    
-        // Crear un nuevo bloque de pago
-        const paymentBlock = document.createElement('div');
-        paymentBlock.classList.add('payment-block');
-    
-        // Generar el HTML para un nuevo pago
-        paymentBlock.innerHTML = `
-            <hr>
-            <h4>Pago</h4>
-            <label>N° Pago:</label>
-            <input type="number" name="numero_pago[]" required>
-            <label>Descripción de pago:</label>
-            <textarea name="descripcion_pago[]" placeholder="Descripción del pago"></textarea>
-            <label>% De pago:</label>
-            <input type="number" id="porcentaje-pago" name="porcentaje_pago[]" min="0" max="100" required oninput="calcularPago(this)">
-            <label>Monto de pago:</label>
-            <input type="number" id="monto-pago" name="monto_pago[]" min="0" required readonly>
-            <label>Fecha de pago:</label>
-            <input type="date" name="fecha_pago[]" required>
-        `;
-    
-        // Agregar el bloque al contenedor
-        contenedor.appendChild(paymentBlock);
-    }
-    
-    function calcularPago() {
-        // Obtén los elementos del DOM
-        const porcentajePagoInput = document.getElementById('porcentaje-pago');
-        const totalFinalInput = document.getElementById('total_final');
-        const montoPagoInput = document.getElementById('monto-pago');
-    
-        // Lee los valores y asigna 0 si no están presentes o son inválidos
-        const porcentajeAdelanto = parseFloat(porcentajePagoInput ? porcentajePagoInput.value : 0) || 0;
-        const totalFinal = parseFloat(totalFinalInput ? totalFinalInput.value : 0) || 0;
-    
-        // Calcula el monto del adelanto
-        const montoAdelanto = (totalFinal * (porcentajeAdelanto / 100)).toFixed(2);
-    
-        // Asigna el monto calculado al campo correspondiente
-        if (montoPagoInput) {
-            montoPagoInput.value = montoAdelanto;
-        } else {
-            console.error("El elemento 'monto-pago' no está disponible en el DOM.");
-        }
-    }
-    </script>
-</head>
-<body>
-    <form method="POST">
-        <fieldset id="payment-section">
-            <legend>Información de pago</legend>
-            <button type="button" onclick="addPayment()">Agregar Pago</button>
-            <div id="payments-contenedor">
-                <?php
-                if (!empty($pagos)) {
-                    foreach ($pagos as $index => $pago) {
-                        ?>
-                        <div class="payment-block">
-                            <hr>
-                            <h4>Pago <?php echo $pago['numero_pago']; ?></h4>
-                            <label>N° Pago:</label>
-                            <input type="number" name="numero_pago[]" value="<?php echo $pago['numero_pago']; ?>" required>
-                            <label>Descripción de pago:</label>
-                            <textarea name="descripcion_pago[]" placeholder="Descripción del pago"><?php echo $pago['descripcion']; ?></textarea>
-                            <label>% De pago:</label>
-                            <input type="number" id="porcentaje-pago-<?php echo $index; ?>" name="porcentaje_pago[]" value="<?php echo $pago['porcentaje_pago']; ?>" min="0" max="100" required oninput="calcularPago(this)">
-                            <label>Monto de pago:</label>
-                            <input type="number" id="monto-pago-<?php echo $index; ?>" name="monto_pago[]" value="<?php echo $pago['monto_pago']; ?>" readonly>
-                            <label>Fecha de pago:</label>
-                            <input type="date" name="fecha_pago[]" value="<?php echo $pago['fecha_pago']; ?>" required>
-                        </div>
-                        <?php
-                    }
-                }
-                ?>
-            </div>
-        </fieldset>
-        <input type="submit" value="Guardar">
-    </form>
-</body>
-</html>
+<link rel="stylesheet" href="../../css/ver_cotizacion/traer_pago.css">
+<fieldset id="payment-section">
+    <legend>Información de traer_pago</legend>
+    <button type="button" onclick="AgregarPago()">Agregar Pago</button>
+    <table id="payment-table" style="display: none;"> <!-- Inicialmente oculto -->
+        <thead>
+            <tr>
+                <th>N° Pago</th>
+                <th>Descripción de Pago</th>
+                <th>% De Pago</th>
+                <th>Monto de Pago</th>
+                <th>Fecha de Pago</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="payments-contenedor">
+            <!-- Aquí se agregarán dinámicamente los pagos -->
+        </tbody>
+    </table>
+</fieldset>
+
+<script src="../../js/ver_cotizacion/traer_pago.js"></script> 

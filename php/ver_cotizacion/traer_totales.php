@@ -45,7 +45,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
     echo "ID de cotización no válido.";
 }
 ?>
-
+<link rel="stylesheet" href="../../css/ver_cotizacion/traer_totales.css">
 <div class="form-contenedor">
     <div class="form-group-2">
         <label for="subTotal">Sub Total</label>

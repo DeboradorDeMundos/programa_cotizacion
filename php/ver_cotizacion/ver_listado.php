@@ -127,7 +127,7 @@ if ($result->num_rows > 0) {
         $mensaje .= "<td>
                 <a href='ver.php?id=" . $row['cotizacion_id'] . "'>| Ver</a> |
                 <a href='modificar_cotizacion.php?id=" . $row['cotizacion_id'] . "'>Modificar</a> |
-                <a href='eliminar_cotizacion.php?id=" . $row['cotizacion_id'] . "'>Eliminar</a> |
+                <a href='eliminar_cotizacion.php?id=" . $row['cotizacion_id'] . "&id_empresa=" . $id_empresa . "'>Eliminar</a> |
                         <form method='POST'>
                             <input type='hidden' name='cotizacion_id' value='" . $row['cotizacion_id'] . "'>
                             <select name='nuevo_estado'>

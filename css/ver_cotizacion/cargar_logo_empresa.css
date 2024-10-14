@@ -1,0 +1,47 @@
+
+/* 
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ 
+*/
+
+
+/* --------------------------------------------------------------------------------------------------------------
+    -------------------------------------- INICIO ITred Spa Cargar Logo Empresa .CSS --------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+    /* Estilos para el logo */
+.logo {
+  max-width: 300px; /* Ancho máximo del logo de 300px */
+  height: auto; /* Altura automática para mantener la proporción */
+  margin-right: 10px; /* Margen derecho de 10px */
+}
+
+/* Contenedor que alberga el logo */
+.contenedor-logo {
+  display: flex; /* Usar flexbox para alinear los elementos */
+  align-items: center; /* Alinear verticalmente los elementos al centro */
+  cursor: pointer; /* Cambia el cursor a puntero al pasar sobre el contenedor */
+}
+
+    
+    
+    
+/* --------------------------------------------------------------------------------------------------------------
+    ---------------------------------------- FIN ITred Spa Cargar Logo Empresa .CSS ---------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+
+/*
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+*/
