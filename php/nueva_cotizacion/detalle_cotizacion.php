@@ -59,7 +59,7 @@ if (!$id_empresa) {
     $numero_cotizacion = isset($_POST['numero_cotizacion']) ? trim($_POST['numero_cotizacion']) : null;
     $fecha_validez = isset($_POST['fecha_validez']) ? trim($_POST['fecha_validez']) : null;
     $fecha_emision = isset($_POST['fecha_emision']) ? trim($_POST['fecha_emision']) : null;
-    $estado = "pendiente"; // Asignar por defecto 'pendiente' al estado
+    $estado = "Pendiente"; // Asignar por defecto 'pendiente' al estado
     echo "Fecha de validez recibida: " . $fecha_validez;
     // Validar datos obligatorios
     if (is_null($numero_cotizacion) || is_null($fecha_emision) || is_null($fecha_validez) || is_null($id_cliente) || is_null($id_proyecto) || is_null($id_empresa) || is_null($id_vendedor) || is_null($id_encargado)) {

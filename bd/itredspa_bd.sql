@@ -634,8 +634,8 @@ INSERT INTO E_Encargados (
     id_empresa
 ) VALUES (
     '12345678-9', -- RUT del encargado
-    'Carlos Ruiz', -- Nombre del encargado
-    'carlos.ruiz@itred.cl', -- Email del encargado
+    'Barner Piña', -- Nombre del encargado
+    'Barner.Piña@itred.cl', -- Email del encargado
     '123456789', -- Teléfono del encargado
     '987654321', -- Celular del encargado
     1 -- ID de la empresa

@@ -33,7 +33,6 @@ $query_titulos = "
     FROM C_Cotizaciones c
     JOIN C_Titulos t ON t.id_cotizacion = c.id_cotizacion
     JOIN C_Detalles d ON d.id_titulo = t.id_titulo
-    JOIN C_Notas n ON n.id_titulo = t.id_titulo
     LEFT JOIN C_Subtitulos s ON s.id_subtitulo = d.id_subtitulo
     LEFT JOIN c_notas n ON n.id_titulo = t.id_titulo
     WHERE c.id_cotizacion = ?
@@ -218,6 +217,6 @@ Direccion: Guido Reni #4190
 Pedro Aguirre Cerda - Santiago - Chile
 contacto@itred.cl o itred.spa@gmail.com
 https://www.itred.cl
-Creado, Programado y Diseñado por ITred Spa.
+Creado, Programado y Diseñado por ITred Spa.
 BPPJ
 -->
