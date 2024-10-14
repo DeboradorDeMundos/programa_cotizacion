@@ -24,21 +24,21 @@ BPPJ
             <!-- Etiqueta para el campo de entrada del nombre de la empresa -->
             <label for="empresa_nombre">Nombre</label> 
             <!-- Campo de texto para ingresar el nombre de la empresa. El atributo "required" hace que el campo sea obligatorio -->
-            <input type="text" id="empresa_nombre" name="empresa_nombre" value="<?php echo htmlspecialchars($row['EmpresaNombre']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
+            <input type="text" id="empresa_nombre" name="empresa_nombre" value="<?php echo htmlspecialchars($items['EmpresaNombre']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
         </div>
 
         <div class="form-group">
             <!-- Etiqueta para el campo de entrada del área de la empresa -->
             <label for="empresa_area">Área</label> 
             <!-- Campo de texto para ingresar el área de la empresa. Este campo no es obligatorio -->
-            <input type="text" id="empresa_area" name="empresa_area" value="<?php echo htmlspecialchars($row['EmpresaArea']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
+            <input type="text" id="empresa_area" name="empresa_area" value="<?php echo htmlspecialchars($items['EmpresaArea']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
         </div>
 
         <div class="form-group">
             <!-- Etiqueta para el campo de entrada de la dirección de la empresa -->
             <label for="empresa_direccion">Dirección</label> 
             <!-- Campo de texto para ingresar la dirección de la empresa. Este campo no es obligatorio -->
-            <input type="text" id="empresa_direccion" name="empresa_direccion" value="<?php echo htmlspecialchars($row['EmpresaDireccion']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
+            <input type="text" id="empresa_direccion" name="empresa_direccion" value="<?php echo htmlspecialchars($items['EmpresaDireccion']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
         </div>
                 
         <div class="form-group" style="display: flex; align-items: center;">
@@ -51,7 +51,7 @@ BPPJ
 
             <!-- Campo de entrada de texto para el teléfono de la empresa -->
             <input type="text" id="empresa_telefono" name="empresa_telefono" 
-                value="<?php echo htmlspecialchars($row['EmpresaTelefono']); ?>"
+                value="<?php echo htmlspecialchars($items['EmpresaTelefono']); ?>"
                 placeholder="+56 9 1234 1234" 
                 maxlength="13" 
                 required 
@@ -63,7 +63,7 @@ BPPJ
             <!-- Etiqueta para el campo de entrada del email de la empresa -->
             <label for="empresa_email">Email</label> 
             <!-- Campo de correo electrónico para ingresar el email de la empresa. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
-            <input type="email" id="empresa_email" name="empresa_email" value="<?php echo htmlspecialchars($row['EmpresaEmail']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
+            <input type="email" id="empresa_email" name="empresa_email" value="<?php echo htmlspecialchars($items['EmpresaEmail']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
         </div>
     </fieldset> <!-- Cierra la caja de datos -->
 </div> <!-- Cierra la fila -->

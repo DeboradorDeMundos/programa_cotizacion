@@ -21,14 +21,14 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
     $id_encargado = intval($_GET['id']);
     // Consulta para obtener los datos del encargado basado en el ID
     $sql_encargado = "SELECT 
-        rut_encargado,
-        nombre_encargado,
-        email_encargado,
-        fono_encargado,
-        celular_encargado
-        
-    FROM C_Encargados
-    WHERE id_encargado = ?";
+        e.rut_encargado,
+        e.nombre_encargado,
+        e.email_encargado,
+        e.fono_encargado,
+        e.celular_encargado
+    FROM C_Cotizaciones cot
+    JOIN  C_Encargados e on e.id_encargado = cot.id_encargado
+    WHERE cot.id_cotizacion = ?";
 
     if ($stmt_encargado = $mysqli->prepare($sql_encargado)) {
         $stmt_encargado->bind_param("i", $id_encargado);

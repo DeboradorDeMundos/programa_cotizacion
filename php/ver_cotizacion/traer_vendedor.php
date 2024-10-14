@@ -21,13 +21,14 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
     $id_vendedor = intval($_GET['id']);
     // Consulta para obtener los datos del vendedor basado en el ID
     $sql_vendedor = "SELECT 
-        rut_vendedor,
-        nombre_vendedor,
-        email_vendedor,
-        fono_vendedor,
-        celular_vendedor
-    FROM C_Vendedores
-    WHERE id_vendedor = ?";
+        v.rut_vendedor,
+        v.nombre_vendedor,
+        v.email_vendedor,
+        v.fono_vendedor,
+        v.celular_vendedor
+    FROM C_Cotizaciones cot
+    JOIN C_Vendedores v on cot.id_vendedor = v.id_vendedor
+    WHERE cot.id_cotizacion = ?";
 
     if ($stmt_vendedor = $mysqli->prepare($sql_vendedor)) {
         $stmt_vendedor->bind_param("i", $id_vendedor);

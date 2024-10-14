@@ -11,32 +11,24 @@ BPPJ
 
 
 /* --------------------------------------------------------------------------------------------------------------
-    -------------------------------------- INICIO ITred Spa mensaje despedida .CSS --------------------------------------
+    -------------------------------------- INICIO ITred Spa Marca de agua .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
+.marca-agua {
+    position: absolute; /* O ajusta según tu diseño */
+    top: 10%; /* Ajusta según tu diseño */
+    left: 10%; /* Ajusta según tu diseño */
+    opacity: 0.5; /* Para la transparencia */
+    color: black; /* Cambia el color del texto según tu preferencia */
+}
 
-    .marca-agua {
-        position: fixed;
-        opacity: 0.1;
-        font-size: 50px;
-        color: grey;
-        text-align: center;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: -1; /* Mantenerlo detrás del contenido */
-    }
-    
-    .marca-agua img {
-        max-width: 100%;
-        height: auto;
-    }
-    
-
+.foto-marca-agua {
+    max-width: 100px; /* Ajusta el tamaño de la foto según tu preferencia */
+    filter: grayscale(100%); /* Aplica el filtro de blanco y negro */
+}
 
 /* --------------------------------------------------------------------------------------------------------------
-    ---------------------------------------- FIN ITred Spa mensaje despedida .CSS ---------------------------------------
+    ---------------------------------------- FIN ITred Spa Marca de agua .CSS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
 

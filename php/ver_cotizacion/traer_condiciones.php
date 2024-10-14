@@ -12,23 +12,33 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Traer condiciones.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
     <?php
-// Verificar si $row no es nulo antes de realizar la consulta
-if ($row !== null) {
-    // Consulta para obtener las condiciones generales de la empresa
-    $query_condiciones = "SELECT id_condiciones, descripcion_condiciones FROM C_Condiciones_Generales WHERE id_empresa = ?";
+// Verificar si $items no es nulo antes de realizar la consulta
+if ($items !== null) {
+    // Consulta para obtener todas las condiciones generales de la empresa
+    $query_condiciones = "SELECT 
+                            con.id_condiciones, 
+                            con.descripcion_condiciones 
+                            FROM C_Cotizaciones cot
+                            JOIN  C_Condiciones_Generales con on con.id_empresa = cot.id_empresa
+                            WHERE cot.id_cotizacion = ?";
     
     // Preparar la consulta
     if ($stmt_cond = $mysqli->prepare($query_condiciones)) {
         // Vincular el parámetro de la consulta
-        $stmt_cond->bind_param('i', $id);
+        $stmt_cond->bind_param('i', $id_cotizacion);
         // Ejecutar la consulta
-        $stmt_cond->execute();
-        // Obtener el resultado de la consulta
-        $result_cond = $stmt_cond->get_result();
-        // Obtener todas las condiciones como un arreglo asociativo
-        $condiciones = $result_cond->fetch_all(MYSQLI_ASSOC);
-        // Cerrar la declaración
-        $stmt_cond->close();
+        if ($stmt_cond->execute()) {
+            // Obtener el resultado de la consulta
+            $result_cond = $stmt_cond->get_result();
+            // Obtener todas las condiciones como un arreglo asociativo
+            $condiciones = $result_cond->fetch_all(MYSQLI_ASSOC);
+            
+            // Cerrar la declaración
+            $stmt_cond->close();
+        } else {
+            // Mostrar error si la consulta falla
+            echo "<p>Error al ejecutar la consulta de condiciones generales: " . $stmt_cond->error . "</p>";
+        }
     } else {
         // Mostrar error si no se pudo preparar la consulta
         echo "<p>Error al preparar la consulta de condiciones generales: " . $mysqli->error . "</p>";
@@ -37,7 +47,37 @@ if ($row !== null) {
     // Mostrar mensaje si no se encontró la empresa
     echo "<p>No se encontró la empresa con el ID proporcionado.</p>";
 }
-?> 
+
+// Consulta para obtener las condiciones seleccionadas de la cotización
+$query_condiciones_seleccionadas = "SELECT con.id_condiciones                             
+                                    FROM C_Cotizaciones cot
+                                    JOIN  c_cotizacion_condiciones con on con.id_cotizacion = cot.id_cotizacion
+                                    WHERE cot.id_cotizacion = ?";
+
+// Preparar la consulta
+if ($stmt_seleccionadas = $mysqli->prepare($query_condiciones_seleccionadas)) {
+    // Vincular el parámetro de la consulta
+    $stmt_seleccionadas->bind_param('i', $id_cotizacion);
+    // Ejecutar la consulta
+    if ($stmt_seleccionadas->execute()) {
+        $result_seleccionadas = $stmt_seleccionadas->get_result();
+
+        // Almacenar las condiciones seleccionadas en un array
+        $condiciones_seleccionadas = [];
+        while ($row_seleccionada = $result_seleccionadas->fetch_assoc()) {
+            $condiciones_seleccionadas[] = $row_seleccionada['id_condiciones'];
+        }
+
+        $stmt_seleccionadas->close();
+    } else {
+        // Mostrar error si la consulta falla
+        echo "<p>Error al ejecutar la consulta de condiciones seleccionadas: " . $stmt_seleccionadas->error . "</p>";
+    }
+} else {
+    // Mostrar error si no se pudo preparar la consulta
+    echo "<p>Error al preparar la consulta de condiciones seleccionadas: " . $mysqli->error . "</p>";
+}
+?>
 
 <!-- Checkbox para mostrar/ocultar condiciones generales -->
 <label>
@@ -49,14 +89,15 @@ if ($row !== null) {
     <tr>
         <th style="background-color:lightgray" colspan="2">CONDICIONES GENERALES</th>
     </tr>
-    <?php if (isset($condiciones) && !empty($condiciones)): // Verificar si $condiciones está definido ?>
+    <?php if (isset($condiciones) && !empty($condiciones)): ?>
         <?php foreach ($condiciones as $condicion): ?>
             <tr>
                 <td>
                     <?php echo htmlspecialchars($condicion['id_condiciones']) . '.- ' . htmlspecialchars($condicion['descripcion_condiciones']); ?>
                 </td>
                 <td>
-                    <input type="checkbox" name="condicion_check[]" value="<?php echo htmlspecialchars($condicion['id_condiciones']); ?>" />
+                    <input type="checkbox" name="condicion_check[]" value="<?php echo htmlspecialchars($condicion['id_condiciones']); ?>"
+                        <?php echo in_array($condicion['id_condiciones'], $condiciones_seleccionadas) ? 'checked' : ''; ?> />
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -96,8 +137,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "Cotización y condiciones generales guardadas correctamente.";
 }
 ?>
-
-
 
      <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Traer condiciones.PHP ----------------------------------------

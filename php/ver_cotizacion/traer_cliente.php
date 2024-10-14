@@ -25,6 +25,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
     $sql_cliente = "SELECT 
         c.id_cliente,
         c.nombre_cliente,
+        c.rut_cliente,
         c.empresa_cliente,
         c.direccion_cliente,
         c.lugar_cliente,
@@ -49,6 +50,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
             // Asignar los valores a las variables
             $cliente_id = $row['id_cliente'];
             $cliente_nombre = $row['nombre_cliente'];
+            $cliente_rut = $row['rut_cliente'];
             $cliente_empresa = $row['empresa_cliente'];
             $cliente_direccion = $row['direccion_cliente'];
             $cliente_lugar = $row['lugar_cliente'];

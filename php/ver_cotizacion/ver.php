@@ -25,78 +25,66 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
      -- FINAL CONEXION BD --
      ------------------------ -->
      
-<html>
+     <html>
 <head>
     <link rel="stylesheet" href="../../css/ver_cotizacion/ver.css">
 </head>
 <body>
-        <!-- Contenedor de botones -->
     <!-- Contenedor de botones -->
     <div class="button-contenedor">
         <button class="button volver" onclick="window.history.back()">Volver</button>
         <button class="button imprimir" onclick="imprimir()">Imprimir</button>
     </div>
+
+    <!-- Contenedor principal -->
     <div class="contenedor">
+        <!-- Importar la marca de agua -->
+        <?php include 'marca_de_agua.php'; ?>
 
         <?php include 'header.php'; ?>
-
         <?php include 'info_cliente.php'; ?>
-
         <?php include 'detalle.php'; ?>
-
-        
         <?php include 'totales.php'; ?>
 
-
         <table class="totals">
-    <tr class="son">
-        <td colspan="2">
-            <strong>SON:</strong> <span id="total_final_letras"><?php echo htmlspecialchars($totales['total_final_letras']); ?></span> PESOS
-        </td>
-    </tr>
-</table>
+            <tr class="son">
+                <td colspan="2">
+                    <strong>SON:</strong> <span id="total_final_letras"><?php echo htmlspecialchars($totales['total_final_letras']); ?></span> PESOS
+                </td>
+            </tr>
+        </table>
 
-    <table>
-    <tr>
-        <td>
-            <?php include 'ver_requisitos.php'; ?>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <?php include 'ver_condiciones.php'; ?>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <?php include 'ver_obligaciones.php'; ?>
-        </td>
-    </tr>
-    </table>
-<div>
-    <?php include 'mensaje_despedida.php'; ?>
+        <table>
+            <tr>
+                <td>
+                    <?php include 'ver_requisitos.php'; ?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <?php include 'ver_condiciones.php'; ?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <?php include 'ver_obligaciones.php'; ?>
+                </td>
+            </tr>
+        </table>
+
+        <div>
+            <?php include 'mensaje_despedida.php'; ?>
+        </div>
+        <?php include 'bancos.php'; ?>
+        <?php include 'posicionar_firma.php'; ?>
+
     </div>
-    <?php include 'bancos.php'; ?>
 
-    <table>
-    <tr>
-        
-        <td>
-            <?php include 'posicionar_firma.php'; ?>
-
-        </td>
-    </tr>
-    </table>
-
-    
-  </div>
- </body>
- <script src="../../js/ver_cotizacion/ver.js"></script> 
+    <script src="../../js/ver_cotizacion/ver.js"></script>
+</body>
 </html>
 
-
 <?php 
-
 // Cerrar la conexión principal al final
 $mysqli->close();
 ?>

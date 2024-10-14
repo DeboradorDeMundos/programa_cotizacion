@@ -12,8 +12,7 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Traer traer_pago .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-<?php
-
+    <?php
 $pagos = [];
 
 if (isset($_GET['id']) && intval($_GET['id']) > 0) {
@@ -21,10 +20,10 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
     $sql_pagos = "SELECT numero_pago, descripcion, porcentaje_pago, monto_pago, fecha_pago 
                   FROM C_pago 
                   WHERE id_cotizacion = ?";
-    
+
     $stmt = $mysqli->prepare($sql_pagos);
     $stmt->bind_param("i", $id_cotizacion);
-    
+
     if ($stmt->execute()) {
         $result = $stmt->get_result();
         $pagos = $result->fetch_all(MYSQLI_ASSOC); // Almacenar los pagos en un arreglo
@@ -34,6 +33,9 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
 
     $stmt->close();
 }
+?>
+
+<?php
 
 // Procesar el formulario cuando se envía
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -95,23 +97,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <link rel="stylesheet" href="../../css/ver_cotizacion/traer_pago.css">
 <fieldset id="payment-section">
-    <legend>Información de traer_pago</legend>
+    <legend>Información de Pagos</legend>
     <button type="button" onclick="AgregarPago()">Agregar Pago</button>
-    <table id="payment-table" style="display: none;"> <!-- Inicialmente oculto -->
-        <thead>
-            <tr>
-                <th>N° Pago</th>
-                <th>Descripción de Pago</th>
-                <th>% De Pago</th>
-                <th>Monto de Pago</th>
-                <th>Fecha de Pago</th>
-                <th>Acción</th>
-            </tr>
-        </thead>
-        <tbody id="payments-contenedor">
-            <!-- Aquí se agregarán dinámicamente los pagos -->
-        </tbody>
-    </table>
+    
+        <table id="payment-table" <?php if (count($pagos) > 0) { echo 'style="display:table;"'; } else { echo 'style="display:none;"'; } ?>>
+            <thead>
+                <tr>
+                    <th>N° Pago</th>
+                    <th>Descripción de Pago</th>
+                    <th>% De Pago</th>
+                    <th>Monto de Pago</th>
+                    <th>Fecha de Pago</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody id="payments-contenedor">
+                <?php if (!empty($pagos)): ?>
+                    <?php foreach ($pagos as $pago): ?>
+                        <tr>
+                            <!-- Número de pago (solo lectura) -->
+                            <td>
+                                <input type="hidden" name="numero_pago[]" value="<?php echo htmlspecialchars($pago['numero_pago']); ?>">
+                                <?php echo htmlspecialchars($pago['numero_pago']); ?>
+                            </td>
+                            <!-- Descripción editable -->
+                            <td>
+                                <input type="text" name="descripcion_pago[]" value="<?php echo htmlspecialchars($pago['descripcion']); ?>">
+                            </td>
+                            <!-- Porcentaje de pago editable -->
+                            <td>
+                                <input type="number" name="porcentaje_pago[]" value="<?php echo htmlspecialchars($pago['porcentaje_pago']); ?>" step="0.01" min="0">
+                            </td>
+                            <!-- Monto editable -->
+                            <td>
+                                <input type="number" name="monto_pago[]" value="<?php echo htmlspecialchars($pago['monto_pago']); ?>" step="0.01" min="0">
+                            </td>
+                            <!-- Fecha editable -->
+                            <td>
+                                <input type="date" name="fecha_pago[]" value="<?php echo htmlspecialchars($pago['fecha_pago']); ?>">
+                            </td>
+                            <!-- Acción: Eliminar -->
+                            <td>
+                                <button type="button" onclick="EliminarPago(<?php echo $pago['numero_pago']; ?>)">Eliminar</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="6">No hay pagos registrados.</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
 </fieldset>
 
-<script src="../../js/ver_cotizacion/traer_pago.js"></script> 
+<script src="../../js/ver_cotizacion/traer_pago.js"></script>
+

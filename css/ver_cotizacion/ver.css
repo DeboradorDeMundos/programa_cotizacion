@@ -298,6 +298,53 @@ a {
 }
 
 
+.button-contenedor {
+    position: fixed;
+    top: 20px; /* Ajusta la distancia desde la parte superior */
+    left: 20px; /* Ajusta la distancia desde la izquierda */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.button {
+    background-color: #4CAF50; /* Color verde agradable */
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+    background-color: #45a049; /* Color verde un poco más oscuro al pasar el mouse */
+    transform: scale(1.05); /* Pequeño efecto de agrandamiento al pasar el mouse */
+}
+
+.button:active {
+    transform: scale(0.98); /* Efecto al hacer clic */
+}
+
+.button.volver {
+    background-color: #f44336; /* Rojo para el botón de volver */
+}
+
+.button.volver:hover {
+    background-color: #e53935;
+}
+
+.button.imprimir {
+    background-color: #008CBA; /* Azul para el botón de imprimir */
+}
+
+.button.imprimir:hover {
+    background-color: #007bb5;
+}
+
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Ver .CSS ---------------------------------------

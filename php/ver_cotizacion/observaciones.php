@@ -11,12 +11,53 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa observaciones.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-     
-    <link rel="stylesheet" href="../../css/ver_cotizacion/observaciones.css">
+    <?php
+    // Consulta para obtener la observación (solo una)
+    $query_observacion = "
+    SELECT o.id_observacion, o.observacion
+    FROM C_Observaciones AS o
+    WHERE o.id_cotizacion = ?
+    LIMIT 1"; // Limitamos a un solo resultado
+
+    // Preparar la consulta
+    if ($stmt_observacion = $mysqli->prepare($query_observacion)) {
+        // Vincular parámetros
+        $stmt_observacion->bind_param("i", $id_cotizacion);
+
+        // Ejecutar la consulta
+        if ($stmt_observacion->execute()) {
+            // Obtener el resultado de la consulta
+            $result_observacion = $stmt_observacion->get_result();
+
+            // Verificar si hay resultados de observación
+            if ($result_observacion->num_rows > 0) {
+                // Obtener la observación (solo una)
+                $observacion = $result_observacion->fetch_assoc();
+            } else {
+                // Si no hay observación, definirla como una cadena vacía
+                $observacion['observacion'] = '';
+            }
+        } else {
+            echo "Error al ejecutar la consulta: " . $stmt_observacion->error;
+        }
+
+        // Cerrar la consulta
+        $stmt_observacion->close();
+    } else {
+        echo "Error al preparar la consulta: " . $mysqli->error;
+    }
+?>
+
+
+<link rel="stylesheet" href="../../css/ver_cotizacion/observaciones.css">
 <fieldset class="observaciones-box">
     <div class="form-group">
-        <label for="observacion">Observaciones:</label>
-        <textarea id="observacion" name="observacion" rows="4" cols="50" placeholder="Agrega cualquier comentario adicional (OPCIONAL)..."></textarea>
+        <label for="observacion">Observación:</label>
+        <textarea id="observacion" name="observacion"
+            rows="4" cols="50" 
+            placeholder="Agrega cualquier comentario adicional (OPCIONAL)...">
+            <?php echo htmlspecialchars($observacion['observacion'] ?? ''); ?>
+        </textarea>
     </div>        
 </fieldset>
 

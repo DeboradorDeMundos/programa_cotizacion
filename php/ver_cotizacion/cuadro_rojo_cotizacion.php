@@ -27,7 +27,7 @@ BPPJ
         minlength="7" maxlength="12" 
         title="El RUT debe contener entre 7 y 12 caracteres numéricos o 'K'." 
         required oninput="FormatearRut(this)" 
-        value="<?php echo htmlspecialchars($row['EmpresaRUT']); ?>"> 
+        value="<?php echo htmlspecialchars($items['EmpresaRUT']); ?>"> 
         
         <!-- Etiqueta para el campo de entrada del número de cotización -->
         <label for="numero_cotizacion">Número de Cotización:</label> 

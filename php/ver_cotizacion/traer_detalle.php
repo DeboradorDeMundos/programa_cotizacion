@@ -127,9 +127,6 @@ $stmt_detalles->close();
                     <button type="button" onclick="addDetailSection()">Agregar un nuevo título</button>
                 </div>
             </div>
-            <div>
-                <button type="submit">Guardar Cotización</button> <!-- Botón para enviar el formulario -->
-            </div>
         </fieldset>
 </body>
 </html>

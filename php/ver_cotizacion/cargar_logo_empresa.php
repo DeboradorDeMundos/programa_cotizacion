@@ -40,9 +40,9 @@ if ($id_empresa > 0) {
         // Verificar si se encontró exactamente una empresa
         if ($result_empresa->num_rows == 1) {
             // Obtener los detalles de la empresa
-            $row = $result_empresa->fetch_assoc();
+            $items = $result_empresa->fetch_assoc();
             // Obtener el tipo de firma de la empresa
-            $tipo_firma = $row['tipo_firma'];
+            $tipo_firma = $items['tipo_firma'];
 
             // Consulta para obtener la firma de la empresa
             $sql_firma = "
@@ -180,9 +180,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
     <label for="subir-logo" class="contenedor-logo">
-        <?php if (isset($row['ruta_foto']) && !empty($row['ruta_foto'])): ?>
+        <?php if (isset($items['ruta_foto']) && !empty($items['ruta_foto'])): ?>
             <!-- Mostrar la imagen de perfil si existe -->
-            <img src="<?php echo htmlspecialchars($row['ruta_foto'], ENT_QUOTES, 'UTF-8'); ?>" alt="Foto de perfil" id_empresa="Previsualizar-logo" class="logo" onclick="document.getElementById('subir-logo').click();" />
+            <img src="<?php echo htmlspecialchars($items['ruta_foto'], ENT_QUOTES, 'UTF-8'); ?>" alt="Foto de perfil" id_empresa="Previsualizar-logo" class="logo" onclick="document.getElementById('subir-logo').click();" />
         <?php else: ?>
             <!-- Mostrar texto para cargar logo si no hay imagen -->
             <span id_empresa="logo-text" onclick="document.getElementById('subir-logo').click();">Cargar Logo de Empresa</span>
