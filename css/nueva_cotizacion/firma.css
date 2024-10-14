@@ -15,7 +15,40 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 
-
+    .contenedor-alineacion {
+        display: inline-flex; /* Mostrar los elementos en línea */
+        justify-content: center; /* Centrar los elementos */
+        align-items: center; /* Alinear verticalmente */
+        gap: 20px; /* Espacio entre los botones de opción */
+        padding: 10px; /* Añadir espacio interno */
+        background-color: #e9ecef; /* Color de fondo suave */
+        border: 2px solid #007bff; /* Borde azul para resaltar */
+        border-radius: 10px; /* Bordes redondeados */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+        margin: 20px auto; /* Margen y centrar en pantalla */
+        max-width: 400px; /* Limitar el ancho */
+    }
+    
+    .contenedor-alineacion label {
+        font-family: Arial, sans-serif; /* Fuente general */
+        font-size: 16px; /* Tamaño de letra */
+        font-weight: bold; /* Negrita */
+        color: #333; /* Color del texto */
+        cursor: pointer; /* Cambiar el cursor al pasar sobre los textos */
+    }
+    
+    .contenedor-alineacion input[type="radio"] {
+        margin-right: 8px; /* Espacio entre el botón de radio y el texto */
+    }
+    
+    .contenedor-alineacion label:hover {
+        color: #007bff; /* Cambiar color de texto al pasar el cursor */
+    }
+    
+    input[type="radio"]:checked + label {
+        color: #007bff; /* Cambiar color de texto del label seleccionado */
+    }
+    
 
 
 /* --------------------------------------------------------------------------------------------------------------

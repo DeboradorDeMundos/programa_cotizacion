@@ -91,9 +91,8 @@ BPPJ
         <div>
         <?php include 'mensaje_despedida.php'; ?>            
         </div>
-        <button type="submit" class="submit">Crear cotizacion</button> 
-        </form> <!-- Cierra el formulario -->
-    </div> <!-- Cierra el contenedor principal -->
+
+
 
     <?php include 'traer_datos_bancarios.php'; ?>
 
@@ -102,9 +101,13 @@ BPPJ
     <script src="../../js/nueva_cotizacion/nueva_cotizacion.js"></script> 
     <script src="../../js/nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
    
-    
+    <button type="submit" class="submit">Crear cotizacion</button> 
+    </form> <!-- Cierra el formulario -->
+    </div> <!-- Cierra el contenedor principal -->
 </body>
 </html>
+
+
 <!-- ---------------------
 -- INICIO CIERRE CONEXION BD --
      --------------------- -->
