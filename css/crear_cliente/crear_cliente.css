@@ -13,46 +13,46 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Crear Clientes .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-
-/* Estilo general del cuerpo */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f8f8; /* Fondo claro */
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
-
-/* Estilo para el botón */
-button.submit {
-    display: block;
-    width: 100%; /* Ancho completo */
-    padding: 12px 20px;
-    font-size: 16px;
-    background-color: #333; /* Fondo oscuro */
-    color: #fff; /* Texto blanco */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-align: center;
-}
-
-button.submit:hover {
-    background-color: #7d5a50; /* Cambia a marrón cálido en hover */
-}
-
-/* Contenedor del formulario */
-.contenedor {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ddd;
-}
-
+    .contenedor {
+        display: flex; /* Activamos flexbox */
+        justify-content: center; /* Separa los formularios */
+        align-items: flex-start; /* Alinea los formularios en la parte superior */
+        gap: 20px; /* Espaciado entre los formularios */
+        padding: 20px;
+        flex-wrap: wrap; /* Asegura que se ajusten si no caben en una sola fila */
+    }
+    
+    .formulario-empresa,
+    .formulario-encargado {
+        width: 48%; /* Aseguramos que cada formulario ocupe menos de la mitad para que quepan en el mismo nivel */
+        background-color: #f9f9f9;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+    }
+    
+    h3 {
+        text-align: center;
+    }
+    
+    .submit {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+    
+    .submit:hover {
+        background-color: #45a049;
+    }
+    
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Crear Clientes .CSS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

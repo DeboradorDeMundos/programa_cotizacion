@@ -89,9 +89,7 @@ if ($id > 0) {
 
                 // Cerrar la consulta de la firma
                 $stmt_firma->close();
-            } else {
-                echo "<p>Error al preparar la consulta de la firma: " . $mysqli->error . "</p>";
-            }
+            } 
 
             // Consulta para obtener los días de validez de la empresa
             $sql_validez = "SELECT dias_validez FROM E_Empresa WHERE id_empresa = ? ";
@@ -106,9 +104,7 @@ if ($id > 0) {
                 $stmt_validez->fetch();
                 // Cerrar la consulta
                 $stmt_validez->close();
-            } else {
-                echo "<p>Error al preparar la consulta de días de validez: " . $mysqli->error . "</p>";
-            }
+            } 
 
             // Obtener el número de cotización más alto
             $sql_last_cot = "SELECT numero_cotizacion FROM C_Cotizaciones WHERE id_empresa = ? ORDER BY numero_cotizacion DESC LIMIT 1";
@@ -125,13 +121,8 @@ if ($id > 0) {
                 $stmt_last_cot->close();
                 // Calcular el próximo número de cotización
                 $numero_cotizacion = ($last_num_cotizacion) ? (int)$last_num_cotizacion + 1 : 1;
-            } else {
-                echo "<p>Error al preparar la consulta de cotización: " . $mysqli->error . "</p>";
-            }
-        } else {
-            // Si no se encontró la empresa, mostrar un mensaje
-            echo "<p>No se encontró la empresa con el ID proporcionado.</p>";
-        }
+            } 
+        } 
     }
 }
 ?>
@@ -160,8 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Mover el archivo cargado al directorio de destino
         if (move_uploaded_file($tmp_name, $upload_file)) {
-            echo "Imagen subida correctamente."; // Mensaje de éxito
-
+            
             // Insertar la ruta de la foto en la tabla FotosPerfil
             $sql_foto = "INSERT INTO C_FotosPerfil (ruta_foto) VALUES (?)";
             $stmt_foto = $mysqli->prepare($sql_foto);
@@ -170,17 +160,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($stmt_foto->execute()) {
                 echo "Foto del perfil insertada correctamente."; // Mensaje de éxito
                 $empresa_id_foto = $mysqli->insert_id; // Obtener el ID de la foto insertada
-            } else {
-                die("Error al insertar la foto del perfil: " . $stmt_foto->error); // Mensaje de error
-            }
+            } 
             // Cerrar la consulta
             $stmt_foto->close();
-        } else {
-            die("."); // Mensaje de error si la subida falla
-        }
-    } else {
-        echo "."; // Mensaje de error si no se subió una imagen
-    }
+        } 
+    } 
 }
 ?>
     <label for="subir-logo" class="contenedor-logo">

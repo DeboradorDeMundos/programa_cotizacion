@@ -88,23 +88,31 @@ CREATE TABLE E_Encargados (
 -- ------------------------------------------------------------------------------------------------------------ 
 
 -- Eliminar la tabla Clientes si existe
-DROP TABLE IF EXISTS Clientes;
+DROP TABLE IF EXISTS C_Clientes;
 
 -- Crear la tabla Clientes
 CREATE TABLE C_Clientes (
     id_cliente int NOT NULL AUTO_INCREMENT, -- Identificador único del cliente
-    nombre_cliente varchar(255) NOT NULL, -- Nombre del cliente
-    empresa_cliente varchar(255), -- Empresa del cliente
-    rut_cliente varchar(20) , -- RUT del cliente (debe ser único)
-    direccion_cliente varchar(255), -- Dirección del cliente
-    lugar_cliente varchar(255), -- Lugar del cliente
-    telefono_cliente varchar(20), -- Teléfono del cliente
-    email_cliente varchar(100), -- Email del cliente
-    cargo_cliente varchar(255), -- Cargo del cliente
-    giro_cliente varchar(255), -- Giro del cliente
-    comuna_cliente varchar(255), -- Comuna del cliente
-    ciudad_cliente varchar(255), -- Ciudad del cliente
-    tipo_cliente varchar(255), -- Tipo del cliente
+    rut_empresa_cliente varchar(20) , -- RUT de la empresa del cliente (debe ser único)
+    nombre_empresa_cliente varchar(255), -- Nombre Empresa del cliente
+    telefono_empresa_cliente varchar(20), -- Teléfono de la empresa del cliente 
+    email_empresa_cliente varchar(100), -- Email de la empresa del cliente
+    giro_empresa_cliente varchar(255), -- Giro de la empresa del cliente
+    tipo_empresa_cliente varchar(255), -- Tipo de empresa del cliente
+    ciudad_empresa_cliente varchar(255), -- Ciudad de la empresa del cliente
+    comuna_empresa_cliente varchar(255), -- Comuna de la empresa del cliente
+    direccion_empresa_cliente varchar(255), -- Direccion de la empresa del cliente
+    observacion varchar(255), -- Observacion de la empresa del cliente
+    --Datos del encargado de la empresa 
+    rut_encargado_cliente varchar(20) , -- RUT de la empresa del cliente (debe ser único)
+    nombre_encargado_cliente varchar(255) NOT NULL, -- Nombre del cliente
+    direccion_encargado_cliente varchar(255), -- Dirección del cliente
+    telefono_encargado_cliente varchar(20), -- Teléfono del cliente    
+    email_encargado_cliente varchar(100), -- Email del cliente
+    cargo_encargado_cliente varchar(255), -- Cargo del cliente
+    comuna_encargado_cliente varchar(255), -- Comuna del cliente
+    ciudad_encargado_cliente varchar(255), -- Ciudad del cliente
+    
     PRIMARY KEY (id_cliente) -- Definición de la clave primaria
 ) ENGINE=InnoDB ;
 
@@ -537,6 +545,17 @@ CREATE TABLE E_Firmas (
     web_firma VARCHAR(255) NULL, -- Campo para el sitio web
     FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa)
 );
+
+
+
+- ------------------------------------------------------------------------------------------------------------
+-- ------------------------------------- TABLA firmas -----------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------ 
+
+
+
+
+
 
 
 

@@ -101,17 +101,32 @@ BPPJ
     <script src="../../js/nueva_cotizacion/nueva_cotizacion.js"></script> 
     <script src="../../js/nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
    
-    <button type="submit" class="submit">Crear cotizacion</button> 
+    <button type="submit" class="submit">Guardar cotizacion</button> 
     </form> <!-- Cierra el formulario -->
     </div> <!-- Cierra el contenedor principal -->
 </body>
 </html>
 
 
+
+
 <!-- ---------------------
 -- INICIO CIERRE CONEXION BD --
      --------------------- -->
 <?php
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    // Redirigir a la página de visualización de la cotización usando un formulario oculto
+    echo '
+    <form id="redireccionar" method="GET" action="http://localhost/programa_cotizacion/php/ver_cotizacion/ver.php">
+        <input type="hidden" name="id" value="' . $id_cotizacion . '">
+    </form>
+    <script>
+        document.getElementById("redireccionar").submit();
+    </script>';
+}
+
     $mysqli->close();
 ?>
 <!-- ---------------------

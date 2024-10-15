@@ -1,0 +1,61 @@
+/* 
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ 
+*/
+
+
+/* --------------------------------------------------------------------------------------------------------------
+    -------------------------------------- INICIO ITred Spa formulario encargado .CSS --------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+    .formulario-encargado {
+        width: 45%;
+        background-color: #e6f7ff; /* Fondo azul claro */
+        padding: 20px;
+        border: 2px solid #2b669a; /* Borde azul más oscuro */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra elegante */
+    }
+    
+    .formulario-encargado h3 {
+        color: #2b669a; /* Azul oscuro para el título */
+        font-family: 'Arial', sans-serif;
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .formulario-encargado input,
+    .formulario-encargado select {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .formulario-encargado input:focus,
+    .formulario-encargado select:focus {
+        border-color: #2b669a; /* Resalta los campos al estar enfocados */
+        outline: none;
+    }
+    
+/* --------------------------------------------------------------------------------------------------------------
+    ---------------------------------------- FIN ITred Spa formulario encargado .CSS ---------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+
+/*
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+*/

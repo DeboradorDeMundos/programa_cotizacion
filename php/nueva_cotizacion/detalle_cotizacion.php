@@ -93,7 +93,7 @@ if (!$id_empresa) {
         die("Error en la ejecución de la consulta: " . $stmt->error);
     }
 
-    $stmt->close();
+    $id_cotizacion = $stmt->insert_id;
 }
 ?>
 
