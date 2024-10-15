@@ -14,35 +14,43 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Marca de agua .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-    .watermark {
-        position: fixed;
+    .marca_de_agua {
+        position: fixed; /* Fija la marca de agua al viewport */
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        opacity: 0.1; /* Ajusta la opacidad según sea necesario */
-        background-repeat: repeat;
-        pointer-events: none; /* Asegúrate de que no interfiera con otros elementos */
-        display: none; /* Inicialmente oculto */
+        width: 100vw; /* Usa el ancho completo de la ventana */
+        height: 100vh; /* Usa la altura completa de la ventana */
+        z-index: -1; /* Coloca detrás de otros elementos */
+        opacity: 0.1; /* Controla la opacidad */
+        background-repeat: no-repeat; /* No repetir imagen por defecto */
+        background-size: cover; /* Ajusta la imagen para cubrir todo el espacio */
+        pointer-events: none; /* Asegúrate de que no interfiera con clics */
+        filter: grayscale(100%);
     }
-    .horizontal-watermark {
-        background-size: 150px; /* Ajusta el tamaño de la imagen de fondo */
+    
+    .horizontal-marca_de_agua {
+        background-size: 150px; /* Ajusta el tamaño de la imagen */
         background-position: center; /* Centrar la imagen */
-        filter: grayscale(100%); /* Aplicar filtro en blanco y negro */
+        filter: grayscale(100%);
     }
-    .vertical-watermark {
-        background-size: 150px; /* Ajusta el tamaño de la imagen de fondo */
-        background-position: center; /* Centrar la imagen */
+    
+    .vertical-marca_de_agua {
+        background-size: 150px;
+        background-position: center;
         transform: rotate(90deg);
-        transform-origin: center; /* Asegura que la rotación sea desde el centro */
-        filter: grayscale(100%); /* Aplicar filtro en blanco y negro */
+        transform-origin: center center;
+        filter: grayscale(100%);
     }
-    .diagonal-watermark {
-        background-size: 150px; /* Ajusta el tamaño de la imagen de fondo */
-        transform: rotate(-45deg); /* Ajusta la rotación para diagonal */
-        filter: grayscale(100%); /* Aplicar filtro en blanco y negro */
+    
+    .diagonal-marca_de_agua {
+        background-size: 150px;
+        background-position: center;
+        transform: rotate(-45deg);
+        transform-origin: center center;
+        filter: grayscale(100%);
+        background-repeat: repeat; /* Asegurar que se repita correctamente */
     }
+    
     .texto-personalizado {
         position: absolute;
         left: 50%;
@@ -51,6 +59,57 @@ BPPJ
         color: rgba(0, 0, 0, 0.1); /* Color y opacidad */
         font-size: 30px; /* Tamaño de fuente por defecto */
         text-align: center;
+        white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+        pointer-events: none; /* Asegúrate de que no interfiera con clics */
+    }
+
+    .centrado-marca_de_agua {
+        background-size: contain; /* Ajusta el tamaño de la imagen al contenedor */
+        background-position: center; /* Centrar la imagen */
+        background-repeat: no-repeat; /* No repetir la imagen */
+        filter: grayscale(100%); /* Aplicar filtro en blanco y negro */
+    }
+
+    .patron-texto {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.1;
+        pointer-events: none;
+        display: grid; /* Usa un sistema de cuadrícula para el patrón */
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Ajusta el tamaño según lo que necesites */
+        grid-auto-rows: 50px; /* Ajusta la altura de las filas */
+    }
+    
+    .patron-texto span {
+        display: block; /* Cambiado a block para ocupar toda la línea */
+        text-align: center;
+        white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
+    }
+    
+    .patron-horizontal span {
+        transform: none;
+    }
+    
+    .patron-vertical span {
+        transform: rotate(90deg);
+    }
+    
+    .patron-diagonal span {
+        transform: rotate(-45deg);
+    }
+
+            /* Estilos para impresión */
+    @media print {
+        #form-marca-agua {
+            display: none; /* Ocultar el formulario al imprimir */
+        }
+        .marca_de_agua {
+            display: block; /* Asegurarse de que la marca de agua se muestre */
+        }
     }
 
 /* --------------------------------------------------------------------------------------------------------------

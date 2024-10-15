@@ -49,7 +49,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
         }
 
         /* Asegúrate de que la marca de agua se imprima */
-        .watermark {
+        .marca_de_agua {
             display: block !important; /* Asegúrate de que la marca de agua se imprima */
         }
     }

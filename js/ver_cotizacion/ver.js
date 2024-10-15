@@ -22,7 +22,7 @@ BPPJ
         const contenidoClonado = contenedor.cloneNode(true);
         
         // Ocultar los elementos que no deseas imprimir
-        const elementosAHidear = document.querySelectorAll('.watermark, #textoPersonalizado, #form-marca-agua, input[type="radio"], select');
+        const elementosAHidear = document.querySelectorAll('.marca_de_agua, #textoPersonalizado, #form-marca-agua, input[type="radio"], select');
         elementosAHidear.forEach(elemento => {
             elemento.style.display = 'none'; // Ocultar los elementos
         });
