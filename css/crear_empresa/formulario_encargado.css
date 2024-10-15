@@ -15,7 +15,17 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 
+    #formulario-contenedor {
+        display: flex;
+        flex-direction: column; /* Hace que los formularios se dispongan en columnas (verticalmente) */
+        gap: 20px; /* Añade un pequeño espacio entre formularios */
+    }
 
+    .formulario-encargado {
+        border: 1px solid #ccc; /* Opcional: añade un borde alrededor de cada formulario */
+        padding: 15px; /* Añade algo de espacio interior */
+        margin-bottom: 10px; /* Añade un margen inferior para separar los formularios */
+    }
 
 
 /* --------------------------------------------------------------------------------------------------------------

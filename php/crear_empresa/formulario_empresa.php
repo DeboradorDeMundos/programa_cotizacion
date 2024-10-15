@@ -15,8 +15,8 @@ BPPJ
 <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
 <div class="row"> 
     <!-- Crea una caja para ingresar datos, ocupando las 12 columnas disponibles en el diseño. Esta caja contiene varios campos de entrada de datos -->
-    <div class="box-12 data-box"> 
-
+    <fieldset class="box-12 data-box"> 
+        <legend>Datos empresa</legend>
         <!-- Etiqueta para el campo de entrada del nombre de la empresa -->
         <label for="empresa_nombre">Nombre de la Empresa:</label>
         <input type="text" id="empresa_nombre" name="empresa_nombre" required minlength="3" maxlength="100" 
@@ -99,9 +99,9 @@ BPPJ
             placeholder="Ejemplo: https://www.miempresa.com"
             oninput="QuitarCaracteresInvalidos(this)">
        <!-- Cierra la caja de datos -->
-    </div> 
+    </fieldset> 
       <!-- Cierra la fila -->
-    </div> 
+</div> 
 <!-- JS correspondiente a formulario empresa -->
 <script src="../../js/crear_empresa/formulario_empresa.js"></script>
 

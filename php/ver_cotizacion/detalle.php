@@ -122,8 +122,6 @@ foreach ($titulos as $titulo_id => $titulo): ?>
         <tr>
             <th>nombre_producto</th>
             <th>descripcion</th>
-            <th>cantidad</th>
-            <th>precio_unitario</th>
             <th>descuento_porcentaje</th>
             <th>total</th>
         </tr>
@@ -173,8 +171,6 @@ foreach ($titulos as $titulo_id => $titulo): ?>
                 echo "<tr style='{$background_style} {$text_color_style}'>";
                 echo "<td>{$detalle['nombre_producto']}</td>";
                 echo "<td>{$detalle['descripcion']}</td>";
-                echo "<td>{$detalle['cantidad']}</td>";
-                echo "<td>$ " . (int)$detalle['precio_unitario'] . "</td>"; // Muestra sin decimales
                 echo "<td>{$detalle['descuento_porcentaje']}</td>";
                 echo "<td>$ " . (int)$detalle['total'] . "</td>"; // Muestra sin decimales
                 echo "</tr>";
@@ -196,8 +192,6 @@ foreach ($titulos as $titulo_id => $titulo): ?>
                 echo "<tr style='{$text_color_style}'>";
                 echo "<td>{$detalle['nombre_producto']}</td>";
                 echo "<td>{$detalle['descripcion']}</td>";
-                echo "<td>{$detalle['cantidad']}</td>";
-                echo "<td>$ " . (int)$detalle['precio_unitario'] . "</td>"; // Muestra sin decimales
                 echo "<td>{$detalle['descuento_porcentaje']}</td>";
                 echo "<td>$ " . (int)$detalle['total'] . "</td>"; // Muestra sin decimales
                 echo "</tr>";

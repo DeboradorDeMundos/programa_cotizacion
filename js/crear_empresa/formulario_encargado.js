@@ -137,11 +137,31 @@ function asegurarMasYDetectarPais4(input) {
    
 }
 
+function agregarNuevoFormulario() {
+    // Obtiene el contenedor donde están los formularios
+    var contenedor = document.getElementById('formulario-contenedor');
+
+    // Clona el primer formulario
+    var formularioClonado = contenedor.querySelector('.formulario-encargado').cloneNode(true);
+
+    // Limpia los campos del formulario clonado
+    var inputs = formularioClonado.querySelectorAll('input, select');
+    inputs.forEach(input => {
+        if (input.type !== 'hidden') {
+            input.value = ''; // Limpia los valores
+        }
+    });
+
+    // Añade el formulario clonado al contenedor
+    contenedor.appendChild(formularioClonado);
+}
+
 // Asegúrate de que la bandera se actualice al cargar la página
 window.onload = function() {
     const campoTelefono4 = document.getElementById('encargado_celular'); // Obtén el campo de entrada del teléfono
     asegurarMasYDetectarPais4(campoTelefono4); // Llama a la función para asegurar "+" y detectar el país
 };
+
 
 
     

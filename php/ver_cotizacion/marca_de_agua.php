@@ -11,15 +11,7 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Marca de agua .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-<?php
-// Establecer la conexión a la base de datos
-$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
-
-// Comprobar conexión
-if ($mysqli->connect_error) {
-    die("Error de conexión: " . $mysqli->connect_error);
-}
-
+    <?php
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id_cotizacion = (int) $_GET['id'];
 } else {
@@ -102,139 +94,152 @@ if ($result->num_rows > 0) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/ver_cotizacion/marca_de_agua.css">
-    <title>Marca de Agua</title>
-    <style>
-        .watermark {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.1; /* Ajusta la opacidad según sea necesario */
-            background-repeat: repeat;
-            pointer-events: none; /* Asegúrate de que no interfiera con otros elementos */
-        }
-        .horizontal-watermark {
-            background-image: url('<?php echo $ruta_foto; ?>');
-            background-size: 150px; /* Ajusta el tamaño de la imagen de fondo */
-            background-position: center; /* Centrar la imagen */
-            filter: grayscale(100%); /* Aplicar filtro en blanco y negro */
-        }
-        .diagonal-watermark {
-            background-image: url('<?php echo $ruta_foto; ?>');
-            background-size: 150px; /* Ajusta el tamaño de la imagen de fondo */
-            background-position: center; /* Centrar la imagen */
-            transform: rotate(-45deg);
-            transform-origin: center; /* Asegura que la rotación sea desde el centro */
-            filter: grayscale(100%); /* Aplicar filtro en blanco y negro */
-        }
-        .texto-personalizado {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            color: rgba(0, 0, 0, 0.1); /* Color y opacidad */
-            font-size: 30px; /* Tamaño de fuente por defecto */
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
+<link rel="stylesheet" href="../../css/ver_cotizacion/marca_de_agua.css">
+<div class="marca_de_agua"></div> <!-- Clase por defecto -->
+<div id="textoPersonalizado" class="texto-personalizado"></div> <!-- Div para texto personalizado -->
 
-    <div class="watermark <?php echo $ruta_foto ? 'horizontal-watermark' : ''; ?>"></div> <!-- Aplica la clase horizontal por defecto -->
-    <div id="textoPersonalizado" class="texto-personalizado"></div> <!-- Div para texto personalizado -->
+<!-- Formulario para cambiar la marca de agua -->
+<form id="form-marca-agua" method="POST" action="" enctype="multipart/form-data">
+    <label for="marca_agua">Seleccionar marca de agua:</label><br>
+    
+    <input type="radio" id="nombre_empresa" name="marca_agua" value="nombre_empresa" onchange="actualizarMarcaAgua()" checked>
+    <label for="nombre_empresa">Nombre de la empresa</label><br>
 
-    <!-- Formulario para cambiar la marca de agua -->
-    <form id="form-marca-agua" method="POST" action="" enctype="multipart/form-data">
-        <label for="nombre_empresa">Nombre de la empresa:</label>
-        <input type="checkbox" id="nombre_empresa" name="nombre_empresa" checked onchange="actualizarMarcaAgua()">
+    <input type="radio" id="foto_empresa" name="marca_agua" value="foto_empresa" onchange="actualizarMarcaAgua()">
+    <label for="foto_empresa">Foto de la empresa</label><br>
+
+    <input type="radio" id="imagen_personalizada" name="marca_agua" value="imagen_personalizada" onchange="subirImagen()">
+    <label for="imagen_personalizada">Imagen Personalizada:</label>
+    <input type="file" id="input_imagen_personalizada" name="imagen_personalizada" accept="image/*" style="display:none;">
+    
+    <input type="radio" id="texto_personalizado" name="marca_agua" value="texto_personalizado" onchange="activarTextoPersonalizado()">
+    <label for="texto_personalizado">Texto Personalizado:</label>
+    <input type="text" id="input_texto_personalizado" name="texto_personalizado" placeholder="Ingresa tu texto aquí" oninput="actualizarTexto()" style="display:none;">
+
+    <br><br>
+    <label for="disposicion">Disposición de la marca de agua:</label>
+    <select name="disposicion" id="disposicion" onchange="actualizarMarcaAgua()">
+        <option value="patron" selected>Patrón</option>
+        <option value="centro">Centrado</option>
+    </select>
+
+    <label for="angulo_rotacion">Ángulo de Rotación (grados):</label>
+    <input type="range" name="angulo_rotacion" id="angulo_rotacion" value="0" min="-180" max="180" oninput="actualizarRotacion(this.value)">
+    <span id="anguloValor">0</span> grados
+
+    <label for="tamano">Tamaño de la marca de agua (en píxeles):</label>
+    <input type="range" name="tamano" id="tamano" value="30" min="10" max="1000" oninput="actualizarTamano(this.value)">
+    <span id="tamanoValor">30</span> px
+</form>
+
+<script>
+    function activarTextoPersonalizado() {
+        document.getElementById('input_texto_personalizado').style.display = 'inline';
+        document.getElementById('input_imagen_personalizada').style.display = 'none'; // Asegúrate de ocultar la carga de imagen
+    }
+
+    let imagenSubida = null; // Variable global para almacenar la imagen personalizada
+
+    function actualizarMarcaAgua() {
+        const marcaAguaSeleccionada = document.querySelector('input[name="marca_agua"]:checked').value;
+        const disposicionSeleccionada = document.getElementById('disposicion').value;
+        const anguloRotacion = document.getElementById('angulo_rotacion').value; // Obtener el ángulo de rotación
+
+        const marca_de_agua = document.querySelector('.marca_de_agua');
+        const textoPersonalizadoDiv = document.getElementById('textoPersonalizado');
+
+        // Ocultar todas las marcas de agua
+        marca_de_agua.style.display = 'none'; 
+        textoPersonalizadoDiv.style.display = 'none'; // Ocultar texto personalizado inicialmente
+
+        // Limpiar el fondo de la marca de agua, excepto si es imagen personalizada
+        if (marcaAguaSeleccionada !== 'imagen_personalizada') {
+            marca_de_agua.style.backgroundImage = 'none';
+            imagenSubida = null; // Reiniciar la variable si se cambia a otra opción
+        }
         
-        <label for="foto_empresa">Foto de la empresa:</label>
-        <input type="checkbox" id="foto_empresa" name="foto_empresa" checked onchange="actualizarMarcaAgua()">
-        
-        <label for="imagen_personalizada">Imagen Personalizada:</label>
-        <input type="file" id="imagen_personalizada" name="imagen_personalizada" accept="image/*" onchange="subirImagen()">
-        
-        <label for="texto_personalizado">Texto Personalizado:</label>
-        <input type="text" id="texto_personalizado" name="texto_personalizado" placeholder="Ingresa tu texto aquí" oninput="actualizarTexto()">
-        
-        <label for="disposicion">Disposición de la marca de agua:</label>
-        <select name="disposicion" id="disposicion" onchange="actualizarMarcaAgua()">
-            <option value="horizontal" selected>Horizontal</option>
-            <option value="diagonal">Diagonal</option>
-        </select>
+        textoPersonalizadoDiv.innerHTML = ''; // Limpiar texto personalizado
 
-        <label for="tamano">Tamaño de la marca de agua (en píxeles):</label>
-        <input type="range" name="tamano" id="tamano" value="30" min="10" max="100" oninput="actualizarTamano(this.value)">
-        <span id="tamanoValor">30</span> px
-
-        <input type="submit" value="Aplicar">
-    </form>
-
-    <script>
-        let imagenSubida = null;
-
-        function actualizarMarcaAgua() {
-            const disposicion = document.getElementById('disposicion').value;
-            const fotoEmpresa = document.getElementById('foto_empresa').checked;
-            const nombreEmpresa = document.getElementById('nombre_empresa').checked;
-            
-            const watermarkDiv = document.querySelector('.watermark');
-
-            // Cambiar clase de disposición
-            watermarkDiv.className = 'watermark ' + (disposicion === 'diagonal' ? 'diagonal-watermark' : 'horizontal-watermark');
-
-            // Mostrar u ocultar la foto de la empresa
-            if (!fotoEmpresa) {
-                watermarkDiv.style.backgroundImage = 'none';
-            } else {
-                watermarkDiv.style.backgroundImage = `url('<?php echo $ruta_foto; ?>')`;
-            }
-
-            // Mostrar u ocultar el nombre de la empresa
-            if (nombreEmpresa) {
-                document.getElementById('textoPersonalizado').innerText = "<?php echo $items[0]['nombre_empresa']; ?>"; // Cambia por el nombre real
-            } else {
-                document.getElementById('textoPersonalizado').innerText = "";
-            }
+        // Establecer la marca de agua según la opción seleccionada
+        if (marcaAguaSeleccionada === 'nombre_empresa') {
+            textoPersonalizadoDiv.innerHTML = '<?php echo $items[0]["nombre_empresa"]; ?>';
+            textoPersonalizadoDiv.style.display = 'block'; // Mostrar texto
+        } else if (marcaAguaSeleccionada === 'foto_empresa') {
+            marca_de_agua.style.backgroundImage = 'url(<?php echo $ruta_foto; ?>)';
+            marca_de_agua.style.backgroundSize = 'cover'; // Asegurarse de que la imagen cubra todo el espacio
+        } else if (marcaAguaSeleccionada === 'texto_personalizado') {
+            textoPersonalizadoDiv.innerHTML = document.getElementById('input_texto_personalizado').value;
+            textoPersonalizadoDiv.style.display = 'block'; // Mostrar texto
+        } else if (marcaAguaSeleccionada === 'imagen_personalizada' && imagenSubida) {
+            marca_de_agua.style.backgroundImage = 'url(' + imagenSubida + ')';
+            marca_de_agua.style.backgroundSize = 'cover'; // Asegurarse de que la imagen cubra todo el espacio
+            marca_de_agua.style.display = 'block'; // Mostrar la marca de agua con la imagen personalizada
         }
 
-        function subirImagen() {
-            const fileInput = document.getElementById('imagen_personalizada');
-            const file = fileInput.files[0];
-            const reader = new FileReader();
+        // Aplicar disposición
+        if (disposicionSeleccionada === 'patron') {
+            marca_de_agua.style.backgroundRepeat = 'repeat'; // Repetir el fondo
+        } else if (disposicionSeleccionada === 'centro') {
+            marca_de_agua.classList.add('centrado-marca_de_agua');
+            marca_de_agua.style.backgroundRepeat = 'no-repeat'; // No repetir la imagen
+        }
 
-            reader.onload = function (e) {
-                imagenSubida = e.target.result;
-                const watermarkDiv = document.querySelector('.watermark');
-                watermarkDiv.style.backgroundImage = `url(${imagenSubida})`;
-                watermarkDiv.style.filter = 'none'; // Remover filtro en blanco y negro si hay imagen personalizada
-            };
+        // Aplicar rotación y centrado
+        marca_de_agua.style.transform = 'rotate(' + anguloRotacion + 'deg)'; // Aplicar la rotación
+        textoPersonalizadoDiv.style.transform = 'translate(-50%, -50%) rotate(' + anguloRotacion + 'deg)'; // Centrar y rotar el texto
 
+        // Mostrar la marca de agua
+        marca_de_agua.style.display = 'block';
+        actualizarTamano(document.getElementById('tamano').value); // Aplicar tamaño
+    }
+
+    function subirImagen() {
+        const inputImagen = document.getElementById('input_imagen_personalizada');
+        inputImagen.click(); // Abrir el diálogo de carga de imagen
+        inputImagen.onchange = function() {
+            const file = this.files[0];
             if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagenSubida = e.target.result; // Guardar la imagen subida en la variable global
+                    const marca_de_agua = document.querySelector('.marca_de_agua');
+                    marca_de_agua.style.backgroundImage = 'url(' + imagenSubida + ')';
+                    marca_de_agua.style.display = 'block'; // Mostrar la marca de agua
+                }
                 reader.readAsDataURL(file);
             }
         }
+    }
 
-        function actualizarTexto() {
-            const textoPersonalizado = document.getElementById('texto_personalizado').value;
-            document.getElementById('textoPersonalizado').innerText = textoPersonalizado;
-        }
+    function actualizarTamano(tamano) {
+        const marca_de_agua = document.querySelector('.marca_de_agua');
+        marca_de_agua.style.backgroundSize = tamano + 'px'; // Ajustar el tamaño
+        document.getElementById('tamanoValor').textContent = tamano; // Actualizar el valor mostrado
 
-        function actualizarTamano(tamano) {
-            document.getElementById('tamanoValor').innerText = tamano;
-            document.getElementById('textoPersonalizado').style.fontSize = tamano + 'px';
-        }
-    </script>
-</body>
-</html>
+        // Ajustar el tamaño del texto
+        const textoPersonalizadoDiv = document.getElementById('textoPersonalizado');
+        textoPersonalizadoDiv.style.fontSize = tamano + 'px'; // Actualiza el tamaño del texto
+    }
+
+    function actualizarRotacion(angulo) {
+        const anguloValor = document.getElementById('anguloValor');
+        anguloValor.textContent = angulo; // Actualiza el texto que muestra el ángulo
+        actualizarMarcaAgua(); // Actualiza la marca de agua con el nuevo ángulo
+    }
+
+    function actualizarTexto() {
+        const textoPersonalizadoDiv = document.getElementById('textoPersonalizado');
+        textoPersonalizadoDiv.innerHTML = document.getElementById('input_texto_personalizado').value;
+    }
+
+    // Inicializar la marca de agua al cargar
+    window.onload = function() {
+        actualizarMarcaAgua();
+    };
+</script>
+
+
+
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa  Marca de agua .PHP -----------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
