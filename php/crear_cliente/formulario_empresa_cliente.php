@@ -153,6 +153,13 @@ BPPJ
     <span id="mensaje_error_tipo" style="color: red; display: none;"></span>
 </div>
 
+<!-- Campo para el tipo de la empresa del cliente -->
+<div class="form-group">
+    <label for="lugar_empresa_cliente">Lugar:</label>
+    <input type="text" id="lugar_empresa_cliente" name="lugar_empresa_cliente" placeholder="Ingrese el lugar de empresa" oninput="validarLugar(this)">
+    <span id="mensaje_error_lugar" style="color: red; display: none;"></span>
+</div>
+
 <!-- Campo para la ciudad de la empresa del cliente -->
 <div class="form-group">
     <label for="ciudad_empresa_cliente">Ciudad:</label>

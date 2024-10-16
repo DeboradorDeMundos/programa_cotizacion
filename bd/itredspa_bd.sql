@@ -93,12 +93,14 @@ CREATE TABLE E_Encargados (
     -- Crear la tabla Clientes
     CREATE TABLE C_Clientes (
         id_cliente int NOT NULL AUTO_INCREMENT, -- Identificador único del cliente
+        id_empresa INT, -- Identificador de la empresa a la que pertenece el encargado
         rut_empresa_cliente varchar(20), -- RUT de la empresa del cliente (debe ser único)
         nombre_empresa_cliente varchar(255), -- Nombre Empresa del cliente
         telefono_empresa_cliente varchar(20), -- Teléfono de la empresa del cliente 
         email_empresa_cliente varchar(100), -- Email de la empresa del cliente
         giro_empresa_cliente varchar(255), -- Giro de la empresa del cliente
         tipo_empresa_cliente varchar(255), -- Tipo de empresa del cliente
+        lugar_empresa_cliente varchar(255), -- Tipo de empresa del cliente
         ciudad_empresa_cliente varchar(255), -- Ciudad de la empresa del cliente
         comuna_empresa_cliente varchar(255), -- Comuna de la empresa del cliente
         direccion_empresa_cliente varchar(255), -- Direccion de la empresa del cliente
@@ -111,7 +113,8 @@ CREATE TABLE E_Encargados (
         cargo_encargado_cliente varchar(255), -- Cargo del cliente
         comuna_encargado_cliente varchar(255), -- Comuna del cliente
         ciudad_encargado_cliente varchar(255), -- Ciudad del cliente
-        PRIMARY KEY (id_cliente) -- Definición de la clave primaria
+        PRIMARY KEY (id_cliente), -- Definición de la clave primaria
+        FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE SET NULL -- Clave foránea para referenciar la empresa
     ) ENGINE=InnoDB;
 
 

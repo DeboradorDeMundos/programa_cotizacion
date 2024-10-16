@@ -96,6 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email_empresa_cliente = $mysqli->real_escape_string($_POST['email_empresa_cliente']);
     $giro_empresa_cliente = $mysqli->real_escape_string($_POST['giro_empresa_cliente']);
     $tipo_empresa_cliente = $mysqli->real_escape_string($_POST['tipo_empresa_cliente']);
+    $lugar_empresa_cliente = $mysqli->real_escape_string($_POST['lugar_empresa_cliente']);
     $comuna_empresa_cliente = $mysqli->real_escape_string($_POST['comuna_empresa_cliente']);
     $ciudad_empresa_cliente = $mysqli->real_escape_string($_POST['ciudad_empresa_cliente']);
     $direccion_empresa_cliente = $mysqli->real_escape_string($_POST['direccion_empresa_cliente']);
@@ -126,6 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             email_empresa_cliente,
             giro_empresa_cliente,
             tipo_empresa_cliente,
+            lugar_empresa_cliente,
             comuna_empresa_cliente,
             ciudad_empresa_cliente,
             direccion_empresa_cliente,
@@ -144,6 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             '$email_empresa_cliente',
             '$giro_empresa_cliente',
             '$tipo_empresa_cliente',
+            '$lugar_empresa_cliente',
             '$comuna_empresa_cliente',
             '$ciudad_empresa_cliente',
             '$direccion_empresa_cliente',

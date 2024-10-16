@@ -222,6 +222,27 @@ function validarTipo(input) {
 }
 
 
+// Función para validar el Tipo de empresa ingresado
+function validarLugar(input) {
+    const mensajeError = document.getElementById("mensaje_error_lugar");
+    const caracteresNoPermitidos = /[^a-zA-Z\s]/g; // Solo se permiten letras y espacios
+
+    // Elimina caracteres no permitidos
+    input.value = input.value.replace(caracteresNoPermitidos, '');
+
+    const tipo = input.value.trim();
+
+    // Verifica si el tipo está vacío
+    if (tipo === "") {
+        mensajeError.textContent = "El campo no puede estar vacío.";
+        mensajeError.style.display = "block";
+        return; // Salir de la función si está vacío
+    } else {
+        mensajeError.style.display = "none"; // Ocultar mensaje de error si es válido
+    }
+}
+
+
 // Función para validar la ciudad ingresada
 function validarCiudad(input) {
     const mensajeError = document.getElementById("mensaje_error_ciudad");
