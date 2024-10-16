@@ -20,51 +20,67 @@ BPPJ
             <!-- Campos de cuentas bancarias -->
             <div class="cuenta-bancaria">
 
-                <!-- Etiqueta y campo para el nombre del titular -->
-                <label for="nombre-cuenta">Nombre titular:</label>
-                <input type="text" id="nombre-cuenta" name="nombre_cuenta" 
-                    placeholder="Ingresa el nombre del titular" 
-                    maxlength="50" 
-                    required 
-                    oninput="ValidarNombre(this)" 
-                    title="Por favor, ingresa solo letras y espacios.">
+                <div class="form-group-inline">
+                    <div class="form-group">
+                        <!-- Etiqueta y campo para el nombre del titular -->
+                        <label for="nombre-cuenta">Nombre titular:</label>
+                        <input type="text" id="nombre-cuenta" name="nombre_cuenta" 
+                            placeholder="Ingresa el nombre del titular" 
+                            maxlength="50" 
+                            required 
+                            oninput="ValidarNombre(this)" 
+                            title="Por favor, ingresa solo letras y espacios.">
+                    </div>
+                    <div class="form-group">
+                        <!-- Etiqueta y campo para el RUT del titular -->
+                        <label for="rut-titular">Rut titular:</label>
+                        <input type="text" id="rut-titular" placeholder="Ej: 12.345.678-9" name="rut_titular" required oninput="formatoRut(this)">
+                    </div>
+                </div>
 
-                <!-- Etiqueta y campo para el RUT del titular -->
-                <label for="rut-titular">Rut titular:</label>
-                <input type="text" id="rut-titular" placeholder="Ej: 12.345.678-9" name="rut_titular" required oninput="formatoRut(this)">
+                <div class="form-group-inline">
+                    <div class="form-group">
+                        <!-- Etiqueta y campo para el celular -->
+                        <label for="celular">Celular:</label>
+                        <input type="text" id="celular" name="celular"
+                            placeholder="+56 9 1234 1234" 
+                            maxlength="11" 
+                            required 
+                            title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
+                            oninput="asegurarMas(this)">
+                    </div>
+                    <div class="form-group">        
+                        <!-- Etiqueta y campo para el email -->
+                        <label for="email-banco">Email:</label>
+                        <input type="email" id="email-banco" name="email_banco" 
+                            placeholder="ejemplo@empresa.com" 
+                            maxlength="255" 
+                            title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
+                            onblur="CompletarEmail(this)">
+                    </div>
+                </div>
 
-                <!-- Etiqueta y campo para el celular -->
-                <label for="celular">Celular:</label>
-                <input type="text" id="celular" name="celular"
-                    placeholder="+56 9 1234 1234" 
-                    maxlength="11" 
-                    required 
-                    title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                    oninput="asegurarMas(this)">
-
-                <!-- Etiqueta y campo para el email -->
-                <label for="email-banco">Email:</label>
-                <input type="email" id="email-banco" name="email_banco" 
-                    placeholder="ejemplo@empresa.com" 
-                    maxlength="255" 
-                    title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
-                    onblur="CompletarEmail(this)">
-
-                <!-- Etiqueta y campo para seleccionar el banco -->
-                <label for="id-banco">Banco:</label>
-                <select id="id-banco" name="id_banco" required>
-                    <!-- Opciones se llenarán con los datos de la tabla Bancos -->
-                </select>
-
-                <!-- Etiqueta y campo para seleccionar el tipo de cuenta -->
-                <label for="id-tipocuenta">Tipo de Cuenta:</label>
-                <select id="id-tipocuenta" name="id_tipocuenta" required>
-                    <!-- Opciones se llenarán con los datos de la tabla Tipo_Cuenta -->
-                </select>
-
-                <!-- Etiqueta y campo para el número de cuenta -->
-                <label for="numero-cuenta">Número de Cuenta:</label>
-                <input type="text" id="numero-cuenta" name="numero_cuenta" required oninput="QuitarCaracteresInvalidos(this)">
+                <div class="form-group-inline">
+                    <div class="form-group">
+                        <!-- Etiqueta y campo para seleccionar el banco -->
+                        <label for="id-banco">Banco:</label>
+                        <select id="id-banco" name="id_banco" required>
+                            <!-- Opciones se llenarán con los datos de la tabla Bancos -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <!-- Etiqueta y campo para seleccionar el tipo de cuenta -->
+                        <label for="id-tipocuenta">Tipo de Cuenta:</label>
+                        <select id="id-tipocuenta" name="id_tipocuenta" required>
+                            <!-- Opciones se llenarán con los datos de la tabla Tipo_Cuenta -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <!-- Etiqueta y campo para el número de cuenta -->
+                        <label for="numero-cuenta">Número de Cuenta:</label>
+                        <input type="text" id="numero-cuenta" name="numero_cuenta" required oninput="QuitarCaracteresInvalidos(this)">
+                    </div>
+                </div>
             </div>
             
             <!-- Botón para agregar otra cuenta -->

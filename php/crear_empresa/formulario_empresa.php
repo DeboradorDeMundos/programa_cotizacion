@@ -18,86 +18,102 @@ BPPJ
     <fieldset class="box-12 data-box"> 
         <legend>Datos empresa</legend>
         <!-- Etiqueta para el campo de entrada del nombre de la empresa -->
-        <label for="empresa_nombre">Nombre de la Empresa:</label>
-        <input type="text" id="empresa_nombre" name="empresa_nombre" required minlength="3" maxlength="100" 
-            pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
-            title="Por favor, ingrese solo letras, números y caracteres como &,-."
-            placeholder="Ejemplo: Mi Empresa S.A.">
 
+        <div class="form-group">
+            <label for="empresa_nombre">Nombre de la Empresa:</label>
+            <input type="text" id="empresa_nombre" name="empresa_nombre" required minlength="3" maxlength="100" 
+                pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
+                title="Por favor, ingrese solo letras, números y caracteres como &,-."
+                placeholder="Ejemplo: Mi Empresa S.A.">
+        </div>
+
+        <div class="form-group-inline">
+            <div class="form-group">
         <!-- Etiqueta para el campo de entrada del área de la empresa -->
-        <label for="empresa_area">Área de la Empresa:</label>
-        <input type="text" id="empresa_area" name="empresa_area" 
-            minlength="2" maxlength="50" 
-            pattern="^[A-Za-zÀ-ÿ\s&.-]*$" 
-            title="Por favor, ingrese solo letras y espacios. Los caracteres permitidos son &, - y .."
-            placeholder="Ejemplo: Tecnología">
+                <label for="empresa_area">Área de la Empresa:</label>
+                <input type="text" id="empresa_area" name="empresa_area" 
+                    minlength="2" maxlength="50" 
+                    pattern="^[A-Za-zÀ-ÿ\s&.-]*$" 
+                    title="Por favor, ingrese solo letras y espacios. Los caracteres permitidos son &, - y .."
+                    placeholder="Ejemplo: Tecnología">
+            </div>
+            <div class="form-group">
+                <!-- Etiqueta para el campo de selección del país -->
+                <label for="empresa_pais">País:</label>
+                <select id="empresa_pais" name="empresa_pais">
+                    <option value="Chile">Chile</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <!-- Etiqueta para el campo de selección de la ciudad -->
+                <label for="empresa_ciudad">Ciudad:</label>
+                <select id="empresa_ciudad" name="empresa_ciudad">
+                    <option value="Santiago">Santiago</option>
+                    <option value="Valparaíso">Valparaíso</option>
+                    <option value="Concepción">Concepción</option>
+                    <option value="La Serena">La Serena</option>
+                    <option value="Antofagasta">Antofagasta</option>
+                </select>
+            </div>
+        </div>
 
-        <!-- Etiqueta para el campo de selección del país -->
-        <label for="empresa_pais">País:</label>
-        <select id="empresa_pais" name="empresa_pais">
-            <option value="Chile">Chile</option>
-        </select>
+        <div class="form-group">
+            <!-- Etiqueta para el campo de entrada de la dirección de la empresa -->
+            <label for="empresa_direccion">Dirección de la Empresa:</label>
+            <input type="text" id="empresa_direccion" name="empresa_direccion" 
+                minlength="5" maxlength="100" 
+                pattern="^[A-Za-z0-9À-ÿ\s#,-.]*$" 
+                title="Por favor, ingrese una dirección válida. Se permiten letras, números, espacios y los caracteres #, -, , y .."
+                placeholder="Ejemplo: Av. Siempre Viva 742">
+        </div>
 
-        <!-- Etiqueta para el campo de selección de la ciudad -->
-        <label for="empresa_ciudad">Ciudad:</label>
-        <select id="empresa_ciudad" name="empresa_ciudad">
-            <option value="Santiago">Santiago</option>
-            <option value="Valparaíso">Valparaíso</option>
-            <option value="Concepción">Concepción</option>
-            <option value="La Serena">La Serena</option>
-            <option value="Antofagasta">Antofagasta</option>
-        </select>
+        <div class="form-group-inline">
+            <div class="form-group">
+                <!-- Etiqueta para el campo de entrada del teléfono de la empresa -->
+                <label for="empresa_telefono">Teléfono de la Empresa:</label>
+                <!-- Imagen de la bandera -->
+                <img id="flag_empresa" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
+                        alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
+                <!-- Campo de entrada para el teléfono de la empresa -->
+                <input type="text" id="empresa_telefono" name="empresa_telefono" 
+                placeholder="+56 9 1234 1234" 
+                maxlength="11" 
+                required 
+                title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
+                oninput="asegurarMasYDetectarPais6(this)">
+            </div>
+            <div class="form-group">
+                <!-- Etiqueta para el campo de entrada del email de la empresa -->
+                <label for="empresa_email">Email de la Empresa:</label>
+                
+                <!-- Campo de correo electrónico para ingresar el email de la empresa. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
+                <input type="email" id="empresa_email" name="empresa_email"
+                    placeholder="ejemplo@empresa.com" 
+                    maxlength="255" 
+                    required 
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                    title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
+                    onblur="CompletarEmail(this)"> 
+            </div>
+            <div class="form-group">
+                <!-- Etiqueta para el campo de entrada de la fecha de creación de la empresa -->
+                <label for="fecha_creacion">Fecha de Creacion de empresa:</label>
+                
+                <!-- Campo de fecha para seleccionar la fecha de emisión. Es obligatorio -->
+                <input type="date" id="fecha_creacion" name="fecha_creacion" required> 
+            </div>
+        </div>
+        <div class="form-group">
 
-        <!-- Etiqueta para el campo de entrada de la dirección de la empresa -->
-        <label for="empresa_direccion">Dirección de la Empresa:</label>
-        <input type="text" id="empresa_direccion" name="empresa_direccion" 
-            minlength="5" maxlength="100" 
-            pattern="^[A-Za-z0-9À-ÿ\s#,-.]*$" 
-            title="Por favor, ingrese una dirección válida. Se permiten letras, números, espacios y los caracteres #, -, , y .."
-            placeholder="Ejemplo: Av. Siempre Viva 742">
-            
-        <!-- Etiqueta para el campo de entrada del teléfono de la empresa -->
-        <label for="empresa_telefono">Teléfono de la Empresa:</label>
-
-        <!-- Imagen de la bandera -->
-        <img id="flag_empresa" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
-                alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
-
-        <!-- Campo de entrada para el teléfono de la empresa -->
-        <input type="text" id="empresa_telefono" name="empresa_telefono" 
-        placeholder="+56 9 1234 1234" 
-        maxlength="11" 
-        required 
-        title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-        oninput="asegurarMasYDetectarPais6(this)">
-
-        <!-- Etiqueta para el campo de entrada del email de la empresa -->
-        <label for="empresa_email">Email de la Empresa:</label>
-        
-        <!-- Campo de correo electrónico para ingresar el email de la empresa. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
-        <input type="email" id="empresa_email" name="empresa_email"
-            placeholder="ejemplo@empresa.com" 
-            maxlength="255" 
-            required 
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
-            title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
-            onblur="CompletarEmail(this)"> 
-
-        <!-- Etiqueta para el campo de entrada de la fecha de creación de la empresa -->
-        <label for="fecha_creacion">Fecha de Creacion de empresa:</label>
-        
-        <!-- Campo de fecha para seleccionar la fecha de emisión. Es obligatorio -->
-        <input type="date" id="fecha_creacion" name="fecha_creacion" required> 
-
-        <!-- Etiqueta para el campo de entrada de la web de la empresa -->
-        <label for="empresa_web">Web de la Empresa:</label>
-        
-        <!-- Campo de entrada para la URL de la empresa -->
-        <input type="url" id="empresa_web" name="empresa_web" 
-            pattern="https?://[^'\"]+" 
-            title="Por favor, ingrese una URL válida que comience con http:// o https://"
-            placeholder="Ejemplo: https://www.miempresa.com"
-            oninput="QuitarCaracteresInvalidos(this)">
+            <!-- Etiqueta para el campo de entrada de la web de la empresa -->
+            <label for="empresa_web">Web de la Empresa:</label>
+            <!-- Campo de entrada para la URL de la empresa -->
+            <input type="url" id="empresa_web" name="empresa_web" 
+                pattern="https?://[^'\"]+" 
+                title="Por favor, ingrese una URL válida que comience con http:// o https://"
+                placeholder="Ejemplo: https://www.miempresa.com"
+                oninput="QuitarCaracteresInvalidos(this)">
+        </div>
        <!-- Cierra la caja de datos -->
     </fieldset> 
       <!-- Cierra la fila -->

@@ -136,24 +136,37 @@ function asegurarMasYDetectarPais4(input) {
 
    
 }
+function agregarNuevaFila() {
+    var tabla = document.getElementById('formulario-contenedor');
+    var nuevaFila = document.createElement('tr');
 
-function agregarNuevoFormulario() {
-    // Obtiene el contenedor donde están los formularios
-    var contenedor = document.getElementById('formulario-contenedor');
+    nuevaFila.innerHTML = `
+        <td><input type="text" name="encargado_rut[]" required minlength="3" maxlength="20" 
+            pattern="^[0-9]+[-kK0-9]{1}$" placeholder="Ejemplo: 12345678-9" oninput="formatoRut(this)"></td>
+        <td><input type="text" name="encargado_nombre[]" required minlength="3" maxlength="255" 
+            pattern="^[A-Za-zÀ-ÿ\s.-]+$" placeholder="Ejemplo: Juan Pérez" oninput="QuitarCaracteresInvalidos(this)"></td>
+        <td>
+            <select name="cargo_encargado[]" required>
+                <option value="" disabled selected>Selecciona un cargo</option>
+                <option value="gerente">Gerente</option>
+                <option value="director">Director</option>
+                <option value="ejecutivo">Ejecutivo</option>
+                <option value="supervisor">Supervisor</option>
+            </select>
+        </td>
+        <td><input type="email" name="encargado_email[]" placeholder="ejemplo@empresa.com" maxlength="255" required></td>
+        <td><input type="text" name="encargado_fono[]" placeholder="+56 9 1234 1234" maxlength="11" required></td>
+        <td><input type="text" name="encargado_celular[]" placeholder="+56 9 1234 1234" maxlength="11" required></td>
+        <td><button type="button" class="eliminar-fila" onclick="eliminarFila(this)">Eliminar</button></td>
+    `;
+    
+    tabla.appendChild(nuevaFila);
+}
 
-    // Clona el primer formulario
-    var formularioClonado = contenedor.querySelector('.formulario-encargado').cloneNode(true);
-
-    // Limpia los campos del formulario clonado
-    var inputs = formularioClonado.querySelectorAll('input, select');
-    inputs.forEach(input => {
-        if (input.type !== 'hidden') {
-            input.value = ''; // Limpia los valores
-        }
-    });
-
-    // Añade el formulario clonado al contenedor
-    contenedor.appendChild(formularioClonado);
+function eliminarFila(boton) {
+    // Encuentra la fila que contiene el botón y la elimina
+    var fila = boton.closest('tr');
+    fila.remove();
 }
 
 // Asegúrate de que la bandera se actualice al cargar la página

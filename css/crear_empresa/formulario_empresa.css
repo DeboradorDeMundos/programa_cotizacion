@@ -20,6 +20,38 @@ BPPJ
   margin-bottom: 20px; /* Margen inferior de 20px entre las filas */
 }
 
+
+/* Estilo para selectores e inputs en el grupo de formularios */
+.form-group select, .form-group input {
+  flex: 2; /* Hace que el input ocupe 2 partes del espacio disponible */
+  padding: 5px; /* Espaciado interno de 5px */
+  border: 1px solid #ddd; /* Borde gris claro de 1px */
+  border-radius: 0px 3px 3px 0px; /* Bordes redondeados a la derecha */
+  font-size: 14px; /* Tamaño de fuente */
+  text-align: left; /* Alineación del texto a la izquierda */
+  background-color: #fff; /* Fondo blanco */
+  box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el tamaño total del input */
+}
+
+/* Asegura que los label y input tengan la misma altura */
+.form-group {
+  align-items: stretch; /* Estira los elementos para que tengan la misma altura */
+  justify-content: space-between; /* Alinea el label y el input a los extremos */
+  margin-bottom: 10px; /* Espaciado inferior de 10px */
+}
+
+/* Estilo para grupos de campos en línea */
+.form-group-inline {
+  display: flex; /* Usa flexbox para organizar elementos en línea */
+  justify-content: space-between; /* Alinea los elementos a los extremos */
+  gap: 10px; /* Espacio entre los elementos */
+}
+
+/* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
+.form-group-inline .form-group {
+  flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
+}
+
 /* Estilo para una caja flexible que ocupa todo el ancho disponible */
 .box-12 {
   display: flex; /* Utiliza flexbox para la distribución interna */
@@ -66,6 +98,7 @@ select {
   border-radius: 5px; /* Bordes redondeados */
   box-sizing: border-box; /* Incluye el borde y el padding dentro del ancho total */
 }
+
 
 
 /* --------------------------------------------------------------------------------------------------------------
