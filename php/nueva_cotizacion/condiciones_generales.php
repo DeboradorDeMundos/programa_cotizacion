@@ -29,14 +29,8 @@ if ($row !== null) {
         $condiciones = $result_cond->fetch_all(MYSQLI_ASSOC);
         // Cerrar la declaración
         $stmt_cond->close();
-    } else {
-        // Mostrar error si no se pudo preparar la consulta
-        echo "<p>Error al preparar la consulta de condiciones generales: " . $mysqli->error . "</p>";
     }
-} else {
-    // Mostrar mensaje si no se encontró la empresa
-    echo "<p>No se encontró la empresa con el ID proporcionado.</p>";
-}
+} 
 ?> 
 
 <div id="condiciones-generales" class="cuadro-datos">

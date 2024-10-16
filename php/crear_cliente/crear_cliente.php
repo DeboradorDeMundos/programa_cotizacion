@@ -47,9 +47,25 @@ BPPJ
     <div class="contenedor"> 
         
         <form id="formulario-cliente" method="POST" action="" enctype="multipart/form-data">
-        <h3>RELLENA EL FORMULARIO PARA AGREGAR UN NUEVO CLIENTE </h3>
-        <?php include 'formulario_cliente.php'; ?>
-   
+
+        <h1>RELLENA EL FORMULARIO PARA AGREGAR UN NUEVO CLIENTE </h1>
+
+
+        <div class="contenedor">
+    <div class="formulario-empresa">
+        <h3>Información del Negocio / Empresa:</h3>
+        <!-- se agrega formulario cliente -->
+        <?php include 'formulario_empresa_cliente.php'; ?>
+    </div>
+
+    <div class="formulario-encargado">
+        <h3>Información del encargado:</h3>
+        <!-- se agrega formulario encargado de empresa -->
+        <?php include 'formulario_encargado.php'; ?>
+    </div>
+</div>
+
+
     <button type="submit" class="submit">Crear Cliente</button> 
     <!-- Cierra el formulario -->
     </form> 

@@ -1,0 +1,124 @@
+/* 
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ 
+*/
+
+
+/* --------------------------------------------------------------------------------------------------------------
+    -------------------------------------- INICIO ITred Spa formulario Proveedor.CSS --------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+
+/* Estilos generales para el body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9; /* Fondo gris claro */
+    margin: 0;
+    padding: 20px; /* Espaciado alrededor del contenido */
+}
+
+/* Contenedor principal para los formularios */
+.container {
+    display: flex; /* Utiliza flexbox para alinear los formularios uno al lado del otro */
+    justify-content: center; /* Centra los formularios horizontalmente */
+    gap: 20px; /* Espacio entre los formularios */
+}
+
+/* Estilos para cada contenedor de formulario */
+.form-container {
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 20px;
+    border-radius: 10px; /* Esquinas redondeadas */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 400px; /* Ancho fijo para cada formulario */
+    max-width: 90%; /* Adaptable a pantallas pequeñas */
+    box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+}
+
+/* Títulos de formularios */
+h1 {
+    font-size: 20px;
+    color: #333;
+    text-align: center; /* Centra el texto del título */
+    margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+/* Estilos para etiquetas de campos */
+label {
+    color: #333;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block; /* Hace que las etiquetas ocupen todo el ancho */
+}
+
+/* Estilos para los campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+    width: 100%; /* Ancho completo */
+    padding: 10px;
+    margin-bottom: 15px; /* Espacio entre campos */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 5px; /* Esquinas redondeadas */
+    background-color: #fafafa; /* Fondo gris claro para los inputs */
+    font-size: 14px;
+    color: #333;
+}
+
+/* Estilos para campos de entrada al tener el foco */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus {
+    outline: none; /* Sin contorno */
+    border-color: #4a90e2; /* Borde azul claro en foco */
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5); /* Sombra azul suave */
+}
+
+/* Estilos para el botón de envío */
+input[type="submit"] {
+    width: 100%; /* Ancho completo */
+    padding: 10px;
+    background-color: #4a90e2; /* Botón azul */
+    color: white; /* Texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Esquinas redondeadas */
+    font-size: 16px;
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+/* Cambio de color en el hover del botón */
+input[type="submit"]:hover {
+    background-color: #357abd; /* Azul más oscuro al pasar el ratón */
+}
+
+/* Diseño responsivo para pantallas pequeñas */
+@media (max-width: 600px) {
+    .form-container {
+        width: 100%; /* Asegura que los formularios se ajusten a pantallas más pequeñas */
+    }
+}
+
+
+
+
+/* --------------------------------------------------------------------------------------------------------------
+    ---------------------------------------- FIN ITred Spa formulario Proveedor.CSS ---------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+
+/*
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+*/
