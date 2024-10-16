@@ -87,41 +87,40 @@ CREATE TABLE E_Encargados (
 -- ------------------------------------- TABLA CLIENTES -------------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
 
--- Eliminar la tabla Clientes si existe
-DROP TABLE IF EXISTS C_Clientes;
+    -- Eliminar la tabla Clientes si existe
+    DROP TABLE IF EXISTS C_Clientes;
 
--- Crear la tabla Clientes
-CREATE TABLE C_Clientes (
-    id_cliente int NOT NULL AUTO_INCREMENT, -- Identificador único del cliente
-    rut_empresa_cliente varchar(20) , -- RUT de la empresa del cliente (debe ser único)
-    nombre_empresa_cliente varchar(255), -- Nombre Empresa del cliente
-    telefono_empresa_cliente varchar(20), -- Teléfono de la empresa del cliente 
-    email_empresa_cliente varchar(100), -- Email de la empresa del cliente
-    giro_empresa_cliente varchar(255), -- Giro de la empresa del cliente
-    tipo_empresa_cliente varchar(255), -- Tipo de empresa del cliente
-    ciudad_empresa_cliente varchar(255), -- Ciudad de la empresa del cliente
-    comuna_empresa_cliente varchar(255), -- Comuna de la empresa del cliente
-    direccion_empresa_cliente varchar(255), -- Direccion de la empresa del cliente
-    observacion varchar(255), -- Observacion de la empresa del cliente
-    --Datos del encargado de la empresa 
-    rut_encargado_cliente varchar(20) , -- RUT de la empresa del cliente (debe ser único)
-    nombre_encargado_cliente varchar(255) NOT NULL, -- Nombre del cliente
-    direccion_encargado_cliente varchar(255), -- Dirección del cliente
-    telefono_encargado_cliente varchar(20), -- Teléfono del cliente    
-    email_encargado_cliente varchar(100), -- Email del cliente
-    cargo_encargado_cliente varchar(255), -- Cargo del cliente
-    comuna_encargado_cliente varchar(255), -- Comuna del cliente
-    ciudad_encargado_cliente varchar(255), -- Ciudad del cliente
-    
-    PRIMARY KEY (id_cliente) -- Definición de la clave primaria
-) ENGINE=InnoDB ;
+    -- Crear la tabla Clientes
+    CREATE TABLE C_Clientes (
+        id_cliente int NOT NULL AUTO_INCREMENT, -- Identificador único del cliente
+        rut_empresa_cliente varchar(20), -- RUT de la empresa del cliente (debe ser único)
+        nombre_empresa_cliente varchar(255), -- Nombre Empresa del cliente
+        telefono_empresa_cliente varchar(20), -- Teléfono de la empresa del cliente 
+        email_empresa_cliente varchar(100), -- Email de la empresa del cliente
+        giro_empresa_cliente varchar(255), -- Giro de la empresa del cliente
+        tipo_empresa_cliente varchar(255), -- Tipo de empresa del cliente
+        ciudad_empresa_cliente varchar(255), -- Ciudad de la empresa del cliente
+        comuna_empresa_cliente varchar(255), -- Comuna de la empresa del cliente
+        direccion_empresa_cliente varchar(255), -- Direccion de la empresa del cliente
+        observacion varchar(255), -- Observacion de la empresa del cliente
+        rut_encargado_cliente varchar(20), -- RUT del encargado del cliente (debe ser único)
+        nombre_encargado_cliente varchar(255) NOT NULL, -- Nombre del cliente
+        direccion_encargado_cliente varchar(255), -- Dirección del cliente
+        telefono_encargado_cliente varchar(20), -- Teléfono del cliente    
+        email_encargado_cliente varchar(100), -- Email del cliente
+        cargo_encargado_cliente varchar(255), -- Cargo del cliente
+        comuna_encargado_cliente varchar(255), -- Comuna del cliente
+        ciudad_encargado_cliente varchar(255), -- Ciudad del cliente
+        PRIMARY KEY (id_cliente) -- Definición de la clave primaria
+    ) ENGINE=InnoDB;
+
 
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA PROYECTOS ------------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
 
 -- Eliminar la tabla Proyectos si existe
-DROP TABLE IF EXISTS Proyectos;
+DROP TABLE IF EXISTS c_Proyectos;
 
 -- Crear la tabla Proyectos
 CREATE TABLE C_Proyectos (
@@ -547,18 +546,6 @@ CREATE TABLE E_Firmas (
 );
 
 
-
-- ------------------------------------------------------------------------------------------------------------
--- ------------------------------------- TABLA firmas -----------------------------------------------------
--- ------------------------------------------------------------------------------------------------------------ 
-
-
-
-
-
-
-
-
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- INSERT DATOS ----------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
@@ -699,34 +686,48 @@ INSERT INTO E_obligaciones_cliente (indice, descripcion, estado, id_empresa) VAL
 (9, 'Obligación 9: Responder a las consultas realizadas por la empresa en tiempo y forma.', TRUE, 1),
 (10, 'Obligación 10: Colaborar en la implementación de mejoras sugeridas.', TRUE, 1);
 
+
 -- Insertar datos en la tabla C_Clientes
 INSERT INTO C_Clientes (
-    nombre_cliente, 
-    empresa_cliente, 
-    rut_cliente, 
-    direccion_cliente, 
-    lugar_cliente, 
-    telefono_cliente, 
-    email_cliente, 
-    cargo_cliente, 
-    giro_cliente, 
-    comuna_cliente, 
-    ciudad_cliente, 
-    tipo_cliente
+    rut_empresa_cliente, 
+    nombre_empresa_cliente, 
+    telefono_empresa_cliente, 
+    email_empresa_cliente, 
+    giro_empresa_cliente, 
+    tipo_empresa_cliente, 
+    ciudad_empresa_cliente, 
+    comuna_empresa_cliente, 
+    direccion_empresa_cliente, 
+    observacion, 
+    rut_encargado_cliente, 
+    nombre_encargado_cliente, 
+    direccion_encargado_cliente, 
+    telefono_encargado_cliente, 
+    email_encargado_cliente, 
+    cargo_encargado_cliente, 
+    comuna_encargado_cliente, 
+    ciudad_encargado_cliente
 ) VALUES (
-    'Juan Pérez', -- Nombre del cliente
-    'Ejemplo S.A.', -- Empresa del cliente
-    '98765432-1', -- RUT del cliente
-    'Av. Siempre Viva 123', -- Dirección del cliente
-    'Santiago', -- Lugar del cliente
-    '0987654321', -- Teléfono del cliente
-    'juan.perez@ejemplo.com', -- Email del cliente
-    'Gerente', -- Cargo del cliente
-    'Retail', -- Giro del cliente
-    'Providencia', -- Comuna del cliente
-    'Santiago', -- Ciudad del cliente
-    'Corporativo' -- Tipo del cliente
+    '98765432-1', -- RUT de la empresa del cliente
+    'Ejemplo S.A.', -- Nombre de la empresa del cliente
+    '0987654321', -- Teléfono de la empresa del cliente
+    'contacto@ejemplo.com', -- Email de la empresa del cliente
+    'Retail', -- Giro de la empresa del cliente
+    'Corporativo', -- Tipo de empresa del cliente
+    'Santiago', -- Ciudad de la empresa del cliente
+    'Providencia', -- Comuna de la empresa del cliente
+    'Av. Siempre Viva 123', -- Dirección de la empresa del cliente
+    'Cliente con alta prioridad', -- Observación de la empresa del cliente
+    '98765432-1', -- RUT del encargado
+    'Juan Pérez', -- Nombre del encargado
+    'Calle Falsa 123', -- Dirección del encargado
+    '0987654321', -- Teléfono del encargado
+    'juan.perez@ejemplo.com', -- Email del encargado
+    'Gerente', -- Cargo del encargado
+    'Providencia', -- Comuna del encargado
+    'Santiago' -- Ciudad del encargado
 );
+
 
 -- Insertar datos en la tabla C_Proyectos
 INSERT INTO C_Proyectos (

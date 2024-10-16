@@ -42,7 +42,7 @@ $fecha_fin = isset($_GET['fecha_fin']) ? $_GET['fecha_fin'] : '';
 
 // Construye la consulta SQL inicial
 $sql = "SELECT c.id_cotizacion AS cotizacion_id, c.fecha_emision, c.fecha_validez, c.numero_cotizacion, c.estado, 
-               t.total_final, p.nombre_proyecto AS proyecto_descripcion, cl.nombre_cliente AS cliente_nombre, 
+               t.total_final, p.nombre_proyecto AS proyecto_descripcion, cl.nombre_empresa_cliente AS cliente_nombre, 
                v.nombre_vendedor AS vendedor_nombre
         FROM C_Cotizaciones c
         JOIN C_Proyectos p ON c.id_proyecto = p.id_proyecto
