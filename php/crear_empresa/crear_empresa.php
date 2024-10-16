@@ -63,6 +63,9 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
             <!-- Incluye el archivo para el formulario del encargado -->
             <?php include 'formulario_encargado.php'; ?>
 
+            <!-- Incluye el archivo para el formulario del vendedor -->
+            <?php include 'formulario_vendedor.php'; ?>            
+
             <!-- Fila para cuentas bancarias -->
             
             <!-- Incluye el archivo para el formulario de cuenta -->

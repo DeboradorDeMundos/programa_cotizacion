@@ -16,7 +16,6 @@ BPPJ
 
 
     #formulario-contenedor {
-        display: flex;
         flex-direction: column; /* Hace que los formularios se dispongan en columnas (verticalmente) */
         gap: 20px; /* Añade un pequeño espacio entre formularios */
     }
@@ -25,6 +24,36 @@ BPPJ
         border: 1px solid #ccc; /* Opcional: añade un borde alrededor de cada formulario */
         padding: 15px; /* Añade algo de espacio interior */
         margin-bottom: 10px; /* Añade un margen inferior para separar los formularios */
+    }
+
+    .tabla-estilizada {
+        width: 100%;
+        border-collapse: collapse; /* Elimina el espaciado entre celdas */
+    }
+    
+    .tabla-estilizada th, .tabla-estilizada td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd; /* Bordes para mejorar la estructura */
+        vertical-align: middle; /* Alinea verticalmente el contenido */
+    }
+    
+    .tabla-estilizada input, .tabla-estilizada select {
+        width: 100%; /* Ajusta el ancho de los inputs/selects al de las celdas */
+        box-sizing: border-box; /* Incluye padding en el ancho total */
+    }
+
+    .eliminar-fila {
+        background-color: red;  /* Fondo rojo */
+        color: white;           /* Texto blanco para mejor contraste */
+        border: none;           /* Elimina el borde */
+        padding: 8px 12px;      /* Añade espacio interno */
+        border-radius: 4px;     /* Bordes redondeados */
+        cursor: pointer;        /* Cambia el cursor al pasar sobre el botón */
+    }
+    
+    .eliminar-fila:hover {
+        background-color: darkred;  /* Cambia el color de fondo al pasar el ratón */
     }
 
 

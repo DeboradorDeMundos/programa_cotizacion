@@ -210,30 +210,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($cliente_nombre && $cliente_rut) {
         // Insertar o actualizar el cliente
-        $sql = "INSERT INTO C_Clientes (nombre_cliente, empresa_cliente, rut_cliente, direccion_cliente, lugar_cliente, telefono_cliente, email_cliente, cargo_cliente, giro_cliente, comuna_cliente, ciudad_cliente, tipo_cliente)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        $sql = "INSERT INTO C_Clientes (nombre_encargado_cliente, nombre_empresa_cliente, rut_empresa_cliente, direccion_empresa_cliente, telefono_empresa_cliente, email_empresa_cliente, cargo_encargado_cliente, giro_empresa_cliente, comuna_empresa_cliente, ciudad_empresa_cliente, tipo_empresa_cliente)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 ON DUPLICATE KEY UPDATE 
-                    nombre_cliente=VALUES(nombre_cliente), 
-                    empresa_cliente=VALUES(empresa_cliente), 
-                    direccion_cliente=VALUES(direccion_cliente), 
-                    lugar_cliente=VALUES(lugar_cliente), 
-                    telefono_cliente=VALUES(telefono_cliente), 
-                    email_cliente=VALUES(email_cliente), 
-                    cargo_cliente=VALUES(cargo_cliente), 
-                    giro_cliente=VALUES(giro_cliente), 
-                    comuna_cliente=VALUES(comuna_cliente), 
-                    ciudad_cliente=VALUES(ciudad_cliente), 
-                    tipo_cliente=VALUES(tipo_cliente)";
+                    nombre_encargado_cliente=VALUES(nombre_encargado_cliente), 
+                    nombre_empresa_cliente=VALUES(nombre_empresa_cliente), 
+                    direccion_empresa_cliente=VALUES(direccion_empresa_cliente), 
+                    telefono_empresa_cliente=VALUES(telefono_empresa_cliente), 
+                    email_empresa_cliente=VALUES(email_empresa_cliente), 
+                    cargo_encargado_cliente=VALUES(cargo_encargado_cliente), 
+                    giro_empresa_cliente=VALUES(giro_empresa_cliente), 
+                    comuna_empresa_cliente=VALUES(comuna_empresa_cliente), 
+                    ciudad_empresa_cliente=VALUES(ciudad_empresa_cliente), 
+                    tipo_empresa_cliente=VALUES(tipo_empresa_cliente)";
         $stmt = $mysqli->prepare($sql);
         if ($stmt === false) {
             die("Error en la preparación de la consulta: " . $mysqli->error);
         }
-        $stmt->bind_param("ssssssssssss", 
+        $stmt->bind_param("sssssssssss", 
             $cliente_nombre, 
             $cliente_empresa, 
             $cliente_rut, 
             $cliente_direccion, 
-            $cliente_lugar, 
             $cliente_fono, 
             $cliente_email, 
             $cliente_cargo, 

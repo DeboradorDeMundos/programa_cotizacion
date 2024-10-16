@@ -51,30 +51,57 @@ BPPJ
             <div id="firma-manual" class="desplegar-firma" style="display: none;">
                 <div class="signature-row">
                     <!-- Campo de entrada para el título de la firma -->
-                    <input type="text" name="titulo_firma" placeholder="título de la firma" oninput="QuitarCaracteresInvalidos(this)">
-                    <!-- Campo de entrada para el nombre del encargado -->
-                    <input type="text" name="nombre_encargado_firma" placeholder="Nombre del Encargado" oninput="QuitarCaracteresInvalidos(this)">
-                    <!-- Campo de entrada para el cargo del encargado -->
-                    <input type="text" name="cargo_encargado_firma" placeholder="Cargo del Encargado" oninput="QuitarCaracteresInvalidos(this)">
-                    <!-- Campo de entrada para el teléfono del encargado -->
-                    <input type="text" name="telefono_encargado_firma" placeholder="Teléfono del Encargado" oninput="QuitarCaracteresInvalidos(this)">
-                    <!-- Campo de entrada para el nombre de la empresa -->
-                    <input type="text" name="nombre_empresa_firma" placeholder="Nombre de la Empresa" oninput="QuitarCaracteresInvalidos(this)">
-                    <!-- Campo de entrada para el área de la empresa -->
-                    <input type="text" name="area_empresa_firma" placeholder="Área de la Empresa" oninput="QuitarCaracteresInvalidos(this)">
-                    <!-- Campo de entrada para el teléfono de la empresa -->
-                    <input type="text" name="telefono_empresa_firma" placeholder="Teléfono de la Empresa" oninput="QuitarCaracteresInvalidos(this)">
-                    <!-- Campo de entrada para el correo electrónico -->
-                    <input type="email" name="email_firma" placeholder="Email" onblur="CompletarEmail(this)">
-                    <!-- Campo de entrada para la dirección -->
-                    <input type="text" name="direccion_firma" placeholder="Dirección" oninput="QuitarCaracteresInvalidos(this)">
-                    <!-- Campo de entrada para el RUT -->
-                    <input type="text" name="rut_firma" placeholder="RUT" minlength="3" maxlength="20"           
-                        pattern="^[0-9]+[-kK0-9]{1}$" 
-                        title="Por favor, ingrese un RUT válido."
-                        placeholder="Ejemplo: 12345678-9"
-                        oninput="formatoRut(this)"
-                        oninput="QuitarCaracteresInvalidos(this)">
+                     
+                    <div class="form-group">
+                        <input type="text" name="titulo_firma" placeholder="título de la firma" oninput="QuitarCaracteresInvalidos(this)">
+                        <!-- Campo de entrada para el nombre del encargado -->
+                    </div>
+                    <div class="form-group-inline">
+                        <div class="form-group">
+                            <input type="text" name="nombre_encargado_firma" placeholder="Nombre del Encargado" oninput="QuitarCaracteresInvalidos(this)">
+                            <!-- Campo de entrada para el cargo del encargado -->
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="cargo_encargado_firma" placeholder="Cargo del Encargado" oninput="QuitarCaracteresInvalidos(this)">
+                            <!-- Campo de entrada para el teléfono del encargado -->
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="telefono_encargado_firma" placeholder="Teléfono del Encargado" oninput="QuitarCaracteresInvalidos(this)">
+                            <!-- Campo de entrada para el nombre de la empresa -->
+                        </div>
+                    </div>
+                    <div class="form-group-inline">
+                        <div class="form-group">
+                            <input type="text" name="nombre_empresa_firma" placeholder="Nombre de la Empresa" oninput="QuitarCaracteresInvalidos(this)">
+                            <!-- Campo de entrada para el área de la empresa -->
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="area_empresa_firma" placeholder="Área de la Empresa" oninput="QuitarCaracteresInvalidos(this)">
+                            <!-- Campo de entrada para el teléfono de la empresa -->
+                        </div>
+                    </div>
+                    <div class="form-group-inline">
+                        <div class="form-group">
+                            <input type="text" name="telefono_empresa_firma" placeholder="Teléfono de la Empresa" oninput="QuitarCaracteresInvalidos(this)">
+                            <!-- Campo de entrada para el correo electrónico -->
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email_firma" placeholder="Email" onblur="CompletarEmail(this)">
+                            <!-- Campo de entrada para la dirección -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="direccion_firma" placeholder="Dirección" oninput="QuitarCaracteresInvalidos(this)">
+                        <!-- Campo de entrada para el RUT -->
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="rut_firma" placeholder="RUT" minlength="3" maxlength="20"           
+                            pattern="^[0-9]+[-kK0-9]{1}$" 
+                            title="Por favor, ingrese un RUT válido."
+                            placeholder="Ejemplo: 12345678-9"
+                            oninput="formatoRut(this)"
+                            oninput="QuitarCaracteresInvalidos(this)">
+                    </div>
                 </div>
               
                 <button type="button" class="BotonAgregarFirma"  id="BotonAgregarFirma" style="background-color: green; color: white; border: none; cursor: pointer; padding: 5px 10px;">Agregar Firma</button>

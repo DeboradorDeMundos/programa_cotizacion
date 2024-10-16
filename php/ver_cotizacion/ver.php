@@ -80,6 +80,8 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
             </tr>
         </table>
 
+        <?php include 'ver_pago.php'; ?>
+
         <table>
             <tr>
                 <td>
