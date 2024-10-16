@@ -59,18 +59,29 @@ BPPJ
     </div>
 
     <div class="formulario-encargado">
-        <h3>Información del encargado:</h3>
+        <h3>Información del Encargado / Cliente:</h3>
         <!-- se agrega formulario encargado de empresa -->
         <?php include 'formulario_encargado.php'; ?>
     </div>
 </div>
 
 
+<?php if (!empty($mensaje)): ?>
+    <div class="notificacion" id="notificacion">
+        <?php echo $mensaje; ?>
+    </div>
+<?php endif; ?>
     <button type="submit" class="submit">Crear Cliente</button> 
     <!-- Cierra el formulario -->
     </form> 
     <!-- Cierra el contenedor principal -->
     </div> 
+
+
+
+    <?php include 'mostrar_clientes.php'; ?>
+
+
     <!-- Cierra el cuerpo de la pagina -->
 </body>
 
