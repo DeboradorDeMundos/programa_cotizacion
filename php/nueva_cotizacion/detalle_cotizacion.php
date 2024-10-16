@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
 //INSERTAR DATOS En la tabla cotizaciones
 // Obtener id_cliente
-$sql = "SELECT id_cliente FROM C_Clientes WHERE rut_cliente = ?";
+$sql = "SELECT id_cliente FROM C_Clientes WHERE rut_empresa_cliente = ?";
 $stmt = $mysqli->prepare($sql);
 $stmt->bind_param("s", $cliente_rut);
 $stmt->execute();
