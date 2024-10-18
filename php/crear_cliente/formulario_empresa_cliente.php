@@ -149,14 +149,33 @@ BPPJ
 <!-- Campo para el tipo de la empresa del cliente -->
 <div class="form-group">
     <label for="tipo_empresa_cliente">Tipo:</label>
-    <input type="text" id="tipo_empresa_cliente" name="tipo_empresa_cliente" placeholder="Ingrese el tipo de empresa" oninput="validarTipo(this)">
+    <select id="tipo_empresa_cliente" name="tipo_empresa_cliente" onchange="validarTipo(this)">
+        <option value="">Seleccione el tipo de empresa</option>
+        <option value="Pequeña">Pequeña</option>
+        <option value="Mediana">Mediana</option>
+        <option value="Grande">Grande</option>
+        <option value="Startup">Startup</option>
+        <option value="Corporación">Corporación</option>
+        <option value="Multinacional">Multinacional</option>
+        <option value="Gobierno">Gobierno</option>
+        <option value="ONG">ONG</option>
+    </select>
     <span id="mensaje_error_tipo" style="color: red; display: none;"></span>
 </div>
 
 <!-- Campo para el tipo de la empresa del cliente -->
 <div class="form-group">
     <label for="lugar_empresa_cliente">Lugar:</label>
-    <input type="text" id="lugar_empresa_cliente" name="lugar_empresa_cliente" placeholder="Ingrese el lugar de empresa" oninput="validarLugar(this)">
+    <select id="lugar_empresa_cliente" name="lugar_empresa_cliente" onchange="validarLugar(this)">
+        <option value="">Seleccione el lugar de la empresa</option>
+        <option value="Casa">Casa</option>
+        <option value="Oficina">Oficina</option>
+        <option value="Co-working">Co-working</option>
+        <option value="Edificio Corporativo">Edificio Corporativo</option>
+        <option value="Local Comercial">Local Comercial</option>
+        <option value="Planta Industrial">Planta Industrial</option>
+        <option value="Otro">Otro</option>
+    </select>
     <span id="mensaje_error_lugar" style="color: red; display: none;"></span>
 </div>
 
