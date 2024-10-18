@@ -16,11 +16,11 @@ BPPJ
 
 <link rel="stylesheet" href="../../css/nueva_cotizacion/detalle_cliente.css">
 <fieldset class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
-    <legend>Datos empresa cliente</legend>
+    <legend>Datos empresa cliente </legend>
     <div class="box-6 cuadro-datos"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
         <div class="form-group-inline">
             <div class="form-group">
-                <label for="cliente_rut">RUT: </label> <!-- Etiqueta para el campo de entrada del RUT del cliente -->
+                <label for="cliente_rut">RUT Empresa: </label> <!-- Etiqueta para el campo de entrada del RUT del cliente -->
                 <input type="text" id="cliente_rut" name="cliente_rut" 
                     minlength="7" maxlength="12" 
                     placeholder="Ej: 12.345.678-9"
@@ -28,8 +28,9 @@ BPPJ
                     oninput="QuitarCaracteresInvalidos(this)"
                     required> <!-- Campo de texto para ingresar el RUT del cliente. También es obligatorio -->
             </div>
+
             <div class="form-group">
-                <label for="cliente_nombre">Nombre:</label> <!-- Etiqueta para el campo de entrada del nombre del cliente -->
+                <label for="cliente_nombre">Nombre representante:</label> <!-- Etiqueta para el campo de entrada del nombre del cliente -->
                 <input type="text" id="cliente_nombre" name="cliente_nombre" required
                     pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
                     title="Por favor, ingrese solo letras, números y caracteres como &,-."
@@ -89,9 +90,20 @@ BPPJ
 
 
 
+
+
     </div>
+    
     <div class="box-6 cuadro-datos cuadro-datos-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "cuadro-datos-left" para estilo -->
-        
+    <div class="form-group">
+                <label for="rut_encargado_cliente">RUT Encargado: </label> <!-- Etiqueta para el campo de entrada del RUT del cliente -->
+                <input type="text" id="rut_encargado_cliente" name="rut_encargado_cliente" 
+                    minlength="7" maxlength="12" 
+                    placeholder="Ej: 12.345.678-9"
+                    oninput="FormatearRut(this)"
+                    oninput="QuitarCaracteresInvalidos(this)"
+                    required> <!-- Campo de texto para ingresar el RUT del cliente. También es obligatorio -->
+            </div>
         <div class="form-group">
             <label for="cliente_email">Email:</label> <!-- Etiqueta para el campo de entrada del email del cliente -->
             <input type="email" id="cliente_email" name="cliente_email"
@@ -195,19 +207,23 @@ BPPJ
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Recibir datos del formulario cliente
-    $nombre_encargado_cliente = isset($_POST['cliente_nombre']) ? trim($_POST['cliente_nombre']) : null;
-    $rut_encargado_cliente = isset($_POST['cliente_rut']) ? $_POST['cliente_rut'] : null;
+    // datos de la empresa 
+    $rut_empresa_cliente = isset($_POST['cliente_rut']) ? $_POST['cliente_rut'] : null;
     $nombre_empresa_cliente = isset($_POST['cliente_empresa']) ? $_POST['cliente_empresa'] : null;
     $direccion_empresa_cliente = isset($_POST['cliente_direccion']) ? $_POST['cliente_direccion'] : null;
     $lugar_empresa_cliente = isset($_POST['cliente_lugar']) ? $_POST['cliente_lugar'] : null;
     $telefono_empresa_cliente = isset($_POST['cliente_fono']) ? $_POST['cliente_fono'] : null;
     $email_empresa_cliente = isset($_POST['cliente_email']) ? $_POST['cliente_email'] : null;
-    $cargo_encargado_cliente = isset($_POST['cliente_cargo']) ? $_POST['cliente_cargo'] : null;
     $giro_empresa_cliente = isset($_POST['cliente_giro']) ? $_POST['cliente_giro'] : null;
     $comuna_empresa_cliente = isset($_POST['cliente_comuna']) ? $_POST['cliente_comuna'] : null;
     $ciudad_empresa_cliente = isset($_POST['cliente_ciudad']) ? $_POST['cliente_ciudad'] : null;
     $tipo_empresa_cliente = isset($_POST['cliente_tipo']) ? $_POST['cliente_tipo'] : null;
+    //datos del encargado
+    $rut_encargado_cliente = isset($_POST['rut_encargado_cliente']) ? $_POST['rut_encargado_cliente'] : null;
+    $nombre_encargado_cliente = isset($_POST['cliente_nombre']) ? trim($_POST['cliente_nombre']) : null;
+    $cargo_encargado_cliente = isset($_POST['cliente_cargo']) ? $_POST['cliente_cargo'] : null;
+ 
+    
 
     // Campos no recibidos en el formulario que se dejarán en null
     $observacion = null;
@@ -218,67 +234,63 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($nombre_encargado_cliente && $rut_encargado_cliente) {
         // Insertar o actualizar el cliente
-        $sql = "INSERT INTO C_Clientes (id_empresa, rut_empresa_cliente, nombre_empresa_cliente, telefono_empresa_cliente, email_empresa_cliente, giro_empresa_cliente, tipo_empresa_cliente, lugar_empresa_cliente, ciudad_empresa_cliente, comuna_empresa_cliente, direccion_empresa_cliente, observacion, rut_encargado_cliente, nombre_encargado_cliente, direccion_encargado_cliente, telefono_encargado_cliente, email_encargado_cliente, cargo_encargado_cliente, comuna_encargado_cliente, ciudad_encargado_cliente)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                ON DUPLICATE KEY UPDATE 
-                    rut_empresa_cliente=VALUES(rut_empresa_cliente), 
-                    nombre_empresa_cliente=VALUES(nombre_empresa_cliente), 
-                    telefono_empresa_cliente=VALUES(telefono_empresa_cliente), 
-                    email_empresa_cliente=VALUES(email_empresa_cliente), 
-                    giro_empresa_cliente=VALUES(giro_empresa_cliente), 
-                    tipo_empresa_cliente=VALUES(tipo_empresa_cliente), 
-                    lugar_empresa_cliente=VALUES(lugar_empresa_cliente), 
-                    ciudad_empresa_cliente=VALUES(ciudad_empresa_cliente), 
-                    comuna_empresa_cliente=VALUES(comuna_empresa_cliente), 
-                    direccion_empresa_cliente=VALUES(direccion_empresa_cliente),
-                    observacion=COALESCE(VALUES(observacion), observacion), 
-                    rut_encargado_cliente=VALUES(rut_encargado_cliente), 
-                    nombre_encargado_cliente=VALUES(nombre_encargado_cliente), 
-                    direccion_encargado_cliente=COALESCE(VALUES(direccion_encargado_cliente), direccion_encargado_cliente), 
-                    telefono_encargado_cliente=COALESCE(VALUES(telefono_encargado_cliente), telefono_encargado_cliente), 
-                    email_encargado_cliente=COALESCE(VALUES(email_encargado_cliente), email_encargado_cliente), 
-                    cargo_encargado_cliente=VALUES(cargo_encargado_cliente), 
-                    comuna_encargado_cliente=COALESCE(VALUES(comuna_encargado_cliente), comuna_encargado_cliente), 
-                    ciudad_encargado_cliente=COALESCE(VALUES(ciudad_encargado_cliente), ciudad_encargado_cliente)";
-                    
-        $stmt = $mysqli->prepare($sql);
-        if ($stmt === false) {
-            die("Error en la preparación de la consulta: " . $mysqli->error);
-        }
-        $stmt->bind_param("isssssssssssssssssss", 
-            $id_empresa, 
-            $rut_encargado_cliente, 
-            $nombre_empresa_cliente, 
-            $telefono_empresa_cliente, 
-            $email_empresa_cliente, 
-            $giro_empresa_cliente, 
-            $tipo_empresa_cliente, 
-            $lugar_empresa_cliente, 
-            $ciudad_empresa_cliente, 
-            $comuna_empresa_cliente, 
-            $direccion_empresa_cliente, 
-            $observacion, 
-            $rut_encargado_cliente, 
-            $nombre_encargado_cliente, 
-            $direccion_encargado_cliente, 
-            $telefono_encargado_cliente, 
-            $email_empresa_cliente, 
-            $cargo_encargado_cliente, 
-            $comuna_encargado_cliente, 
-            $ciudad_encargado_cliente
-        );
-        
-        $stmt->execute();
-        if ($stmt->error) {
-            die("Error en la ejecución de la consulta: " . $stmt->error);
-        }
-        
+        $sql = "INSERT INTO C_Clientes (
+            id_empresa_creadora, 
+            rut_empresa_cliente, 
+            nombre_empresa_cliente, 
+            telefono_empresa_cliente, 
+            email_empresa_cliente, 
+            giro_empresa_cliente, 
+            tipo_empresa_cliente, 
+            lugar_empresa_cliente, 
+            ciudad_empresa_cliente, 
+            comuna_empresa_cliente, 
+            direccion_empresa_cliente, 
+            observacion, 
+            rut_encargado_cliente, 
+            nombre_encargado_cliente, 
+            direccion_encargado_cliente, 
+            telefono_encargado_cliente, 
+            email_encargado_cliente, 
+            cargo_encargado_cliente, 
+            comuna_encargado_cliente, 
+            ciudad_encargado_cliente
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+   
+   $stmt = $mysqli->prepare($sql);
+   $stmt->bind_param(
+       'isssssssssssssssssss',
+       $id, 
+       $rut_empresa_cliente, 
+       $nombre_empresa_cliente, 
+       $telefono_empresa_cliente, 
+       $email_empresa_cliente, 
+       $giro_empresa_cliente, 
+       $tipo_empresa_cliente, 
+       $lugar_empresa_cliente, 
+       $ciudad_empresa_cliente, 
+       $comuna_empresa_cliente, 
+       $direccion_empresa_cliente, 
+       $observacion, 
+       $rut_encargado_cliente, 
+       $nombre_encargado_cliente, 
+       $direccion_encargado_cliente, 
+       $telefono_encargado_cliente, 
+       $email_encargado_cliente, 
+       $cargo_encargado_cliente, 
+       $comuna_encargado_cliente, 
+       $ciudad_encargado_cliente
+   );
+   
+   if ($stmt->execute()) {
+       echo "Cliente creado exitosamente.";
+       // Obtiene el ID de la empresa insertada/actualizada
         $id_cliente = $mysqli->insert_id;
-        echo "Cliente insertado/actualizado. ID: $id_cliente<br>";
-    } else {
-        echo "Nombre y RUT del encargado son obligatorios.";
-    }
-}
+        echo "Cliente insertada/actualizada. ID: $id_cliente<br>";
+   } else {
+       echo "Error al crear el cliente: " . $stmt->error;
+   }
+    }};   
 ?>
 
 

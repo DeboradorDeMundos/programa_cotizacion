@@ -93,7 +93,7 @@ CREATE TABLE E_Encargados (
     -- Crear la tabla Clientes
     CREATE TABLE C_Clientes (
         id_cliente int NOT NULL AUTO_INCREMENT, -- Identificador único del cliente
-        id_empresa INT, -- Identificador de la empresa a la que pertenece el encargado
+        id_empresa_creadora INT, -- Identificador de la empresa a la que pertenece el encargado
         rut_empresa_cliente varchar(20), -- RUT de la empresa del cliente (debe ser único)
         nombre_empresa_cliente varchar(255), -- Nombre Empresa del cliente
         telefono_empresa_cliente varchar(20), -- Teléfono de la empresa del cliente 
@@ -113,9 +113,42 @@ CREATE TABLE E_Encargados (
         cargo_encargado_cliente varchar(255), -- Cargo del cliente
         comuna_encargado_cliente varchar(255), -- Comuna del cliente
         ciudad_encargado_cliente varchar(255), -- Ciudad del cliente
+        estado_empresa_cliente varchar(20) DEFAULT 'activo', -- estado empresa
+        estado_encargado_cliente varchar(20) DEFAULT 'activo', -- estado cliente
         PRIMARY KEY (id_cliente), -- Definición de la clave primaria
-        FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE SET NULL -- Clave foránea para referenciar la empresa
+        FOREIGN KEY (id_empresa_creadora) REFERENCES E_Empresa(id_empresa) ON DELETE SET NULL -- Clave foránea para referenciar la empresa
     ) ENGINE=InnoDB;
+
+
+-- ------------------------------------------------------------------------------------------------------------
+-- ------------------------------------- TABLA P_Proveedor ------------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------ 
+
+-- Eliminar la tabla Proveedor si existe
+DROP TABLE IF EXISTS P_Proveedor;
+
+-- Crear la tabla Proveedor
+CREATE TABLE P_Proveedor (
+    id_proveedor int NOT NULL AUTO_INCREMENT, -- Identificador único del proveedor
+    nombre_proveedor varchar(255) NOT NULL, -- Nombre del proveedor
+    rut_proveedor varchar(20) , -- RUT del proveedor (debe ser único)
+    direccion_proveedor varchar(255), -- Dirección del proveedor
+    telefono_proveedor varchar(20), -- Teléfono del proveedor
+    email_proveedor varchar(100), -- Email del proveedor
+    cargo_proveedor varchar(255), -- Cargo del proveedor
+    comuna_proveedor varchar(255), -- Comuna del proveedor
+    ciudad_proveedor varchar(255), -- Ciudad del proveedor
+    tipo_proveedor varchar(255), -- Tipo del proveedor
+    empresa_proveedor varchar(255), -- Empresa del proveedor(empresa)
+    rut_empresa_proveedor varchar(20) , -- RUT del proveedor(debe ser único)(empresa)
+    direccion_empresa_proveedor varchar(255), -- Dirección del proveedor(empresa)
+    telefono_empresa_proveedor varchar(20), -- Teléfono del proveedor(empresa)
+    email_empresa_proveedor varchar(100), -- Email del proveedor(empresa)
+    comuna_empresa_proveedor varchar(255), -- Comuna del proveedor(empresa)
+    ciudad_empresa_proveedor varchar(255), -- Ciudad del proveedor(empresa)
+    giro_proveedor varchar(255), -- Giro del proveedor(empresa)
+    PRIMARY KEY (id_proveedor) -- Definición de la clave primaria
+) ENGINE=InnoDB ;
 
 
 -- ------------------------------------------------------------------------------------------------------------
@@ -547,6 +580,57 @@ CREATE TABLE E_Firmas (
     web_firma VARCHAR(255) NULL, -- Campo para el sitio web
     FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa)
 );
+
+
+-- ------------------------------------------------------------------------------------------------------------
+-- ------------------------------------- INDICES  ----------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------ 
+
+-- Índices para la tabla C_Totales
+CREATE INDEX idx_totales_id_cotizacion ON C_Totales(id_cotizacion);
+
+-- Índices para la tabla p_tipo_producto
+CREATE INDEX idx_tipo_producto_tipo ON p_tipo_producto(tipo_producto);
+
+-- Índices para la tabla P_Productos
+CREATE INDEX idx_productos_id_tipo_producto ON P_Productos(id_tipo_producto);
+CREATE INDEX idx_productos_id_empresa ON P_Productos(id_empresa);
+CREATE INDEX idx_productos_nombre_producto ON P_Productos(nombre_producto);
+
+-- Índices para la tabla C_pago
+CREATE INDEX idx_pago_id_cotizacion ON C_pago(id_cotizacion);
+CREATE INDEX idx_pago_fecha_pago ON C_pago(fecha_pago);
+
+-- Índices para la tabla C_Condiciones_Generales
+CREATE INDEX idx_condiciones_generales_id_empresa ON C_Condiciones_Generales(id_empresa);
+
+-- Índices para la tabla C_Cotizacion_Condiciones
+CREATE INDEX idx_cotizacion_condiciones_id_cotizacion ON C_Cotizacion_Condiciones(id_cotizacion);
+CREATE INDEX idx_cotizacion_condiciones_id_condiciones ON C_Cotizacion_Condiciones(id_condiciones);
+
+-- Índices para la tabla E_Requisitos_Basicos
+CREATE INDEX idx_requisitos_basicos_id_empresa ON E_Requisitos_Basicos(id_empresa);
+
+-- Índices para la tabla C_Cotizaciones_Requisitos
+CREATE INDEX idx_cotizaciones_requisitos_id_cotizacion ON C_Cotizaciones_Requisitos(id_cotizacion);
+CREATE INDEX idx_cotizaciones_requisitos_id_requisitos ON C_Cotizaciones_Requisitos(id_requisitos);
+
+-- Índices para la tabla E_obligaciones_cliente
+CREATE INDEX idx_obligaciones_cliente_id_empresa ON E_obligaciones_cliente(id_empresa);
+
+-- Índices para la tabla C_Cotizaciones_Obligaciones
+CREATE INDEX idx_cotizaciones_obligaciones_id_cotizacion ON C_Cotizaciones_Obligaciones(id_cotizacion);
+CREATE INDEX idx_cotizaciones_obligaciones_id_obligacion ON C_Cotizaciones_Obligaciones(id_obligacion);
+
+-- Índices para la tabla C_Observaciones
+CREATE INDEX idx_observaciones_id_cotizacion ON C_Observaciones(id_cotizacion);
+
+-- Índices para la tabla C_Mensaje_Despedida
+CREATE INDEX idx_mensaje_despedida_id_cotizacion ON C_Mensaje_Despedida(id_cotizacion);
+
+-- Índices para la tabla E_Firmas
+CREATE INDEX idx_firmas_id_empresa ON E_Firmas(id_empresa);
+CREATE INDEX idx_firmas_nombre_encargado ON E_Firmas(nombre_encargado_firma);
 
 
 -- ------------------------------------------------------------------------------------------------------------

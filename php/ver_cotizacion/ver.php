@@ -25,41 +25,42 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
      -- FINAL CONEXION BD --
      ------------------------ -->
      
+     <?php
+
+if (isset($_GET['id_empresa']) && is_numeric($_GET['id_empresa'])) {
+    $id_empresa = (int) $_GET['id_empresa'];
+    // Ejecutar consulta SQL con el ID recibido
+} else {
+    die("Error: ID de empresa no válida.");
+}
+
+
+
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $id_cotizacion = (int) $_GET['id'];
+    // Ejecutar consulta SQL con el ID recibido
+} else {
+    die("Error: ID de cotización no válida.");
+}
+
+
+?>
+
+
+
+
      <html>
 <head>
     <link rel="stylesheet" href="../../css/ver_cotizacion/ver.css">
-    <style>
-    /* Estilos existentes... */
 
-    /* Estilos para impresión */
-    @media print {
-        /* Ocultar los radio buttons */
-        input[type="radio"],
-        input[type="file"],
-        input[type="text"],
-        select,
-        input[type="range"],
-        #tamanoValor {
-            display: none !important; /* Asegúrate de que se oculten */
-        }
-
-        /* También puedes ocultar el formulario si es necesario */
-        #form-marca-agua {
-            display: none !important;
-        }
-
-        /* Asegúrate de que la marca de agua se imprima */
-        .marca_de_agua {
-            display: block !important; /* Asegúrate de que la marca de agua se imprima */
-        }
-    }
-</style>
 </head>
 <body>
     <!-- Contenedor de botones -->
     <div class="button-contenedor">
         <button class="button volver" onclick="window.history.back()">Volver</button>
         <button class="button imprimir" onclick="imprimir()">Imprimir</button>
+        <button class="button volver listado" onclick="location.href='ver_listado.php?id=<?php echo $id_empresa; ?>'">Volver al listado</button>
+        <button class="button Modificar" onclick="location.href='modificar_cotizacion.php?id=<?php echo $id_empresa; ?>'">Modificar cotizacion</button>
     </div>
 
     <!-- Contenedor principal -->

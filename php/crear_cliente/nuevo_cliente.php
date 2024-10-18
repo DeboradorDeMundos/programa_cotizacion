@@ -9,20 +9,8 @@ BPPJ
 -->
 
 <!-- ------------------------------------------------------------------------------------------------------------
-    ------------------------------------- INICIO ITred Spa crear cliente.PHP --------------------------------------
+    ------------------------------------- INICIO ITred Spa nuevo cliente.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-
-<!-- ------------------------
-    -- INICIO CONEXION BD --
-    ------------------------ -->
-
-    <?php
-    // Establece la conexión a la base de datos de ITred Spa
-    $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-?>
-<!-- ---------------------
-     -- FIN CONEXION BD --
-     ----------------------- -->
 
 
      <!DOCTYPE html>
@@ -36,41 +24,56 @@ BPPJ
     <!-- Define el título de la página que se muestra en la pestaña del navegador -->
     <title> Agregar Cliente</title> 
     <!-- Enlaza una hoja de estilo externa que se encuentra en la ruta especificada para estilizar el contenido de la página -->
-    <link rel="stylesheet" href="../../css/crear_cliente/crear_cliente.css"> 
+    <link rel="stylesheet" href="../../css/crear_cliente/nuevo_cliente.css"> 
     <!-- Cierra el elemento de cabecera -->
-    <a href="../../programa_cotizacion.php" class="boton-fijado">Volver</a>
+    <a href="crear_cliente.php" class="boton-fijado">Volver Al Listado</a>
 </head> 
-<!-- Abre el elemento del cuerpo de la página donde se coloca el contenido visible -->
-<body> 
-
- <!-- AQUI VAN EL LISTADO DE LOS CLIENTES -->
-    <!-- listado de clientes -->
-    <?php include 'mostrar_clientes.php'; ?>
-    <a href="nuevo_cliente.php" class="boton-fijado">Crear nuevo cliente </a>
 
 
+<!-- Contenedor principal que puede ayudar a centrar y organizar el contenido en la página -->
+<div class="contenedor"> 
+        
+        <form id="formulario-cliente" method="POST" action="" enctype="multipart/form-data">
 
-    <!-- Cierra el cuerpo de la pagina -->
-</body>
-
-<script src="../../js/crear_cliente/crear_cliente.js"></script> 
-</html>
+        <h1>RELLENA EL FORMULARIO PARA AGREGAR UN NUEVO CLIENTE </h1>
 
 
+        <div class="contenedor">
+    <div class="formulario-empresa">
+        <h3>Información del Negocio / Empresa:</h3>
+        <!-- se agrega formulario cliente -->
+        <?php include 'formulario_empresa_cliente.php'; ?> 
+    </div>
 
-     <!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-<?php
-    $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
+
+
+    <div class="formulario-encargado">
+        <h3>Información del Encargado / Cliente:</h3>
+        <!-- se agrega formulario encargado de empresa -->
+        <?php include 'formulario_encargado.php'; ?>
+    </div>
+   </div>
+
+
+<?php if (!empty($mensaje)): ?>
+    <div class="notificacion" id="notificacion">
+        <?php echo $mensaje; ?>
+    </div>
+<?php endif; ?>
+    <button type="submit" class="submit">Crear Cliente</button> 
+    <!-- Cierra el formulario -->
+    </form> 
+    <!-- Cierra el contenedor principal -->
+    </div> 
+
+
+<script src="../../js/crear_cliente/nuevo_cliente.js"></script> 
+
+
 
 
 <!-- ------------------------------------------------------------------------------------------------------------
-    -------------------------------------- FIN ITred Spa crear cliente .PHP ----------------------------------------
+    -------------------------------------- FIN ITred Spa nuevo cliente .PHP ----------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
 <!--

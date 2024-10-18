@@ -49,9 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Cerrar la consulta
         $stmt_insert_observacion->close();
-    } else {
-        echo "La observación no puede estar vacía.";
-    }
+    } 
 }
 
 ?>

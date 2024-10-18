@@ -18,9 +18,10 @@ BPPJ
 </div>
 
 <div style="margin-top: 10px;">
-    <!-- Botones para agregar y eliminar condiciones -->
+    <!-- Botones para agregar condiciones -->
     <button id="boton-agregar-condicion" type="button">Agregar nueva condición</button>
-    <button id="boton-eliminar-condicion" type="button" style="display: none;">Eliminar última condición</button>
+    <!-- Botones eliminar condiciones -->
+    <button id="boton-eliminar-condicion" type="button">Eliminar última condición</button>
 </div>
 
 <script src="../../js/crear_empresa/condiciones_generales.js"></script> <!-- Enlaza un archivo JavaScript externo para manejar la lógica relacionada con las condiciones generales -->

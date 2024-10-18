@@ -28,8 +28,11 @@ $stmt->bind_result($id_cliente);
 $stmt->fetch();
 $stmt->close();
 if (!$id_cliente) {
+
+
     die("Error: Cliente no encontrado.");
 }
+
 // Obtener id_proyecto
 $sql = "SELECT id_proyecto FROM C_Proyectos WHERE codigo_proyecto = ?";
 $stmt = $mysqli->prepare($sql);

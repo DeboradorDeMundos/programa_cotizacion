@@ -43,7 +43,7 @@ BPPJ
 <div class="form-group">
     <label for="telefono_encargado_cliente">Teléfono o Celular :</label>
     <img id="flag_encargado_cliente" style="display:none; width: 32px; height: 32px;" alt="Bandera">
-    <input type="text" id="telefono_encargado_cliente" name="telefono_encargado_cliente" placeholder="Ingrese el teléfono oninput="asegurarMasYDetectarPais(this)">
+    <input type="text" id="telefono_encargado_cliente" name="telefono_encargado_cliente" placeholder="Ingrese el teléfono" oninput="asegurarMasYDetectarPais(this)">
 </div>  
 
 <!-- Campo para el email del encargado de la empresa encargado_cliente -->
@@ -90,38 +90,41 @@ BPPJ
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Captura los datos del formulario y realiza una validación básica
-    $rut_empresa_cliente = $mysqli->real_escape_string($_POST['rut_empresa_cliente']);
-    $nombre_empresa_cliente = $mysqli->real_escape_string($_POST['nombre_empresa_cliente']);
-    $telefono_empresa_cliente = $mysqli->real_escape_string($_POST['telefono_empresa_cliente']);
-    $email_empresa_cliente = $mysqli->real_escape_string($_POST['email_empresa_cliente']);
-    $giro_empresa_cliente = $mysqli->real_escape_string($_POST['giro_empresa_cliente']);
-    $tipo_empresa_cliente = $mysqli->real_escape_string($_POST['tipo_empresa_cliente']);
-    $lugar_empresa_cliente = $mysqli->real_escape_string($_POST['lugar_empresa_cliente']);
-    $comuna_empresa_cliente = $mysqli->real_escape_string($_POST['comuna_empresa_cliente']);
-    $ciudad_empresa_cliente = $mysqli->real_escape_string($_POST['ciudad_empresa_cliente']);
-    $direccion_empresa_cliente = $mysqli->real_escape_string($_POST['direccion_empresa_cliente']);
-    $observacion = $mysqli->real_escape_string($_POST['observacion']);
+    $rut_empresa_cliente = $_POST['rut_empresa_cliente'];
+    $nombre_empresa_cliente = $_POST['nombre_empresa_cliente'];
+    $telefono_empresa_cliente = $_POST['telefono_empresa_cliente'];
+    $email_empresa_cliente = $_POST['email_empresa_cliente'];
+    $giro_empresa_cliente = $_POST['giro_empresa_cliente'];
+    $tipo_empresa_cliente = $_POST['tipo_empresa_cliente'];
+    $lugar_empresa_cliente = $_POST['lugar_empresa_cliente'];
+    $comuna_empresa_cliente = $_POST['comuna_empresa_cliente'];
+    $ciudad_empresa_cliente = $_POST['ciudad_empresa_cliente'];
+    $direccion_empresa_cliente = $_POST['direccion_empresa_cliente'];
+    $observacion = $_POST['observacion'];
     
     // Captura los datos del encargado
-    $nombre_encargado_cliente = $mysqli->real_escape_string($_POST['nombre_encargado_cliente']);
-    $rut_encargado_cliente = $mysqli->real_escape_string($_POST['rut_encargado_cliente']);
-    $direccion_encargado_cliente = $mysqli->real_escape_string($_POST['direccion_encargado_cliente']);
-    $telefono_encargado_cliente = $mysqli->real_escape_string($_POST['telefono_encargado_cliente']);
-    $email_encargado_cliente = $mysqli->real_escape_string($_POST['email_encargado_cliente']);
-    $cargo_encargado_cliente = $mysqli->real_escape_string($_POST['cargo_encargado_cliente']);
-    $comuna_encargado_cliente = $mysqli->real_escape_string($_POST['comuna_encargado_cliente']);
-    $ciudad_encargado_cliente = $mysqli->real_escape_string($_POST['ciudad_encargado_cliente']);
+    $nombre_encargado_cliente = $_POST['nombre_encargado_cliente'];
+    $rut_encargado_cliente = $_POST['rut_encargado_cliente'];
+    $direccion_encargado_cliente = $_POST['direccion_encargado_cliente'];
+    $telefono_encargado_cliente = $_POST['telefono_encargado_cliente'];
+    $email_encargado_cliente = $_POST['email_encargado_cliente'];
+    $cargo_encargado_cliente = $_POST['cargo_encargado_cliente'];
+    $comuna_encargado_cliente = $_POST['comuna_encargado_cliente'];
+    $ciudad_encargado_cliente = $_POST['ciudad_encargado_cliente'];
     
     // Verifica si el RUT de la empresa ya existe en la base de datos
-    $verificarRut = "SELECT * FROM C_Clientes WHERE rut_empresa_cliente = '$rut_empresa_cliente'";
-    $resultadoVerificacion = $mysqli->query($verificarRut);
-    
+    $stmt = $mysqli->prepare("SELECT * FROM C_Clientes WHERE rut_empresa_cliente = ?");
+    $stmt->bind_param("s", $rut_empresa_cliente);
+    $stmt->execute();
+    $resultadoVerificacion = $stmt->get_result();
+
     if ($resultadoVerificacion->num_rows > 0) {
         // Si el RUT ya existe, establece el mensaje
         $mensaje = "Este cliente ya existe. Por favor verifica en los registros o ponte en contacto con soporte.";
     } else {
         // Crea la consulta SQL para insertar un nuevo cliente en la base de datos
-        $sql = "INSERT INTO C_Clientes (rut_empresa_cliente,
+        $sql = "INSERT INTO C_Clientes (
+            rut_empresa_cliente,
             nombre_empresa_cliente,
             telefono_empresa_cliente,
             email_empresa_cliente,
@@ -140,35 +143,44 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             cargo_encargado_cliente,
             comuna_encargado_cliente,
             ciudad_encargado_cliente)
-        VALUES ('$rut_empresa_cliente',
-            '$nombre_empresa_cliente',
-            '$telefono_empresa_cliente',
-            '$email_empresa_cliente',
-            '$giro_empresa_cliente',
-            '$tipo_empresa_cliente',
-            '$lugar_empresa_cliente',
-            '$comuna_empresa_cliente',
-            '$ciudad_empresa_cliente',
-            '$direccion_empresa_cliente',
-            '$observacion',
-            '$rut_encargado_cliente',
-            '$nombre_encargado_cliente', 
-            '$direccion_encargado_cliente',
-            '$telefono_encargado_cliente',
-            '$email_encargado_cliente',
-            '$cargo_encargado_cliente',
-            '$comuna_encargado_cliente',
-            '$ciudad_encargado_cliente')";
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        // Preparar la consulta
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("sssssssssssssssssss", 
+            $rut_empresa_cliente,
+            $nombre_empresa_cliente,
+            $telefono_empresa_cliente,
+            $email_empresa_cliente,
+            $giro_empresa_cliente,
+            $tipo_empresa_cliente,
+            $lugar_empresa_cliente,
+            $comuna_empresa_cliente,
+            $ciudad_empresa_cliente,
+            $direccion_empresa_cliente,
+            $observacion,
+            $rut_encargado_cliente,
+            $nombre_encargado_cliente, 
+            $direccion_encargado_cliente,
+            $telefono_encargado_cliente,
+            $email_encargado_cliente,
+            $cargo_encargado_cliente,
+            $comuna_encargado_cliente,
+            $ciudad_encargado_cliente
+        );
 
         // Ejecuta la consulta y verifica si se insertó correctamente
-        if ($mysqli->query($sql) === TRUE) {
+        if ($stmt->execute()) {
             echo "Encargado cliente creado exitosamente.";
         } else {
-            echo "Error al crear el encargado cliente: " . $mysqli->error;
+            echo "Error al crear el encargado cliente: " . $stmt->error;
         }
     }
+    // Cierra la declaración
+    $stmt->close();
 }
 ?>
+
 
 
  

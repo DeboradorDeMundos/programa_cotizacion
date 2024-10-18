@@ -146,6 +146,7 @@ function asegurarMasYDetectarPais(input) {
 // Asegúrate de que la bandera se actualice al cargar la página
 window.onload = function() {
     const campoTelefono = document.getElementById('telefono_encargado_cliente');
+    const campoTelefono1 = document.getElementById('telefono_empresa_cliente');
     asegurarMasYDetectarPais(campoTelefono); // Llama a la función para asegurar "+" y detectar el país
 };
 

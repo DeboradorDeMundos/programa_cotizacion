@@ -32,21 +32,17 @@ BPPJ
                     <th>ID</th>
                     <th>RUT Empresa</th>
                     <th>Nombre Empresa</th>
-                    <th>Teléfono</th>
                     <th>Email</th>
                     <th>Giro</th>
-                    <th>Tipo de Empresa</th>
-                    <th>Ciudad</th>
                     <th>Comuna</th>
                     <th>Dirección</th>
-                    <th>Observación</th>
                     <th>RUT Encargado</th>
                     <th>Nombre Encargado</th>
+                    <th>Cargo Encargado</th>
                     <th>Teléfono Encargado</th>
                     <th>Email Encargado</th>
-                    <th>Cargo Encargado</th>
-                    <th>Comuna Encargado</th>
-                    <th>Ciudad Encargado</th>
+                    <th>Estado Encargado</th>
+                    <th>Estado Empresa</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,21 +58,17 @@ BPPJ
                                 <td>{$cliente['id_cliente']}</td>
                                 <td>{$cliente['rut_empresa_cliente']}</td>
                                 <td>{$cliente['nombre_empresa_cliente']}</td>
-                                <td>{$cliente['telefono_empresa_cliente']}</td>
                                 <td>{$cliente['email_empresa_cliente']}</td>
                                 <td>{$cliente['giro_empresa_cliente']}</td>
-                                <td>{$cliente['tipo_empresa_cliente']}</td>
-                                <td>{$cliente['ciudad_empresa_cliente']}</td>
                                 <td>{$cliente['comuna_empresa_cliente']}</td>
                                 <td>{$cliente['direccion_empresa_cliente']}</td>
-                                <td>{$cliente['observacion']}</td>
                                 <td>{$cliente['rut_encargado_cliente']}</td>
                                 <td>{$cliente['nombre_encargado_cliente']}</td>
+                                <td>{$cliente['cargo_encargado_cliente']}</td>
                                 <td>{$cliente['telefono_encargado_cliente']}</td>
                                 <td>{$cliente['email_encargado_cliente']}</td>
-                                <td>{$cliente['cargo_encargado_cliente']}</td>
-                                <td>{$cliente['comuna_encargado_cliente']}</td>
-                                <td>{$cliente['ciudad_encargado_cliente']}</td>
+                                <td>{$cliente['estado_encargado_cliente']}</td>
+                                <td>{$cliente['estado_empresa_cliente']}</td>
                               </tr>";
                     }
                 } else {

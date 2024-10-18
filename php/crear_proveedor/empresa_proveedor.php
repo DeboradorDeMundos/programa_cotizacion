@@ -12,80 +12,150 @@ BPPJ
     ------------------------------------- INICIO ITred Spa crear proveedor.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
     <head> 
-    <!-- Define la codificación de caracteres como UTF-8 para asegurar la correcta visualización de caracteres especiales y diversos idiomas -->
     <meta charset="UTF-8"> 
-    <!-- Configura la vista en dispositivos móviles. width=device-width asegura que el ancho de la página se ajuste al ancho de la pantalla del dispositivo, y initial-scale=1.0 establece el nivel de zoom inicial -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <!-- Define el título de la página que se muestra en la pestaña del navegador -->
     <title>Formulario Para Agregar proveedor</title> 
-    <!-- Enlaza una hoja de estilo externa que se encuentra en la ruta especificada para estilizar el contenido de la página -->
-    <link rel="stylesheet" href="../../css/crear_proveedor/formulario_proveedor.css"> 
-    <!-- Cierra el elemento de cabecera -->
+    <link rel="stylesheet" href="../../css/crear_proveedor/empresa_proveedor.css"> 
 </head> 
 
-<!-- Campo para la empresa del proveedor -->
-<div class="form-group">
-    <label for="empresa_proveedor">Empresa del proveedor:</label>
-    <input type="text" id="empresa_proveedor" name="empresa_proveedor">
-</div>
+    <!-- Campo para la empresa del proveedor -->
+    <div class="form-group">
+        <label for="empresa_proveedor">Empresa del proveedor:</label>
+        <input type="text" id="empresa_proveedor" name="empresa_proveedor" required>
+    </div>
 
-<!-- Campo para el teléfono del proveedor -->
-<div class="form-group">
-    <label for="telefono_proveedor">Teléfono del proveedor:</label>
-    <input type="text" id="telefono_proveedor" name="telefono_proveedor">
-</div>
+    <!-- Campo para el RUT de la empresa del proveedor -->
+    <div class="form-group">
+        <label for="rut_empresa_proveedor">RUT de la empresa:</label>
+        <input type="text" id="rut_empresa_proveedor" name="rut_empresa_proveedor" required>
+    </div>
 
-<!-- Campo para el giro del proveedor -->
-<div class="form-group">
-    <label for="giro_proveedor">Giro del proveedor:</label>
-    <input type="text" id="giro_proveedor" name="giro_proveedor">
-</div>
+    <!-- Campo para la dirección de la empresa del proveedor -->
+    <div class="form-group">
+        <label for="direccion_empresa_proveedor">Dirección de la empresa:</label>
+        <input type="text" id="direccion_empresa_proveedor" name="direccion_empresa_proveedor" required>
+    </div>
 
-<!-- Campo para la comuna del proveedor -->
-<div class="form-group">
-    <label for="comuna_proveedor">Comuna del proveedor:</label>
-    <input type="text" id="comuna_proveedor" name="comuna_proveedor">
-</div>
+    <!-- Campo para el teléfono de la empresa del proveedor -->
+    <div class="form-group">
+        <label for="telefono_empresa_proveedor">Teléfono de la empresa:</label>
+        <input type="text" id="telefono_empresa_proveedor" name="telefono_empresa_proveedor" required>
+    </div>
 
-<!-- Campo para la ciudad del proveedor -->
-<div class="form-group">
-    <label for="ciudad_proveedor">Ciudad del proveedor:</label>
-    <input type="text" id="ciudad_proveedor" name="ciudad_proveedor">
-</div>
+    <!-- Campo para el email de la empresa del proveedor -->
+    <div class="form-group">
+        <label for="email_empresa_proveedor">Email de la empresa:</label>
+        <input type="email" id="email_empresa_proveedor" name="email_empresa_proveedor" required>
+    </div>
 
-<!-- Campo para el tipo del proveedor -->
-<div class="form-group">
-    <label for="tipo_proveedor">Tipo del proveedor:</label>
-    <input type="text" id="tipo_proveedor" name="tipo_proveedor">
-</div>
+    <!-- Campo para la comuna de la empresa del proveedor -->
+    <div class="form-group">
+        <label for="comuna_empresa_proveedor">Comuna de la empresa:</label>
+        <input type="text" id="comuna_empresa_proveedor" name="comuna_empresa_proveedor" required>
+    </div>
+
+    <!-- Campo para la ciudad de la empresa del proveedor -->
+    <div class="form-group">
+        <label for="ciudad_empresa_proveedor">Ciudad de la empresa:</label>
+        <input type="text" id="ciudad_empresa_proveedor" name="ciudad_empresa_proveedor" required>
+    </div>
+
+    <!-- Campo para el giro de la empresa del proveedor -->
+    <div class="form-group">
+        <label for="giro_proveedor">Giro de la empresa:</label>
+        <select id="giro_proveedor" name="giro_proveedor" required>
+            <option value="">Seleccione...</option> <!-- Añadir opción vacía para evitar selección vacía -->
+            <option value="comercial">Comercial</option>
+            <option value="industrial">Industrial</option>
+            <option value="servicios">Servicios</option>
+            <option value="construccion">Construcción</option>
+            <option value="agropecuario">Agropecuario</option>
+            <option value="tecnologia">Tecnología</option>
+            <option value="transporte">Transporte</option>
+            <option value="turismo">Turismo</option>
+            <option value="educacion">Educación</option>
+            <option value="financiero">Financiero</option>
+        </select>
+    </div>
+
 
 <script src="../../js/crear_proveedor/formulario_proveedor.js"></script> 
+
+
 
 <?php
 // Comprueba si el formulario ha sido enviado mediante el método POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Captura los datos del formulario y realiza una validación básica
     $nombre_proveedor = $mysqli->real_escape_string($_POST['nombre_proveedor']);
-    $empresa_proveedor = $mysqli->real_escape_string($_POST['empresa_proveedor']);
     $rut_proveedor = $mysqli->real_escape_string($_POST['rut_proveedor']);
-    $direccion_proveedor = $mysqli->real_escape_string($_POST['direccion_proveedor']);
-    $lugar_proveedor = $mysqli->real_escape_string($_POST['lugar_proveedor']);
     $telefono_proveedor = $mysqli->real_escape_string($_POST['telefono_proveedor']);
     $email_proveedor = $mysqli->real_escape_string($_POST['email_proveedor']);
+    $direccion_proveedor = $mysqli->real_escape_string($_POST['direccion_proveedor']);
     $cargo_proveedor = $mysqli->real_escape_string($_POST['cargo_proveedor']);
-    $giro_proveedor = $mysqli->real_escape_string($_POST['giro_proveedor']);
     $comuna_proveedor = $mysqli->real_escape_string($_POST['comuna_proveedor']);
     $ciudad_proveedor = $mysqli->real_escape_string($_POST['ciudad_proveedor']);
     $tipo_proveedor = $mysqli->real_escape_string($_POST['tipo_proveedor']);
     echo "<pre>";
-    print_r($_POST); // Muestra todos los datos enviados a través del formulario
+    print_r($_POST); // Muestra los datos enviados
+    echo "</pre>";
+    // Empresa
+    $empresa_proveedor = $mysqli->real_escape_string($_POST['empresa_proveedor']);
+    $rut_empresa_proveedor = $mysqli->real_escape_string($_POST['rut_empresa_proveedor']);
+    $direccion_empresa_proveedor = $mysqli->real_escape_string($_POST['direccion_empresa_proveedor']);
+    $telefono_empresa_proveedor = $mysqli->real_escape_string($_POST['telefono_empresa_proveedor']);
+    $email_empresa_proveedor = $mysqli->real_escape_string($_POST['email_empresa_proveedor']);
+    $comuna_empresa_proveedor = $mysqli->real_escape_string($_POST['comuna_empresa_proveedor']);
+    $ciudad_empresa_proveedor = $mysqli->real_escape_string($_POST['ciudad_empresa_proveedor']);
+    
+    // Verifica si el giro_proveedor está establecido
+    $giro_proveedor = isset($_POST['giro_proveedor']) ? $mysqli->real_escape_string($_POST['giro_proveedor']) : '';
+
+    // Muestra los datos enviados a través del formulario para debug
+    echo "<pre>";
+    print_r($_POST);
     echo "</pre>";
 
-    // Crea la consulta SQL para insertar un nuevo proveedor en la base de datos
-    $sql = "INSERT INTO P_proveedor (nombre_proveedor, empresa_proveedor, rut_proveedor,
-              direccion_proveedor, lugar_proveedor, telefono_proveedor, email_proveedor, cargo_proveedor, giro_proveedor, comuna_proveedor, ciudad_proveedor, tipo_proveedor)
-            VALUES ('$nombre_proveedor', '$empresa_proveedor', '$rut_proveedor',
-             '$direccion_proveedor', '$lugar_proveedor', '$telefono_proveedor', '$email_proveedor', '$cargo_proveedor', '$giro_proveedor', '$comuna_proveedor', '$ciudad_proveedor', '$tipo_proveedor')";
+    
+ // Crea la consulta SQL para insertar un nuevo proveedor en la base de datos
+ $sql = "INSERT INTO P_proveedor (
+    nombre_proveedor, 
+    rut_proveedor, 
+    telefono_proveedor, 
+    email_proveedor, 
+    direccion_proveedor, 
+    cargo_proveedor, 
+    comuna_proveedor, 
+    ciudad_proveedor, 
+    tipo_proveedor,
+    empresa_proveedor, 
+    rut_empresa_proveedor,
+    direccion_empresa_proveedor, 
+    telefono_empresa_proveedor, 
+    email_empresa_proveedor, 
+    comuna_empresa_proveedor, 
+    ciudad_empresa_proveedor, 
+    giro_proveedor
+) VALUES (
+    '$nombre_proveedor', 
+    '$rut_proveedor', 
+    '$telefono_proveedor', 
+    '$email_proveedor', 
+    '$direccion_proveedor', 
+    '$cargo_proveedor', 
+    '$comuna_proveedor', 
+    '$ciudad_proveedor', 
+    '$tipo_proveedor',
+    '$empresa_proveedor', 
+    '$rut_empresa_proveedor',
+    '$direccion_empresa_proveedor', 
+    '$telefono_empresa_proveedor', 
+    '$email_empresa_proveedor', 
+    '$comuna_empresa_proveedor', 
+    '$ciudad_empresa_proveedor', 
+    '$giro_proveedor'
+)";
+
 
     // Ejecuta la consulta y verifica si se insertó correctamente
     if ($mysqli->query($sql) === TRUE) {
@@ -95,7 +165,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
-
  
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa crear proveedor .PHP ----------------------------------------

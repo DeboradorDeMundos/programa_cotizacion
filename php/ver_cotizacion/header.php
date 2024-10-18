@@ -14,12 +14,6 @@ BPPJ
 
 <?php
 
-if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-    $id_cotizacion = (int) $_GET['id'];
-    // Ejecutar consulta SQL con el ID recibido
-} else {
-    die("Error: ID de cotización no válida.");
-}
 
 
 // Consulta para obtener los datos de la empresa, cliente y detalles de la cotización

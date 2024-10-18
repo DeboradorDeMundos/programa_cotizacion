@@ -13,45 +13,9 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Crear Clientes .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-    .contenedor {
-        display: flex; /* Activamos flexbox */
-        justify-content: center; /* Separa los formularios */
-        align-items: flex-start; /* Alinea los formularios en la parte superior */
-        gap: 20px; /* Espaciado entre los formularios */
-        padding: 20px;
-        flex-wrap: wrap; /* Asegura que se ajusten si no caben en una sola fila */
-    }
+
+
     
-    .formulario-empresa,
-    .formulario-encargado {
-        width: 48%; /* Aseguramos que cada formulario ocupe menos de la mitad para que quepan en el mismo nivel */
-        background-color: #f9f9f9;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        box-sizing: border-box;
-    }
-    
-    h3 {
-        text-align: center;
-    }
-    
-    .submit {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        margin-top: 20px;
-    }
-    
-    .submit:hover {
-        background-color: #45a049;
-    }
     
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Crear Clientes .CSS ---------------------------------------

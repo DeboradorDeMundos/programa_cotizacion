@@ -43,6 +43,17 @@ BPPJ
         LineaPago.innerHTML = `
             <td><input type="number" name="numero_pago[]" required oninput="QuitarCaracteresInvalidos(this)"></td>
             <td><textarea name="descripcion_pago[]" placeholder="Descripción del pago" oninput="QuitarCaracteresInvalidos(this)"></textarea></td>
+             <td>
+            <select name="forma_pago[]" required>
+            <option value="">Seleccione forma de pago</option>
+            <option value="efectivo">Efectivo</option>
+            <option value="transferencia">Transferencia</option>
+            <option value="tarjeta_credito">Tarjeta de crédito</option>
+            <option value="tarjeta_debito">Tarjeta de débito</option>
+            <option value="cheque">Cheque</option>
+            <option value="otro">Otro</option>
+            </select>
+            </td>
             <td><input type="number" id="porcentaje-pago" name="porcentaje_pago[]" min="0" max="${100 - totalPorcentaje}" required oninput="calcularPago(this)" oninput="QuitarCaracteresInvalidos(this)"></td>
             <td><input type="number" id="monto-pago" name="monto_pago[]" min="0" required readonly oninput="QuitarCaracteresInvalidos(this)"></td>
             <td><input type="date" name="fecha_pago[]" required oninput="QuitarCaracteresInvalidos(this)"></td>
