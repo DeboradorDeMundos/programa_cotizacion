@@ -96,59 +96,69 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <link rel="stylesheet" href="../../css/ver_cotizacion/traer_pago.css">
+<!-- Título: Sección de información de pagos -->
 <fieldset id="payment-section">
     <legend>Información de Pagos</legend>
+    <!-- Título: Botón para agregar un nuevo pago -->
     <button type="button" onclick="AgregarPago()">Agregar Pago</button>
     
-        <table id="payment-table" <?php if (count($pagos) > 0) { echo 'style="display:table;"'; } else { echo 'style="display:none;"'; } ?>>
-            <thead>
-                <tr>
-                    <th>N° Pago</th>
-                    <th>Descripción de Pago</th>
-                    <th>% De Pago</th>
-                    <th>Monto de Pago</th>
-                    <th>Fecha de Pago</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody id="payments-contenedor">
-                <?php if (!empty($pagos)): ?>
-                    <?php foreach ($pagos as $pago): ?>
-                        <tr>
-                            <!-- Número de pago (solo lectura) -->
-                            <td>
-                                <input type="hidden" name="numero_pago[]" value="<?php echo htmlspecialchars($pago['numero_pago']); ?>">
-                                <?php echo htmlspecialchars($pago['numero_pago']); ?>
-                            </td>
-                            <!-- Descripción editable -->
-                            <td>
-                                <input type="text" name="descripcion_pago[]" value="<?php echo htmlspecialchars($pago['descripcion']); ?>">
-                            </td>
-                            <!-- Porcentaje de pago editable -->
-                            <td>
-                                <input type="number" name="porcentaje_pago[]" value="<?php echo htmlspecialchars($pago['porcentaje_pago']); ?>" step="0.01" min="0">
-                            </td>
-                            <!-- Monto editable -->
-                            <td>
-                                <input type="number" name="monto_pago[]" value="<?php echo htmlspecialchars($pago['monto_pago']); ?>" step="0.01" min="0">
-                            </td>
-                            <!-- Fecha editable -->
-                            <td>
-                                <input type="date" name="fecha_pago[]" value="<?php echo htmlspecialchars($pago['fecha_pago']); ?>">
-                            </td>
-                            <!-- Acción: Eliminar -->
-                            <td>
-                                <button type="button" onclick="EliminarPago(<?php echo $pago['numero_pago']; ?>)">Eliminar</button>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php else: ?>
+    <!-- Título: Tabla de pagos -->
+    <table id="payment-table" <?php if (count($pagos) > 0) { echo 'style="display:table;"'; } else { echo 'style="display:none;"'; } ?>>
+        <thead>
+            <tr>
+                <!-- Título: Cabecera de N° Pago -->
+                <th>N° Pago</th>
+                <!-- Título: Cabecera de Descripción de Pago -->
+                <th>Descripción de Pago</th>
+                <!-- Título: Cabecera de % De Pago -->
+                <th>% De Pago</th>
+                <!-- Título: Cabecera de Monto de Pago -->
+                <th>Monto de Pago</th>
+                <!-- Título: Cabecera de Fecha de Pago -->
+                <th>Fecha de Pago</th>
+                <!-- Título: Cabecera de Acción -->
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="payments-contenedor">
+            <?php if (!empty($pagos)): ?>
+                <?php foreach ($pagos as $pago): ?>
                     <tr>
-                        <td colspan="6">No hay pagos registrados.</td>
+                        <!-- Título: Número de pago (solo lectura) -->
+                        <td>
+                            <input type="hidden" name="numero_pago[]" value="<?php echo htmlspecialchars($pago['numero_pago']); ?>">
+                            <?php echo htmlspecialchars($pago['numero_pago']); ?>
+                        </td>
+                        <!-- Título: Descripción editable -->
+                        <td>
+                            <input type="text" name="descripcion_pago[]" value="<?php echo htmlspecialchars($pago['descripcion']); ?>">
+                        </td>
+                        <!-- Título: Porcentaje de pago editable -->
+                        <td>
+                            <input type="number" name="porcentaje_pago[]" value="<?php echo htmlspecialchars($pago['porcentaje_pago']); ?>" step="0.01" min="0">
+                        </td>
+                        <!-- Título: Monto editable -->
+                        <td>
+                            <input type="number" name="monto_pago[]" value="<?php echo htmlspecialchars($pago['monto_pago']); ?>" step="0.01" min="0">
+                        </td>
+                        <!-- Título: Fecha editable -->
+                        <td>
+                            <input type="date" name="fecha_pago[]" value="<?php echo htmlspecialchars($pago['fecha_pago']); ?>">
+                        </td>
+                        <!-- Título: Acción para eliminar el pago -->
+                        <td>
+                            <button type="button" onclick="EliminarPago(<?php echo $pago['numero_pago']; ?>)">Eliminar</button>
+                        </td>
                     </tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <!-- Título: Mensaje cuando no hay pagos registrados -->
+                    <td colspan="6">No hay pagos registrados.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
 </fieldset>
 
 <script src="../../js/ver_cotizacion/traer_pago.js"></script>

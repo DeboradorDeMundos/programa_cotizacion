@@ -41,11 +41,14 @@ BPPJ
 ?>
 
 <?php if (!empty($requisitos)): ?>
-    <strong>requisitos:</strong><br><br>
+    <!-- Título: Requisitos -->
+    <strong>Requisitos:</strong><br><br>
     <?php foreach ($requisitos as $requisito): ?>
+        <!-- Título: Descripción de requisitos -->
         <?php echo htmlspecialchars($requisito['descripcion_condiciones']); ?><br>
     <?php endforeach; ?>
 <?php else: ?>
+    <!-- Título: Mensaje cuando no hay requisitos disponibles -->
     No hay requisitos disponibles.
 <?php endif; ?>
 <!-- ------------------------------------------------------------------------------------------------------------

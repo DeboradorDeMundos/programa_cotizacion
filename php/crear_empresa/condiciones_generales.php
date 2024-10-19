@@ -11,16 +11,22 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Condiciones Generales.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-    <link rel="stylesheet" href="../../css/crear_empresa/condiciones_generales.css"> <!-- Enlaza una hoja de estilo externa que se encuentra en la ruta especificada para estilizar el contenido de la página -->
-<h2>condiciones generaes</h2>
+<link rel="stylesheet" href="../../css/crear_empresa/condiciones_generales.css"> <!-- Enlaza una hoja de estilo externa que se encuentra en la ruta especificada para estilizar el contenido de la página -->
+
+<!-- Título: Sección de Condiciones Generales -->
+<h2>Condiciones Generales</h2>
+
+<!-- Título: Contenedor dinámico de condiciones -->
 <div id="contenedor-condiciones">
     <!-- Aquí se agregarán dinámicamente las filas de condiciones -->
 </div>
 
+<!-- Título: Botones de acciones para agregar y eliminar condiciones -->
 <div style="margin-top: 10px;">
-    <!-- Botones para agregar condiciones -->
+    <!-- Título: Botón para agregar nueva condición -->
     <button id="boton-agregar-condicion" type="button">Agregar nueva condición</button>
-    <!-- Botones eliminar condiciones -->
+    
+    <!-- Título: Botón para eliminar la última condición -->
     <button id="boton-eliminar-condicion" type="button">Eliminar última condición</button>
 </div>
 

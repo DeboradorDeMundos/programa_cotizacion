@@ -37,30 +37,33 @@ BPPJ
 </head> 
 
 <body> 
-    <div class= 'contenedor-principal'>
+<div class='contenedor-principal'>
 
-        <div class="contenedor">  
-            <form id="formulario-proveedor" method="POST" action="" enctype="multipart/form-data">
-                <h3>RELLENA EL FORMULARIO PARA AGREGAR UN NUEVO PROVEEDOR </h3>
-                <?php include 'formulario_proveedor.php'; ?>
-        
-                <div class="contenedor"> 
-                    <h3>RELLENA EL FORMULARIO PARA AGREGAR LA EMPRESA DEL PROVEEDOR </h3>
-                    <?php include 'empresa_proveedor.php'; ?>
-                </div> 
+    <div class="contenedor">  
+        <form id="formulario-proveedor" method="POST" action="" enctype="multipart/form-data">
+            <!-- Título para el formulario de nuevo proveedor -->
+            <h3>RELLENA EL FORMULARIO PARA AGREGAR UN NUEVO PROVEEDOR</h3>
+            <?php include 'formulario_proveedor.php'; ?>
+    
+            <div class="contenedor"> 
+                <!-- Título para el formulario de la empresa del proveedor -->
+                <h3>RELLENA EL FORMULARIO PARA AGREGAR LA EMPRESA DEL PROVEEDOR</h3>
+                <?php include 'empresa_proveedor.php'; ?>
+            </div> 
 
-                <!-- Botón de submit debe estar dentro del formulario -->
-                <button type="submit" class="submit">Crear proveedor</button> 
-            </form> 
-        </div> 
-
-        <div class="contenedor"> 
-            <h3>Listado de proveedores</h3>
-            <!-- Incluye el archivo que muestra el listado de proveedores -->
-            <?php include 'mostrar_proveedor.php'; ?> 
-        </div> 
-
+            <!-- Botón de submit debe estar dentro del formulario -->
+            <button type="submit" class="submit">Crear proveedor</button> 
+        </form> 
     </div> 
+
+    <div class="contenedor"> 
+        <!-- Título para el listado de proveedores -->
+        <h3>Listado de proveedores</h3>
+        <!-- Incluye el archivo que muestra el listado de proveedores -->
+        <?php include 'mostrar_proveedor.php'; ?> 
+    </div> 
+
+</div> 
 
 </body>
 

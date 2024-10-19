@@ -12,19 +12,21 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Detalles proyecto .PHP --------------------------------------
  ------------------------------------------------------------------------------------------------------------- -->
 
- <div class="section">
-    <h3>DETALLES DEL PROYECTO</h3>
-    <div class="info">
-        <p><strong>Nombre:</strong> <?php echo $nombre_proyecto; ?></p>
-        <p><strong>Código:</strong> <?php echo $codigo_proyecto; ?></p>
-        <p><strong>Tipo de trabajo:</strong> <?php echo $tipo_trabajo; ?></p>
-        <p><strong>Área de trabajo:</strong> <?php echo $area_trabajo; ?></p>
-        <p><strong>Riesgo:</strong> <?php echo $riesgo_proyecto; ?></p>
+ <div class="section"> <!-- Título: Sección de detalles del proyecto -->
+    <h3>DETALLES DEL PROYECTO</h3> <!-- Título: Encabezado de detalles del proyecto -->
+    <div class="info"> <!-- Título: Información del proyecto -->
+        <!-- Título: Nombre del proyecto -->
+        <p><strong>Nombre:</strong> <?php echo $nombre_proyecto; ?></p> 
+        <!-- Título: Código del proyecto -->
+        <p><strong>Código:</strong> <?php echo $codigo_proyecto; ?></p> 
+        <!-- Título: Tipo de trabajo -->
+        <p><strong>Tipo de trabajo:</strong> <?php echo $tipo_trabajo; ?></p> 
+        <!-- Título: Área de trabajo -->
+        <p><strong>Área de trabajo:</strong> <?php echo $area_trabajo; ?></p> 
+        <!-- Título: Riesgo del proyecto -->
+        <p><strong>Riesgo:</strong> <?php echo $riesgo_proyecto; ?></p> 
     </div>
 </div>
-
-
-
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Detalles proyecto .PHP -----------------------------------

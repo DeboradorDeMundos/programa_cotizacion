@@ -39,12 +39,12 @@ if ($row !== null) {
 }
 ?> 
 
-<!-- Checkbox para mostrar/ocultar condiciones generales -->
+<!-- Título: Checkbox para Mostrar/Ocultar Condiciones Generales -->
 <label>
     <input type="checkbox" id="toggle-conditions" onclick="toggleConditions()"> Agregar condiciones generales
 </label>
 
-<!-- Tabla para las condiciones generales -->
+<!-- Título: Tabla para Condiciones Generales -->
 <table id="conditions-table" style="display: none;">
     <tr>
         <th style="background-color:lightgray" colspan="2">CONDICIONES GENERALES</th>

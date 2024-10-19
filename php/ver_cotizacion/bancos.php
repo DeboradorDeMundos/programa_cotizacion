@@ -49,22 +49,24 @@ BPPJ
     }
 ?>
 
+<!-- TÍTULO: Contenedor de Información Bancaria -->
 <div class="barcode-contenedor">
 
-<table>
-    <tr>
-        <?php foreach ($bancos as $banco): ?>
-        <td>
-            <strong>BANCO:</strong> <?php echo $banco['nombre_banco']; ?><br>
-            <strong>TIPO CUENTA:</strong> <?php echo $banco['tipocuenta']; ?><br>
-            <strong>N° CUENTA:</strong> <?php echo $banco['numero_cuenta']; ?><br>
-            <strong>RUT:</strong> <?php echo $banco['rut_titular']; ?><br>
-            <strong>TITULAR:</strong> <?php echo $banco['nombre_titular']; ?><br>
-            <strong>ENVIAR EMAIL A:</strong> <?php echo $banco['email_banco']; ?>
-        </td>
-        <?php endforeach; ?>
-    </tr>
-</table>
+    <!-- TÍTULO: Tabla de Bancos -->
+    <table>
+        <tr>
+            <?php foreach ($bancos as $banco): ?>
+            <td>
+                <strong>BANCO:</strong> <?php echo $banco['nombre_banco']; ?><br>
+                <strong>TIPO CUENTA:</strong> <?php echo $banco['tipocuenta']; ?><br>
+                <strong>N° CUENTA:</strong> <?php echo $banco['numero_cuenta']; ?><br>
+                <strong>RUT:</strong> <?php echo $banco['rut_titular']; ?><br>
+                <strong>TITULAR:</strong> <?php echo $banco['nombre_titular']; ?><br>
+                <strong>ENVIAR EMAIL A:</strong> <?php echo $banco['email_banco']; ?>
+            </td>
+            <?php endforeach; ?>
+        </tr>
+    </table>
 
 </div>
 

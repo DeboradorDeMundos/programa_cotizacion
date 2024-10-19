@@ -16,16 +16,21 @@ BPPJ
      ------------------------ -->
 
      <link rel="stylesheet" href="../../css/crear_empresa/requisitos_basicos.css">
+
 <h2>Requisitos básicos</h2>
 
+<!-- Título: Contenedor para los requisitos -->
 <!-- Contenedor para los requisitos -->
 <div id="contenedor-requisitos">
+    <!-- Título: Aquí se agregarán dinámicamente las filas de condiciones -->
     <!-- Aquí se agregarán dinámicamente las filas de condiciones -->
 </div>
 
 <div style="margin-top: 10px;">
+    <!-- Título: Botón para agregar un nuevo requisito -->
     <!-- Botón para agregar un nuevo requisito -->
     <button id="boton-agregar-requisito" type="button">Agregar nuevo requisito</button>
+    <!-- Título: Botón para eliminar el último requisito, inicialmente oculto -->
     <!-- Botón para eliminar el último requisito, inicialmente oculto -->
     <button id="boton-eliminar-obligacion" type="button" style="display: none;">Eliminar último requisito</button>
 </div>

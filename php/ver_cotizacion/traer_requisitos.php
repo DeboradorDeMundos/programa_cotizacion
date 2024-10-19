@@ -91,12 +91,12 @@ if ($stmt_requisitos_seleccionados = $mysqli->prepare($query_requisitos_seleccio
     <div class="success-message"><?php echo $mensaje_exito; ?></div>
 <?php endif; ?>
 
-<!-- Checkbox para mostrar/ocultar requisitos generales -->
+<!-- Título: Checkbox para mostrar/ocultar requisitos generales -->
 <label>
     <input type="checkbox" id="toggle-requisitos" onclick="toggleRequisitos()"> Mostrar requisitos generales
 </label>
 
-<!-- Tabla para los requisitos generales -->
+<!-- Título: Tabla para los requisitos generales -->
 <table id="requisitos-table" style="display: none;">
     <tr>
         <th style="background-color:lightgray" colspan="2">REQUISITOS GENERALES</th>
@@ -105,9 +105,11 @@ if ($stmt_requisitos_seleccionados = $mysqli->prepare($query_requisitos_seleccio
         <?php foreach ($requisitos as $requisito): ?>
             <tr>
                 <td>
+                    <!-- Título: Descripción del requisito -->
                     <?php echo htmlspecialchars($requisito['indice']) . '.- ' . htmlspecialchars($requisito['descripcion_condiciones']); ?>
                 </td>
                 <td>
+                    <!-- Título: Checkbox del requisito -->
                     <input type="checkbox" name="requisito_check[]" value="<?php echo htmlspecialchars($requisito['id_requisitos']); ?>"
                         <?php echo in_array($requisito['id_requisitos'], array_column($requisitos_seleccionados, 'id_requisitos')) ? 'checked' : ''; ?> />
                 </td>

@@ -23,7 +23,7 @@ BPPJ
     <!-- Cierra el elemento de cabecera -->
 </head> 
 
-
+<!-- Título: Campo para el nombre del proveedor -->
 <!-- Campo para el nombre del proveedor -->
 <div class="form-group">
     <label for="nombre_proveedor">Nombre del proveedor:</label>
@@ -31,6 +31,7 @@ BPPJ
     <span id="nombre_error" style="color: red; display: none;">El nombre debe comenzar con una mayúscula y solo puede contener letras y espacios.</span>
 </div>
 
+<!-- Título: Campo para el RUT del proveedor -->
 <!-- Campo para el RUT del proveedor -->
 <div class="form-group">
     <label for="rut_proveedor">RUT del proveedor:</label>
@@ -38,7 +39,7 @@ BPPJ
     <span id="rut_error" style="color: red; display: none;">El RUT debe tener hasta 9 números y terminar con un número o la letra 'K'.</span>
 </div>
 
-<!-- Campo para el teléfono del proveedor -->
+<!-- Título: Campo para el teléfono del proveedor -->
 <!-- Campo para el teléfono del proveedor -->
 <div class="form-group">
     <label for="telefono_proveedor">Teléfono del proveedor:</label>
@@ -46,6 +47,7 @@ BPPJ
     <span id="telefono_error" style="color: red; display: none;">El teléfono debe contener solo 9 números y no puede incluir letras ni caracteres especiales.</span>
 </div>
 
+<!-- Título: Campo para el email del proveedor -->
 <!-- Campo para el email del proveedor -->
 <div class="form-group">
     <label for="email_proveedor">Email del proveedor:</label>
@@ -53,30 +55,35 @@ BPPJ
     <span id="email_error" style="color: red; display: none;">Correo electrónico inválido. Debe contener un '@' y terminar en .cl, .com, u otra extensión válida.</span>
 </div>
 
+<!-- Título: Campo para la dirección del proveedor -->
 <!-- Campo para la dirección del proveedor -->
 <div class="form-group">
     <label for="direccion_proveedor">Dirección del proveedor:</label>
     <input type="text" id="direccion_proveedor" name="direccion_proveedor" required>
 </div>
 
+<!-- Título: Campo para el cargo del proveedor -->
 <!-- Campo para el cargo del proveedor -->
 <div class="form-group">
     <label for="cargo_proveedor">Cargo del proveedor:</label>
     <input type="text" id="cargo_proveedor" name="cargo_proveedor">
 </div>
 
+<!-- Título: Campo para la comuna del proveedor -->
 <!-- Campo para la comuna del proveedor -->
 <div class="form-group">
     <label for="comuna_proveedor">Comuna del proveedor:</label>
     <input type="text" id="comuna_proveedor" name="comuna_proveedor">
 </div>
 
+<!-- Título: Campo para la ciudad del proveedor -->
 <!-- Campo para la ciudad del proveedor -->
 <div class="form-group">
     <label for="ciudad_proveedor">Ciudad del proveedor:</label>
     <input type="text" id="ciudad_proveedor" name="ciudad_proveedor">
 </div>
 
+<!-- Título: Campo para el tipo de proveedor -->
 <!-- Campo para el tipo de proveedor -->
 <div class="form-group">
     <label for="tipo_proveedor">Tipo de proveedor:</label>

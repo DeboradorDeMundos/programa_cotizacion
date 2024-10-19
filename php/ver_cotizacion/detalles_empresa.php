@@ -13,18 +13,23 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Detalle empresa .PHP --------------------------------------
  ------------------------------------------------------------------------------------------------------------- -->
 
-<div class="section">
-    <h3>DETALLES DE LA EMPRESA</h3>
-    <div class="info">
-        <p><strong>Empresa:</strong> <?php echo $nombre_empresa; ?></p>
-        <p><strong>RUT:</strong> <?php echo $rut_empresa; ?></p>
-        <p><strong>Dirección:</strong> <?php echo $direccion_empresa; ?></p>
-        <p><strong>Teléfono:</strong> <?php echo $telefono_empresa; ?></p>
-        <p><strong>Email:</strong> <?php echo $email_empresa; ?></p>
-        <p><strong>Área:</strong> <?php echo $area_empresa; ?></p>
+ <div class="section"> <!-- Título: Sección de detalles de la empresa -->
+    <h3>DETALLES DE LA EMPRESA</h3> <!-- Título: Encabezado de detalles de la empresa -->
+    <div class="info"> <!-- Título: Información de la empresa -->
+        <!-- Título: Nombre de la empresa -->
+        <p><strong>Empresa:</strong> <?php echo $nombre_empresa; ?></p> 
+        <!-- Título: RUT de la empresa -->
+        <p><strong>RUT:</strong> <?php echo $rut_empresa; ?></p> 
+        <!-- Título: Dirección de la empresa -->
+        <p><strong>Dirección:</strong> <?php echo $direccion_empresa; ?></p> 
+        <!-- Título: Teléfono de la empresa -->
+        <p><strong>Teléfono:</strong> <?php echo $telefono_empresa; ?></p> 
+        <!-- Título: Email de la empresa -->
+        <p><strong>Email:</strong> <?php echo $email_empresa; ?></p> 
+        <!-- Título: Área de la empresa -->
+        <p><strong>Área:</strong> <?php echo $area_empresa; ?></p> 
     </div>
 </div>
-
 
 
 <!-- ------------------------------------------------------------------------------------------------------------

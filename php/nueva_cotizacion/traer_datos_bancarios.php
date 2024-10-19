@@ -42,11 +42,15 @@ BPPJ
         echo "<p>Error al preparar la consulta de cuenta bancaria: " . $mysqli->error . "</p>";
     }
 ?>
+<!-- Título: Sección de Transferencias Bancarias -->
 <h2 style="text-align: center;">TRANSFERENCIAS A:</h2> <!-- Título para la sección de transferencias bancarias -->
+
+<!-- Título: Tabla para Información Bancaria de Transferencias -->
 <table style="margin: 0 auto; border-collapse: collapse;"> <!-- Crea una tabla para mostrar la información bancaria para transferencias -->
     <tr>
         <?php if (!empty($bancos)): ?>
             <?php foreach ($bancos as $banco): ?>
+                <!-- Título: Encabezado de Tipo de Cuenta -->
                 <th style="text-align: center; border: 1px solid #ddd; padding: 8px;">
                     <?php echo htmlspecialchars($banco['TipoCuentaDescripcion']); ?>
                 </th>
@@ -58,6 +62,7 @@ BPPJ
     <?php if (!empty($bancos)): ?>
         <tr>
             <?php foreach ($bancos as $banco): ?>
+                <!-- Título: Banco -->
                 <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
                     BANCO: <?php echo htmlspecialchars($banco['BancoNombre']); ?>
                 </td>
@@ -65,6 +70,7 @@ BPPJ
         </tr>
         <tr>
             <?php foreach ($bancos as $banco): ?>
+                <!-- Título: Tipo de Cuenta -->
                 <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
                     TIPO CUENTA: <?php echo htmlspecialchars($banco['TipoCuentaDescripcion']); ?>
                 </td>
@@ -72,6 +78,7 @@ BPPJ
         </tr>
         <tr>
             <?php foreach ($bancos as $banco): ?>
+                <!-- Título: Número de Cuenta -->
                 <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
                     NUMERO CUENTA: <?php echo htmlspecialchars($banco['CuentaNumeroCuenta']); ?>
                 </td>
@@ -79,6 +86,7 @@ BPPJ
         </tr>
         <tr>
             <?php foreach ($bancos as $banco): ?>
+                <!-- Título: Nombre del Titular de la Cuenta -->
                 <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
                     NOMBRE: <?php echo htmlspecialchars($banco['CuentaNombreTitular']); ?>
                 </td>
@@ -86,6 +94,7 @@ BPPJ
         </tr>
         <tr>
             <?php foreach ($bancos as $banco): ?>
+                <!-- Título: RUT del Titular de la Cuenta -->
                 <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
                     RUT: <?php echo htmlspecialchars($banco['CuentaRutTitular']); ?>
                 </td>
@@ -93,6 +102,7 @@ BPPJ
         </tr>
         <tr>
             <?php foreach ($bancos as $banco): ?>
+                <!-- Título: E-mail del Banco -->
                 <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
                     E-MAIL: <?php echo htmlspecialchars($banco['CuentaEmailBanco']); ?>
                 </td>

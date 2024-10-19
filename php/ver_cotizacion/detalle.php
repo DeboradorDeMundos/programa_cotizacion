@@ -86,119 +86,122 @@ while ($row = $result_titulos->fetch_assoc()) {
 $stmt_titulos->close();
 
 foreach ($titulos as $titulo_id => $titulo): ?>
-    <table border="1">
+<table border="1"> <!-- Título: Tabla de productos -->
+    <?php
+    // Título: Mapeo de colores
+    // Arreglo de mapeo de colores en español a códigos hexadecimales
+    $colores = [
+        'negro' => '#000000',
+        'rojo' => '#FF0000',
+        'naranjo' => '#FFA500', // El equivalente a "naranjo" es "naranja" en CSS
+        'verde' => '#00FF00'
+    ];
 
-        <?php
-        // Arreglo de mapeo de colores en español a códigos hexadecimales
-        $colores = [
-            'negro' => '#000000',
-            'rojo' => '#FF0000',
-            'naranjo' => '#FFA500', // El equivalente a "naranjo" es "naranja" en CSS
-            'verde' => '#00FF00'
-        ];
+    echo "<tr><td colspan='6'>"; // Título: Notas
 
-        echo "<tr><td colspan='6'>";
+    // Array para rastrear notas mostradas
+    $notas_mostradas = [];
 
-        // Array para rastrear notas mostradas
-        $notas_mostradas = [];
-
-        foreach ($titulo['notas'] as $detalle_n) {
-            // Verificar si la nota ya fue mostrada
-            if (!empty($detalle_n['contenido']) && !in_array($detalle_n['contenido'], $notas_mostradas)) {
-                // Obtener el color en español y convertirlo a código hexadecimal
-                $color_espanol = strtolower($detalle_n['color']);
-                $color_hex = isset($colores[$color_espanol]) ? $colores[$color_espanol] : '#000000'; // Negro por defecto
-                
-                // Aplicar el color al contenido
-                echo "<span style='color: {$color_hex};'>{$detalle_n['contenido']}</span><br>";
-                
-                // Agregar la nota al array de notas mostradas
-                $notas_mostradas[] = $detalle_n['contenido'];
-            }
+    foreach ($titulo['notas'] as $detalle_n) {
+        // Verificar si la nota ya fue mostrada
+        if (!empty($detalle_n['contenido']) && !in_array($detalle_n['contenido'], $notas_mostradas)) {
+            // Obtener el color en español y convertirlo a código hexadecimal
+            $color_espanol = strtolower($detalle_n['color']);
+            $color_hex = isset($colores[$color_espanol]) ? $colores[$color_espanol] : '#000000'; // Negro por defecto
+            
+            // Aplicar el color al contenido
+            echo "<span style='color: {$color_hex};'>{$detalle_n['contenido']}</span><br>";
+            
+            // Agregar la nota al array de notas mostradas
+            $notas_mostradas[] = $detalle_n['contenido'];
         }
+    }
 
-        echo "</td></tr>";
-        ?>
-        <tr>
-            <th>nombre_producto</th>
-            <th>descripcion</th>
-            <th>descuento_porcentaje</th>
-            <th>total</th>
-        </tr>
-        <tr>
-            <th colspan="6" class="titulo">
-                <?php echo $titulo['nombre']; ?>
-            </th>
-        </tr>
+    echo "</td></tr>";
+    ?>
+    
+    <!-- Título: Encabezados de la tabla -->
+    <tr>
+        <th>nombre_producto</th>
+        <th>descripcion</th>
+        <th>descuento_porcentaje</th>
+        <th>total</th>
+    </tr>
+    
+    <!-- Título: Nombre del título -->
+    <tr>
+        <th colspan="6" class="titulo">
+            <?php echo $titulo['nombre']; ?>
+        </th>
+    </tr>
 
-        <?php 
-        $subtitulos_mostrados = []; // Array para rastrear subtítulos mostrados
-        $detalles_sin_subtitulo = []; // Array para almacenar detalles sin subtítulo
+    <?php 
+    $subtitulos_mostrados = []; // Array para rastrear subtítulos mostrados
+    $detalles_sin_subtitulo = []; // Array para almacenar detalles sin subtítulo
 
-        // Imprimir los detalles
-        foreach ($titulo['detalles'] as $detalle) {
-            $color_detalle = strtolower($detalle['color_detalle']); // Obtener el color del detalle en español
-            $color_texto = isset($colores[$color_detalle]) ? $colores[$color_detalle] : '#000000'; // Negro por defecto si no hay color definido
+    // Título: Imprimir los detalles
+    foreach ($titulo['detalles'] as $detalle) {
+        $color_detalle = strtolower($detalle['color_detalle']); // Obtener el color del detalle en español
+        $color_texto = isset($colores[$color_detalle]) ? $colores[$color_detalle] : '#000000'; // Negro por defecto si no hay color definido
 
-            // Verificar si el detalle tiene subtítulos
-            if (!empty($detalle['subtitulos'])) {
-                foreach ($detalle['subtitulos'] as $subtitulo_info) {
-                    $subtitulo = $subtitulo_info['subtitulo'];
-                    $color_subtitulo = strtolower($subtitulo_info['color_subtitulo']);
+        // Verificar si el detalle tiene subtítulos
+        if (!empty($detalle['subtitulos'])) {
+            foreach ($detalle['subtitulos'] as $subtitulo_info) {
+                $subtitulo = $subtitulo_info['subtitulo'];
+                $color_subtitulo = strtolower($subtitulo_info['color_subtitulo']);
+                
+                // Verifica si ya se ha mostrado este subtítulo
+                if (!in_array($subtitulo, $subtitulos_mostrados)) {
+                    // Mapea el color del subtítulo si está en español
+                    $color_hex = isset($colores[$color_subtitulo]) ? $colores[$color_subtitulo] : '#000000'; // Negro por defecto
                     
-                    // Verifica si ya se ha mostrado este subtítulo
-                    if (!in_array($subtitulo, $subtitulos_mostrados)) {
-                        // Mapea el color del subtítulo si está en español
-                        $color_hex = isset($colores[$color_subtitulo]) ? $colores[$color_subtitulo] : '#000000'; // Negro por defecto
-                        
-                        // No aplicar color de fondo si el subtítulo es negro
-                        $background_style = $color_hex !== '#000000' ? "background-color: {$color_hex};" : '';
+                    // No aplicar color de fondo si el subtítulo es negro
+                    $background_style = $color_hex !== '#000000' ? "background-color: {$color_hex};" : '';
 
-                        // Imprimir subtítulo con el color de fondo correspondiente (si no es negro)
-                        echo "<tr><td colspan='6' class='subtitle' style='{$background_style}'>{$subtitulo}</td></tr>";
-                        
-                        // Marcar el subtítulo como mostrado
-                        $subtitulos_mostrados[] = $subtitulo;
-                    }
+                    // Imprimir subtítulo con el color de fondo correspondiente (si no es negro)
+                    echo "<tr><td colspan='6' class='subtitle' style='{$background_style}'>{$subtitulo}</td></tr>";
                     
+                    // Marcar el subtítulo como mostrado
+                    $subtitulos_mostrados[] = $subtitulo;
                 }
-
-                // Imprimir los datos del detalle con el color de fondo del subtítulo si no es negro
-                // Si el subtítulo es negro, aplicar el color del detalle al texto
-                $background_style = $color_hex !== '#000000' ? "background-color: {$color_hex};" : '';
-                $text_color_style = $color_hex === '#000000' ? "color: {$color_texto};" : ''; // Solo aplicar color de texto si el subtítulo es negro
-                
-                echo "<tr style='{$background_style} {$text_color_style}'>";
-                echo "<td>{$detalle['nombre_producto']}</td>";
-                echo "<td>{$detalle['descripcion']}</td>";
-                echo "<td>{$detalle['descuento_porcentaje']}</td>";
-                echo "<td>$ " . (int)$detalle['total'] . "</td>"; // Muestra sin decimales
-                echo "</tr>";
-            } else {
-                // Si no hay subtítulo, almacenar el detalle para imprimir más tarde
-                $detalles_sin_subtitulo[] = $detalle;
             }
+
+            // Imprimir los datos del detalle con el color de fondo del subtítulo si no es negro
+            // Si el subtítulo es negro, aplicar el color del detalle al texto
+            $background_style = $color_hex !== '#000000' ? "background-color: {$color_hex};" : '';
+            $text_color_style = $color_hex === '#000000' ? "color: {$color_texto};" : ''; // Solo aplicar color de texto si el subtítulo es negro
+            
+            echo "<tr style='{$background_style} {$text_color_style}'>";
+            echo "<td>{$detalle['nombre_producto']}</td>";
+            echo "<td>{$detalle['descripcion']}</td>";
+            echo "<td>{$detalle['descuento_porcentaje']}</td>";
+            echo "<td>$ " . (int)$detalle['total'] . "</td>"; // Muestra sin decimales
+            echo "</tr>";
+        } else {
+            // Si no hay subtítulo, almacenar el detalle para imprimir más tarde
+            $detalles_sin_subtitulo[] = $detalle;
         }
+    }
 
-        // Imprimir detalles sin subtítulos después de los subtítulos
-        if (!empty($detalles_sin_subtitulo)) {
-            // Solo imprimir un salto de línea si hay detalles sin subtítulo
-            echo "<tr><td colspan='6'>&nbsp;</td></tr>"; // Fila vacía para salto de línea
+    // Imprimir detalles sin subtítulos después de los subtítulos
+    if (!empty($detalles_sin_subtitulo)) {
+        // Solo imprimir un salto de línea si hay detalles sin subtítulo
+        echo "<tr><td colspan='6'>&nbsp;</td></tr>"; // Fila vacía para salto de línea
 
-            foreach ($detalles_sin_subtitulo as $detalle) {
-                // Aplicar color de texto en detalles sin subtítulo
-                $text_color_style = "color: {$color_texto};";
+        foreach ($detalles_sin_subtitulo as $detalle) {
+            // Aplicar color de texto en detalles sin subtítulo
+            $text_color_style = "color: {$color_texto};";
 
-                echo "<tr style='{$text_color_style}'>";
-                echo "<td>{$detalle['nombre_producto']}</td>";
-                echo "<td>{$detalle['descripcion']}</td>";
-                echo "<td>{$detalle['descuento_porcentaje']}</td>";
-                echo "<td>$ " . (int)$detalle['total'] . "</td>"; // Muestra sin decimales
-                echo "</tr>";
-            }
+            echo "<tr style='{$text_color_style}'>";
+            echo "<td>{$detalle['nombre_producto']}</td>";
+            echo "<td>{$detalle['descripcion']}</td>";
+            echo "<td>{$detalle['descuento_porcentaje']}</td>";
+            echo "<td>$ " . (int)$detalle['total'] . "</td>"; // Muestra sin decimales
+            echo "</tr>";
         }
-        ?>
-    </table>
+    }
+    ?>
+</table>
 <?php endforeach; ?>
 
 <!-- ------------------------------------------------------------------------------------------------------------

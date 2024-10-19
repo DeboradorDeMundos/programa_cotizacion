@@ -135,33 +135,52 @@ $mysqli->close();
     </style>
 </head>
 <body>
-    <div class="contenedor">
-        <h1>Firma de la Empresa</h1>
+<div class="contenedor"> <!-- Título: Contenedor principal de la firma -->
+    <h1>Firma de la Empresa</h1> <!-- Título: Encabezado principal de la firma -->
 
-        <div class="firma">
-            <p><strong>Empresa:</strong> <?php echo htmlspecialchars($nombre_empresa); ?></p>
-            <p><strong>RUT:</strong> <?php echo htmlspecialchars($rut_empresa); ?></p>
-            <p><strong>Dirección:</strong> <?php echo htmlspecialchars($direccion_empresa); ?></p>
-            <p><strong>Teléfono:</strong> <?php echo htmlspecialchars($telefono_empresa); ?></p>
-            <p><strong>Email:</strong> <?php echo htmlspecialchars($email_empresa); ?></p>
-            <p><strong>Área:</strong> <?php echo htmlspecialchars($area_empresa); ?></p>
+    <div class="firma"> <!-- Título: Contenedor de información de la empresa -->
+        <!-- Título: Nombre de la empresa -->
+        <p><strong>Título: Nombre de la empresa</strong> <?php echo htmlspecialchars($nombre_empresa); ?></p> 
+        
+        <!-- Título: RUT de la empresa -->
+        <p><strong>Título: RUT de la empresa</strong> <?php echo htmlspecialchars($rut_empresa); ?></p> 
+        
+        <!-- Título: Dirección de la empresa -->
+        <p><strong>Título: Dirección de la empresa</strong> <?php echo htmlspecialchars($direccion_empresa); ?></p> 
+        
+        <!-- Título: Teléfono de la empresa -->
+        <p><strong>Título: Teléfono de la empresa</strong> <?php echo htmlspecialchars($telefono_empresa); ?></p> 
+        
+        <!-- Título: Email de la empresa -->
+        <p><strong>Título: Email de la empresa</strong> <?php echo htmlspecialchars($email_empresa); ?></p> 
+        
+        <!-- Título: Área de la empresa -->
+        <p><strong>Título: Área de la empresa</strong> <?php echo htmlspecialchars($area_empresa); ?></p> 
 
-            <p class="status">
-                Estado de Aprobación: <?php echo htmlspecialchars($estado_aprobacion); ?>
-                <span class="status-icon">
-                    <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png" alt="Aprobado">
-                </span>
-            </p>
+        <!-- Título: Estado de aprobación -->
+        <p class="status">
+            <strong>Título: Estado de Aprobación</strong>: <?php echo htmlspecialchars($estado_aprobacion); ?>
+            <span class="status-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png" alt="Aprobado">
+            </span>
+        </p>
 
-            <div class="firma-data">
-                <h2>Datos del Encargado</h2>
-                <p><strong>Nombre del Encargado:</strong> <?php echo htmlspecialchars($nombre_encargado); ?></p>
-                <p><strong>Email del Encargado:</strong> <?php echo htmlspecialchars($email_encargado); ?></p>
-                <p><strong>Teléfono del Encargado:</strong> <?php echo htmlspecialchars($telefono_encargado); ?></p>
-            </div>
-
-            <a href="ver_cotizacion.php?id=<?php echo $id_cotizacion; ?>" class="boton">Ver Cotización</a>
+        <div class="firma-data"> <!-- Título: Contenedor de datos del encargado -->
+            <h2>Datos del Encargado</h2> <!-- Título: Encabezado de datos del encargado -->
+            
+            <!-- Título: Nombre del encargado -->
+            <p><strong>Título: Nombre del Encargado</strong> <?php echo htmlspecialchars($nombre_encargado); ?></p> 
+            
+            <!-- Título: Email del encargado -->
+            <p><strong>Título: Email del Encargado</strong> <?php echo htmlspecialchars($email_encargado); ?></p> 
+            
+            <!-- Título: Teléfono del encargado -->
+            <p><strong>Título: Teléfono del Encargado</strong> <?php echo htmlspecialchars($telefono_encargado); ?></p> 
         </div>
+
+        <!-- Título: Botón para ver la cotización -->
+        <a href="ver_cotizacion.php?id=<?php echo $id_cotizacion; ?>" class="boton"><strong>Título: Ver Cotización</strong></a>
     </div>
+</div>
 </body>
 </html>

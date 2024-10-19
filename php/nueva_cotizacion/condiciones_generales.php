@@ -33,12 +33,17 @@ if ($row !== null) {
 } 
 ?> 
 
+<!-- Título: Contenedor de Condiciones Generales -->
 <div id="condiciones-generales" class="cuadro-datos">
+    <!-- Título: Encabezado de Condiciones Generales -->
     <h3>Condiciones Generales</h3>
     <div class="field">
+        <!-- Título: Campo de Descripción -->
         <label for="descripcion_condiciones">Descripción:</label>
+        <!-- Título: Campo para Ingresar Descripción de la Condición -->
         <!-- Campo para ingresar la descripción de la condición -->
         <input type="text" id="descripcion_condiciones" name="descripcion_condiciones[]" placeholder="Descripción de la condición" required>
+        <!-- Título: Checkbox para Estado de la Condición -->
         <!-- Checkbox para indicar el estado de la condición -->
         <input type="checkbox" id="estado_condiciones" name="estado_condiciones[]">
     </div>

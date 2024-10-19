@@ -104,9 +104,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <fieldset class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
+    <!-- Título: Detalle vendedor -->
     <legend>Detalle vendedor</legend>
+    <!-- Título: Datos del vendedor -->
     <div class="box-6 cuadro-datos"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
         <div class="form-group-inline">
+            <!-- Título: RUT del vendedor -->
             <div class="form-group">
                 <label for="vendedor_rut">RUT: </label> <!-- Etiqueta para el campo de entrada del RUT del vendedor -->
                 <input type="text" id="vendedor_rut" name="vendedor_rut" 
@@ -117,6 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     oninput="FormatearRut(this)"
                     oninput="QuitarCaracteresInvalidos(this)"> <!-- Campo de texto para ingresar el RUT del vendedor. También es obligatorio -->
             </div>
+            <!-- Título: Nombre del vendedor -->
             <div class="form-group">
                 <label for="vendedor_nombre">Nombre:</label> <!-- Etiqueta para el campo de entrada del nombre del vendedor -->
                 <input type="text" id="vendedor_nombre" name="vendedor_nombre" 
@@ -131,6 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
 
+        <!-- Título: Email del vendedor -->
         <div class="form-group">
             <label for="vendedor_email">Email:</label> <!-- Etiqueta para el campo de entrada del email del vendedor -->
             <input type="email" id="vendedor_email" name="vendedor_email" 
@@ -143,7 +148,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 onblur="CompletarEmail(this)"> <!-- Campo de correo electrónico para ingresar el email del vendedor. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico. También es obligatorio -->
         </div>
     </div>
+    <!-- Título: Datos de contacto del vendedor -->
     <div class="box-6 cuadro-datos cuadro-datos-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "cuadro-datos-left" para estilo -->
+        <!-- Título: Teléfono del vendedor -->
         <div class="form-group">
             <label for="vendedor_telefono">Teléfono:</label> <!-- Etiqueta para el campo de entrada del teléfono del vendedor -->
             <input type="text" id="vendedor_telefono" name="vendedor_telefono" 
@@ -153,6 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
                 oninput="asegurarMasYDetectarPais4(this)"> <!-- Campo de texto para ingresar el teléfono del vendedor -->
         </div>
+        <!-- Título: Celular del vendedor -->
         <div class="form-group">
             <label for="vendedor_celular">Celular:</label> <!-- Etiqueta para el campo de entrada del celular del vendedor -->
             <input type="text" id="vendedor_celular" name="vendedor_celular" 

@@ -22,11 +22,14 @@ BPPJ
 </head>
 <body>
 
+<!-- Título para el contenedor principal de la lista de clientes -->
 <div class="contenedor">
     <h1>Listado de Clientes</h1>
 
+    <!-- Título para el contenedor de la tabla de clientes -->
     <div class="tabla-contenedor-lista">
         <table>
+            <!-- Título para el encabezado de la tabla -->
             <thead>
                 <tr>
                     <th>ID</th>
@@ -45,14 +48,15 @@ BPPJ
                     <th>Estado Empresa</th>
                 </tr>
             </thead>
+            <!-- Título para el cuerpo de la tabla donde se muestran los datos -->
             <tbody>
                 <?php
-                // Realiza la consulta para obtener todos los clientes
+                // Título: Consulta para obtener los datos de los clientes desde la base de datos
                 $resultado = $mysqli->query("SELECT * FROM C_Clientes");
 
-                // Verifica si hay resultados
+                // Título: Verificar si la consulta retorna algún resultado
                 if ($resultado->num_rows > 0) {
-                    // Salida de cada fila de la tabla
+                    // Título: Iterar sobre cada cliente y generar una fila en la tabla
                     while ($cliente = $resultado->fetch_assoc()) {
                         echo "<tr>
                                 <td>{$cliente['id_cliente']}</td>
@@ -72,6 +76,7 @@ BPPJ
                               </tr>";
                     }
                 } else {
+                    // Título: Caso en que no hay clientes registrados
                     echo "<tr><td colspan='17'>No hay clientes registrados.</td></tr>";
                 }
                 ?>

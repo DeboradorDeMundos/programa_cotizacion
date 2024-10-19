@@ -12,17 +12,20 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Detalle vendedor .PHP --------------------------------------
  ------------------------------------------------------------------------------------------------------------- -->
 
- <div class="section">
-    <h3>DETALLES DEL VENDEDOR</h3>
-    <div class="info">
+ <div class="section"> <!-- Título: Sección de detalles del vendedor -->
+    <!-- Título: Encabezado de detalles del vendedor -->
+    <h3>DETALLES DEL VENDEDOR</h3> 
+    <div class="info"> <!-- Título: Información del vendedor -->
+        <!-- Título: Nombre del vendedor --> 
         <p><strong>Nombre:</strong> <?php echo $nombre_vendedor; ?></p>
+        <!-- Título: Email del vendedor --> 
         <p><strong>Email:</strong> <?php echo $email_vendedor; ?></p>
+        <!-- Título: Teléfono del vendedor --> 
         <p><strong>Teléfono:</strong> <?php echo $fono_vendedor; ?></p>
+        <!-- Título: Celular del vendedor --> 
         <p><strong>Celular:</strong> <?php echo $celular_vendedor; ?></p>
     </div>
 </div>
-
-
 
 
 <!-- ------------------------------------------------------------------------------------------------------------

@@ -23,7 +23,7 @@ BPPJ
     <!-- Cierra el elemento de cabecera -->
 </head> 
 
-<!-- Campo para el RUT del encargado de la empresa encargado_cliente -->
+<!-- Título: Campo para el RUT del encargado de la empresa encargado_cliente -->
 <div class="form-group">
     <label for="rut_encargado_cliente">RUT:</label>
     <input type="text" id="rut_encargado_cliente" name="rut_encargado_cliente" required placeholder="XX.XXX.XXX-X" 
@@ -31,50 +31,49 @@ BPPJ
     <span id="error_rut" style="color: red; display: none;">Formato inválido. Ejemplo: 12.345.678-9</span>
 </div>
 
-<!-- Campo para el Nombre del encargado de la empresa encargado_cliente  -->
+<!-- Título: Campo para el Nombre del encargado de la empresa encargado_cliente -->
 <div class="form-group">
     <label for="nombre_encargado_cliente">Nombre Del encargado:</label>
     <input type="text" id="nombre_encargado_cliente" name="nombre_encargado_cliente" required placeholder="Ingrese el nombre y apellido" oninput="validarNombre1()">
     <span id="error_nombre1" style="color: red; display: none;">Solo se permiten letras.</span>
 </div>
 
-
-<!-- Campo para el teléfono del encargado de la empresa encargado_cliente -->
+<!-- Título: Campo para el teléfono del encargado de la empresa encargado_cliente -->
 <div class="form-group">
-    <label for="telefono_encargado_cliente">Teléfono o Celular :</label>
+    <label for="telefono_encargado_cliente">Teléfono o Celular:</label>
     <img id="flag_encargado_cliente" style="display:none; width: 32px; height: 32px;" alt="Bandera">
     <input type="text" id="telefono_encargado_cliente" name="telefono_encargado_cliente" placeholder="Ingrese el teléfono" oninput="asegurarMasYDetectarPais(this)">
-</div>  
+</div>
 
-<!-- Campo para el email del encargado de la empresa encargado_cliente -->
+<!-- Título: Campo para el email del encargado de la empresa encargado_cliente -->
 <div class="form-group">
     <label for="email_encargado_cliente">Email:</label>
     <input type="email" id="email_encargado_cliente" name="email_encargado_cliente" placeholder="Ingrese el email" required oninput="validarEmail(this)">
     <span id="mensaje_error_email" style="color: red; display: none;"></span>
 </div>
 
-<!-- Campo para el cargo del encargado de la empresa encargado_cliente -->
+<!-- Título: Campo para el cargo del encargado de la empresa encargado_cliente -->
 <div class="form-group">
     <label for="cargo_encargado_cliente">Cargo del encargado:</label>
     <input type="text" id="cargo_encargado_cliente" name="cargo_encargado_cliente" placeholder="Ingrese el cargo" oninput="validarCargoEncargado(this)">
     <span id="error_cargo_encargado" style="color: red; display: none;">El cargo solo puede contener letras, números y espacios.</span>
 </div>
 
-<!-- Campo para la ciudad del encargado de la empresa encargado_cliente -->
+<!-- Título: Campo para la ciudad del encargado de la empresa encargado_cliente -->
 <div class="form-group">
     <label for="ciudad_encargado_cliente">Ciudad:</label>
     <input type="text" id="ciudad_encargado_cliente" name="ciudad_encargado_cliente" placeholder="Ingrese la ciudad" oninput="validarCiudadEncargado(this)">
     <span id="error_ciudad_encargado" style="color: red; display: none;">La ciudad solo puede contener letras y espacios.</span>
 </div>
 
-<!-- Campo para la comuna del encargado de la empresa encargado_cliente -->
+<!-- Título: Campo para la comuna del encargado de la empresa encargado_cliente -->
 <div class="form-group">
     <label for="comuna_encargado_cliente">Comuna:</label>
     <input type="text" id="comuna_encargado_cliente" name="comuna_encargado_cliente" placeholder="Ingrese la comuna" oninput="validarComunaEncargado(this)">
     <span id="error_comuna_encargado" style="color: red; display: none;">La comuna solo puede contener letras y espacios.</span>
 </div>
 
-<!-- Campo para la dirección del encargado de la empresa encargado_cliente -->
+<!-- Título: Campo para la dirección del encargado de la empresa encargado_cliente -->
 <div class="form-group">
     <label for="direccion_encargado_cliente">Dirección:</label>
     <input type="text" id="direccion_encargado_cliente" name="direccion_encargado_cliente" placeholder="Ingrese la dirección" oninput="formatoDireccion(this)">

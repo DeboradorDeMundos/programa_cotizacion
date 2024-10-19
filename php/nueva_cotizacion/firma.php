@@ -72,10 +72,16 @@ if ($tipo_firma) {
 
 </div>
 
-<div class="contenedor-alineacion">
-    <label><input type="radio" name="alineacion" value="izquierda" checked onchange="cambiarAlineacion('izquierda')"> Izquierda</label>
-    <label><input type="radio" name="alineacion" value="centro" onchange="cambiarAlineacion('centro')"> Centro</label>
-    <label><input type="radio" name="alineacion" value="derecha" onchange="cambiarAlineacion('derecha')"> Derecha</label>
+<div class="contenedor-alineacion"> <!-- Título: Contenedor de Alineación -->
+    <label> <!-- Título: Opción Izquierda -->
+        <input type="radio" name="alineacion" value="izquierda" checked onchange="cambiarAlineacion('izquierda')"> Izquierda
+    </label>
+    <label> <!-- Título: Opción Centro -->
+        <input type="radio" name="alineacion" value="centro" onchange="cambiarAlineacion('centro')"> Centro
+    </label>
+    <label> <!-- Título: Opción Derecha -->
+        <input type="radio" name="alineacion" value="derecha" onchange="cambiarAlineacion('derecha')"> Derecha
+    </label>
 </div>
 
 

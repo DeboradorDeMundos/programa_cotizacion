@@ -68,53 +68,84 @@ BPPJ
     $stmt_observaciones->close();
 ?>
 
+<!-- Contenedor de Totales -->
 <div class="totals-contenedor">
-<table class="observations">
-    <tr>
-        <td>
-            <strong>OBSERVACIONES</strong>
-        </td>
-    </tr>
-    <tr class="large-cell">
-        <td>
-            <?php
-            // Verificar si hay observaciones
-            if (!empty($observaciones)) {
-                foreach ($observaciones as $observacion) {
-                    echo htmlspecialchars($observacion['observacion']) . "<br>"; // Mostrar cada observación
+    <!-- Título: Tabla de Observaciones -->
+    <table class="observations">
+        <tr>
+            <td>
+                <!-- Título: Encabezado de Observaciones -->
+                <strong>OBSERVACIONES</strong>
+            </td>
+        </tr>
+        <tr class="large-cell">
+            <td>
+                <?php
+                // Verificar si hay observaciones
+                if (!empty($observaciones)) {
+                    foreach ($observaciones as $observacion) {
+                        echo htmlspecialchars($observacion['observacion']) . "<br>"; // Mostrar cada observación
+                    }
+                } else {
+                    echo "Sin observaciones extras."; // Mensaje por defecto si no hay observaciones
                 }
-            } else {
-                echo "Sin observaciones extras."; // Mensaje por defecto si no hay observaciones
-            }
-            ?>
-        </td>
-    </tr>
-</table>
+                ?>
+            </td>
+        </tr>
+    </table>
 
-<table class="totals">
-    
+    <!-- Título: Tabla de Totales -->
+    <table class="totals">
         <tr>
-            <td>Sub-total</td>
-            <td>$ <?php echo number_format($totales['sub_total'], 0, ',', '.'); ?></td>
+            <td>
+                <!-- Título: Sub-total -->
+                Sub-total
+            </td>
+            <td>
+                <!-- Título: Valor del Sub-total -->
+                $ <?php echo number_format($totales['sub_total'], 0, ',', '.'); ?>
+            </td>
         </tr>
         <tr>
-            <td>Monto descuento_porcentaje</td>
-            <td>$ <?php echo number_format($totales['descuento_global'], 0, ',', '.'); ?></td>
+            <td>
+                <!-- Título: Monto de Descuento por Porcentaje -->
+                Monto descuento_porcentaje
+            </td>
+            <td>
+                <!-- Título: Valor del Descuento -->
+                $ <?php echo number_format($totales['descuento_global'], 0, ',', '.'); ?>
+            </td>
         </tr>
         <tr>
-            <td>19% I.V.A.</td>
-            <td>$ <?php echo number_format($totales['total_iva'], 0, ',', '.'); ?></td>
+            <td>
+                <!-- Título: IVA -->
+                19% I.V.A.
+            </td>
+            <td>
+                <!-- Título: Valor del IVA -->
+                $ <?php echo number_format($totales['total_iva'], 0, ',', '.'); ?>
+            </td>
         </tr>
         <tr>
-            <td>Monto neto</td>
-            <td>$ <?php echo number_format($totales['monto_neto'], 0, ',', '.'); ?></td>
+            <td>
+                <!-- Título: Monto Neto -->
+                Monto neto
+            </td>
+            <td>
+                <!-- Título: Valor del Monto Neto -->
+                $ <?php echo number_format($totales['monto_neto'], 0, ',', '.'); ?>
+            </td>
         </tr>
         <tr>
-
-        <td><strong> TOTAL FINAL </strong></td>
-            <td>$ <?php echo number_format($totales['total_final'], 0, ',', '.'); ?></td>
+            <td>
+                <!-- Título: Total Final -->
+                <strong> TOTAL FINAL </strong>
+            </td>
+            <td>
+                <!-- Título: Valor del Total Final -->
+                $ <?php echo number_format($totales['total_final'], 0, ',', '.'); ?>
+            </td>
         </tr>
-
     </table>
 </div>
 

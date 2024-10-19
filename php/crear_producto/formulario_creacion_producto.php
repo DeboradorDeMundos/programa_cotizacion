@@ -48,10 +48,13 @@ $conn->close();
 ?>
 
 <h2>Crear Productos</h2>
+
 <!-- Formulario para la creación de productos -->
 <form id="productos-form" action="procesar_productos.php" method="post" enctype="multipart/form-data">
     <fieldset>
+        <!-- Título para los detalles del producto -->
         <legend>Detalles del Producto</legend>
+        
         <table id="productos-table">
             <thead>
                 <tr>
@@ -66,27 +69,42 @@ $conn->close();
             </thead>
             <tbody>
                 <tr>
-                    <!-- Campo para el nombre del producto -->
-                    <td><input type="text" name="nombre_producto[]" required></td>
+                    <!-- Título para el campo de nombre del producto -->
+                    <td><!-- Campo para el nombre del producto -->
+                        <label for="nombre_producto">Nombre del Producto:</label>
+                        <input type="text" name="nombre_producto[]" required>
+                    </td>
                     
-                    <!-- Campo para la descripción del producto -->
-                    <td><textarea name="descripcion_producto[]" rows="4"></textarea></td>
+                    <!-- Título para el campo de descripción del producto -->
+                    <td><!-- Campo para la descripción del producto -->
+                        <label for="descripcion_producto">Descripción:</label>
+                        <textarea name="descripcion_producto[]" rows="4"></textarea>
+                    </td>
                     
-                    <!-- Campo para el precio del producto -->
-                    <td><input type="number" step="0.01" name="precio_producto[]" required></td>
+                    <!-- Título para el campo de precio del producto -->
+                    <td><!-- Campo para el precio del producto -->
+                        <label for="precio_producto">Precio:</label>
+                        <input type="number" step="0.01" name="precio_producto[]" required>
+                    </td>
                     
-                    <!-- Campo para subir la foto del producto -->
-                    <td><input type="file" name="foto_producto[]" accept="image/*"></td>
+                    <!-- Título para el campo de foto del producto -->
+                    <td><!-- Campo para subir la foto del producto -->
+                        <label for="foto_producto">Foto:</label>
+                        <input type="file" name="foto_producto[]" accept="image/*">
+                    </td>
                     
-                    <!-- Select para elegir el tipo de producto -->
-                    <td>
+                    <!-- Título para el select de tipo de producto -->
+                    <td><!-- Select para elegir el tipo de producto -->
+                        <label for="id_tipo_producto">Tipo de Producto:</label>
                         <select name="id_tipo_producto[]" required>
                             <?php echo $options; ?> <!-- Opciones generadas desde la consulta a la base de datos -->
                         </select>
                     </td>
                     
-                    <!-- Botón para eliminar la fila actual -->
-                    <td><button type="button" onclick="removeRow(this)">Eliminar</button></td>
+                    <!-- Título para el botón de eliminar fila -->
+                    <td><!-- Botón para eliminar la fila actual -->
+                        <button type="button" onclick="removeRow(this)">Eliminar</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -95,10 +113,10 @@ $conn->close();
         <input type="hidden" name="id_empresa" value="<?php echo htmlspecialchars($id_empresa); ?>">
         
         <div class="form-group">
-            <!-- Botón para agregar un nuevo producto -->
+            <!-- Título para el botón de agregar un nuevo producto -->
             <button type="button" class="btn-nuevo" onclick="addRow()">Nuevo Producto</button>
             
-            <!-- Botón para enviar el formulario y guardar los productos -->
+            <!-- Título para el botón de enviar el formulario y guardar los productos -->
             <button type="submit" class="btn-guardar">Guardar Productos</button>
         </div>
     </fieldset>

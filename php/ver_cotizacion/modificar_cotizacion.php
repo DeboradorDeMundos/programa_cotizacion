@@ -209,85 +209,97 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../../css/ver_cotizacion/modificar_cotizacion.css">
 </head>
 <body>
+    <!-- Título: Mensaje de estado -->
     <?php echo isset($mensaje) ? $mensaje : ''; ?>
     
     <?php if (isset($items)): ?>
+    <!-- Título: Formulario de modificación -->
     <form method="POST" action="procesar_modificacion.php" enctype="multipart/form-data">
-        <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
+        <!-- Título: Fila de elementos organizados -->
+        <div class="row"> 
+            <!-- Título: Cargar logo de la empresa -->
             <?php include 'cargar_logo_empresa.php'; ?>
 
+            <!-- Título: Cuadro rojo de cotización -->
             <?php include 'cuadro_rojo_cotizacion.php'; ?>
 
+            <!-- Título: Caja de datos de fecha -->
             <fieldset class="box-6 data-box"> 
                 <label for="fecha_emision">Fecha de Emisión:</label> <!-- Etiqueta para el campo de entrada de la fecha de emisión -->
                 <input type="date" id="fecha_emision" name="fecha_emision" required> <!-- Campo de fecha para seleccionar la fecha de emisión. Es obligatorio --> 
             </fieldset>
         </div> <!-- Cierra la fila -->
 
-        <!-- Fila 2 -->
+        <!-- Título: Datos de la empresa -->
         <?php include 'datos_empresa.php'; ?>
 
-        <!-- Fila 3 -->
-        <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
+        <!-- Título: Fila para el proyecto -->
+        <div class="row"> 
             <?php include 'traer_proyecto.php'; ?>
         </div> <!-- Cierra la fila -->
 
-        <!-- Fila 4 -->
-         <?php include 'traer_cliente.php'; ?>
+        <!-- Título: Datos del cliente -->
+        <?php include 'traer_cliente.php'; ?>
 
-        <!-- Fila 5 -->
-         <?php include 'traer_encargado.php'; ?>
+        <!-- Título: Datos del encargado -->
+        <?php include 'traer_encargado.php'; ?>
 
-        <!-- Fila 6 -->
-         <?php include 'traer_vendedor.php'; ?>
+        <!-- Título: Datos del vendedor -->
+        <?php include 'traer_vendedor.php'; ?>
 
-            
-        <!-- sección para Detalle de Cotización -->
-         <?php include 'traer_detalle.php'; ?>
+        <!-- Título: Detalle de Cotización -->
+        <?php include 'traer_detalle.php'; ?>
 
-        <!-- Sección para los cálculos finales -->
-         <?php include 'traer_totales.php'; ?>
+        <!-- Título: Cálculos finales -->
+        <?php include 'traer_totales.php'; ?>
 
-         <?php include 'observaciones.php'; ?>
+        <!-- Título: Observaciones -->
+        <?php include 'observaciones.php'; ?>
 
-         <?php include 'traer_pago.php'; ?>
+        <!-- Título: Datos de pago -->
+        <?php include 'traer_pago.php'; ?>
 
+        <!-- Título: Condiciones -->
         <?php include 'traer_condiciones.php'; ?>
 
+        <!-- Título: Requisitos -->
         <?php include 'traer_requisitos.php'; ?>
 
+        <!-- Título: Obligaciones del cliente -->
         <?php include 'obligaciones_cliente.php'; ?>
 
+        <!-- Título: Botón para guardar cambios -->
         <button type="submit" class="submit">Guardar cambios</button> <!-- Botón para enviar el formulario y generar la cotización -->
         
-        </form> <!-- Cierra el formulario -->
-        </div> <!-- Cierra el contenedor principal -->
+    </form> <!-- Cierra el formulario -->
+    </div> <!-- Cierra el contenedor principal -->
 
-        <?php include 'traer_datos_bancarios.php'; ?>
+    <!-- Título: Datos bancarios -->
+    <?php include 'traer_datos_bancarios.php'; ?>
 
-        <table>
+    <!-- Título: Tabla para la firma -->
+    <table>
         <tr>
-            
             <td>
+                <!-- Título: Posicionar firma -->
                 <?php include 'posicionar_firma.php'; ?>
-
             </td>
         </tr>
-        </table>
+    </table>
     <?php endif; ?>
 
+    <!-- Título: Navegación -->
     <ul>
         <li><a href="../ver_cotizacion/ver_cotizacion.php?id=<?php echo $id; ?>">Ver Cotización</a></li>
         <li><a href="../ver_listado/ver_listado.php">Volver al Listado</a></li>
     </ul>
           
+    <!-- Título: Scripts -->
     <script src="../../js/nueva_cotizacion/nueva_cotizacion.js"></script> <!-- Enlaza nuevamente el archivo JavaScript para manejar la lógica del formulario de cotización -->
     <script src="../../js/crear_empresa/upload_logo.js"></script>
     <script src="../../js/nueva_cotizacion/cargar_logo_empresa.js"></script> 
     <script src="../../js/nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
     <script src="../../js/nueva_cotizacion/pago.js"></script> 
-
-
 </body>
 </html>
 

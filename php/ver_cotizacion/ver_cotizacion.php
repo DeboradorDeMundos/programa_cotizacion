@@ -233,6 +233,7 @@ $conn->close();
 </head>
 <body>
     <div class="cotizacion-contenedor">
+        <!-- Título: Cotización -->
         <header>
             <div class="header-left">
                 <h2>COTIZACIÓN</h2>
@@ -247,29 +248,26 @@ $conn->close();
 
         <!-- Sección de Detalles -->
         <div class="section-contenedor">
-            <!-- Detalles de la Empresa -->
-
+            <!-- Título: Detalles de la Empresa -->
             <?php include 'detalles_empresa.php'; ?>
 
-            <!-- Detalles del Proyecto -->
-             <?php include 'detalles_proyecto.php'; ?>
+            <!-- Título: Detalles del Proyecto -->
+            <?php include 'detalles_proyecto.php'; ?>
 
-            <!-- Detalles del Cliente -->
-             <?php include 'detalle_cliente.php'; ?>
+            <!-- Título: Detalles del Cliente -->
+            <?php include 'detalle_cliente.php'; ?>
 
+            <!-- Título: Detalles del Encargado -->
+            <?php include 'detalle_encargado.php'; ?>
 
-            <!-- Detalles del Encargado -->
-             <?php include 'detalle_encargado.php'; ?>
-
-            <!-- Detalles del Vendedor -->
-             <?php include 'detalle_vendedor.php'; ?>
-
+            <!-- Título: Detalles del Vendedor -->
+            <?php include 'detalle_vendedor.php'; ?>
         </div>
 
-        <!-- Productos -->
+        <!-- Título: Productos -->
         <?php include 'detalle_productos.php'; ?>
 
-        <!-- Totales -->
+        <!-- Título: Resumen de Precios -->
         <div class="resumen-precio">
             <table>
                 <tr>
@@ -287,13 +285,13 @@ $conn->close();
             </table>
         </div>
 
-        <!-- Método de Pago -->
+        <!-- Título: Método de Pago -->
         <div class="section metodo-pago">
             <h3>MÉTODO DE PAGO</h3>
             <p>Se aceptan los siguientes métodos de pago: [Inserta detalles del método de pago aquí]</p>
         </div>
 
-        <!-- Requisitos, Obligaciones y Condiciones Generales -->
+        <!-- Título: Requisitos -->
         <?php if (!empty($requisitos)): ?>
             <div class="section">
                 <h3>REQUISITOS</h3>
@@ -301,6 +299,7 @@ $conn->close();
             </div>
         <?php endif; ?>
 
+        <!-- Título: Obligaciones -->
         <?php if (!empty($obligaciones)): ?>
             <div class="section">
                 <h3>OBLIGACIONES</h3>
@@ -308,6 +307,7 @@ $conn->close();
             </div>
         <?php endif; ?>
 
+        <!-- Título: Condiciones Generales -->
         <?php if (!empty($descripcion_condiciones)): ?>
             <div class="section">
                 <h3>CONDICIONES GENERALES</h3>
@@ -315,7 +315,7 @@ $conn->close();
             </div>
         <?php endif; ?>
 
-        <!-- Firmas -->
+        <!-- Título: Firmas -->
         <div class="firmas">
             <div class="firma">
                 <p>Firma Cliente</p>

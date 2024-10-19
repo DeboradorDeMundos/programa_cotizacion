@@ -19,7 +19,9 @@ BPPJ
     <div class="box-6 cuadro-datos"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
         <div class="form-group-inline">
             <div class="form-group">
+                <!-- Título: Campo para el RUT del Encargado -->
                 <label for="encargado_rut">RUT: </label> <!-- Etiqueta para el campo de entrada del RUT del cliente -->
+                <!-- Título: Campo para Ingresar el RUT del Encargado -->
                 <input type="text" id="encargado-rut" name="encargado_rut" 
                     minlength="7" maxlength="12" 
                     placeholder="Ej: 12.345.678-9"
@@ -28,7 +30,9 @@ BPPJ
                     required> <!-- Campo de texto para ingresar el RUT del cliente. También es obligatorio -->
             </div>
             <div class="form-group">
+                <!-- Título: Campo para el Nombre del Encargado -->
                 <label for="enc_nombre">Nombre:</label> <!-- Etiqueta para el campo de entrada del nombre del encargado -->
+                <!-- Título: Campo para Ingresar el Nombre del Encargado -->
                 <input type="text" id="enc-nombre" name="enc_nombre" 
                     placeholder="Ej: Juan Pérez" 
                     required 
@@ -40,9 +44,10 @@ BPPJ
             </div>
         </div>
     
-       
         <div class="form-group">
+            <!-- Título: Campo para el Email del Encargado -->
             <label for="enc_email">Email:</label> <!-- Etiqueta para el campo de entrada del email del encargado -->
+            <!-- Título: Campo para Ingresar el Email del Encargado -->
             <input type="email" id="enc-email" name="enc_email"
                 placeholder="ejemplo@gmail.com" 
                 maxlength="255" 
@@ -52,12 +57,14 @@ BPPJ
                 onblur="CompletarEmail(this)"> <!-- Campo de correo electrónico para ingresar el email del encargado. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
         </div>
         <div class="form-group">
+            <!-- Título: Campo para el Teléfono del Encargado -->
             <label for="enc_fono">Teléfono:</label> <!-- Etiqueta para el campo de entrada del teléfono del encargado -->
             
             <!-- Imagen de la bandera -->
             <img id="flag_encargado" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
                 alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
 
+            <!-- Título: Campo para Ingresar el Teléfono del Encargado -->
             <input type="text" id="enc-fono" name="enc_fono" 
                 placeholder="+56 9 1234 1234" 
                 maxlength="16" 
@@ -69,12 +76,14 @@ BPPJ
     </div>
     <div class="box-6 cuadro-datos cuadro-datos-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "cuadro-datos-left" para estilo -->
         <div class="form-group">
+            <!-- Título: Campo para el Celular del Encargado -->
             <label for="enc_celular">Celular:</label> <!-- Etiqueta para el campo de entrada del celular del encargado -->
             
             <!-- Imagen de la bandera -->
             <img id="flag_encargado_celular" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
                 alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
 
+            <!-- Título: Campo para Ingresar el Celular del Encargado -->
             <input type="text" id="enc_celular" name="enc_celular"
                 placeholder="+56 9 1234 1234" 
                 maxlength="15" 
@@ -84,7 +93,9 @@ BPPJ
         </div>
 
         <div class="form-group">
+            <!-- Título: Campo para el Proyecto Asignado al Encargado -->
             <label for="enc_proyecto">Proyecto Asignado:</label> <!-- Etiqueta para el campo de entrada del proyecto asignado al encargado -->
+            <!-- Título: Campo para Ingresar el Proyecto Asignado al Encargado -->
             <input type="text" id="enc-proyecto" name="enc_proyecto" 
                 placeholder="Ej: Proyecto XYZ" 
                 minlength="3" 

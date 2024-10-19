@@ -23,12 +23,16 @@ if ($id_cotizacion > 0) {
 <body>
 
 <div class="contenedor">
+    <!-- Título: Firma y Cotización -->
     <h1>Firma y Cotización</h1>
+    <!-- Título: Instrucción para el usuario -->
     <p>Elige una opción para ver los detalles de la cotización o la firma.</p>
 
+    <!-- Título: Botón para ver cotización -->
     <!-- Botón para ver cotización -->
     <a href="<?php echo $url_cotizacion; ?>" class="btn">Ver Cotización</a>
 
+    <!-- Título: Botón para ver firma -->
     <!-- Botón para ver firma -->
     <a href="<?php echo $url_firma; ?>" class="btn btn-secondary">Ver Firma</a>
 </div>

@@ -14,9 +14,14 @@ BPPJ
 
 
 <link rel="stylesheet" href="../../css/nueva_cotizacion/pago.css">
+<!-- Título: Sección de Información de Pago -->
 <fieldset id="payment-section">
     <legend>Información de pago</legend>
+
+    <!-- Título: Botón para Agregar Pago -->
     <button type="button" onclick="AgregarPago()">Agregar Pago</button>
+
+    <!-- Título: Tabla de Pagos -->
     <table id="payment-table" style="display: none;"> <!-- Inicialmente oculto -->
         <thead>
             <tr>
@@ -30,6 +35,7 @@ BPPJ
             </tr>
         </thead>
         <tbody id="payments-contenedor">
+            <!-- Título: Contenedor para Pagos Dinámicos -->
             <!-- Aquí se agregarán dinámicamente los pagos -->
         </tbody>
     </table>
