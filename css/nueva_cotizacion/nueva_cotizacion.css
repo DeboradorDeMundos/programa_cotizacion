@@ -13,6 +13,8 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Formulario Cotizacion .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
+
+/* Título: Estilo general del cuerpo */
 /* Establece la fuente predeterminada, elimina márgenes y rellenos, y define el color de fondo de la página */
 body {
   font-family: Arial, sans-serif; /* Fuente predeterminada */
@@ -21,18 +23,24 @@ body {
   background-color: #f9f9f9; /* Color de fondo */
 }
 
+/* Título: Contenedor general */
+/* Define el ancho y el relleno del contenedor principal */
 .contenedor {
   width: 100%; /* Ancho del contenedor */
   padding: 20px; /* Relleno interno */
   box-sizing: border-box; /* Incluye el padding en el ancho total */
 }
 
+/* Título: Estilo para el contenedor del logo */
+/* Usar flexbox para alinear el logo */
 .caja-logo {
   display: flex; /* Usar flexbox */
   align-items: center; /* Centrar verticalmente */
   justify-content: center; /* Centrar horizontalmente */
 }
 
+/* Título: Estilo para el botón fijo */
+/* Define las propiedades visuales y de posición del botón fijo */
 .boton-fijado {
   position: fixed; /* Posición fija en la pantalla */
   top: 20px; /* Distancia desde la parte superior */
@@ -47,15 +55,21 @@ body {
   z-index: 1000; /* Asegura que esté por encima de otros elementos */
 }
 
+/* Título: Efecto hover para el botón fijo */
+/* Cambia el color de fondo del botón al pasar el cursor */
 .boton-fijado:hover {
   background-color: #0056b3; /* Color de fondo en hover */
 }
 
+/* Título: Estilo para el contenedor de detalles */
+/* Define la posición y el relleno del contenedor de detalles */
 #detalle-contenedor {
   position: relative; /* Posición relativa para el contenedor */
   padding-bottom: 50px; /* Relleno inferior para el contenido */
 }
 
+/* Título: Estilo para el botón de envío */
+/* Define las propiedades visuales y de posición del botón de envío */
 .submit {
   width: 80%; /* Ancho del botón de envío */
   padding: 10px 20px; /* Relleno del botón */
@@ -69,15 +83,17 @@ body {
   text-align: center; /* Centrar texto */
 }
 
+/* Título: Efecto hover para el botón de envío */
+/* Cambia el color de fondo del botón al pasar el cursor */
 .submit:hover {
   background-color: #ff4500; /* Color de fondo en hover */
 }
 
+/* Título: Estilo para la tabla de bancos */
+/* Centra el texto en las celdas de la tabla */
 .bancos td {
   text-align: center; /* Centrar texto en celdas de la tabla */
 }
-
-
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Formulario Cotizacion .CSS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

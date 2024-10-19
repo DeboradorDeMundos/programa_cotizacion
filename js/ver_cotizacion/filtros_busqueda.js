@@ -14,19 +14,22 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Filtro Busqueda.JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-    document.getElementById('filtro-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Serializa los datos del formulario
-        var formData = new FormData(this);
-        var queryString = new URLSearchParams(formData).toString();
-        
-        // Redirige a la misma página con los filtros aplicados
-        window.location.href = window.location.pathname + '?' + queryString;
-    });
-    
+// Título: Evento para manejar el envío del formulario de filtro
+//  Este bloque de código captura el evento de envío del formulario, evita el comportamiento por defecto, 
+// serializa los datos del formulario y redirige a la misma página con los filtros aplicados.
 
-  
+document.getElementById('filtro-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Evita el comportamiento por defecto del envío del formulario
+    
+    // Título: Serializar los datos del formulario
+    //  Crea un objeto FormData para capturar los datos ingresados en el formulario y luego convierte esos datos en una cadena de consulta.
+    var formData = new FormData(this); // Captura los datos del formulario
+    var queryString = new URLSearchParams(formData).toString(); // Convierte los datos en una cadena de consulta
+    
+    // Título: Redirigir con los filtros aplicados
+    //  Cambia la ubicación actual a la misma página, añadiendo los filtros como parámetros en la URL.
+    window.location.href = window.location.pathname + '?' + queryString; // Redirige a la URL con los parámetros de filtro
+});
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Filtro Busqueda .JS ---------------------------------------

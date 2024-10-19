@@ -13,13 +13,15 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Requisitos basicos .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-/* Estilos para los encabezados h2 */
+/* Título: Estilos para los encabezados h2 */
+/* Color de texto gris oscuro y sin margen superior */
 h2 {
   color: #333; /* Color de texto gris oscuro */
   margin-top: 0; /* Sin margen superior */
 }
 
-/* Estilos para filas de obligaciones y requisitos */
+/* Título: Estilos para filas de obligaciones y requisitos */
+/* Usar flexbox para alinear elementos con espacio entre ellos */
 .fila-obligaciones, .fila-requisitos {
   display: flex; /* Usar flexbox para alinear elementos */
   align-items: center; /* Centra los elementos verticalmente */
@@ -30,13 +32,15 @@ h2 {
   border-radius: 5px; /* Bordes redondeados */
 }
 
-/* Estilo para los inputs dentro de las filas de obligaciones y requisitos */
+/* Título: Estilo para los inputs dentro de las filas de obligaciones y requisitos */
+/* El input ocupará el espacio disponible con margen a la derecha */
 .fila-obligaciones input, .fila-requisitos input {
   flex-grow: 1; /* El input ocupará el espacio disponible */
   margin-right: 10px; /* Margen a la derecha del input */
 }
 
-/* Estilos para el botón de eliminar obligaciones */
+/* Título: Estilos para el botón de eliminar obligaciones */
+/* Color rojo para el botón de eliminar */
 .boton-eliminar-obligacion {
   background-color: #dc3545; /* Color rojo */
   border: none; /* Sin borde */
@@ -46,12 +50,14 @@ h2 {
   border-radius: 5px; /* Bordes redondeados */
 }
 
-/* Efecto hover para el botón de eliminar obligaciones */
+/* Título: Efecto hover para el botón de eliminar obligaciones */
+/* Rojo más oscuro al hacer hover */
 .boton-eliminar-obligacion:hover {
   background-color: #c82333; /* Rojo más oscuro al hacer hover */
 }
 
-/* Estilos para los botones de agregar obligación y requisito */
+/* Título: Estilos para los botones de agregar obligación y requisito */
+/* Tamaño de fuente pequeño y espaciado interno */
 #boton-agregar-obligacion, #boton-agregar-requisito {
   font-size: 14px; /* Tamaño de fuente pequeño */
   padding: 8px 16px; /* Espaciado interno */
@@ -62,27 +68,32 @@ h2 {
   transition: background-color 0.3s; /* Transición para el color de fondo */
 }
 
-/* Estilos específicos para el botón de agregar obligación */
+/* Título: Estilos específicos para el botón de agregar obligación */
+/* Color de fondo llamativo (verde) */
 #boton-agregar-obligacion {
   background-color: #28a745; /* Color de fondo llamativo (verde) */
 }
 
-/* Efecto hover para el botón de agregar obligación */
+/* Título: Efecto hover para el botón de agregar obligación */
+/* Color de fondo al pasar el ratón (verde más oscuro) */
 #boton-agregar-obligacion:hover {
   background-color: #218838; /* Color de fondo al pasar el ratón (verde más oscuro) */
 }
 
-/* Estilos específicos para el botón de agregar requisito */
+/* Título: Estilos específicos para el botón de agregar requisito */
+/* Color de fondo llamativo (verde) */
 #boton-agregar-requisito {
   background-color: #28a745; /* Color de fondo llamativo (verde) */
 }
 
-/* Efecto hover para el botón de agregar requisito */
+/* Título: Efecto hover para el botón de agregar requisito */
+/* Color de fondo al pasar el ratón (verde más oscuro) */
 #boton-agregar-requisito:hover {
   background-color: #218838; /* Color de fondo al pasar el ratón (verde más oscuro) */
 }
 
-/* Estilos para la clase box-12_1 */
+/* Título: Estilos para la clase box-12_1 */
+/* Usar flexbox para la disposición de elementos en fila */
 .box-12_1 {
   display: flex; /* Usar flexbox para la disposición de elementos */
   flex-direction: row; /* Disposición horizontal */
@@ -92,7 +103,8 @@ h2 {
   padding: 10px; /* Relleno interno de 10px */
 }
 
-/* Estilos para los módulos de datos dentro de la clase data-box_1 */
+/* Título: Estilos para los módulos de datos dentro de la clase data-box_1 */
+/* Bordes redondeados y fondo blanco */
 .data-box_1 {
   border: 1px solid #ddd; /* Borde gris claro */
   padding: 15px; /* Relleno interno de 15px */

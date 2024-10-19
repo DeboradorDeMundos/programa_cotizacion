@@ -13,7 +13,9 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Ver firma .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-   /* Estilo general para el cuerpo del documento */
+
+/* Título: Estilo general para el cuerpo del documento */
+/* Aplica estilos al body para centrar el contenido en la pantalla usando Flexbox */
 body {
     font-family: 'Arial', sans-serif; /* Fuente utilizada en el documento */
     background-color: #f5f6fa; /* Color de fondo */
@@ -24,7 +26,8 @@ body {
     margin: 0; /* Sin márgenes */
 }
 
-/* Estilo para el contenedor principal */
+/* Título: Estilo para el contenedor principal */
+/* Define los estilos para el bloque contenedor centrado con bordes redondeados y sombra */
 .contenedor {
     background-color: #fff; /* Color de fondo blanco */
     padding: 40px; /* Espaciado interno */
@@ -33,21 +36,24 @@ body {
     text-align: center; /* Alineación del texto al centro */
 }
 
-/* Estilo para el encabezado h1 */
+/* Título: Estilo para el encabezado principal */
+/* Aplica un tamaño de fuente mayor al título h1 dentro del contenedor */
 h1 {
     font-size: 24px; /* Tamaño de la fuente */
     color: #333; /* Color del texto */
     margin-bottom: 20px; /* Margen inferior */
 }
 
-/* Estilo para los párrafos */
+/* Título: Estilo para los párrafos */
+/* Define un tamaño de fuente estándar y color para los párrafos */
 p {
     font-size: 16px; /* Tamaño de la fuente */
     color: #666; /* Color del texto */
     margin-bottom: 40px; /* Margen inferior */
 }
 
-/* Estilo para los botones */
+/* Título: Estilo general para los botones */
+/* Define el diseño de los botones con espaciado, color y bordes redondeados */
 .btn {
     display: inline-block; /* Muestra como bloque en línea */
     padding: 12px 24px; /* Espaciado interno */
@@ -60,17 +66,20 @@ p {
     transition: background-color 0.3s; /* Transición suave para el cambio de color */
 }
 
-/* Efecto hover para el botón primario */
+/* Título: Efecto hover para el botón principal */
+/* Cambia el color de fondo cuando el usuario pasa el ratón sobre el botón */
 .btn:hover {
     background-color: #0056b3; /* Color de fondo al pasar el ratón */
 }
 
-/* Estilo para el botón secundario */
+/* Título: Estilo para el botón secundario */
+/* Aplica un color de fondo verde a los botones secundarios */
 .btn-secondary {
     background-color: #28a745; /* Color de fondo verde */
 }
 
-/* Efecto hover para el botón secundario */
+/* Título: Efecto hover para el botón secundario */
+/* Cambia el color de fondo cuando el usuario pasa el ratón sobre el botón secundario */
 .btn-secondary:hover {
     background-color: #218838; /* Color de fondo al pasar el ratón */
 }

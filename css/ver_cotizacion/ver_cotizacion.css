@@ -14,7 +14,8 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Ver Cotización .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-/* Estilos generales */
+/* Título: Estilos generales para el cuerpo */
+/* Define la fuente, colores y espaciado general del cuerpo del documento */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f7f7f7;
@@ -25,44 +26,55 @@ body {
     line-height: 1.6; /* Espaciado más cómodo */
 }
 
+/* Título: Estilos para los encabezados h1-h6 */
+/* Estilos de márgenes, relleno y color para todos los encabezados */
 h1, h2, h3, h4, h5, h6 {
     margin: 0 0 15px 0;
     padding: 0;
     color: #333; /* Color oscuro para los encabezados */
 }
 
+/* Título: Estilo para h2 */
+/* Tamaño de fuente específico para los encabezados h2 */
 h2 {
     font-size: 24px;
 }
-/* Estilo para los encabezados h3 */
+
+/* Título: Estilo para h3 */
+/* Tamaño de fuente específico para los encabezados h3 */
 h3 {
     font-size: 18px; /* Tamaño de fuente para h3 */
 }
 
-/* Estilo para los encabezados h4 */
+/* Título: Estilo para h4 */
+/* Tamaño de fuente específico para los encabezados h4 */
 h4 {
     font-size: 16px; /* Tamaño de fuente para h4 */
 }
 
-/* Estilo para los párrafos */
+/* Título: Estilo para los párrafos */
+/* Controla márgenes y relleno para los párrafos */
 p {
     margin: 0 0 10px 0; /* Margen inferior de 10px */
     padding: 0; /* Sin relleno interno */
 }
 
-/* Estilo para los enlaces */
+/* Título: Estilo para enlaces */
+/* Establece el color y el formato del texto de los enlaces */
 a {
     color: #4CAF50; /* Color del enlace */
     text-decoration: none; /* Sin subrayado */
     font-weight: normal; /* Peso normal de la fuente */
 }
 
-/* Efecto hover para los enlaces */
+/* Título: Efecto hover para los enlaces */
+/* Cambia el estilo de los enlaces cuando se pasa el ratón sobre ellos */
 a:hover {
     text-decoration: underline; /* Subrayado al pasar el ratón */
 }
 
-/* Estilos para la tabla */
+/* Título: Estilos para las tablas */
+/* Define el ancho, bordes, y fondo de las tablas */
 table {
     width: 100%; /* Ancho completo */
     border-collapse: collapse; /* Elimina el espacio entre bordes */
@@ -71,7 +83,8 @@ table {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
-/* Estilo para las celdas de la tabla */
+/* Título: Estilo para las celdas de las tablas */
+/* Define el espaciado interno, tamaño de fuente y bordes de las celdas */
 table th, table td {
     padding: 10px 12px; /* Espaciado interno reducido */
     text-align: left; /* Alineación del texto a la izquierda */
@@ -79,7 +92,8 @@ table th, table td {
     border: 1px solid #ddd; /* Borde de las celdas */
 }
 
-/* Estilo para los encabezados de la tabla */
+/* Título: Estilo para los encabezados de la tabla */
+/* Controla el estilo de los encabezados de las tablas */
 table th {
     background-color: #4CAF50; /* Color de fondo verde */
     color: #fff; /* Color del texto blanco */
@@ -87,18 +101,21 @@ table th {
     font-size: 12px; /* Tamaño de letra más pequeño */
 }
 
-/* Estilo para las filas pares de la tabla */
+/* Título: Estilo para las filas pares de la tabla */
+/* Aplica un color de fondo diferente a las filas pares */
 table tr:nth-child(even) {
     background-color: #f2f2f2; /* Color de fondo gris claro para filas pares */
 }
 
-/* Efecto hover para las filas de la tabla */
+/* Título: Efecto hover para las filas de la tabla */
+/* Cambia el color de fondo cuando se pasa el ratón sobre una fila */
 table tr:hover {
     background-color: #f1f1f1; /* Color de fondo al pasar el ratón */
     transition: background-color 0.2s ease-in-out; /* Transición suave */
 }
 
-/* Estilos para la información de la cabecera */
+/* Título: Estilos para la cabecera de información */
+/* Controla la disposición y alineación de los elementos en la cabecera */
 .header-info {
     display: flex; /* Usa un contenedor flex */
     justify-content: space-between; /* Espacio entre elementos */
@@ -106,34 +123,40 @@ table tr:hover {
     margin-bottom: 20px; /* Margen inferior */
 }
 
-/* Estilo para los divs dentro de la cabecera */
+/* Título: Estilos para los divs de la cabecera */
+/* Asegura que los divs en la cabecera tengan el mismo tamaño */
 .header-info div {
     flex: 1; /* Los divs ocupan el mismo espacio */
 }
 
-/* Estilo para las imágenes dentro de la cabecera */
+/* Título: Estilo para imágenes dentro de la cabecera */
+/* Define un ancho fijo para las imágenes en la cabecera */
 .header-info img {
     width: 100px; /* Ancho fijo para la imagen */
 }
 
-/* Estilo para el título de la cabecera */
+/* Título: Estilo para el título de la cabecera */
+/* Estilo específico para el título dentro de la cabecera */
 .header-info h2 {
     margin: 0; /* Sin margen */
     font-size: 24px; /* Tamaño de fuente para el título */
 }
 
-/* Estilo para los párrafos dentro de la cabecera */
+/* Título: Estilo para párrafos dentro de la cabecera */
+/* Define un estilo para los párrafos en la cabecera */
 .header-info p {
     margin: 0; /* Sin margen */
     font-size: 12px; /* Tamaño de fuente más pequeño */
 }
 
-/* Estilos para los bloques de información */
+/* Título: Estilos para los bloques de información */
+/* Controla el margen superior de los bloques de información */
 .info-block {
     margin-top: 20px; /* Margen superior */
 }
 
-/* Estilo para los títulos de sección dentro de los bloques de información */
+/* Título: Estilos para los títulos de sección */
+/* Estilo para los títulos de las secciones dentro de los bloques de información */
 .info-block .section-title {
     margin-bottom: 10px; /* Margen inferior */
     color: #333; /* Color del texto */
@@ -141,36 +164,42 @@ table tr:hover {
     font-weight: bold; /* Peso de fuente en negrita */
 }
 
-/* Estilo para las tablas dentro de los bloques de información */
+/* Título: Estilo para tablas en bloques de información */
+/* Ajusta el estilo de las tablas dentro de los bloques de información */
 .info-block table {
     width: 100%; /* Ancho completo */
     margin-top: 10px; /* Margen superior */
 }
 
-/* Estilo para las celdas dentro de los bloques de información */
+/* Título: Estilo para celdas en bloques de información */
+/* Controla el espaciado y alineación de las celdas dentro de los bloques */
 .info-block td {
     padding: 5px 10px; /* Espaciado interno */
 }
 
-/* Estilo para la primera celda dentro de los bloques de información */
+/* Título: Estilo para la primera celda en bloques de información */
+/* La primera celda dentro de los bloques de información tiene texto en negrita */
 .info-block td:first-child {
     font-weight: bold; /* Peso de fuente en negrita */
 }
 
-/* Estilos para las listas no ordenadas */
+/* Título: Estilos para listas no ordenadas */
+/* Elimina el estilo de la lista y alinea el texto al centro */
 ul {
     list-style-type: none; /* Sin estilo de lista */
     padding: 0; /* Sin relleno */
     text-align: center; /* Alineación de la lista al centro */
 }
 
-/* Estilo para los elementos de la lista */
+/* Título: Estilo para los elementos de la lista */
+/* Muestra los elementos de la lista en línea */
 ul li {
     display: inline-block; /* Muestra los elementos en línea */
     margin: 0 10px; /* Margen lateral */
 }
 
-/* Estilo para los enlaces dentro de la lista */
+/* Título: Estilo para enlaces en la lista */
+/* Define el color y formato para los enlaces dentro de la lista */
 ul li a {
     color: #4CAF50; /* Color del enlace */
     text-decoration: none; /* Sin subrayado */
@@ -178,12 +207,11 @@ ul li a {
     font-size: 14px; /* Tamaño de letra reducido */
 }
 
-/* Efecto hover para los enlaces dentro de la lista */
+/* Título: Efecto hover para enlaces en la lista */
+/* Cambia el estilo del enlace cuando se pasa el ratón sobre él */
 ul li a:hover {
     text-decoration: underline; /* Subrayado al pasar el ratón */
 }
-
-
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Ver Cotización .CSS ---------------------------------------

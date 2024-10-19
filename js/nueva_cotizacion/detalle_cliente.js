@@ -14,49 +14,53 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Detalle cliente.JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-    // Función para formatear el número de teléfono
-    function FormatoNumeroTelefono(input) {
-        // Eliminar todo lo que no sea número o espacio
-        let value = input.value.replace(/[^\d]/g, '');
-        
-        // Verificar la longitud del número y formatear
-        if (value.length > 10) {
-            value = value.replace(/^(\d{2})(\d)(\d{4})(\d{4})$/, '+$1 $2 $3 $4');
-        } else if (value.length > 7) {
-            value = value.replace(/^(\d{2})(\d)(\d{4})$/, '+$1 $2 $3');
-        } else if (value.length > 2) {
-            value = value.replace(/^(\d{2})(\d)$/, '+$1 $2');
-        } else if (value.length > 1) {
-            value = value.replace(/^(\d{2})$/, '+$1');
+// Título para la función de formateo de número de teléfono
+// Función para formatear el número de teléfono
+function FormatoNumeroTelefono(input) {
+    // Eliminar todo lo que no sea número o espacio
+    let value = input.value.replace(/[^\d]/g, '');
+    
+    // Verificar la longitud del número y formatear
+    if (value.length > 10) {
+        value = value.replace(/^(\d{2})(\d)(\d{4})(\d{4})$/, '+$1 $2 $3 $4');
+    } else if (value.length > 7) {
+        value = value.replace(/^(\d{2})(\d)(\d{4})$/, '+$1 $2 $3');
+    } else if (value.length > 2) {
+        value = value.replace(/^(\d{2})(\d)$/, '+$1 $2');
+    } else if (value.length > 1) {
+        value = value.replace(/^(\d{2})$/, '+$1');
+    }
+
+    input.value = value; // Actualizar el valor del campo de entrada
+}
+
+// Título para la función de completar email
+// Función para completar el email con un dominio por defecto
+function CompletarEmail(input) {
+    // Eliminar comillas simples y dobles
+    input.value = input.value.replace(/['"]/g, '');
+    
+    const PatronEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expresión regular para validar email
+    
+    // Comprobar si el correo tiene un formato válido
+    if (!PatronEmail.test(input.value)) {
+        if (!input.value.includes('@')) {
+            input.value += '@gmail.com'; // Añadir '@gmail.com' si no se ingresó
+        } else {
+            alert("Por favor, ingresa un correo electrónico válido."); // Mensaje de error
         }
-
-        input.value = value; // Actualizar el valor del campo de entrada
     }
+}
 
-    // Función para completar el email con un dominio por defecto
-    function CompletarEmail(input) {
-        // Eliminar comillas simples y dobles
-        input.value = input.value.replace(/['"]/g, '');
-        
-        const PatronEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expresión regular para validar email
-        
-        // Comprobar si el correo tiene un formato válido
-        if (!PatronEmail.test(input.value)) {
-            if (!input.value.includes('@')) {
-                input.value += '@gmail.com'; // Añadir '@gmail.com' si no se ingresó
-            } else {
-                alert("Por favor, ingresa un correo electrónico válido."); // Mensaje de error
-            }
-        }
-    }
+// Título para la función de quitar caracteres inválidos
+// Función para quitar caracteres inválidos de un input
+function QuitarCaracteresInvalidos(input) {
+    // Eliminar comillas y otros caracteres no deseados
+    input.value = input.value.replace(/['"]/g, '');
+}
 
-    // Función para quitar caracteres inválidos de un input
-    function QuitarCaracteresInvalidos(input) {
-        // Eliminar comillas y otros caracteres no deseados
-        input.value = input.value.replace(/['"]/g, '');
-    }
-
-    // Objeto que asocia códigos de país con imágenes de banderas
+// Título para el objeto de banderas
+// Objeto que asocia códigos de país con imágenes de banderas
 const banderasPais1 = {
     "+1": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/32px-Flag_of_United_States.svg.png", // USA
     "+52": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/32px-Flag_of_Mexico.svg.png", // Mexico
@@ -79,9 +83,11 @@ const banderasPais1 = {
     "+595": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Flag_of_Paraguay.svg/32px-Flag_of_Paraguay.svg.png" // Paraguay
 };
 
+// Título para la bandera por defecto
 // Imagen de bandera por defecto cuando no coincide con ningún código
 const banderaPorDefecto1 = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/World_Flag_%282004%29.svg/640px-World_Flag_%282004%29.svg.png"; // Bandera por defecto
 
+// Título para la función de detección de país
 // Función para detectar el país según el número de teléfono ingresado
 function detectarPais1(input1) {
     const numeroTelefono1 = input1.value.trim(); // Asegúrate de eliminar espacios
@@ -100,6 +106,7 @@ function detectarPais1(input1) {
     imagenBandera1.style.display = "inline";
 }
 
+// Título para la función de asegurar '+' y detectar país
 // Función para asegurar que el '+' esté presente y detectar el país
 function asegurarMasYDetectarPais1(input1) {
     // Verificar si el valor actual comienza con '+'
@@ -115,6 +122,7 @@ function asegurarMasYDetectarPais1(input1) {
     detectarPais1(input1);
 }
 
+// Título para la inicialización al cargar la página
 // Asegúrate de que la bandera se actualice al cargar la página
 window.onload = function() {
     const campoTelefono1 = document.getElementById('cliente_fono');

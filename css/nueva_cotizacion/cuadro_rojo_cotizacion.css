@@ -13,11 +13,14 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Cuandro rojo cotizacion.CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-    /* Estilo para cuadros de datos con borde rojo */
+
+/* Título: Estilos para cuadros de datos con borde rojo */
+/* Estilo para cuadros de datos con borde rojo */
 .cuadro-datos-rojo {
   border-color: red; /* Establece el color del borde en rojo */
 }
 
+/* Título: Estilos generales para cuadros de datos */
 /* Estilo general para cuadros de datos */
 .cuadro-datos {
   border: 1px solid #ddd; /* Borde gris claro de 1px */
@@ -25,6 +28,7 @@ BPPJ
   background-color: #fff; /* Fondo blanco */
 }
 
+/* Título: Estilos para contenedores flexibles */
 /* Estilos para contenedores flexibles */
 .box-6,
 .box-12 {
@@ -32,12 +36,14 @@ BPPJ
   flex-direction: column; /* Disposición vertical de los elementos */
 }
 
+/* Título: Estilos específicos para la caja de tamaño 6 */
 /* Estilo específico para la caja de tamaño 6 */
 .box-6 {
   flex: 1; /* Permite que esta caja ocupe el espacio disponible */
   padding: 10px; /* Espaciado interno de 10px */
 }
 
+/* Título: Estilos para grupos de campos en formulario */
 /* Asegura que los label y input tengan la misma altura */
 .form-group {
   display: flex; /* Usa flexbox para alinear elementos */
@@ -46,6 +52,7 @@ BPPJ
   margin-bottom: 10px; /* Espaciado inferior de 10px */
 }
 
+/* Título: Estilos para grupos de campos en línea */
 /* Estilo para grupos de campos en línea */
 .form-group-inline {
   display: flex; /* Usa flexbox para organizar elementos en línea */
@@ -53,12 +60,11 @@ BPPJ
   gap: 10px; /* Espacio entre los elementos */
 }
 
+/* Título: Distribución del espacio en grupos de formulario en línea */
 /* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
 .form-group-inline .form-group {
   flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
 }
-
-
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Cuadro rojo cotizacion.CSS ---------------------------------------

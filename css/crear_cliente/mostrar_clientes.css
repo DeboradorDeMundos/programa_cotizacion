@@ -14,41 +14,50 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Mostrar Clientes .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
- /* Estilos para la tabla y su desplazamiento horizontal */
- .tabla-contenedor-lista {
+/* Título: Estilos para la tabla y su desplazamiento horizontal */
+/* Permite que la tabla tenga desplazamiento horizontal */
+.tabla-contenedor-lista {
     overflow-x: auto; /* Permite desplazamiento horizontal */
     margin: 20px 0; /* Espaciado arriba y abajo */
 }
 
+/* Título: Estilos para la tabla */
+/* Define los estilos básicos para las tablas */
 table {
     width: 100%; /* Ocupa el 100% del contenedor */
     border-collapse: collapse; /* Combina bordes de celdas */
 }
 
+/* Título: Estilos para las celdas de la tabla */
+/* Define los estilos para las celdas, tanto para th como para td */
 th, td {
     padding: 10px; /* Espaciado interno de las celdas */
     text-align: left; /* Alineación a la izquierda */
     border: 1px solid #ddd; /* Bordes de las celdas */
 }
 
+/* Título: Estilos para los encabezados de la tabla */
+/* Define el color de fondo para los encabezados de la tabla */
 th {
     background-color: #f2f2f2; /* Color de fondo para encabezados */
 }
-      /* Estilo para el mensaje de notificación */
+
+/* Título: Estilo para el mensaje de notificación */
+/* Define los estilos para la notificación emergente */
 .notificacion {
-        display: none; /* Inicialmente oculto */
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 20px;
-        background-color: #f9c2c2;
-        color: #d9534f;
-        border: 1px solid #d9534f;
-        border-radius: 5px;
-        z-index: 1000; /* Asegúrate de que se muestre por encima de otros elementos */
-        text-align: center;
-    }
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #f9c2c2;
+    color: #d9534f;
+    border: 1px solid #d9534f;
+    border-radius: 5px;
+    z-index: 1000; /* Asegúrate de que se muestre por encima de otros elementos */
+    text-align: center;
+}
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Mostrar Clientes .CSS ---------------------------------------

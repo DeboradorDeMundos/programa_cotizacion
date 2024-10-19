@@ -13,7 +13,9 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Ver Listado .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-/* Estilos generales */
+
+/* Título: Estilos generales para el cuerpo del documento */
+/* Aplica formato general al cuerpo, con tipografía, fondo y espaciados */
 body {
     font-family: 'Arial', sans-serif; /* Fuente utilizada en el cuerpo del documento */
     background-color: #f7f7f7; /* Color de fondo */
@@ -23,13 +25,16 @@ body {
     font-size: 14px; /* Tamaño de letra más pequeño */
 }
 
+/* Título: Encabezado principal */
+/* Estilo aplicado al h1 con alineación centrada y márgenes */
 h1 {
     text-align: center; /* Alineación centrada del encabezado */
     color: #333; /* Color del texto del encabezado */
     margin-bottom: 20px; /* Margen inferior del encabezado */
 }
 
-/* Estilo de la tabla */
+/* Título: Estilo de la tabla */
+/* Define la apariencia general de las tablas, con sombra y colapso de bordes */
 table {
     width: 100%; /* Ancho completo de la tabla */
     border-collapse: collapse; /* Colapsa los bordes de las celdas */
@@ -38,12 +43,16 @@ table {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra de la tabla */
 }
 
+/* Título: Estilos de celdas */
+/* Define el relleno, tamaño de letra y alineación del texto dentro de las celdas */
 table th, table td {
     padding: 10px 12px; /* Espaciado reducido en las celdas */
     text-align: left; /* Alineación a la izquierda del texto */
     font-size: 13px; /* Tamaño de letra más pequeño */
 }
 
+/* Título: Encabezados de tabla */
+/* Estilo para las cabeceras de la tabla, con fondo colorido y texto en mayúsculas */
 table th {
     background-color: #4CAF50; /* Color de fondo de las cabeceras */
     color: #fff; /* Color del texto de las cabeceras */
@@ -51,19 +60,27 @@ table th {
     font-size: 12px; /* Tamaño de letra más pequeño para las cabeceras */
 }
 
+/* Título: Filas de la tabla */
+/* Estilo aplicado a las filas de la tabla, con borde inferior */
 table tr {
     border-bottom: 1px solid #ddd; /* Línea inferior entre filas */
 }
 
+/* Título: Estilo de filas alternadas */
+/* Aplica un color de fondo distinto para las filas pares */
 table tr:nth-child(even) {
     background-color: #f2f2f2; /* Color de fondo para filas pares */
 }
 
+/* Título: Efecto hover en filas */
+/* Cambia el color de fondo al pasar el ratón sobre una fila */
 table tr:hover {
     background-color: #f1f1f1; /* Color de fondo al pasar el ratón sobre una fila */
     transition: background-color 0.2s ease-in-out; /* Transición suave del color de fondo */
 }
 
+/* Título: Enlaces dentro de la tabla */
+/* Estilo para los enlaces en las celdas, con color específico y sin subrayado */
 table td a {
     color: #4CAF50; /* Color del enlace en la tabla */
     text-decoration: none; /* Sin subrayado en el enlace */
@@ -71,11 +88,14 @@ table td a {
     font-size: 13px; /* Tamaño de letra más pequeño para enlaces */
 }
 
+/* Título: Efecto hover en enlaces de tabla */
+/* Añade subrayado al pasar el ratón sobre los enlaces dentro de la tabla */
 table td a:hover {
     text-decoration: underline; /* Subrayado al pasar el ratón sobre el enlace */
 }
 
-/* Estilo de la lista de enlaces */
+/* Título: Estilo de listas */
+/* Aplica formato a las listas sin viñetas y con alineación centrada */
 ul {
     list-style-type: none; /* Sin viñetas en la lista */
     padding: 0; /* Sin espaciado interno */
@@ -83,11 +103,15 @@ ul {
     margin-top: 20px; /* Margen superior de la lista */
 }
 
+/* Título: Estilo de los elementos de lista */
+/* Estilo para los elementos de la lista, con formato en línea y espaciado */
 ul li {
     display: inline-block; /* Elementos de la lista en línea */
     margin: 0 10px; /* Espaciado lateral entre elementos de la lista */
 }
 
+/* Título: Estilo de enlaces en la lista */
+/* Define el color y estilo de los enlaces dentro de las listas */
 ul li a {
     color: #4CAF50; /* Color del enlace en la lista */
     text-decoration: none; /* Sin subrayado en el enlace */
@@ -95,30 +119,36 @@ ul li a {
     font-size: 14px; /* Tamaño de letra reducido para enlaces */
 }
 
+/* Título: Efecto hover en enlaces de lista */
+/* Añade subrayado al pasar el ratón sobre los enlaces de la lista */
 ul li a:hover {
     text-decoration: underline; /* Subrayado al pasar el ratón sobre el enlace */
 }
 
-/* Colores para los diferentes estados */
+/* Título: Colores de estados */
+/* Estilos aplicados a diferentes estados: aprobada, rechazada, pendiente */
 .estado-aprobada {
-    color: rgb(40, 170, 40);
-    font-weight: bold;
-    background-color:rgb(233, 233, 233);
+    color: rgb(40, 170, 40); /* Color verde para estado aprobado */
+    font-weight: bold; /* Negrita */
+    background-color: rgb(233, 233, 233); /* Fondo gris claro */
 }
 
+/* Título: Estado rechazado */
+/* Estilos aplicados cuando el estado es 'rechazado', destacando en rojo */
 .estado-rechazada {
-    color: red;
-    font-weight: bold;
-    background-color:rgb(233, 233, 233);
+    color: red; /* Color rojo para estado rechazado */
+    font-weight: bold; /* Negrita */
+    background-color: rgb(233, 233, 233); /* Fondo gris claro */
 }
 
+/* Título: Estado pendiente */
+/* Estilos aplicados cuando el estado es 'pendiente', con color amarillo y sombra */
 .estado-pendiente {
-    color: rgba(173, 173, 0, 0.87);
-    font-weight: Arial;
+    color: rgba(173, 173, 0, 0.87); /* Color amarillo para estado pendiente */
+    font-weight: Arial; /* Tipo de letra */
     text-shadow: 0px 0px 0px rgb(70, 70, 70); /* Contorno negro */
-    background-color:rgb(233, 233, 233);
+    background-color: rgb(233, 233, 233); /* Fondo gris claro */
 }
-
 
 
 /* --------------------------------------------------------------------------------------------------------------

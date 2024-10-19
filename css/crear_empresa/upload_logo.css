@@ -12,7 +12,8 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- Inicio ITred Spa Upload Logo .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
- /* Estilos comunes */
+
+/* Título: Estilos comunes */
 /* Estilos para la caja que contiene el logo */
 .caja-logo {
   display: flex; /* Usar flexbox para alinear elementos */
@@ -20,21 +21,24 @@ BPPJ
   justify-content: center; /* Centrar horizontalmente los elementos dentro de la caja */
 }
 
-/* Estilos para el contenedor del logo */
+/* Título: Estilos para el contenedor del logo */
+/* Usar flexbox para alinear elementos y cambiar el cursor al pasar sobre el contenedor */
 .contenedor-logo {
   display: flex; /* Usar flexbox para alinear elementos */
   align-items: center; /* Centrar verticalmente los elementos dentro del contenedor */
   cursor: pointer; /* Cambia el cursor al pasar sobre el contenedor */
 }
 
-/* Estilos para la imagen del logo */
+/* Título: Estilos para la imagen del logo */
+/* Definir ancho máximo y mantener proporción de la imagen */
 .logo {
   max-width: 300px; /* Ancho máximo del logo */
   height: auto; /* Altura automática para mantener la proporción */
   margin-right: 10px; /* Margen derecho de 10px para separar del siguiente elemento */
 }
 
-/* Estilos para el botón asociado al logo */
+/* Título: Estilos para el botón asociado al logo */
+/* Diseño del botón con fondo oscuro y texto en blanco */
 button.logo {
   background-color: #333; /* Color de fondo gris oscuro */
   color: #fff; /* Color del texto en blanco */
@@ -45,11 +49,11 @@ button.logo {
   width: auto; /* Ancho automático según el contenido */
 }
 
-/* Efecto hover para el botón asociado al logo */
+/* Título: Efecto hover para el botón asociado al logo */
+/* Color de fondo gris más claro al hacer hover */
 button.logo:hover {
   background-color: #555; /* Color de fondo gris más claro al hacer hover */
 }
-
     
     /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Upload Logo .CSS ---------------------------------------

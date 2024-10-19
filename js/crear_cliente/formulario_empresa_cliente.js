@@ -13,8 +13,8 @@ BPPJ
     -------------------------------------- Inicio ITred Spa formulario Clientes .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-
-// Función para formatear un RUT (número de identificación chileno) en el campo de entrada
+/* Título: Formateo del RUT */
+/* Formatea el RUT ingresado en el campo de entrada */
 function formatoRut(input) {
     // Obtiene el valor del campo y elimina cualquier carácter que no sea numérico
     let rut = input.value.replace(/\D/g, '');
@@ -38,30 +38,31 @@ function formatoRut(input) {
     }
 }
 
-      // Función para formatear la dirección del cliente
-      function formatoDireccion(input) {
-        // Obtiene el valor del campo y elimina cualquier carácter que no sea alfanumérico o espacio
-        let direccion = input.value.replace(/[^A-Za-z0-9\s]/g, '');
+/* Título: Formateo de la dirección */
+/* Formatea la dirección del cliente ingresada en el campo de entrada */
+function formatoDireccion(input) {
+    // Obtiene el valor del campo y elimina cualquier carácter que no sea alfanumérico o espacio
+    let direccion = input.value.replace(/[^A-Za-z0-9\s]/g, '');
 
-        // Limita la longitud total del input a 100 caracteres (ajusta según lo que necesites)
-        if (direccion.length > 100) {
-            direccion = direccion.slice(0, 100);
-        }
-
-        // Establece el valor del input formateado
-        input.value = direccion;
-
-        // Muestra u oculta el mensaje de error
-        const errorSpan = document.getElementById('error_direccion');
-        if (input.value.length < input.value.replace(/[^A-Za-z0-9\s]/g, '').length) {
-            errorSpan.style.display = 'inline'; // Mostrar el mensaje de error
-        } else {
-            errorSpan.style.display = 'none'; // Ocultar el mensaje de error
-        }
+    // Limita la longitud total del input a 100 caracteres (ajusta según lo que necesites)
+    if (direccion.length > 100) {
+        direccion = direccion.slice(0, 100);
     }
 
+    // Establece el valor del input formateado
+    input.value = direccion;
 
-// Función para validar que el campo solo contenga letras y espacios
+    // Muestra u oculta el mensaje de error
+    const errorSpan = document.getElementById('error_direccion');
+    if (input.value.length < input.value.replace(/[^A-Za-z0-9\s]/g, '').length) {
+        errorSpan.style.display = 'inline'; // Mostrar el mensaje de error
+    } else {
+        errorSpan.style.display = 'none'; // Ocultar el mensaje de error
+    }
+}
+
+/* Título: Validación del nombre de la empresa */
+/* Valida que el campo solo contenga letras y espacios */
 function validarNombre() {
     let input = document.getElementById("nombre_empresa_cliente");
     
@@ -84,9 +85,9 @@ function validarNombre() {
     }
 }
 
-
- // Objeto que asocia códigos de país con imágenes de banderas
- const banderasPais1 = {
+/* Título: Asociación de códigos de país con banderas */
+/* Objeto que asocia códigos de país con imágenes de banderas */
+const banderasPais1 = {
     "+1": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/32px-Flag_of_United_States.svg.png", // USA
     "+52": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/32px-Flag_of_Mexico.svg.png", // Mexico
     "+56": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_of_Chile.svg/32px-Flag_of_Chile.svg.png", // Chile
@@ -108,10 +109,12 @@ function validarNombre() {
     "+595": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Flag_of_Paraguay.svg/32px-Flag_of_Paraguay.svg.png" // Paraguay
 };
 
-// Imagen de bandera por defecto cuando no coincide con ningún código
+/* Título: Bandera por defecto */
+/* Imagen de bandera por defecto cuando no coincide con ningún código */
 const banderaPorDefecto1 = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/World_Flag_%282004%29.svg/640px-World_Flag_%282004%29.svg.png"; // Bandera por defecto
 
-// Función para detectar el país según el número de teléfono ingresado
+/* Título: Detección de país según número de teléfono */
+/* Función para detectar el país según el número de teléfono ingresado */
 function detectarPais1(input1) {
     const numeroTelefono1 = input1.value.trim(); // Asegúrate de eliminar espacios
     const imagenBandera1 = document.getElementById("flag_empresa_cliente");
@@ -129,7 +132,8 @@ function detectarPais1(input1) {
     imagenBandera1.style.display = "inline";
 }
 
-// Función para asegurar que el '+' esté presente y detectar el país
+/* Título: Asegurar '+' y detectar país */
+/* Asegura que el número de teléfono comience con '+' y permite solo números */
 function asegurarMasYDetectarPais1(input1) {
     // Verificar si el valor actual comienza con '+'
     if (!input1.value.startsWith('+')) {
@@ -144,15 +148,8 @@ function asegurarMasYDetectarPais1(input1) {
     detectarPais1(input1);
 }
 
-// Asegúrate de que la bandera se actualice al cargar la página
-window.onload = function() {
-    const campoTelefono1 = document.getElementById('telefono_empresa_cliente');
-    asegurarMasYDetectarPais1(campoTelefono1); // Llama a la función para asegurar "+" y detectar el país
-};
-    
-
-
-// Función para validar el email ingresado para la empresa del cliente
+/* Título: Validación del email de la empresa */
+/* Valida el email ingresado para la empresa del cliente */
 function validarEmailEmpresa(input) {
     const mensajeError = document.getElementById("mensaje_error_email_empresa");
     const caracteresEspeciales = /[\"'?!¡]/; // Caracteres especiales no permitidos
@@ -181,7 +178,8 @@ function validarEmailEmpresa(input) {
     }
 }
 
-// Función para validar el giro ingresado
+/* Título: Validación del giro de la empresa */
+/* Valida el giro ingresado */
 function validarGiro(input) {
     const mensajeError = document.getElementById("mensaje_error_giro");
     const caracteresNoPermitidos = /[^a-zA-Z\s]/g; // Solo se permiten letras y espacios
@@ -201,7 +199,8 @@ function validarGiro(input) {
     }
 }
 
-// Función para validar el Tipo de empresa ingresado
+/* Título: Validación del tipo de empresa */
+/* Valida el tipo de empresa ingresado */
 function validarTipo(input) {
     const mensajeError = document.getElementById("mensaje_error_tipo");
     const caracteresNoPermitidos = /[^a-zA-Z\s]/g; // Solo se permiten letras y espacios
@@ -221,8 +220,8 @@ function validarTipo(input) {
     }
 }
 
-
-// Función para validar el Tipo de empresa ingresado
+/* Título: Validación del lugar de la empresa */
+/* Valida el lugar ingresado */
 function validarLugar(input) {
     const mensajeError = document.getElementById("mensaje_error_lugar");
     const caracteresNoPermitidos = /[^a-zA-Z\s]/g; // Solo se permiten letras y espacios
@@ -242,8 +241,8 @@ function validarLugar(input) {
     }
 }
 
-
-// Función para validar la ciudad ingresada
+/* Título: Validación de la ciudad */
+/* Valida la ciudad ingresada */
 function validarCiudad(input) {
     const mensajeError = document.getElementById("mensaje_error_ciudad");
     const caracteresNoPermitidos = /[^a-zA-Z\s]/g; // Solo se permiten letras y espacios
@@ -263,8 +262,8 @@ function validarCiudad(input) {
     }
 }
 
-
-// Función para validar la comuna ingresada
+/* Título: Validación de la comuna */
+/* Valida la comuna ingresada */
 function validarComuna(input) {
     const mensajeError = document.getElementById("mensaje_error_comuna");
     const caracteresNoPermitidos = /[^a-zA-Z\s]/g; // Solo se permiten letras y espacios
@@ -284,6 +283,8 @@ function validarComuna(input) {
     }
 }
 
+/* Título: Validación de observaciones */
+/* Valida la observación ingresada */
 function validarObservacion(input) {
     const mensajeError = document.getElementById("error_observacion");
     const caracteresNoPermitidos = /[^a-zA-Z0-9\s]/g; // Solo se permiten letras, números y espacios

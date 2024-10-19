@@ -14,22 +14,21 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Cargar Logo Empresa .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-    /* Estilos para el logo */
+/* Título: Estilo para el logo */
+/* Define la apariencia del logo y su tamaño */
 .logo {
   max-width: 300px; /* Ancho máximo del logo de 300px */
   height: auto; /* Altura automática para mantener la proporción */
   margin-right: 10px; /* Margen derecho de 10px */
 }
 
-/* Contenedor que alberga el logo */
+/* Título: Contenedor del logo */
+/* Estilo del contenedor que alberga el logo */
 .contenedor-logo {
   display: flex; /* Usar flexbox para alinear los elementos */
   align-items: center; /* Alinear verticalmente los elementos al centro */
   cursor: pointer; /* Cambia el cursor a puntero al pasar sobre el contenedor */
 }
-
-    
-    
     
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Cargar Logo Empresa .CSS ---------------------------------------

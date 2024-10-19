@@ -258,7 +258,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
                         // Ejecutar la declaración
                         if (!$stmt_insert_detalle->execute()) {
-                            throw new Exception("Error al insertar detalle: " . $stmt_insert_detalle->error);
+                            throw new Exception("Error al insertar  " . $stmt_insert_detalle->error);
                         }
                     }
                 }
