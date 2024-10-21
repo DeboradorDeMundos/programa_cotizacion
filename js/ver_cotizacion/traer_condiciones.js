@@ -14,17 +14,17 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Traer condiciones.JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-// Título: Alternar condiciones
-// Esta función muestra u oculta una tabla de condiciones 
-// basada en el estado de un checkbox.
+// TÍTULO: ALTERNAR CONDICIONES
+    // Esta función muestra u oculta una tabla de condiciones 
+    // basada en el estado de un checkbox.
 
-function toggleConditions() {
-    const checkbox = document.getElementById('toggle-conditions'); // Obtener el checkbox
-    const table = document.getElementById('conditions-table'); // Obtener la tabla de condiciones
+    function toggleConditions() {
+        const checkbox = document.getElementById('toggle-conditions'); // Obtener el checkbox
+        const table = document.getElementById('conditions-table'); // Obtener la tabla de condiciones
 
-    // Muestra u oculta la tabla según el estado del checkbox
-    table.style.display = checkbox.checked ? 'table' : 'none'; // Cambiar la visibilidad de la tabla
-}
+        // Muestra u oculta la tabla según el estado del checkbox
+        table.style.display = checkbox.checked ? 'table' : 'none'; // Cambiar la visibilidad de la tabla
+    }
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Traer condiciones.JS ---------------------------------------
