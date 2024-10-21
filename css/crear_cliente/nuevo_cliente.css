@@ -14,55 +14,55 @@ BPPJ
     -------------------------------------- INICIO ITred Spa nuevo Clientes .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
     
-/* Título: Estilos para el contenedor principal */
-/* Define un contenedor flexible para los formularios */
-.contenedor {
-    display: flex; /* Activamos flexbox */
-    justify-content: center; /* Separa los formularios */
-    align-items: flex-start; /* Alinea los formularios en la parte superior */
-    gap: 20px; /* Espaciado entre los formularios */
-    padding: 20px;
-    flex-wrap: wrap; /* Asegura que se ajusten si no caben en una sola fila */
-}
+/* TÍTULO: ESTILOS PARA EL CONTENEDOR PRINCIPAL */
+    /* Define un contenedor flexible para los formularios */
+    .contenedor {
+        display: flex; /* Activamos flexbox */
+        justify-content: center; /* Separa los formularios */
+        align-items: flex-start; /* Alinea los formularios en la parte superior */
+        gap: 20px; /* Espaciado entre los formularios */
+        padding: 20px;
+        flex-wrap: wrap; /* Asegura que se ajusten si no caben en una sola fila */
+    }
 
-/* Título: Estilos para los formularios de empresa y encargado */
-/* Define los estilos comunes para los formularios */
-.formulario-empresa,
-.formulario-encargado {
-    width: 48%; /* Asegura que cada formulario ocupe menos de la mitad para que quepan en el mismo nivel */
-    background-color: #f9f9f9;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box;
-}
+/* TÍTULO: ESTILOS PARA LOS FORMULARIOS DE EMPRESA Y ENCARGADO */
+    /* Define los estilos comunes para los formularios */
+    .formulario-empresa,
+    .formulario-encargado {
+        width: 48%; /* Asegura que cada formulario ocupe menos de la mitad para que quepan en el mismo nivel */
+        background-color: #f9f9f9;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+    }
 
-/* Título: Estilos para los encabezados h3 */
-/* Define el centrado del texto para los encabezados */
-h3 {
-    text-align: center;
-}
+/* TÍTULO: ESTILOS PARA LOS ENCABEZADOS H3 */
+    /* Define el centrado del texto para los encabezados */
+    h3 {
+        text-align: center;
+    }
 
-/* Título: Estilos para el botón de envío */
-/* Estilos para el botón de envío dentro del formulario */
-.submit {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
-}
+/* TÍTULO: ESTILOS PARA EL BOTÓN DE ENVÍO */
+    /* Estilos para el botón de envío dentro del formulario */
+    .submit {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
 
-/* Título: Estilos cuando el botón de envío está en hover */
-/* Cambia el color de fondo cuando el botón de envío es hover */
-.submit:hover {
-    background-color: #45a049;
-}
+/* TÍTULO: ESTILOS CUANDO EL BOTÓN DE ENVÍO ESTÁ EN HOVER */
+    /* Cambia el color de fondo cuando el botón de envío es hover */
+    .submit:hover {
+        background-color: #45a049;
+    }
     
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa nuevo Clientes .CSS ---------------------------------------

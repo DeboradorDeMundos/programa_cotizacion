@@ -15,90 +15,90 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 
-/* Título: Estilo del cuadro de datos */
-/* Define el estilo para el cuadro que contiene los datos */
-.cuadro-datos {
-  border: 1px solid #ddd; /* Borde gris claro de 1px */
-  padding: 15px; /* Espaciado interno de 15px */
-  background-color: #fff; /* Fondo blanco */
-}
+/* TÍTULO: ESTILO DEL CUADRO DE DATOS */
+  /* Define el estilo para el cuadro que contiene los datos */
+  .cuadro-datos {
+    border: 1px solid #ddd; /* Borde gris claro de 1px */
+    padding: 15px; /* Espaciado interno de 15px */
+    background-color: #fff; /* Fondo blanco */
+  }
 
-/* Título: Estilo de contenedores flexibles */
-/* Define el estilo para las cajas de diferentes tamaños */
-.box-6,
-.box-12 {
-  display: flex; /* Usa flexbox para organizar los elementos */
-  flex-direction: column; /* Disposición vertical de los elementos */
-}
+/* TÍTULO: ESTILO DE CONTENEDORES FLEXIBLES */
+  /* Define el estilo para las cajas de diferentes tamaños */
+  .box-6,
+  .box-12 {
+    display: flex; /* Usa flexbox para organizar los elementos */
+    flex-direction: column; /* Disposición vertical de los elementos */
+  }
 
-/* Título: Estilo para filas */
-/* Define el estilo para las filas que contienen cajas */
-.row {
-  display: flex; /* Usa flexbox para organizar elementos en fila */
-  flex-wrap: wrap; /* Permite que los elementos se envuelvan en varias líneas */
-  margin-bottom: 20px; /* Espaciado inferior de 20px para separar las filas */
-}
+/* TÍTULO: ESTILO PARA FILAS */
+  /* Define el estilo para las filas que contienen cajas */
+  .row {
+    display: flex; /* Usa flexbox para organizar elementos en fila */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en varias líneas */
+    margin-bottom: 20px; /* Espaciado inferior de 20px para separar las filas */
+  }
 
-/* Título: Estilo específico para la caja de tamaño 6 */
-/* Define el estilo para la caja de tamaño 6 */
-.box-6 {
-  flex: 1; /* Permite que esta caja ocupe el espacio disponible */
-  padding: 10px; /* Espaciado interno de 10px */
-}
+/* TÍTULO: ESTILO ESPECÍFICO PARA LA CAJA DE TAMAÑO 6 */
+  /* Define el estilo para la caja de tamaño 6 */
+  .box-6 {
+    flex: 1; /* Permite que esta caja ocupe el espacio disponible */
+    padding: 10px; /* Espaciado interno de 10px */
+  }
 
-/* Título: Estilo para etiquetas en grupos de formularios */
-/* Define el estilo para las etiquetas dentro de los grupos de formularios */
-.form-group label {
-  width: 20%; /* Ancho del label */
-  font-size: 14px; /* Tamaño de fuente */
-  background-color: #d4d4d4; /* Fondo gris claro para el label */
-  padding: 5px; /* Espaciado interno del label */
-  border-radius: 3px 0px 0px 3px; /* Bordes redondeados a la izquierda */
-  text-align: left; /* Alineación del texto a la izquierda */
-}
+/* TÍTULO: ESTILO PARA ETIQUETAS EN GRUPOS DE FORMULARIOS */
+  /* Define el estilo para las etiquetas dentro de los grupos de formularios */
+  .form-group label {
+    width: 20%; /* Ancho del label */
+    font-size: 14px; /* Tamaño de fuente */
+    background-color: #d4d4d4; /* Fondo gris claro para el label */
+    padding: 5px; /* Espaciado interno del label */
+    border-radius: 3px 0px 0px 3px; /* Bordes redondeados a la izquierda */
+    text-align: left; /* Alineación del texto a la izquierda */
+  }
 
-/* Título: Estilo para el contenido en grupos de formularios */
-/* Alinea el contenido de los label, select e input */
-.form-group label, .form-group select, .form-group input {
-  display: flex; /* Usa flexbox para organizar el contenido */
-  align-items: center; /* Centra el contenido */
-}
+/* TÍTULO: ESTILO PARA EL CONTENIDO EN GRUPOS DE FORMULARIOS */
+  /* Alinea el contenido de los label, select e input */
+  .form-group label, .form-group select, .form-group input {
+    display: flex; /* Usa flexbox para organizar el contenido */
+    align-items: center; /* Centra el contenido */
+  }
 
-/* Título: Estilo para selectores e inputs */
-/* Define el estilo para selectores e inputs dentro de los grupos de formularios */
-.form-group select, .form-group input {
-  flex: 2; /* Hace que el input ocupe 2 partes del espacio disponible */
-  padding: 5px; /* Espaciado interno de 5px */
-  border: 1px solid #ddd; /* Borde gris claro de 1px */
-  border-radius: 0px 3px 3px 0px; /* Bordes redondeados a la derecha */
-  font-size: 14px; /* Tamaño de fuente */
-  text-align: left; /* Alineación del texto a la izquierda */
-  background-color: #fff; /* Fondo blanco */
-  box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total del input */
-}
+/* TÍTULO: ESTILO PARA SELECTORES E INPUTS */
+  /* Define el estilo para selectores e inputs dentro de los grupos de formularios */
+  .form-group select, .form-group input {
+    flex: 2; /* Hace que el input ocupe 2 partes del espacio disponible */
+    padding: 5px; /* Espaciado interno de 5px */
+    border: 1px solid #ddd; /* Borde gris claro de 1px */
+    border-radius: 0px 3px 3px 0px; /* Bordes redondeados a la derecha */
+    font-size: 14px; /* Tamaño de fuente */
+    text-align: left; /* Alineación del texto a la izquierda */
+    background-color: #fff; /* Fondo blanco */
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total del input */
+  }
 
-/* Título: Estilo para grupos de formularios */
-/* Asegura que los label y input tengan la misma altura */
-.form-group {
-  display: flex; /* Usa flexbox para alinear elementos */
-  align-items: stretch; /* Estira los elementos para que tengan la misma altura */
-  justify-content: space-between; /* Alinea el label y el input a los extremos */
-  margin-bottom: 10px; /* Espaciado inferior de 10px */
-}
+/* TÍTULO: ESTILO PARA GRUPOS DE FORMULARIOS */
+  /* Asegura que los label y input tengan la misma altura */
+  .form-group {
+    display: flex; /* Usa flexbox para alinear elementos */
+    align-items: stretch; /* Estira los elementos para que tengan la misma altura */
+    justify-content: space-between; /* Alinea el label y el input a los extremos */
+    margin-bottom: 10px; /* Espaciado inferior de 10px */
+  }
 
-/* Título: Estilo para grupos de campos en línea */
-/* Define el estilo para grupos de campos en línea */
-.form-group-inline {
-  display: flex; /* Usa flexbox para organizar elementos en línea */
-  justify-content: space-between; /* Alinea los elementos a los extremos */
-  gap: 10px; /* Espacio entre los elementos */
-}
+/* TÍTULO: ESTILO PARA GRUPOS DE CAMPOS EN LÍNEA */
+  /* Define el estilo para grupos de campos en línea */
+  .form-group-inline {
+    display: flex; /* Usa flexbox para organizar elementos en línea */
+    justify-content: space-between; /* Alinea los elementos a los extremos */
+    gap: 10px; /* Espacio entre los elementos */
+  }
 
-/* Título: Estilo para form-groups dentro de form-group-inline */
-/* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
-.form-group-inline .form-group {
-  flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
-}
+/* TÍTULO: ESTILO PARA FORM-GROUPS DENTRO DE FORM-GROUP-INLINE */
+  /* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
+  .form-group-inline .form-group {
+    flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
+  }
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Traer cliente.CSS ---------------------------------------

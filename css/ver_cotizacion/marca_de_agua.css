@@ -14,126 +14,126 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Marca de agua .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-/* Título: Estilo de la marca de agua */
-/* Define la apariencia y el comportamiento de la marca de agua en el viewport */
-.marca_de_agua {
-    position: fixed; /* Fija la marca de agua al viewport */
-    top: 0; /* Posiciona en la parte superior */
-    left: 0; /* Posiciona a la izquierda */
-    width: 100vw; /* Usa el ancho completo de la ventana */
-    height: 100vh; /* Usa la altura completa de la ventana */
-    z-index: -1; /* Coloca detrás de otros elementos */
-    opacity: 0.1; /* Controla la opacidad */
-    background-repeat: no-repeat; /* No repetir imagen por defecto */
-    background-size: cover; /* Ajusta la imagen para cubrir todo el espacio */
-    pointer-events: none; /* Asegúrate de que no interfiera con clics */
-    filter: grayscale(100%); /* Aplica filtro en blanco y negro */
-}
-
-/* Título: Estilo para la marca de agua horizontal */
-/* Ajusta el tamaño y posición de la imagen de marca de agua horizontal */
-.horizontal-marca_de_agua {
-    background-size: 150px; /* Ajusta el tamaño de la imagen */
-    background-position: center; /* Centrar la imagen */
-    filter: grayscale(100%); /* Aplica filtro en blanco y negro */
-}
-
-/* Título: Estilo para la marca de agua vertical */
-/* Ajusta el tamaño y posición de la imagen de marca de agua vertical */
-.vertical-marca_de_agua {
-    background-size: 150px; /* Ajusta el tamaño de la imagen */
-    background-position: center; /* Centrar la imagen */
-    transform: rotate(90deg); /* Rota la imagen 90 grados */
-    transform-origin: center center; /* Establece el origen de la transformación al centro */
-    filter: grayscale(100%); /* Aplica filtro en blanco y negro */
-}
-
-/* Título: Estilo para la marca de agua diagonal */
-/* Ajusta el tamaño y posición de la imagen de marca de agua diagonal */
-.diagonal-marca_de_agua {
-    background-size: 150px; /* Ajusta el tamaño de la imagen */
-    background-position: center; /* Centrar la imagen */
-    transform: rotate(-45deg); /* Rota la imagen -45 grados */
-    transform-origin: center center; /* Establece el origen de la transformación al centro */
-    filter: grayscale(100%); /* Aplica filtro en blanco y negro */
-    background-repeat: repeat; /* Asegurar que se repita correctamente */
-}
-
-/* Título: Estilo para el texto personalizado */
-/* Define la posición, color y formato del texto que actúa como marca de agua */
-.texto-personalizado {
-    position: absolute; /* Posiciona de forma absoluta respecto al contenedor */
-    left: 50%; /* Centra horizontalmente */
-    top: 50%; /* Centra verticalmente */
-    transform: translate(-50%, -50%); /* Ajusta para centrar completamente */
-    color: rgba(0, 0, 0, 0.1); /* Color y opacidad */
-    font-size: 30px; /* Tamaño de fuente por defecto */
-    text-align: center; /* Alineación del texto al centro */
-    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
-    pointer-events: none; /* Asegúrate de que no interfiera con clics */
-}
-
-/* Título: Estilo para la marca de agua centrada */
-/* Ajusta la imagen de la marca de agua al contenedor y aplica el filtro */
-.centrado-marca_de_agua {
-    background-size: contain; /* Ajusta el tamaño de la imagen al contenedor */
-    background-position: center; /* Centrar la imagen */
-    background-repeat: no-repeat; /* No repetir la imagen */
-    filter: grayscale(100%); /* Aplicar filtro en blanco y negro */
-}
-
-/* Título: Estilo para el patrón de texto */
-/* Define la disposición y apariencia del patrón de texto en el fondo */
-.patron-texto {
-    position: absolute; /* Posiciona de forma absoluta respecto al contenedor */
-    top: 0; /* Posiciona en la parte superior */
-    left: 0; /* Posiciona a la izquierda */
-    width: 100%; /* Ancho completo del contenedor */
-    height: 100%; /* Altura completa del contenedor */
-    z-index: -1; /* Coloca detrás de otros elementos */
-    opacity: 0.1; /* Controla la opacidad */
-    pointer-events: none; /* Asegúrate de que no interfiera con clics */
-    display: grid; /* Usa un sistema de cuadrícula para el patrón */
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Ajusta el tamaño según lo que necesites */
-    grid-auto-rows: 50px; /* Ajusta la altura de las filas */
-}
-
-/* Título: Estilo para los elementos del patrón de texto */
-/* Define la apariencia de los elementos de texto dentro del patrón */
-.patron-texto span {
-    display: block; /* Cambiado a block para ocupar toda la línea */
-    text-align: center; /* Alineación del texto al centro */
-    white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
-}
-
-/* Título: Estilo para el patrón horizontal */
-/* Restaura la transformación de los elementos en el patrón horizontal */
-.patron-horizontal span {
-    transform: none; /* Sin transformación */
-}
-
-/* Título: Estilo para el patrón vertical */
-/* Rota los elementos en el patrón vertical */
-.patron-vertical span {
-    transform: rotate(90deg); /* Rota los elementos 90 grados */
-}
-
-/* Título: Estilo para el patrón diagonal */
-/* Rota los elementos en el patrón diagonal */
-.patron-diagonal span {
-    transform: rotate(-45deg); /* Rota los elementos -45 grados */
-}
-
-/* Título: Estilos para impresión */
-/* Define la apariencia durante la impresión */
-@media print {
-    #form-marca-agua {
-        display: none; /* Ocultar el formulario al imprimir */
-    }
+/* TÍTULO: ESTILO DE LA MARCA DE AGUA */
+    /* Define la apariencia y el comportamiento de la marca de agua en el viewport */
     .marca_de_agua {
-        display: block; /* Asegurarse de que la marca de agua se muestre */
+        position: fixed; /* Fija la marca de agua al viewport */
+        top: 0; /* Posiciona en la parte superior */
+        left: 0; /* Posiciona a la izquierda */
+        width: 100vw; /* Usa el ancho completo de la ventana */
+        height: 100vh; /* Usa la altura completa de la ventana */
+        z-index: -1; /* Coloca detrás de otros elementos */
+        opacity: 0.1; /* Controla la opacidad */
+        background-repeat: no-repeat; /* No repetir imagen por defecto */
+        background-size: cover; /* Ajusta la imagen para cubrir todo el espacio */
+        pointer-events: none; /* Asegúrate de que no interfiera con clics */
+        filter: grayscale(100%); /* Aplica filtro en blanco y negro */
     }
-}
+
+/* TÍTULO: ESTILO PARA LA MARCA DE AGUA HORIZONTAL */
+    /* Ajusta el tamaño y posición de la imagen de marca de agua horizontal */
+    .horizontal-marca_de_agua {
+        background-size: 150px; /* Ajusta el tamaño de la imagen */
+        background-position: center; /* Centrar la imagen */
+        filter: grayscale(100%); /* Aplica filtro en blanco y negro */
+    }
+
+/* TÍTULO: ESTILO PARA LA MARCA DE AGUA VERTICAL */
+    /* Ajusta el tamaño y posición de la imagen de marca de agua vertical */
+    .vertical-marca_de_agua {
+        background-size: 150px; /* Ajusta el tamaño de la imagen */
+        background-position: center; /* Centrar la imagen */
+        transform: rotate(90deg); /* Rota la imagen 90 grados */
+        transform-origin: center center; /* Establece el origen de la transformación al centro */
+        filter: grayscale(100%); /* Aplica filtro en blanco y negro */
+    }
+
+/* TÍTULO: ESTILO PARA LA MARCA DE AGUA DIAGONAL */
+    /* Ajusta el tamaño y posición de la imagen de marca de agua diagonal */
+    .diagonal-marca_de_agua {
+        background-size: 150px; /* Ajusta el tamaño de la imagen */
+        background-position: center; /* Centrar la imagen */
+        transform: rotate(-45deg); /* Rota la imagen -45 grados */
+        transform-origin: center center; /* Establece el origen de la transformación al centro */
+        filter: grayscale(100%); /* Aplica filtro en blanco y negro */
+        background-repeat: repeat; /* Asegurar que se repita correctamente */
+    }
+
+/* TÍTULO: ESTILO PARA EL TEXTO PERSONALIZADO */
+    /* Define la posición, color y formato del texto que actúa como marca de agua */
+    .texto-personalizado {
+        position: absolute; /* Posiciona de forma absoluta respecto al contenedor */
+        left: 50%; /* Centra horizontalmente */
+        top: 50%; /* Centra verticalmente */
+        transform: translate(-50%, -50%); /* Ajusta para centrar completamente */
+        color: rgba(0, 0, 0, 0.1); /* Color y opacidad */
+        font-size: 30px; /* Tamaño de fuente por defecto */
+        text-align: center; /* Alineación del texto al centro */
+        white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+        pointer-events: none; /* Asegúrate de que no interfiera con clics */
+    }
+
+/* TÍTULO: ESTILO PARA LA MARCA DE AGUA CENTRADA */
+    /* Ajusta la imagen de la marca de agua al contenedor y aplica el filtro */
+    .centrado-marca_de_agua {
+        background-size: contain; /* Ajusta el tamaño de la imagen al contenedor */
+        background-position: center; /* Centrar la imagen */
+        background-repeat: no-repeat; /* No repetir la imagen */
+        filter: grayscale(100%); /* Aplicar filtro en blanco y negro */
+    }
+
+/* TÍTULO: ESTILO PARA EL PATRÓN DE TEXTO */
+    /* Define la disposición y apariencia del patrón de texto en el fondo */
+    .patron-texto {
+        position: absolute; /* Posiciona de forma absoluta respecto al contenedor */
+        top: 0; /* Posiciona en la parte superior */
+        left: 0; /* Posiciona a la izquierda */
+        width: 100%; /* Ancho completo del contenedor */
+        height: 100%; /* Altura completa del contenedor */
+        z-index: -1; /* Coloca detrás de otros elementos */
+        opacity: 0.1; /* Controla la opacidad */
+        pointer-events: none; /* Asegúrate de que no interfiera con clics */
+        display: grid; /* Usa un sistema de cuadrícula para el patrón */
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Ajusta el tamaño según lo que necesites */
+        grid-auto-rows: 50px; /* Ajusta la altura de las filas */
+    }
+
+/* TÍTULO: ESTILO PARA LOS ELEMENTOS DEL PATRÓN DE TEXTO */
+    /* Define la apariencia de los elementos de texto dentro del patrón */
+    .patron-texto span {
+        display: block; /* Cambiado a block para ocupar toda la línea */
+        text-align: center; /* Alineación del texto al centro */
+        white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
+    }
+
+/* TÍTULO: ESTILO PARA EL PATRÓN HORIZONTAL */
+    /* Restaura la transformación de los elementos en el patrón horizontal */
+    .patron-horizontal span {
+        transform: none; /* Sin transformación */
+    }
+
+/* TÍTULO: ESTILO PARA EL PATRÓN VERTICAL */
+    /* Rota los elementos en el patrón vertical */
+    .patron-vertical span {
+        transform: rotate(90deg); /* Rota los elementos 90 grados */
+    }
+
+/* TÍTULO: ESTILO PARA EL PATRÓN DIAGONAL */
+    /* Rota los elementos en el patrón diagonal */
+    .patron-diagonal span {
+        transform: rotate(-45deg); /* Rota los elementos -45 grados */
+    }
+
+/* TÍTULO: ESTILOS PARA IMPRESIÓN */
+    /* Define la apariencia durante la impresión */
+    @media print {
+        #form-marca-agua {
+            display: none; /* Ocultar el formulario al imprimir */
+        }
+        .marca_de_agua {
+            display: block; /* Asegurarse de que la marca de agua se muestre */
+        }
+    }
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Marca de agua .CSS ---------------------------------------

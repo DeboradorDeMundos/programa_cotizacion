@@ -14,42 +14,42 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Load Filtro Busqueda .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-/* Título: Estilo del formulario de filtro */
-/* Define los márgenes para el formulario de filtro */
-#filtro-form {
-    margin-bottom: 20px; /* Margen inferior del formulario */
-}
+/* TÍTULO: ESTILO DEL FORMULARIO DE FILTRO */
+    /* Define los márgenes para el formulario de filtro */
+    #filtro-form {
+        margin-bottom: 20px; /* Margen inferior del formulario */
+    }
 
-/* Título: Estilo para las etiquetas en el formulario de filtro */
-/* Establece el comportamiento y ancho de las etiquetas */
-#filtro-form label {
-    display: inline-block; /* Muestra la etiqueta en línea */
-    width: 150px; /* Ancho fijo para las etiquetas */
-}
+/* TÍTULO: ESTILO PARA LAS ETIQUETAS EN EL FORMULARIO DE FILTRO */
+    /* Establece el comportamiento y ancho de las etiquetas */
+    #filtro-form label {
+        display: inline-block; /* Muestra la etiqueta en línea */
+        width: 150px; /* Ancho fijo para las etiquetas */
+    }
 
-/* Título: Estilo para los campos de entrada y selección en el formulario de filtro */
-/* Define los márgenes y el espaciado interno para los campos de entrada y selección */
-#filtro-form input, 
-#filtro-form select {
-    margin-bottom: 10px; /* Margen inferior de los campos de entrada y selección */
-    padding: 5px; /* Espaciado interno de los campos */
-}
+/* TÍTULO: ESTILO PARA LOS CAMPOS DE ENTRADA Y SELECCIÓN EN EL FORMULARIO DE FILTRO */
+    /* Define los márgenes y el espaciado interno para los campos de entrada y selección */
+    #filtro-form input, 
+    #filtro-form select {
+        margin-bottom: 10px; /* Margen inferior de los campos de entrada y selección */
+        padding: 5px; /* Espaciado interno de los campos */
+    }
 
-/* Título: Estilo del botón de envío del formulario */
-/* Define el espaciado interno, color de fondo, color del texto y comportamiento del botón */
-button[type="submit"] {
-    padding: 5px 15px; /* Espaciado interno del botón */
-    background-color: #4CAF50; /* Color de fondo del botón */
-    color: white; /* Color del texto del botón */
-    border: none; /* Sin borde en el botón */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-}
+/* TÍTULO: ESTILO DEL BOTÓN DE ENVÍO DEL FORMULARIO */
+    /* Define el espaciado interno, color de fondo, color del texto y comportamiento del botón */
+    button[type="submit"] {
+        padding: 5px 15px; /* Espaciado interno del botón */
+        background-color: #4CAF50; /* Color de fondo del botón */
+        color: white; /* Color del texto del botón */
+        border: none; /* Sin borde en el botón */
+        cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    }
 
-/* Título: Efecto hover para el botón de envío */
-/* Define el color de fondo del botón al pasar el ratón */
-button[type="submit"]:hover {
-    background-color: #45a049; /* Color de fondo del botón al pasar el ratón */
-}
+/* TÍTULO: EFECTO HOVER PARA EL BOTÓN DE ENVÍO */
+    /* Define el color de fondo del botón al pasar el ratón */
+    button[type="submit"]:hover {
+        background-color: #45a049; /* Color de fondo del botón al pasar el ratón */
+    }
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Load Filtro Busqueda .CSS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

@@ -14,33 +14,33 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Procesar Firma .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-/* Título: Estilo para el contenedor de la firma */
-/* Define el margen externo del contenedor */
-.contenedor-firma {
-    margin: 20px; /* Espaciado externo de 20px alrededor del contenedor */
-}
+/* TÍTULO: ESTILO PARA EL CONTENEDOR DE LA FIRMA */
+    /* Define el margen externo del contenedor */
+    .contenedor-firma {
+        margin: 20px; /* Espaciado externo de 20px alrededor del contenedor */
+    }
 
-/* Título: Estilo para cada opción dentro del contenedor */
-/* Ajusta el margen inferior entre las opciones */
-.option {
-    margin-bottom: 15px; /* Margen inferior de 15px entre cada opción */
-}
+/* TÍTULO: ESTILO PARA CADA OPCIÓN DENTRO DEL CONTENEDOR */
+    /* Ajusta el margen inferior entre las opciones */
+    .option {
+        margin-bottom: 15px; /* Margen inferior de 15px entre cada opción */
+    }
 
-/* Título: Estilo para las etiquetas de las opciones */
-/* Aplica negrita para destacar las etiquetas */
-.option label {
-    font-weight: bold; /* Texto en negrita para resaltar las etiquetas */
-}
+/* TÍTULO: ESTILO PARA LAS ETIQUETAS DE LAS OPCIONES */
+    /* Aplica negrita para destacar las etiquetas */
+    .option label {
+        font-weight: bold; /* Texto en negrita para resaltar las etiquetas */
+    }
 
-/* Título: Estilo para el área de despliegue de la firma */
-/* Define el ancho, márgenes, padding y borde del área de despliegue de la firma */
-.desplegar-firma {
-    width: 100%; /* Ancho completo del contenedor padre */
-    margin-top: 10px; /* Margen superior de 10px para separar del contenido anterior */
-    padding: 10px; /* Espaciado interno de 10px */
-    border: 1px solid #ccc; /* Borde gris claro alrededor del área */
-    border-radius: 5px; /* Bordes redondeados */
-}
+/* TÍTULO: ESTILO PARA EL ÁREA DE DESPLIEGUE DE LA FIRMA */
+    /* Define el ancho, márgenes, padding y borde del área de despliegue de la firma */
+    .desplegar-firma {
+        width: 100%; /* Ancho completo del contenedor padre */
+        margin-top: 10px; /* Margen superior de 10px para separar del contenido anterior */
+        padding: 10px; /* Espaciado interno de 10px */
+        border: 1px solid #ccc; /* Borde gris claro alrededor del área */
+        border-radius: 5px; /* Bordes redondeados */
+    }
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Procesar Firma .CSS ---------------------------------------

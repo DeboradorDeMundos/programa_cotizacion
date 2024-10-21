@@ -15,16 +15,16 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 // Título: Escucha el evento DOMContentLoaded
-// Función que se ejecuta cuando el DOM está completamente cargado
-document.addEventListener('DOMContentLoaded', function() {
-    console.log("El DOM está completamente cargado"); // Mensaje de carga del DOM
-    AgregarSeccionDeDetalle(); // Llama a la función para agregar la primera sección de detalle
-});
+    // Función que se ejecuta cuando el DOM está completamente cargado
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log("El DOM está completamente cargado"); // Mensaje de carga del DOM
+        AgregarSeccionDeDetalle(); // Llama a la función para agregar la primera sección de detalle
+    });
 
 // Título: Contadores globales
-// Variables para manejar el conteo de títulos y subtítulos
-let tituloContador = 0; // Contador para el número de títulos
-let subtituloContador = {}; // Objeto para contar subtítulos por título
+    // Variables para manejar el conteo de títulos y subtítulos
+    let tituloContador = 0; // Contador para el número de títulos
+    let subtituloContador = {}; // Objeto para contar subtítulos por título
 
 // Título: Agregar nueva sección de detalle
 // Función para crear y agregar una nueva sección de detalle al contenedor

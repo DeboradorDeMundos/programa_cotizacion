@@ -14,127 +14,127 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Get Bancos .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-/* Título: Estilos básicos para el cuerpo del documento */
-/* Tipografía Arial, sin márgenes ni rellenos, con fondo gris claro */
-body {
-  font-family: Arial, sans-serif; /* Tipografía Arial */
-  margin: 0; /* Sin margen externo */
-  padding: 0; /* Sin relleno externo */
-  background-color: #f9f9f9; /* Color de fondo gris claro */
-}
-
-/* Título: Contenedor principal */
-/* Contenedor que ocupa todo el ancho disponible */
-.contenedor {
-  width: 100%; /* Ancho completo del contenedor */
-  padding: 20px; /* Relleno interno de 20px */
-  box-sizing: border-box; /* Incluye borde y padding dentro del ancho total */
-}
-
-/* Título: Estilo para las filas flexibles */
-/* Usar flexbox para organizar en fila */
-.row {
-  display: flex; /* Usar flexbox para organizar en fila */
-  flex-wrap: wrap; /* Permite que los elementos se envuelvan en líneas si es necesario */
-  margin-bottom: 20px; /* Margen inferior de 20px */
-}
-
-/* Título: Estilo para las cajas flexibles con diferentes anchos */
-/* Relleno interno de 10px para las cajas */
-.box-6, .box-12 {
-  padding: 10px; /* Relleno interno de 10px */
-}
-
-/* Título: Caja con ancho máximo del 50% */
-/* Se adapta para ocupar el espacio disponible */
-.box-6 {
-  flex: 1; /* Se adapta para ocupar el espacio disponible */
-  max-width: 50%; /* Ancho máximo del 50% */
-}
-
-/* Título: Caja con ancho máximo del 100% */
-/* Se adapta para ocupar el espacio disponible */
-.box-12 {
-  flex: 1; /* Se adapta para ocupar el espacio disponible */
-  max-width: 100%; /* Ancho máximo del 100% */
-}
-
-/* Título: Estilos comunes para campos de entrada y selectores */
-/* Ancho total menos 20px para espacio interno */
-input, select {
-  width: calc(100% - 20px); /* Ancho total menos 20px para espacio interno */
-  padding: 10px; /* Relleno interno de 10px */
-  margin-bottom: 20px; /* Margen inferior de 20px */
-  border: 1px solid #ddd; /* Borde gris claro */
-  border-radius: 5px; /* Bordes redondeados */
-  box-sizing: border-box; /* Incluye borde y relleno dentro del ancho total */
-}
-
-/* Título: Estilos para las tablas */
-/* Ancho completo de la tabla y colapsa bordes */
-table {
-  width: 100%; /* Ancho completo de la tabla */
-  border-collapse: collapse; /* Colapsa los bordes de las celdas */
-  margin: 20px 0; /* Margen superior e inferior de 20px */
-}
-
-/* Título: Estilos para los encabezados de las tablas */
-/* Fondo verde y texto blanco para los encabezados */
-th {
-  background-color: #4CAF50; /* Fondo verde para los encabezados */
-  color: white; /* Texto blanco */
-  padding: 10px; /* Relleno interno de 10px */
-  text-align: center; /* Texto centrado */
-}
-
-/* Título: Estilos para las celdas de las tablas */
-/* Relleno y borde inferior gris claro */
-td {
-  padding: 5px; /* Relleno interno de 5px */
-  border-bottom: 1px solid #ddd; /* Borde inferior gris claro */
-}
-
-/* Título: Estilos para los títulos */
-/* Color de texto gris oscuro y sin margen superior */
-h2 {
-  color: #333; /* Color de texto gris oscuro */
-  margin-top: 0; /* Sin margen superior */
-}
-
-/* Título: Estilos para los párrafos */
-/* Color de texto gris medio y alineación centrada */
-p {
-  color: #666; /* Color de texto gris medio */
-  line-height: 1.6; /* Altura de línea aumentada para mejor legibilidad */
-  text-align: center; /* Texto centrado */
-}
-
-/* Título: Botones comunes para subir archivos */
-/* Estilo para los botones de envío */
-.fila-subir input[type="submit"],
-.subir {
-  width: calc(100% - 20px); /* Ancho total menos 20px */
-  padding: 10px; /* Relleno interno de 10px */
-  border: none; /* Sin borde */
-  border-radius: 5px; /* Bordes redondeados */
-  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-  color: white; /* Texto blanco */
-}
-
-/* Título: Efecto hover para los botones */
-/* Fondo azul oscuro en hover */
-.fila-subir input[type="submit"]:hover,
-.subir:hover {
-  background-color: #0056b3; /* Fondo azul oscuro en hover */
-}
-
-/* Título: Media Query para dispositivos con un ancho máximo de 768px */
-/* Ajusta el ancho de la caja en pantallas pequeñas */
-@media (max-width: 768px) {
-  .box-6 {
-      max-width: 100%; /* La caja ocupará el 100% del ancho en pantallas pequeñas */
+/* TÍTULO: ESTILOS BÁSICOS PARA EL CUERPO DEL DOCUMENTO */
+  /* Tipografía Arial, sin márgenes ni rellenos, con fondo gris claro */
+  body {
+    font-family: Arial, sans-serif; /* Tipografía Arial */
+    margin: 0; /* Sin margen externo */
+    padding: 0; /* Sin relleno externo */
+    background-color: #f9f9f9; /* Color de fondo gris claro */
   }
-}
+
+/* TÍTULO: CONTENEDOR PRINCIPAL */
+  /* Contenedor que ocupa todo el ancho disponible */
+  .contenedor {
+    width: 100%; /* Ancho completo del contenedor */
+    padding: 20px; /* Relleno interno de 20px */
+    box-sizing: border-box; /* Incluye borde y padding dentro del ancho total */
+  }
+
+/* TÍTULO: ESTILO PARA LAS FILAS FLEXIBLES */
+  /* Usar flexbox para organizar en fila */
+  .row {
+    display: flex; /* Usar flexbox para organizar en fila */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en líneas si es necesario */
+    margin-bottom: 20px; /* Margen inferior de 20px */
+  }
+
+/* TÍTULO: ESTILO PARA LAS CAJAS FLEXIBLES CON DIFERENTES ANCHOS */
+  /* Relleno interno de 10px para las cajas */
+  .box-6, .box-12 {
+    padding: 10px; /* Relleno interno de 10px */
+  }
+
+/* TÍTULO: CAJA CON ANCHO MÁXIMO DEL 50% */
+  /* Se adapta para ocupar el espacio disponible */
+  .box-6 {
+    flex: 1; /* Se adapta para ocupar el espacio disponible */
+    max-width: 50%; /* Ancho máximo del 50% */
+  }
+
+/* TÍTULO: CAJA CON ANCHO MÁXIMO DEL 100% */
+  /* Se adapta para ocupar el espacio disponible */
+  .box-12 {
+    flex: 1; /* Se adapta para ocupar el espacio disponible */
+    max-width: 100%; /* Ancho máximo del 100% */
+  }
+
+/* TÍTULO: ESTILOS COMUNES PARA CAMPOS DE ENTRADA Y SELECTORES */
+  /* Ancho total menos 20px para espacio interno */
+  input, select {
+    width: calc(100% - 20px); /* Ancho total menos 20px para espacio interno */
+    padding: 10px; /* Relleno interno de 10px */
+    margin-bottom: 20px; /* Margen inferior de 20px */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye borde y relleno dentro del ancho total */
+  }
+
+/* TÍTULO: ESTILOS PARA LAS TABLAS */
+  /* Ancho completo de la tabla y colapsa bordes */
+  table {
+    width: 100%; /* Ancho completo de la tabla */
+    border-collapse: collapse; /* Colapsa los bordes de las celdas */
+    margin: 20px 0; /* Margen superior e inferior de 20px */
+  }
+
+/* TÍTULO: ESTILOS PARA LOS ENCABEZADOS DE LAS TABLAS */
+  /* Fondo verde y texto blanco para los encabezados */
+  th {
+    background-color: #4CAF50; /* Fondo verde para los encabezados */
+    color: white; /* Texto blanco */
+    padding: 10px; /* Relleno interno de 10px */
+    text-align: center; /* Texto centrado */
+  }
+
+/* TÍTULO: ESTILOS PARA LAS CELDAS DE LAS TABLAS */
+  /* Relleno y borde inferior gris claro */
+  td {
+    padding: 5px; /* Relleno interno de 5px */
+    border-bottom: 1px solid #ddd; /* Borde inferior gris claro */
+  }
+
+/* TÍTULO: ESTILOS PARA LOS TÍTULOS */
+  /* Color de texto gris oscuro y sin margen superior */
+  h2 {
+    color: #333; /* Color de texto gris oscuro */
+    margin-top: 0; /* Sin margen superior */
+  }
+
+/* TÍTULO: ESTILOS PARA LOS PÁRRAFOS */
+  /* Color de texto gris medio y alineación centrada */
+  p {
+    color: #666; /* Color de texto gris medio */
+    line-height: 1.6; /* Altura de línea aumentada para mejor legibilidad */
+    text-align: center; /* Texto centrado */
+  }
+
+/* TÍTULO: BOTONES COMUNES PARA SUBIR ARCHIVOS */
+  /* Estilo para los botones de envío */
+  .fila-subir input[type="submit"],
+  .subir {
+    width: calc(100% - 20px); /* Ancho total menos 20px */
+    padding: 10px; /* Relleno interno de 10px */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    color: white; /* Texto blanco */
+  }
+
+/* TÍTULO: EFECTO HOVER PARA LOS BOTONES */
+  /* Fondo azul oscuro en hover */
+  .fila-subir input[type="submit"]:hover,
+  .subir:hover {
+    background-color: #0056b3; /* Fondo azul oscuro en hover */
+  }
+
+/* TÍTULO: MEDIA QUERY PARA DISPOSITIVOS CON UN ANCHO MÁXIMO DE 768PX */
+  /* Ajusta el ancho de la caja en pantallas pequeñas */
+  @media (max-width: 768px) {
+    .box-6 {
+        max-width: 100%; /* La caja ocupará el 100% del ancho en pantallas pequeñas */
+    }
+  }
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Get Bancos .CSS ---------------------------------------

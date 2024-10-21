@@ -14,57 +14,57 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Cuandro rojo cotizacion.CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-/* Título: Estilo para cuadros de datos con borde rojo */
-/* Define el color del borde de los cuadros de datos en rojo */
-.cuadro-datos-rojo {
-  border-color: red; /* Establece el color del borde en rojo */
-}
+/* TÍTULO: ESTILO PARA CUADROS DE DATOS CON BORDE ROJO */
+  /* Define el color del borde de los cuadros de datos en rojo */
+  .cuadro-datos-rojo {
+    border-color: red; /* Establece el color del borde en rojo */
+  }
 
-/* Título: Estilo general para cuadros de datos */
-/* Define el borde, espaciado interno y color de fondo de los cuadros de datos */
-.cuadro-datos {
-  border: 1px solid #ddd; /* Borde gris claro de 1px */
-  padding: 15px; /* Espaciado interno de 15px */
-  background-color: #fff; /* Fondo blanco */
-}
+/* TÍTULO: ESTILO GENERAL PARA CUADROS DE DATOS */
+  /* Define el borde, espaciado interno y color de fondo de los cuadros de datos */
+  .cuadro-datos {
+    border: 1px solid #ddd; /* Borde gris claro de 1px */
+    padding: 15px; /* Espaciado interno de 15px */
+    background-color: #fff; /* Fondo blanco */
+  }
 
-/* Título: Estilos para contenedores flexibles */
-/* Define la disposición flexible de los elementos en columnas */
-.box-6,
-.box-12 {
-  display: flex; /* Usa flexbox para organizar los elementos */
-  flex-direction: column; /* Disposición vertical de los elementos */
-}
+/* TÍTULO: ESTILOS PARA CONTENEDORES FLEXIBLES */
+  /* Define la disposición flexible de los elementos en columnas */
+  .box-6,
+  .box-12 {
+    display: flex; /* Usa flexbox para organizar los elementos */
+    flex-direction: column; /* Disposición vertical de los elementos */
+  }
 
-/* Título: Estilo específico para la caja de tamaño 6 */
-/* Define el comportamiento y el espaciado de la caja de tamaño 6 */
-.box-6 {
-  flex: 1; /* Permite que esta caja ocupe el espacio disponible */
-  padding: 10px; /* Espaciado interno de 10px */
-}
+/* TÍTULO: ESTILO ESPECÍFICO PARA LA CAJA DE TAMAÑO 6 */
+  /* Define el comportamiento y el espaciado de la caja de tamaño 6 */
+  .box-6 {
+    flex: 1; /* Permite que esta caja ocupe el espacio disponible */
+    padding: 10px; /* Espaciado interno de 10px */
+  }
 
-/* Título: Estilo para grupos de formularios */
-/* Asegura que los label y input tengan la misma altura */
-.form-group {
-  display: flex; /* Usa flexbox para alinear elementos */
-  align-items: stretch; /* Estira los elementos para que tengan la misma altura */
-  justify-content: space-between; /* Alinea el label y el input a los extremos */
-  margin-bottom: 10px; /* Espaciado inferior de 10px */
-}
+/* TÍTULO: ESTILO PARA GRUPOS DE FORMULARIOS */
+  /* Asegura que los label y input tengan la misma altura */
+  .form-group {
+    display: flex; /* Usa flexbox para alinear elementos */
+    align-items: stretch; /* Estira los elementos para que tengan la misma altura */
+    justify-content: space-between; /* Alinea el label y el input a los extremos */
+    margin-bottom: 10px; /* Espaciado inferior de 10px */
+  }
 
-/* Título: Estilo para grupos de campos en línea */
-/* Organiza los elementos en línea y distribuye el espacio entre ellos */
-.form-group-inline {
-  display: flex; /* Usa flexbox para organizar elementos en línea */
-  justify-content: space-between; /* Alinea los elementos a los extremos */
-  gap: 10px; /* Espacio entre los elementos */
-}
+/* TÍTULO: ESTILO PARA GRUPOS DE CAMPOS EN LÍNEA */
+  /* Organiza los elementos en línea y distribuye el espacio entre ellos */
+  .form-group-inline {
+    display: flex; /* Usa flexbox para organizar elementos en línea */
+    justify-content: space-between; /* Alinea los elementos a los extremos */
+    gap: 10px; /* Espacio entre los elementos */
+  }
 
-/* Título: Distribución del espacio en grupos de formularios en línea */
-/* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
-.form-group-inline .form-group {
-  flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
-}
+/* TÍTULO: DISTRIBUCIÓN DEL ESPACIO EN GRUPOS DE FORMULARIOS EN LÍNEA */
+  /* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
+  .form-group-inline .form-group {
+    flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
+  }
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Cuadro rojo cotizacion.CSS ---------------------------------------

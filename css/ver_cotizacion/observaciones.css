@@ -14,19 +14,19 @@ BPPJ
     -------------------------------------- INICIO ITred Spa observaciones .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-/* Título: Estilo del cuadro de observaciones */
-/* Define el estilo para el fieldset de observaciones */
-.observaciones-box {
-    width: 100%; /* Asegura que el fieldset ocupe todo el ancho disponible */
-}
+/* TÍTULO: ESTILO DEL CUADRO DE OBSERVACIONES */
+    /* Define el estilo para el fieldset de observaciones */
+    .observaciones-box {
+        width: 100%; /* Asegura que el fieldset ocupe todo el ancho disponible */
+    }
 
-/* Título: Estilo del área de texto */
-/* Define el estilo para los elementos textarea */
-textarea {
-    width: 100%; /* Hace que el textarea ocupe todo el ancho disponible */
-    box-sizing: border-box; /* Incluye el padding y el border en el ancho total */
-    resize: vertical; /* Permite solo el cambio de tamaño vertical */
-}
+/* TÍTULO: ESTILO DEL ÁREA DE TEXTO */
+    /* Define el estilo para los elementos textarea */
+    textarea {
+        width: 100%; /* Hace que el textarea ocupe todo el ancho disponible */
+        box-sizing: border-box; /* Incluye el padding y el border en el ancho total */
+        resize: vertical; /* Permite solo el cambio de tamaño vertical */
+    }
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa observaciones .CSS ---------------------------------------

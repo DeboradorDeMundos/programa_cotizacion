@@ -14,45 +14,45 @@ BPPJ
     -------------------------------------- INICIO ITred Spa formulario  Clientes .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
     
-/* Título: Estilos generales del formulario de empresa */
-/* Estilo general del contenedor del formulario */
-.formulario-empresa {
-    width: 45%;
-    background-color: #f0f0f5; /* Fondo claro */
-    padding: 20px;
-    border: 2px solid #3c8dbc; /* Borde azul suave */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra elegante */
-}
+/* TÍTULO: ESTILOS GENERALES DEL FORMULARIO DE EMPRESA */
+    /* Estilo general del contenedor del formulario */
+    .formulario-empresa {
+        width: 45%;
+        background-color: #f0f0f5; /* Fondo claro */
+        padding: 20px;
+        border: 2px solid #3c8dbc; /* Borde azul suave */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra elegante */
+    }
 
-/* Título: Estilos del encabezado h3 dentro de formulario-empresa */
-/* Estilo del título dentro del formulario */
-.formulario-empresa h3 {
-    color: #3c8dbc; /* Azul suave para el título */
-    font-family: 'Arial', sans-serif;
-    font-size: 20px;
-    margin-bottom: 15px;
-}
+/* TÍTULO: ESTILOS DEL ENCABEZADO H3 DENTRO DE FORMULARIO-EMPRESA */
+    /* Estilo del título dentro del formulario */
+    .formulario-empresa h3 {
+        color: #3c8dbc; /* Azul suave para el título */
+        font-family: 'Arial', sans-serif;
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
 
-/* Título: Estilos de los campos input y select dentro de formulario-empresa */
-/* Estilo de los inputs y selects del formulario */
-.formulario-empresa input,
-.formulario-empresa select {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-}
+/* TÍTULO: ESTILOS DE LOS CAMPOS INPUT Y SELECT DENTRO DE FORMULARIO-EMPRESA */
+    /* Estilo de los inputs y selects del formulario */
+    .formulario-empresa input,
+    .formulario-empresa select {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
 
-/* Título: Estilos cuando input y select están enfocados */
-/* Resalta los campos al estar enfocados */
-.formulario-empresa input:focus,
-.formulario-empresa select:focus {
-    border-color: #3c8dbc; /* Resalta los campos al estar enfocados */
-    outline: none;
-}
+/* TÍTULO: ESTILOS CUANDO INPUT Y SELECT ESTÁN ENFOCADOS */
+    /* Resalta los campos al estar enfocados */
+    .formulario-empresa input:focus,
+    .formulario-empresa select:focus {
+        border-color: #3c8dbc; /* Resalta los campos al estar enfocados */
+        outline: none;
+    }
     
 
 

@@ -15,109 +15,109 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 
-/* Título: Estilo para la caja flexible que ocupa todo el ancho disponible */
-/* Define el comportamiento de expansión y el ancho máximo de la caja */
-.box-12 {
-    flex: 1; /* Permite que el contenedor se expanda para ocupar espacio disponible */
-    max-width: 100%; /* Ancho máximo del 100% del contenedor padre */
-    padding: 10px; /* Espaciado interno de 10px */
-}
+/* TÍTULO: ESTILO PARA LA CAJA FLEXIBLE QUE OCUPA TODO EL ANCHO DISPONIBLE */
+    /* Define el comportamiento de expansión y el ancho máximo de la caja */
+    .box-12 {
+        flex: 1; /* Permite que el contenedor se expanda para ocupar espacio disponible */
+        max-width: 100%; /* Ancho máximo del 100% del contenedor padre */
+        padding: 10px; /* Espaciado interno de 10px */
+    }
 
-/* Título: Estilo para un cuadro de datos con borde y fondo blanco */
-/* Define el estilo del cuadro de datos */
-.data-box {
-    border: 1px solid #ddd; /* Borde gris claro */
-    padding: 15px; /* Espaciado interno de 15px */
-    background-color: #fff; /* Fondo blanco */
-    border-radius: 12px; /* Bordes redondeados */
-}
+/* TÍTULO: ESTILO PARA UN CUADRO DE DATOS CON BORDE Y FONDO BLANCO */
+    /* Define el estilo del cuadro de datos */
+    .data-box {
+        border: 1px solid #ddd; /* Borde gris claro */
+        padding: 15px; /* Espaciado interno de 15px */
+        background-color: #fff; /* Fondo blanco */
+        border-radius: 12px; /* Bordes redondeados */
+    }
 
-/* Título: Estilo para el contenedor de las cuentas bancarias */
-/* Ajusta el margen superior del contenedor */
-.contenedor-cuentas-bancarias {
-    margin-top: 20px; /* Separación superior de 20px */
-}
+/* TÍTULO: ESTILO PARA EL CONTENEDOR DE LAS CUENTAS BANCARIAS */
+    /* Ajusta el margen superior del contenedor */
+    .contenedor-cuentas-bancarias {
+        margin-top: 20px; /* Separación superior de 20px */
+    }
 
-/* Título: Estilo para las etiquetas de las cuentas bancarias */
-/* Define la visualización y margen de las etiquetas */
-.cuenta-bancaria label {
-    display: block; /* La etiqueta ocupa toda la línea */
-    margin-bottom: 8px; /* Espaciado inferior de 8px */
-}
+/* TÍTULO: ESTILO PARA LAS ETIQUETAS DE LAS CUENTAS BANCARIAS */
+    /* Define la visualización y margen de las etiquetas */
+    .cuenta-bancaria label {
+        display: block; /* La etiqueta ocupa toda la línea */
+        margin-bottom: 8px; /* Espaciado inferior de 8px */
+    }
 
-/* Título: Estilo para los campos de entrada y selección de cuentas bancarias */
-/* Define el ancho y estilo de los campos de entrada y selección */
-.cuenta-bancaria input,
-.cuenta-bancaria select {
-    width: calc(100% - 20px); /* El ancho es el 100% menos 20px de margen */
-    padding: 10px; /* Espaciado interno de 10px */
-    margin-bottom: 20px; /* Margen inferior de 20px entre elementos */
-    border: 1px solid #ddd; /* Borde gris claro */
-    border-radius: 5px; /* Bordes redondeados */
-    box-sizing: border-box; /* Incluye el borde y el padding dentro del ancho total */
-}
+/* TÍTULO: ESTILO PARA LOS CAMPOS DE ENTRADA Y SELECCIÓN DE CUENTAS BANCARIAS */
+    /* Define el ancho y estilo de los campos de entrada y selección */
+    .cuenta-bancaria input,
+    .cuenta-bancaria select {
+        width: calc(100% - 20px); /* El ancho es el 100% menos 20px de margen */
+        padding: 10px; /* Espaciado interno de 10px */
+        margin-bottom: 20px; /* Margen inferior de 20px entre elementos */
+        border: 1px solid #ddd; /* Borde gris claro */
+        border-radius: 5px; /* Bordes redondeados */
+        box-sizing: border-box; /* Incluye el borde y el padding dentro del ancho total */
+    }
 
-/* Título: Estilo para el botón de agregar */
-/* Define el estilo del botón de agregar */
-#boton-agregar-boton {
-    padding: 10px 20px; /* Espaciado interno */
-    background-color: #007bff; /* Fondo azul */
-    color: white; /* Texto en blanco */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambiar el cursor al pasar por encima */
-}
+/* TÍTULO: ESTILO PARA EL BOTÓN DE AGREGAR */
+    /* Define el estilo del botón de agregar */
+    #boton-agregar-boton {
+        padding: 10px 20px; /* Espaciado interno */
+        background-color: #007bff; /* Fondo azul */
+        color: white; /* Texto en blanco */
+        border: none; /* Sin borde */
+        border-radius: 5px; /* Bordes redondeados */
+        cursor: pointer; /* Cambiar el cursor al pasar por encima */
+    }
 
-/* Título: Estilo para el botón de agregar al pasar el cursor */
-/* Cambia el color de fondo del botón de agregar al pasar el cursor */
-#boton-agregar-boton:hover {
-    background-color: #0056b3; /* Fondo azul más oscuro */
-}
+/* TÍTULO: ESTILO PARA EL BOTÓN DE AGREGAR AL PASAR EL CURSOR */
+    /* Cambia el color de fondo del botón de agregar al pasar el cursor */
+    #boton-agregar-boton:hover {
+        background-color: #0056b3; /* Fondo azul más oscuro */
+    }
 
-/* Título: Estilo para el botón de subir */
-/* Define el estilo del botón de subir */
-#boton-subir {
-    padding: 10px 20px; /* Espaciado interno */
-    background-color: #28a745; /* Fondo verde */
-    color: white; /* Texto en blanco */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambiar el cursor al pasar por encima */
-}
+/* TÍTULO: ESTILO PARA EL BOTÓN DE SUBIR */
+    /* Define el estilo del botón de subir */
+    #boton-subir {
+        padding: 10px 20px; /* Espaciado interno */
+        background-color: #28a745; /* Fondo verde */
+        color: white; /* Texto en blanco */
+        border: none; /* Sin borde */
+        border-radius: 5px; /* Bordes redondeados */
+        cursor: pointer; /* Cambiar el cursor al pasar por encima */
+    }
 
-/* Título: Estilo para el botón de subir cuando está deshabilitado */
-/* Define el estilo del botón de subir al estar deshabilitado */
-#boton-subir:disabled {
-    background-color: #6c757d; /* Fondo gris oscuro */
-    cursor: not-allowed; /* El cursor cambia para indicar que está deshabilitado */
-}
+/* TÍTULO: ESTILO PARA EL BOTÓN DE SUBIR CUANDO ESTÁ DESHABILITADO */
+    /* Define el estilo del botón de subir al estar deshabilitado */
+    #boton-subir:disabled {
+        background-color: #6c757d; /* Fondo gris oscuro */
+        cursor: not-allowed; /* El cursor cambia para indicar que está deshabilitado */
+    }
 
-/* Título: Estilo para la tabla de cuentas bancarias */
-/* Define el ancho y colapso de bordes de la tabla */
-#tabla-cuentas {
-    width: 100%; /* La tabla ocupa el 100% del contenedor */
-    border-collapse: collapse; /* Colapsar los bordes de las celdas */
-}
+/* TÍTULO: ESTILO PARA LA TABLA DE CUENTAS BANCARIAS */
+    /* Define el ancho y colapso de bordes de la tabla */
+    #tabla-cuentas {
+        width: 100%; /* La tabla ocupa el 100% del contenedor */
+        border-collapse: collapse; /* Colapsar los bordes de las celdas */
+    }
 
-/* Título: Estilo para las celdas de la tabla (th y td) */
-/* Define el estilo de las celdas de la tabla */
-#tabla-cuentas th,
-#tabla-cuentas td {
-    border: 1px solid #ddd; /* Borde gris claro alrededor de las celdas */
-    padding: 8px; /* Espaciado interno de 8px */
-}
+/* TÍTULO: ESTILO PARA LAS CELDAS DE LA TABLA (TH Y TD) */
+    /* Define el estilo de las celdas de la tabla */
+    #tabla-cuentas th,
+    #tabla-cuentas td {
+        border: 1px solid #ddd; /* Borde gris claro alrededor de las celdas */
+        padding: 8px; /* Espaciado interno de 8px */
+    }
 
-/* Título: Estilo para las cabeceras de la tabla */
-/* Define el fondo de las cabeceras de la tabla */
-#tabla-cuentas th {
-    background-color: #f2f2f2; /* Fondo gris claro */
-}
+/* TÍTULO: ESTILO PARA LAS CABECERAS DE LA TABLA */
+    /* Define el fondo de las cabeceras de la tabla */
+    #tabla-cuentas th {
+        background-color: #f2f2f2; /* Fondo gris claro */
+    }
 
-/* Título: Estilo para el título de la sección de cuentas bancarias */
-/* Define el margen inferior del título de la sección */
-.contenedor-cuentas-bancarias h2 {
-    margin-bottom: 20px; /* Separación inferior de 20px */
-}
+/* TÍTULO: ESTILO PARA EL TÍTULO DE LA SECCIÓN DE CUENTAS BANCARIAS */
+    /* Define el margen inferior del título de la sección */
+    .contenedor-cuentas-bancarias h2 {
+        margin-bottom: 20px; /* Separación inferior de 20px */
+    }
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Formulario Cuenta .CSS ---------------------------------------

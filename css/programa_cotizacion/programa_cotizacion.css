@@ -14,210 +14,210 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 
-/* Título: Estilo general para el cuerpo del documento */
-/* Define el estilo general del cuerpo de la página */
-body {
-    font-family: Arial, sans-serif; /* Fuente del texto */
-    background-color: #f4f4f4; /* Color de fondo de la página */
-    color: #333; /* Color del texto */
-    margin: 0; /* Eliminar márgenes */
-    padding: 0; /* Eliminar rellenos */
-    text-align: center; /* Centrar texto */
-}
+/* TÍTULO: ESTILO GENERAL PARA EL CUERPO DEL DOCUMENTO */
+    /* Define el estilo general del cuerpo de la página */
+    body {
+        font-family: Arial, sans-serif; /* Fuente del texto */
+        background-color: #f4f4f4; /* Color de fondo de la página */
+        color: #333; /* Color del texto */
+        margin: 0; /* Eliminar márgenes */
+        padding: 0; /* Eliminar rellenos */
+        text-align: center; /* Centrar texto */
+    }
 
-/* Título: Estilo del contenedor del select personalizado */
-/* Define el estilo del contenedor del select */
-.custom-select {
-    position: relative; /* Posición relativa para el contenedor */
-    display: inline-block; /* Mostrar en línea con el resto del contenido */
-    width: 100%; /* Ancho completo */
-}
+/* TÍTULO: ESTILO DEL CONTENEDOR DEL SELECT PERSONALIZADO */
+    /* Define el estilo del contenedor del select */
+    .custom-select {
+        position: relative; /* Posición relativa para el contenedor */
+        display: inline-block; /* Mostrar en línea con el resto del contenido */
+        width: 100%; /* Ancho completo */
+    }
 
-/* Título: Ocultar el elemento select original */
-/* Oculta el elemento select de la interfaz */
-.custom-select select {
-    display: none; /* Ocultar elemento select */
-}
+/* TÍTULO: OCULTAR EL ELEMENTO SELECT ORIGINAL */
+    /* Oculta el elemento select de la interfaz */
+    .custom-select select {
+        display: none; /* Ocultar elemento select */
+    }
 
-/* Título: Estilo para la opción seleccionada */
-/* Define el estilo de la opción seleccionada en el select */
-.selected-option {
-    display: flex; /* Usar flexbox para alinear elementos */
-    align-items: center; /* Centrar elementos verticalmente */
-    padding: 10px; /* Relleno interno */
-    border: 1px solid #ccc; /* Borde de la opción seleccionada */
-    background-color: #fff; /* Color de fondo */
-    cursor: pointer; /* Cambiar cursor al pasar sobre la opción */
-    overflow: hidden; /* Ocultar desbordamiento */
-    text-overflow: ellipsis; /* Agregar puntos suspensivos si el texto es demasiado largo */
-    white-space: nowrap; /* Evitar saltos de línea */
-}
+/* TÍTULO: ESTILO PARA LA OPCIÓN SELECCIONADA */
+    /* Define el estilo de la opción seleccionada en el select */
+    .selected-option {
+        display: flex; /* Usar flexbox para alinear elementos */
+        align-items: center; /* Centrar elementos verticalmente */
+        padding: 10px; /* Relleno interno */
+        border: 1px solid #ccc; /* Borde de la opción seleccionada */
+        background-color: #fff; /* Color de fondo */
+        cursor: pointer; /* Cambiar cursor al pasar sobre la opción */
+        overflow: hidden; /* Ocultar desbordamiento */
+        text-overflow: ellipsis; /* Agregar puntos suspensivos si el texto es demasiado largo */
+        white-space: nowrap; /* Evitar saltos de línea */
+    }
 
-/* Título: Estilo para la lista de opciones */
-/* Define el estilo de la lista de opciones en el select */
-.option-list {
-    display: none; /* Ocultar la lista de opciones por defecto */
-    position: absolute; /* Posición absoluta para la lista de opciones */
-    background-color: #fff; /* Color de fondo de la lista */
-    border: 1px solid #ccc; /* Borde de la lista de opciones */
-    z-index: 1; /* Colocar la lista sobre otros elementos */
-    width: 100%; /* Ancho completo de la lista */
-    max-height: 200px; /* Altura máxima de la lista */
-    overflow-y: auto; /* Habilitar desplazamiento vertical si es necesario */
-}
+/* TÍTULO: ESTILO PARA LA LISTA DE OPCIONES */
+    /* Define el estilo de la lista de opciones en el select */
+    .option-list {
+        display: none; /* Ocultar la lista de opciones por defecto */
+        position: absolute; /* Posición absoluta para la lista de opciones */
+        background-color: #fff; /* Color de fondo de la lista */
+        border: 1px solid #ccc; /* Borde de la lista de opciones */
+        z-index: 1; /* Colocar la lista sobre otros elementos */
+        width: 100%; /* Ancho completo de la lista */
+        max-height: 200px; /* Altura máxima de la lista */
+        overflow-y: auto; /* Habilitar desplazamiento vertical si es necesario */
+    }
 
-/* Título: Estilo para cada opción en la lista */
-/* Define el estilo de cada opción en la lista de opciones */
-.option-list div {
-    display: flex; /* Usar flexbox para alinear elementos */
-    align-items: center; /* Centrar elementos verticalmente */
-    padding: 5px; /* Relleno interno de cada opción */
-    cursor: pointer; /* Cambiar cursor al pasar sobre la opción */
-}
+/* TÍTULO: ESTILO PARA CADA OPCIÓN EN LA LISTA */
+    /* Define el estilo de cada opción en la lista de opciones */
+    .option-list div {
+        display: flex; /* Usar flexbox para alinear elementos */
+        align-items: center; /* Centrar elementos verticalmente */
+        padding: 5px; /* Relleno interno de cada opción */
+        cursor: pointer; /* Cambiar cursor al pasar sobre la opción */
+    }
 
-/* Título: Estilo para el efecto hover en las opciones de la lista */
-/* Define el estilo de la opción al pasar el cursor */
-.option-list div:hover {
-    background-color: #f1f1f1; /* Color de fondo al pasar el cursor */
-}
+/* TÍTULO: ESTILO PARA EL EFECTO HOVER EN LAS OPCIONES DE LA LISTA */
+    /* Define el estilo de la opción al pasar el cursor */
+    .option-list div:hover {
+        background-color: #f1f1f1; /* Color de fondo al pasar el cursor */
+    }
 
-/* Título: Estilo para las imágenes dentro de las opciones */
-/* Define el estilo de las imágenes en las opciones */
-.option-list img {
-    max-width: 50px; /* Tamaño máximo para la imagen */
-    max-height: 50px; /* Tamaño máximo para la imagen */
-    object-fit: contain; /* Ajustar la imagen para que se contenga en el contenedor */
-    margin-right: 10px; /* Margen derecho para separar la imagen del texto */
-}
+/* TÍTULO: ESTILO PARA LAS IMÁGENES DENTRO DE LAS OPCIONES */
+    /* Define el estilo de las imágenes en las opciones */
+    .option-list img {
+        max-width: 50px; /* Tamaño máximo para la imagen */
+        max-height: 50px; /* Tamaño máximo para la imagen */
+        object-fit: contain; /* Ajustar la imagen para que se contenga en el contenedor */
+        margin-right: 10px; /* Margen derecho para separar la imagen del texto */
+    }
 
-/* Título: Estilo para el encabezado principal */
-/* Define el estilo del encabezado principal de la página */
-h1 {
-    background-color: #333; /* Color de fondo del encabezado */
-    color: #fff; /* Color del texto del encabezado */
-    padding: 20px 0; /* Relleno interno del encabezado */
-    margin-bottom: 20px; /* Margen inferior del encabezado */
-}
+/* TÍTULO: ESTILO PARA EL ENCABEZADO PRINCIPAL */
+    /* Define el estilo del encabezado principal de la página */
+    h1 {
+        background-color: #333; /* Color de fondo del encabezado */
+        color: #fff; /* Color del texto del encabezado */
+        padding: 20px 0; /* Relleno interno del encabezado */
+        margin-bottom: 20px; /* Margen inferior del encabezado */
+    }
 
-/* Título: Estilo para el formulario */
-/* Define el estilo del formulario */
-form {
-    background-color: #fff; /* Color de fondo del formulario */
-    border: 1px solid #ddd; /* Borde del formulario */
-    padding: 20px; /* Relleno interno del formulario */
-    margin: 0 auto 20px; /* Margen automático en los lados y margen inferior */
-    width: 300px; /* Ancho del formulario */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra del formulario */
-}
+/* TÍTULO: ESTILO PARA EL FORMULARIO */
+    /* Define el estilo del formulario */
+    form {
+        background-color: #fff; /* Color de fondo del formulario */
+        border: 1px solid #ddd; /* Borde del formulario */
+        padding: 20px; /* Relleno interno del formulario */
+        margin: 0 auto 20px; /* Margen automático en los lados y margen inferior */
+        width: 300px; /* Ancho del formulario */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra del formulario */
+    }
 
-/* Título: Estilo para las etiquetas de los campos del formulario */
-/* Define el estilo de las etiquetas en el formulario */
-label {
-    display: block; /* Mostrar cada etiqueta como bloque */
-    margin-bottom: 10px; /* Margen inferior de las etiquetas */
-    font-weight: bold; /* Negrita para las etiquetas */
-}
+/* TÍTULO: ESTILO PARA LAS ETIQUETAS DE LOS CAMPOS DEL FORMULARIO */
+    /* Define el estilo de las etiquetas en el formulario */
+    label {
+        display: block; /* Mostrar cada etiqueta como bloque */
+        margin-bottom: 10px; /* Margen inferior de las etiquetas */
+        font-weight: bold; /* Negrita para las etiquetas */
+    }
 
-/* Título: Estilo para el botón de envío del formulario */
-/* Define el estilo del botón de envío */
-button {
-    background-color: #333; /* Color de fondo del botón */
-    color: #fff; /* Color del texto del botón */
-    padding: 10px 20px; /* Relleno interno del botón */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
-    margin-top: 20px; /* Margen superior del botón */
-}
+/* TÍTULO: ESTILO PARA EL BOTÓN DE ENVÍO DEL FORMULARIO */
+    /* Define el estilo del botón de envío */
+    button {
+        background-color: #333; /* Color de fondo del botón */
+        color: #fff; /* Color del texto del botón */
+        padding: 10px 20px; /* Relleno interno del botón */
+        border: none; /* Sin borde */
+        border-radius: 5px; /* Bordes redondeados */
+        cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
+        margin-top: 20px; /* Margen superior del botón */
+    }
 
-/* Título: Efecto hover para el botón de envío */
-/* Define el estilo del botón al pasar el cursor */
-button:hover {
-    background-color: #555; /* Cambiar color al pasar el cursor */
-}
+/* TÍTULO: EFECTO HOVER PARA EL BOTÓN DE ENVÍO */
+    /* Define el estilo del botón al pasar el cursor */
+    button:hover {
+        background-color: #555; /* Cambiar color al pasar el cursor */
+    }
 
-/* Título: Estilo para los mensajes de error */
-/* Define el estilo de los mensajes de error en el formulario */
-p {
-    color: red; /* Color del texto de los mensajes de error */
-    font-weight: bold; /* Negrita para los mensajes de error */
-}
+/* TÍTULO: ESTILO PARA LOS MENSAJES DE ERROR */
+    /* Define el estilo de los mensajes de error en el formulario */
+    p {
+        color: red; /* Color del texto de los mensajes de error */
+        font-weight: bold; /* Negrita para los mensajes de error */
+    }
 
-/* Título: Estilo para el enlace de "Crear nueva empresa" */
-/* Define el estilo del enlace para crear una nueva empresa */
-a {
-    display: inline-block; /* Mostrar como bloque en línea */
-    margin-top: 20px; /* Margen superior del enlace */
-    color: #333; /* Color del texto del enlace */
-    text-decoration: none; /* Sin subrayado en el enlace */
-    font-weight: bold; /* Negrita para el enlace */
-}
+/* TÍTULO: ESTILO PARA EL ENLACE DE "CREAR NUEVA EMPRESA" */
+    /* Define el estilo del enlace para crear una nueva empresa */
+    a {
+        display: inline-block; /* Mostrar como bloque en línea */
+        margin-top: 20px; /* Margen superior del enlace */
+        color: #333; /* Color del texto del enlace */
+        text-decoration: none; /* Sin subrayado en el enlace */
+        font-weight: bold; /* Negrita para el enlace */
+    }
 
-/* Título: Efecto hover para el enlace */
-/* Define el estilo del enlace al pasar el cursor */
-a:hover {
-    text-decoration: underline; /* Subrayar el enlace al pasar el cursor */
-}
+/* TÍTULO: EFECTO HOVER PARA EL ENLACE */
+    /* Define el estilo del enlace al pasar el cursor */
+    a:hover {
+        text-decoration: underline; /* Subrayar el enlace al pasar el cursor */
+    }
 
-/* Título: Estilo para el menú de navegación */
-/* Define el estilo del menú de navegación */
-.menu {
-    list-style-type: none; /* Sin viñetas en la lista */
-    padding: 0; /* Sin relleno */
-    display: flex; /* Mostrar en línea */
-    justify-content: center; /* Centrar el contenido del menú */
-    gap: 30px; /* Espacio entre los elementos del menú */
-    margin: 20px auto; /* Margen automático en los lados */
-}
+/* TÍTULO: ESTILO PARA EL MENÚ DE NAVEGACIÓN */
+    /* Define el estilo del menú de navegación */
+    .menu {
+        list-style-type: none; /* Sin viñetas en la lista */
+        padding: 0; /* Sin relleno */
+        display: flex; /* Mostrar en línea */
+        justify-content: center; /* Centrar el contenido del menú */
+        gap: 30px; /* Espacio entre los elementos del menú */
+        margin: 20px auto; /* Margen automático en los lados */
+    }
 
-/* Título: Estilo para cada elemento del menú */
-/* Define el estilo de cada elemento del menú */
-.menu li {
-    min-width: 200px; /* Ancho mínimo de los elementos del menú */
-    min-height: 50px; /* Altura mínima de los elementos del menú */
-    display: flex; /* Usar flexbox para alinear elementos */
-    align-items: center; /* Centrar verticalmente los elementos del menú */
-    justify-content: center; /* Centrar horizontalmente los elementos del menú */
-}
+/* TÍTULO: ESTILO PARA CADA ELEMENTO DEL MENÚ */
+    /* Define el estilo de cada elemento del menú */
+    .menu li {
+        min-width: 200px; /* Ancho mínimo de los elementos del menú */
+        min-height: 50px; /* Altura mínima de los elementos del menú */
+        display: flex; /* Usar flexbox para alinear elementos */
+        align-items: center; /* Centrar verticalmente los elementos del menú */
+        justify-content: center; /* Centrar horizontalmente los elementos del menú */
+    }
 
-/* Título: Estilo para los enlaces dentro del menú */
-/* Define el estilo de los enlaces en el menú */
-.menu li a {
-    text-decoration: none; /* Sin subrayado en los enlaces del menú */
-    color: #fff; /* Color del texto de los enlaces del menú */
-    padding: 15px 30px; /* Relleno interno de los enlaces del menú */
-    border-radius: 20px; /* Bordes redondeados de los enlaces */
-    background-color: #333; /* Color de fondo de los enlaces del menú */
-    text-align: center; /* Centrar texto en los enlaces */
-    width: 100%; /* Ancho completo de los enlaces */
-    height: 100%; /* Altura completa de los enlaces */
-    display: flex; /* Usar flexbox para alinear elementos */
-    align-items: center; /* Centrar verticalmente los enlaces */
-    justify-content: center; /* Centrar horizontalmente los enlaces */
-}
+/* TÍTULO: ESTILO PARA LOS ENLACES DENTRO DEL MENÚ */
+    /* Define el estilo de los enlaces en el menú */
+    .menu li a {
+        text-decoration: none; /* Sin subrayado en los enlaces del menú */
+        color: #fff; /* Color del texto de los enlaces del menú */
+        padding: 15px 30px; /* Relleno interno de los enlaces del menú */
+        border-radius: 20px; /* Bordes redondeados de los enlaces */
+        background-color: #333; /* Color de fondo de los enlaces del menú */
+        text-align: center; /* Centrar texto en los enlaces */
+        width: 100%; /* Ancho completo de los enlaces */
+        height: 100%; /* Altura completa de los enlaces */
+        display: flex; /* Usar flexbox para alinear elementos */
+        align-items: center; /* Centrar verticalmente los enlaces */
+        justify-content: center; /* Centrar horizontalmente los enlaces */
+    }
 
-/* Título: Estilo para deshabilitar los enlaces */
-/* Define el estilo de los enlaces deshabilitados */
-.menu li a.disabled {
-    pointer-events: none; /* Deshabilitar interacción con enlaces */
-    color: #6f6f6f; /* Color del texto de los enlaces deshabilitados */
-    background-color: #ccc; /* Color de fondo de los enlaces deshabilitados */
-}
+/* TÍTULO: ESTILO PARA DESHABILITAR LOS ENLACES */
+    /* Define el estilo de los enlaces deshabilitados */
+    .menu li a.disabled {
+        pointer-events: none; /* Deshabilitar interacción con enlaces */
+        color: #6f6f6f; /* Color del texto de los enlaces deshabilitados */
+        background-color: #ccc; /* Color de fondo de los enlaces deshabilitados */
+    }
 
-/* Título: Estilo cuando el enlace está habilitado y se pasa el cursor sobre él */
-/* Define el estilo del enlace habilitado al pasar el cursor */
-.menu li a:not(.disabled):hover {
-    background-color: #f0f0f0; /* Cambiar color de fondo al pasar el cursor */
-    color: #000; /* Cambiar color del texto al pasar el cursor */
-}
+/* TÍTULO: ESTILO CUANDO EL ENLACE ESTÁ HABILITADO Y SE PASA EL CURSOR SOBRE ÉL */
+    /* Define el estilo del enlace habilitado al pasar el cursor */
+    .menu li a:not(.disabled):hover {
+        background-color: #f0f0f0; /* Cambiar color de fondo al pasar el cursor */
+        color: #000; /* Cambiar color del texto al pasar el cursor */
+    }
 
-/* Título: Asegurar que el formulario esté por debajo del menú */
-/* Define el margen superior del formulario para que no quede cubierto por el menú */
-form {
-    margin-top: 60px; /* Ajustar el margen superior para que no quede cubierto */
-    z-index: 1; /* Asegurarse de que el formulario esté sobre cualquier contenido de fondo */
-    position: relative; /* Posición relativa para el formulario */
-}
+/* TÍTULO: ASEGURAR QUE EL FORMULARIO ESTÉ POR DEBAJO DEL MENÚ */
+    /* Define el margen superior del formulario para que no quede cubierto por el menú */
+    form {
+        margin-top: 60px; /* Ajustar el margen superior para que no quede cubierto */
+        z-index: 1; /* Asegurarse de que el formulario esté sobre cualquier contenido de fondo */
+        position: relative; /* Posición relativa para el formulario */
+    }
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Programa Cotizacion .CSS ---------------------------------------
