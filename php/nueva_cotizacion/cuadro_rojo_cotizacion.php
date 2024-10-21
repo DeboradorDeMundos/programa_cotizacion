@@ -15,16 +15,16 @@ BPPJ
     <link rel="stylesheet" href="../../css/nueva_cotizacion/cuadro_rojo_cotizacion.css"> <!-- Enlaza el archivo CSS para estilizar el cuadro de cotización -->
 <body onload="calcularFechaValidez();"> <!-- Ejecuta la función calcularFechaValidez al cargar la página -->
 
-<!-- Título: Caja para Ingresar Datos -->
+<!-- TÍTULO: CAJA PARA INGRESAR DATOS -->
 <!-- Crea una caja para ingresar datos, ocupando otras 6 columnas. Se aplica una clase adicional para estilo -->
 <fieldset class="box-6 cuadro-datos cuadro-datos-rojo"> 
-    <!-- Título: Encabezado de Detalle de Cotización -->
-    <legend>Detalle Cotización</legend> <!-- Título del campo de datos -->
+    <!-- TÍTULO: ENCABEZADO DE DETALLE DE COTIZACIÓN -->
+    <legend>Detalle Cotización</legend> <!-- TÍTULO DEL CAMPO DE DATOS -->
 
-    <!-- Título: Campo para el RUT de la Empresa -->
+    <!-- TÍTULO: CAMPO PARA EL RUT DE LA EMPRESA -->
     <!-- Etiqueta para el campo de entrada del RUT de la empresa -->
     <label for="empresa_rut">RUT de la Empresa:</label> 
-    <!-- Título: Campo para Ingresar el RUT de la Empresa -->
+    <!-- TÍTULO: CAMPO PARA INGRESAR EL RUT DE LA EMPRESA -->
     <!-- Campo de texto para ingresar el RUT de la empresa. El atributo "required" hace que el campo sea obligatorio -->
     <input type="text" id="empresa_rut" name="empresa_rut" 
     minlength="7" maxlength="12" 
@@ -32,30 +32,31 @@ BPPJ
     required oninput="FormatearRut(this)" 
     value="<?php echo htmlspecialchars($row['EmpresaRUT']); ?>"> 
     
-    <!-- Título: Campo para el Número de Cotización -->
+    <!-- TÍTULO: CAMPO PARA EL NÚMERO DE COTIZACIÓN -->
     <!-- Etiqueta para el campo de entrada del número de cotización -->
     <label for="numero_cotizacion">Número de Cotización:</label> 
-    <!-- Título: Campo para Ingresar el Número de Cotización -->
+    <!-- TÍTULO: CAMPO PARA INGRESAR EL NÚMERO DE COTIZACIÓN -->
     <!-- Campo de texto para ingresar el número de cotización. También es obligatorio -->
     <input type="number" id="numero-cotizacion" name="numero_cotizacion" required min="1" placeholder="30" value="<?php echo htmlspecialchars($numero_cotizacion); ?>"> 
     
-    <!-- Título: Campo para los Días de Validez -->
+    <!-- TÍTULO: CAMPO PARA LOS DÍAS DE VALIDEZ -->
     <!-- Etiqueta para el campo de entrada de la validez de la cotización -->
     <label for="dias_validez">Días de Validez:</label> 
-    <!-- Título: Campo para Ingresar Días de Validez -->
+    <!-- TÍTULO: CAMPO PARA INGRESAR DÍAS DE VALIDEZ -->
     <!-- Campo para ingresar los días de validez de la cotización. Solo lectura -->
     <input type="number" id="dias_validez" name="dias_validez" required min="1" placeholder="30" value="<?php echo htmlspecialchars($dias_validez); ?>" readonly> 
     
-    <!-- Título: Campo para la Fecha de Validez -->
+    <!-- TÍTULO: CAMPO PARA LA FECHA DE VALIDEZ -->
     <!-- Etiqueta para el campo de entrada de la fecha de validez -->
     <label for="fecha_validez">Fecha de Validez:</label> 
-    <!-- Título: Campo para Seleccionar la Fecha de Validez -->
+    <!-- TÍTULO: CAMPO PARA SELECCIONAR LA FECHA DE VALIDEZ -->
     <!-- Campo para seleccionar la fecha de validez de la cotización. Solo lectura -->
     <input type="date" id="fecha_validez" name="fecha_validez" readonly> 
 </fieldset>   
 </body>
 
 <!-- Enlaza el archivo JavaScript para manejar la lógica del formulario de cotización -->
+
 
 
 

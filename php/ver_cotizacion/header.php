@@ -72,7 +72,7 @@ if ($result->num_rows > 0) {
     $id_empresa = $items[0]['id_empresa']; // Guardar id_empresa para la siguiente consulta
     $id_foto = $items[0]['id_foto']; // Guardar id_foto para cargar la imagen
 
-    $query_foto = "SELECT ruta_foto FROM e_fotosperfil WHERE id_foto = ?";
+    $query_foto = "SELECT ruta_foto FROM fp_fotosperfil WHERE id_foto = ?";
     $stmt_foto = $mysqli->prepare($query_foto);
     $stmt_foto->bind_param("i", $id_foto);
     

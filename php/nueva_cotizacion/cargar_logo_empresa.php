@@ -167,23 +167,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } 
 }
 ?>
-    <!-- Título: Cargar Logo de Empresa -->
+    <!-- TÍTULO: CARGAR LOGO DE EMPRESA -->
     <label for="subir-logo" class="contenedor-logo">
         <?php if (isset($row['ruta_foto']) && !empty($row['ruta_foto'])): ?>
-            <!-- Título: Mostrar Imagen de Perfil -->
+            <!-- TÍTULO: MOSTRAR IMAGEN DE PERFIL -->
             <!-- Mostrar la imagen de perfil si existe -->
             <img src="<?php echo htmlspecialchars($row['ruta_foto'], ENT_QUOTES, 'UTF-8'); ?>" alt="Foto de perfil" id="Previsualizar-logo" class="logo" onclick="document.getElementById('subir-logo').click();" />
         <?php else: ?>
-            <!-- Título: Cargar Logo si no hay Imagen -->
+            <!-- TÍTULO: CARGAR LOGO SI NO HAY IMAGEN -->
             <!-- Mostrar texto para cargar logo si no hay imagen -->
             <span id="logo-text" onclick="document.getElementById('subir-logo').click();">Cargar Logo de Empresa</span>
         <?php endif; ?>
-        <!-- Título: Input Oculto para Cargar Imagen -->
+        <!-- TÍTULO: INPUT OCULTO PARA CARGAR IMAGEN -->
         <!-- Input oculto para cargar la imagen -->
         <input type="file" id="subir-logo" name="logo_upload" accept="image/*" style="display:none;" onchange="previewImage(event)">
     </label>
 </div>
-
+ <!-- TÍTULO: AQUÍ SE CARGA EL JS DEL ARCHIVO -->
 <script src="../../js/nueva_cotizacion/cargar_logo_empresa.js"></script> 
 
 

@@ -12,55 +12,55 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Datos empresa.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
     <link rel="stylesheet" href="../../css/nueva_cotizacion/datos_empresa.css"> <!-- Enlaza el archivo CSS para estilizar los datos de la empresa -->
-    <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
-    <!-- Título: Caja para Ingresar Datos de la Empresa -->
+<div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
+    <!-- TÍTULO: CAJA PARA INGRESAR DATOS DE LA EMPRESA -->
     <!-- Crea una caja para ingresar datos, ocupando las 12 columnas disponibles en el diseño. Esta caja contiene varios campos de entrada de datos -->
     <fieldset class="box-12 cuadro-datos"> 
-        <!-- Título: Encabezado de Mi Empresa -->
-        <legend>Mi Empresa</legend> <!-- Título del campo de datos -->
+        <!-- TÍTULO: ENCABEZADO DE MI EMPRESA -->
+        <legend>Mi Empresa</legend> <!-- TÍTULO DEL CAMPO DE DATOS -->
 
-        <!-- Título: Campo para el ID de la Empresa -->
+        <!-- TÍTULO: CAMPO PARA EL ID DE LA EMPRESA -->
         <!-- Campo de texto para ingresar el ID de la empresa. Este campo está oculto -->
         <input type="text" id="empresa-id" name="empresa_id" value="<?php echo htmlspecialchars($id); ?>" hidden> 
         
         <div class="form-group">
-            <!-- Título: Campo para el Nombre de la Empresa -->
+            <!-- TÍTULO: CAMPO PARA EL NOMBRE DE LA EMPRESA -->
             <!-- Etiqueta para el campo de entrada del nombre de la empresa -->
             <label for="empresa_nombre">Nombre</label> 
-            <!-- Título: Campo para Ingresar el Nombre de la Empresa -->
+            <!-- TÍTULO: CAMPO PARA INGRESAR EL NOMBRE DE LA EMPRESA -->
             <!-- Campo de texto para ingresar el nombre de la empresa. El atributo "required" hace que el campo sea obligatorio -->
             <input type="text" id="empresa_nombre" name="empresa_nombre" value="<?php echo htmlspecialchars($row['EmpresaNombre']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
         </div>
 
         <div class="form-group">
-            <!-- Título: Campo para el Área de la Empresa -->
+            <!-- TÍTULO: CAMPO PARA EL ÁREA DE LA EMPRESA -->
             <!-- Etiqueta para el campo de entrada del área de la empresa -->
             <label for="empresa_area">Área</label> 
-            <!-- Título: Campo para Ingresar el Área de la Empresa -->
+            <!-- TÍTULO: CAMPO PARA INGRESAR EL ÁREA DE LA EMPRESA -->
             <!-- Campo de texto para ingresar el área de la empresa. Este campo no es obligatorio -->
             <input type="text" id="empresa_area" name="empresa_area" value="<?php echo htmlspecialchars($row['EmpresaArea']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
         </div>
 
         <div class="form-group">
-            <!-- Título: Campo para la Dirección de la Empresa -->
+            <!-- TÍTULO: CAMPO PARA LA DIRECCIÓN DE LA EMPRESA -->
             <!-- Etiqueta para el campo de entrada de la dirección de la empresa -->
             <label for="empresa_direccion">Dirección</label> 
-            <!-- Título: Campo para Ingresar la Dirección de la Empresa -->
+            <!-- TÍTULO: CAMPO PARA INGRESAR LA DIRECCIÓN DE LA EMPRESA -->
             <!-- Campo de texto para ingresar la dirección de la empresa. Este campo no es obligatorio -->
             <input type="text" id="empresa_direccion" name="empresa_direccion" value="<?php echo htmlspecialchars($row['EmpresaDireccion']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
         </div>
                 
         <div class="form-group" style="display: flex; align-items: center;">
-            <!-- Título: Campo para el Teléfono de la Empresa -->
+            <!-- TÍTULO: CAMPO PARA EL TELÉFONO DE LA EMPRESA -->
             <!-- Etiqueta para el campo de entrada del teléfono de la empresa -->
             <label for="empresa_telefono" style="margin-right: 10px;">Teléfono</label>
 
-            <!-- Título: Imagen de la Bandera -->
+            <!-- TÍTULO: IMAGEN DE LA BANDERA -->
             <!-- Imagen de la bandera -->
             <img id="flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
                 alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
 
-            <!-- Título: Campo para Ingresar el Teléfono de la Empresa -->
+            <!-- TÍTULO: CAMPO PARA INGRESAR EL TELÉFONO DE LA EMPRESA -->
             <!-- Campo de entrada de texto para el teléfono de la empresa -->
             <input type="text" id="empresa_telefono" name="empresa_telefono" 
                 value="<?php echo htmlspecialchars($row['EmpresaTelefono']); ?>"
@@ -72,10 +72,10 @@ BPPJ
         </div>
 
         <div class="form-group">
-            <!-- Título: Campo para el Email de la Empresa -->
+            <!-- TÍTULO: CAMPO PARA EL EMAIL DE LA EMPRESA -->
             <!-- Etiqueta para el campo de entrada del email de la empresa -->
             <label for="empresa_email">Email</label> 
-            <!-- Título: Campo para Ingresar el Email de la Empresa -->
+            <!-- TÍTULO: CAMPO PARA INGRESAR EL EMAIL DE LA EMPRESA -->
             <!-- Campo de correo electrónico para ingresar el email de la empresa. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
             <input type="email" id="empresa_email" name="empresa_email" value="<?php echo htmlspecialchars($row['EmpresaEmail']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
         </div>
@@ -83,7 +83,7 @@ BPPJ
 </div> <!-- Cierra la fila -->
 
 <!-- Enlaza el archivo JavaScript para manejar la lógica del formulario de datos de la empresa -->
-<script src="../../js/nueva_cotizacion/datos_empresa.js"></script> 
+<script src="../../js/nueva_cotizacion/datos_empresa.js"></script>
 
 <?php
 // Verifica si el formulario fue enviado
