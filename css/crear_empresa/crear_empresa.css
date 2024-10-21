@@ -14,75 +14,75 @@ BPPJ
     -------------------------------------- INICIO ITred Spa crear_empresa .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-/* Título: Estilo global para el cuerpo del documento */
-/* Define la tipografía base, el margen y el fondo del cuerpo del documento */
-body {
-  font-family: Arial, sans-serif; /* Tipografía base */
-  margin: 0; /* Eliminar margen predeterminado */
-  padding: 0; /* Eliminar padding predeterminado */
-  background-color: #f9f9f9; /* Color de fondo claro */
-}
+/* TÍTULO: ESTILO GLOBAL PARA EL CUERPO DEL DOCUMENTO */
+  /* Define la tipografía base, el margen y el fondo del cuerpo del documento */
+  body {
+    font-family: Arial, sans-serif; /* Tipografía base */
+    margin: 0; /* Eliminar margen predeterminado */
+    padding: 0; /* Eliminar padding predeterminado */
+    background-color: #f9f9f9; /* Color de fondo claro */
+  }
 
-/* Título: Estilo para el contenedor principal */
-/* Define el ancho, padding y box-sizing del contenedor */
-.contenedor {
-  width: 100%; /* Ancho completo de la página */
-  padding: 20px; /* Espaciado interno uniforme */
-  box-sizing: border-box; /* Incluir padding y borde en el ancho total */
-}
+/* TÍTULO: ESTILO PARA EL CONTENEDOR PRINCIPAL */
+  /* Define el ancho, padding y box-sizing del contenedor */
+  .contenedor {
+    width: 100%; /* Ancho completo de la página */
+    padding: 20px; /* Espaciado interno uniforme */
+    box-sizing: border-box; /* Incluir padding y borde en el ancho total */
+  }
 
-/* Título: Estilo para los títulos (h2) */
-/* Define el color y el margen superior de los títulos */
-h2 {
-  color: #333; /* Color del texto gris oscuro */
-  margin-top: 0; /* Eliminar margen superior */
-}
+/* TÍTULO: ESTILO PARA LOS TÍTULOS (H2) */
+  /* Define el color y el margen superior de los títulos */
+  h2 {
+    color: #333; /* Color del texto gris oscuro */
+    margin-top: 0; /* Eliminar margen superior */
+  }
 
-/* Título: Estilo para los párrafos */
-/* Define el color del texto, la altura de línea y alineación del texto */
-p {
-  color: #666; /* Color del texto gris claro */
-  line-height: 1.6; /* Altura de línea más espaciosa para mejor legibilidad */
-  text-align: center; /* Alinear texto al centro */
-}
+/* TÍTULO: ESTILO PARA LOS PÁRRAFOS */
+  /* Define el color del texto, la altura de línea y alineación del texto */
+  p {
+    color: #666; /* Color del texto gris claro */
+    line-height: 1.6; /* Altura de línea más espaciosa para mejor legibilidad */
+    text-align: center; /* Alinear texto al centro */
+  }
 
-/* Título: Estilo para el contenedor de logo centrado */
-/* Define la estructura de flexbox para alinear el logo */
-.caja-logo {
-  display: flex; /* Utiliza flexbox para alineación */
-  align-items: center; /* Centrar verticalmente */
-  justify-content: center; /* Centrar horizontalmente */
-}
+/* TÍTULO: ESTILO PARA EL CONTENEDOR DE LOGO CENTRADO */
+  /* Define la estructura de flexbox para alinear el logo */
+  .caja-logo {
+    display: flex; /* Utiliza flexbox para alineación */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+  }
 
-/* Título: Estilo para el contenedor del logo */
-/* Define flexbox y cursor sobre el contenedor del logo */
-.contenedor-logo {
-  display: flex; /* Flexbox para alinear elementos internos */
-  align-items: center; /* Alinear logo y otros elementos verticalmente */
-  cursor: pointer; /* Cambiar cursor al pasar sobre el contenedor */
-}
+/* TÍTULO: ESTILO PARA EL CONTENEDOR DEL LOGO */
+  /* Define flexbox y cursor sobre el contenedor del logo */
+  .contenedor-logo {
+    display: flex; /* Flexbox para alinear elementos internos */
+    align-items: center; /* Alinear logo y otros elementos verticalmente */
+    cursor: pointer; /* Cambiar cursor al pasar sobre el contenedor */
+  }
 
-/* Título: Estilo para el logo */
-/* Define el tamaño y los bordes del logo */
-.logo {
-  max-width: 300px; /* Ancho máximo del logo */
-  height: auto; /* Ajustar altura proporcionalmente */
-  margin-right: 10px; /* Margen derecho para separar del contenido */
-  border-radius: 5px; /* Bordes redondeados */
-}
+/* TÍTULO: ESTILO PARA EL LOGO */
+  /* Define el tamaño y los bordes del logo */
+  .logo {
+    max-width: 300px; /* Ancho máximo del logo */
+    height: auto; /* Ajustar altura proporcionalmente */
+    margin-right: 10px; /* Margen derecho para separar del contenido */
+    border-radius: 5px; /* Bordes redondeados */
+  }
 
-/* Título: Estilo para el botón de subida */
-/* Define el color, espaciado y comportamiento del botón de subida */
-.subir {
-  background-color: #333; /* Fondo gris oscuro */
-  color: #fff; /* Texto en blanco */
-  padding: 10px 20px; /* Espaciado interno */
-  border: none; /* Sin borde */
-  border-radius: 5px; /* Bordes redondeados */
-  cursor: pointer; /* Cambiar el cursor al pasar por encima */
-  width: 100%; /* Ancho completo */
-  margin-top: 40px; /* Separación superior */
-}
+/* TÍTULO: ESTILO PARA EL BOTÓN DE SUBIDA */
+  /* Define el color, espaciado y comportamiento del botón de subida */
+  .subir {
+    background-color: #333; /* Fondo gris oscuro */
+    color: #fff; /* Texto en blanco */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima */
+    width: 100%; /* Ancho completo */
+    margin-top: 40px; /* Separación superior */
+  }
 
 /* Título: Estilo hover para el botón de subida */
 /* Define el color de fondo del botón al pasar el cursor */

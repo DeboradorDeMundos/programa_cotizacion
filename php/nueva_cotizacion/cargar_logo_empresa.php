@@ -29,7 +29,7 @@ if ($id > 0) {
         f.ruta_foto,
         e.id_tipo_firma AS tipo_firma
     FROM e_empresa e
-    LEFT JOIN e_FotosPerfil f ON f.id_foto = e.id_foto
+    LEFT JOIN fp_FotosPerfil f ON f.id_foto = e.id_foto
     WHERE e.id_empresa = ?";
 
     // Preparar la consulta

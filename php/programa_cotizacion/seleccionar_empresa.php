@@ -34,9 +34,9 @@ BPPJ
 
         // Consulta SQL para obtener empresas y sus respectivas imágenes
         $sql = "
-            SELECT E_Empresa.id_empresa, E_Empresa.rut_empresa, E_Empresa.nombre_empresa, E_FotosPerfil.ruta_foto
+            SELECT E_Empresa.id_empresa, E_Empresa.rut_empresa, E_Empresa.nombre_empresa, FP_FotosPerfil.ruta_foto
             FROM E_Empresa
-            LEFT JOIN E_FotosPerfil ON E_Empresa.id_foto = E_FotosPerfil.id_foto
+            LEFT JOIN fp_FotosPerfil ON E_Empresa.id_foto = fp_FotosPerfil.id_foto
         ";
         $result = $mysqli->query($sql); // Ejecuta la consulta SQL
 

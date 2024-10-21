@@ -13,17 +13,17 @@ BPPJ
     -------------------------------------- Inicio ITred Spa Firma .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-// Titulo: Manejo dinámico de firmas en el formulario de cotización
-// Descripción: Este script gestiona las opciones de firma (automática, manual, con imagen, digital) dentro de un formulario de cotización, permite agregar múltiples firmas manualmente, validar campos y previsualizar una firma subida como imagen.
-document.addEventListener('DOMContentLoaded', () => {
-    const DesplegarFirmaAutomatica = document.getElementById('auto-desplegar-firma');
-    const ContenedorFirmaManual = document.getElementById('firma-manual');
-    const InputFirmaImagen = document.getElementById('firma-imagen');
-    const PrevisualizacionFirma = document.getElementById('previsualizacion-firma');
-    const MensajeFirmaDigital = document.getElementById('Mensaje-Firma-Digital'); // Contenedor del mensaje de firma digital
+// TÍTULO: MANEJO DINÁMICO DE FIRMAS EN EL FORMULARIO DE COTIZACIÓN
+    // Descripción: Este script gestiona las opciones de firma (automática, manual, con imagen, digital) dentro de un formulario de cotización, permite agregar múltiples firmas manualmente, validar campos y previsualizar una firma subida como imagen.
+    document.addEventListener('DOMContentLoaded', () => {
+        const DesplegarFirmaAutomatica = document.getElementById('auto-desplegar-firma');
+        const ContenedorFirmaManual = document.getElementById('firma-manual');
+        const InputFirmaImagen = document.getElementById('firma-imagen');
+        const PrevisualizacionFirma = document.getElementById('previsualizacion-firma');
+        const MensajeFirmaDigital = document.getElementById('Mensaje-Firma-Digital'); // Contenedor del mensaje de firma digital
 
-    // Genera la firma automática basada en los campos del formulario
-    const generateAutomaticSignature = () => {
+        // Genera la firma automática basada en los campos del formulario
+        const generateAutomaticSignature = () => {
         const titular_predefinido = `SIN OTRO PARTICULAR, Y ESPERANDO QUE LA PRESENTE OFERTA SEA DE SU INTERÉS, SE DESPIDE ATENTAMENTE:`;
 
         const nombre_encargado = document.getElementById('encargado_nombre').value;
@@ -54,10 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
             \nCelular: ${celular_encargado} 
             \nEmail: ${email_encargado} 
             \nWeb: ${web_empresa}`;
-    };
+        };
 
-    // Escucha los cambios en las opciones de firma
-    document.querySelectorAll('input[name="opcion-firma"]').forEach((input) => {
+        // Escucha los cambios en las opciones de firma
+        document.querySelectorAll('input[name="opcion-firma"]').forEach((input) => {
         input.addEventListener('change', () => {
             // Oculta todas las secciones de firma
             document.querySelectorAll('.desplegar-firma').forEach((element) => {
@@ -150,31 +150,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Título para manejo de la previsualización de la firma de imagen
-// Configura la previsualización de una firma de imagen seleccionada por el usuario y habilita o deshabilita el botón de envío según la selección de firma.
-document.getElementById('firma-imagen').addEventListener('change', function(event) {
-    const Lector = new FileReader();
-    Lector.onload = function() {
-        const Previsualizacion = document.getElementById('previsualizacion-firma');
-        Previsualizacion.src = Lector.result;
-        Previsualizacion.style.display = 'block';
-    };
-    Lector.readAsDataURL(event.target.files[0]);
-});
+// TÍTULO: PARA MANEJO DE LA PREVISUALIZACION DE LA FIRMA DE IMAGEN 
+    // Configura la previsualización de una firma de imagen seleccionada por el usuario y habilita o deshabilita el botón de envío según la selección de firma.
+    document.getElementById('firma-imagen').addEventListener('change', function(event) {
+        const Lector = new FileReader();
+        Lector.onload = function() {
+            const Previsualizacion = document.getElementById('previsualizacion-firma');
+            Previsualizacion.src = Lector.result;
+            Previsualizacion.style.display = 'block';
+        };
+        Lector.readAsDataURL(event.target.files[0]);
+    });
 
-// Título para verificar la selección de firma y habilitar/deshabilitar el botón de subir
-// Verifica si se ha seleccionado una opción de firma y activa el botón de envío en función de la selección.
-function VerificarSeleccionFirma() {
-    const BotonSubir = document.getElementById('boton-subir');
-    const OpcionSeleccionada = document.querySelector('input[name="opcion-firma"]:checked');
-    
-    // Habilitar o deshabilitar el botón de envío según la selección
-    if (OpcionSeleccionada) {
-        BotonSubir.disabled = false; // Habilitar si hay una selección
-    } else {
-        BotonSubir.disabled = true; // Deshabilitar si no hay selección
+// TÍTULO PARA VERIFICAR LA SELECCIÓN DE FIRMA Y HABILITAR/DESHABILITAR EL BOTÓN DE SUBIR
+    // Verifica si se ha seleccionado una opción de firma y activa el botón de envío en función de la selección.
+    function VerificarSeleccionFirma() {
+        const BotonSubir = document.getElementById('boton-subir');
+        const OpcionSeleccionada = document.querySelector('input[name="opcion-firma"]:checked');
+        
+        // Habilitar o deshabilitar el botón de envío según la selección
+        if (OpcionSeleccionada) {
+            BotonSubir.disabled = false; // Habilitar si hay una selección
+        } else {
+            BotonSubir.disabled = true; // Deshabilitar si no hay selección
+        }
     }
-}
 
     
 

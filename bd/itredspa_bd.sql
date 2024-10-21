@@ -27,33 +27,59 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `itredspa_bd` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
 USE itredspa_bd;
 -- ------------------------------------------------------------------------------------------------------------
+-- ------------------------------------- TABLA FP_FotosPerfil -------------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------ 
 
 -- Eliminar la tabla FotosPerfil si existe
-DROP TABLE IF EXISTS E_FotosPerfil;
+DROP TABLE IF EXISTS FP_FotosPerfil;
 
 -- Crear la tabla FotosPerfil
-CREATE TABLE E_FotosPerfil (
+CREATE TABLE FP_FotosPerfil (
     id_foto INT NOT NULL AUTO_INCREMENT, -- Identificador único de la foto
     ruta_foto VARCHAR(255) NOT NULL, -- Ruta del archivo de la foto
     fecha_subida DATETIME DEFAULT CURRENT_TIMESTAMP, -- Fecha de carga de la foto
     PRIMARY KEY (id_foto) -- Definición de la clave primaria
 ) ENGINE=InnoDB;
 
+
+-- ------------------------------------------------------------------------------------------------------------
+-- ------------------------------------- TABLA E_tipo_firma -------------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------ 
+
+
 CREATE TABLE E_tipo_firma (
     id INT AUTO_INCREMENT PRIMARY KEY,
     tipo VARCHAR(50) NOT NULL UNIQUE
 );
 
+
+-- ------------------------------------------------------------------------------------------------------------
+-- ------------------------------------- TABLA e_Area_Empresa -------------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------ 
+
+
+-- Crear la tabla de áreas de la empresa
+CREATE TABLE Tp_Area_Empresa (
+    id_area_empresa INT NOT NULL AUTO_INCREMENT, -- Identificador único del área de la empresa
+    nombre_area VARCHAR(255) NOT NULL, -- Nombre del área de la empresa
+    PRIMARY KEY (id_area_empresa) -- Definir clave primaria
+) ENGINE=InnoDB;
+
+
+-- ------------------------------------------------------------------------------------------------------------
+-- ------------------------------------- TABLA E_Empresas -------------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------ 
+
 -- Eliminar la tabla Empresa si existe
 DROP TABLE IF EXISTS E_Empresa;
 
--- Crear la tabla Empresa
+-- Crear la tabla Empresa con la nueva columna id_area_empresa
 CREATE TABLE E_Empresa (
     id_empresa INT NOT NULL AUTO_INCREMENT, -- Identificador único de la empresa
     id_foto INT, -- Identificador de la foto de la empresa
-    rut_empresa VARCHAR(20) UNIQUE NOT NULL, -- RUT de la empresa
+    rut_empresa VARCHAR(20) NOT NULL, -- RUT de la empresa
     nombre_empresa VARCHAR(255) NOT NULL, -- Nombre de la empresa
-    area_empresa VARCHAR(255) NOT NULL, -- Área de la empresa
+    id_area_empresa INT NOT NULL, -- Identificador del área de la empresa (clave foránea)
     direccion_empresa VARCHAR(255), -- Dirección de la empresa
     ciudad_empresa VARCHAR(100), -- Ciudad de la empresa
     pais_empresa VARCHAR(100), -- País de la empresa
@@ -63,11 +89,16 @@ CREATE TABLE E_Empresa (
     fecha_creacion DATE, -- Fecha de creación de la empresa
     dias_validez INT, -- Días de validez
     id_tipo_firma INT, -- Identificador del tipo de firma
-    PRIMARY KEY (id_empresa), -- Definición de la clave primaria
-    FOREIGN KEY (id_foto) REFERENCES E_FotosPerfil(id_foto) ON DELETE CASCADE, -- Definición de la clave foránea
-    FOREIGN KEY (id_tipo_firma) REFERENCES E_tipo_firma(id) ON DELETE SET NULL -- Definición de la clave foránea para tipo de firma
+    PRIMARY KEY (id_empresa), -- Clave primaria
+    FOREIGN KEY (id_foto) REFERENCES FP_FotosPerfil(id_foto) ON DELETE CASCADE, -- Clave foránea de fotos
+    FOREIGN KEY (id_tipo_firma) REFERENCES E_tipo_firma(id) ON DELETE SET NULL, -- Clave foránea de tipo de firma
+    FOREIGN KEY (id_area_empresa) REFERENCES Tp_Area_Empresa(id_area_empresa) -- Clave foránea del área de la empresa
 ) ENGINE=InnoDB;
 
+
+-----------------------------------------------------------------------------------------
+-- ------------------------------------- TABLA ENCARGADOS -------------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------ 
 
 CREATE TABLE E_Encargados (
     id_encargado INT NOT NULL AUTO_INCREMENT, -- Identificador único del encargado
@@ -386,13 +417,11 @@ CREATE TABLE P_Productos (
     nombre_producto VARCHAR(255) NOT NULL, -- Nombre del producto
     descripcion_producto TEXT, -- Descripción del producto
     precio_producto DECIMAL(10,2) NOT NULL, -- Precio del producto
-    id_foto INT, -- ID de la foto del producto (clave foránea)
     id_tipo_producto INT, -- Nuevo campo para el tipo de producto (clave foránea)
     id_empresa INT, 
     PRIMARY KEY (id_producto), -- Definición de la clave primaria
 
     -- Definición de la clave foránea para id_foto
-    FOREIGN KEY (id_foto) REFERENCES E_FotosPerfil(id_foto) ON DELETE CASCADE,
     FOREIGN KEY (id_tipo_producto) REFERENCES p_tipo_producto(id_tipo_producto) ON DELETE SET NULL, -- Puedes usar ON DELETE CASCADE si prefieres eliminar los productos cuando se elimina un tipo
     FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE CASCADE 
 ) ENGINE=InnoDB ;
@@ -636,7 +665,9 @@ CREATE INDEX idx_firmas_nombre_encargado ON E_Firmas(nombre_encargado_firma);
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- INSERT DATOS ----------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
-
+-- Insertar áreas de ejemplo en la tabla E_AreaEmpresa
+INSERT INTO Tp_Area_Empresa (nombre_area) VALUES ('Recursos Humanos'), ('Finanzas'), ('Tecnología'), ('Marketing'), ('Ventas');
+-- Insertar áreas de ejemplo en la tabla Tp_Firma
 INSERT INTO E_tipo_firma (tipo) VALUES ('automatica');
 INSERT INTO E_tipo_firma (tipo) VALUES ('manual');
 INSERT INTO E_tipo_firma (tipo) VALUES ('digital');
@@ -683,7 +714,7 @@ INSERT INTO p_tipo_producto (tipo_producto) VALUES ('maestro');
 INSERT INTO p_tipo_producto (tipo_producto) VALUES ('ayudante');
 
 -- Insertar datos en la tabla E_FotosPerfil
-INSERT INTO E_FotosPerfil (id_foto, ruta_foto, fecha_subida)
+INSERT INTO FP_FotosPerfil (id_foto, ruta_foto, fecha_subida)
 VALUES (1, '../../imagenes/programa_cotizacion/prueba2.png', '2024-09-09 17:25:20');
 
 -- Insertar datos en la tabla E_Empresa
@@ -959,22 +990,6 @@ INSERT INTO C_Totales (
     'MIL SETENTA y UN'
 );
 
--- Insertar datos en la tabla P_Productos
-INSERT INTO P_Productos (
-    nombre_producto, 
-    descripcion_producto, 
-    precio_producto, 
-    id_foto, 
-    id_tipo_producto, 
-    id_empresa
-) VALUES (
-    'Producto A', -- Nombre del producto
-    'Descripción del producto A', -- Descripción
-    150.00, -- Precio del producto
-    1, -- ID de la foto del producto
-    1, -- ID del tipo de producto
-    1 -- ID de la empresa
-);
 
 -- Insertar datos en la tabla C_pago
 INSERT INTO C_pago (
