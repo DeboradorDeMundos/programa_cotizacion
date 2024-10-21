@@ -133,62 +133,74 @@ if ($id_empresa > 0) {
 ?>
 
 <link rel="stylesheet" href="../../css/ver_cotizacion/cargar_logo_empresa.css">
+<!-- Título: Sección de Código para la Carga de Logo -->
 <div class="box-6 caja-logo">
-<?php
-// Procesar la subida de la imagen cuando se envía el formulario
-$upload_dir = '../../imagenes/cotizacion/'; // Ruta relativa desde el archivo PHP
-$empresa_id_foto = null;
+    <?php
+    // Título: Procesamiento de la Subida de Imagen
+    // Procesar la subida de la imagen cuando se envía el formulario
+    $upload_dir = '../../imagenes/cotizacion/'; // Ruta relativa desde el archivo PHP
+    $empresa_id_foto = null;
 
-// Verificar si se ha enviado el formulario
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Verificar si se ha cargado una imagen sin errores
-    if (isset($_FILES['logo_upload']) && $_FILES['logo_upload']['error'] == UPLOAD_ERR_OK) {
-        $tmp_name = $_FILES['logo_upload']['tmp_name'];
-        $name = basename($_FILES['logo_upload']['name']);
+    // Título: Verificación del Envío del Formulario
+    // Verificar si se ha enviado el formulario
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Título: Verificación de la Carga de Imagen
+        // Verificar si se ha cargado una imagen sin errores
+        if (isset($_FILES['logo_upload']) && $_FILES['logo_upload']['error'] == UPLOAD_ERR_OK) {
+            $tmp_name = $_FILES['logo_upload']['tmp_name'];
+            $name = basename($_FILES['logo_upload']['name']);
 
-        // Validar el tipo de archivo permitido
-        $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
-        if (!in_array($_FILES['logo_upload']['type'], $allowed_types)) {
-            die("Error: Tipo de archivo no permitido."); // Terminar si el tipo de archivo no es permitido
-        }
-
-        $upload_file = $upload_dir . $name; // Ruta del archivo a cargar
-
-        // Mover el archivo cargado al directorio de destino
-        if (move_uploaded_file($tmp_name, $upload_file)) {
-            echo "Imagen subida correctamente."; // Mensaje de éxito
-
-            // Insertar la ruta de la foto en la tabla FotosPerfil
-            $sql_foto = "INSERT INTO C_FotosPerfil (ruta_foto) VALUES (?)";
-            $stmt_foto = $mysqli->prepare($sql_foto);
-            $stmt_foto->bind_param("s", $upload_file);
-            // Ejecutar la inserción
-            if ($stmt_foto->execute()) {
-                echo "Foto del perfil insertada correctamente."; // Mensaje de éxito
-                $empresa_id_foto = $mysqli->insert_id; // Obtener el ID de la foto insertada
-            } else {
-                die("Error al insertar la foto del perfil: " . $stmt_foto->error); // Mensaje de error
+            // Título: Validación de Tipo de Archivo
+            // Validar el tipo de archivo permitido
+            $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
+            if (!in_array($_FILES['logo_upload']['type'], $allowed_types)) {
+                die("Error: Tipo de archivo no permitido."); // Terminar si el tipo de archivo no es permitido
             }
-            // Cerrar la consulta
-            $stmt_foto->close();
+
+            $upload_file = $upload_dir . $name; // Ruta del archivo a cargar
+
+            // Título: Movimiento de Archivo Cargado
+            // Mover el archivo cargado al directorio de destino
+            if (move_uploaded_file($tmp_name, $upload_file)) {
+                echo "Imagen subida correctamente."; // Mensaje de éxito
+
+                // Título: Inserción de Ruta de Foto en la Base de Datos
+                // Insertar la ruta de la foto en la tabla FotosPerfil
+                $sql_foto = "INSERT INTO C_FotosPerfil (ruta_foto) VALUES (?)";
+                $stmt_foto = $mysqli->prepare($sql_foto);
+                $stmt_foto->bind_param("s", $upload_file);
+                // Ejecutar la inserción
+                if ($stmt_foto->execute()) {
+                    echo "Foto del perfil insertada correctamente."; // Mensaje de éxito
+                    $empresa_id_foto = $mysqli->insert_id; // Obtener el ID de la foto insertada
+                } else {
+                    die("Error al insertar la foto del perfil: " . $stmt_foto->error); // Mensaje de error
+                }
+                // Cerrar la consulta
+                $stmt_foto->close();
+            } else {
+                die("Error al mover el archivo."); // Mensaje de error si la subida falla
+            }
         } else {
-            die("."); // Mensaje de error si la subida falla
+            echo "Error: No se subió una imagen."; // Mensaje de error si no se subió una imagen
         }
-    } else {
-        echo "."; // Mensaje de error si no se subió una imagen
     }
-}
-?>
+    ?>
+    
+    <!-- Título: Carga de Logo -->
     <label for="subir-logo" class="contenedor-logo">
         <?php if (isset($items['ruta_foto']) && !empty($items['ruta_foto'])): ?>
+            <!-- Título: Previsualización de Imagen -->
             <!-- Mostrar la imagen de perfil si existe -->
-            <img src="<?php echo htmlspecialchars($items['ruta_foto'], ENT_QUOTES, 'UTF-8'); ?>" alt="Foto de perfil" id_empresa="Previsualizar-logo" class="logo" onclick="document.getElementById('subir-logo').click();" />
+            <img src="<?php echo htmlspecialchars($items['ruta_foto'], ENT_QUOTES, 'UTF-8'); ?>" alt="Foto de perfil" id="Previsualizar-logo" class="logo" onclick="document.getElementById('subir-logo').click();" />
         <?php else: ?>
+            <!-- Título: Texto para Cargar Logo -->
             <!-- Mostrar texto para cargar logo si no hay imagen -->
-            <span id_empresa="logo-text" onclick="document.getElementById('subir-logo').click();">Cargar Logo de Empresa</span>
+            <span id="logo-text" onclick="document.getElementById('subir-logo').click();">Cargar Logo de Empresa</span>
         <?php endif; ?>
+        <!-- Título: Input Oculto para Cargar Imagen -->
         <!-- Input oculto para cargar la imagen -->
-        <input type="file" id_empresa="subir-logo" name="logo_upload" accept="image/*" style="display:none;" onchange="previewImage(event)">
+        <input type="file" id="subir-logo" name="logo_upload" accept="image/*" style="display:none;" onchange="previewImage(event)">
     </label>
 </div>
 

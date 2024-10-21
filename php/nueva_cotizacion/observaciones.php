@@ -13,8 +13,10 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- -->
      
     <link rel="stylesheet" href="../../css/nueva_cotizacion/observaciones.css">
+<!-- Título: Sección de Observaciones -->
 <fieldset class="observaciones-box">
     <div class="form-group">
+        <!-- Título: Campo para Observaciones -->
         <label for="observacion">Observaciones:</label>
         <textarea id="observacion" name="observacion" rows="4" cols="50" placeholder="Agrega cualquier comentario adicional (OPCIONAL)..."></textarea>
     </div>        

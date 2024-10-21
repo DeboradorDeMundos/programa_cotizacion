@@ -41,16 +41,17 @@ BPPJ
     <a href="../../programa_cotizacion.php" class="boton-fijado">Volver</a>
 </head> 
 <!-- Abre el elemento del cuerpo de la página donde se coloca el contenido visible -->
-<body> 
+<body>
 
- 
-    <!-- listado de clientes -->
-    <?php include 'mostrar_clientes.php'; ?>
+    <!-- Título: Listado de Clientes -->
+    <h2>Listado de Clientes</h2>
+
+        <!-- AQUI VAN EL LISTADO DE LOS CLIENTES -->
+        <!-- Listado de clientes -->
+        <?php include 'mostrar_clientes.php'; ?>
     <a href="nuevo_cliente.php" class="boton-fijado">Crear nuevo cliente </a>
 
-
-
-    <!-- Cierra el cuerpo de la pagina -->
+    <!-- Cierra el cuerpo de la página -->
 </body>
 
 <script src="../../js/crear_cliente/crear_cliente.js"></script> 

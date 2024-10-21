@@ -14,86 +14,94 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Traer proyecto.CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
+/* Título: Estilo del cuadro de datos */
+/* Define el estilo para el cuadro de datos */
+.cuadro-datos {
+    border: 1px solid #ddd; /* Borde gris claro de 1px */
+    padding: 15px; /* Espaciado interno de 15px */
+    background-color: #fff; /* Fondo blanco */
+}
 
-    .cuadro-datos {
-        border: 1px solid #ddd; /* Borde gris claro de 1px */
-        padding: 15px; /* Espaciado interno de 15px */
-        background-color: #fff; /* Fondo blanco */
-    }
-    
-    /* Estilos para contenedores flexibles de diferentes tamaños */
-    .box-6,
-    .box-12 {
-        display: flex; /* Usa flexbox para organizar los elementos */
-        flex-direction: column; /* Disposición vertical de los elementos */
-    }
-    
-    /* Estilo específico para la caja de tamaño 6 */
-    .box-6 {
-        flex: 1; /* Permite que esta caja ocupe el espacio disponible */
-        padding: 10px; /* Espaciado interno de 10px */
-    }
-    
-    /* Estilo para el legend dentro de fieldsets */
-    fieldset legend {
-        font-size: 1.2em; /* Tamaño de fuente aumentado para el legend */
-        padding: 0 10px; /* Espaciado lateral de 10px */
-        color: #333; /* Color de texto oscuro */
-        font-weight: bold; /* Texto en negrita */
-    }
-    
-    /* Estilo para el contenido dentro del grupo de formularios */
-    .form-group label,
-    .form-group select,
-    .form-group input {
-        display: flex; /* Usa flexbox para organizar el contenido */
-        align-items: center; /* Centra el contenido del label, select e input */
-    }
-    
-    /* Estilo para etiquetas en el grupo de formularios */
-    .form-group label {
-        width: 20%; /* Ancho del label */
-        font-size: 14px; /* Tamaño de fuente */
-        background-color: #d4d4d4; /* Fondo gris claro para el label */
-        padding: 5px; /* Espaciado interno del label */
-        border-radius: 3px 0px 0px 3px; /* Bordes redondeados a la izquierda */
-        text-align: left; /* Alineación del texto a la izquierda */
-    }
-    
-    /* Estilo para selectores e inputs en el grupo de formularios */
-    .form-group select,
-    .form-group input {
-        flex: 2; /* Hace que el input ocupe 2 partes del espacio disponible */
-        padding: 5px; /* Espaciado interno de 5px */
-        border: 1px solid #ddd; /* Borde gris claro de 1px */
-        border-radius: 0px 3px 3px 0px; /* Bordes redondeados a la derecha */
-        font-size: 14px; /* Tamaño de fuente */
-        text-align: left; /* Alineación del texto a la izquierda */
-        background-color: #fff; /* Fondo blanco */
-        box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el tamaño total del input */
-    }
-    
-    /* Asegura que los label y input tengan la misma altura */
-    .form-group {
-        display: flex; /* Usa flexbox para alinear elementos */
-        align-items: stretch; /* Estira los elementos para que tengan la misma altura */
-        justify-content: space-between; /* Alinea el label y el input a los extremos */
-        margin-bottom: 10px; /* Espaciado inferior de 10px */
-    }
-    
-    /* Estilo para grupos de campos en línea */
-    .form-group-inline {
-        display: flex; /* Usa flexbox para organizar elementos en línea */
-        justify-content: space-between; /* Alinea los elementos a los extremos */
-        gap: 10px; /* Espacio entre los elementos */
-    }
-    
-    /* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
-    .form-group-inline .form-group {
-        flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
-    }
-    
+/* Título: Estilos para contenedores flexibles */
+/* Define estilos para contenedores de diferentes tamaños */
+.box-6,
+.box-12 {
+    display: flex; /* Usa flexbox para organizar los elementos */
+    flex-direction: column; /* Disposición vertical de los elementos */
+}
 
+/* Título: Estilo específico para la caja de tamaño 6 */
+/* Define el estilo para la caja de tamaño 6 */
+.box-6 {
+    flex: 1; /* Permite que esta caja ocupe el espacio disponible */
+    padding: 10px; /* Espaciado interno de 10px */
+}
+
+/* Título: Estilo del legend en fieldsets */
+/* Define el estilo para el legend dentro de fieldsets */
+fieldset legend {
+    font-size: 1.2em; /* Tamaño de fuente aumentado para el legend */
+    padding: 0 10px; /* Espaciado lateral de 10px */
+    color: #333; /* Color de texto oscuro */
+    font-weight: bold; /* Texto en negrita */
+}
+
+/* Título: Estilo para el contenido dentro del grupo de formularios */
+/* Define el estilo para etiquetas, selectores e inputs en el grupo de formularios */
+.form-group label,
+.form-group select,
+.form-group input {
+    display: flex; /* Usa flexbox para organizar el contenido */
+    align-items: center; /* Centra el contenido del label, select e input */
+}
+
+/* Título: Estilo para etiquetas en el grupo de formularios */
+/* Define el estilo para las etiquetas en el grupo de formularios */
+.form-group label {
+    width: 20%; /* Ancho del label */
+    font-size: 14px; /* Tamaño de fuente */
+    background-color: #d4d4d4; /* Fondo gris claro para el label */
+    padding: 5px; /* Espaciado interno del label */
+    border-radius: 3px 0px 0px 3px; /* Bordes redondeados a la izquierda */
+    text-align: left; /* Alineación del texto a la izquierda */
+}
+
+/* Título: Estilo para selectores e inputs en el grupo de formularios */
+/* Define el estilo para selectores e inputs en el grupo de formularios */
+.form-group select,
+.form-group input {
+    flex: 2; /* Hace que el input ocupe 2 partes del espacio disponible */
+    padding: 5px; /* Espaciado interno de 5px */
+    border: 1px solid #ddd; /* Borde gris claro de 1px */
+    border-radius: 0px 3px 3px 0px; /* Bordes redondeados a la derecha */
+    font-size: 14px; /* Tamaño de fuente */
+    text-align: left; /* Alineación del texto a la izquierda */
+    background-color: #fff; /* Fondo blanco */
+    box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el tamaño total del input */
+}
+
+/* Título: Asegura que los label y input tengan la misma altura */
+/* Define el estilo para el grupo de formularios */
+.form-group {
+    display: flex; /* Usa flexbox para alinear elementos */
+    align-items: stretch; /* Estira los elementos para que tengan la misma altura */
+    justify-content: space-between; /* Alinea el label y el input a los extremos */
+    margin-bottom: 10px; /* Espaciado inferior de 10px */
+}
+
+/* Título: Estilo para grupos de campos en línea */
+/* Define el estilo para grupos de campos en línea */
+.form-group-inline {
+    display: flex; /* Usa flexbox para organizar elementos en línea */
+    justify-content: space-between; /* Alinea los elementos a los extremos */
+    gap: 10px; /* Espacio entre los elementos */
+}
+
+/* Título: Distribución equitativa para grupos en línea */
+/* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
+.form-group-inline .form-group {
+    flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
+}
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Traer proyecto.CSS ---------------------------------------

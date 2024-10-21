@@ -131,12 +131,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <link rel="stylesheet" href="../../css/ver_cotizacion/traer_cliente.css">
+<!-- Título: Fieldset de Datos del Cliente -->
 <fieldset class="row">
+    <!-- Título: Leyenda de Datos del Cliente -->
     <legend>Datos cliente</legend>
+    
+    <!-- Título: Contenedor de Datos del Cliente (lado derecho) -->
     <div class="box-6 cuadro-datos">
         <div class="form-group-inline">
+            <!-- Título: Grupo de Formulario para RUT -->
             <div class="form-group">
+                <!-- Título: Etiqueta RUT -->
                 <label for="cliente_rut">RUT:</label>
+                <!-- Título: Campo de Entrada RUT -->
                 <input type="text" id="cliente_rut" name="cliente_rut"
                     placeholder="Ej: 12.345.678-9"
                     value="<?php echo htmlspecialchars($cliente_rut); ?>" 
@@ -145,8 +152,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     oninput="QuitarCaracteresInvalidos(this)"
                     required>
             </div>
+            <!-- Título: Grupo de Formulario para Nombre -->
             <div class="form-group">
+                <!-- Título: Etiqueta Nombre -->
                 <label for="cliente_nombre">Nombre:</label>
+                <!-- Título: Campo de Entrada Nombre -->
                 <input type="text" id="cliente_nombre" name="cliente_nombre"
                     placeholder="Ejemplo: Pedro Perez"
                     value="<?php echo htmlspecialchars($cliente_nombre); ?>" 
@@ -157,22 +167,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
 
+        <!-- Título: Grupo de Formulario para Empresa -->
         <div class="form-group">
+            <!-- Título: Etiqueta Empresa -->
             <label for="cliente_empresa">Empresa:</label>
+            <!-- Título: Campo de Entrada Empresa -->
             <input type="text" id="cliente_empresa" name="cliente_empresa" 
                 placeholder="Ejemplo: Mi Empresa S.A."
                 value="<?php echo htmlspecialchars($cliente_empresa); ?>">
         </div>
 
         <div class="form-group-inline">
+            <!-- Título: Grupo de Formulario para Dirección -->
             <div class="form-group">
+                <!-- Título: Etiqueta Dirección -->
                 <label for="cliente_direccion">Dirección:</label>
+                <!-- Título: Campo de Entrada Dirección -->
                 <input type="text" id="cliente_direccion" name="cliente_direccion" 
                     placeholder="Ejemplo: Av. Siempre Viva 742"
                     value="<?php echo htmlspecialchars($cliente_direccion); ?>">
             </div>
+            <!-- Título: Grupo de Formulario para Lugar -->
             <div class="form-group">
+                <!-- Título: Etiqueta Lugar -->
                 <label for="cliente_lugar">Lugar:</label>
+                <!-- Título: Select para Lugar -->
                 <select id="cliente_lugar" name="cliente_lugar" required>
                     <option value="" disabled <?php echo $cliente_lugar ? '' : 'selected'; ?>>Selecciona un lugar</option>
                     <option value="casa" <?php echo $cliente_lugar === 'casa' ? 'selected' : ''; ?>>Casa</option>
@@ -185,8 +204,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
 
+        <!-- Título: Grupo de Formulario para Teléfono -->
         <div class="form-group">
+            <!-- Título: Etiqueta Teléfono -->
             <label for="cliente_fono">Teléfono:</label>
+            <!-- Título: Campo de Entrada Teléfono -->
             <input type="text" id="cliente_fono" name="cliente_fono"
                 pattern="\+?\d{7,15}" 
                 placeholder="+1234567890" 
@@ -194,16 +216,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 
+    <!-- Título: Contenedor de Datos del Cliente (lado izquierdo) -->
     <div class="box-6 cuadro-datos cuadro-datos-left">
+        <!-- Título: Grupo de Formulario para Email -->
         <div class="form-group">
+            <!-- Título: Etiqueta Email -->
             <label for="cliente_email">Email:</label>
+            <!-- Título: Campo de Entrada Email -->
             <input type="email" id="cliente_email" name="cliente_email"
                 placeholder="ejemplo@gmail.com" 
                 value="<?php echo htmlspecialchars($cliente_email); ?>">
         </div>
 
+        <!-- Título: Grupo de Formulario para Cargo -->
         <div class="form-group">
+            <!-- Título: Etiqueta Cargo -->
             <label for="cliente_cargo">Cargo:</label>
+            <!-- Título: Select para Cargo -->
             <select id="cliente_cargo" name="cliente_cargo" required>
                 <option value="" disabled <?php echo $cliente_cargo ? '' : 'selected'; ?>>Selecciona un cargo</option>
                 <option value="gerente" <?php echo $cliente_cargo === 'gerente' ? 'selected' : ''; ?>>Gerente</option>
@@ -227,8 +256,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </select>
         </div>
 
+        <!-- Título: Grupo de Formulario para Giro -->
         <div class="form-group">
+            <!-- Título: Etiqueta Giro -->
             <label for="cliente_giro">Giro:</label>
+            <!-- Título: Select para Giro -->
             <select id="cliente_giro" name="cliente_giro" required>
                 <option value="" disabled <?php echo $cliente_giro ? '' : 'selected'; ?>>Selecciona un giro</option>
                 <option value="comercio" <?php echo $cliente_giro === 'comercio' ? 'selected' : ''; ?>>Comercio</option>
@@ -248,22 +280,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="form-group-inline">
+            <!-- Título: Grupo de Formulario para Comuna -->
             <div class="form-group">
+                <!-- Título: Etiqueta Comuna -->
                 <label for="cliente_comuna">Comuna:</label>
+                <!-- Título: Campo de Entrada Comuna -->
                 <input type="text" id="cliente_comuna" name="cliente_comuna" 
                     placeholder="comuna" 
                     value="<?php echo htmlspecialchars($cliente_comuna); ?>">
             </div>
+            <!-- Título: Grupo de Formulario para Ciudad -->
             <div class="form-group">
+                <!-- Título: Etiqueta Ciudad -->
                 <label for="cliente_ciudad">Ciudad:</label>
+                <!-- Título: Campo de Entrada Ciudad -->
                 <input type="text" id="cliente_ciudad" name="cliente_ciudad" 
                     placeholder="ciudad" 
                     value="<?php echo htmlspecialchars($cliente_ciudad); ?>">
             </div>
         </div>
 
+        <!-- Título: Grupo de Formulario para Tipo de Cliente -->
         <div class="form-group">
+            <!-- Título: Etiqueta Tipo -->
             <label for="cliente_tipo">Tipo:</label>
+            <!-- Título: Select para Tipo de Cliente -->
             <select id="cliente_tipo" name="cliente_tipo" required>
                 <option value="" disabled selected>Selecciona un tipo de cliente</option>
                 <option value="persona_natural" <?php echo ($cliente_tipo == 'persona_natural') ? 'selected' : ''; ?>>Persona Natural</option>

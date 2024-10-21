@@ -12,22 +12,29 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Condiciones Generales.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
+<!-- Título: Enlaza el archivo CSS para estilizar la página de obligaciones del cliente -->
 <!-- Enlaza el archivo CSS para estilizar la página de obligaciones del cliente -->
 <link rel="stylesheet" href="../../css/crear_empresa/obligaciones_clientes.css"> 
 
+<!-- Título: Título de la sección de obligaciones del cliente -->
 <!-- Título de la sección de obligaciones del cliente -->
 <h2>Obligaciones cliente</h2> 
 
+<!-- Título: Contenedor donde se agregarán dinámicamente las filas de condiciones -->
 <!-- Contenedor donde se agregarán dinámicamente las filas de condiciones -->
 <div id="obligaciones-contenedor">
+    <!-- Título: Aquí se agregarán dinámicamente las filas de condiciones -->
     <!-- Aquí se agregarán dinámicamente las filas de condiciones -->
 </div>
 
+<!-- Título: Contenedor para los botones de agregar y eliminar obligaciones -->
 <!-- Contenedor para los botones de agregar y eliminar obligaciones -->
 <div style="margin-top: 10px;">
+    <!-- Título: Botón para agregar una nueva obligación -->
     <!-- Botón para agregar una nueva obligación -->
     <button id="boton-agregar-obligacion" type="button">Agregar nueva obligacion</button>
     
+    <!-- Título: Botón para eliminar la última obligación. Este botón está oculto por defecto -->
     <!-- Botón para eliminar la última obligación. Este botón está oculto por defecto -->
     <button id="boton-eliminar-obligacion" type="button" style="display: none;">Eliminar última obligacion</button>
 </div>

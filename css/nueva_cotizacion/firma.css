@@ -14,42 +14,49 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Firma .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
+/* Título: Contenedor para botones de opción */
+/* Hace que el contenedor de alineación muestre los elementos en línea y centrados con un fondo y borde personalizados */
+.contenedor-alineacion {
+    display: inline-flex; /* Mostrar los elementos en línea */
+    justify-content: center; /* Centrar los elementos */
+    align-items: center; /* Alinear verticalmente */
+    gap: 20px; /* Espacio entre los botones de opción */
+    padding: 10px; /* Añadir espacio interno */
+    background-color: #e9ecef; /* Color de fondo suave */
+    border: 2px solid #007bff; /* Borde azul para resaltar */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    margin: 20px auto; /* Margen y centrar en pantalla */
+    max-width: 400px; /* Limitar el ancho */
+}
 
-    .contenedor-alineacion {
-        display: inline-flex; /* Mostrar los elementos en línea */
-        justify-content: center; /* Centrar los elementos */
-        align-items: center; /* Alinear verticalmente */
-        gap: 20px; /* Espacio entre los botones de opción */
-        padding: 10px; /* Añadir espacio interno */
-        background-color: #e9ecef; /* Color de fondo suave */
-        border: 2px solid #007bff; /* Borde azul para resaltar */
-        border-radius: 10px; /* Bordes redondeados */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
-        margin: 20px auto; /* Margen y centrar en pantalla */
-        max-width: 400px; /* Limitar el ancho */
-    }
-    
-    .contenedor-alineacion label {
-        font-family: Arial, sans-serif; /* Fuente general */
-        font-size: 16px; /* Tamaño de letra */
-        font-weight: bold; /* Negrita */
-        color: #333; /* Color del texto */
-        cursor: pointer; /* Cambiar el cursor al pasar sobre los textos */
-    }
-    
-    .contenedor-alineacion input[type="radio"] {
-        margin-right: 8px; /* Espacio entre el botón de radio y el texto */
-    }
-    
-    .contenedor-alineacion label:hover {
-        color: #007bff; /* Cambiar color de texto al pasar el cursor */
-    }
-    
-    input[type="radio"]:checked + label {
-        color: #007bff; /* Cambiar color de texto del label seleccionado */
-    }
-    
+/* Título: Estilo para etiquetas dentro del contenedor de alineación */
+/* Define la fuente, tamaño y color de las etiquetas */
+.contenedor-alineacion label {
+    font-family: Arial, sans-serif; /* Fuente general */
+    font-size: 16px; /* Tamaño de letra */
+    font-weight: bold; /* Negrita */
+    color: #333; /* Color del texto */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre los textos */
+}
 
+/* Título: Espaciado para botones de radio */
+/* Añade espacio entre el botón de radio y el texto de la etiqueta */
+.contenedor-alineacion input[type="radio"] {
+    margin-right: 8px; /* Espacio entre el botón de radio y el texto */
+}
+
+/* Título: Efecto hover para etiquetas */
+/* Cambia el color del texto al pasar el cursor sobre las etiquetas */
+.contenedor-alineacion label:hover {
+    color: #007bff; /* Cambiar color de texto al pasar el cursor */
+}
+
+/* Título: Estilo para etiquetas de botón de radio seleccionadas */
+/* Cambia el color del texto de la etiqueta seleccionada */
+input[type="radio"]:checked + label {
+    color: #007bff; /* Cambiar color de texto del label seleccionado */
+}
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Firma .CSS ---------------------------------------

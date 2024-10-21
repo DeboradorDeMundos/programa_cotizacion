@@ -14,7 +14,8 @@ BPPJ
     -------------------------------------- INICIO ITred Spa crear_empresa .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-    /* Estilo global para el cuerpo del documento */
+/* Título: Estilo global para el cuerpo del documento */
+/* Define la tipografía base, el margen y el fondo del cuerpo del documento */
 body {
   font-family: Arial, sans-serif; /* Tipografía base */
   margin: 0; /* Eliminar margen predeterminado */
@@ -22,41 +23,47 @@ body {
   background-color: #f9f9f9; /* Color de fondo claro */
 }
 
-/* Estilo para el contenedor principal */
+/* Título: Estilo para el contenedor principal */
+/* Define el ancho, padding y box-sizing del contenedor */
 .contenedor {
   width: 100%; /* Ancho completo de la página */
   padding: 20px; /* Espaciado interno uniforme */
   box-sizing: border-box; /* Incluir padding y borde en el ancho total */
 }
 
-/* Estilo para los títulos (h2) */
+/* Título: Estilo para los títulos (h2) */
+/* Define el color y el margen superior de los títulos */
 h2 {
   color: #333; /* Color del texto gris oscuro */
   margin-top: 0; /* Eliminar margen superior */
 }
 
-/* Estilo para los párrafos */
+/* Título: Estilo para los párrafos */
+/* Define el color del texto, la altura de línea y alineación del texto */
 p {
   color: #666; /* Color del texto gris claro */
   line-height: 1.6; /* Altura de línea más espaciosa para mejor legibilidad */
   text-align: center; /* Alinear texto al centro */
 }
 
-/* Contenedor de logo centrado horizontalmente */
+/* Título: Estilo para el contenedor de logo centrado */
+/* Define la estructura de flexbox para alinear el logo */
 .caja-logo {
   display: flex; /* Utiliza flexbox para alineación */
   align-items: center; /* Centrar verticalmente */
   justify-content: center; /* Centrar horizontalmente */
 }
 
-/* Contenedor para el logo con efecto de puntero */
+/* Título: Estilo para el contenedor del logo */
+/* Define flexbox y cursor sobre el contenedor del logo */
 .contenedor-logo {
   display: flex; /* Flexbox para alinear elementos internos */
   align-items: center; /* Alinear logo y otros elementos verticalmente */
   cursor: pointer; /* Cambiar cursor al pasar sobre el contenedor */
 }
 
-/* Estilo para el logo */
+/* Título: Estilo para el logo */
+/* Define el tamaño y los bordes del logo */
 .logo {
   max-width: 300px; /* Ancho máximo del logo */
   height: auto; /* Ajustar altura proporcionalmente */
@@ -64,7 +71,8 @@ p {
   border-radius: 5px; /* Bordes redondeados */
 }
 
-/* Botón de subida */
+/* Título: Estilo para el botón de subida */
+/* Define el color, espaciado y comportamiento del botón de subida */
 .subir {
   background-color: #333; /* Fondo gris oscuro */
   color: #fff; /* Texto en blanco */
@@ -76,12 +84,14 @@ p {
   margin-top: 40px; /* Separación superior */
 }
 
-/* Cambiar el color del botón al pasar el cursor */
+/* Título: Estilo hover para el botón de subida */
+/* Define el color de fondo del botón al pasar el cursor */
 .subir:hover {
   background-color: #555; /* Fondo gris más claro */
 }
 
-/* Estilo para un botón fijo en la pantalla */
+/* Título: Estilo para el botón fijado */
+/* Define la posición fija y el estilo del botón */
 .boton-fijado {
   position: fixed; /* Fijar el botón en la pantalla */
   top: 100px; /* Separación desde el borde superior */

@@ -13,7 +13,8 @@ BPPJ
     -------------------------------------- Inicio ITred Spa formulario encargado .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
     
-// Función para validar que el campo de nombre del encargado solo contenga letras y espacios
+/* Título: Validación del Nombre del Encargado */
+/* Verifica que el campo de nombre solo contenga letras y espacios */
 function validarNombre1() {
     let input = document.getElementById("nombre_encargado_cliente");
 
@@ -36,7 +37,8 @@ function validarNombre1() {
     }
 }
 
-// Función para formatear un RUT (número de identificación chileno) en el campo de entrada
+/* Título: Formateo del RUT */
+/* Formatea el RUT ingresado en el campo de entrada */
 function formatoRut(input) {
     // Obtiene el valor del campo y elimina cualquier carácter que no sea numérico
     let rut = input.value.replace(/\D/g, '');
@@ -60,31 +62,31 @@ function formatoRut(input) {
     }
 }
 
-      // Función para formatear la dirección del cliente
-      function formatoDireccion(input) {
-        // Obtiene el valor del campo y elimina cualquier carácter que no sea alfanumérico o espacio
-        let direccion = input.value.replace(/[^A-Za-z0-9\s]/g, '');
+/* Título: Formateo de Dirección */
+/* Formatea la dirección ingresada en el campo de entrada */
+function formatoDireccion(input) {
+    // Obtiene el valor del campo y elimina cualquier carácter que no sea alfanumérico o espacio
+    let direccion = input.value.replace(/[^A-Za-z0-9\s]/g, '');
 
-        // Limita la longitud total del input a 100 caracteres (ajusta según lo que necesites)
-        if (direccion.length > 100) {
-            direccion = direccion.slice(0, 100);
-        }
-
-        // Establece el valor del input formateado
-        input.value = direccion;
-
-        // Muestra u oculta el mensaje de error
-        const errorSpan = document.getElementById('error_direccion');
-        if (input.value.length < input.value.replace(/[^A-Za-z0-9\s]/g, '').length) {
-            errorSpan.style.display = 'inline'; // Mostrar el mensaje de error
-        } else {
-            errorSpan.style.display = 'none'; // Ocultar el mensaje de error
-        }
+    // Limita la longitud total del input a 100 caracteres (ajusta según lo que necesites)
+    if (direccion.length > 100) {
+        direccion = direccion.slice(0, 100);
     }
 
+    // Establece el valor del input formateado
+    input.value = direccion;
 
+    // Muestra u oculta el mensaje de error
+    const errorSpan = document.getElementById('error_direccion');
+    if (input.value.length < input.value.replace(/[^A-Za-z0-9\s]/g, '').length) {
+        errorSpan.style.display = 'inline'; // Mostrar el mensaje de error
+    } else {
+        errorSpan.style.display = 'none'; // Ocultar el mensaje de error
+    }
+}
 
-// Objeto que asocia códigos de país con imágenes de banderas
+/* Título: Mapa de Banderas por País */
+/* Objeto que asocia códigos de país con imágenes de banderas */
 const banderasPais = {
     "+1": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/32px-Flag_of_United_States.svg.png", // USA
     "+52": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/32px-Flag_of_Mexico.svg.png", // Mexico
@@ -107,10 +109,12 @@ const banderasPais = {
     "+595": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Flag_of_Paraguay.svg/32px-Flag_of_Paraguay.svg.png" // Paraguay
 };
 
-// Imagen de bandera por defecto cuando no coincide con ningún código
+/* Título: Bandera por Defecto */
+/* Imagen de bandera por defecto cuando no coincide con ningún código */
 const banderaPorDefecto = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/World_Flag_%282004%29.svg/640px-World_Flag_%282004%29.svg.png"; // Bandera por defecto
 
-// Función para detectar el país según el número de teléfono ingresado
+/* Título: Detección de País por Teléfono */
+/* Función para detectar el país según el número de teléfono ingresado */
 function detectarPais(input) {
     const numeroTelefono = input.value.trim(); // Asegúrate de eliminar espacios
     const imagenBandera = document.getElementById("flag_encargado_cliente");
@@ -128,7 +132,8 @@ function detectarPais(input) {
     imagenBandera.style.display = "inline";
 }
 
-// Función para asegurar que el '+' esté presente y detectar el país
+/* Título: Asegurar el '+' en el Teléfono */
+/* Función para asegurar que el '+' esté presente y detectar el país */
 function asegurarMasYDetectarPais(input) {
     // Verificar si el valor actual comienza con '+'
     if (!input.value.startsWith('+')) {
@@ -144,6 +149,7 @@ function asegurarMasYDetectarPais(input) {
 }
 
 // Asegúrate de que la bandera se actualice al cargar la página
+/* Título: Inicialización de la Página */
 window.onload = function() {
     const campoTelefono = document.getElementById('telefono_encargado_cliente');
     const campoTelefono1 = document.getElementById('telefono_empresa_cliente');
@@ -151,7 +157,8 @@ window.onload = function() {
 };
 
 
-// Función para validar el email ingresado
+/* Título: Validación del Email */
+/* Función para validar el email ingresado */
 function validarEmail(input) {
     const mensajeError = document.getElementById("mensaje_error_email");
     const caracteresEspeciales = /[\"'?!¡]/; // Caracteres especiales no permitidos
@@ -180,7 +187,8 @@ function validarEmail(input) {
     }
 }
 
-// Función para validar el cargo ingresado
+/* Título: Validación del Cargo */
+/* Función para validar el cargo ingresado */
 function validarCargoEncargado(input) {
     const mensajeError = document.getElementById("error_cargo_encargado");
     const caracteresNoPermitidos = /[^a-zA-Z0-9\s]/g; // Solo se permiten letras, números y espacios
@@ -198,9 +206,8 @@ function validarCargoEncargado(input) {
     }
 }
 
-
-
-// Función para validar la ciudad ingresada
+/* Título: Validación de la Ciudad */
+/* Función para validar la ciudad ingresada */
 function validarCiudadEncargado(input) {
     const mensajeError = document.getElementById("error_ciudad_encargado");
     const caracteresNoPermitidos = /[^a-zA-Z\s]/g; // Solo se permiten letras y espacios
@@ -218,8 +225,8 @@ function validarCiudadEncargado(input) {
     }
 }
 
-
-// Función para validar la comuna ingresada
+/* Título: Validación de la Comuna */
+/* Función para validar la comuna ingresada */
 function validarComunaEncargado(input) {
     const mensajeError = document.getElementById("error_comuna_encargado");
     const caracteresNoPermitidos = /[^a-zA-Z\s]/g; // Solo se permiten letras y espacios
@@ -236,8 +243,6 @@ function validarComunaEncargado(input) {
         mensajeError.style.display = "none"; // Ocultar mensaje de error si es válido
     }
 }
-
-
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa formulario encargado .JS ---------------------------------------

@@ -12,17 +12,20 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Firma .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
     <div id="firma-container" style="text-align: left;"> <!-- Aseguramos que inicie a la izquierda -->
+    <!-- Título: Verificación de Tipo de Firma -->
     <?php
     // Verifica si hay un tipo de firma
     if ($tipo_firma) {
         switch ($tipo_firma) {
             case 1: // Firma Automática
             case 2: // Firma Manual
+                // Título: Mostrar Imagen de Firma
                 // Mostrar la imagen de la firma
                 if (!empty($ruta_foto)) {
                     echo "<img src='$ruta_foto' alt='Logo de la Empresa' style='max-width: 150px; vertical-align: middle;' id='imagen-firma'>";
                 }
 
+                // Título: Información de la Firma
                 echo "<div id='texto-firma-container' style='display: inline-block; vertical-align: middle;'>";
                 echo "<p id='texto-firma'>" . htmlspecialchars($firma['nombre_encargado_firma']) . "</p>";
                 echo "<p id='texto-firma'>" . htmlspecialchars($firma['cargo_encargado_firma']) . " - " . htmlspecialchars($firma['nombre_empresa_firma']) . "</p>";
@@ -36,6 +39,7 @@ BPPJ
                 break;
 
             case 3: // Firma Imagen
+                // Título: Mostrar Imagen de Firma Digital
                 if (!empty($firma['firma_digital'])) {
                     // Mostrar la imagen de la firma
                     $firma_imagen_url = htmlspecialchars($firma['firma_digital']);
@@ -46,6 +50,7 @@ BPPJ
                 break;
 
             case 4: // Firma Digital
+                // Título: Generar Código QR para Firma Digital
                 // Generar el número de cotización
                 $url_firma = "../ver_cotizacion/ver_firma.php?id_cotizacion=" . $numero_cotizacion;
                 // URL del generador de códigos QR
@@ -68,10 +73,21 @@ BPPJ
     ?>
 </div>
 
+<!-- Contenedor de Alineación -->
 <div>
-    <label><input type="radio" name="alineacion" value="izquierda" checked onchange="cambiarAlineacion('izquierda')"> Izquierda</label>
-    <label><input type="radio" name="alineacion" value="centro" onchange="cambiarAlineacion('centro')"> Centro</label>
-    <label><input type="radio" name="alineacion" value="derecha" onchange="cambiarAlineacion('derecha')"> Derecha</label>
+    <!-- Título: Alineación de la Firma -->
+    <label>
+        <!-- Título: Opción de Alineación Izquierda -->
+        <input type="radio" name="alineacion" value="izquierda" checked onchange="cambiarAlineacion('izquierda')"> Izquierda
+    </label>
+    <label>
+        <!-- Título: Opción de Alineación Centro -->
+        <input type="radio" name="alineacion" value="centro" onchange="cambiarAlineacion('centro')"> Centro
+    </label>
+    <label>
+        <!-- Título: Opción de Alineación Derecha -->
+        <input type="radio" name="alineacion" value="derecha" onchange="cambiarAlineacion('derecha')"> Derecha
+    </label>
 </div>
 
 <script src="../../js/ver_cotizacion/posicionar_firma.js"></script> 

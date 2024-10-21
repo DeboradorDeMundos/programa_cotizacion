@@ -13,15 +13,18 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Traer detalle.CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-   /* Estilo para leyendas de fieldsets */
-   fieldset legend {
+    
+/* Título: Estilo para leyendas de fieldsets */
+/* Define el estilo para las leyendas dentro de los fieldsets */
+fieldset legend {
     font-size: 1.2em; /* Tamaño de fuente de la leyenda */
     padding: 0 10px; /* Espaciado horizontal */
     color: #333; /* Color de texto */
     font-weight: bold; /* Negrita */
 }
 
-/* Contenedor para botones fijos */
+/* Título: Contenedor para botones fijos */
+/* Define el estilo para el contenedor de botones fijos */
 .fixed-button-contenedor {
     position: absolute; /* Posición absoluta */
     bottom: 10px; /* Espaciado desde la parte inferior */
@@ -31,7 +34,8 @@ BPPJ
     padding: 0 20px; /* Espaciado horizontal */
 }
 
-/* Estilo para botones dentro del contenedor fijo */
+/* Título: Estilo para botones dentro del contenedor fijo */
+/* Define el estilo para los botones dentro del contenedor fijo */
 .fixed-button-contenedor button {
     background-color: #007bff; /* Color de fondo azul */
     color: white; /* Color de texto blanco */
@@ -42,7 +46,8 @@ BPPJ
     cursor: pointer; /* Cambia el cursor al pasar por encima */
 }
 
-/* Estilo para el contenido de detalles */
+/* Título: Estilo para el contenido de detalles */
+/* Define el estilo para el contenido de detalles */
 .detalle-content {
     background-color: #fff; /* Fondo blanco */
     border-radius: 8px; /* Bordes redondeados */
@@ -51,7 +56,8 @@ BPPJ
     text-align: center; /* Centrado */
 }
 
-/* Estilo para etiquetas dentro del contenido de detalles */
+/* Título: Estilo para etiquetas dentro del contenido de detalles */
+/* Define el estilo para las etiquetas en el contenido de detalles */
 .detalle-content label {
     display: block; /* Muestra como bloque */
     margin-bottom: 10px; /* Espaciado inferior */
@@ -59,7 +65,8 @@ BPPJ
     color: #333; /* Color de texto */
 }
 
-/* Estilo para inputs de texto dentro del contenido de detalles */
+/* Título: Estilo para inputs de texto dentro del contenido de detalles */
+/* Define el estilo para inputs de texto en el contenido de detalles */
 .detalle-content input[type="text"] {
     width: 100%; /* Ancho completo */
     padding: 10px; /* Espaciado interno */
@@ -69,7 +76,8 @@ BPPJ
     margin-bottom: 20px; /* Espaciado inferior */
 }
 
-/* Estilo para botones de eliminar título */
+/* Título: Estilo para botones de eliminar título */
+/* Define el estilo para el botón de eliminar título */
 .btn-eliminar-titulo {
     background-color: #f44336; /* Color de fondo rojo */
     color: white; /* Color de texto blanco */
@@ -79,12 +87,14 @@ BPPJ
     border-radius: 5px; /* Bordes redondeados */
 }
 
-/* Variación del estilo para el botón de eliminar título */
+/* Título: Variación del estilo para el botón de eliminar título */
+/* Define un estilo alternativo para el botón de eliminar título */
 .btn-eliminar-titulo {
     background-color: #d32f2f; /* Color rojo más oscuro */
 }
 
-/* Estilo para botones de eliminar */
+/* Título: Estilo para botones de eliminar */
+/* Define el estilo para botones de eliminar */
 .btn-eliminar {
     background-color: #f44336; /* Color de fondo rojo */
     color: white; /* Color de texto blanco */
@@ -94,32 +104,37 @@ BPPJ
     border-radius: 5px; /* Bordes redondeados */
 }
 
-/* Variación del estilo para el botón de eliminar */
+/* Título: Variación del estilo para el botón de eliminar */
+/* Define un estilo alternativo para el botón de eliminar */
 .btn-eliminar {
     background-color: #d32f2f; /* Color rojo más oscuro */
 }
 
-/* Estilo para tablas de detalles */
+/* Título: Estilo para tablas de detalles */
+/* Define el estilo para las tablas dentro de los detalles */
 .detalle-table th,
 .detalle-table td {
     border: 1px solid #ddd; /* Borde gris claro */
     padding: 8px; /* Espaciado interno */
 }
 
-/* Estilo para encabezados de tablas de detalles */
+/* Título: Estilo para encabezados de tablas de detalles */
+/* Define el estilo para los encabezados en tablas de detalles */
 .detalle-table th {
     background-color: #f2f2f2; /* Fondo gris claro */
     text-align: left; /* Alineación a la izquierda */
 }
 
-/* Estilo para todos los encabezados de tablas */
+/* Título: Estilo para todos los encabezados de tablas */
+/* Define el estilo general para encabezados de tablas */
 th {
     background-color: #4CAF50; /* Color verde */
     padding: 10px; /* Espaciado interno */
     text-align: center; /* Alineación al centro */
 }
 
-/* Estilo para botones de detalles */
+/* Título: Estilo para botones de detalles */
+/* Define el estilo para los botones en la sección de detalles */
 .detalle-buttons {
     display: flex; /* Usa flexbox para la disposición */
     justify-content: center; /* Centrado */
@@ -128,7 +143,8 @@ th {
     background-color: #f9f9f9; /* Fondo gris claro */
 }
 
-/* Estilo para botones dentro del contenedor de detalles */
+/* Título: Estilo para botones dentro del contenedor de detalles */
+/* Define el estilo para los botones dentro del contenedor de detalles */
 .detalle-buttons button {
     flex: 1; /* Se expande para ocupar el espacio disponible */
     max-width: 200px; /* Ancho máximo de 200px */
@@ -140,32 +156,38 @@ th {
     color: white; /* Color de texto blanco */
 }
 
-/* Efecto hover para el primer botón */
+/* Título: Efecto hover para el primer botón */
+/* Define el efecto al pasar el mouse sobre el primer botón */
 .detalle-buttons button:nth-of-type(1):hover {
     background-color: #755483; /* Morado oscuro al pasar el mouse */
 }
 
-/* Estilo para el primer botón */
+/* Título: Estilo para el primer botón */
+/* Define el estilo específico para el primer botón */
 .detalle-buttons button:nth-of-type(1) {
     background-color: #9c27b0; /* Morado vibrante */
 }
 
-/* Estilo para el segundo botón */
+/* Título: Estilo para el segundo botón */
+/* Define el estilo específico para el segundo botón */
 .detalle-buttons button:nth-of-type(2) {
     background-color: #149279; /* Rosa intenso */
 }
 
-/* Efecto hover para el segundo botón */
+/* Título: Efecto hover para el segundo botón */
+/* Define el efecto al pasar el mouse sobre el segundo botón */
 .detalle-buttons button:nth-of-type(2):hover {
     background-color: #1ba226; /* Rosa más oscuro al pasar el mouse */
 }
 
-/* Estilo para el tercer botón */
+/* Título: Estilo para el tercer botón */
+/* Define el estilo específico para el tercer botón */
 .detalle-buttons button:nth-of-type(3) {
     background-color: #4caf50; /* Verde lima */
 }
 
-/* Estilo para tablas de detalles */
+/* Título: Estilo para tablas de detalles */
+/* Define el estilo general para tablas de detalles */
 .detalle-table {
     width: 100%; /* Ancho completo */
     border-collapse: collapse; /* Colapsar bordes */
@@ -173,7 +195,8 @@ th {
     margin-bottom: 15px; /* Espaciado inferior */
 }
 
-/* Estilo para inputs dentro de tablas de detalles */
+/* Título: Estilo para inputs dentro de tablas de detalles */
+/* Define el estilo para inputs dentro de tablas de detalles */
 .detalle-table input[type="text"],
 .detalle-table textarea,
 .detalle-table input[type="number"] {
@@ -182,25 +205,29 @@ th {
     box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
 }
 
-/* Estilo general para tablas */
+/* Título: Estilo general para tablas */
+/* Define el estilo general para todas las tablas */
 table {
     width: 100%; /* Ancho completo */
     border-collapse: collapse; /* Colapsar bordes */
     margin: 20px 0; /* Espaciado vertical */
 }
 
-/* Estilo para celdas de tabla */
+/* Título: Estilo para celdas de tabla */
+/* Define el estilo para las celdas de tabla */
 td {
     padding: 5px; /* Espaciado interno */
     border-bottom: 1px solid #ddd; /* Borde inferior */
 }
 
-/* Efecto hover para el botón del contenedor fijo */
+/* Título: Efecto hover para el botón del contenedor fijo */
+/* Define el efecto al pasar el mouse sobre el botón en el contenedor fijo */
 .fixed-button-contenedor button:hover {
     background-color: #0056b3; /* Color más oscuro al pasar el mouse */
 }
 
-/* Asegura que los label y input tengan la misma altura */
+/* Título: Asegura que los label y input tengan la misma altura */
+/* Define el estilo para asegurar que los label y input estén alineados */
 .form-group {
     display: flex; /* Usa flexbox para alinear los elementos */
     align-items: stretch; /* Estira los elementos para que tengan la misma altura */
@@ -208,30 +235,38 @@ td {
     margin-bottom: 10px; /* Espaciado inferior */
 }
 
-/* Estilo para grupos de campos en línea */
+/* Título: Estilo para grupos de campos en línea */
+/* Define el estilo para grupos de campos que deben estar en línea */
 .form-group-inline {
     display: flex; /* Usa flexbox para organizar elementos en línea */
     justify-content: space-between; /* Alinea los elementos a los extremos */
     gap: 10px; /* Espacio entre los elementos */
 }
 
-/* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
+/* Título: Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
+/* Define el estilo para que cada form-group ocupe el espacio disponible */
 .form-group-inline .form-group {
     flex: 1; /* Se expande para ocupar el espacio disponible */
 }
 
+/* Título: Estilo para grupos de inputs */
+/* Define el estilo para el grupo de inputs */
 .input-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+    display: flex; /* Usa flexbox para alinear los inputs */
+    align-items: center; /* Centra verticalmente */
+    margin-bottom: 10px; /* Espaciado inferior */
 }
 
+/* Título: Estilo para select en input-group */
+/* Define el margen para el select dentro del input-group */
 .input-group select {
-    margin-right: 5px;
+    margin-right: 5px; /* Margen a la derecha */
 }
 
+/* Título: Estilo para inputs de texto en input-group */
+/* Define el estilo para inputs de texto dentro del input-group */
 .input-group input[type="text"] {
-    flex: 1;
+    flex: 1; /* Se expande para ocupar el espacio disponible */
 }
 
 /* --------------------------------------------------------------------------------------------------------------

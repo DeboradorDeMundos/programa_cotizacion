@@ -24,20 +24,29 @@ BPPJ
         echo "<p>Error al preparar la consulta de requisitos: " . $mysqli->error . "</p>";
     }
 ?> 
+<!-- Título: Sección de Requisitos Básicos -->
 <div id="requisitos-basicos" class="cuadro-datos">
     <h3>Requisitos Básicos</h3>
+
+    <!-- Título: Campo para Primer Título -->
     <div class="field">
         <label for="primer_titulo_1">Primer Título:</label>
         <input type="text" id="primer_titulo_1" name="primer_titulo[]" placeholder="Primer Título" required>
     </div>
+
+    <!-- Título: Campo para Descripción de Condiciones -->
     <div class="field">
         <label for="descripcion_condiciones_1">Descripción:</label>
         <input type="text" id="descripcion_requisitos" name="descripcion_requisitos[]" placeholder="Descripción de la condición" required>
     </div>
+
+    <!-- Título: Campo para Último Título -->
     <div class="field">
         <label for="ultimo_titulo_1">Último Título:</label>
         <input type="text" id="ultimo_titulo_1" name="ultimo_titulo[]" placeholder="Último Título" required>
     </div>
+
+    <!-- Título: Duplicar Bloque para Más Requisitos Básicos -->
     <!-- Puedes duplicar el bloque anterior para más requisitos básicos -->
 </div>
 

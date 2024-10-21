@@ -15,47 +15,60 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 
-    #formulario-contenedor {
-        flex-direction: column; /* Hace que los formularios se dispongan en columnas (verticalmente) */
-        gap: 20px; /* Añade un pequeño espacio entre formularios */
-    }
+/* Título: Estilo para el contenedor del formulario */
+/* Hace que los formularios se dispongan en columnas (verticalmente) */
+#formulario-contenedor {
+    flex-direction: column; /* Disposición en columnas */
+    gap: 20px; /* Espacio entre formularios */
+}
 
-    .formulario-encargado {
-        border: 1px solid #ccc; /* Opcional: añade un borde alrededor de cada formulario */
-        padding: 15px; /* Añade algo de espacio interior */
-        margin-bottom: 10px; /* Añade un margen inferior para separar los formularios */
-    }
+/* Título: Estilo para los formularios de encargado */
+/* Añade un borde, espaciado interno y margen inferior para separar los formularios */
+.formulario-encargado {
+    border: 1px solid #ccc; /* Borde alrededor del formulario */
+    padding: 15px; /* Espacio interior del formulario */
+    margin-bottom: 10px; /* Margen inferior para separación */
+}
 
-    .tabla-estilizada {
-        width: 100%;
-        border-collapse: collapse; /* Elimina el espaciado entre celdas */
-    }
-    
-    .tabla-estilizada th, .tabla-estilizada td {
-        padding: 10px;
-        text-align: left;
-        border: 1px solid #ddd; /* Bordes para mejorar la estructura */
-        vertical-align: middle; /* Alinea verticalmente el contenido */
-    }
-    
-    .tabla-estilizada input, .tabla-estilizada select {
-        width: 100%; /* Ajusta el ancho de los inputs/selects al de las celdas */
-        box-sizing: border-box; /* Incluye padding en el ancho total */
-    }
+/* Título: Estilo para tablas estilizadas */
+/* Define el ancho y colapsa bordes para una mejor apariencia */
+.tabla-estilizada {
+    width: 100%; /* Ancho completo */
+    border-collapse: collapse; /* Elimina el espaciado entre celdas */
+}
 
-    .eliminar-fila {
-        background-color: red;  /* Fondo rojo */
-        color: white;           /* Texto blanco para mejor contraste */
-        border: none;           /* Elimina el borde */
-        padding: 8px 12px;      /* Añade espacio interno */
-        border-radius: 4px;     /* Bordes redondeados */
-        cursor: pointer;        /* Cambia el cursor al pasar sobre el botón */
-    }
-    
-    .eliminar-fila:hover {
-        background-color: darkred;  /* Cambia el color de fondo al pasar el ratón */
-    }
+/* Título: Estilo para celdas de tablas */
+/* Añade padding, alineación y bordes a las celdas */
+.tabla-estilizada th, .tabla-estilizada td {
+    padding: 10px; /* Espacio interno en celdas */
+    text-align: left; /* Alineación del texto a la izquierda */
+    border: 1px solid #ddd; /* Bordes para estructura */
+    vertical-align: middle; /* Alinea verticalmente el contenido */
+}
 
+/* Título: Estilo para inputs y selects en tablas */
+/* Ajusta el ancho de los inputs/selects al de las celdas */
+.tabla-estilizada input, .tabla-estilizada select {
+    width: 100%; /* Ancho completo de la celda */
+    box-sizing: border-box; /* Incluye padding en el ancho total */
+}
+
+/* Título: Estilo para el botón de eliminar fila */
+/* Define el estilo del botón que elimina filas */
+.eliminar-fila {
+    background-color: red;  /* Fondo rojo */
+    color: white;           /* Texto blanco para mejor contraste */
+    border: none;           /* Sin borde */
+    padding: 8px 12px;      /* Espacio interno */
+    border-radius: 4px;     /* Bordes redondeados */
+    cursor: pointer;        /* Cambia el cursor al pasar sobre el botón */
+}
+
+/* Título: Estilo para el botón de eliminar fila al pasar el ratón */
+/* Cambia el color de fondo al pasar el ratón */
+.eliminar-fila:hover {
+    background-color: darkred;  /* Color de fondo más oscuro */
+}
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Procesar Formulario encargado  .CSS ---------------------------------------

@@ -27,11 +27,12 @@ BPPJ
 ?> 
 <!-- Checkbox para mostrar/ocultar obligaciones del cliente --> 
 <link rel="stylesheet" href="../../css/nueva_cotizacion/obligaciones_cliente.css">
+<!-- Título: Checkbox para Mostrar Obligaciones del Cliente -->
 <label>
     <input type="checkbox" id="toggle-obligaciones" onclick="toggleObligaciones()"> Mostrar obligaciones del cliente
 </label>
 
-<!-- Tabla para las obligaciones del cliente -->
+<!-- Título: Tabla para las Obligaciones del Cliente -->
 <table id="obligaciones-table" style="display: none;">
     <tr>
         <th style="background-color:lightgray" colspan="2">OBLIGACIONES DEL CLIENTE</th>

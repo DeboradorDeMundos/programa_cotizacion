@@ -27,13 +27,17 @@ $stmt->close();
     <link rel="stylesheet" href="../../css/ver_cotizacion/mensaje_despedida.css">
 </head>
 
-    <fieldset class="mensaje_despedida-box">
-        <legend>¡IMPORTANTE!</legend>
-        <div class="form-group">
-            <label for="mensaje_despedida">MENSAJE : </label>
-            <textarea id="mensaje_despedida" rows="4" cols="50" readonly><?php echo htmlspecialchars($mensaje_despedida); ?></textarea>
-        </div>
-    </fieldset>
+<!-- Título: Mensaje de Despedida -->
+<fieldset class="mensaje_despedida-box">
+    <legend>¡IMPORTANTE!</legend>
+    
+    <!-- Título: Grupo de formulario para mensaje de despedida -->
+    <div class="form-group">
+        <!-- Título: Mensaje -->
+        <label for="mensaje_despedida">MENSAJE :</label>
+        <textarea id="mensaje_despedida" rows="4" cols="50" readonly><?php echo htmlspecialchars($mensaje_despedida); ?></textarea>
+    </div>
+</fieldset>
     
     <script src="../../js/ver_cotizacion/mensaje_despedida.js"></script> 
 

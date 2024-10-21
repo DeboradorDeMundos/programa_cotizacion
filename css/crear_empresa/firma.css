@@ -13,22 +13,27 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Procesar Firma .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-/* Estilo para el contenedor de la firma */
+
+/* Título: Estilo para el contenedor de la firma */
+/* Define el margen externo del contenedor */
 .contenedor-firma {
     margin: 20px; /* Espaciado externo de 20px alrededor del contenedor */
 }
 
-/* Estilo para cada opción dentro del contenedor */
+/* Título: Estilo para cada opción dentro del contenedor */
+/* Ajusta el margen inferior entre las opciones */
 .option {
     margin-bottom: 15px; /* Margen inferior de 15px entre cada opción */
 }
 
-/* Estilo para las etiquetas de las opciones */
+/* Título: Estilo para las etiquetas de las opciones */
+/* Aplica negrita para destacar las etiquetas */
 .option label {
     font-weight: bold; /* Texto en negrita para resaltar las etiquetas */
 }
 
-/* Estilo para el área de despliegue de la firma */
+/* Título: Estilo para el área de despliegue de la firma */
+/* Define el ancho, márgenes, padding y borde del área de despliegue de la firma */
 .desplegar-firma {
     width: 100%; /* Ancho completo del contenedor padre */
     margin-top: 10px; /* Margen superior de 10px para separar del contenido anterior */

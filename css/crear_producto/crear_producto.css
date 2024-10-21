@@ -11,6 +11,8 @@ BPPJ
 /* -------------------------------------------------------------------------------------------------------------
    ------------------------------------- INICIO ITred Spa Crear Producto .CSS -------------------------------------
    ------------------------------------------------------------------------------------------------------------- */
+
+/* Título: Estilos generales */
 /* Estilos generales para el cuerpo del documento */
 body {
     background-color: #f0f0f0; /* Color de fondo claro */
@@ -18,6 +20,7 @@ body {
     font-family: Arial, sans-serif; /* Fuente utilizada para el texto */
 }
 
+/* Título: Contenedor principal */
 /* Contenedor principal que centra su contenido */
 .contenedor {
     display: flex; /* Usar flexbox para alinear elementos */
@@ -26,6 +29,7 @@ body {
     height: 100vh; /* Altura del contenedor al 100% de la ventana */
 }
 
+/* Título: Contenedor del formulario */
 /* Contenedor del formulario con fondo blanco y estilo */
 .form-contenedor {
     background-color: #ffffff; /* Color de fondo blanco */
@@ -34,17 +38,20 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
+/* Título: Estilos para el título del formulario */
 /* Estilos para el título del formulario */
 .form-contenedor h2 {
     margin-bottom: 20px; /* Margen inferior de 20px */
     color: #333333; /* Color del texto del título */
 }
 
+/* Título: Estilos para grupos de formulario */
 /* Estilos para grupos de formulario */
 .form-group {
     margin-bottom: 15px; /* Margen inferior de 15px */
 }
 
+/* Título: Estilos para etiquetas */
 /* Estilos para las etiquetas de los campos */
 .form-group label {
     display: block; /* Hacer que la etiqueta ocupe toda la línea */
@@ -52,6 +59,7 @@ body {
     color: #666666; /* Color de texto gris */
 }
 
+/* Título: Estilos para campos de entrada */
 /* Estilos para los campos de entrada y área de texto */
 .form-group input, .form-group textarea {
     width: 100%; /* Ancho del 100% */
@@ -62,39 +70,46 @@ body {
     color: #333333; /* Color del texto oscuro */
 }
 
+/* Título: Estilo para el área de texto */
 /* Estilo específico para el área de texto */
 .form-group textarea {
     resize: vertical; /* Permitir redimensionar solo verticalmente */
 }
 
+/* Título: Estilos básicos para tablas */
 /* Estilos básicos para las tablas */
 table {
     width: 100%; /* Ancho del 100% */
     border-collapse: collapse; /* Colapsar bordes para evitar duplicados */
 }
 
+/* Título: Estilos para celdas de la tabla */
 /* Estilos para celdas de la tabla */
 th, td {
     padding: 10px; /* Espaciado interno de 10px */
     border: 1px solid #ddd; /* Borde gris claro */
 }
 
+/* Título: Estilos para fieldset */
 /* Estilos para fieldset */
 fieldset {
     border: 1px solid #ccc; /* Borde gris claro */
     padding: 10px; /* Espaciado interno de 10px */
 }
 
+/* Título: Estilo para legend de fieldset */
 /* Estilo para el legend del fieldset */
 legend {
     font-weight: bold; /* Negrita para el título del fieldset */
 }
 
+/* Título: Estilos para botones dentro del formulario */
 /* Estilos para los botones dentro del formulario */
 .form-group {
     margin-top: 10px; /* Margen superior de 10px */
 }
 
+/* Título: Estilos generales para botones */
 /* Estilos generales para los botones */
 .form-group button {
     padding: 8px 15px; /* Tamaño de los botones */
@@ -106,31 +121,31 @@ legend {
     transition: background-color 0.3s; /* Transición suave para el color de fondo */
 }
 
+/* Título: Estilos específicos para el botón "Nuevo" */
 /* Estilos específicos para el botón "Nuevo" */
 .form-group .btn-nuevo {
     background-color: #007bff; /* Color de fondo azul */
     color: white; /* Color del texto blanco */
 }
 
+/* Título: Efecto hover para el botón "Nuevo" */
 /* Efecto hover para el botón "Nuevo" */
 .form-group .btn-nuevo:hover {
     background-color: #0056b3; /* Color de fondo azul oscuro al pasar el ratón */
 }
 
+/* Título: Estilos específicos para el botón "Guardar" */
 /* Estilos específicos para el botón "Guardar" */
 .form-group .btn-guardar {
     background-color: #28a745; /* Color de fondo verde */
     color: white; /* Color del texto blanco */
 }
 
+/* Título: Efecto hover para el botón "Guardar" */
 /* Efecto hover para el botón "Guardar" */
 .form-group .btn-guardar:hover {
     background-color: #218838; /* Color de fondo verde oscuro al pasar el ratón */
 }
-
-
-
-
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Procesar Crear Producto .CSS ---------------------------------------

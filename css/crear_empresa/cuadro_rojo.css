@@ -13,16 +13,17 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Cuadro Rojo .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-/* Estilos comunes */
 
-/* Estilo para la caja flexible que ocupa el 50% del ancho disponible */
+/* Título: Estilo para la caja flexible */
+/* Define el ancho máximo, flexibilidad y padding de la caja */
 .box-6 {
     flex: 1; /* Permite que el contenedor se expanda para ocupar espacio disponible */
     max-width: 50%; /* Ancho máximo del 50% del contenedor padre */
     padding: 10px; /* Espaciado interno de 10px */
 }
 
-/* Estilo para un cuadro de datos con borde y fondo blanco */
+/* Título: Estilo para el cuadro de datos */
+/* Define el borde, padding y fondo del cuadro de datos */
 .data-box {
     border: 1px solid #ddd; /* Borde gris claro */
     padding: 15px; /* Espaciado interno de 15px */
@@ -30,13 +31,15 @@ BPPJ
     border-radius: 12px; /* Bordes redondeados */
 }
 
-/* Variación de la caja de datos con borde rojo */
+/* Título: Variación de la caja de datos con borde rojo */
+/* Modifica el color del borde para cuadros de datos rojos */
 .data-box-red {
     border-color: red; /* Cambia el color del borde a rojo */
     border-radius: 12px; /* Mantiene los bordes redondeados */
 }
 
-/* Estilo general para los campos de entrada */
+/* Título: Estilo general para los campos de entrada */
+/* Define el ancho, padding, margen y borde de los campos de entrada */
 input {
     width: calc(100% - 20px); /* El ancho es el 100% del contenedor menos 20px de margen */
     padding: 10px; /* Espaciado interno de 10px */

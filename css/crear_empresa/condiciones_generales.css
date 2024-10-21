@@ -13,20 +13,22 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Condiciones generales .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-/* Estilos comunes */
 
-/* Título de la sección */
+/* Título: Estilos para el título de la sección */
+/* Define el color y el margen superior del título */
 h2 {
   color: #333; /* Color del texto */
   margin-top: 0; /* Sin margen superior */
 }
 
-/* Contenedor para las condiciones */
+/* Título: Estilos para el contenedor de las condiciones */
+/* Define el margen superior del contenedor */
 #contenedor-condiciones {
   margin-top: 20px; /* Espaciado superior */
 }
 
-/* Filas de condiciones */
+/* Título: Estilos para las filas de condiciones */
+/* Define la estructura de las filas de condiciones */
 .fila-condiciones {
   display: flex; /* Alineación de elementos en fila */
   align-items: center; /* Centrar verticalmente los elementos */
@@ -37,13 +39,15 @@ h2 {
   border-radius: 5px; /* Esquinas redondeadas */
 }
 
-/* Estilo para los números de condición */
+/* Título: Estilos para los números de condición */
+/* Define el estilo del número en las filas de condiciones */
 .condition-number {
   font-weight: bold; /* Número en negrita */
   margin-right: 5px; /* Espaciado a la derecha del número */
 }
 
-/* Estilo para los inputs de condiciones */
+/* Título: Estilos para los inputs de condiciones */
+/* Define el estilo de los inputs en las filas de condiciones */
 .fila-condiciones input[type="text"] {
   flex-grow: 1; /* Ocupar todo el espacio disponible */
   padding: 10px; /* Relleno interno */
@@ -52,7 +56,8 @@ h2 {
   box-sizing: border-box; /* Incluir padding y borde en el tamaño total */
 }
 
-/* Botón para eliminar condiciones */
+/* Título: Estilos para el botón de eliminar condición */
+/* Define el estilo del botón de eliminar en cada fila */
 .boton-eliminar-condicion {
   background-color: #dc3545; /* Fondo rojo */
   border: none; /* Sin borde */
@@ -62,12 +67,14 @@ h2 {
   border-radius: 5px; /* Bordes redondeados */
 }
 
-/* Hover para el botón de eliminar condición */
+/* Título: Estilos hover para el botón de eliminar condición */
+/* Define el estilo del botón al pasar el cursor */
 .boton-eliminar-condicion:hover {
   background-color: #c82333; /* Rojo más oscuro al pasar el ratón */
 }
 
-/* Botones para agregar y eliminar condiciones */
+/* Título: Estilos para los botones de agregar y eliminar condiciones */
+/* Define el estilo para los botones de agregar y eliminar condiciones */
 #boton-agregar-condicion, #boton-eliminar-condicion {
   font-size: 14px; /* Tamaño de fuente pequeño */
   padding: 8px 16px; /* Espaciado interno */
@@ -78,23 +85,27 @@ h2 {
   transition: background-color 0.3s; /* Transición suave para el color de fondo */
 }
 
-/* Botón de agregar condición */
+/* Título: Estilos para el botón de agregar condición */
+/* Define el estilo del botón de agregar */
 #boton-agregar-condicion {
   background-color: #28a745; /* Fondo verde */
 }
 
-/* Hover para el botón de agregar condición */
+/* Título: Estilos hover para el botón de agregar condición */
+/* Define el estilo del botón de agregar al pasar el cursor */
 #boton-agregar-condicion:hover {
   background-color: #218838; /* Verde más oscuro al pasar el ratón */
 }
 
-/* Botón de eliminar última condición */
+/* Título: Estilos para el botón de eliminar última condición */
+/* Define el estilo del botón de eliminar la última condición */
 #boton-eliminar-condicion {
   background-color: #dc3545; /* Fondo rojo */
   display: none; /* Oculto por defecto */
 }
 
-/* Hover para el botón de eliminar última condición */
+/* Título: Estilos hover para el botón de eliminar última condición */
+/* Define el estilo del botón de eliminar al pasar el cursor */
 #boton-eliminar-condicion:hover {
   background-color: #c82333; /* Rojo más oscuro al pasar el ratón */
 }

@@ -16,11 +16,14 @@ BPPJ
 
 <link rel="stylesheet" href="../../css/nueva_cotizacion/detalle_cliente.css">
 <fieldset class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
+    <!-- Título: Datos Empresa Cliente -->
     <legend>Datos empresa cliente </legend>
     <div class="box-6 cuadro-datos"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
         <div class="form-group-inline">
             <div class="form-group">
+                <!-- Título: Campo para el RUT de la Empresa -->
                 <label for="cliente_rut">RUT Empresa: </label> <!-- Etiqueta para el campo de entrada del RUT del cliente -->
+                <!-- Título: Campo para Ingresar el RUT del Cliente -->
                 <input type="text" id="cliente_rut" name="cliente_rut" 
                     minlength="7" maxlength="12" 
                     placeholder="Ej: 12.345.678-9"
@@ -30,7 +33,9 @@ BPPJ
             </div>
 
             <div class="form-group">
+                <!-- Título: Campo para el Nombre del Representante -->
                 <label for="cliente_nombre">Nombre representante:</label> <!-- Etiqueta para el campo de entrada del nombre del cliente -->
+                <!-- Título: Campo para Ingresar el Nombre del Cliente -->
                 <input type="text" id="cliente_nombre" name="cliente_nombre" required
                     pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
                     title="Por favor, ingrese solo letras, números y caracteres como &,-."
@@ -40,7 +45,9 @@ BPPJ
         </div>
 
         <div class="form-group">
+            <!-- Título: Campo para la Empresa del Cliente -->
             <label for="cliente_empresa">Empresa:</label> <!-- Etiqueta para el campo de entrada de la empresa del cliente -->
+            <!-- Título: Campo para Ingresar el Nombre de la Empresa del Cliente -->
             <input type="text" id="cliente_empresa" name="cliente_empresa" required minlength="3" maxlength="100"
                 pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
                 title="Por favor, ingrese solo letras, números y caracteres como &,-."
@@ -50,7 +57,9 @@ BPPJ
 
         <div class="form-group-inline">
             <div class="form-group">
+                <!-- Título: Campo para la Dirección del Cliente -->
                 <label for="cliente_direccion">Dirección:</label> <!-- Etiqueta para el campo de entrada de la dirección del cliente -->
+                <!-- Título: Campo para Ingresar la Dirección del Cliente -->
                 <input type="text" id="cliente_direccion" name="cliente_direccion"
                     minlength="5" maxlength="100" 
                     pattern="^[A-Za-z0-9À-ÿ\s#,-.]*$" 
@@ -59,7 +68,9 @@ BPPJ
                     placeholder="Ejemplo: Av. Siempre Viva 742"> <!-- Campo de texto para ingresar la dirección del cliente. No es obligatorio -->
             </div>
             <div class="form-group">
+                <!-- Título: Campo para el Lugar del Cliente -->
                 <label for="cliente_lugar">Lugar:</label> <!-- Etiqueta para el campo de selección del lugar del cliente -->
+                <!-- Título: Campo para Seleccionar el Lugar del Cliente -->
                 <select id="cliente_lugar" name="cliente_lugar" required> <!-- Campo de selección para el lugar del cliente. Este campo es obligatorio -->
                     <option value="" disabled selected>Selecciona un lugar</option> <!-- Opción por defecto -->
                     <option value="casa">Casa</option>
@@ -73,39 +84,42 @@ BPPJ
         </div>
 
         <div class="form-group" style="display: flex; align-items: center;">
-    <label for="cliente_fono" style="margin-right: 10px;">Teléfono:</label> <!-- Etiqueta para el campo de entrada del teléfono del cliente -->
-    
-    <!-- Imagen de la bandera -->
-    <img id="flag_cliente" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
-         alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
+            <!-- Título: Campo para el Teléfono del Cliente -->
+            <label for="cliente_fono" style="margin-right: 10px;">Teléfono:</label> <!-- Etiqueta para el campo de entrada del teléfono del cliente -->
+            
+            <!-- Título: Imagen de la Bandera -->
+            <!-- Imagen de la bandera -->
+            <img id="flag_cliente" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
+                 alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
 
-    <!-- Campo de entrada de texto -->
-    <input type="text" id="cliente_fono" name="cliente_fono"
-           placeholder="+56 9 1234 1234" 
-           maxlength="14" 
-           required 
-           title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)" 
-           oninput="asegurarMasYDetectarPais1(this)">
-</div>
-
-
-
-
-
+            <!-- Título: Campo para Ingresar el Teléfono del Cliente -->
+            <!-- Campo de entrada de texto -->
+            <input type="text" id="cliente_fono" name="cliente_fono"
+                   placeholder="+56 9 1234 1234" 
+                   maxlength="14" 
+                   required 
+                   title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)" 
+                   oninput="asegurarMasYDetectarPais1(this)">
+        </div>
     </div>
     
     <div class="box-6 cuadro-datos cuadro-datos-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "cuadro-datos-left" para estilo -->
-    <div class="form-group">
-                <label for="rut_encargado_cliente">RUT Encargado: </label> <!-- Etiqueta para el campo de entrada del RUT del cliente -->
-                <input type="text" id="rut_encargado_cliente" name="rut_encargado_cliente" 
-                    minlength="7" maxlength="12" 
-                    placeholder="Ej: 12.345.678-9"
-                    oninput="FormatearRut(this)"
-                    oninput="QuitarCaracteresInvalidos(this)"
-                    required> <!-- Campo de texto para ingresar el RUT del cliente. También es obligatorio -->
-            </div>
         <div class="form-group">
+            <!-- Título: Campo para el RUT del Encargado -->
+            <label for="rut_encargado_cliente">RUT Encargado: </label> <!-- Etiqueta para el campo de entrada del RUT del cliente -->
+            <!-- Título: Campo para Ingresar el RUT del Encargado -->
+            <input type="text" id="rut_encargado_cliente" name="rut_encargado_cliente" 
+                minlength="7" maxlength="12" 
+                placeholder="Ej: 12.345.678-9"
+                oninput="FormatearRut(this)"
+                oninput="QuitarCaracteresInvalidos(this)"
+                required> <!-- Campo de texto para ingresar el RUT del cliente. También es obligatorio -->
+        </div>
+        
+        <div class="form-group">
+            <!-- Título: Campo para el Email del Cliente -->
             <label for="cliente_email">Email:</label> <!-- Etiqueta para el campo de entrada del email del cliente -->
+            <!-- Título: Campo para Ingresar el Email del Cliente -->
             <input type="email" id="cliente_email" name="cliente_email"
                 placeholder="ejemplo@gmail.com" 
                 maxlength="255" 
@@ -116,7 +130,9 @@ BPPJ
         </div>
 
         <div class="form-group">
+            <!-- Título: Campo para el Cargo del Cliente -->
             <label for="cliente_cargo">Cargo:</label> <!-- Etiqueta para el campo de selección del cargo del cliente -->
+            <!-- Título: Campo para Seleccionar el Cargo del Cliente -->
             <select id="cliente_cargo" name="cliente_cargo" required> <!-- Campo de selección para el cargo del cliente. Este campo es obligatorio -->
                 <option value="" disabled selected>Selecciona un cargo</option> <!-- Opción por defecto -->
                 <option value="gerente">Gerente</option>
@@ -139,69 +155,77 @@ BPPJ
                 <option value="encargado_rrhh">Encargado de RRHH</option>
             </select>
         </div>
-
-        <div class="form-group">
-            <label for="cliente_giro">Giro:</label> <!-- Etiqueta para el campo de selección del giro del cliente -->
-            <select id="cliente_giro" name="cliente_giro" required> <!-- Campo de selección para el giro del cliente. Este campo es obligatorio -->
-                <option value="" disabled selected>Selecciona un giro</option> <!-- Opción por defecto -->
-                <option value="comercio">Comercio</option>
-                <option value="servicios">Servicios</option>
-                <option value="manufactura">Manufactura</option>
-                <option value="construccion">Construcción</option>
-                <option value="tecnologia">Tecnología</option>
-                <option value="alimentos_bebidas">Alimentos y Bebidas</option>
-                <option value="educacion">Educación</option>
-                <option value="salud">Salud</option>
-                <option value="finanzas">Finanzas</option>
-                <option value="agricultura">Agricultura</option>
-                <option value="logistica_transporte">Logística y Transporte</option>
-                <option value="inmobiliario">Inmobiliario</option>
-                <option value="mineria">Minería</option>
-                <option value="energia">Energía</option>
-                <option value="turismo">Turismo</option>
-                <option value="arte_cultura">Arte y Cultura</option>
-            </select>
-        </div>
-
-        <div class="form-group-inline">
-            <div class="form-group">
-                <label for="cliente_comuna">Comuna:</label> <!-- Etiqueta para el campo de entrada de la comuna del cliente -->
-                <input type="text" id="cliente_comuna" name="cliente_comuna" 
-                    placeholder="Ej: La Reina, Providencia" 
-                    required 
-                    minlength="3" 
-                    maxlength="50" 
-                    pattern="^[a-zA-ZÀ-ÿ\s]+$" 
-                    oninput="QuitarCaracteresInvalidos(this)"
-                    title="Ingresa una comuna válida (Ej: La Reina, Providencia). Solo se permiten letras y espacios."> <!-- Campo de texto para ingresar la comuna del cliente. Este campo no es obligatorio -->
-            </div>
-            <div class="form-group">
-                <label for="cliente_ciudad">Ciudad:</label> <!-- Etiqueta para el campo de entrada de la ciudad del cliente -->
-                <input type="text" id="cliente_ciudad" name="cliente_ciudad" 
-                    placeholder="Ej: Santiago, Valparaíso" 
-                    required 
-                    minlength="3" 
-                    maxlength="50" 
-                    pattern="^[a-zA-ZÀ-ÿ\s]+$" 
-                    oninput="QuitarCaracteresInvalidos(this)"
-                    title="Ingresa una ciudad válida (Ej: Santiago, Valparaíso). Solo se permiten letras y espacios."> <!-- Campo de texto para ingresar la ciudad del cliente. Este campo no es obligatorio -->
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="cliente_tipo">Tipo:</label> <!-- Etiqueta para el campo de selección del tipo de cliente -->
-            <select id="cliente_tipo" name="cliente_tipo" required> <!-- Campo de selección para el tipo de cliente. Este campo es obligatorio -->
-                <option value="" disabled selected>Selecciona un tipo de cliente</option> <!-- Opción por defecto -->
-                <option value="persona_natural">Persona Natural</option>
-                <option value="empresa">Empresa</option>
-                <option value="organizacion_sin_fines_de_lucro">Organización Sin Fines de Lucro</option>
-                <option value="institucion_gubernamental">Institución Gubernamental</option>
-                <option value="institucion_educativa">Institución Educativa</option>
-                <option value="multinacional">Multinacional</option>
-            </select>
-        </div>
     </div>
-</fieldset> <!-- Cierra la fila -->
+</fieldset>
+
+<div class="form-group">
+    <!-- Título: Campo para el Giro del Cliente -->
+    <label for="cliente_giro">Giro:</label> <!-- Etiqueta para el campo de selección del giro del cliente -->
+    <!-- Título: Campo para Seleccionar el Giro del Cliente -->
+    <select id="cliente_giro" name="cliente_giro" required> <!-- Campo de selección para el giro del cliente. Este campo es obligatorio -->
+        <option value="" disabled selected>Selecciona un giro</option> <!-- Opción por defecto -->
+        <option value="comercio">Comercio</option>
+        <option value="servicios">Servicios</option>
+        <option value="manufactura">Manufactura</option>
+        <option value="construccion">Construcción</option>
+        <option value="tecnologia">Tecnología</option>
+        <option value="alimentos_bebidas">Alimentos y Bebidas</option>
+        <option value="educacion">Educación</option>
+        <option value="salud">Salud</option>
+        <option value="finanzas">Finanzas</option>
+        <option value="agricultura">Agricultura</option>
+        <option value="logistica_transporte">Logística y Transporte</option>
+        <option value="inmobiliario">Inmobiliario</option>
+        <option value="mineria">Minería</option>
+        <option value="energia">Energía</option>
+        <option value="turismo">Turismo</option>
+        <option value="arte_cultura">Arte y Cultura</option>
+    </select>
+</div>
+
+<div class="form-group-inline">
+    <div class="form-group">
+        <!-- Título: Campo para la Comuna del Cliente -->
+        <label for="cliente_comuna">Comuna:</label> <!-- Etiqueta para el campo de entrada de la comuna del cliente -->
+        <!-- Título: Campo para Ingresar la Comuna del Cliente -->
+        <input type="text" id="cliente_comuna" name="cliente_comuna" 
+            placeholder="Ej: La Reina, Providencia" 
+            required 
+            minlength="3" 
+            maxlength="50" 
+            pattern="^[a-zA-ZÀ-ÿ\s]+$" 
+            oninput="QuitarCaracteresInvalidos(this)"
+            title="Ingresa una comuna válida (Ej: La Reina, Providencia). Solo se permiten letras y espacios."> <!-- Campo de texto para ingresar la comuna del cliente. Este campo no es obligatorio -->
+    </div>
+    <div class="form-group">
+        <!-- Título: Campo para la Ciudad del Cliente -->
+        <label for="cliente_ciudad">Ciudad:</label> <!-- Etiqueta para el campo de entrada de la ciudad del cliente -->
+        <!-- Título: Campo para Ingresar la Ciudad del Cliente -->
+        <input type="text" id="cliente_ciudad" name="cliente_ciudad" 
+            placeholder="Ej: Santiago, Valparaíso" 
+            required 
+            minlength="3" 
+            maxlength="50" 
+            pattern="^[a-zA-ZÀ-ÿ\s]+$" 
+            oninput="QuitarCaracteresInvalidos(this)"
+            title="Ingresa una ciudad válida (Ej: Santiago, Valparaíso). Solo se permiten letras y espacios."> <!-- Campo de texto para ingresar la ciudad del cliente. Este campo no es obligatorio -->
+    </div>
+</div>
+
+<div class="form-group">
+    <!-- Título: Campo para el Tipo de Cliente -->
+    <label for="cliente_tipo">Tipo:</label> <!-- Etiqueta para el campo de selección del tipo de cliente -->
+    <!-- Título: Campo para Seleccionar el Tipo de Cliente -->
+    <select id="cliente_tipo" name="cliente_tipo" required> <!-- Campo de selección para el tipo de cliente. Este campo es obligatorio -->
+        <option value="" disabled selected>Selecciona un tipo de cliente</option> <!-- Opción por defecto -->
+        <option value="persona_natural">Persona Natural</option>
+        <option value="empresa">Empresa</option>
+        <option value="organizacion_sin_fines_de_lucro">Organización Sin Fines de Lucro</option>
+        <option value="institucion_gubernamental">Institución Gubernamental</option>
+        <option value="institucion_educativa">Institución Educativa</option>
+        <option value="multinacional">Multinacional</option>
+    </select>
+</div>
 <script src="../../js/nueva_cotizacion/detalle_cliente.js"></script> 
 
 <?php

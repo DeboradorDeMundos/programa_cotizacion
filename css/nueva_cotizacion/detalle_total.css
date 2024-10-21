@@ -13,7 +13,9 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Detalle total.CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-   /* Contenedor principal del formulario */
+
+/* Título: Contenedor principal del formulario */
+/* Contenedor principal del formulario */
 .form-contenedor {
     background-color: #f9f9f9; /* Fondo gris claro */
     padding: 20px; /* Espaciado interno de 20px */
@@ -24,6 +26,7 @@ BPPJ
     font-family: Arial, sans-serif; /* Fuente del formulario */
 }
 
+/* Título: Estilo para etiquetas en el grupo de formularios */
 /* Estilo para etiquetas en el grupo de formularios */
 .form-group-2 label {
     width: 40%; /* Ancho del label */
@@ -34,6 +37,7 @@ BPPJ
     border-radius: 3px 0px 0px 3px; /* Bordes redondeados a la izquierda */
 }
 
+/* Título: Estilo para inputs en el grupo de formularios */
 /* Estilo para inputs en el grupo de formularios */
 .form-group-2 input {
     width: 60%; /* Ancho del input */
@@ -45,6 +49,7 @@ BPPJ
     background-color: #fff; /* Fondo blanco */
 }
 
+/* Título: Estilo para grupos de campos en línea */
 /* Estilo para grupos de campos en línea */
 .form-group-inline-2 {
     display: flex; /* Usa flexbox para organizar elementos en línea */
@@ -52,6 +57,7 @@ BPPJ
     gap: 10px; /* Espacio entre los elementos */
 }
 
+/* Título: Contenedor secundario del formulario */
 /* Contenedor secundario del formulario */
 .form-contenedor-2 {
     background-color: #f9f9f9; /* Fondo gris claro */
@@ -64,6 +70,7 @@ BPPJ
     font-family: Arial, sans-serif; /* Fuente del formulario */
 }
 
+/* Título: Estilo para el grupo de formularios */
 /* Estilo para el grupo de formularios */
 .form-group-2 {
     display: flex; /* Usa flexbox para alinear elementos */
@@ -71,11 +78,13 @@ BPPJ
     margin-bottom: 10px; /* Espaciado inferior de 10px */
 }
 
+/* Título: Estilo para grupos de campos en línea dentro de form-group-inline-2 */
 /* Estilo para grupos de campos en línea dentro de form-group-inline-2 */
 .form-group-inline-2 .form-group {
     flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
 }
 
+/* Título: Estilo para texto adicional dentro del grupo de formularios */
 /* Estilo para texto adicional dentro del grupo de formularios */
 .form-group-2 span {
     margin-left: 5px; /* Espaciado a la izquierda de 5px */
@@ -83,6 +92,7 @@ BPPJ
     color: #333; /* Color de texto oscuro */
 }
 
+/* Título: Asegura la altura uniforme de labels e inputs */
 /* Asegura que los label y input tengan la misma altura */
 .form-group {
     display: flex; /* Usa flexbox para alinear elementos */
@@ -91,6 +101,7 @@ BPPJ
     margin-bottom: 10px; /* Espaciado inferior de 10px */
 }
 
+/* Título: Estilo para grupos de campos en línea */
 /* Estilo para grupos de campos en línea */
 .form-group-inline {
     display: flex; /* Usa flexbox para organizar elementos en línea */
@@ -98,12 +109,11 @@ BPPJ
     gap: 10px; /* Espacio entre los elementos */
 }
 
+/* Título: Distribución del espacio en grupos de formularios en línea */
 /* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
 .form-group-inline .form-group {
     flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
 }
-
-    
       
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Detalle total.CSS ---------------------------------------

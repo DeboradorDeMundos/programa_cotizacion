@@ -33,39 +33,44 @@ BPPJ
 <!-- Contenedor principal que puede ayudar a centrar y organizar el contenido en la página -->
 <div class="contenedor"> 
         
-        <form id="formulario-cliente" method="POST" action="" enctype="multipart/form-data">
+    <!-- Título: Formulario para agregar un nuevo cliente -->
+    <form id="formulario-cliente" method="POST" action="" enctype="multipart/form-data">
+        <h1>Título: Rellena el formulario para agregar un nuevo cliente</h1>
 
-        <h1>RELLENA EL FORMULARIO PARA AGREGAR UN NUEVO CLIENTE </h1>
-
-
+        <!-- Título: Contenedor secundario que organiza los formularios -->
         <div class="contenedor">
-    <div class="formulario-empresa">
-        <h3>Información del Negocio / Empresa:</h3>
-        <!-- se agrega formulario cliente -->
-        <?php include 'formulario_empresa_cliente.php'; ?> 
-    </div>
 
+            <!-- Título: Información del Negocio / Empresa -->
+            <div class="formulario-empresa">
+                <h3>Título: Información del Negocio / Empresa</h3>
+                <!-- Título: Formulario de Empresa del Cliente -->
+                <?php include 'formulario_empresa_cliente.php'; ?> 
+            </div>
 
+            <!-- Título: Información del Encargado / Cliente -->
+            <div class="formulario-encargado">
+                <h3>Título: Información del Encargado / Cliente</h3>
+                <!-- Título: Formulario del Encargado de la Empresa -->
+                <?php include 'formulario_encargado.php'; ?>
+            </div>
+        </div>
 
-    <div class="formulario-encargado">
-        <h3>Información del Encargado / Cliente:</h3>
-        <!-- se agrega formulario encargado de empresa -->
-        <?php include 'formulario_encargado.php'; ?>
-    </div>
-   </div>
+        <!-- Título: Sección de Notificaciones -->
+        <?php if (!empty($mensaje)): ?>
+            <div class="notificacion" id="notificacion">
+                <p>Título: Notificación / Mensaje</p>
+                <?php echo $mensaje; ?>
+            </div>
+        <?php endif; ?>
 
+        <!-- Título: Botón para Crear Cliente -->
+        <button type="submit" class="submit">Título: Crear Cliente</button> 
 
-<?php if (!empty($mensaje)): ?>
-    <div class="notificacion" id="notificacion">
-        <?php echo $mensaje; ?>
-    </div>
-<?php endif; ?>
-    <button type="submit" class="submit">Crear Cliente</button> 
-    <!-- Cierra el formulario -->
+    <!-- Título: Cierra el formulario -->
     </form> 
-    <!-- Cierra el contenedor principal -->
-    </div> 
-
+    
+<!-- Título: Cierra el contenedor principal -->
+</div>
 
 <script src="../../js/crear_cliente/nuevo_cliente.js"></script> 
 

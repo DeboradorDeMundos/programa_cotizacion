@@ -53,63 +53,65 @@ if (!$result) {
     <link rel="stylesheet" href="../../css/crear_proveedor/mostrar_proveedor.css"> <!-- Enlace a tu archivo CSS -->
 </head>
 <body>
-    <div class="container">
-        <h1>Lista de Proveedores</h1>
+<div class="container">
+    <!-- Título: Lista de Proveedores -->
+    <h1>Lista de Proveedores</h1>
+    
+    <?php
+    // Verifica si se encontraron proveedores
+    if ($result->num_rows > 0) {
+        echo "<table>";
+        echo "<tr>
+                <!-- Título: Encabezados de la tabla -->
+                <th>ID</th> <!-- Título: ID del proveedor -->
+                <th>Nombre Proveedor</th> <!-- Título: Nombre del proveedor -->
+                <th>Dirección Proveedor</th> <!-- Título: Dirección del proveedor -->
+                <th>RUT Proveedor</th> <!-- Título: RUT del proveedor -->
+                <th>Teléfono Proveedor</th> <!-- Título: Teléfono del proveedor -->
+                <th>Email Proveedor</th> <!-- Título: Email del proveedor -->
+                <th>Cargo Proveedor</th> <!-- Título: Cargo del proveedor -->
+                <th>Comuna Proveedor</th> <!-- Título: Comuna del proveedor -->
+                <th>Ciudad Proveedor</th> <!-- Título: Ciudad del proveedor -->
+                <th>Tipo Proveedor</th> <!-- Título: Tipo del proveedor -->
+                <th>Empresa</th> <!-- Título: Empresa del proveedor -->
+                <th>RUT Empresa</th> <!-- Título: RUT de la empresa -->
+                <th>Dirección Empresa</th> <!-- Título: Dirección de la empresa -->
+                <th>Teléfono Empresa</th> <!-- Título: Teléfono de la empresa -->
+                <th>Email Empresa</th> <!-- Título: Email de la empresa -->
+                <th>Comuna Empresa</th> <!-- Título: Comuna de la empresa -->
+                <th>Ciudad Empresa</th> <!-- Título: Ciudad de la empresa -->
+                <th>Giro Empresa</th> <!-- Título: Giro de la empresa -->
+              </tr>";
         
-        <?php
-        // Verifica si se encontraron proveedores
-        if ($result->num_rows > 0) {
-            echo "<table>";
-            echo "<tr>
-                    <th>ID</th>
-                    <th>Nombre Proveedor</th>
-                    <th>Dirección Proveedor</th>
-                    <th>RUT Proveedor</th>
-                    <th>Teléfono Proveedor</th>
-                    <th>Email Proveedor</th>
-                    <th>Cargo Proveedor</th>
-                    <th>Comuna Proveedor</th>
-                    <th>Ciudad Proveedor</th>
-                    <th>Tipo Proveedor</th>
-                    <th>Empresa</th>
-                    <th>RUT Empresa</th>
-                    <th>Dirección Empresa</th>
-                    <th>Teléfono Empresa</th>
-                    <th>Email Empresa</th>
-                    <th>Comuna Empresa</th>
-                    <th>Ciudad Empresa</th>
-                    <th>Giro Empresa</th>
-                  </tr>";
-            
-            // Mostrar datos de cada fila
-            while($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>" . $row["id_proveedor"] . "</td>";
-                echo "<td>" . $row["nombre_proveedor"] . "</td>";
-                echo "<td>" . $row["direccion_proveedor"] . "</td>";
-                echo "<td>" . $row["rut_proveedor"] . "</td>";
-                echo "<td>" . $row["telefono_proveedor"] . "</td>";
-                echo "<td>" . $row["email_proveedor"] . "</td>";
-                echo "<td>" . $row["cargo_proveedor"] . "</td>";
-                echo "<td>" . $row["comuna_proveedor"] . "</td>";
-                echo "<td>" . $row["ciudad_proveedor"] . "</td>";
-                echo "<td>" . $row["tipo_proveedor"] . "</td>";
-                echo "<td>" . $row["empresa_proveedor"] . "</td>";
-                echo "<td>" . $row["rut_empresa_proveedor"] . "</td>";
-                echo "<td>" . $row["direccion_empresa_proveedor"] . "</td>";
-                echo "<td>" . $row["telefono_empresa_proveedor"] . "</td>";
-                echo "<td>" . $row["email_empresa_proveedor"] . "</td>";
-                echo "<td>" . $row["comuna_empresa_proveedor"] . "</td>";
-                echo "<td>" . $row["ciudad_empresa_proveedor"] . "</td>";
-                echo "<td>" . $row["giro_proveedor"] . "</td>";
-                echo "</tr>";
-            }
-            echo "</table>";
-        } else {
-            echo "No se encontraron proveedores.";
+        // Mostrar datos de cada fila
+        while($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>" . $row["id_proveedor"] . "</td>"; <!-- Título: ID del proveedor -->
+            echo "<td>" . $row["nombre_proveedor"] . "</td>"; <!-- Título: Nombre del proveedor -->
+            echo "<td>" . $row["direccion_proveedor"] . "</td>"; <!-- Título: Dirección del proveedor -->
+            echo "<td>" . $row["rut_proveedor"] . "</td>"; <!-- Título: RUT del proveedor -->
+            echo "<td>" . $row["telefono_proveedor"] . "</td>"; <!-- Título: Teléfono del proveedor -->
+            echo "<td>" . $row["email_proveedor"] . "</td>"; <!-- Título: Email del proveedor -->
+            echo "<td>" . $row["cargo_proveedor"] . "</td>"; <!-- Título: Cargo del proveedor -->
+            echo "<td>" . $row["comuna_proveedor"] . "</td>"; <!-- Título: Comuna del proveedor -->
+            echo "<td>" . $row["ciudad_proveedor"] . "</td>"; <!-- Título: Ciudad del proveedor -->
+            echo "<td>" . $row["tipo_proveedor"] . "</td>"; <!-- Título: Tipo del proveedor -->
+            echo "<td>" . $row["empresa_proveedor"] . "</td>"; <!-- Título: Empresa del proveedor -->
+            echo "<td>" . $row["rut_empresa_proveedor"] . "</td>"; <!-- Título: RUT de la empresa -->
+            echo "<td>" . $row["direccion_empresa_proveedor"] . "</td>"; <!-- Título: Dirección de la empresa -->
+            echo "<td>" . $row["telefono_empresa_proveedor"] . "</td>"; <!-- Título: Teléfono de la empresa -->
+            echo "<td>" . $row["email_empresa_proveedor"] . "</td>"; <!-- Título: Email de la empresa -->
+            echo "<td>" . $row["comuna_empresa_proveedor"] . "</td>"; <!-- Título: Comuna de la empresa -->
+            echo "<td>" . $row["ciudad_empresa_proveedor"] . "</td>"; <!-- Título: Ciudad de la empresa -->
+            echo "<td>" . $row["giro_proveedor"] . "</td>"; <!-- Título: Giro de la empresa -->
+            echo "</tr>";
         }
-        ?>
-    </div>
+        echo "</table>";
+    } else {
+        echo "No se encontraron proveedores.";
+    }
+    ?>
+</div>
 </body>
 </html>
 

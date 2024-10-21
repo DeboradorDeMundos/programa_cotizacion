@@ -19,10 +19,12 @@ BPPJ
     <legend>Detalle de la Cotización</legend>
     <div id="detalle-contenedor">
         <div class="seccion-detalle">
+            <!-- Título: Sección para detalles de la cotización -->
             <!-- Aquí se agregarán las secciones dinámicamente -->
         </div>
 
         <div class="fixed-button-contenedor">
+            <!-- Título: Botón para agregar una nueva sección de detalle -->
             <button type="button" onclick="AgregarSeccionDeDetalle()">Agregar un nuevo título</button>
         </div>
     </div>
@@ -258,7 +260,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
                         // Ejecutar la declaración
                         if (!$stmt_insert_detalle->execute()) {
-                            throw new Exception("Error al insertar detalle: " . $stmt_insert_detalle->error);
+                            throw new Exception("Error al insertar  " . $stmt_insert_detalle->error);
                         }
                     }
                 }

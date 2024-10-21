@@ -39,12 +39,15 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 </head> <!-- Cierra el elemento de cabecera -->
 <body> <!-- Abre el elemento del cuerpo de la página donde se coloca el contenido visible -->
     <div class="contenedor"> <!-- Contenedor principal que puede ayudar a centrar y organizar el contenido en la página -->
-     <!-- Formulario con ID "formulario-cotizacion". Usa el método POST para enviar los datos al servidor. El atributo "action" define el archivo al que se enviarán los datos. "enctype" especifica que el formulario puede enviar archivos -->    
-    <form id="formulario-cotizacion" method="POST" action="" enctype="multipart/form-data">
+        
+        <!-- Título: Formulario de cotización -->
+        <form id="formulario-cotizacion" method="POST" action="" enctype="multipart/form-data">
            
+            <!-- Título: Enlace para volver a la página anterior -->
             <a href="../../programa_cotizacion.php" class="boton-fijado">Volver</a>
+            
             <!-- Fila 1 -->
-             <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
+            <!-- Título: Fila 1 - Logo y cuadro rojo -->
             <div class="row"> 
 
                 <!-- Incluye el archivo para la carga del logo -->
@@ -53,10 +56,10 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
                 <!-- Incluye el archivo para mostrar el cuadro rojo -->
                 <?php include 'cuadro_rojo.php'; ?>
                 
-            </div> <!-- Cierra la fila -->
+            </div> <!-- Cierra la fila 1 -->
 
             <!-- Fila 2 -->
-
+            <!-- Título: Fila 2 - Formularios -->
             <!-- Incluye el archivo para el formulario de empresa -->
             <?php include 'formulario_empresa.php'; ?>
 
@@ -67,9 +70,10 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
             <?php include 'formulario_vendedor.php'; ?>            
 
             <!-- Fila para cuentas bancarias -->
-            
+            <!-- Título: Fila de cuentas bancarias -->
             <!-- Incluye el archivo para el formulario de cuenta -->
             <?php include 'formulario_cuenta.php';?>
+
             <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
             <div class="row"> 
                 <div class="box-12 data-box">
@@ -80,6 +84,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
                 </div>
             </div>
 
+            <!-- Título: Requisitos básicos -->
             <div class="row"> 
                 <div class="box-12 data-box">
                     <!-- Incluye el archivo para los requisitos básicos -->
@@ -87,6 +92,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
                 </div>
             </div>
 
+            <!-- Título: Condiciones generales -->
             <div class="row"> 
                 <div class="box-12 data-box">
                     <!-- Incluye el archivo para las condiciones generales -->
@@ -94,12 +100,15 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
                 </div>
             </div>
             
+            <!-- Título: Obligaciones del cliente -->
             <div class="row"> 
                 <div class="box-12 data-box">
                     <!-- Incluye el archivo para las obligaciones del cliente -->
                     <?php include 'obligaciones_cliente.php';?>
                 </div>
             </div>
+
+            <!-- Título: Firma -->
             <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
             <div class="row"> 
                 <div class="box-12 data-box">
@@ -107,7 +116,8 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
                     <?php include 'firma.php';?>
                 </div>
             </div>
-            <!-- Botón para enviar el formulario y generar la cotización -->
+
+            <!-- Título: Botón para enviar el formulario y generar la cotización -->
             <button type="submit" id="boton-subir" class="subir">Crear empresa</button> 
             <!-- Cierra el formulario -->
         </form> 

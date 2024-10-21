@@ -14,48 +14,68 @@ BPPJ
     -------------------------------------- INICIO ITred Spa menu .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
   
-    document.addEventListener('DOMContentLoaded', function() {
-        // Seleccionar el contenedor del select personalizado
-        var customSelect = document.querySelector('.custom-select');
-        // Seleccionar el elemento que muestra la opción seleccionada
-        var OpcionSeleccionada = customSelect.querySelector('.selected-option');
-        // Seleccionar la lista de opciones
-        var ListaDeOpciones = customSelect.querySelector('#option-list');
-        // Seleccionar el elemento <select> original
-        var ElementoSeleccionado = customSelect.querySelector('select');
-        // Seleccionar el input oculto que contendrá el valor seleccionado
-        var InputOculto = document.getElementById('selected-empresa');
+// Título: Inicialización del select personalizado
+//  Espera a que todo el contenido del DOM se haya cargado antes de ejecutar la lógica para el select personalizado.
+document.addEventListener('DOMContentLoaded', function() {
+    // Título: Seleccionar el contenedor del select personalizado
+    //  Obtiene el elemento que contiene el select personalizado para su manipulación.
+    var customSelect = document.querySelector('.custom-select');
     
-        // Agregar un evento click a la opción seleccionada para mostrar/ocultar la lista de opciones
-        OpcionSeleccionada.addEventListener('click', function() {
-            ListaDeOpciones.style.display = ListaDeOpciones.style.display === 'block' ? 'none' : 'block';
-        });
+    // Título: Seleccionar la opción seleccionada
+    //  Obtiene el elemento que muestra la opción actualmente seleccionada en el select personalizado.
+    var OpcionSeleccionada = customSelect.querySelector('.selected-option');
     
-        // Agregar un evento click a la lista de opciones
-        ListaDeOpciones.addEventListener('click', function(event) {
-            var target = event.target;
-            // Buscar el elemento que tiene el atributo 'data-value'
-            while (target && !target.hasAttribute('data-value')) {
-                target = target.parentElement; // Ir al padre si no tiene el atributo
-            }
-            // Si se encontró un objetivo válido
-            if (target) {
-                var value = target.getAttribute('data-value'); // Obtener el valor del atributo
-                var text = target.textContent.trim(); // Obtener el texto de la opción
-                OpcionSeleccionada.textContent = text; // Actualizar la opción seleccionada
-                InputOculto.value = value; // Establecer el valor en el input oculto
-                ElementoSeleccionado.value = value; // Establecer el valor en el elemento <select>
-                ListaDeOpciones.style.display = 'none'; // Ocultar la lista de opciones
-            }
-        });
+    // Título: Seleccionar la lista de opciones
+    //  Obtiene el contenedor que muestra las opciones disponibles del select personalizado.
+    var ListaDeOpciones = customSelect.querySelector('#option-list');
     
-        // Agregar un evento click al documento para cerrar la lista de opciones al hacer clic fuera
-        document.addEventListener('click', function(event) {
-            if (!customSelect.contains(event.target)) {
-                ListaDeOpciones.style.display = 'none'; // Ocultar la lista si se hace clic fuera
-            }
-        });
+    // Título: Seleccionar el elemento <select> original
+    //  Obtiene el elemento <select> HTML original que se está reemplazando con el select personalizado.
+    var ElementoSeleccionado = customSelect.querySelector('select');
+    
+    // Título: Seleccionar el input oculto para el valor seleccionado
+    //  Obtiene el input oculto que contendrá el valor del elemento seleccionado para enviar en el formulario.
+    var InputOculto = document.getElementById('selected-empresa');
+
+    // Título: Mostrar/ocultar la lista de opciones
+    //  Agrega un evento click a la opción seleccionada para alternar la visibilidad de la lista de opciones.
+    OpcionSeleccionada.addEventListener('click', function() {
+        ListaDeOpciones.style.display = ListaDeOpciones.style.display === 'block' ? 'none' : 'block';
     });
+
+    // Título: Manejar la selección de una opción
+    //  Agrega un evento click a la lista de opciones para actualizar la opción seleccionada y cerrar la lista.
+    ListaDeOpciones.addEventListener('click', function(event) {
+        var target = event.target;
+        
+        // Título: Buscar el elemento con el atributo 'data-value'
+        //  Verifica si el elemento clicado tiene el atributo 'data-value', y si no, sube en la jerarquía de elementos.
+        while (target && !target.hasAttribute('data-value')) {
+            target = target.parentElement; // Ir al padre si no tiene el atributo
+        }
+        
+        // Si se encontró un objetivo válido
+        if (target) {
+            var value = target.getAttribute('data-value'); // Obtener el valor del atributo
+            var text = target.textContent.trim(); // Obtener el texto de la opción
+            
+            // Título: Actualizar la opción seleccionada y los inputs correspondientes
+            //  Asigna el texto y el valor de la opción seleccionada a los elementos relevantes.
+            OpcionSeleccionada.textContent = text; // Actualizar la opción seleccionada
+            InputOculto.value = value; // Establecer el valor en el input oculto
+            ElementoSeleccionado.value = value; // Establecer el valor en el elemento <select>
+            ListaDeOpciones.style.display = 'none'; // Ocultar la lista de opciones
+        }
+    });
+
+    // Título: Cerrar la lista de opciones al hacer clic fuera
+    //  Agrega un evento click al documento para ocultar la lista de opciones si se hace clic fuera del contenedor.
+    document.addEventListener('click', function(event) {
+        if (!customSelect.contains(event.target)) {
+            ListaDeOpciones.style.display = 'none'; // Ocultar la lista si se hace clic fuera
+        }
+    });
+});
     
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa menu .JS ---------------------------------------
