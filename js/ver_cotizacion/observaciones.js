@@ -14,20 +14,20 @@ BPPJ
     -------------------------------------- INICIO ITred Spa observaciones .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-// Título: Validar entrada de observaciones
-// Esta función se activa al introducir texto en el campo de observaciones, 
-// eliminando caracteres peligrosos para evitar problemas de seguridad.
+// TÍTULO: VALIDAR ENTRADA DE OBSERVACIONES
+    // Esta función se activa al introducir texto en el campo de observaciones, 
+    // eliminando caracteres peligrosos para evitar problemas de seguridad.
 
-document.getElementById('observacion').addEventListener('input', function() {
-    // Expresión regular para detectar caracteres no permitidos (ajusta según tus necesidades)
-    const pattern = /['"<>;\\]/g;
-    
-    // Si el texto contiene caracteres no permitidos, los elimina
-    if (pattern.test(this.value)) {
-        this.value = this.value.replace(pattern, ''); // Reemplaza los caracteres no permitidos con una cadena vacía
-        alert('Se han eliminado caracteres no permitidos se borraran.'); // Alerta al usuario sobre la eliminación
-    }
-});
+    document.getElementById('observacion').addEventListener('input', function() {
+        // Expresión regular para detectar caracteres no permitidos (ajusta según tus necesidades)
+        const pattern = /['"<>;\\]/g;
+        
+        // Si el texto contiene caracteres no permitidos, los elimina
+        if (pattern.test(this.value)) {
+            this.value = this.value.replace(pattern, ''); // Reemplaza los caracteres no permitidos con una cadena vacía
+            alert('Se han eliminado caracteres no permitidos se borraran.'); // Alerta al usuario sobre la eliminación
+        }
+    });
 
 
 /* --------------------------------------------------------------------------------------------------------------

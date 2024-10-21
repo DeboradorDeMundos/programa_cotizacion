@@ -14,14 +14,14 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Traer requisitos.JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-// Título: Alternar requisitos
-// Función para mostrar u ocultar una tabla de requisitos basada en el estado de un checkbox
-function toggleRequisitos() {
-    const checkbox = document.getElementById('toggle-requisitos'); // Obtener el checkbox
-    const table = document.getElementById('requisitos-table'); // Obtener la tabla de requisitos
-    // Muestra u oculta la tabla según el estado del checkbox
-    table.style.display = checkbox.checked ? 'table' : 'none';
-}
+// TÍTULO: ALTERNAR REQUISITOS
+    // Función para mostrar u ocultar una tabla de requisitos basada en el estado de un checkbox
+    function toggleRequisitos() {
+        const checkbox = document.getElementById('toggle-requisitos'); // Obtener el checkbox
+        const table = document.getElementById('requisitos-table'); // Obtener la tabla de requisitos
+        // Muestra u oculta la tabla según el estado del checkbox
+        table.style.display = checkbox.checked ? 'table' : 'none';
+    }
 
 
 

@@ -68,7 +68,7 @@ if (isset($_FILES['logo_upload']) && $_FILES['logo_upload']['error'] == UPLOAD_E
         }
 
         // Insertar la ruta de la foto en la tabla e_fotosPerfil
-        $sql_foto = "INSERT INTO e_fotosPerfil (ruta_foto) VALUES (?)";
+        $sql_foto = "INSERT INTO fp_fotosPerfil (ruta_foto) VALUES (?)";
         $stmt_foto = $mysqli->prepare($sql_foto);
         $stmt_foto->bind_param("s", $upload_file);
         if ($stmt_foto->execute()) {

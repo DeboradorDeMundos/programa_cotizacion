@@ -14,15 +14,15 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Obligaciones cliente .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-// Título: Alternar obligaciones
-//  Esta función muestra u oculta una tabla de obligaciones en función del estado de un checkbox.
-function toggleObligaciones() {
-    const checkbox = document.getElementById('toggle-obligaciones'); // Obtener el checkbox que controla la visibilidad
-    const table = document.getElementById('obligaciones-table'); // Obtener la tabla de obligaciones
-    
-    // Muestra u oculta la tabla según el estado del checkbox
-    table.style.display = checkbox.checked ? 'table' : 'none'; // Si el checkbox está marcado, muestra la tabla; de lo contrario, ocúltala.
-}
+// TÍTULO: ALTERNAR OBLIGACIONES
+    //  Esta función muestra u oculta una tabla de obligaciones en función del estado de un checkbox.
+    function toggleObligaciones() {
+        const checkbox = document.getElementById('toggle-obligaciones'); // Obtener el checkbox que controla la visibilidad
+        const table = document.getElementById('obligaciones-table'); // Obtener la tabla de obligaciones
+        
+        // Muestra u oculta la tabla según el estado del checkbox
+        table.style.display = checkbox.checked ? 'table' : 'none'; // Si el checkbox está marcado, muestra la tabla; de lo contrario, ocúltala.
+    }
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Obligaciones cliente .JS ---------------------------------------

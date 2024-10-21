@@ -13,294 +13,293 @@ BPPJ
     -------------------------------------- Inicio ITred Spa formulario Clientes .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-/* Título: Formateo del RUT */
-/* Formatea el RUT ingresado en el campo de entrada */
-function formatoRut(input) {
-    // Obtiene el valor del campo y elimina cualquier carácter que no sea numérico
-    let rut = input.value.replace(/\D/g, '');
+/* TÍTULO: FORMATEO DEL RUT */
+    /* Formatea el RUT ingresado en el campo de entrada */
+    function formatoRut(input) {
+        // Obtiene el valor del campo y elimina cualquier carácter que no sea numérico
+        let rut = input.value.replace(/\D/g, '');
 
-    // Si el RUT tiene más de 9 caracteres, se limita a los primeros 9 (incluyendo el dígito verificador)
-    if (rut.length > 9) {
-        rut = rut.slice(0, 9);
+        // Si el RUT tiene más de 9 caracteres, se limita a los primeros 9 (incluyendo el dígito verificador)
+        if (rut.length > 9) {
+            rut = rut.slice(0, 9);
+        }
+
+        // Aplica el formato al RUT. Si tiene más de 1 dígito, coloca un punto cada 3 dígitos y un guion antes del último
+        if (rut.length > 1) {
+            rut = rut.slice(0, -1).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '-' + rut.slice(-1);
+        }
+
+        // Establece el valor del input formateado
+        input.value = rut;
+
+        // Limita la longitud total del input, asegurándose de que no exceda el formato esperado (12 caracteres)
+        if (input.value.length > 12) {
+            input.value = input.value.slice(0, 12);
+        }
     }
 
-    // Aplica el formato al RUT. Si tiene más de 1 dígito, coloca un punto cada 3 dígitos y un guion antes del último
-    if (rut.length > 1) {
-        rut = rut.slice(0, -1).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '-' + rut.slice(-1);
-    }
+/* TÍTULO: FORMATEO DE LA DIRECCIÓN */
+    /* Formatea la dirección del cliente ingresada en el campo de entrada */
+    function formatoDireccion(input) {
+        // Obtiene el valor del campo y elimina cualquier carácter que no sea alfanumérico o espacio
+        let direccion = input.value.replace(/[^A-Za-z0-9\s]/g, '');
 
-    // Establece el valor del input formateado
-    input.value = rut;
+        // Limita la longitud total del input a 100 caracteres (ajusta según lo que necesites)
+        if (direccion.length > 100) {
+            direccion = direccion.slice(0, 100);
+        }
 
-    // Limita la longitud total del input, asegurándose de que no exceda el formato esperado (12 caracteres)
-    if (input.value.length > 12) {
-        input.value = input.value.slice(0, 12);
-    }
-}
+        // Establece el valor del input formateado
+        input.value = direccion;
 
-/* Título: Formateo de la dirección */
-/* Formatea la dirección del cliente ingresada en el campo de entrada */
-function formatoDireccion(input) {
-    // Obtiene el valor del campo y elimina cualquier carácter que no sea alfanumérico o espacio
-    let direccion = input.value.replace(/[^A-Za-z0-9\s]/g, '');
-
-    // Limita la longitud total del input a 100 caracteres (ajusta según lo que necesites)
-    if (direccion.length > 100) {
-        direccion = direccion.slice(0, 100);
-    }
-
-    // Establece el valor del input formateado
-    input.value = direccion;
-
-    // Muestra u oculta el mensaje de error
-    const errorSpan = document.getElementById('error_direccion');
-    if (input.value.length < input.value.replace(/[^A-Za-z0-9\s]/g, '').length) {
-        errorSpan.style.display = 'inline'; // Mostrar el mensaje de error
-    } else {
-        errorSpan.style.display = 'none'; // Ocultar el mensaje de error
-    }
-}
-
-/* Título: Validación del nombre de la empresa */
-/* Valida que el campo solo contenga letras y espacios */
-function validarNombre() {
-    let input = document.getElementById("nombre_empresa_cliente");
-    
-    // Verificar si el input existe antes de acceder a su valor
-    if (input) {
-        let nombre = input.value;
-
-        // Expresión regular que solo permite letras y espacios
-        let regex = /^[A-Za-z\s]+$/;
-
-        // Verifica si el nombre contiene solo letras y espacios
-        if (!regex.test(nombre)) {
-            document.getElementById("error_nombre").style.display = "inline";
-            input.value = nombre.replace(/[^A-Za-z\s]/g, '');
+        // Muestra u oculta el mensaje de error
+        const errorSpan = document.getElementById('error_direccion');
+        if (input.value.length < input.value.replace(/[^A-Za-z0-9\s]/g, '').length) {
+            errorSpan.style.display = 'inline'; // Mostrar el mensaje de error
         } else {
-            document.getElementById("error_nombre").style.display = "none";
-        }
-    } else {
-        console.error("El campo nombre_empresa_cliente no se encuentra.");
-    }
-}
-
-/* Título: Asociación de códigos de país con banderas */
-/* Objeto que asocia códigos de país con imágenes de banderas */
-const banderasPais1 = {
-    "+1": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/32px-Flag_of_United_States.svg.png", // USA
-    "+52": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/32px-Flag_of_Mexico.svg.png", // Mexico
-    "+56": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_of_Chile.svg/32px-Flag_of_Chile.svg.png", // Chile
-    "+54": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/32px-Flag_of_Argentina.svg.png", // Argentina
-    "+57": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/32px-Flag_of_Colombia.svg.png", // Colombia
-    "+58": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/32px-Flag_of_Venezuela.svg.png", // Venezuela
-    "+51": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Peru.svg/32px-Flag_of_Peru.svg.png", // Peru
-    "+503": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Flag_of_El_Salvador.svg/32px-Flag_of_El_Salvador.svg.png", // El Salvador
-    "+591": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Flag_of_Bolivia.svg/32px-Flag_of_Bolivia.svg.png", // Bolivia
-    "+507": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Flag_of_Panama.svg/32px-Flag_of_Panama.svg.png", // Panama
-    "+505": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Flag_of_Nicaragua.svg/32px-Flag_of_Nicaragua.svg.png", // Nicaragua
-    "+502": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Flag_of_Guatemala.svg/32px-Flag_of_Guatemala.svg.png", // Guatemala
-    "+504": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Flag_of_Honduras.svg/32px-Flag_of_Honduras.svg.png", // Honduras
-    "+53": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Flag_of_Cuba.svg/32px-Flag_of_Cuba.svg.png", // Cuba
-    "+55": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/32px-Flag_of_Brazil.svg.png", // Brazil
-    "+598": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Uruguay.svg/32px-Flag_of_Uruguay.svg.png", // Uruguay
-    "+509": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Flag_of_Haiti.svg/32px-Flag_of_Haiti.svg.png", // Haiti
-    "+593": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Flag_of_Ecuador.svg/32px-Flag_of_Ecuador.svg.png", // Ecuador
-    "+595": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Flag_of_Paraguay.svg/32px-Flag_of_Paraguay.svg.png" // Paraguay
-};
-
-/* Título: Bandera por defecto */
-/* Imagen de bandera por defecto cuando no coincide con ningún código */
-const banderaPorDefecto1 = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/World_Flag_%282004%29.svg/640px-World_Flag_%282004%29.svg.png"; // Bandera por defecto
-
-/* Título: Detección de país según número de teléfono */
-/* Función para detectar el país según el número de teléfono ingresado */
-function detectarPais1(input1) {
-    const numeroTelefono1 = input1.value.trim(); // Asegúrate de eliminar espacios
-    const imagenBandera1 = document.getElementById("flag_empresa_cliente");
-    
-    // Itera sobre los códigos de país para detectar el correcto
-    for (const codigo1 in banderasPais1) {
-        if (numeroTelefono1.startsWith(codigo1)) {
-            imagenBandera1.src = banderasPais1[codigo1];
-            imagenBandera1.style.display = "inline"; // Mostrar la imagen de la bandera
-            return; // Detener la función si se encuentra el país
+            errorSpan.style.display = 'none'; // Ocultar el mensaje de error
         }
     }
-    // Si no se encuentra un código de país coincidente, muestra la bandera por defecto
-    imagenBandera1.src = banderaPorDefecto1;
-    imagenBandera1.style.display = "inline";
-}
 
-/* Título: Asegurar '+' y detectar país */
-/* Asegura que el número de teléfono comience con '+' y permite solo números */
-function asegurarMasYDetectarPais1(input1) {
-    // Verificar si el valor actual comienza con '+'
-    if (!input1.value.startsWith('+')) {
-        input1.value = '+' + input1.value.replace(/^\+/, ''); // Agregar '+' al inicio
+/* TÍTULO: VALIDACIÓN DEL NOMBRE DE LA EMPRESA */
+    /* Valida que el campo solo contenga letras y espacios */
+    function validarNombre() {
+        let input = document.getElementById("nombre_empresa_cliente");
+        
+        // Verificar si el input existe antes de acceder a su valor
+        if (input) {
+            let nombre = input.value;
+
+            // Expresión regular que solo permite letras y espacios
+            let regex = /^[A-Za-z\s]+$/;
+
+            // Verifica si el nombre contiene solo letras y espacios
+            if (!regex.test(nombre)) {
+                document.getElementById("error_nombre").style.display = "inline";
+                input.value = nombre.replace(/[^A-Za-z\s]/g, '');
+            } else {
+                document.getElementById("error_nombre").style.display = "none";
+            }
+        } else {
+            console.error("El campo nombre_empresa_cliente no se encuentra.");
+        }
     }
 
-    // Permitir solo números después del '+' y mantener el '+'
-    const validCharacters1 = input1.value.replace(/[^0-9]/g, ''); // Eliminar caracteres no válidos, excepto '+'
-    input1.value = input1.value[0] + validCharacters1; // Mantener el '+' y agregar solo los números
-    
-    // Llamar a la función de detección de la bandera
-    detectarPais1(input1);
-}
+/* TÍTULO: ASOCIACIÓN DE CÓDIGOS DE PAÍS CON BANDERAS */
+    /* Objeto que asocia códigos de país con imágenes de banderas */
+    const banderasPais1 = {
+        "+1": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/32px-Flag_of_United_States.svg.png", // USA
+        "+52": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/32px-Flag_of_Mexico.svg.png", // Mexico
+        "+56": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_of_Chile.svg/32px-Flag_of_Chile.svg.png", // Chile
+        "+54": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/32px-Flag_of_Argentina.svg.png", // Argentina
+        "+57": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/32px-Flag_of_Colombia.svg.png", // Colombia
+        "+58": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/32px-Flag_of_Venezuela.svg.png", // Venezuela
+        "+51": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Peru.svg/32px-Flag_of_Peru.svg.png", // Peru
+        "+503": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Flag_of_El_Salvador.svg/32px-Flag_of_El_Salvador.svg.png", // El Salvador
+        "+591": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Flag_of_Bolivia.svg/32px-Flag_of_Bolivia.svg.png", // Bolivia
+        "+507": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Flag_of_Panama.svg/32px-Flag_of_Panama.svg.png", // Panama
+        "+505": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Flag_of_Nicaragua.svg/32px-Flag_of_Nicaragua.svg.png", // Nicaragua
+        "+502": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Flag_of_Guatemala.svg/32px-Flag_of_Guatemala.svg.png", // Guatemala
+        "+504": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Flag_of_Honduras.svg/32px-Flag_of_Honduras.svg.png", // Honduras
+        "+53": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Flag_of_Cuba.svg/32px-Flag_of_Cuba.svg.png", // Cuba
+        "+55": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/32px-Flag_of_Brazil.svg.png", // Brazil
+        "+598": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Uruguay.svg/32px-Flag_of_Uruguay.svg.png", // Uruguay
+        "+509": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Flag_of_Haiti.svg/32px-Flag_of_Haiti.svg.png", // Haiti
+        "+593": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Flag_of_Ecuador.svg/32px-Flag_of_Ecuador.svg.png", // Ecuador
+        "+595": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Flag_of_Paraguay.svg/32px-Flag_of_Paraguay.svg.png" // Paraguay
+    };
 
-/* Título: Validación del email de la empresa */
-/* Valida el email ingresado para la empresa del cliente */
-function validarEmailEmpresa(input) {
-    const mensajeError = document.getElementById("mensaje_error_email_empresa");
-    const caracteresEspeciales = /[\"'?!¡]/; // Caracteres especiales no permitidos
+/* TÍTULO: BANDERA POR DEFECTO */
+    /* Imagen de bandera por defecto cuando no coincide con ningún código */
+    const banderaPorDefecto1 = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/World_Flag_%282004%29.svg/640px-World_Flag_%282004%29.svg.png"; // Bandera por defecto
 
-    // Elimina caracteres especiales no permitidos
-    input.value = input.value.replace(caracteresEspeciales, '');
-
-    const email = input.value.trim();
-
-    // Expresión regular para validar el formato del email
-    const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    // Verifica si el email está vacío
-    if (email === "") {
-        mensajeError.textContent = "El campo no puede estar vacío.";
-        mensajeError.style.display = "block";
-        return; // Salir de la función si está vacío
+/* TÍTULO: DETECCIÓN DE PAÍS SEGÚN NÚMERO DE TELÉFONO */
+    /* Función para detectar el país según el número de teléfono ingresado */
+    function detectarPais1(input1) {
+        const numeroTelefono1 = input1.value.trim(); // Asegúrate de eliminar espacios
+        const imagenBandera1 = document.getElementById("flag_empresa_cliente");
+        
+        // Itera sobre los códigos de país para detectar el correcto
+        for (const codigo1 in banderasPais1) {
+            if (numeroTelefono1.startsWith(codigo1)) {
+                imagenBandera1.src = banderasPais1[codigo1];
+                imagenBandera1.style.display = "inline"; // Mostrar la imagen de la bandera
+                return; // Detener la función si se encuentra el país
+            }
+        }
+        // Si no se encuentra un código de país coincidente, muestra la bandera por defecto
+        imagenBandera1.src = banderaPorDefecto1;
+        imagenBandera1.style.display = "inline";
     }
 
-    // Verifica el formato del email
-    if (!regexEmail.test(email)) {
-        mensajeError.textContent = "Por favor, ingrese un email válido.";
-        mensajeError.style.display = "block"; // Mostrar mensaje de error
-    } else {
-        mensajeError.style.display = "none"; // Ocultar mensaje de error si es válido
+/* TÍTULO: ASEGURAR '+' Y DETECTAR PAÍS */
+    /* Asegura que el número de teléfono comience con '+' y permite solo números */
+    function asegurarMasYDetectarPais1(input1) {
+        // Verificar si el valor actual comienza con '+'
+        if (!input1.value.startsWith('+')) {
+            input1.value = '+' + input1.value.replace(/^\+/, ''); // Agregar '+' al inicio
+        }
+
+        // Permitir solo números después del '+' y mantener el '+'
+        const validCharacters1 = input1.value.replace(/[^0-9]/g, ''); // Eliminar caracteres no válidos, excepto '+'
+        input1.value = input1.value[0] + validCharacters1; // Mantener el '+' y agregar solo los números
+        
+        // Llamar a la función de detección de la bandera
+        detectarPais1(input1);
     }
-}
 
-/* Título: Validación del giro de la empresa */
-/* Valida el giro ingresado */
-function validarGiro(input) {
-    const mensajeError = document.getElementById("mensaje_error_giro");
-    const caracteresNoPermitidos = /[^a-zA-Z\s]/g; // Solo se permiten letras y espacios
+/* TÍTULO: VALIDACIÓN DEL EMAIL DE LA EMPRESA */
+    /* Valida el email ingresado para la empresa del cliente */
+    function validarEmailEmpresa(input) {
+        const mensajeError = document.getElementById("mensaje_error_email_empresa");
+        const caracteresEspeciales = /[\"'?!¡]/; // Caracteres especiales no permitidos
 
-    // Elimina caracteres no permitidos
-    input.value = input.value.replace(caracteresNoPermitidos, '');
+        // Elimina caracteres especiales no permitidos
+        input.value = input.value.replace(caracteresEspeciales, '');
 
-    const giro = input.value.trim();
+        const email = input.value.trim();
 
-    // Verifica si el giro está vacío
-    if (giro === "") {
-        mensajeError.textContent = "El campo no puede estar vacío.";
-        mensajeError.style.display = "block";
-        return; // Salir de la función si está vacío
-    } else {
-        mensajeError.style.display = "none"; // Ocultar mensaje de error si es válido
+        // Expresión regular para validar el formato del email
+        const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        // Verifica si el email está vacío
+        if (email === "") {
+            mensajeError.textContent = "El campo no puede estar vacío.";
+            mensajeError.style.display = "block";
+            return; // Salir de la función si está vacío
+        }
+
+        // Verifica el formato del email
+        if (!regexEmail.test(email)) {
+            mensajeError.textContent = "Por favor, ingrese un email válido.";
+            mensajeError.style.display = "block"; // Mostrar mensaje de error
+        } else {
+            mensajeError.style.display = "none"; // Ocultar mensaje de error si es válido
+        }
     }
-}
 
-/* Título: Validación del tipo de empresa */
-/* Valida el tipo de empresa ingresado */
-function validarTipo(input) {
-    const mensajeError = document.getElementById("mensaje_error_tipo");
-    const caracteresNoPermitidos = /[^a-zA-Z\s]/g; // Solo se permiten letras y espacios
+/* TÍTULO: VALIDACIÓN DEL GIRO DE LA EMPRESA */
+    /* Valida el giro ingresado */
+    function validarGiro(input) {
+        const mensajeError = document.getElementById("mensaje_error_giro");
+        const caracteresNoPermitidos = /[^a-zA-Z\s]/g; // Solo se permiten letras y espacios
 
-    // Elimina caracteres no permitidos
-    input.value = input.value.replace(caracteresNoPermitidos, '');
+        // Elimina caracteres no permitidos
+        input.value = input.value.replace(caracteresNoPermitidos, '');
 
-    const tipo = input.value.trim();
+        const giro = input.value.trim();
 
-    // Verifica si el tipo está vacío
-    if (tipo === "") {
-        mensajeError.textContent = "El campo no puede estar vacío.";
-        mensajeError.style.display = "block";
-        return; // Salir de la función si está vacío
-    } else {
-        mensajeError.style.display = "none"; // Ocultar mensaje de error si es válido
+        // Verifica si el giro está vacío
+        if (giro === "") {
+            mensajeError.textContent = "El campo no puede estar vacío.";
+            mensajeError.style.display = "block";
+            return; // Salir de la función si está vacío
+        } else {
+            mensajeError.style.display = "none"; // Ocultar mensaje de error si es válido
+        }
     }
-}
 
-/* Título: Validación del lugar de la empresa */
-/* Valida el lugar ingresado */
-function validarLugar(input) {
-    const mensajeError = document.getElementById("mensaje_error_lugar");
-    const caracteresNoPermitidos = /[^a-zA-Z\s]/g; // Solo se permiten letras y espacios
+/* TÍTULO: VALIDACIÓN DEL TIPO DE EMPRESA */
+    /* Valida el tipo de empresa ingresado */
+    function validarTipo(input) {
+        const mensajeError = document.getElementById("mensaje_error_tipo");
+        const caracteresNoPermitidos = /[^a-zA-Z\s]/g; // Solo se permiten letras y espacios
 
-    // Elimina caracteres no permitidos
-    input.value = input.value.replace(caracteresNoPermitidos, '');
+        // Elimina caracteres no permitidos
+        input.value = input.value.replace(caracteresNoPermitidos, '');
 
-    const tipo = input.value.trim();
+        const tipo = input.value.trim();
 
-    // Verifica si el tipo está vacío
-    if (tipo === "") {
-        mensajeError.textContent = "El campo no puede estar vacío.";
-        mensajeError.style.display = "block";
-        return; // Salir de la función si está vacío
-    } else {
-        mensajeError.style.display = "none"; // Ocultar mensaje de error si es válido
+        // Verifica si el tipo está vacío
+        if (tipo === "") {
+            mensajeError.textContent = "El campo no puede estar vacío.";
+            mensajeError.style.display = "block";
+            return; // Salir de la función si está vacío
+        } else {
+            mensajeError.style.display = "none"; // Ocultar mensaje de error si es válido
+        }
     }
-}
 
-/* Título: Validación de la ciudad */
-/* Valida la ciudad ingresada */
-function validarCiudad(input) {
-    const mensajeError = document.getElementById("mensaje_error_ciudad");
-    const caracteresNoPermitidos = /[^a-zA-Z\s]/g; // Solo se permiten letras y espacios
+/* TÍTULO: VALIDACIÓN DEL LUGAR DE LA EMPRESA */
+    /* Valida el lugar ingresado */
+    function validarLugar(input) {
+        const mensajeError = document.getElementById("mensaje_error_lugar");
+        const caracteresNoPermitidos = /[^a-zA-Z\s]/g; // Solo se permiten letras y espacios
 
-    // Elimina caracteres no permitidos
-    input.value = input.value.replace(caracteresNoPermitidos, '');
+        // Elimina caracteres no permitidos
+        input.value = input.value.replace(caracteresNoPermitidos, '');
 
-    const ciudad = input.value.trim();
+        const tipo = input.value.trim();
 
-    // Verifica si la ciudad está vacía
-    if (ciudad === "") {
-        mensajeError.textContent = "El campo no puede estar vacío.";
-        mensajeError.style.display = "block";
-        return; // Salir de la función si está vacío
-    } else {
-        mensajeError.style.display = "none"; // Ocultar mensaje de error si es válido
+        // Verifica si el tipo está vacío
+        if (tipo === "") {
+            mensajeError.textContent = "El campo no puede estar vacío.";
+            mensajeError.style.display = "block";
+            return; // Salir de la función si está vacío
+        } else {
+            mensajeError.style.display = "none"; // Ocultar mensaje de error si es válido
+        }
     }
-}
 
-/* Título: Validación de la comuna */
-/* Valida la comuna ingresada */
-function validarComuna(input) {
-    const mensajeError = document.getElementById("mensaje_error_comuna");
-    const caracteresNoPermitidos = /[^a-zA-Z\s]/g; // Solo se permiten letras y espacios
+/* TÍTULO: VALIDACIÓN DE LA CIUDAD */
+    /* Valida la ciudad ingresada */
+    function validarCiudad(input) {
+        const mensajeError = document.getElementById("mensaje_error_ciudad");
+        const caracteresNoPermitidos = /[^a-zA-Z\s]/g; // Solo se permiten letras y espacios
 
-    // Elimina caracteres no permitidos
-    input.value = input.value.replace(caracteresNoPermitidos, '');
+        // Elimina caracteres no permitidos
+        input.value = input.value.replace(caracteresNoPermitidos, '');
 
-    const comuna = input.value.trim();
+        const ciudad = input.value.trim();
 
-    // Verifica si la comuna está vacía
-    if (comuna === "") {
-        mensajeError.textContent = "El campo no puede estar vacío.";
-        mensajeError.style.display = "block";
-        return; // Salir de la función si está vacío
-    } else {
-        mensajeError.style.display = "none"; // Ocultar mensaje de error si es válido
+        // Verifica si la ciudad está vacía
+        if (ciudad === "") {
+            mensajeError.textContent = "El campo no puede estar vacío.";
+            mensajeError.style.display = "block";
+            return; // Salir de la función si está vacío
+        } else {
+            mensajeError.style.display = "none"; // Ocultar mensaje de error si es válido
+        }
     }
-}
+/* TÍTULO: VALIDACIÓN DE LA COMUNA */
+    /* Valida la comuna ingresada */
+    function validarComuna(input) {
+        const mensajeError = document.getElementById("mensaje_error_comuna");
+        const caracteresNoPermitidos = /[^a-zA-Z\s]/g; // Solo se permiten letras y espacios
 
-/* Título: Validación de observaciones */
-/* Valida la observación ingresada */
-function validarObservacion(input) {
-    const mensajeError = document.getElementById("error_observacion");
-    const caracteresNoPermitidos = /[^a-zA-Z0-9\s]/g; // Solo se permiten letras, números y espacios
+        // Elimina caracteres no permitidos
+        input.value = input.value.replace(caracteresNoPermitidos, '');
 
-    // Elimina caracteres no permitidos
-    input.value = input.value.replace(caracteresNoPermitidos, '');
+        const comuna = input.value.trim();
 
-    const observacion = input.value.trim();
-
-    // Verifica si la observación está vacía
-    if (observacion === "") {
-        mensajeError.style.display = "none"; // Ocultar mensaje de error si está vacío
-    } else {
-        mensajeError.style.display = "none"; // Ocultar mensaje de error si es válido
+        // Verifica si la comuna está vacía
+        if (comuna === "") {
+            mensajeError.textContent = "El campo no puede estar vacío.";
+            mensajeError.style.display = "block";
+            return; // Salir de la función si está vacío
+        } else {
+            mensajeError.style.display = "none"; // Ocultar mensaje de error si es válido
+        }
     }
-}
+
+//* TÍTULO: VALIDACIÓN DE OBSERVACIONES */
+    /* Valida la observación ingresada */
+    function validarObservacion(input) {
+        const mensajeError = document.getElementById("error_observacion");
+        const caracteresNoPermitidos = /[^a-zA-Z0-9\s]/g; // Solo se permiten letras, números y espacios
+
+        // Elimina caracteres no permitidos
+        input.value = input.value.replace(caracteresNoPermitidos, '');
+
+        const observacion = input.value.trim();
+
+        // Verifica si la observación está vacía
+        if (observacion === "") {
+            mensajeError.style.display = "none"; // Ocultar mensaje de error si está vacío
+        } else {
+            mensajeError.style.display = "none"; // Ocultar mensaje de error si es válido
+        }
+    }
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa formulario Clientes .JS ---------------------------------------

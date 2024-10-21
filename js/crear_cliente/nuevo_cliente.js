@@ -12,18 +12,17 @@ BPPJ
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- Inicio ITred Spa Crear Clientes .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-
-// Título: Notificación en el DOM
-// Muestra y oculta una notificación en la página
-document.addEventListener("DOMContentLoaded", function() {
-    const notificacion = document.getElementById('notificacion');
-    if (notificacion) {
-        notificacion.style.display = 'block'; // Muestra el mensaje
-        setTimeout(() => {
-            notificacion.style.display = 'none'; // Oculta el mensaje después de 5 segundos
-        }, 5000);
-    }
-});
+// TÍTULO: NOTIFICACIÓN EN EL DOM
+    // Muestra y oculta una notificación en la página
+    document.addEventListener("DOMContentLoaded", function() {
+        const notificacion = document.getElementById('notificacion');
+        if (notificacion) {
+            notificacion.style.display = 'block'; // Muestra el mensaje
+            setTimeout(() => {
+                notificacion.style.display = 'none'; // Oculta el mensaje después de 5 segundos
+            }, 5000);
+        }
+    });
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Crear Clientes .JS ---------------------------------------
