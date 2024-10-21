@@ -14,92 +14,92 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Detalle vendedor.CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-/* Título: Estilo para cuadros de datos */
-/* Hace que los cuadros de datos tengan borde, espaciado y fondo */
-.cuadro-datos {
-  border: 1px solid #ddd; /* Borde gris claro de 1px */
-  padding: 15px; /* Espaciado interno de 15px */
-  background-color: #fff; /* Fondo blanco */
-}
+/* TÍTULO: ESTILO PARA CUADROS DE DATOS */
+  /* Hace que los cuadros de datos tengan borde, espaciado y fondo */
+  .cuadro-datos {
+    border: 1px solid #ddd; /* Borde gris claro de 1px */
+    padding: 15px; /* Espaciado interno de 15px */
+    background-color: #fff; /* Fondo blanco */
+  }
 
-/* Título: Estilos para columnas de diseño flexible */
-/* Hace que las columnas utilicen flexbox y se apilen en columna */
-.box-6,
-.box-12 {
-  display: flex; /* Usa flexbox para la disposición de los elementos */
-  flex-direction: column; /* Los elementos se apilan en columna */
-}
+/* TÍTULO: ESTILOS PARA COLUMNAS DE DISEÑO FLEXIBLE */
+  /* Hace que las columnas utilicen flexbox y se apilen en columna */
+  .box-6,
+  .box-12 {
+    display: flex; /* Usa flexbox para la disposición de los elementos */
+    flex-direction: column; /* Los elementos se apilan en columna */
+  }
 
-/* Título: Estilo para filas de elementos */
-/* Hace que los elementos se dispongan en filas y se ajusten en múltiples líneas */
-.row {
-  display: flex; /* Usa flexbox para la disposición de los elementos */
-  flex-wrap: wrap; /* Permite que los elementos se ajusten en múltiples líneas */
-  margin-bottom: 20px; /* Espaciado inferior de 20px */
-}
+/* TÍTULO: ESTILO PARA FILAS DE ELEMENTOS */
+  /* Hace que los elementos se dispongan en filas y se ajusten en múltiples líneas */
+  .row {
+    display: flex; /* Usa flexbox para la disposición de los elementos */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en múltiples líneas */
+    margin-bottom: 20px; /* Espaciado inferior de 20px */
+  }
 
-/* Título: Estilo para columnas específicas */
-/* Hace que la columna .box-6 se expanda y tenga espaciado */
-.box-6 {
-  flex: 1; /* Se expande para ocupar el espacio disponible */
-  padding: 10px; /* Espaciado interno de 10px */
-}
+/* TÍTULO: ESTILO PARA COLUMNAS ESPECÍFICAS */
+  /* Hace que la columna .box-6 se expanda y tenga espaciado */
+  .box-6 {
+    flex: 1; /* Se expande para ocupar el espacio disponible */
+    padding: 10px; /* Espaciado interno de 10px */
+  }
 
-/* Título: Agrupación de estilos para labels en formularios */
-/* Hace que los labels tengan un ancho fijo, tamaño de fuente y fondo */
-.form-group label {
-  width: 20%; /* Ancho del label */
-  font-size: 14px; /* Tamaño de fuente */
-  background-color: #d4d4d4; /* Fondo gris claro para el label */
-  padding: 5px; /* Espaciado interno del label */
-  border-radius: 3px 0px 0px 3px; /* Bordes redondeados a la izquierda */
-}
+/* TÍTULO: AGRUPACIÓN DE ESTILOS PARA LABELS EN FORMULARIOS */
+  /* Hace que los labels tengan un ancho fijo, tamaño de fuente y fondo */
+  .form-group label {
+    width: 20%; /* Ancho del label */
+    font-size: 14px; /* Tamaño de fuente */
+    background-color: #d4d4d4; /* Fondo gris claro para el label */
+    padding: 5px; /* Espaciado interno del label */
+    border-radius: 3px 0px 0px 3px; /* Bordes redondeados a la izquierda */
+  }
 
-/* Título: Estilo común para labels, selects e inputs en formularios */
-/* Hace que los elementos se alineen usando flexbox */
-.form-group label,
-.form-group select,
-.form-group input {
-  display: flex; /* Usa flexbox para alinear los elementos */
-  align-items: center; /* Centra verticalmente los elementos */
-}
+/* TÍTULO: ESTILO COMÚN PARA LABELS, SELECTS E INPUTS EN FORMULARIOS */
+  /* Hace que los elementos se alineen usando flexbox */
+  .form-group label,
+  .form-group select,
+  .form-group input {
+    display: flex; /* Usa flexbox para alinear los elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+  }
 
-/* Título: Estilo para selects e inputs en formularios */
-/* Hace que los selects e inputs se expandan y tengan espaciado y borde */
-.form-group select,
-.form-group input {
-  flex: 2; /* Se expande para ocupar el espacio disponible */
-  padding: 5px; /* Espaciado interno de 5px */
-  border: 1px solid #ddd; /* Borde gris claro de 1px */
-  border-radius: 0px 3px 3px 0px; /* Bordes redondeados a la derecha */
-  font-size: 14px; /* Tamaño de fuente */
-  text-align: left; /* Alineación del texto a la izquierda */
-  background-color: #fff; /* Fondo blanco */
-  box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
-}
+/* TÍTULO: ESTILO PARA SELECTS E INPUTS EN FORMULARIOS */
+  /* Hace que los selects e inputs se expandan y tengan espaciado y borde */
+  .form-group select,
+  .form-group input {
+    flex: 2; /* Se expande para ocupar el espacio disponible */
+    padding: 5px; /* Espaciado interno de 5px */
+    border: 1px solid #ddd; /* Borde gris claro de 1px */
+    border-radius: 0px 3px 3px 0px; /* Bordes redondeados a la derecha */
+    font-size: 14px; /* Tamaño de fuente */
+    text-align: left; /* Alineación del texto a la izquierda */
+    background-color: #fff; /* Fondo blanco */
+    box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
+  }
 
-/* Título: Asegura que los label y input tengan la misma altura */
-/* Hace que los elementos de .form-group se alineen y estiren */
-.form-group {
-  display: flex; /* Usa flexbox para alinear los elementos */
-  align-items: stretch; /* Estira los elementos para que tengan la misma altura */
-  justify-content: space-between; /* Alinea el label y el input a los extremos */
-  margin-bottom: 10px; /* Espaciado inferior de 10px */
-}
+/* TÍTULO: ASEGURA QUE LOS LABEL Y INPUT TENGAN LA MISMA ALTURA */
+  /* Hace que los elementos de .form-group se alineen y estiren */
+  .form-group {
+    display: flex; /* Usa flexbox para alinear los elementos */
+    align-items: stretch; /* Estira los elementos para que tengan la misma altura */
+    justify-content: space-between; /* Alinea el label y el input a los extremos */
+    margin-bottom: 10px; /* Espaciado inferior de 10px */
+  }
 
-/* Título: Estilo para grupos de campos en línea */
-/* Hace que los grupos de campos se dispongan en línea con espacio entre ellos */
-.form-group-inline {
-  display: flex; /* Usa flexbox para organizar elementos en línea */
-  justify-content: space-between; /* Alinea los elementos a los extremos */
-  gap: 10px; /* Espacio entre los elementos */
-}
+/* TÍTULO: ESTILO PARA GRUPOS DE CAMPOS EN LÍNEA */
+  /* Hace que los grupos de campos se dispongan en línea con espacio entre ellos */
+  .form-group-inline {
+    display: flex; /* Usa flexbox para organizar elementos en línea */
+    justify-content: space-between; /* Alinea los elementos a los extremos */
+    gap: 10px; /* Espacio entre los elementos */
+  }
 
-/* Título: Distribución del espacio en grupos de formularios en línea */
-/* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
-.form-group-inline .form-group {
-  flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
-}
+/* TÍTULO: DISTRIBUCIÓN DEL ESPACIO EN GRUPOS DE FORMULARIOS EN LÍNEA */
+  /* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
+  .form-group-inline .form-group {
+    flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
+  }
 
 
 /* --------------------------------------------------------------------------------------------------------------

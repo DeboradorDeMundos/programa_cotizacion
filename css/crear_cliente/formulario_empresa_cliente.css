@@ -14,7 +14,7 @@ BPPJ
     -------------------------------------- INICIO ITred Spa formulario empresa Clientes .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
     
-/* TÍTULO: ESTILOS GENERALES DEL FORMULARIO DE EMPRESA*/
+/* TÍTULO: ESTILOS GENERALES DEL FORMULARIO DE EMPRESA */
     /* Estilo general del contenedor del formulario */
     .formulario-empresa {
         width: 45%;
@@ -25,16 +25,16 @@ BPPJ
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra elegante */
     }
 
-/* TÍTULO: ESTILOS DEL ENCABEZADO H3 DENTRO DE FORMULARIO_EMPRESA_CLIENTES*/
-    /* Estilo del TÍTULO dentro del formulario */
+/* TÍTULO: ESTILOS DEL ENCABEZADO H3 DENTRO DE FORMULARIO-EMPRESA */
+    /* Estilo del título dentro del formulario */
     .formulario-empresa h3 {
-        color: #3c8dbc; /* Azul suave para el TÍTULO */
+        color: #3c8dbc; /* Azul suave para el título */
         font-family: 'Arial', sans-serif;
         font-size: 20px;
         margin-bottom: 15px;
     }
 
-/* TÍTULO: ESTILOS DE LOS CAMPOS INPUT Y SELECT DENTRO DE FORMULARIO EMPRESA */
+/* TÍTULO: ESTILOS DE LOS CAMPOS INPUT Y SELECT DENTRO DE FORMULARIO-EMPRESA */
     /* Estilo de los inputs y selects del formulario */
     .formulario-empresa input,
     .formulario-empresa select {
@@ -46,7 +46,7 @@ BPPJ
         box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
     }
 
-/* TÍTULO: ESTILOS CUANDO INPUT Y SELECT ESTAN ENFOCADOS */
+/* TÍTULO: ESTILOS CUANDO INPUT Y SELECT ESTÁN ENFOCADOS */
     /* Resalta los campos al estar enfocados */
     .formulario-empresa input:focus,
     .formulario-empresa select:focus {

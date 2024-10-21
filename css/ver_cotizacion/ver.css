@@ -13,430 +13,432 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Ver .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-/* Estilo general para el cuerpo del documento */
-/* Configura la fuente, tamaño, márgenes y rellenos del cuerpo */
-body {
-    font-family: Arial, sans-serif; /* Fuente utilizada */
-    font-size: 12px; /* Tamaño de la fuente */
-    margin: 0; /* Sin márgenes */
-    padding: 0; /* Sin relleno */
-}
-
-/* Estilo para las tablas */
-/* Configura el ancho, colapso de bordes y márgenes de las tablas */
-table {
-    width: 100%; /* Ancho total de la tabla */
-    border-collapse: collapse; /* Colapsa los bordes de las celdas */
-    margin-bottom: 20px; /* Espacio entre tablas */
-}
-
-/* Estilo para celdas y encabezados */
-/* Configura el borde, espaciado y alineación de las celdas y encabezados */
-th, td {
-    border: 1px solid black; /* Borde negro */
-    padding: 4px; /* Espaciado reducido */
-    text-align: left; /* Alineación a la izquierda */
-    vertical-align: top; /* Alineación en la parte superior */
-}
-
-/* Estilo para encabezados de tabla */
-/* Establece el color de fondo de los encabezados de tabla */
-th {
-    background-color: #f2f2f2; /* Color de fondo gris claro */
-}
-
-/* Estilo para texto vertical */
-/* Configura la alineación del texto verticalmente */
-.vertical-text {
-    text-align: center; /* Centra el texto */
-    vertical-align: middle; /* Alinea verticalmente en el medio */
-    white-space: nowrap; /* Sin salto de línea */
-}
-
-/* Estilo para subtítulos */
-/* Configura la alineación y peso de la fuente para subtítulos */
-.subtitle {
-    text-align: center; /* Centra el texto */
-    font-weight: bold; /* Negrita */
-}
-
-/* Estilo para encabezados (h1, h2, h3, h4, h5, h6) */
-/* Configura el tamaño de letra para todos los niveles de encabezados */
-h1, h2, h3, h4, h5, h6 {
-    font-size: 16px; /* Tamaño de letra más pequeño para encabezados */
-}
-
-/* Estilo para párrafos */
-/* Establece el tamaño de letra para párrafos */
-p {
-    font-size: 12px; /* Tamaño de letra más pequeño para párrafos */
-}
-
-/* Estilo para tablas */
-/* Configura el tamaño de letra para encabezados y celdas de tablas */
-table th, table td {
-    font-size: 12px; /* Tamaño de letra más pequeño para tablas */
-}
-
-/* Estilo para listas */
-/* Configura el tamaño de letra para elementos de listas */
-ul li {
-    font-size: 12px; /* Tamaño de letra más pequeño para listas */
-}
-
-/* Estilo para enlaces */
-/* Establece el tamaño de letra para enlaces */
-a {
-    font-size: 12px; /* Tamaño de letra más pequeño para enlaces */
-}
-
-/* Estilo para el contenedor principal */
-/* Configura el tamaño, márgenes y borde del contenedor principal */
-.contenedor {
-    width: 1000px; /* Ancho para el tamaño oficio */
-    margin: 0 auto; /* Centra el contenedor horizontalmente */
-    padding: 20px; /* Espaciado interno */
-    border: 1px solid #000; /* Borde negro */
-    box-sizing: border-box; /* Incluye el padding en el tamaño total */
-}
-
-/* Estilo para el texto destacado */
-/* Configura el tamaño y estilo del texto destacado */
-#text {
-    font-size: 18px; /* Tamaño de fuente más grande */
-    font-weight: bold; /* Negrita */
-    margin-bottom: 10px; /* Margen inferior */
-}
-
-/* Estilo para el contenedor del encabezado */
-/* Configura el diseño del encabezado usando flexbox */
-.header-contenedor {
-    display: flex; /* Utiliza flexbox para el diseño */
-    justify-content: space-between; /* Espacio entre los elementos */
-    align-items: flex-start; /* Alinea al inicio */
-}
-
-/* Estilo para el logo */
-/* Configura la altura del logo */
-.logo {
-    height: 100px; /* Altura del logo */
-}
-
-/* Estilo para el encabezado y pie de página */
-/* Configura la alineación y estilo del encabezado y pie de página */
-.header, .footer {
-    text-align: left; /* Alineación a la izquierda */
-    display: inline-block; /* Muestra en línea */
-    vertical-align: top; /* Alineación en la parte superior */
-}
-
-/* Estilo específico para el encabezado */
-/* Configura el ancho del encabezado */
-.header {
-    width: calc(100% - 120px); /* Ancho calculado */
-}
-
-/* Estilo para encabezado h1 dentro del encabezado */
-/* Configura márgenes y tamaño de letra del encabezado h1 */
-.header h1 {
-    margin: 0; /* Sin margen */
-    font-size: 16px; /* Tamaño de letra */
-}
-
-/* Estilo para encabezado h2 dentro del encabezado */
-/* Configura márgenes y tamaño de letra del encabezado h2 */
-.header h2 {
-    margin: 0; /* Sin margen */
-    font-size: 14px; /* Tamaño de letra */
-}
-
-/* Estilo para la información de contacto en el encabezado */
-/* Configura márgenes para la información de contacto */
-.header .contact-info {
-    margin-top: 10px; /* Margen superior */
-}
-
-/* Estilo para los párrafos de la información de contacto */
-/* Configura márgenes para los párrafos de la información de contacto */
-.header .contact-info p {
-    margin: 2px 0; /* Margen superior e inferior */
-}
-
-/* Estilo para la información de la factura */
-/* Configura el diseño y estilo de la información de la factura */
-.invoice-info {
-    text-align: center; /* Centra el texto */
-    border: 2px solid red; /* Borde rojo */
-    padding: 10px; /* Espaciado interno */
-    display: inline-block; /* Muestra en línea */
-    vertical-align: top; /* Alineación en la parte superior */
-    width: 35%; /* Ancho fijo */
-    color: red; /* Color del texto */
-}
-
-/* Estilo para los párrafos y encabezados en la información de la factura */
-/* Configura márgenes para los párrafos y encabezados en la factura */
-.invoice-info p, .invoice-info h3 {
-    margin: 2px 0; /* Margen superior e inferior */
-}
-
-/* Estilo para la información del SII */
-/* Configura alineación y color de la información del SII */
-.sii-info {
-    text-align: center; /* Centra el texto */
-    color: red; /* Color rojo */
-    margin-top: 0; /* Sin margen superior */
-}
-
-/* Estilo para las secciones de información */
-/* Configura el ancho y margen superior de las secciones de información */
-.customer-info, .details, .items, .observations, .totals, .bank-info {
-    width: 100%; /* Ancho total */
-    border-collapse: collapse; /* Colapsa los bordes de las celdas */
-    margin-top: 20px; /* Margen superior */
-}
-
-/* Estilo para las celdas de las secciones de información */
-/* Configura borde, espaciado y alineación de las celdas de información */
-.customer-info td, .details td, .items td, .observations td, .totals td, .bank-info td {
-    border: 0.5px solid #000; /* Borde negro delgado */
-    border-radius: 10px; /* Bordes redondeados */
-    padding: 5px; /* Espaciado interno */
-}
-
-/* Estilo para los encabezados de las secciones de ítems y totales */
-/* Configura el borde, espaciado y color de fondo de los encabezados */
-.items th, .totals th {
-    border: 1px solid #000; /* Borde negro */
-    padding: 5px; /* Espaciado interno */
-    background-color: #f0f0f0; /* Color de fondo gris claro */
-}
-
-/* Estilo para las celdas de ítems */
-/* Configura la alineación y espaciado de las celdas de ítems */
-.items td {
-    vertical-align: top; /* Alineación en la parte superior */
-    padding-top: 5px; /* Espaciado superior */
-    height: 200px; /* Altura fija */
-}
-
-/* Título: Estilo para la tabla de ítems */
-/* Define los estilos básicos para la tabla de ítems */
-.items {
-    border-radius: 10px; /* Bordes redondeados */
-    overflow: hidden; /* Oculta el desbordamiento */
-}
-
-/* Título: Estilo para las columnas en la tabla de ítems */
-/* Define los anchos de las columnas de código, descripción y demás */
-.items .codigo {
-    width: 10%; /* Ancho de la columna código */
-}
-/* Título: Estilo para la columna de descripción en la tabla de ítems */
-/* Define el ancho de la columna destinada a la descripción de los ítems */
-.items .descripcion {
-    width: 30%; /* Ancho de la columna descripción */
-}
-
-/* Título: Estilo para columnas en la tabla de ítems */
-/* Define el ancho de las columnas para unidades, cantidad, precio, descuento y total */
-.items .unid,
-.items .cant,
-.items .precio,
-.items .dscto,
-.items .total {
-    width: 10%; /* Ancho de las demás columnas */
-}
-/* Título: Estilo para el contenedor de totales */
-/* Configura el diseño del contenedor de totales */
-.totals-contenedor {
-    display: flex; /* Utiliza flexbox */
-    justify-content: space-between; /* Espacio entre los elementos */
-    margin-top: 20px; /* Margen superior */
-}
-
-/* Título: Estilo para la sección de totales */
-/* Define el ancho de la sección de totales */
-.totals {
-    width: 48%; /* Ancho de la sección de totales */
-}
-
-/* Título: Estilo para la sección de observaciones */
-/* Define el ancho de la sección de observaciones */
-.observations {
-    width: 48%; /* Ancho de la sección de observaciones */
-}
-
-/* Título: Estilo para las celdas de la sección de observaciones */
-/* Establece la altura de las celdas en la sección de observaciones */
-.observations td {
-    height: 30px; /* Altura fija */
-}
-
-/* Título: Estilo para celdas grandes en la sección de observaciones */
-/* Define una altura mayor para las celdas grandes */
-.observations .large-cell {
-    height: 100px; /* Altura mayor */
-}
-
-/* Título: Estilo para el contenedor de códigos de barras */
-/* Configura el diseño del contenedor para los códigos de barras */
-.barcode-contenedor {
-    display: flex; /* Utiliza flexbox */
-    justify-content: space-between; /* Espacio entre los elementos */
-    align-items: flex-start; /* Alineación al inicio */
-    margin-top: 20px; /* Margen superior */
-}
-
-/* Título: Estilo para el área de código de barras */
-/* Define el ancho y alineación del área de código de barras */
-.barcode {
-    width: 100%; /* Ancho total */
-    text-align: center; /* Centra el texto */
-    margin-top: 20px; /* Margen superior */
-}
-
-/* Título: Estilo para la imagen del código de barras */
-/* Define el tamaño de la imagen del código de barras */
-.barcode img {
-    width: 100%; /* Ancho total */
-    height: 50px; /* Altura fija */
-}
-
-/* Título: Estilo para los párrafos en el pie de página */
-/* Define los márgenes para los párrafos en el pie de página */
-.footer p {
-    margin: 2px 0; /* Margen superior e inferior */
-}
-
-/* Título: Estilo para la sección "Son" en totales */
-/* Añade un borde superior y espaciado a la sección "Son" */
-.totals .son {
-    border-top: 1px solid #000; /* Borde superior negro */
-    padding-top: 5px; /* Espaciado superior */
-    margin-top: 10px; /* Margen superior */
-}
-
-/* Título: Estilo para la sección de banco */
-/* Define la alineación y márgenes para la sección de banco */
-.bank-info {
-    text-align: left; /* Alineación a la izquierda */
-    margin-top: 20px; /* Margen superior */
-}
-
-/* Título: Estilo para celdas en la sección de banco */
-/* Define los bordes y espaciados internos de las celdas */
-.bank-info td {
-    border: 0.5px solid #000; /* Borde negro delgado */
-    border-radius: 10px; /* Bordes redondeados */
-    padding: 5px; /* Espaciado interno */
-}
-
-/* Título: Estilo para la sección de firma */
-/* Define el ancho y diseño para la sección de firma */
-.firma {
-    width: 100%; /* Ancho total */
-    margin-top: 40px; /* Margen superior */
-    display: flex; /* Utiliza flexbox */
-    justify-content: space-between; /* Espacio entre los elementos */
-}
-
-/* Título: Estilo para la firma y nombre */
-/* Define la alineación y tamaño de texto para la firma */
-.firma .nombre {
-    text-align: center; /* Centra el texto */
-    font-size: 12px; /* Tamaño de letra */
-}
-
-/* Título: Estilo para el contenedor de botones */
-/* Configura la posición y disposición de los botones */
-.button-contenedor {
-    position: fixed;
-    top: 20px; /* Ajusta la distancia desde la parte superior */
-    left: 20px; /* Ajusta la distancia desde la izquierda */
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 1000; /* Asegura que esté por encima de otros elementos */
-}
-
-/* Título: Estilo para los botones */
-/* Define los estilos básicos para los botones */
-.button {
-    background-color: #4CAF50; /* Color verde agradable */
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s, transform 0.3s;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Título: Estilo para el efecto hover en botones */
-/* Cambia el color de fondo y escala al pasar el ratón sobre el botón */
-.button:hover {
-    background-color: #45a049; /* Color verde un poco más oscuro al pasar el mouse */
-    transform: scale(1.05); /* Pequeño efecto de agrandamiento al pasar el mouse */
-}
-
-/* Título: Estilo para el efecto activo en botones */
-/* Aplica un efecto de escala al hacer clic en el botón */
-.button:active {
-    transform: scale(0.98); /* Efecto al hacer clic */
-}
-
-/* Título: Estilo específico para el botón de volver */
-/* Define el color de fondo para el botón de volver */
-.button.volver {
-    background-color: #f44336; /* Rojo para el botón de volver */
-}
-
-/* Título: Estilo para el efecto hover en el botón de volver */
-/* Cambia el color de fondo al pasar el ratón sobre el botón de volver */
-.button.volver:hover {
-    background-color: #e53935;
-}
-
-/* Título: Estilo específico para el botón de imprimir */
-/* Define el color de fondo para el botón de imprimir */
-.button.imprimir {
-    background-color: #008CBA; /* Azul para el botón de imprimir */
-}
-
-/* Título: Estilo para el efecto hover en el botón de imprimir */
-/* Cambia el color de fondo al pasar el ratón sobre el botón de imprimir */
-.button.imprimir:hover {
-    background-color: #007bb5;
-}
-
-/* Título: Estilo para la impresión */
-/* Define reglas específicas para la impresión */
-@media print {
-    /* Título: Estilo para ocultar campos de formulario en impresión */
-    /* Ocultar los radio buttons y otros campos de formulario */
-    input[type="radio"],
-    input[type="file"],
-    input[type="text"],
-    select,
-    input[type="range"],
-    #tamanoValor {
-        display: none !important; /* Asegúrate de que se oculten */
+/* ESTILO GENERAL PARA EL CUERPO DEL DOCUMENTO */
+    /* Configura la fuente, tamaño, márgenes y rellenos del cuerpo */
+    body {
+        font-family: Arial, sans-serif; /* Fuente utilizada */
+        font-size: 12px; /* Tamaño de la fuente */
+        margin: 0; /* Sin márgenes */
+        padding: 0; /* Sin relleno */
     }
 
-    /* Título: Estilo para ocultar el formulario en impresión */
-    /* También puedes ocultar el formulario si es necesario */
-    #form-marca-agua {
-        display: none !important;
+/* ESTILO PARA LAS TABLAS */
+    /* Configura el ancho, colapso de bordes y márgenes de las tablas */
+    table {
+        width: 100%; /* Ancho total de la tabla */
+        border-collapse: collapse; /* Colapsa los bordes de las celdas */
+        margin-bottom: 20px; /* Espacio entre tablas */
     }
 
-    /* Título: Estilo para asegurar que la marca de agua se imprima */
-    /* Asegúrate de que la marca de agua se imprima */
-    .marca_de_agua {
-        display: block !important; /* Asegúrate de que la marca de agua se imprima */
+/* ESTILO PARA CELDAS Y ENCABEZADOS */
+    /* Configura el borde, espaciado y alineación de las celdas y encabezados */
+    th, td {
+        border: 1px solid black; /* Borde negro */
+        padding: 4px; /* Espaciado reducido */
+        text-align: left; /* Alineación a la izquierda */
+        vertical-align: top; /* Alineación en la parte superior */
     }
-}
+
+/* ESTILO PARA ENCABEZADOS DE TABLA */
+    /* Establece el color de fondo de los encabezados de tabla */
+    th {
+        background-color: #f2f2f2; /* Color de fondo gris claro */
+    }
+
+/* ESTILO PARA TEXTO VERTICAL */
+    /* Configura la alineación del texto verticalmente */
+    .vertical-text {
+        text-align: center; /* Centra el texto */
+        vertical-align: middle; /* Alinea verticalmente en el medio */
+        white-space: nowrap; /* Sin salto de línea */
+    }
+
+/* ESTILO PARA SUBTÍTULOS */
+    /* Configura la alineación y peso de la fuente para subtítulos */
+    .subtitle {
+        text-align: center; /* Centra el texto */
+        font-weight: bold; /* Negrita */
+    }
+
+/* ESTILO PARA ENCABEZADOS (H1, H2, H3, H4, H5, H6) */
+    /* Configura el tamaño de letra para todos los niveles de encabezados */
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 16px; /* Tamaño de letra más pequeño para encabezados */
+    }
+
+/* ESTILO PARA PÁRRAFOS */
+    /* Establece el tamaño de letra para párrafos */
+    p {
+        font-size: 12px; /* Tamaño de letra más pequeño para párrafos */
+    }
+
+/* ESTILO PARA TABLAS */
+    /* Configura el tamaño de letra para encabezados y celdas de tablas */
+    table th, table td {
+        font-size: 12px; /* Tamaño de letra más pequeño para tablas */
+    }
+
+/* ESTILO PARA LISTAS */
+    /* Configura el tamaño de letra para elementos de listas */
+    ul li {
+        font-size: 12px; /* Tamaño de letra más pequeño para listas */
+    }
+
+/* ESTILO PARA ENLACES */
+    /* Establece el tamaño de letra para enlaces */
+    a {
+        font-size: 12px; /* Tamaño de letra más pequeño para enlaces */
+    }
+
+/* ESTILO PARA EL CONTENEDOR PRINCIPAL */
+    /* Configura el tamaño, márgenes y borde del contenedor principal */
+    .contenedor {
+        width: 1000px; /* Ancho para el tamaño oficio */
+        margin: 0 auto; /* Centra el contenedor horizontalmente */
+        padding: 20px; /* Espaciado interno */
+        border: 1px solid #000; /* Borde negro */
+        box-sizing: border-box; /* Incluye el padding en el tamaño total */
+    }
+
+/* ESTILO PARA EL TEXTO DESTACADO */
+    /* Configura el tamaño y estilo del texto destacado */
+    #text {
+        font-size: 18px; /* Tamaño de fuente más grande */
+        font-weight: bold; /* Negrita */
+        margin-bottom: 10px; /* Margen inferior */
+    }
+
+/* ESTILO PARA EL CONTENEDOR DEL ENCABEZADO */
+    /* Configura el diseño del encabezado usando flexbox */
+    .header-contenedor {
+        display: flex; /* Utiliza flexbox para el diseño */
+        justify-content: space-between; /* Espacio entre los elementos */
+        align-items: flex-start; /* Alinea al inicio */
+    }
+
+/* ESTILO PARA EL LOGO */
+    /* Configura la altura del logo */
+    .logo {
+        height: 100px; /* Altura del logo */
+    }
+
+/* ESTILO PARA EL ENCABEZADO Y PIE DE PÁGINA */
+    /* Configura la alineación y estilo del encabezado y pie de página */
+    .header, .footer {
+        text-align: left; /* Alineación a la izquierda */
+        display: inline-block; /* Muestra en línea */
+        vertical-align: top; /* Alineación en la parte superior */
+    }
+
+/* ESTILO ESPECÍFICO PARA EL ENCABEZADO */
+    /* Configura el ancho del encabezado */
+    .header {
+        width: calc(100% - 120px); /* Ancho calculado */
+    }
+
+/* ESTILO PARA ENCABEZADO H1 DENTRO DEL ENCABEZADO */
+    /* Configura márgenes y tamaño de letra del encabezado h1 */
+    .header h1 {
+        margin: 0; /* Sin margen */
+        font-size: 16px; /* Tamaño de letra */
+    }
+
+/* ESTILO PARA ENCABEZADO H2 DENTRO DEL ENCABEZADO */
+    /* Configura márgenes y tamaño de letra del encabezado h2 */
+    .header h2 {
+        margin: 0; /* Sin margen */
+        font-size: 14px; /* Tamaño de letra */
+    }
+
+/* ESTILO PARA LA INFORMACIÓN DE CONTACTO EN EL ENCABEZADO */
+    /* Configura márgenes para la información de contacto */
+    .header .contact-info {
+        margin-top: 10px; /* Margen superior */
+    }
+
+/* ESTILO PARA LOS PÁRRAFOS DE LA INFORMACIÓN DE CONTACTO */
+    /* Configura márgenes para los párrafos de la información de contacto */
+    .header .contact-info p {
+        margin: 2px 0; /* Margen superior e inferior */
+    }
+
+/* ESTILO PARA LA INFORMACIÓN DE LA FACTURA */
+    /* Configura el diseño y estilo de la información de la factura */
+    .invoice-info {
+        text-align: center; /* Centra el texto */
+        border: 2px solid red; /* Borde rojo */
+        padding: 10px; /* Espaciado interno */
+        display: inline-block; /* Muestra en línea */
+        vertical-align: top; /* Alineación en la parte superior */
+        width: 35%; /* Ancho fijo */
+        color: red; /* Color del texto */
+    }
+
+/* ESTILO PARA LOS PÁRRAFOS Y ENCABEZADOS EN LA INFORMACIÓN DE LA FACTURA */
+    /* Configura márgenes para los párrafos y encabezados en la factura */
+    .invoice-info p, .invoice-info h3 {
+        margin: 2px 0; /* Margen superior e inferior */
+    }
+
+/* ESTILO PARA LA INFORMACIÓN DEL SII */
+    /* Configura alineación y color de la información del SII */
+    .sii-info {
+        text-align: center; /* Centra el texto */
+        color: red; /* Color rojo */
+        margin-top: 0; /* Sin margen superior */
+    }
+
+/* ESTILO PARA LAS SECCIONES DE INFORMACIÓN */
+    /* Configura el ancho y margen superior de las secciones de información */
+    .customer-info, .details, .items, .observations, .totals, .bank-info {
+        width: 100%; /* Ancho total */
+        border-collapse: collapse; /* Colapsa los bordes de las celdas */
+        margin-top: 20px; /* Margen superior */
+    }
+
+/* ESTILO PARA LAS CELDAS DE LAS SECCIONES DE INFORMACIÓN */
+    /* Configura borde, espaciado y alineación de las celdas de información */
+    .customer-info td, .details td, .items td, .observations td, .totals td, .bank-info td {
+        border: 0.5px solid #000; /* Borde negro delgado */
+        border-radius: 10px; /* Bordes redondeados */
+        padding: 5px; /* Espaciado interno */
+    }
+
+/* ESTILO PARA LOS ENCABEZADOS DE LAS SECCIONES DE ÍTEMS Y TOTALES */
+    /* Configura el borde, espaciado y color de fondo de los encabezados */
+    .items th, .totals th {
+        border: 1px solid #000; /* Borde negro */
+        padding: 5px; /* Espaciado interno */
+        background-color: #f0f0f0; /* Color de fondo gris claro */
+    }
+
+/* ESTILO PARA LAS CELDAS DE ÍTEMS */
+    /* Configura la alineación y espaciado de las celdas de ítems */
+    .items td {
+        vertical-align: top; /* Alineación en la parte superior */
+        padding-top: 5px; /* Espaciado superior */
+        height: 200px; /* Altura fija */
+    }
+
+/* TÍTULO: ESTILO PARA LA TABLA DE ÍTEMS */
+    /* Define los estilos básicos para la tabla de ítems */
+    .items {
+        border-radius: 10px; /* Bordes redondeados */
+        overflow: hidden; /* Oculta el desbordamiento */
+    }
+
+/* TÍTULO: ESTILO PARA LAS COLUMNAS EN LA TABLA DE ÍTEMS */
+    /* Define los anchos de las columnas de código, descripción y demás */
+    .items .codigo {
+        width: 10%; /* Ancho de la columna código */
+    }
+
+/* TÍTULO: ESTILO PARA LA COLUMNA DE DESCRIPCIÓN EN LA TABLA DE ÍTEMS */
+    /* Define el ancho de la columna destinada a la descripción de los ítems */
+    .items .descripcion {
+        width: 30%; /* Ancho de la columna descripción */
+    }
+
+/* TÍTULO: ESTILO PARA COLUMNAS EN LA TABLA DE ÍTEMS */
+    /* Define el ancho de las columnas para unidades, cantidad, precio, descuento y total */
+    .items .unid,
+    .items .cant,
+    .items .precio,
+    .items .dscto,
+    .items .total {
+        width: 10%; /* Ancho de las demás columnas */
+    }
+
+/* TÍTULO: ESTILO PARA EL CONTENEDOR DE TOTALES */
+    /* Configura el diseño del contenedor de totales */
+    .totals-contenedor {
+        display: flex; /* Utiliza flexbox */
+        justify-content: space-between; /* Espacio entre los elementos */
+        margin-top: 20px; /* Margen superior */
+    }
+
+/* TÍTULO: ESTILO PARA LA SECCIÓN DE TOTALES */
+    /* Define el ancho de la sección de totales */
+    .totals {
+        width: 48%; /* Ancho de la sección de totales */
+    }
+
+/* TÍTULO: ESTILO PARA LA SECCIÓN DE OBSERVACIONES */
+    /* Define el ancho de la sección de observaciones */
+    .observations {
+        width: 48%; /* Ancho de la sección de observaciones */
+    }
+
+/* TÍTULO: ESTILO PARA LAS CELDAS DE LA SECCIÓN DE OBSERVACIONES */
+    /* Establece la altura de las celdas en la sección de observaciones */
+    .observations td {
+        height: 30px; /* Altura fija */
+    }
+
+/* TÍTULO: ESTILO PARA CELDAS GRANDES EN LA SECCIÓN DE OBSERVACIONES */
+    /* Define una altura mayor para las celdas grandes */
+    .observations .large-cell {
+        height: 100px; /* Altura mayor */
+    }
+
+/* TÍTULO: ESTILO PARA EL CONTENEDOR DE CÓDIGOS DE BARRAS */
+    /* Configura el diseño del contenedor para los códigos de barras */
+    .barcode-contenedor {
+        display: flex; /* Utiliza flexbox */
+        justify-content: space-between; /* Espacio entre los elementos */
+        align-items: flex-start; /* Alineación al inicio */
+        margin-top: 20px; /* Margen superior */
+    }
+
+/* TÍTULO: ESTILO PARA EL ÁREA DE CÓDIGO DE BARRAS */
+    /* Define el ancho y alineación del área de código de barras */
+    .barcode {
+        width: 100%; /* Ancho total */
+        text-align: center; /* Centra el texto */
+        margin-top: 20px; /* Margen superior */
+    }
+
+/* TÍTULO: ESTILO PARA LA IMAGEN DEL CÓDIGO DE BARRAS */
+    /* Define el tamaño de la imagen del código de barras */
+    .barcode img {
+        width: 100%; /* Ancho total */
+        height: 50px; /* Altura fija */
+    }
+
+/* TÍTULO: ESTILO PARA LOS PÁRRAFOS EN EL PIE DE PÁGINA */
+    /* Define los márgenes para los párrafos en el pie de página */
+    .footer p {
+        margin: 2px 0; /* Margen superior e inferior */
+    }
+
+/* TÍTULO: ESTILO PARA LA SECCIÓN "SON" EN TOTALES */
+    /* Añade un borde superior y espaciado a la sección "Son" */
+    .totals .son {
+        border-top: 1px solid #000; /* Borde superior negro */
+        padding-top: 5px; /* Espaciado superior */
+        margin-top: 10px; /* Margen superior */
+    }
+
+/* TÍTULO: ESTILO PARA LA SECCIÓN DE BANCO */
+    /* Define la alineación y márgenes para la sección de banco */
+    .bank-info {
+        text-align: left; /* Alineación a la izquierda */
+        margin-top: 20px; /* Margen superior */
+    }
+
+/* TÍTULO: ESTILO PARA CELDAS EN LA SECCIÓN DE BANCO */
+    /* Define los bordes y espaciados internos de las celdas */
+    .bank-info td {
+        border: 0.5px solid #000; /* Borde negro delgado */
+        border-radius: 10px; /* Bordes redondeados */
+        padding: 5px; /* Espaciado interno */
+    }
+
+/* TÍTULO: ESTILO PARA LA SECCIÓN DE FIRMA */
+    /* Define el ancho y diseño para la sección de firma */
+    .firma {
+        width: 100%; /* Ancho total */
+        margin-top: 40px; /* Margen superior */
+        display: flex; /* Utiliza flexbox */
+        justify-content: space-between; /* Espacio entre los elementos */
+    }
+
+/* TÍTULO: ESTILO PARA LA FIRMA Y NOMBRE */
+    /* Define la alineación y tamaño de texto para la firma */
+    .firma .nombre {
+        text-align: center; /* Centra el texto */
+        font-size: 12px; /* Tamaño de letra */
+    }
+
+/* TÍTULO: ESTILO PARA EL CONTENEDOR DE BOTONES */
+    /* Configura la posición y disposición de los botones */
+    .button-contenedor {
+        position: fixed;
+        top: 20px; /* Ajusta la distancia desde la parte superior */
+        left: 20px; /* Ajusta la distancia desde la izquierda */
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    }
+
+/* TÍTULO: ESTILO PARA LOS BOTONES */
+    /* Define los estilos básicos para los botones */
+    .button {
+        background-color: #4CAF50; /* Color verde agradable */
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s, transform 0.3s;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+/* TÍTULO: ESTILO PARA EL EFECTO HOVER EN BOTONES */
+    /* Cambia el color de fondo y escala al pasar el ratón sobre el botón */
+    .button:hover {
+        background-color: #45a049; /* Color verde un poco más oscuro al pasar el mouse */
+        transform: scale(1.05); /* Pequeño efecto de agrandamiento al pasar el mouse */
+    }
+
+/* TÍTULO: ESTILO PARA EL EFECTO ACTIVO EN BOTONES */
+    /* Aplica un efecto de escala al hacer clic en el botón */
+    .button:active {
+        transform: scale(0.98); /* Efecto al hacer clic */
+    }
+
+/* TÍTULO: ESTILO ESPECÍFICO PARA EL BOTÓN DE VOLVER */
+    /* Define el color de fondo para el botón de volver */
+    .button.volver {
+        background-color: #f44336; /* Rojo para el botón de volver */
+    }
+
+/* TÍTULO: ESTILO PARA EL EFECTO HOVER EN EL BOTÓN DE VOLVER */
+    /* Cambia el color de fondo al pasar el ratón sobre el botón de volver */
+    .button.volver:hover {
+        background-color: #e53935;
+    }
+
+/* TÍTULO: ESTILO ESPECÍFICO PARA EL BOTÓN DE IMPRIMIR */
+    /* Define el color de fondo para el botón de imprimir */
+    .button.imprimir {
+        background-color: #008CBA; /* Azul para el botón de imprimir */
+    }
+
+/* TÍTULO: ESTILO PARA EL EFECTO HOVER EN EL BOTÓN DE IMPRIMIR */
+    /* Cambia el color de fondo al pasar el ratón sobre el botón de imprimir */
+    .button.imprimir:hover {
+        background-color: #007bb5;
+    }
+
+/* TÍTULO: ESTILO PARA LA IMPRESIÓN */
+    /* Define reglas específicas para la impresión */
+    @media print {
+        /* TÍTULO: ESTILO PARA OCULTAR CAMPOS DE FORMULARIO EN IMPRESIÓN */
+        /* Ocultar los radio buttons y otros campos de formulario */
+        input[type="radio"],
+        input[type="file"],
+        input[type="text"],
+        select,
+        input[type="range"],
+        #tamanoValor {
+            display: none !important; /* Asegúrate de que se oculten */
+        }
+
+        /* TÍTULO: ESTILO PARA OCULTAR EL FORMULARIO EN IMPRESIÓN */
+        /* También puedes ocultar el formulario si es necesario */
+        #form-marca-agua {
+            display: none !important;
+        }
+
+        /* TÍTULO: ESTILO PARA ASEGURAR QUE LA MARCA DE AGUA SE IMPRIMA */
+        /* Asegúrate de que la marca de agua se imprima */
+        .marca_de_agua {
+            display: block !important; /* Asegúrate de que la marca de agua se imprima */
+        }
+    }
 
 
 /* --------------------------------------------------------------------------------------------------------------

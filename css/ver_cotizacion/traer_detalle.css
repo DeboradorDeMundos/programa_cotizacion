@@ -14,260 +14,260 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Traer detalle.CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
     
-/* Título: Estilo para leyendas de fieldsets */
-/* Define el estilo para las leyendas dentro de los fieldsets */
-fieldset legend {
-    font-size: 1.2em; /* Tamaño de fuente de la leyenda */
-    padding: 0 10px; /* Espaciado horizontal */
-    color: #333; /* Color de texto */
-    font-weight: bold; /* Negrita */
-}
+/* TÍTULO: ESTILO PARA LEYENDAS DE FIELDSETS */
+    /* Define el estilo para las leyendas dentro de los fieldsets */
+    fieldset legend {
+        font-size: 1.2em; /* Tamaño de fuente de la leyenda */
+        padding: 0 10px; /* Espaciado horizontal */
+        color: #333; /* Color de texto */
+        font-weight: bold; /* Negrita */
+    }
 
-/* Título: Contenedor para botones fijos */
-/* Define el estilo para el contenedor de botones fijos */
-.fixed-button-contenedor {
-    position: absolute; /* Posición absoluta */
-    bottom: 10px; /* Espaciado desde la parte inferior */
-    left: 0; /* Alineado a la izquierda */
-    right: 0; /* Alineado a la derecha */
-    text-align: center; /* Centrado */
-    padding: 0 20px; /* Espaciado horizontal */
-}
+/* TÍTULO: CONTENEDOR PARA BOTONES FIJOS */
+    /* Define el estilo para el contenedor de botones fijos */
+    .fixed-button-contenedor {
+        position: absolute; /* Posición absoluta */
+        bottom: 10px; /* Espaciado desde la parte inferior */
+        left: 0; /* Alineado a la izquierda */
+        right: 0; /* Alineado a la derecha */
+        text-align: center; /* Centrado */
+        padding: 0 20px; /* Espaciado horizontal */
+    }
 
-/* Título: Estilo para botones dentro del contenedor fijo */
-/* Define el estilo para los botones dentro del contenedor fijo */
-.fixed-button-contenedor button {
-    background-color: #007bff; /* Color de fondo azul */
-    color: white; /* Color de texto blanco */
-    border: none; /* Sin borde */
-    padding: 10px 20px; /* Espaciado interno */
-    font-size: 16px; /* Tamaño de fuente */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambia el cursor al pasar por encima */
-}
+/* TÍTULO: ESTILO PARA BOTONES DENTRO DEL CONTENEDOR FIJO */
+    /* Define el estilo para los botones dentro del contenedor fijo */
+    .fixed-button-contenedor button {
+        background-color: #007bff; /* Color de fondo azul */
+        color: white; /* Color de texto blanco */
+        border: none; /* Sin borde */
+        padding: 10px 20px; /* Espaciado interno */
+        font-size: 16px; /* Tamaño de fuente */
+        border-radius: 5px; /* Bordes redondeados */
+        cursor: pointer; /* Cambia el cursor al pasar por encima */
+    }
 
-/* Título: Estilo para el contenido de detalles */
-/* Define el estilo para el contenido de detalles */
-.detalle-content {
-    background-color: #fff; /* Fondo blanco */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
-    margin-bottom: 20px; /* Espaciado inferior */
-    text-align: center; /* Centrado */
-}
+/* TÍTULO: ESTILO PARA EL CONTENIDO DE DETALLES */
+    /* Define el estilo para el contenido de detalles */
+    .detalle-content {
+        background-color: #fff; /* Fondo blanco */
+        border-radius: 8px; /* Bordes redondeados */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+        margin-bottom: 20px; /* Espaciado inferior */
+        text-align: center; /* Centrado */
+    }
 
-/* Título: Estilo para etiquetas dentro del contenido de detalles */
-/* Define el estilo para las etiquetas en el contenido de detalles */
-.detalle-content label {
-    display: block; /* Muestra como bloque */
-    margin-bottom: 10px; /* Espaciado inferior */
-    font-size: 1.1em; /* Tamaño de fuente */
-    color: #333; /* Color de texto */
-}
+/* TÍTULO: ESTILO PARA ETIQUETAS DENTRO DEL CONTENIDO DE DETALLES */
+    /* Define el estilo para las etiquetas en el contenido de detalles */
+    .detalle-content label {
+        display: block; /* Muestra como bloque */
+        margin-bottom: 10px; /* Espaciado inferior */
+        font-size: 1.1em; /* Tamaño de fuente */
+        color: #333; /* Color de texto */
+    }
 
-/* Título: Estilo para inputs de texto dentro del contenido de detalles */
-/* Define el estilo para inputs de texto en el contenido de detalles */
-.detalle-content input[type="text"] {
-    width: 100%; /* Ancho completo */
-    padding: 10px; /* Espaciado interno */
-    border: 1px solid #ddd; /* Borde gris claro */
-    border-radius: 5px; /* Bordes redondeados */
-    box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
-    margin-bottom: 20px; /* Espaciado inferior */
-}
+/* TÍTULO: ESTILO PARA INPUTS DE TEXTO DENTRO DEL CONTENIDO DE DETALLES */
+    /* Define el estilo para inputs de texto en el contenido de detalles */
+    .detalle-content input[type="text"] {
+        width: 100%; /* Ancho completo */
+        padding: 10px; /* Espaciado interno */
+        border: 1px solid #ddd; /* Borde gris claro */
+        border-radius: 5px; /* Bordes redondeados */
+        box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
+        margin-bottom: 20px; /* Espaciado inferior */
+    }
 
-/* Título: Estilo para botones de eliminar título */
-/* Define el estilo para el botón de eliminar título */
-.btn-eliminar-titulo {
-    background-color: #f44336; /* Color de fondo rojo */
-    color: white; /* Color de texto blanco */
-    border: none; /* Sin borde */
-    padding: 5px 10px; /* Espaciado interno */
-    cursor: pointer; /* Cambia el cursor al pasar por encima */
-    border-radius: 5px; /* Bordes redondeados */
-}
+/* TÍTULO: ESTILO PARA BOTONES DE ELIMINAR TÍTULO */
+    /* Define el estilo para el botón de eliminar título */
+    .btn-eliminar-titulo {
+        background-color: #f44336; /* Color de fondo rojo */
+        color: white; /* Color de texto blanco */
+        border: none; /* Sin borde */
+        padding: 5px 10px; /* Espaciado interno */
+        cursor: pointer; /* Cambia el cursor al pasar por encima */
+        border-radius: 5px; /* Bordes redondeados */
+    }
 
-/* Título: Variación del estilo para el botón de eliminar título */
-/* Define un estilo alternativo para el botón de eliminar título */
-.btn-eliminar-titulo {
-    background-color: #d32f2f; /* Color rojo más oscuro */
-}
+/* TÍTULO: VARIACIÓN DEL ESTILO PARA EL BOTÓN DE ELIMINAR TÍTULO */
+    /* Define un estilo alternativo para el botón de eliminar título */
+    .btn-eliminar-titulo {
+        background-color: #d32f2f; /* Color rojo más oscuro */
+    }
 
-/* Título: Estilo para botones de eliminar */
-/* Define el estilo para botones de eliminar */
-.btn-eliminar {
-    background-color: #f44336; /* Color de fondo rojo */
-    color: white; /* Color de texto blanco */
-    border: none; /* Sin borde */
-    padding: 5px 10px; /* Espaciado interno */
-    cursor: pointer; /* Cambia el cursor al pasar por encima */
-    border-radius: 5px; /* Bordes redondeados */
-}
+/* TÍTULO: ESTILO PARA BOTONES DE ELIMINAR */
+    /* Define el estilo para botones de eliminar */
+    .btn-eliminar {
+        background-color: #f44336; /* Color de fondo rojo */
+        color: white; /* Color de texto blanco */
+        border: none; /* Sin borde */
+        padding: 5px 10px; /* Espaciado interno */
+        cursor: pointer; /* Cambia el cursor al pasar por encima */
+        border-radius: 5px; /* Bordes redondeados */
+    }
 
-/* Título: Variación del estilo para el botón de eliminar */
-/* Define un estilo alternativo para el botón de eliminar */
-.btn-eliminar {
-    background-color: #d32f2f; /* Color rojo más oscuro */
-}
+/* TÍTULO: VARIACIÓN DEL ESTILO PARA EL BOTÓN DE ELIMINAR */
+    /* Define un estilo alternativo para el botón de eliminar */
+    .btn-eliminar {
+        background-color: #d32f2f; /* Color rojo más oscuro */
+    }
 
-/* Título: Estilo para tablas de detalles */
-/* Define el estilo para las tablas dentro de los detalles */
-.detalle-table th,
-.detalle-table td {
-    border: 1px solid #ddd; /* Borde gris claro */
-    padding: 8px; /* Espaciado interno */
-}
+/* TÍTULO: ESTILO PARA TABLAS DE DETALLES */
+    /* Define el estilo para las tablas dentro de los detalles */
+    .detalle-table th,
+    .detalle-table td {
+        border: 1px solid #ddd; /* Borde gris claro */
+        padding: 8px; /* Espaciado interno */
+    }
 
-/* Título: Estilo para encabezados de tablas de detalles */
-/* Define el estilo para los encabezados en tablas de detalles */
-.detalle-table th {
-    background-color: #f2f2f2; /* Fondo gris claro */
-    text-align: left; /* Alineación a la izquierda */
-}
+/* TÍTULO: ESTILO PARA ENCABEZADOS DE TABLAS DE DETALLES */
+    /* Define el estilo para los encabezados en tablas de detalles */
+    .detalle-table th {
+        background-color: #f2f2f2; /* Fondo gris claro */
+        text-align: left; /* Alineación a la izquierda */
+    }
 
-/* Título: Estilo para todos los encabezados de tablas */
-/* Define el estilo general para encabezados de tablas */
-th {
-    background-color: #4CAF50; /* Color verde */
-    padding: 10px; /* Espaciado interno */
-    text-align: center; /* Alineación al centro */
-}
+/* TÍTULO: ESTILO PARA TODOS LOS ENCABEZADOS DE TABLAS */
+    /* Define el estilo general para encabezados de tablas */
+    th {
+        background-color: #4CAF50; /* Color verde */
+        padding: 10px; /* Espaciado interno */
+        text-align: center; /* Alineación al centro */
+    }
 
-/* Título: Estilo para botones de detalles */
-/* Define el estilo para los botones en la sección de detalles */
-.detalle-buttons {
-    display: flex; /* Usa flexbox para la disposición */
-    justify-content: center; /* Centrado */
-    gap: 10px; /* Espacio entre botones */
-    padding: 10px; /* Espaciado interno */
-    background-color: #f9f9f9; /* Fondo gris claro */
-}
+/* TÍTULO: ESTILO PARA BOTONES DE DETALLES */
+    /* Define el estilo para los botones en la sección de detalles */
+    .detalle-buttons {
+        display: flex; /* Usa flexbox para la disposición */
+        justify-content: center; /* Centrado */
+        gap: 10px; /* Espacio entre botones */
+        padding: 10px; /* Espaciado interno */
+        background-color: #f9f9f9; /* Fondo gris claro */
+    }
 
-/* Título: Estilo para botones dentro del contenedor de detalles */
-/* Define el estilo para los botones dentro del contenedor de detalles */
-.detalle-buttons button {
-    flex: 1; /* Se expande para ocupar el espacio disponible */
-    max-width: 200px; /* Ancho máximo de 200px */
-    padding: 10px; /* Espaciado interno */
-    font-size: 16px; /* Tamaño de fuente */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambia el cursor al pasar por encima */
-    color: white; /* Color de texto blanco */
-}
+/* TÍTULO: ESTILO PARA BOTONES DENTRO DEL CONTENEDOR DE DETALLES */
+    /* Define el estilo para los botones dentro del contenedor de detalles */
+    .detalle-buttons button {
+        flex: 1; /* Se expande para ocupar el espacio disponible */
+        max-width: 200px; /* Ancho máximo de 200px */
+        padding: 10px; /* Espaciado interno */
+        font-size: 16px; /* Tamaño de fuente */
+        border: none; /* Sin borde */
+        border-radius: 5px; /* Bordes redondeados */
+        cursor: pointer; /* Cambia el cursor al pasar por encima */
+        color: white; /* Color de texto blanco */
+    }
 
-/* Título: Efecto hover para el primer botón */
-/* Define el efecto al pasar el mouse sobre el primer botón */
-.detalle-buttons button:nth-of-type(1):hover {
-    background-color: #755483; /* Morado oscuro al pasar el mouse */
-}
+/* TÍTULO: EFECTO HOVER PARA EL PRIMER BOTÓN */
+    /* Define el efecto al pasar el mouse sobre el primer botón */
+    .detalle-buttons button:nth-of-type(1):hover {
+        background-color: #755483; /* Morado oscuro al pasar el mouse */
+    }
 
-/* Título: Estilo para el primer botón */
-/* Define el estilo específico para el primer botón */
-.detalle-buttons button:nth-of-type(1) {
-    background-color: #9c27b0; /* Morado vibrante */
-}
+/* TÍTULO: ESTILO PARA EL PRIMER BOTÓN */
+    /* Define el estilo específico para el primer botón */
+    .detalle-buttons button:nth-of-type(1) {
+        background-color: #9c27b0; /* Morado vibrante */
+    }
 
-/* Título: Estilo para el segundo botón */
-/* Define el estilo específico para el segundo botón */
-.detalle-buttons button:nth-of-type(2) {
-    background-color: #149279; /* Rosa intenso */
-}
+/* TÍTULO: ESTILO PARA EL SEGUNDO BOTÓN */
+    /* Define el estilo específico para el segundo botón */
+    .detalle-buttons button:nth-of-type(2) {
+        background-color: #149279; /* Rosa intenso */
+    }
 
-/* Título: Efecto hover para el segundo botón */
-/* Define el efecto al pasar el mouse sobre el segundo botón */
-.detalle-buttons button:nth-of-type(2):hover {
-    background-color: #1ba226; /* Rosa más oscuro al pasar el mouse */
-}
+/* TÍTULO: EFECTO HOVER PARA EL SEGUNDO BOTÓN */
+    /* Define el efecto al pasar el mouse sobre el segundo botón */
+    .detalle-buttons button:nth-of-type(2):hover {
+        background-color: #1ba226; /* Rosa más oscuro al pasar el mouse */
+    }
 
-/* Título: Estilo para el tercer botón */
-/* Define el estilo específico para el tercer botón */
-.detalle-buttons button:nth-of-type(3) {
-    background-color: #4caf50; /* Verde lima */
-}
+/* TÍTULO: ESTILO PARA EL TERCER BOTÓN */
+    /* Define el estilo específico para el tercer botón */
+    .detalle-buttons button:nth-of-type(3) {
+        background-color: #4caf50; /* Verde lima */
+    }
 
-/* Título: Estilo para tablas de detalles */
-/* Define el estilo general para tablas de detalles */
-.detalle-table {
-    width: 100%; /* Ancho completo */
-    border-collapse: collapse; /* Colapsar bordes */
-    margin: 0 auto; /* Centrado */
-    margin-bottom: 15px; /* Espaciado inferior */
-}
+/* TÍTULO: ESTILO PARA TABLAS DE DETALLES */
+    /* Define el estilo general para tablas de detalles */
+    .detalle-table {
+        width: 100%; /* Ancho completo */
+        border-collapse: collapse; /* Colapsar bordes */
+        margin: 0 auto; /* Centrado */
+        margin-bottom: 15px; /* Espaciado inferior */
+    }
 
-/* Título: Estilo para inputs dentro de tablas de detalles */
-/* Define el estilo para inputs dentro de tablas de detalles */
-.detalle-table input[type="text"],
-.detalle-table textarea,
-.detalle-table input[type="number"] {
-    width: 100%; /* Ancho completo */
-    padding: 6px; /* Espaciado interno */
-    box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
-}
+/* TÍTULO: ESTILO PARA INPUTS DENTRO DE TABLAS DE DETALLES */
+    /* Define el estilo para inputs dentro de tablas de detalles */
+    .detalle-table input[type="text"],
+    .detalle-table textarea,
+    .detalle-table input[type="number"] {
+        width: 100%; /* Ancho completo */
+        padding: 6px; /* Espaciado interno */
+        box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
+    }
 
-/* Título: Estilo general para tablas */
-/* Define el estilo general para todas las tablas */
-table {
-    width: 100%; /* Ancho completo */
-    border-collapse: collapse; /* Colapsar bordes */
-    margin: 20px 0; /* Espaciado vertical */
-}
+/* TÍTULO: ESTILO GENERAL PARA TABLAS */
+    /* Define el estilo general para todas las tablas */
+    table {
+        width: 100%; /* Ancho completo */
+        border-collapse: collapse; /* Colapsar bordes */
+        margin: 20px 0; /* Espaciado vertical */
+    }
 
-/* Título: Estilo para celdas de tabla */
-/* Define el estilo para las celdas de tabla */
-td {
-    padding: 5px; /* Espaciado interno */
-    border-bottom: 1px solid #ddd; /* Borde inferior */
-}
+/* TÍTULO: ESTILO PARA CELDAS DE TABLA */
+    /* Define el estilo para las celdas de tabla */
+    td {
+        padding: 5px; /* Espaciado interno */
+        border-bottom: 1px solid #ddd; /* Borde inferior */
+    }
 
-/* Título: Efecto hover para el botón del contenedor fijo */
-/* Define el efecto al pasar el mouse sobre el botón en el contenedor fijo */
-.fixed-button-contenedor button:hover {
-    background-color: #0056b3; /* Color más oscuro al pasar el mouse */
-}
+/* TÍTULO: EFECTO HOVER PARA EL BOTÓN DEL CONTENEDOR FIJO */
+    /* Define el efecto al pasar el mouse sobre el botón en el contenedor fijo */
+    .fixed-button-contenedor button:hover {
+        background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+    }
 
-/* Título: Asegura que los label y input tengan la misma altura */
-/* Define el estilo para asegurar que los label y input estén alineados */
-.form-group {
-    display: flex; /* Usa flexbox para alinear los elementos */
-    align-items: stretch; /* Estira los elementos para que tengan la misma altura */
-    justify-content: space-between; /* Alinea el label y el input a los extremos */
-    margin-bottom: 10px; /* Espaciado inferior */
-}
+/* TÍTULO: ASEGURA QUE LOS LABEL Y INPUT TENGAN LA MISMA ALTURA */
+    /* Define el estilo para asegurar que los label y input estén alineados */
+    .form-group {
+        display: flex; /* Usa flexbox para alinear los elementos */
+        align-items: stretch; /* Estira los elementos para que tengan la misma altura */
+        justify-content: space-between; /* Alinea el label y el input a los extremos */
+        margin-bottom: 10px; /* Espaciado inferior */
+    }
 
-/* Título: Estilo para grupos de campos en línea */
-/* Define el estilo para grupos de campos que deben estar en línea */
-.form-group-inline {
-    display: flex; /* Usa flexbox para organizar elementos en línea */
-    justify-content: space-between; /* Alinea los elementos a los extremos */
-    gap: 10px; /* Espacio entre los elementos */
-}
+/* TÍTULO: ESTILO PARA GRUPOS DE CAMPOS EN LÍNEA */
+    /* Define el estilo para grupos de campos que deben estar en línea */
+    .form-group-inline {
+        display: flex; /* Usa flexbox para organizar elementos en línea */
+        justify-content: space-between; /* Alinea los elementos a los extremos */
+        gap: 10px; /* Espacio entre los elementos */
+    }
 
-/* Título: Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
-/* Define el estilo para que cada form-group ocupe el espacio disponible */
-.form-group-inline .form-group {
-    flex: 1; /* Se expande para ocupar el espacio disponible */
-}
+/* TÍTULO: HACE QUE CADA FORM-GROUP DENTRO DE FORM-GROUP-INLINE OCUPE EL MISMO ESPACIO */
+    /* Define el estilo para que cada form-group ocupe el espacio disponible */
+    .form-group-inline .form-group {
+        flex: 1; /* Se expande para ocupar el espacio disponible */
+    }
 
-/* Título: Estilo para grupos de inputs */
-/* Define el estilo para el grupo de inputs */
-.input-group {
-    display: flex; /* Usa flexbox para alinear los inputs */
-    align-items: center; /* Centra verticalmente */
-    margin-bottom: 10px; /* Espaciado inferior */
-}
+/* TÍTULO: ESTILO PARA GRUPOS DE INPUTS */
+    /* Define el estilo para el grupo de inputs */
+    .input-group {
+        display: flex; /* Usa flexbox para alinear los inputs */
+        align-items: center; /* Centra verticalmente */
+        margin-bottom: 10px; /* Espaciado inferior */
+    }
 
-/* Título: Estilo para select en input-group */
-/* Define el margen para el select dentro del input-group */
-.input-group select {
-    margin-right: 5px; /* Margen a la derecha */
-}
+/* TÍTULO: ESTILO PARA SELECT EN INPUT-GROUP */
+    /* Define el margen para el select dentro del input-group */
+    .input-group select {
+        margin-right: 5px; /* Margen a la derecha */
+    }
 
-/* Título: Estilo para inputs de texto en input-group */
-/* Define el estilo para inputs de texto dentro del input-group */
-.input-group input[type="text"] {
-    flex: 1; /* Se expande para ocupar el espacio disponible */
-}
+/* TÍTULO: ESTILO PARA INPUTS DE TEXTO EN INPUT-GROUP */
+    /* Define el estilo para inputs de texto dentro del input-group */
+    .input-group input[type="text"] {
+        flex: 1; /* Se expande para ocupar el espacio disponible */
+    }
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Traer detalle.CSS ---------------------------------------

@@ -14,35 +14,35 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Traer pago .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-/* Título: Estilo de las celdas de encabezado */
-/* Define el estilo para las celdas de encabezado de las tablas */
-th {
-    background-color: #4CAF50; /* Color de fondo para las celdas de encabezado */
-    padding: 10px; /* Relleno interno de las celdas de encabezado */
-    text-align: center; /* Centrar el texto en las celdas de encabezado */
-}
+/* TÍTULO: ESTILO DE LAS CELDAS DE ENCABEZADO */
+    /* Define el estilo para las celdas de encabezado de las tablas */
+    th {
+        background-color: #4CAF50; /* Color de fondo para las celdas de encabezado */
+        padding: 10px; /* Relleno interno de las celdas de encabezado */
+        text-align: center; /* Centrar el texto en las celdas de encabezado */
+    }
 
-/* Título: Estilo del área de texto */
-/* Define el estilo para el área de texto */
-textarea {
-    resize: vertical; /* Permitir redimensionar el área de texto solo en la dirección vertical */
-}
+/* TÍTULO: ESTILO DEL ÁREA DE TEXTO */
+    /* Define el estilo para el área de texto */
+    textarea {
+        resize: vertical; /* Permitir redimensionar el área de texto solo en la dirección vertical */
+    }
 
-/* Título: Estilo de las celdas de la tabla */
-/* Define el estilo para las celdas de las tablas */
-td {
-    padding: 5px; /* Relleno interno de las celdas de la tabla */
-    border-bottom: 1px solid #ddd; /* Borde inferior de las celdas de la tabla */
-}
+/* TÍTULO: ESTILO DE LAS CELDAS DE LA TABLA */
+    /* Define el estilo para las celdas de las tablas */
+    td {
+        padding: 5px; /* Relleno interno de las celdas de la tabla */
+        border-bottom: 1px solid #ddd; /* Borde inferior de las celdas de la tabla */
+    }
 
-/* Título: Estilo del legend en fieldset */
-/* Define el estilo para el legend en los fieldsets */
-fieldset legend {
-    font-size: 1.2em; /* Tamaño de fuente del legend en fieldset */
-    padding: 0 10px; /* Relleno interno del legend */
-    color: #333; /* Color del texto del legend */
-    font-weight: bold; /* Negrita para el texto del legend */
-}
+/* TÍTULO: ESTILO DEL LEGEND EN FIELDSET */
+    /* Define el estilo para el legend en los fieldsets */
+    fieldset legend {
+        font-size: 1.2em; /* Tamaño de fuente del legend en fieldset */
+        padding: 0 10px; /* Relleno interno del legend */
+        color: #333; /* Color del texto del legend */
+        font-weight: bold; /* Negrita para el texto del legend */
+    }
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Traer pago .CSS ---------------------------------------

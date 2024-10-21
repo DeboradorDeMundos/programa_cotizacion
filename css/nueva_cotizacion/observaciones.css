@@ -15,20 +15,20 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 
-/* Título: Estilo para la caja de observaciones */
-/* Asegura que el fieldset ocupe todo el ancho disponible */
-.observaciones-box {
-    width: 100%; /* Asegura que el fieldset ocupe todo el ancho disponible */
-}
+/* TÍTULO: ESTILO PARA LA CAJA DE OBSERVACIONES */
+    /* Asegura que el fieldset ocupe todo el ancho disponible */
+    .observaciones-box {
+        width: 100%; /* Asegura que el fieldset ocupe todo el ancho disponible */
+    }
 
-/* Título: Estilo para el área de texto */
-/* Hace que el textarea ocupe todo el ancho disponible */
-textarea {
-    width: 100%; /* Hace que el textarea ocupe todo el ancho disponible */
-    box-sizing: border-box; /* Incluye el padding y el border en el ancho total */
-    resize: vertical; /* Permite solo el cambio de tamaño vertical */
-}
-    
+/* TÍTULO: ESTILO PARA EL ÁREA DE TEXTO */
+    /* Hace que el textarea ocupe todo el ancho disponible */
+    textarea {
+        width: 100%; /* Hace que el textarea ocupe todo el ancho disponible */
+        box-sizing: border-box; /* Incluye el padding y el border en el ancho total */
+        resize: vertical; /* Permite solo el cambio de tamaño vertical */
+    }
+        
 
 
 /* --------------------------------------------------------------------------------------------------------------

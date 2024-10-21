@@ -14,40 +14,40 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Cuadro Rojo .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-/* Título: Estilo para la caja flexible */
-/* Define el ancho máximo, flexibilidad y padding de la caja */
-.box-6 {
-    flex: 1; /* Permite que el contenedor se expanda para ocupar espacio disponible */
-    max-width: 50%; /* Ancho máximo del 50% del contenedor padre */
-    padding: 10px; /* Espaciado interno de 10px */
-}
+/* TÍTULO: ESTILO PARA LA CAJA FLEXIBLE */
+    /* Define el ancho máximo, flexibilidad y padding de la caja */
+    .box-6 {
+        flex: 1; /* Permite que el contenedor se expanda para ocupar espacio disponible */
+        max-width: 50%; /* Ancho máximo del 50% del contenedor padre */
+        padding: 10px; /* Espaciado interno de 10px */
+    }
 
-/* Título: Estilo para el cuadro de datos */
-/* Define el borde, padding y fondo del cuadro de datos */
-.data-box {
-    border: 1px solid #ddd; /* Borde gris claro */
-    padding: 15px; /* Espaciado interno de 15px */
-    background-color: #fff; /* Fondo blanco */
-    border-radius: 12px; /* Bordes redondeados */
-}
+/* TÍTULO: ESTILO PARA EL CUADRO DE DATOS */
+    /* Define el borde, padding y fondo del cuadro de datos */
+    .data-box {
+        border: 1px solid #ddd; /* Borde gris claro */
+        padding: 15px; /* Espaciado interno de 15px */
+        background-color: #fff; /* Fondo blanco */
+        border-radius: 12px; /* Bordes redondeados */
+    }
 
-/* Título: Variación de la caja de datos con borde rojo */
-/* Modifica el color del borde para cuadros de datos rojos */
-.data-box-red {
-    border-color: red; /* Cambia el color del borde a rojo */
-    border-radius: 12px; /* Mantiene los bordes redondeados */
-}
+/* TÍTULO: VARIACIÓN DE LA CAJA DE DATOS CON BORDE ROJO */
+    /* Modifica el color del borde para cuadros de datos rojos */
+    .data-box-red {
+        border-color: red; /* Cambia el color del borde a rojo */
+        border-radius: 12px; /* Mantiene los bordes redondeados */
+    }
 
-/* Título: Estilo general para los campos de entrada */
-/* Define el ancho, padding, margen y borde de los campos de entrada */
-input {
-    width: calc(100% - 20px); /* El ancho es el 100% del contenedor menos 20px de margen */
-    padding: 10px; /* Espaciado interno de 10px */
-    margin-bottom: 20px; /* Espaciado inferior de 20px entre elementos */
-    border: 1px solid #ddd; /* Borde gris claro */
-    border-radius: 5px; /* Bordes redondeados */
-    box-sizing: border-box; /* Incluye el borde y el padding dentro del ancho total */
-}
+/* TÍTULO: ESTILO GENERAL PARA LOS CAMPOS DE ENTRADA */
+    /* Define el ancho, padding, margen y borde de los campos de entrada */
+    input {
+        width: calc(100% - 20px); /* El ancho es el 100% del contenedor menos 20px de margen */
+        padding: 10px; /* Espaciado interno de 10px */
+        margin-bottom: 20px; /* Espaciado inferior de 20px entre elementos */
+        border: 1px solid #ddd; /* Borde gris claro */
+        border-radius: 5px; /* Bordes redondeados */
+        box-sizing: border-box; /* Incluye el borde y el padding dentro del ancho total */
+    }
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Cuadro Rojo .CSS ---------------------------------------

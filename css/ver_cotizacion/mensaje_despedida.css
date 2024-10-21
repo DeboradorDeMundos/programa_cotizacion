@@ -14,61 +14,61 @@ BPPJ
     -------------------------------------- INICIO ITred Spa mensaje despedida .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-/* Título: Estilo del cuadro de mensaje de despedida */
-/* Define el contenedor del mensaje de despedida */
-.mensaje_despedida-box {
-    border: 2px solid #4a4a4a; /* Borde gris oscuro */
-    padding: 20px; /* Espaciado interno del cuadro */
-    margin: 20px 0; /* Margen superior e inferior */
-    border-radius: 10px; /* Bordes redondeados */
-    background-color: #f9f9f9; /* Fondo claro */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-}
+/* TÍTULO: ESTILO DEL CUADRO DE MENSAJE DE DESPEDIDA */
+    /* Define el contenedor del mensaje de despedida */
+    .mensaje_despedida-box {
+        border: 2px solid #4a4a4a; /* Borde gris oscuro */
+        padding: 20px; /* Espaciado interno del cuadro */
+        margin: 20px 0; /* Margen superior e inferior */
+        border-radius: 10px; /* Bordes redondeados */
+        background-color: #f9f9f9; /* Fondo claro */
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    }
 
-/* Título: Estilo del legend en el cuadro de mensaje */
-/* Define la apariencia del legend dentro del cuadro */
-.mensaje_despedida-box legend {
-    font-size: 1.2em; /* Tamaño de fuente */
-    font-weight: bold; /* Negrita para el texto */
-    color: #2c3e50; /* Color azul oscuro */
-    padding: 0 10px; /* Espaciado lateral del legend */
-}
+/* TÍTULO: ESTILO DEL LEGEND EN EL CUADRO DE MENSAJE */
+    /* Define la apariencia del legend dentro del cuadro */
+    .mensaje_despedida-box legend {
+        font-size: 1.2em; /* Tamaño de fuente */
+        font-weight: bold; /* Negrita para el texto */
+        color: #2c3e50; /* Color azul oscuro */
+        padding: 0 10px; /* Espaciado lateral del legend */
+    }
 
-/* Título: Estilo para etiquetas en el formulario */
-/* Define la apariencia de las etiquetas dentro del grupo de formularios */
-.form-group label {
-    font-weight: bold; /* Negrita para el texto */
-    font-size: 1em; /* Tamaño de fuente */
-    color: #333333; /* Color oscuro para el texto */
-    margin-bottom: 8px; /* Margen inferior de las etiquetas */
-    display: block; /* Muestra la etiqueta como un bloque */
-}
+/* TÍTULO: ESTILO PARA ETIQUETAS EN EL FORMULARIO */
+    /* Define la apariencia de las etiquetas dentro del grupo de formularios */
+    .form-group label {
+        font-weight: bold; /* Negrita para el texto */
+        font-size: 1em; /* Tamaño de fuente */
+        color: #333333; /* Color oscuro para el texto */
+        margin-bottom: 8px; /* Margen inferior de las etiquetas */
+        display: block; /* Muestra la etiqueta como un bloque */
+    }
 
-/* Título: Estilo para el textarea */
-/* Define la apariencia del área de texto en el formulario */
-textarea {
-    width: 100%; /* Ancho completo del contenedor */
-    padding: 10px; /* Espaciado interno del textarea */
-    font-family: "Arial", sans-serif; /* Fuente para el texto */
-    font-size: 0.95em; /* Tamaño de fuente */
-    border: 1px solid #cccccc; /* Borde gris claro */
-    border-radius: 8px; /* Bordes redondeados */
-    background-color: #ffffff; /* Fondo blanco */
-    color: #333333; /* Color oscuro para el texto */
-    resize: none; /* Desactivar el redimensionado manual */
-    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.1); /* Sombra interna suave */
-    min-height: 80px; /* Altura mínima */
-    max-height: 300px; /* Altura máxima, ajustable */
-    overflow-y: auto; /* Agregar barra de desplazamiento si el contenido es largo */
-}
+/* TÍTULO: ESTILO PARA EL TEXTAREA */
+    /* Define la apariencia del área de texto en el formulario */
+    textarea {
+        width: 100%; /* Ancho completo del contenedor */
+        padding: 10px; /* Espaciado interno del textarea */
+        font-family: "Arial", sans-serif; /* Fuente para el texto */
+        font-size: 0.95em; /* Tamaño de fuente */
+        border: 1px solid #cccccc; /* Borde gris claro */
+        border-radius: 8px; /* Bordes redondeados */
+        background-color: #ffffff; /* Fondo blanco */
+        color: #333333; /* Color oscuro para el texto */
+        resize: none; /* Desactivar el redimensionado manual */
+        box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.1); /* Sombra interna suave */
+        min-height: 80px; /* Altura mínima */
+        max-height: 300px; /* Altura máxima, ajustable */
+        overflow-y: auto; /* Agregar barra de desplazamiento si el contenido es largo */
+    }
 
-/* Título: Estilo para el textarea al recibir foco */
-/* Define el comportamiento visual del textarea cuando está activo */
-textarea:focus {
-    outline: none; /* Sin contorno por defecto */
-    border-color: #2980b9; /* Color de borde al enfocar */
-    box-shadow: 0px 0px 8px rgba(41, 128, 185, 0.5); /* Sombra al enfocar */
-}
+/* TÍTULO: ESTILO PARA EL TEXTAREA AL RECIBIR FOCO */
+    /* Define el comportamiento visual del textarea cuando está activo */
+    textarea:focus {
+        outline: none; /* Sin contorno por defecto */
+        border-color: #2980b9; /* Color de borde al enfocar */
+        box-shadow: 0px 0px 8px rgba(41, 128, 185, 0.5); /* Sombra al enfocar */
+    }
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa mensaje despedida .CSS ---------------------------------------

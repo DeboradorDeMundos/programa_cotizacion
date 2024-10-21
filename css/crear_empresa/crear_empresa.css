@@ -84,27 +84,27 @@ BPPJ
     margin-top: 40px; /* Separación superior */
   }
 
-/* Título: Estilo hover para el botón de subida */
-/* Define el color de fondo del botón al pasar el cursor */
-.subir:hover {
-  background-color: #555; /* Fondo gris más claro */
-}
+/* TÍTULO: ESTILO HOVER PARA EL BOTÓN DE SUBIDA */
+  /* Define el color de fondo del botón al pasar el cursor */
+  .subir:hover {
+    background-color: #555; /* Fondo gris más claro */
+  }
 
-/* Título: Estilo para el botón fijado */
-/* Define la posición fija y el estilo del botón */
-.boton-fijado {
-  position: fixed; /* Fijar el botón en la pantalla */
-  top: 100px; /* Separación desde el borde superior */
-  left: 20px; /* Separación desde el borde izquierdo */
-  padding: 10px 20px; /* Espaciado interno */
-  background-color: #007bff; /* Fondo azul */
-  color: white; /* Texto en blanco */
-  text-align: center; /* Alinear texto al centro */
-  text-decoration: none; /* Eliminar subrayado del enlace */
-  border-radius: 5px; /* Bordes redondeados */
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidad */
-  z-index: 1000; /* Prioridad sobre otros elementos */
-}
+/* TÍTULO: ESTILO PARA EL BOTÓN FIJADO */
+  /* Define la posición fija y el estilo del botón */
+  .boton-fijado {
+    position: fixed; /* Fijar el botón en la pantalla */
+    top: 100px; /* Separación desde el borde superior */
+    left: 20px; /* Separación desde el borde izquierdo */
+    padding: 10px 20px; /* Espaciado interno */
+    background-color: #007bff; /* Fondo azul */
+    color: white; /* Texto en blanco */
+    text-align: center; /* Alinear texto al centro */
+    text-decoration: none; /* Eliminar subrayado del enlace */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidad */
+    z-index: 1000; /* Prioridad sobre otros elementos */
+  }
 
   /* --------------------------------------------------------------------------------------------------------------
       ---------------------------------------- FIN ITred Spa crear_empresa .CSS ---------------------------------------

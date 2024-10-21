@@ -14,100 +14,100 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Formulario Empresa .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-/* Título: Estilo para las filas flexibles */
-/* Utiliza flexbox para distribuir elementos en filas y permite el envolvimiento */
-.row {
-  display: flex; /* Utiliza el modelo flexbox para distribuir elementos en fila */
-  flex-wrap: wrap; /* Permite que los elementos se envuelvan si exceden el ancho disponible */
-  margin-bottom: 20px; /* Margen inferior de 20px entre las filas */
-}
+/* TÍTULO: ESTILO PARA LAS FILAS FLEXIBLES */
+  /* Utiliza flexbox para distribuir elementos en filas y permite el envolvimiento */
+  .row {
+    display: flex; /* Utiliza el modelo flexbox para distribuir elementos en fila */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan si exceden el ancho disponible */
+    margin-bottom: 20px; /* Margen inferior de 20px entre las filas */
+  }
 
-/* Título: Estilo para selectores e inputs en el grupo de formularios */
-/* Establece el estilo de los selectores e inputs en el formulario */
-.form-group select, .form-group input {
-  flex: 2; /* Hace que el input ocupe 2 partes del espacio disponible */
-  padding: 5px; /* Espaciado interno de 5px */
-  border: 1px solid #ddd; /* Borde gris claro de 1px */
-  border-radius: 0px 3px 3px 0px; /* Bordes redondeados a la derecha */
-  font-size: 14px; /* Tamaño de fuente */
-  text-align: left; /* Alineación del texto a la izquierda */
-  background-color: #fff; /* Fondo blanco */
-  box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el tamaño total del input */
-}
+/* TÍTULO: ESTILO PARA SELECTORES E INPUTS EN EL GRUPO DE FORMULARIOS */
+  /* Establece el estilo de los selectores e inputs en el formulario */
+  .form-group select, .form-group input {
+    flex: 2; /* Hace que el input ocupe 2 partes del espacio disponible */
+    padding: 5px; /* Espaciado interno de 5px */
+    border: 1px solid #ddd; /* Borde gris claro de 1px */
+    border-radius: 0px 3px 3px 0px; /* Bordes redondeados a la derecha */
+    font-size: 14px; /* Tamaño de fuente */
+    text-align: left; /* Alineación del texto a la izquierda */
+    background-color: #fff; /* Fondo blanco */
+    box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el tamaño total del input */
+  }
 
-/* Título: Estilo para grupos de formularios */
-/* Asegura que los label y input tengan la misma altura */
-.form-group {
-  align-items: stretch; /* Estira los elementos para que tengan la misma altura */
-  justify-content: space-between; /* Alinea el label y el input a los extremos */
-  margin-bottom: 10px; /* Espaciado inferior de 10px */
-}
+/* TÍTULO: ESTILO PARA GRUPOS DE FORMULARIOS */
+  /* Asegura que los label y input tengan la misma altura */
+  .form-group {
+    align-items: stretch; /* Estira los elementos para que tengan la misma altura */
+    justify-content: space-between; /* Alinea el label y el input a los extremos */
+    margin-bottom: 10px; /* Espaciado inferior de 10px */
+  }
 
-/* Título: Estilo para grupos de campos en línea */
-/* Usa flexbox para organizar elementos en línea */
-.form-group-inline {
-  display: flex; /* Usa flexbox para organizar elementos en línea */
-  justify-content: space-between; /* Alinea los elementos a los extremos */
-  gap: 10px; /* Espacio entre los elementos */
-}
+/* TÍTULO: ESTILO PARA GRUPOS DE CAMPOS EN LÍNEA */
+  /* Usa flexbox para organizar elementos en línea */
+  .form-group-inline {
+    display: flex; /* Usa flexbox para organizar elementos en línea */
+    justify-content: space-between; /* Alinea los elementos a los extremos */
+    gap: 10px; /* Espacio entre los elementos */
+  }
 
-/* Título: Estilo para cada form-group dentro de form-group-inline */
-/* Hace que cada form-group ocupe el mismo espacio */
-.form-group-inline .form-group {
-  flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
-}
+/* TÍTULO: ESTILO PARA CADA FORM-GROUP DENTRO DE FORM-GROUP-INLINE */
+  /* Hace que cada form-group ocupe el mismo espacio */
+  .form-group-inline .form-group {
+    flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
+  }
 
-/* Título: Estilo para una caja flexible que ocupa todo el ancho disponible */
-/* Define la disposición interna de la caja */
-.box-12 {
-  display: flex; /* Utiliza flexbox para la distribución interna */
-  flex-direction: column; /* Los elementos internos se apilan verticalmente */
-  flex: 1; /* Permite que la caja se expanda para ocupar espacio disponible */
-  max-width: 100%; /* Ancho máximo del 100% del contenedor padre */
-  padding: 10px; /* Espaciado interno de 10px */
-}
+/* TÍTULO: ESTILO PARA UNA CAJA FLEXIBLE QUE OCUPA TODO EL ANCHO DISPONIBLE */
+  /* Define la disposición interna de la caja */
+  .box-12 {
+    display: flex; /* Utiliza flexbox para la distribución interna */
+    flex-direction: column; /* Los elementos internos se apilan verticalmente */
+    flex: 1; /* Permite que la caja se expanda para ocupar espacio disponible */
+    max-width: 100%; /* Ancho máximo del 100% del contenedor padre */
+    padding: 10px; /* Espaciado interno de 10px */
+  }
 
-/* Título: Estilo para un cuadro de datos con borde y fondo blanco */
-/* Define el estilo del cuadro de datos */
-.data-box {
-  border: 1px solid #ddd; /* Borde gris claro */
-  padding: 15px; /* Espaciado interno de 15px */
-  background-color: #fff; /* Fondo blanco */
-  border-radius: 12px; /* Bordes redondeados */
-}
+/* TÍTULO: ESTILO PARA UN CUADRO DE DATOS CON BORDE Y FONDO BLANCO */
+  /* Define el estilo del cuadro de datos */
+  .data-box {
+    border: 1px solid #ddd; /* Borde gris claro */
+    padding: 15px; /* Espaciado interno de 15px */
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 12px; /* Bordes redondeados */
+  }
 
-/* Título: Estilo general para los campos de entrada */
-/* Define el estilo de los campos de entrada */
-input {
-  width: calc(100% - 20px); /* Ancho del 100% menos 20px de margen */
-  padding: 10px; /* Espaciado interno de 10px */
-  margin-bottom: 20px; /* Margen inferior de 20px entre elementos */
-  border: 1px solid #ddd; /* Borde gris claro */
-  border-radius: 5px; /* Bordes redondeados */
-  box-sizing: border-box; /* Incluye el borde y el padding dentro del ancho total */
-}
+/* TÍTULO: ESTILO GENERAL PARA LOS CAMPOS DE ENTRADA */
+  /* Define el estilo de los campos de entrada */
+  input {
+    width: calc(100% - 20px); /* Ancho del 100% menos 20px de margen */
+    padding: 10px; /* Espaciado interno de 10px */
+    margin-bottom: 20px; /* Margen inferior de 20px entre elementos */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye el borde y el padding dentro del ancho total */
+  }
 
-/* Título: Estilo específico para los campos de entrada de tipo email */
-/* Define el estilo de los campos de entrada de tipo email */
-input[type="email"] {
-  width: calc(100% - 20px); /* Ancho del 100% menos 20px de margen */
-  padding: 10px; /* Espaciado interno de 10px */
-  margin-bottom: 20px; /* Margen inferior de 20px entre elementos */
-  border: 1px solid #ddd; /* Borde gris claro */
-  border-radius: 5px; /* Bordes redondeados */
-  box-sizing: border-box; /* Incluye el borde y el padding dentro del ancho total */
-}
+/* TÍTULO: ESTILO ESPECÍFICO PARA LOS CAMPOS DE ENTRADA DE TIPO EMAIL */
+  /* Define el estilo de los campos de entrada de tipo email */
+  input[type="email"] {
+    width: calc(100% - 20px); /* Ancho del 100% menos 20px de margen */
+    padding: 10px; /* Espaciado interno de 10px */
+    margin-bottom: 20px; /* Margen inferior de 20px entre elementos */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye el borde y el padding dentro del ancho total */
+  }
 
-/* Título: Estilo para los elementos select (desplegables) */
-/* Define el estilo de los elementos select */
-select {
-  width: calc(100% - 20px); /* Ancho del 100% menos 20px de margen */
-  padding: 10px; /* Espaciado interno de 10px */
-  margin-bottom: 20px; /* Margen inferior de 20px entre elementos */
-  border: 1px solid #ddd; /* Borde gris claro */
-  border-radius: 5px; /* Bordes redondeados */
-  box-sizing: border-box; /* Incluye el borde y el padding dentro del ancho total */
-}
+/* TÍTULO: ESTILO PARA LOS ELEMENTOS SELECT (DESPLEGABLES) */
+  /* Define el estilo de los elementos select */
+  select {
+    width: calc(100% - 20px); /* Ancho del 100% menos 20px de margen */
+    padding: 10px; /* Espaciado interno de 10px */
+    margin-bottom: 20px; /* Margen inferior de 20px entre elementos */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye el borde y el padding dentro del ancho total */
+  }
 
 
 

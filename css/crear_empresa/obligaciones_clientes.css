@@ -15,65 +15,65 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Obligaciones clientes .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-/* Título: Estilos para los encabezados h2 */
-/* Color de texto gris oscuro y sin margen superior */
-h2 {
-  color: #333; /* Color de texto gris oscuro */
-  margin-top: 0; /* Sin margen superior */
-}
+/* TÍTULO: ESTILOS PARA LOS ENCABEZADOS H2 */
+  /* Color de texto gris oscuro y sin margen superior */
+  h2 {
+    color: #333; /* Color de texto gris oscuro */
+    margin-top: 0; /* Sin margen superior */
+  }
 
-/* Título: Contenedor para las obligaciones */
-/* Margen inferior de 20px */
-#obligaciones-contenedor {
-  margin-bottom: 20px; /* Margen inferior de 20px */
-}
+/* TÍTULO: CONTENEDOR PARA LAS OBLIGACIONES */
+  /* Margen inferior de 20px */
+  #obligaciones-contenedor {
+    margin-bottom: 20px; /* Margen inferior de 20px */
+  }
 
-/* Título: Estilo para filas de obligaciones */
-/* Usar flexbox para alinear elementos con espacio entre ellos */
-.fila-obligaciones {
-  display: flex; /* Usar flexbox para alinear elementos */
-  align-items: center; /* Centra los elementos verticalmente */
-  gap: 10px; /* Espacio de 10px entre los elementos */
-  margin-bottom: 10px; /* Margen inferior de 10px */
-  padding: 5px; /* Relleno interno de 5px */
-  border: 1px solid #ddd; /* Borde gris claro */
-  border-radius: 5px; /* Bordes redondeados */
-}
+/* TÍTULO: ESTILO PARA FILAS DE OBLIGACIONES */
+  /* Usar flexbox para alinear elementos con espacio entre ellos */
+  .fila-obligaciones {
+    display: flex; /* Usar flexbox para alinear elementos */
+    align-items: center; /* Centra los elementos verticalmente */
+    gap: 10px; /* Espacio de 10px entre los elementos */
+    margin-bottom: 10px; /* Margen inferior de 10px */
+    padding: 5px; /* Relleno interno de 5px */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+  }
 
-/* Título: Estilo para el número de obligaciones */
-/* Texto en negrita */
-.numero-obligaciones {
-  font-weight: bold; /* Texto en negrita */
-}
+/* TÍTULO: ESTILO PARA EL NÚMERO DE OBLIGACIONES */
+  /* Texto en negrita */
+  .numero-obligaciones {
+    font-weight: bold; /* Texto en negrita */
+  }
 
-/* Título: Estilos generales para botones */
-/* Color de fondo azul con texto blanco */
-button {
-  background-color: #007bff; /* Color de fondo azul */
-  color: white; /* Texto blanco */
-  padding: 5px 10px; /* Relleno interno de 5px vertical y 10px horizontal */
-  border: none; /* Sin borde */
-  border-radius: 5px; /* Bordes redondeados */
-  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-}
+/* TÍTULO: ESTILOS GENERALES PARA BOTONES */
+  /* Color de fondo azul con texto blanco */
+  button {
+    background-color: #007bff; /* Color de fondo azul */
+    color: white; /* Texto blanco */
+    padding: 5px 10px; /* Relleno interno de 5px vertical y 10px horizontal */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  }
 
-/* Título: Efecto hover para los botones */
-/* Fondo azul oscuro al pasar el ratón */
-button:hover {
-  background-color: #0056b3; /* Fondo azul oscuro al pasar el ratón */
-}
+/* TÍTULO: EFECTO HOVER PARA LOS BOTONES */
+  /* Fondo azul oscuro al pasar el ratón */
+  button:hover {
+    background-color: #0056b3; /* Fondo azul oscuro al pasar el ratón */
+  }
 
-/* Título: Estilos específicos para el botón de eliminar obligaciones */
-/* Color rojo para el botón de eliminar */
-.boton-eliminar-obligacion {
-  background-color: #dc3545; /* Color rojo */
-}
+/* TÍTULO: ESTILOS ESPECÍFICOS PARA EL BOTÓN DE ELIMINAR OBLIGACIONES */
+  /* Color rojo para el botón de eliminar */
+  .boton-eliminar-obligacion {
+    background-color: #dc3545; /* Color rojo */
+  }
 
-/* Título: Efecto hover para el botón de eliminar obligaciones */
-/* Rojo más oscuro al hacer hover */
-.boton-eliminar-obligacion:hover {
-  background-color: #c82333; /* Rojo más oscuro al hacer hover */
-}
+/* TÍTULO: EFECTO HOVER PARA EL BOTÓN DE ELIMINAR OBLIGACIONES */
+  /* Rojo más oscuro al hacer hover */
+  .boton-eliminar-obligacion:hover {
+    background-color: #c82333; /* Rojo más oscuro al hacer hover */
+  }
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Obligaciones clientes .CSS ---------------------------------------
