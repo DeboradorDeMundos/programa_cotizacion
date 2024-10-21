@@ -52,8 +52,8 @@ $conn->close();
 <!-- Formulario para la creación de productos -->
 <form id="productos-form" action="procesar_productos.php" method="post" enctype="multipart/form-data">
     <fieldset>
-        <!-- Título para los detalles del producto -->
-        <legend>Detalles del Producto</legend>
+        <!-- TÍTULO PARA LOS DETALLES DEL PRODUCTO -->
+            <legend>Detalles del Producto</legend>
         
         <table id="productos-table">
             <thead>
@@ -69,42 +69,42 @@ $conn->close();
             </thead>
             <tbody>
                 <tr>
-                    <!-- Título para el campo de nombre del producto -->
-                    <td><!-- Campo para el nombre del producto -->
-                        <label for="nombre_producto">Nombre del Producto:</label>
-                        <input type="text" name="nombre_producto[]" required>
-                    </td>
+                    <!-- TÍTULO PARA EL CAMPO DE NOMBRE DEL PRODUCTO -->
+                        <td><!-- Campo para el nombre del producto -->
+                            <label for="nombre_producto">Nombre del Producto:</label>
+                            <input type="text" name="nombre_producto[]" required>
+                        </td>
                     
-                    <!-- Título para el campo de descripción del producto -->
-                    <td><!-- Campo para la descripción del producto -->
-                        <label for="descripcion_producto">Descripción:</label>
-                        <textarea name="descripcion_producto[]" rows="4"></textarea>
-                    </td>
+                    <!-- TÍTULO PARA EL CAMPO DE DESCRIPCIÓN DEL PRODUCTO -->
+                        <td><!-- Campo para la descripción del producto -->
+                            <label for="descripcion_producto">Descripción:</label>
+                            <textarea name="descripcion_producto[]" rows="4"></textarea>
+                        </td>
                     
-                    <!-- Título para el campo de precio del producto -->
-                    <td><!-- Campo para el precio del producto -->
-                        <label for="precio_producto">Precio:</label>
-                        <input type="number" step="0.01" name="precio_producto[]" required>
-                    </td>
+                    <!-- TÍTULO PARA EL CAMPO DE PRECIO DEL PRODUCTO -->
+                        <td><!-- Campo para el precio del producto -->
+                            <label for="precio_producto">Precio:</label>
+                            <input type="number" step="0.01" name="precio_producto[]" required>
+                        </td>
                     
-                    <!-- Título para el campo de foto del producto -->
-                    <td><!-- Campo para subir la foto del producto -->
-                        <label for="foto_producto">Foto:</label>
-                        <input type="file" name="foto_producto[]" accept="image/*">
-                    </td>
+                    <!-- TÍTULO PARA EL CAMPO DE FOTO DEL PRODUCTO -->
+                        <td><!-- Campo para subir la foto del producto -->
+                            <label for="foto_producto">Foto:</label>
+                            <input type="file" name="foto_producto[]" accept="image/*">
+                        </td>
                     
-                    <!-- Título para el select de tipo de producto -->
-                    <td><!-- Select para elegir el tipo de producto -->
-                        <label for="id_tipo_producto">Tipo de Producto:</label>
-                        <select name="id_tipo_producto[]" required>
-                            <?php echo $options; ?> <!-- Opciones generadas desde la consulta a la base de datos -->
-                        </select>
-                    </td>
+                    <!-- TÍTULO PARA EL SELECT DE TIPO DE PRODUCTO -->
+                        <td><!-- Select para elegir el tipo de producto -->
+                            <label for="id_tipo_producto">Tipo de Producto:</label>
+                            <select name="id_tipo_producto[]" required>
+                                <?php echo $options; ?> <!-- Opciones generadas desde la consulta a la base de datos -->
+                            </select>
+                        </td>
                     
-                    <!-- Título para el botón de eliminar fila -->
-                    <td><!-- Botón para eliminar la fila actual -->
-                        <button type="button" onclick="removeRow(this)">Eliminar</button>
-                    </td>
+                    <!-- TÍTULO PARA EL BOTÓN DE ELIMINAR FILA -->
+                        <td><!-- Botón para eliminar la fila actual -->
+                            <button type="button" onclick="removeRow(this)">Eliminar</button>
+                        </td>
                 </tr>
             </tbody>
         </table>
@@ -113,11 +113,11 @@ $conn->close();
         <input type="hidden" name="id_empresa" value="<?php echo htmlspecialchars($id_empresa); ?>">
         
         <div class="form-group">
-            <!-- Título para el botón de agregar un nuevo producto -->
-            <button type="button" class="btn-nuevo" onclick="addRow()">Nuevo Producto</button>
+            <!-- TÍTULO PARA EL BOTÓN DE AGREGAR UN NUEVO PRODUCTO -->
+                <button type="button" class="btn-nuevo" onclick="addRow()">Nuevo Producto</button>
             
-            <!-- Título para el botón de enviar el formulario y guardar los productos -->
-            <button type="submit" class="btn-guardar">Guardar Productos</button>
+            <!-- TÍTULO PARA EL BOTÓN DE ENVIAR EL FORMULARIO Y GUARDAR LOS PRODUCTOS -->
+                <button type="submit" class="btn-guardar">Guardar Productos</button>
         </div>
     </fieldset>
 </form>

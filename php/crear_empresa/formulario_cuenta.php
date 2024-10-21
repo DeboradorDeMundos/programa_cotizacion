@@ -14,81 +14,81 @@ BPPJ
     <link rel="stylesheet" href="../../css/crear_empresa/formulario_cuenta.css">
 
     <div class="row">
-    <!-- Título: Contenedor principal para las cuentas bancarias -->
-    <div class="box-12 data-box contenedor-cuentas-bancarias">
-        <h2>Agrega tu cuenta bancaria:</h2>
-        <div id="bank-cuentas">
-            <!-- Título: Campos de cuentas bancarias -->
-            <div class="cuenta-bancaria">
+    <!-- TÍTULO: CONTENEDOR PRINCIPAL PARA LAS CUENTAS BANCARIAS -->
+        <div class="box-12 data-box contenedor-cuentas-bancarias">
+            <h2>Agrega tu cuenta bancaria:</h2>
+            <div id="bank-cuentas">
+                <!-- TÍTULO: CAMPOS DE CUENTAS BANCARIAS -->
+                    <div class="cuenta-bancaria">
 
-                <div class="form-group-inline">
-                    <!-- Título: Grupo de formulario para los datos del titular de la cuenta -->
-                    <div class="form-group">
-                        <!-- Título: Etiqueta y campo para el nombre del titular -->
-                        <label for="nombre-cuenta">Nombre titular:</label>
-                        <input type="text" id="nombre-cuenta" name="nombre_cuenta" 
-                            placeholder="Ingresa el nombre del titular" 
-                            maxlength="50" 
-                            required 
-                            oninput="ValidarNombre(this)" 
-                            title="Por favor, ingresa solo letras y espacios.">
-                    </div>
-                    <div class="form-group">
-                        <!-- Título: Etiqueta y campo para el RUT del titular -->
-                        <label for="rut-titular">Rut titular:</label>
-                        <input type="text" id="rut-titular" placeholder="Ej: 12.345.678-9" name="rut_titular" required oninput="formatoRut(this)">
-                    </div>
-                </div>
+                        <div class="form-group-inline">
+                            <!-- TÍTULO: GRUPO DE FORMULARIO PARA LOS DATOS DEL TITULAR DE LA CUENTA -->
+                                <div class="form-group">
+                                    <!-- TÍTULO: ETIQUETA Y CAMPO PARA EL NOMBRE DEL TITULAR -->
+                                        <label for="nombre-cuenta">Nombre titular:</label>
+                                        <input type="text" id="nombre-cuenta" name="nombre_cuenta" 
+                                            placeholder="Ingresa el nombre del titular" 
+                                            maxlength="50" 
+                                            required 
+                                            oninput="ValidarNombre(this)" 
+                                            title="Por favor, ingresa solo letras y espacios.">
+                                </div>
+                            <div class="form-group">
+                                <!-- TÍTULO: ETIQUETA Y CAMPO PARA EL RUT DEL TITULAR -->
+                                    <label for="rut-titular">Rut titular:</label>
+                                    <input type="text" id="rut-titular" placeholder="Ej: 12.345.678-9" name="rut_titular" required oninput="formatoRut(this)">
+                            </div>
+                        </div>
 
-                <div class="form-group-inline">
-                    <div class="form-group">
-                        <!-- Título: Etiqueta y campo para el celular -->
-                        <label for="celular">Celular:</label>
-                        <input type="text" id="celular" name="celular"
-                            placeholder="+56 9 1234 1234" 
-                            maxlength="11" 
-                            required 
-                            title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                            oninput="asegurarMas(this)">
-                    </div>
-                    <div class="form-group">        
-                        <!-- Título: Etiqueta y campo para el email -->
-                        <label for="email-banco">Email:</label>
-                        <input type="email" id="email-banco" name="email_banco" 
-                            placeholder="ejemplo@empresa.com" 
-                            maxlength="255" 
-                            title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
-                            onblur="CompletarEmail(this)">
-                    </div>
-                </div>
+                        <div class="form-group-inline">
+                            <div class="form-group">
+                                <!-- TÍTULO: ETIQUETA Y CAMPO PARA EL CELULAR -->
+                                    <label for="celular">Celular:</label>
+                                    <input type="text" id="celular" name="celular"
+                                        placeholder="+56 9 1234 1234" 
+                                        maxlength="11" 
+                                        required 
+                                        title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
+                                        oninput="asegurarMas(this)">
+                            </div>
+                            <div class="form-group">        
+                                <!-- TÍTULO: ETIQUETA Y CAMPO PARA EL EMAIL -->
+                                    <label for="email-banco">Email:</label>
+                                    <input type="email" id="email-banco" name="email_banco" 
+                                        placeholder="ejemplo@empresa.com" 
+                                        maxlength="255" 
+                                        title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
+                                        onblur="CompletarEmail(this)">
+                            </div>
+                        </div>
 
-                <div class="form-group-inline">
-                    <div class="form-group">
-                        <!-- Título: Etiqueta y campo para seleccionar el banco -->
-                        <label for="id-banco">Banco:</label>
-                        <select id="id-banco" name="id_banco" required>
-                            <!-- Opciones se llenarán con los datos de la tabla Bancos -->
-                        </select>
+                        <div class="form-group-inline">
+                            <div class="form-group">
+                                <!-- TÍTULO: ETIQUETA Y CAMPO PARA SELECCIONAR EL BANCO -->
+                                    <label for="id-banco">Banco:</label>
+                                    <select id="id-banco" name="id_banco" required>
+                                    <!-- Opciones se llenarán con los datos de la tabla Bancos -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <!-- TÍTULO: ETIQUETA Y CAMPO PARA SELECCIONAR EL TIPO DE CUENTA -->
+                                    <label for="id-tipocuenta">Tipo de Cuenta:</label>
+                                    <select id="id-tipocuenta" name="id_tipocuenta" required>
+                                    <!-- Opciones se llenarán con los datos de la tabla Tipo_Cuenta -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <!-- TÍTULO: ETIQUETA Y CAMPO PARA EL NÚMERO DE CUENTA -->
+                                    <label for="numero-cuenta">Número de Cuenta:</label>
+                                    <input type="text" id="numero-cuenta" name="numero_cuenta" required oninput="QuitarCaracteresInvalidos(this)">
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <!-- Título: Etiqueta y campo para seleccionar el tipo de cuenta -->
-                        <label for="id-tipocuenta">Tipo de Cuenta:</label>
-                        <select id="id-tipocuenta" name="id_tipocuenta" required>
-                            <!-- Opciones se llenarán con los datos de la tabla Tipo_Cuenta -->
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <!-- Título: Etiqueta y campo para el número de cuenta -->
-                        <label for="numero-cuenta">Número de Cuenta:</label>
-                        <input type="text" id="numero-cuenta" name="numero_cuenta" required oninput="QuitarCaracteresInvalidos(this)">
-                    </div>
-                </div>
+                
+                <!-- TÍTULO: BOTÓN PARA AGREGAR OTRA CUENTA -->
+                    <button type="button" id="boton-agregar-cuenta" onclick="AgregarCuenta()">Agregar otra cuenta</button>
             </div>
-            
-            <!-- Título: Botón para agregar otra cuenta -->
-            <button type="button" id="boton-agregar-cuenta" onclick="AgregarCuenta()">Agregar otra cuenta</button>
         </div>
-    </div>
 </div>
 
 <!-- Campo oculto para cuentas -->

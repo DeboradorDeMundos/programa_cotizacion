@@ -28,137 +28,137 @@ BPPJ
 <body>
     <!-- Contenedor principal para la sección de firmas -->
     <div class="contenedor-firma">
-        <!-- Título principal de la sección -->
-        <h1>Selecciona una opción de firma</h1>
-        <!-- Subtítulo que indica las opciones disponibles para crear una firma -->
-        <h3>¡Crea una firma automática, manual o sube tu propia firma digital!</h3>
+        <!-- TÍTULO PRINCIPAL DE LA SECCIÓN -->
+            <h1>Selecciona una opción de firma</h1>
+            <!-- Subtítulo que indica las opciones disponibles para crear una firma -->
+            <h3>¡Crea una firma automática, manual o sube tu propia firma digital!</h3>
 
-        <!-- Opción de Firma Automática -->
-        <div class="option">
-            <!-- Título: Seleccionar Firma Automática -->
-            <h4>Seleccionar Firma Automática</h4>
-            <!-- Botón de opción para seleccionar firma automática -->
-            <input type="radio" id="auto-signature" name="opcion-firma" value="automatic">
-            <label for="auto-signature">Firma Automática</label>
-            <!-- Contenedor para desplegar la firma automática, inicialmente oculto -->
-            <div id="auto-desplegar-firma" class="desplegar-firma" style="display: none;"></div>
-        </div>
+            <!-- Opción de Firma Automática -->
+            <div class="option">
+                <!-- TÍTULO: SELECCIONAR FIRMA AUTOMÁTICA -->
+                    <h4>Seleccionar Firma Automática</h4>
+                    <!-- Botón de opción para seleccionar firma automática -->
+                    <input type="radio" id="auto-signature" name="opcion-firma" value="automatic">
+                    <label for="auto-signature">Firma Automática</label>
+                    <!-- Contenedor para desplegar la firma automática, inicialmente oculto -->
+                    <div id="auto-desplegar-firma" class="desplegar-firma" style="display: none;"></div>
+            </div>
 
         <!-- Opción de Firma Manual -->
         <div class="option">
-            <!-- Título: Seleccionar Firma Manual -->
-            <h4>Seleccionar Firma Manual</h4>
-            <!-- Botón de opción para seleccionar firma manual -->
-            <input type="radio" id="manual-signature" name="opcion-firma" value="manual">
-            <label for="manual-signature">Firma Manual</label>
+            <!-- TÍTULO: SELECCIONAR FIRMA MANUAL -->
+                <h4>Seleccionar Firma Manual</h4>
+                <!-- Botón de opción para seleccionar firma manual -->
+                <input type="radio" id="manual-signature" name="opcion-firma" value="manual">
+                <label for="manual-signature">Firma Manual</label>
             <!-- Contenedor para los campos de entrada de la firma manual, inicialmente oculto -->
             <div id="firma-manual" class="desplegar-firma" style="display: none;">
                 <div class="signature-row">
-                    <!-- Título: Campo para el Título de la Firma -->
-                    <h5>Campo para el Título de la Firma</h5>
-                    <div class="form-group">
-                        <label for="titulo_firma">Título de la Firma:</label>
-                        <input type="text" name="titulo_firma" placeholder="título de la firma" oninput="QuitarCaracteresInvalidos(this)">
+                    <!-- TÍTULO: CAMPO PARA EL TÍTULO DE LA FIRMA -->
+                        <h5>Campo para el Título de la Firma</h5>
+                        <div class="form-group">
+                            <label for="titulo_firma">Título de la Firma:</label>
+                            <input type="text" name="titulo_firma" placeholder="título de la firma" oninput="QuitarCaracteresInvalidos(this)">
+                        </div>
+                    <!-- TÍTULO: CAMPO PARA EL NOMBRE DEL ENCARGADO -->
+                        <h5>Campo para el Nombre del Encargado</h5>
+                        <div class="form-group-inline">
+                            <div class="form-group">
+                                <label for="nombre_encargado_firma">Nombre del Encargado:</label>
+                                <input type="text" name="nombre_encargado_firma" placeholder="Nombre del Encargado" oninput="QuitarCaracteresInvalidos(this)">
+                            </div>
+                        <!-- TÍTULO: CAMPO PARA EL CARGO DEL ENCARGADO -->
+                            <h5>Campo para el Cargo del Encargado</h5>
+                            <div class="form-group">
+                                <label for="cargo_encargado_firma">Cargo del Encargado:</label>
+                                <input type="text" name="cargo_encargado_firma" placeholder="Cargo del Encargado" oninput="QuitarCaracteresInvalidos(this)">
+                            </div>
+                        <!-- TÍTULO: CAMPO PARA EL TELÉFONO DEL ENCARGADO -->
+                            <h5>Campo para el Teléfono del Encargado</h5>
+                            <div class="form-group">
+                                <label for="telefono_encargado_firma">Teléfono del Encargado:</label>
+                                <input type="text" name="telefono_encargado_firma" placeholder="Teléfono del Encargado" oninput="QuitarCaracteresInvalidos(this)">
+                            </div>
+                        </div>
+                    <!-- TÍTULO: CAMPO PARA EL NOMBRE DE LA EMPRESA -->
+                        <h5>Campo para el Nombre de la Empresa</h5>
+                        <div class="form-group-inline">
+                            <div class="form-group">
+                                <label for="nombre_empresa_firma">Nombre de la Empresa:</label>
+                                <input type="text" name="nombre_empresa_firma" placeholder="Nombre de la Empresa" oninput="QuitarCaracteresInvalidos(this)">
+                            </div>
+                        <!-- TÍTULO: CAMPO PARA EL ÁREA DE LA EMPRESA -->
+                            <h5>Campo para el Área de la Empresa</h5>
+                            <div class="form-group">
+                                <label for="area_empresa_firma">Área de la Empresa:</label>
+                                <input type="text" name="area_empresa_firma" placeholder="Área de la Empresa" oninput="QuitarCaracteresInvalidos(this)">
+                            </div>
+                        </div>
+                    <!-- TÍTULO: CAMPO PARA EL TELÉFONO DE LA EMPRESA -->
+                        <h5>Campo para el Teléfono de la Empresa</h5>
+                        <div class="form-group-inline">
+                            <div class="form-group">
+                                <label for="telefono_empresa_firma">Teléfono de la Empresa:</label>
+                                <input type="text" name="telefono_empresa_firma" placeholder="Teléfono de la Empresa" oninput="QuitarCaracteresInvalidos(this)">
+                            </div>
+                        <!-- TÍTULO: CAMPO PARA EL CORREO ELECTRÓNICO -->
+                            <h5>Campo para el Correo Electrónico</h5>
+                            <div class="form-group">
+                                <label for="email_firma">Email:</label>
+                                <input type="email" name="email_firma" placeholder="Email" onblur="CompletarEmail(this)">
+                            </div>
+                        </div>
+                    <!-- TÍTULO: CAMPO PARA LA DIRECCIÓN -->
+                        <h5>Campo para la Dirección</h5>
+                        <div class="form-group">
+                            <label for="direccion_firma">Dirección:</label>
+                            <input type="text" name="direccion_firma" placeholder="Dirección" oninput="QuitarCaracteresInvalidos(this)">
+                        </div>
+                    <!-- TÍTULO: CAMPO PARA EL RUT -->
+                        <h5>Campo para el RUT</h5>
+                        <div class="form-group">
+                            <label for="rut_firma">RUT:</label>
+                            <input type="text" name="rut_firma" placeholder="RUT" minlength="3" maxlength="20"           
+                                pattern="^[0-9]+[-kK0-9]{1}$" 
+                                title="Por favor, ingrese un RUT válido."
+                                placeholder="Ejemplo: 12345678-9"
+                                oninput="formatoRut(this)"
+                                oninput="QuitarCaracteresInvalidos(this)">
+                        </div>
                     </div>
-                    <!-- Título: Campo para el Nombre del Encargado -->
-                    <h5>Campo para el Nombre del Encargado</h5>
-                    <div class="form-group-inline">
-                        <div class="form-group">
-                            <label for="nombre_encargado_firma">Nombre del Encargado:</label>
-                            <input type="text" name="nombre_encargado_firma" placeholder="Nombre del Encargado" oninput="QuitarCaracteresInvalidos(this)">
-                        </div>
-                        <!-- Título: Campo para el Cargo del Encargado -->
-                        <h5>Campo para el Cargo del Encargado</h5>
-                        <div class="form-group">
-                            <label for="cargo_encargado_firma">Cargo del Encargado:</label>
-                            <input type="text" name="cargo_encargado_firma" placeholder="Cargo del Encargado" oninput="QuitarCaracteresInvalidos(this)">
-                        </div>
-                        <!-- Título: Campo para el Teléfono del Encargado -->
-                        <h5>Campo para el Teléfono del Encargado</h5>
-                        <div class="form-group">
-                            <label for="telefono_encargado_firma">Teléfono del Encargado:</label>
-                            <input type="text" name="telefono_encargado_firma" placeholder="Teléfono del Encargado" oninput="QuitarCaracteresInvalidos(this)">
-                        </div>
-                    </div>
-                    <!-- Título: Campo para el Nombre de la Empresa -->
-                    <h5>Campo para el Nombre de la Empresa</h5>
-                    <div class="form-group-inline">
-                        <div class="form-group">
-                            <label for="nombre_empresa_firma">Nombre de la Empresa:</label>
-                            <input type="text" name="nombre_empresa_firma" placeholder="Nombre de la Empresa" oninput="QuitarCaracteresInvalidos(this)">
-                        </div>
-                        <!-- Título: Campo para el Área de la Empresa -->
-                        <h5>Campo para el Área de la Empresa</h5>
-                        <div class="form-group">
-                            <label for="area_empresa_firma">Área de la Empresa:</label>
-                            <input type="text" name="area_empresa_firma" placeholder="Área de la Empresa" oninput="QuitarCaracteresInvalidos(this)">
-                        </div>
-                    </div>
-                    <!-- Título: Campo para el Teléfono de la Empresa -->
-                    <h5>Campo para el Teléfono de la Empresa</h5>
-                    <div class="form-group-inline">
-                        <div class="form-group">
-                            <label for="telefono_empresa_firma">Teléfono de la Empresa:</label>
-                            <input type="text" name="telefono_empresa_firma" placeholder="Teléfono de la Empresa" oninput="QuitarCaracteresInvalidos(this)">
-                        </div>
-                        <!-- Título: Campo para el Correo Electrónico -->
-                        <h5>Campo para el Correo Electrónico</h5>
-                        <div class="form-group">
-                            <label for="email_firma">Email:</label>
-                            <input type="email" name="email_firma" placeholder="Email" onblur="CompletarEmail(this)">
-                        </div>
-                    </div>
-                    <!-- Título: Campo para la Dirección -->
-                    <h5>Campo para la Dirección</h5>
-                    <div class="form-group">
-                        <label for="direccion_firma">Dirección:</label>
-                        <input type="text" name="direccion_firma" placeholder="Dirección" oninput="QuitarCaracteresInvalidos(this)">
-                    </div>
-                    <!-- Título: Campo para el RUT -->
-                    <h5>Campo para el RUT</h5>
-                    <div class="form-group">
-                        <label for="rut_firma">RUT:</label>
-                        <input type="text" name="rut_firma" placeholder="RUT" minlength="3" maxlength="20"           
-                            pattern="^[0-9]+[-kK0-9]{1}$" 
-                            title="Por favor, ingrese un RUT válido."
-                            placeholder="Ejemplo: 12345678-9"
-                            oninput="formatoRut(this)"
-                            oninput="QuitarCaracteresInvalidos(this)">
-                    </div>
-                </div>
               
-                <!-- Título: Botón para Agregar Firma -->
-                <h5>Botón para Agregar Firma</h5>
-                <button type="button" class="BotonAgregarFirma" id="BotonAgregarFirma" style="background-color: green; color: white; border: none; cursor: pointer; padding: 5px 10px;">Agregar Firma</button>
+                <!-- TÍTULO: BOTÓN PARA AGREGAR FIRMA -->
+                    <h5>Botón para Agregar Firma</h5>
+                    <button type="button" class="BotonAgregarFirma" id="BotonAgregarFirma" style="background-color: green; color: white; border: none; cursor: pointer; padding: 5px 10px;">Agregar Firma</button>
+                </div>
             </div>
-        </div>
 
         <!-- Opción de Firma Digital (Subida de Imagen) -->
         <div class="option">
-            <!-- Título: Seleccionar Firma Imagen -->
-            <h4>Seleccionar Firma Imagen</h4>
-            <!-- Botón de opción para seleccionar firma por imagen -->
-            <input type="radio" id="image-signature" name="opcion-firma" value="image">
-            <label for="image-signature">Firma Imagen</label>
-            <!-- Título: Campo para subir imagen -->
-            <h5>Campo para Subir Imagen de Firma:</h5>
-            <input type="file" id="firma-imagen" name="firma-imagen" accept="image/png">
-            <!-- Previsualización de la imagen de la firma, inicialmente oculta -->
-            <img id="previsualizacion-firma" src="" alt="Previsualización de firma" style="display: none;">
+            <!-- TÍTULO: SELECCIONAR FIRMA IMAGEN -->
+                <h4>Seleccionar Firma Imagen</h4>
+                <!-- Botón de opción para seleccionar firma por imagen -->
+                <input type="radio" id="image-signature" name="opcion-firma" value="image">
+                <label for="image-signature">Firma Imagen</label>
+            <!-- TÍTULO: CAMPO PARA SUBIR IMAGEN -->
+                <h5>Campo para Subir Imagen de Firma:</h5>
+                <input type="file" id="firma-imagen" name="firma-imagen" accept="image/png">
+                <!-- Previsualización de la imagen de la firma, inicialmente oculta -->
+                <img id="previsualizacion-firma" src="" alt="Previsualización de firma" style="display: none;">
         </div>
 
         <!-- Opción de Firma Digital -->
         <div class="option">
-            <!-- Título: Seleccionar Firma Digital -->
-            <h4>Seleccionar Firma Digital</h4>
-            <!-- Botón de opción para seleccionar firma digital -->
-            <input type="radio" id="digital-signature" name="opcion-firma" value="digital">
-            <label for="digital-signature">Firma Digital</label>
-            <!-- Contenedor para el mensaje relacionado con la firma digital, inicialmente oculto -->
-            <div id="Mensaje-Firma-Digital" class="desplegar-firma" style="display: none;">
-                <h5>Mensaje sobre Firma Digital</h5>
-                <p>Su firma se generará en su cotización.</p>
-            </div>
+            <!-- TÍTULO: SELECCIONAR FIRMA DIGITAL -->
+                <h4>Seleccionar Firma Digital</h4>
+                <!-- Botón de opción para seleccionar firma digital -->
+                <input type="radio" id="digital-signature" name="opcion-firma" value="digital">
+                <label for="digital-signature">Firma Digital</label>
+                <!-- Contenedor para el mensaje relacionado con la firma digital, inicialmente oculto -->
+                <div id="Mensaje-Firma-Digital" class="desplegar-firma" style="display: none;">
+                    <h5>Mensaje sobre Firma Digital</h5>
+                    <p>Su firma se generará en su cotización.</p>
+                </div>
         </div>
     </div>
 

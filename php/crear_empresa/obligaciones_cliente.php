@@ -12,32 +12,32 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Condiciones Generales.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-<!-- Título: Enlaza el archivo CSS para estilizar la página de obligaciones del cliente -->
-<!-- Enlaza el archivo CSS para estilizar la página de obligaciones del cliente -->
-<link rel="stylesheet" href="../../css/crear_empresa/obligaciones_clientes.css"> 
+<!-- TÍTULO: ENLAZA EL ARCHIVO CSS PARA ESTILIZAR LA PÁGINA DE OBLIGACIONES DEL CLIENTE -->
+    <!-- Enlaza el archivo CSS para estilizar la página de obligaciones del cliente -->
+    <link rel="stylesheet" href="../../css/crear_empresa/obligaciones_clientes.css"> 
 
-<!-- Título: Título de la sección de obligaciones del cliente -->
-<!-- Título de la sección de obligaciones del cliente -->
-<h2>Obligaciones cliente</h2> 
+<!-- TÍTULO: TÍTULO DE LA SECCIÓN DE OBLIGACIONES DEL CLIENTE -->
+<!-- TÍTULO DE LA SECCIÓN DE OBLIGACIONES DEL CLIENTE -->
+    <h2>Obligaciones cliente</h2> 
 
-<!-- Título: Contenedor donde se agregarán dinámicamente las filas de condiciones -->
-<!-- Contenedor donde se agregarán dinámicamente las filas de condiciones -->
-<div id="obligaciones-contenedor">
-    <!-- Título: Aquí se agregarán dinámicamente las filas de condiciones -->
-    <!-- Aquí se agregarán dinámicamente las filas de condiciones -->
-</div>
+<!-- TÍTULO: CONTENEDOR DONDE SE AGREGARÁN DINÁMICAMENTE LAS FILAS DE CONDICIONES -->
+    <!-- Contenedor donde se agregarán dinámicamente las filas de condiciones -->
+    <div id="obligaciones-contenedor">
+        <!-- TÍTULO: AQUÍ SE AGREGARÁN DINÁMICAMENTE LAS FILAS DE CONDICIONES -->
+            <!-- Aquí se agregarán dinámicamente las filas de condiciones -->
+    </div>
 
-<!-- Título: Contenedor para los botones de agregar y eliminar obligaciones -->
-<!-- Contenedor para los botones de agregar y eliminar obligaciones -->
-<div style="margin-top: 10px;">
-    <!-- Título: Botón para agregar una nueva obligación -->
-    <!-- Botón para agregar una nueva obligación -->
-    <button id="boton-agregar-obligacion" type="button">Agregar nueva obligacion</button>
-    
-    <!-- Título: Botón para eliminar la última obligación. Este botón está oculto por defecto -->
-    <!-- Botón para eliminar la última obligación. Este botón está oculto por defecto -->
-    <button id="boton-eliminar-obligacion" type="button" style="display: none;">Eliminar última obligacion</button>
-</div>
+<!-- TÍTULO: CONTENEDOR PARA LOS BOTONES DE AGREGAR Y ELIMINAR OBLIGACIONES -->
+    <!-- Contenedor para los botones de agregar y eliminar obligaciones -->
+    <div STYLE="margin-top: 10px;">
+        <!-- TÍTULO: BOTÓN PARA AGREGAR UNA NUEVA OBLIGACIÓN -->
+            <!-- Botón para agregar una nueva obligación -->
+            <button id="boton-agregar-obligacion" type="button">Agregar nueva obligacion</button>
+        
+        <!-- TÍTULO: BOTÓN PARA ELIMINAR LA ÚLTIMA OBLIGACIÓN. ESTE BOTÓN ESTÁ OCULTO POR DEFECTO -->
+            <!-- Botón para eliminar la última obligación. Este botón está oculto por defecto -->
+            <button id="boton-eliminar-obligacion" type="button" style="display: none;">Eliminar última obligacion</button>
+    </div>
 
 <!-- Enlaza el archivo JavaScript correspondiente a la funcionalidad de las obligaciones del cliente -->
 <script src="../../js/crear_empresa/obligaciones_cliente.js"></script>

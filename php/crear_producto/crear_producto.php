@@ -38,9 +38,9 @@ $conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
 <body>
     <div class="contenedor">
         <div class="form-contenedor">
-            <!-- Título: Incluye el formulario de creación de producto -->
-            <!-- Incluye el formulario de creación de producto -->
-            <?php include 'formulario_creacion_producto.php'; ?>
+            <!-- TÍTULO: INCLUYE EL FORMULARIO DE CREACIÓN DE PRODUCTO -->
+                <!-- Incluye el formulario de creación de producto -->
+                <?php include 'formulario_creacion_producto.php'; ?>
         </div>
     </div>
 </body>

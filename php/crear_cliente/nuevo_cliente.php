@@ -31,46 +31,46 @@ BPPJ
 
 
 <!-- Contenedor principal que puede ayudar a centrar y organizar el contenido en la página -->
-<div class="contenedor"> 
+    <div class="contenedor"> 
+            
+        <!-- TÍTULO: FORMULARIO PARA AGREGAR UN NUEVO CLIENTE -->
+            <form id="formulario-cliente" method="POST" action="" enctype="multipart/form-data">
+                <h1>Título: Rellena el formulario para agregar un nuevo cliente</h1>
+
+                <!-- TÍTULO: CONTENEDOR SECUNDARIO QUE ORGANIZA LOS FORMULARIOS -->
+                    <div class="contenedor">
+
+                        <!-- TÍTULO: INFORMACIÓN DEL NEGOCIO / EMPRESA -->
+                            <div class="formulario-empresa">
+                                <h3>Título: Información del Negocio / Empresa</h3>
+                                <!-- TÍTULO: FORMULARIO DE EMPRESA DEL CLIENTE -->
+                                <?php include 'formulario_empresa_cliente.php'; ?> 
+                            </div>
+
+                        <!-- TÍTULO: INFORMACIÓN DEL ENCARGADO / CLIENTE -->
+                            <div class="formulario-encargado">
+                                <h3>Título: Información del Encargado / Cliente</h3>
+                                <!-- TÍTULO: FORMULARIO DEL ENCARGADO DE LA EMPRESA -->
+                                <?php include 'formulario_encargado.php'; ?>
+                            </div>
+                    </div>
+
+                <!-- TÍTULO: SECCIÓN DE NOTIFICACIONES -->
+                    <?php if (!empty($mensaje)): ?>
+                        <div class="notificacion" id="notificacion">
+                            <p>Título: Notificación / Mensaje</p>
+                            <?php echo $mensaje; ?>
+                        </div>
+                    <?php endif; ?>
+
+                <!-- TÍTULO: BOTÓN PARA CREAR CLIENTE -->
+                    <button type="submit" class="submit">Título: Crear Cliente</button> 
+
+            <!-- TÍTULO: CIERRA EL FORMULARIO -->
+            </form> 
         
-    <!-- Título: Formulario para agregar un nuevo cliente -->
-    <form id="formulario-cliente" method="POST" action="" enctype="multipart/form-data">
-        <h1>Título: Rellena el formulario para agregar un nuevo cliente</h1>
-
-        <!-- Título: Contenedor secundario que organiza los formularios -->
-        <div class="contenedor">
-
-            <!-- Título: Información del Negocio / Empresa -->
-            <div class="formulario-empresa">
-                <h3>Título: Información del Negocio / Empresa</h3>
-                <!-- Título: Formulario de Empresa del Cliente -->
-                <?php include 'formulario_empresa_cliente.php'; ?> 
-            </div>
-
-            <!-- Título: Información del Encargado / Cliente -->
-            <div class="formulario-encargado">
-                <h3>Título: Información del Encargado / Cliente</h3>
-                <!-- Título: Formulario del Encargado de la Empresa -->
-                <?php include 'formulario_encargado.php'; ?>
-            </div>
-        </div>
-
-        <!-- Título: Sección de Notificaciones -->
-        <?php if (!empty($mensaje)): ?>
-            <div class="notificacion" id="notificacion">
-                <p>Título: Notificación / Mensaje</p>
-                <?php echo $mensaje; ?>
-            </div>
-        <?php endif; ?>
-
-        <!-- Título: Botón para Crear Cliente -->
-        <button type="submit" class="submit">Título: Crear Cliente</button> 
-
-    <!-- Título: Cierra el formulario -->
-    </form> 
-    
-<!-- Título: Cierra el contenedor principal -->
-</div>
+    <!-- TÍTULO: CIERRA EL CONTENEDOR PRINCIPAL -->
+    </div>
 
 <script src="../../js/crear_cliente/nuevo_cliente.js"></script> 
 

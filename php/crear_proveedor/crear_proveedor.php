@@ -41,14 +41,14 @@ BPPJ
 
     <div class="contenedor">  
         <form id="formulario-proveedor" method="POST" action="" enctype="multipart/form-data">
-            <!-- Título para el formulario de nuevo proveedor -->
-            <h3>RELLENA EL FORMULARIO PARA AGREGAR UN NUEVO PROVEEDOR</h3>
-            <?php include 'formulario_proveedor.php'; ?>
+            <!-- TÍTULO PARA EL FORMULARIO DE NUEVO PROVEEDOR -->
+                <h3>RELLENA EL FORMULARIO PARA AGREGAR UN NUEVO PROVEEDOR</h3>
+                <?php include 'formulario_proveedor.php'; ?>
     
             <div class="contenedor"> 
-                <!-- Título para el formulario de la empresa del proveedor -->
-                <h3>RELLENA EL FORMULARIO PARA AGREGAR LA EMPRESA DEL PROVEEDOR</h3>
-                <?php include 'empresa_proveedor.php'; ?>
+                <!-- TÍTULO PARA EL FORMULARIO DE LA EMPRESA DEL PROVEEDOR -->
+                    <h3>RELLENA EL FORMULARIO PARA AGREGAR LA EMPRESA DEL PROVEEDOR</h3>
+                    <?php include 'empresa_proveedor.php'; ?>
             </div> 
 
             <!-- Botón de submit debe estar dentro del formulario -->
@@ -57,10 +57,10 @@ BPPJ
     </div> 
 
     <div class="contenedor"> 
-        <!-- Título para el listado de proveedores -->
-        <h3>Listado de proveedores</h3>
-        <!-- Incluye el archivo que muestra el listado de proveedores -->
-        <?php include 'mostrar_proveedor.php'; ?> 
+        <!-- TÍTULO PARA EL LISTADO DE PROVEEDORES -->
+            <h3>Listado de proveedores</h3>
+            <!-- Incluye el archivo que muestra el listado de proveedores -->
+            <?php include 'mostrar_proveedor.php'; ?> 
     </div> 
 
 </div> 

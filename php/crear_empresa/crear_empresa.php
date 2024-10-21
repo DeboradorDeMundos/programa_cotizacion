@@ -40,87 +40,87 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 <body> <!-- Abre el elemento del cuerpo de la página donde se coloca el contenido visible -->
     <div class="contenedor"> <!-- Contenedor principal que puede ayudar a centrar y organizar el contenido en la página -->
         
-        <!-- Título: Formulario de cotización -->
-        <form id="formulario-cotizacion" method="POST" action="" enctype="multipart/form-data">
-           
-            <!-- Título: Enlace para volver a la página anterior -->
-            <a href="../../programa_cotizacion.php" class="boton-fijado">Volver</a>
+        <!-- TÍTULO: FORMULARIO DE COTIZACIÓN -->
+            <form id="formulario-cotizacion" method="POST" action="" enctype="multipart/form-data">
             
-            <!-- Fila 1 -->
-            <!-- Título: Fila 1 - Logo y cuadro rojo -->
-            <div class="row"> 
-
-                <!-- Incluye el archivo para la carga del logo -->
-                <?php include 'upload_logo.php'; ?>
-
-                <!-- Incluye el archivo para mostrar el cuadro rojo -->
-                <?php include 'cuadro_rojo.php'; ?>
+                <!-- TÍTULO: ENLACE PARA VOLVER A LA PÁGINA ANTERIOR -->
+                    <a href="../../programa_cotizacion.php" class="boton-fijado">Volver</a>
                 
-            </div> <!-- Cierra la fila 1 -->
+                <!-- Fila 1 -->
+                <!-- TÍTULO: FILA 1 - LOGO Y CUADRO ROJO -->
+                    <div class="row"> 
 
-            <!-- Fila 2 -->
-            <!-- Título: Fila 2 - Formularios -->
-            <!-- Incluye el archivo para el formulario de empresa -->
-            <?php include 'formulario_empresa.php'; ?>
+                        <!-- Incluye el archivo para la carga del logo -->
+                        <?php include 'upload_logo.php'; ?>
 
-            <!-- Incluye el archivo para el formulario del encargado -->
-            <?php include 'formulario_encargado.php'; ?>
+                        <!-- Incluye el archivo para mostrar el cuadro rojo -->
+                        <?php include 'cuadro_rojo.php'; ?>
+                        
+                    </div> <!-- Cierra la fila 1 -->
 
-            <!-- Incluye el archivo para el formulario del vendedor -->
-            <?php include 'formulario_vendedor.php'; ?>            
+                <!-- Fila 2 -->
+                <!-- TÍTULO: FILA 2 - FORMULARIOS -->
+                    <!-- Incluye el archivo para el formulario de empresa -->
+                    <?php include 'formulario_empresa.php'; ?>
 
-            <!-- Fila para cuentas bancarias -->
-            <!-- Título: Fila de cuentas bancarias -->
-            <!-- Incluye el archivo para el formulario de cuenta -->
-            <?php include 'formulario_cuenta.php';?>
+                    <!-- Incluye el archivo para el formulario del encargado -->
+                    <?php include 'formulario_encargado.php'; ?>
 
-            <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
-            <div class="row"> 
-                <div class="box-12 data-box">
-                    <h2>TRANSFERENCIAS A:</h2>
-                    <table id="tabla-cuentas" border="1">
-                        <!-- La tabla se llenará dinámicamente -->
-                    </table>
-                </div>
-            </div>
+                    <!-- Incluye el archivo para el formulario del vendedor -->
+                    <?php include 'formulario_vendedor.php'; ?>            
 
-            <!-- Título: Requisitos básicos -->
-            <div class="row"> 
-                <div class="box-12 data-box">
-                    <!-- Incluye el archivo para los requisitos básicos -->
-                    <?php include 'requisitos_basicos.php';?>
-                </div>
-            </div>
+                <!-- Fila para cuentas bancarias -->
+                <!-- TÍTULO: FILA DE CUENTAS BANCARIAS -->
+                    <!-- Incluye el archivo para el formulario de cuenta -->
+                    <?php include 'formulario_cuenta.php';?>
 
-            <!-- Título: Condiciones generales -->
-            <div class="row"> 
-                <div class="box-12 data-box">
-                    <!-- Incluye el archivo para las condiciones generales -->
-                    <?php include 'condiciones_generales.php';?>
-                </div>
-            </div>
-            
-            <!-- Título: Obligaciones del cliente -->
-            <div class="row"> 
-                <div class="box-12 data-box">
-                    <!-- Incluye el archivo para las obligaciones del cliente -->
-                    <?php include 'obligaciones_cliente.php';?>
-                </div>
-            </div>
+                    <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
+                    <div class="row"> 
+                        <div class="box-12 data-box">
+                            <h2>TRANSFERENCIAS A:</h2>
+                            <table id="tabla-cuentas" border="1">
+                                <!-- La tabla se llenará dinámicamente -->
+                            </table>
+                        </div>
+                    </div>
 
-            <!-- Título: Firma -->
-            <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
-            <div class="row"> 
-                <div class="box-12 data-box">
-                    <!-- Incluye el archivo para la firma -->
-                    <?php include 'firma.php';?>
-                </div>
-            </div>
+                <!-- Título: Requisitos básicos -->
+                    <div class="row"> 
+                        <div class="box-12 data-box">
+                            <!-- Incluye el archivo para los requisitos básicos -->
+                            <?php include 'requisitos_basicos.php';?>
+                        </div>
+                    </div>
 
-            <!-- Título: Botón para enviar el formulario y generar la cotización -->
-            <button type="submit" id="boton-subir" class="subir">Crear empresa</button> 
-            <!-- Cierra el formulario -->
-        </form> 
+                <!-- TÍTULO: CONDICIONES GENERALES -->
+                    <div class="row"> 
+                        <div class="box-12 data-box">
+                            <!-- Incluye el archivo para las condiciones generales -->
+                            <?php include 'condiciones_generales.php';?>
+                        </div>
+                    </div>
+                
+                <!-- TÍTULO: OBLIGACIONES DEL CLIENTE -->
+                    <div class="row"> 
+                        <div class="box-12 data-box">
+                            <!-- Incluye el archivo para las obligaciones del cliente -->
+                            <?php include 'obligaciones_cliente.php';?>
+                        </div>
+                    </div>
+
+                <!-- TÍTULO: FIRMA -->
+                    <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
+                    <div class="row"> 
+                        <div class="box-12 data-box">
+                            <!-- Incluye el archivo para la firma -->
+                            <?php include 'firma.php';?>
+                        </div>
+                    </div>
+
+                <!-- TÍTULO: BOTÓN PARA ENVIAR EL FORMULARIO Y GENERAR LA COTIZACIÓN -->
+                    <button type="submit" id="boton-subir" class="subir">Crear empresa</button> 
+                <!-- Cierra el formulario -->
+            </form> 
         <!-- Cierra el contenedor principal -->
     </div> 
     <!-- Enlaza un archivo JavaScript externo para actualizar el logo o realizar otras actualizaciones -->

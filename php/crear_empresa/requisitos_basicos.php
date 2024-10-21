@@ -19,21 +19,21 @@ BPPJ
 
 <h2>Requisitos básicos</h2>
 
-<!-- Título: Contenedor para los requisitos -->
-<!-- Contenedor para los requisitos -->
-<div id="contenedor-requisitos">
-    <!-- Título: Aquí se agregarán dinámicamente las filas de condiciones -->
-    <!-- Aquí se agregarán dinámicamente las filas de condiciones -->
-</div>
+<!-- TÍTULO: CONTENEDOR PARA LOS REQUISITOS -->
+    <!-- Contenedor para los requisitos -->
+    <div id="contenedor-requisitos">
+        <!-- TÍTULO: AQUÍ SE AGREGARÁN DINÁMICAMENTE LAS FILAS DE CONDICIONES -->
+            <!-- Aquí se agregarán dinámicamente las filas de condiciones -->
+    </div>
 
-<div style="margin-top: 10px;">
-    <!-- Título: Botón para agregar un nuevo requisito -->
-    <!-- Botón para agregar un nuevo requisito -->
-    <button id="boton-agregar-requisito" type="button">Agregar nuevo requisito</button>
-    <!-- Título: Botón para eliminar el último requisito, inicialmente oculto -->
-    <!-- Botón para eliminar el último requisito, inicialmente oculto -->
-    <button id="boton-eliminar-obligacion" type="button" style="display: none;">Eliminar último requisito</button>
-</div>
+    <div style="margin-top: 10px;">
+        <!-- TÍTULO: BOTÓN PARA AGREGAR UN NUEVO REQUISITO -->
+            <!-- Botón para agregar un nuevo requisito -->
+            <button id="boton-agregar-requisito" type="button">Agregar nuevo requisito</button>
+        <!-- TÍTULO: BOTÓN PARA ELIMINAR EL ÚLTIMO REQUISITO, INICIALMENTE OCULTO -->
+            <!-- Botón para eliminar el último requisito, inicialmente oculto -->
+            <button id="boton-eliminar-obligacion" type="button" style="display: none;">Eliminar último requisito</button>
+    </div>
 
 <script src="../../js/crear_empresa/requisitos_basicos.js"></script>
 

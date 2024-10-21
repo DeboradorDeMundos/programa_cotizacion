@@ -43,15 +43,15 @@ BPPJ
 <!-- Abre el elemento del cuerpo de la página donde se coloca el contenido visible -->
 <body>
 
-    <!-- Título: Listado de Clientes -->
-    <h2>Listado de Clientes</h2>
+    <!-- TÍTULO: LISTADO DE CLIENTES -->
+        <h2>Listado de Clientes</h2>
 
-        <!-- AQUI VAN EL LISTADO DE LOS CLIENTES -->
-        <!-- Listado de clientes -->
-        <?php include 'mostrar_clientes.php'; ?>
-    <a href="nuevo_cliente.php" class="boton-fijado">Crear nuevo cliente </a>
+            <!-- AQUI VAN EL LISTADO DE LOS CLIENTES -->
+            <!-- Listado de clientes -->
+            <?php include 'mostrar_clientes.php'; ?>
+        <a href="nuevo_cliente.php" class="boton-fijado">Crear nuevo cliente </a>
 
-    <!-- Cierra el cuerpo de la página -->
+        <!-- Cierra el cuerpo de la página -->
 </body>
 
 <script src="../../js/crear_cliente/crear_cliente.js"></script> 

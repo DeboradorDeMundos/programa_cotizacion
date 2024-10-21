@@ -18,24 +18,24 @@ BPPJ
 
 <h3>EJEMPLO: </h3>
 <div class="box-6 caja-logo"> 
-    <!-- Título: Crea una caja para el logo o foto de perfil, ocupando 6 de las 12 columnas disponibles en el diseño -->
-    <!-- Crea una caja para el logo o foto de perfil, ocupando 6 de las 12 columnas disponibles en el diseño -->
-    <label for="subir-logo" class="contenedor-logo"> 
-        <!-- Título: Etiqueta para el campo de carga de imagen. El atributo "for" enlaza con el input de archivo -->
-        <!-- Etiqueta para el campo de carga de imagen. El atributo "for" enlaza con el input de archivo -->
-        <img src="http://localhost/programa_cotizacion/imagenes/crear_empresa/generic-logo.png" alt="tamaño recomendado: 800x200 pixeles" class="logo" id="Previsualizar-logo"> 
-        <!-- Título: Muestra una imagen previa del logo con un texto alternativo en caso de que no se cargue la imagen -->
-        <!-- Muestra una imagen previa del logo con un texto alternativo en caso de que no se cargue la imagen -->
-        <input type="file" id="subir-logo" name="logo_upload" accept="image/*" required style="display:none;"> 
-        <!-- Título: Campo oculto para cargar el archivo del logo. Acepta solo archivos de imagen -->
-        <!-- Campo oculto para cargar el archivo del logo. Acepta solo archivos de imagen -->
-        <button for="subir-logo" class="logo" type="file" id ="subir-logo" name="logo_upload" accept="image/*" style="display:block;">Sube tu Logo Empresarial tamaño recomendado: 800x200 pixeles formato: png</button>
-        <!-- Título: Texto que aparece junto a la imagen para instruir al usuario a cargar el logo -->
-        <!-- Texto que aparece junto a la imagen para instruir al usuario a cargar el logo -->  
-    </label>
-    <div id="mensaje-logo" class="message" style="color: red; display: none;">Ingresa tu logo para continuar</div> 
-    <!-- Título: Mensaje que indica que se debe ingresar el logo para continuar -->
-    <!-- Mensaje que indica que se debe ingresar el logo para continuar -->
+    <!-- TÍTULO: CREA UNA CAJA PARA EL LOGO O FOTO DE PERFIL, OCUPANDO 6 DE LAS 12 COLUMNAS DISPONIBLES EN EL DISEÑO -->
+        <!-- Crea una caja para el logo o foto de perfil, ocupando 6 de las 12 columnas disponibles en el diseño -->
+        <label for="subir-logo" class="contenedor-logo"> 
+            <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE CARGA DE IMAGEN. EL ATRIBUTO "FOR" ENLAZA CON EL INPUT DE ARCHIVO -->
+                <!-- Etiqueta para el campo de carga de imagen. El atributo "for" enlaza con el input de archivo -->
+                <img src="http://localhost/programa_cotizacion/imagenes/crear_empresa/generic-logo.png" alt="tamaño recomendado: 800x200 pixeles" class="logo" id="Previsualizar-logo"> 
+            <!-- TÍTULO: MUESTRA UNA IMAGEN PREVIA DEL LOGO CON UN TEXTO ALTERNATIVO EN CASO DE QUE NO SE CARGUE LA IMAGEN -->
+                <!-- Muestra una imagen previa del logo con un texto alternativo en caso de que no se cargue la imagen -->
+                <input type="file" id="subir-logo" name="logo_upload" accept="image/*" required style="display:none;"> 
+            <!-- TÍTULO: CAMPO OCULTO PARA CARGAR EL ARCHIVO DEL LOGO. ACEPTA SOLO ARCHIVOS DE IMAGEN -->
+                <!-- Campo oculto para cargar el archivo del logo. Acepta solo archivos de imagen -->
+                <button for="subir-logo" class="logo" type="file" id ="subir-logo" name="logo_upload" accept="image/*" style="display:block;">Sube tu Logo Empresarial tamaño recomendado: 800x200 pixeles formato: png</button>
+            <!-- TÍTULO: TEXTO QUE APARECE JUNTO A LA IMAGEN PARA INSTRUIR AL USUARIO A CARGAR EL LOGO -->
+                <!-- Texto que aparece junto a la imagen para instruir al usuario a cargar el logo -->  
+        </label>
+        <div id="mensaje-logo" class="message" style="color: red; display: none;">Ingresa tu logo para continuar</div> 
+        <!-- TÍTULO: MENSAJE QUE INDICA QUE SE DEBE INGRESAR EL LOGO PARA CONTINUAR -->
+            <!-- Mensaje que indica que se debe ingresar el logo para continuar -->
 </div>
 
 <script src="../../js/crear_empresa/upload_logo.js"></script>

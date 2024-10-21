@@ -54,8 +54,8 @@ if (!$result) {
 </head>
 <body>
 <div class="container">
-    <!-- Título: Lista de Proveedores -->
-    <h1>Lista de Proveedores</h1>
+    <!-- TÍTULO: LISTA DE PROVEEDORES -->
+        <h1>Lista de Proveedores</h1>
     
     <?php
     // Verifica si se encontraron proveedores
