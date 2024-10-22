@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $celular_encargado = $encargados_celular[$i];
 
         // Inserta cada encargado en la base de datos
-        $sql_encargado = "INSERT INTO E_Encargados (rut_encargado, nombre_encargado, cargo_encargado, email_encargado, fono_encargado, celular_encargado, id_empresa)
+        $sql_encargado = "INSERT INTO Em_Encargados (rut_encargado, nombre_encargado, id_tp_cargo, email_encargado, fono_encargado, celular_encargado, id_empresa)
                           VALUES ('$rut_encargado', '$nombre_encargado', '$cargo_encargado', '$email_encargado', '$fono_encargado', '$celular_encargado', $id_empresa)";
         $mysqli->query($sql_encargado);
     }
