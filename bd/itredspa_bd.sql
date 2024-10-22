@@ -94,7 +94,7 @@ DROP TABLE IF EXISTS E_Empresa;
         id_tipo_firma INT, -- Identificador del tipo de firma
         PRIMARY KEY (id_empresa), -- Clave primaria
         FOREIGN KEY (id_foto) REFERENCES FP_FotosPerfil(id_foto) ON DELETE CASCADE, -- Clave foránea de fotos
-        FOREIGN KEY (id_tipo_firma) REFERENCES Em_tipo_firma(id) ON DELETE SET NULL, -- Clave foránea de tipo de firma
+        FOREIGN KEY (id_tipo_firma) REFERENCES Tp_Firma(id) ON DELETE SET NULL, -- Clave foránea de tipo de firma
         FOREIGN KEY (id_area_empresa) REFERENCES Tp_Area(id_area) -- Clave foránea del área de la empresa
     ) ENGINE=InnoDB;
 
@@ -462,21 +462,6 @@ CREATE TABLE p_tipo_producto (
 -- ------------------------------------- TABLA DETALLE Productos ----------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
 
--- Crear la tabla Productos
-DROP TABLE IF EXISTS P_Productos;
-
--- Crea la tabla P_Productos con el nuevo campo id_tipo_producto
-CREATE TABLE P_Productos (
-    id_producto INT NOT NULL AUTO_INCREMENT, -- Identificador único del producto
-    nombre_producto VARCHAR(255) NOT NULL, -- Nombre del producto
-    descripcion_producto TEXT, -- Descripción del producto
-    precio_producto DECIMAL(10,2) NOT NULL, -- Precio del producto
-    id_tipo_producto INT, -- Nuevo campo para el tipo de producto (clave foránea)
-    PRIMARY KEY (id_producto), -- Definición de la clave primaria
-    -- Definición de la clave foránea para id_foto
-    FOREIGN KEY (id_tipo_producto) REFERENCES p_tipo_producto(id_tipo_producto) ON DELETE SET NULL, -- Puedes usar ON DELETE CASCADE si prefieres eliminar los productos cuando se elimina un tipo
-) ENGINE=InnoDB ;
-
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA pago -----------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
@@ -504,7 +489,7 @@ COMMIT;
 -- ------------------------------------------------------------------------------------------------------------ 
 
 -- Crear la tabla Condiciones_Generales
-DROP TABLE IF EXISTS C_Condiciones_Generales;
+DROP TABLE IF EXISTS Em_Condiciones_Generales;
 
 CREATE TABLE Em_Condiciones_Generales (
     id_condiciones INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -526,7 +511,7 @@ CREATE TABLE C_Cotizacion_Condiciones (
     id_cotizacion INT NOT NULL, -- Clave foránea hacia Cotizaciones
     id_condiciones INT NOT NULL, -- Clave foránea hacia Condiciones Generales
     FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE,
-    FOREIGN KEY (id_condiciones) REFERENCES C_Condiciones_Generales(id_condiciones) ON DELETE CASCADE
+    FOREIGN KEY (id_condiciones) REFERENCES Em_Condiciones_Generales(id_condiciones) ON DELETE CASCADE
   --  UNIQUE KEY (id_cotizacion, id_condiciones) Para evitar duplicados
 ) ENGINE=InnoDB ;
 
@@ -536,7 +521,7 @@ CREATE TABLE C_Cotizacion_Condiciones (
 
 
 -- Crear la tabla Requisitos_Basicos
-DROP TABLE IF EXISTS E_Requisitos_Basicos;
+DROP TABLE IF EXISTS Em_Requisitos_Basicos;
 CREATE TABLE Em_Requisitos_Basicos (
     id_requisitos INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     indice INT NOT NULL, -- nueva tabla?
@@ -677,10 +662,10 @@ INSERT INTO Tp_cargo (nombre_cargo) VALUES ('Gerente General'),
 
 -- Insertar áreas de ejemplo en la tabla E_AreaEmpresa
 INSERT INTO Tp_Area (nombre_area) VALUES ('Recursos Humanos'),
-                                                  ('Finanzas'),
-                                                   ('Tecnología'),
-                                                    ('Marketing'),
-                                                     ('Ventas');
+                                           ('Finanzas'),
+                                             ('Tecnología'),
+                                               ('Marketing'),
+                                                 ('Ventas');
 
 -- Insertar áreas de ejemplo en la tabla E_AreaEmpresa
 INSERT INTO Tp_Trabajo (nombre_trabajo) VALUES ('Instalaciones'),
@@ -689,10 +674,18 @@ INSERT INTO Tp_Trabajo (nombre_trabajo) VALUES ('Instalaciones'),
                                                     ('Pagina Web'),
                                                      ('Diseño web');
 -- Insertar áreas de ejemplo en la tabla Tp_Firma
-INSERT INTO E_tipo_firma (tipo) VALUES ('automatica');
-INSERT INTO E_tipo_firma (tipo) VALUES ('manual');
-INSERT INTO E_tipo_firma (tipo) VALUES ('digital');
-INSERT INTO E_tipo_firma (tipo) VALUES ('foto');
+INSERT INTO Tp_firma (tipo) VALUES ('automatica'),
+                                    ('manual'),
+                                     ('digital'),
+                                      ('foto');
+
+-- Insertar áreas de ejemplo en la tabla Tp_Firma
+INSERT INTO Tp_Riesgo (nombre_riesgo) VALUES ('sin riesgo'),
+                                              ('bajo riesgo'),
+                                               ('medio riesgo'),
+                                                ('alto riesgo');
+
+
 
  -- Insertar datos en la tabla Bancos
 INSERT INTO Tp_Banco (nombre_banco) VALUES
@@ -712,7 +705,7 @@ INSERT INTO Tp_Banco (nombre_banco) VALUES
 ('Banco del Desarrollo');
 
  -- Insertar datos en la tabla Tipo_cuenta
-INSERT INTO E_Tipo_Cuenta (tipocuenta, descripcion) VALUES
+INSERT INTO Tp_Cuenta (tipocuenta, descripcion) VALUES
 ('Cuenta RUT', 'Cuenta de ahorro o corriente con disponibilidad inmediata de fondos'),
 ('Cuenta Vista', 'Cuenta de ahorro o corriente con disponibilidad inmediata de fondos'),
 ('Cuenta Corriente', 'Cuenta con chequera y posibilidad de sobregiro'),
@@ -874,7 +867,7 @@ INSERT INTO C_Proyectos (
     codigo_proyecto, 
     id_tp_trabajo, 
     id_area, 
-    riesgo_proyecto, 
+    id_tp_riesgo, 
     dias_compra, 
     dias_trabajo, 
     trabajadores, 
@@ -886,7 +879,7 @@ INSERT INTO C_Proyectos (
     'PROJ-001', -- Código del proyecto
     2, -- Tipo de trabajo
     3, -- Área de trabajo
-    'Bajo', -- Riesgo asociado
+    2, -- Riesgo asociado
     '5', -- Días de compra
     '10', -- Días de trabajo
     5, -- Número de trabajadores
@@ -947,9 +940,6 @@ INSERT INTO C_Cotizaciones (
     1, -- ID del vendedor
     1 -- ID del encargado
 );
-
-
-
 
 -- Insertar datos en la tabla C_Titulos
 INSERT INTO C_Titulos (
