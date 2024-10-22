@@ -41,13 +41,13 @@ BPPJ
             <select id="empresa_area" name="empresa_area">
                 <?php
                 // Consulta para obtener las áreas desde tp_area
-                $areas_query = "SELECT id_area_empresa, nombre_area FROM Tp_Area";
+                $areas_query = "SELECT id_area, nombre_area FROM Tp_Area";
                 $result = $mysqli->query($areas_query);
                 
                 if ($result->num_rows > 0) {
                     while($area = $result->fetch_assoc()) {
                         // Verifica si es el área seleccionada
-                        $selected = ($area['id_area_empresa'] == $row['EmpresaArea']) ? 'selected' : '';
+                        $selected = ($area['id_area'] == $row['EmpresaArea']) ? 'selected' : '';
                         echo "<option value='" . htmlspecialchars($area['id_area']) . "' $selected>" . htmlspecialchars($area['nombre_area']) . "</option>";
                     }
                 }

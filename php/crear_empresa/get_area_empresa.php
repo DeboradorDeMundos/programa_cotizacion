@@ -28,7 +28,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
      <?php
 // Consulta para obtener las áreas de empresa
-$query = "SELECT id_area_empresa, nombre_area FROM Tp_Area";
+$query = "SELECT id_area, nombre_area FROM Tp_Area";
 $result = $mysqli->query($query);
 
 // Verificar si se obtuvieron resultados

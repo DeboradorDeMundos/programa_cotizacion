@@ -89,7 +89,7 @@ if ($result->num_rows > 0) {
         $ruta_foto = null; // No se encontró la foto
     }
 
-    $query_area = "SELECT nombre_area FROM Tp_Area WHERE id_area_empresa = ?";
+    $query_area = "SELECT nombre_area FROM Tp_Area WHERE id_area = ?";
     $stm_area = $mysqli->prepare($query_area);
     $stm_area->bind_param("i", $id_area);
 
