@@ -25,7 +25,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
      --------------------- -->
 <?php
 // Consultar bancos
-$sql_bancos = "SELECT id_banco, nombre_banco FROM tp_Banco";
+$sql_bancos = "SELECT id_banco, nombre_banco FROM Tp_banco";
 $result_bancos = $mysqli->query($sql_bancos);
 
 // Verificar si hay resultados y generar opciones HTML

@@ -15,7 +15,7 @@ BPPJ
 <?php
     $query_obligaciones = "
     SELECT r.id, indice,  r.descripcion
-    FROM e_obligaciones_cliente AS r
+    FROM em_obligaciones_cliente AS r
     JOIN c_cotizaciones_obligaciones AS cr ON r.id = cr.id_obligacion
     WHERE cr.id_cotizacion = ?
     ";

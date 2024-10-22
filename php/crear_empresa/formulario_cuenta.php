@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Función para obtener el ID de un banco basado en el nombre
     function getIdBanco($mysqli, $nombreBanco) {
-        $stmt = $mysqli->prepare("SELECT id_banco FROM tp_banco WHERE nombre_banco = ?");
+        $stmt = $mysqli->prepare("SELECT id_banco FROM Tp_banco WHERE nombre_banco = ?");
         $stmt->bind_param("s", $nombreBanco);
         $stmt->execute();
         $stmt->bind_result($id_banco);
@@ -115,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Función para obtener el ID de un tipo de cuenta basado en el nombre
     function getIdTipoCuenta($mysqli, $nombreTipoCuenta) {
-        $stmt = $mysqli->prepare("SELECT id_tipocuenta FROM tp_cuenta WHERE tipocuenta = ?");
+        $stmt = $mysqli->prepare("SELECT id_tipocuenta FROM Tp_cuenta WHERE tipocuenta = ?");
         $stmt->bind_param("s", $nombreTipoCuenta);
         $stmt->execute();
         $stmt->bind_result($id_tipocuenta);
@@ -147,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Verificar que se obtuvieron los IDs correctamente
                 if ($id_banco && $id_tipocuenta) {
                     // Insertar la cuenta bancaria con el id_empresa recién creado
-                    $sql = "INSERT INTO Em_Cuenta_Bancaria (nombre_titular, rut_titular, id_banco, id_tipocuenta, numero_cuenta, celular, email_banco, id_empresa)
+                    $sql = "INSERT INTO em_Cuenta_Bancaria (nombre_titular, rut_titular, id_banco, id_tipocuenta, numero_cuenta, celular, email_banco, id_empresa)
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
                     $stmt = $mysqli->prepare($sql);

@@ -125,7 +125,7 @@ $sql_firma = "
         f.rut_firma,
         f.web_firma,
         e.id_tipo_firma AS tipo_firma
-    FROM E_Firmas f
+    FROM em_firmas f
     JOIN e_empresa e ON f.id_empresa = e.id_empresa
     WHERE f.id_empresa = ? 
     LIMIT 1";

@@ -197,7 +197,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $cargo_encargado = "";  // Dejar vacío si no hay cargo
         $telefono_encargado_firma = "999999999";
         $firma_digital = "";
-        $stmt = $mysqli->prepare("INSERT INTO E_Firmas (
+        $stmt = $mysqli->prepare("INSERT INTO em_firmas (
           id_empresa,
           titulo_firma,
           nombre_encargado_firma,
@@ -244,7 +244,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $rut_firma = $_POST['rut_firma'];
         $firma_digital = "";
 
-        $stmt = $mysqli->prepare("INSERT INTO E_Firmas (
+        $stmt = $mysqli->prepare("INSERT INTO em_firmas (
         id_empresa,
         titulo_firma, 
         nombre_encargado_firma,
@@ -306,7 +306,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $firma_ruta = $target_file;
     
                         // Aquí todos los demás campos se insertan como NULL, excepto id_firma e id_empresa
-                        $stmt = $mysqli->prepare("INSERT INTO E_Firmas (
+                        $stmt = $mysqli->prepare("INSERT INTO em_firmas (
                             id_empresa, 
                             titulo_firma, 
                             nombre_encargado_firma, 

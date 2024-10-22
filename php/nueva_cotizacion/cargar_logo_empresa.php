@@ -67,7 +67,7 @@ if ($id > 0) {
                 f.pais_firma,
                 f.rut_firma,
                 f.web_firma
-            FROM E_Firmas f
+            FROM em_firmas f
             WHERE f.id_empresa = ?";
 
             // Preparar la consulta de la firma

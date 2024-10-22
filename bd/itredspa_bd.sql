@@ -516,7 +516,7 @@ CREATE TABLE C_Cotizacion_Condiciones (
 ) ENGINE=InnoDB ;
 
 -- ------------------------------------------------------------------------------------------------------------
--- ------------------------------------- TABLA E_Requisitos_Basicos -----------------------------------------------------
+-- ------------------------------------- TABLA em_Requisitos_Basicos -----------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
 
 
@@ -779,7 +779,7 @@ INSERT INTO Em_Encargados (
     1 -- ID de la empresa
 );
 
--- Insertar datos en la tabla C_Condiciones_Generales
+-- Insertar datos en la tabla em_Condiciones_Generales
 INSERT INTO Em_Condiciones_Generales (id_empresa, descripcion_condiciones, estado) VALUES
 (1, 'Condición general 1: Cumplir con todas las normativas legales vigentes.', TRUE),
 (1, 'Condición general 2: Realizar informes mensuales de avance del proyecto.', TRUE),
@@ -792,7 +792,7 @@ INSERT INTO Em_Condiciones_Generales (id_empresa, descripcion_condiciones, estad
 (1, 'Condición general 9: Proveer retroalimentación constructiva durante el proceso.', TRUE),
 (1, 'Condición general 10: Cumplir con los plazos establecidos en el cronograma del proyecto.', TRUE);
 
--- Insertar datos en la tabla E_Requisitos_Basicos
+-- Insertar datos en la tabla em_Requisitos_Basicos
 INSERT INTO Em_Requisitos_Basicos (indice, descripcion_condiciones, estado, id_empresa) VALUES
 (1, 'Requisito básico 1: Registro de la empresa en el sistema.', TRUE, 1),
 (2, 'Requisito básico 2: Presentar documentación legal actualizada.', TRUE, 1),
@@ -805,7 +805,7 @@ INSERT INTO Em_Requisitos_Basicos (indice, descripcion_condiciones, estado, id_e
 (9, 'Requisito básico 9: Contar con un canal de comunicación interna eficiente.', TRUE, 1),
 (10, 'Requisito básico 10: Cumplir con las auditorías internas programadas.', TRUE, 1);
 
--- Insertar datos en la tabla E_obligaciones_cliente
+-- Insertar datos en la tabla em_obligaciones_cliente
 INSERT INTO Em_obligaciones_cliente (indice, descripcion, estado, id_empresa) VALUES
 (1, 'Obligación 1: Proporcionar información veraz sobre la empresa.', TRUE, 1),
 (2, 'Obligación 2: Cumplir con los plazos de pago establecidos en el contrato.', TRUE, 1),
@@ -1017,7 +1017,7 @@ INSERT INTO C_pago (
     '2024-09-05' -- Fecha del pago
 );
 
--- Insertar datos en la tabla C_Condiciones_Generales
+-- Insertar datos en la tabla em_Condiciones_Generales
 INSERT INTO Em_Condiciones_Generales (
     id_empresa, 
     descripcion_condiciones, 
@@ -1028,7 +1028,7 @@ INSERT INTO Em_Condiciones_Generales (
     TRUE -- Estado (verdadero)
 );
 
--- Insertar datos en la tabla E_Requisitos_Basicos
+-- Insertar datos en la tabla em_Requisitos_Basicos
 INSERT INTO Em_Requisitos_Basicos (
     indice, 
     descripcion_condiciones, 

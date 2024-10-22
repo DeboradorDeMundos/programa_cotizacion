@@ -15,7 +15,7 @@ BPPJ
 <?php
     $query_requisitos = "
     SELECT r.id_requisitos,r.indice, r.descripcion_condiciones
-    FROM e_requisitos_basicos AS r
+    FROM em_Requisitos_Basicos AS r
     JOIN c_cotizaciones_requisitos AS cr ON r.id_requisitos = cr.id_requisitos
     WHERE cr.id_cotizacion = ?
     ";

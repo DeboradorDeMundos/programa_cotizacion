@@ -21,7 +21,7 @@ if ($items !== null) {
     // Consulta para obtener los requisitos básicos
     $query_requisitos = "SELECT er.id_requisitos, er.indice, er.descripcion_condiciones 
                             FROM C_Cotizaciones cot
-                            JOIN E_Requisitos_Basicos er ON er.id_empresa = cot.id_empresa
+                            JOIN em_Requisitos_Basicos er ON er.id_empresa = cot.id_empresa
                             WHERE cot.id_cotizacion = ?";
     
     if ($stmt_req = $mysqli->prepare($query_requisitos)) {
@@ -55,7 +55,7 @@ if ($items !== null) {
 // Consulta para obtener los requisitos seleccionados
 $query_requisitos_seleccionados = "
     SELECT r.id_requisitos, r.indice, r.descripcion_condiciones
-    FROM e_requisitos_basicos AS r
+    FROM em_Requisitos_Basicos AS r
     JOIN c_cotizaciones_requisitos AS cr ON r.id_requisitos = cr.id_requisitos
     WHERE cr.id_cotizacion = ?
 ";

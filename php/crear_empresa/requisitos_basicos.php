@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Comprueba si el array de requisitos no está vacío
     if (!empty($requisitosArray)) {
         // Prepara la consulta para insertar requisitos en la base de datos
-        $stmt = $mysqli->prepare("INSERT INTO E_Requisitos_Basicos (indice, descripcion_condiciones, id_empresa) VALUES (?, ?, ?)");
+        $stmt = $mysqli->prepare("INSERT INTO em_Requisitos_Basicos (indice, descripcion_condiciones, id_empresa) VALUES (?, ?, ?)");
 
         // Verifica si la preparación de la consulta fue exitosa
         if (!$stmt) {

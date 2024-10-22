@@ -25,7 +25,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
      --------------------- -->
 <?php
 // Consultar tipo de cuenta
-$sql_tipo_cuenta = "SELECT id_tipocuenta, tipocuenta FROM tp_Cuenta";
+$sql_tipo_cuenta = "SELECT id_tipocuenta, tipocuenta FROM Tp_cuenta";
 $result_tipo_cuenta = $mysqli->query($sql_tipo_cuenta);
 
 // Verificar si hay resultados y generar opciones HTML

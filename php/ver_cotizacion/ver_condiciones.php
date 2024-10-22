@@ -15,7 +15,7 @@ BPPJ
 <?php
     $query_condiciones = "
     SELECT r.id_condiciones, r.descripcion_condiciones
-    FROM c_condiciones_generales AS r
+    FROM em_Condiciones_Generales AS r
     JOIN c_cotizacion_condiciones AS cr ON r.id_condiciones = cr.id_condiciones
     WHERE cr.id_cotizacion = ?
     ";

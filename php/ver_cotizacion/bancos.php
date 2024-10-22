@@ -24,9 +24,9 @@ BPPJ
             cb.email_banco,
             b.nombre_banco,
             tc.tipocuenta
-        FROM E_Cuenta_Bancaria cb
-        JOIN E_Bancos b ON cb.id_banco = b.id_banco
-        JOIN E_Tipo_Cuenta tc ON cb.id_tipocuenta = tc.id_tipocuenta
+        FROM em_Cuenta_Bancaria cb
+        JOIN Tp_banco b ON cb.id_banco = b.id_banco
+        JOIN Tp_cuenta tc ON cb.id_tipocuenta = tc.id_tipocuenta
         WHERE cb.id_empresa = ?
     ";
 
