@@ -179,6 +179,7 @@ BPPJ
 
         // Cargar bancos al cargar la página
         CargarBancos(); // Llamar a la función para cargar los bancos
+        
 // TÍTULO PARA CARGAR TIPO CUENTA
         // Función para cargar los tipos de cuenta
         function CargarTipoCuenta() {

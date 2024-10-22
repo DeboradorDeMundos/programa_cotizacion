@@ -139,6 +139,36 @@ BPPJ
         input.value = input.value.replace(/['"]/g, '');
     }
 
+
+
+
+    // TÍTULO PARA CARGAR ÁREAS DE EMPRESA
+    // Función para cargar las áreas de la empresa
+    function CargarAreasEmpresa() {
+        // Realiza una solicitud para obtener la lista de áreas de empresa desde el servidor
+        fetch('../../php/crear_empresa/get_area_empresa.php')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la red: ' + response.status);
+                }
+                return response.text();  // Leer el contenido de la respuesta como texto (HTML)
+            })
+            .then(data => {
+                const select = document.getElementById('empresa_area'); // Obtener el elemento select por su ID
+                select.innerHTML = data;  // Insertar directamente las opciones generadas en el select
+            })
+            .catch(error => console.error('Error al cargar áreas de empresa:', error)); // Manejar errores de la solicitud
+    }
+
+    // Cargar áreas de empresa al cargar la página
+    document.addEventListener('DOMContentLoaded', () => {
+        CargarAreasEmpresa(); // Llamar a la función para cargar las áreas de empresa
+    });
+
+
+
+
+
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Formulario Empresa .JS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

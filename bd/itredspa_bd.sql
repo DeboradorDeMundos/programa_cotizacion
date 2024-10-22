@@ -57,6 +57,8 @@ CREATE TABLE E_tipo_firma (
 -- ------------------------------------- TABLA tp_Area_Empresa -------------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
 
+-- Eliminar la tabla Tp_Area_Empresa si existe
+DROP TABLE IF EXISTS Tp_Area_Empresa;
 
 -- Crear la tabla de áreas de la empresa
 CREATE TABLE Tp_Area_Empresa (
@@ -74,45 +76,48 @@ CREATE TABLE Tp_Area_Empresa (
 DROP TABLE IF EXISTS E_Empresa;
 
 -- Crear la tabla Empresa con la nueva columna id_area_empresa
-CREATE TABLE E_Empresa (
-    id_empresa INT NOT NULL AUTO_INCREMENT, -- Identificador único de la empresa
-    id_foto INT, -- Identificador de la foto de la empresa
-    rut_empresa VARCHAR(20) NOT NULL, -- RUT de la empresa
-    nombre_empresa VARCHAR(255) NOT NULL, -- Nombre de la empresa
-    id_area_empresa INT NOT NULL, -- Identificador del área de la empresa (clave foránea)
-    direccion_empresa VARCHAR(255), -- Dirección de la empresa
-    ciudad_empresa VARCHAR(100), -- Ciudad de la empresa
-    pais_empresa VARCHAR(100), -- País de la empresa
-    telefono_empresa VARCHAR(20), -- Teléfono de la empresa
-    email_empresa VARCHAR(100), -- Email de la empresa
-    web_empresa VARCHAR(255), -- Sitio web de la empresa
-    fecha_creacion DATE, -- Fecha de creación de la empresa
-    dias_validez INT, -- Días de validez
-    id_tipo_firma INT, -- Identificador del tipo de firma
-    PRIMARY KEY (id_empresa), -- Clave primaria
-    FOREIGN KEY (id_foto) REFERENCES FP_FotosPerfil(id_foto) ON DELETE CASCADE, -- Clave foránea de fotos
-    FOREIGN KEY (id_tipo_firma) REFERENCES E_tipo_firma(id) ON DELETE SET NULL, -- Clave foránea de tipo de firma
-    FOREIGN KEY (id_area_empresa) REFERENCES Tp_Area_Empresa(id_area_empresa) -- Clave foránea del área de la empresa
-) ENGINE=InnoDB;
+    CREATE TABLE E_Empresa (
+        id_empresa INT NOT NULL AUTO_INCREMENT, -- Identificador único de la empresa
+        id_foto INT, -- Identificador de la foto de la empresa
+        rut_empresa VARCHAR(20) NOT NULL, -- RUT de la empresa
+        nombre_empresa VARCHAR(255) NOT NULL, -- Nombre de la empresa
+        id_area_empresa INT NOT NULL, -- Identificador del área de la empresa (clave foránea)
+        direccion_empresa VARCHAR(255), -- Dirección de la empresa
+        ciudad_empresa VARCHAR(100), -- Ciudad de la empresa
+        pais_empresa VARCHAR(100), -- País de la empresa
+        telefono_empresa VARCHAR(20), -- Teléfono de la empresa
+        email_empresa VARCHAR(100), -- Email de la empresa
+        web_empresa VARCHAR(255), -- Sitio web de la empresa
+        fecha_creacion DATE, -- Fecha de creación de la empresa
+        dias_validez INT, -- Días de validez
+        id_tipo_firma INT, -- Identificador del tipo de firma
+        PRIMARY KEY (id_empresa), -- Clave primaria
+        FOREIGN KEY (id_foto) REFERENCES FP_FotosPerfil(id_foto) ON DELETE CASCADE, -- Clave foránea de fotos
+        FOREIGN KEY (id_tipo_firma) REFERENCES E_tipo_firma(id) ON DELETE SET NULL, -- Clave foránea de tipo de firma
+        FOREIGN KEY (id_area_empresa) REFERENCES Tp_Area_Empresa(id_area_empresa) -- Clave foránea del área de la empresa
+    ) ENGINE=InnoDB;
 
 
------------------------------------------------------------------------------------------
+-- --------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA ENCARGADOS -------------------------------------------------------
--- ------------------------------------------------------------------------------------------------------------ 
+-- -------------------------------------------------------------------------------------------------------------- 
 
-CREATE TABLE E_Encargados (
-    id_encargado INT NOT NULL AUTO_INCREMENT, -- Identificador único del encargado
-    rut_encargado VARCHAR(20), -- RUT del encargado (debe ser único)
-    nombre_encargado VARCHAR(255) NOT NULL, -- Nombre del encargado
-    cargo_encargado VARCHAR(100), -- Cargo del encargado
-    email_encargado VARCHAR(100), -- Email del encargado
-    fono_encargado VARCHAR(20), -- Teléfono del encargado
-    celular_encargado VARCHAR(20), -- Celular del encargado
-    id_empresa INT, -- Identificador de la empresa a la que pertenece el encargado
-    PRIMARY KEY (id_encargado), -- Definición de la clave primaria
-    FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE SET NULL -- Clave foránea para referenciar la empresa
-) ENGINE=InnoDB;
+-- Eliminar la tabla E_Encargados si existe
+    DROP TABLE IF EXISTS E_Encargados;
 
+-- Crear la tabla Encargados con la columna id_empresa
+    CREATE TABLE E_Encargados (
+        id_encargado INT NOT NULL AUTO_INCREMENT, -- Identificador único del encargado
+        rut_encargado VARCHAR(20), -- RUT del encargado (debe ser único)
+        nombre_encargado VARCHAR(255) NOT NULL, -- Nombre del encargado
+        cargo_encargado VARCHAR(100), -- Cargo del encargado
+        email_encargado VARCHAR(100), -- Email del encargado
+        fono_encargado VARCHAR(20), -- Teléfono del encargado
+        celular_encargado VARCHAR(20), -- Celular del encargado
+        id_empresa INT NULL, -- Identificador de la empresa a la que pertenece el encargado
+        PRIMARY KEY (id_encargado), -- Definición de la clave primaria
+        FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE SET NULL -- Clave foránea para referenciar la empresa
+    ) ENGINE=InnoDB;
 
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA CLIENTES -------------------------------------------------------
@@ -722,7 +727,7 @@ INSERT INTO E_Empresa (
     id_foto, 
     rut_empresa, 
     nombre_empresa, 
-    area_empresa, 
+    id_area_empresa, 
     direccion_empresa, 
     ciudad_empresa,
     pais_empresa,
@@ -736,7 +741,7 @@ INSERT INTO E_Empresa (
     1, -- ID de la foto asociada
     '12345678-9', -- RUT de la empresa
     'ITred Spa', -- Nombre de la empresa
-    'Tecnología de Información', -- Área de la empresa
+    2, -- Área de la empresa
     'Guido Reni #4190', -- Dirección de la empresa
     'Pedro Aguirre Cerda', -- Ciudad de la empresa
     'Chile', -- Pais de la empresa

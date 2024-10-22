@@ -60,7 +60,7 @@ BPPJ
                         <!-- TÍTULO: CAMPO DE ENTRADA PARA EL TELÉFONO DEL ENCARGADO -->
                             <td><input type="text" name="encargado_fono[]" placeholder="+56 9 1234 1234" maxlength="11" required></td>
                         <!-- TÍTULO: CAMPO DE ENTRADA PARA EL CELULAR DEL ENCARGADO -->
-                            <td><input type="text" name="encargado_celular[]" placeholder="+56 9 1234 1234" maxlength="11" required></td>
+                            <td><input type="text" name="encargado_celular[]" placeholder="+56 9 1234 1234" maxlength="11" required oninput="asegurarMasYDetectarPais4()"></td>
                         <!-- TÍTULO: BOTÓN PARA ELIMINAR LA FILA CORRESPONDIENTE -->
                             <td><button type="button" class="eliminar-fila" onclick="eliminarFila(this)">Eliminar</button></td>
                     </tr>

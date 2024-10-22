@@ -27,16 +27,18 @@ BPPJ
                         placeholder="Ejemplo: Mi Empresa S.A.">
                 </div>
 
-            <div class="form-group-inline">
-                <div class="form-group">
-                    <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DEL ÁREA DE LA EMPRESA -->
+                <div class="form-group-inline">
+                    <div class="form-group">
+                    <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE SELECCIÓN DEL ÁREA DE LA EMPRESA -->
                         <label for="empresa_area">Área de la Empresa:</label>
-                        <input type="text" id="empresa_area" name="empresa_area" 
-                            minlength="2" maxlength="50" 
-                            pattern="^[A-Za-zÀ-ÿ\s&.-]*$" 
-                            title="Por favor, ingrese solo letras y espacios. Los caracteres permitidos son &, - y .."
-                            placeholder="Ejemplo: Tecnología">
+                        <select id="empresa_area" name="empresa_area" required>
+                            <option value="">Seleccione el área</option>
+                            <!-- Las opciones se llenarán dinámicamente con JavaScript -->
+                        </select>
+                    </div>
                 </div>
+
+
                 <div class="form-group">
                     <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE SELECCIÓN DEL PAÍS -->
                         <label for="empresa_pais">País:</label>
