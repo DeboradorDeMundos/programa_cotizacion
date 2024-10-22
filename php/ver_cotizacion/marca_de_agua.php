@@ -24,7 +24,7 @@ $query = "
         cot.id_empresa,
         cot.numero_cotizacion,
         e.nombre_empresa,
-        e.area_empresa,
+        e.id_area_empresa,
         e.direccion_empresa,
         e.telefono_empresa,
         e.email_empresa,

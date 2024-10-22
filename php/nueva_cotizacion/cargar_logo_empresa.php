@@ -22,7 +22,7 @@ if ($id > 0) {
     $sql_empresa = "SELECT 
         e.rut_empresa AS EmpresaRUT,
         e.nombre_empresa AS EmpresaNombre,
-        e.area_empresa AS EmpresaArea,
+        e.id_area_empresa AS EmpresaArea,
         e.direccion_empresa AS EmpresaDireccion,
         e.telefono_empresa AS EmpresaTelefono,
         e.email_empresa AS EmpresaEmail,

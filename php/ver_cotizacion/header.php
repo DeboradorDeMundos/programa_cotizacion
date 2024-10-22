@@ -22,7 +22,7 @@ $query = "
         cot.id_empresa,
         cot.numero_cotizacion,
         e.nombre_empresa,
-        e.area_empresa,
+        e.id_area_empresa,
         e.direccion_empresa,
         e.telefono_empresa,
         e.email_empresa,
@@ -70,6 +70,7 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     $items = $result->fetch_all(MYSQLI_ASSOC);
     $id_empresa = $items[0]['id_empresa']; // Guardar id_empresa para la siguiente consulta
+    $id_area = $items[0]['id_area_empresa'];
     $id_foto = $items[0]['id_foto']; // Guardar id_foto para cargar la imagen
 
     $query_foto = "SELECT ruta_foto FROM fp_fotosperfil WHERE id_foto = ?";
@@ -86,6 +87,20 @@ if ($result->num_rows > 0) {
         $ruta_foto = $foto['ruta_foto']; // Obtener la ruta de la foto
     } else {
         $ruta_foto = null; // No se encontró la foto
+    }
+
+    $query_area = "SELECT nombre_area FROM Tp_Area_Empresa WHERE id_area_empresa = ?";
+    $stm_area = $mysqli->prepare($query_area);
+    $stm_area->bind_param("i", $id_area);
+
+    $stm_area->execute();
+    $result_area = $stm_area->get_result();
+
+    if ($result_area->num_rows > 0) {
+        $area = $result_area->fetch_assoc();
+        $area_empresa = $area['nombre_area'];
+    } else {
+        $area_empresa = null;
     }
 } else {
     echo "No se encontró la cotización o la empresa relacionada.";
@@ -140,9 +155,9 @@ if ($stmt_firma = $mysqli->prepare($sql_firma)) {
     <!-- TÍTULO: INFORMACIÓN DE LA EMPRESA -->
     <div class="header"> 
         <h1><?php echo $items[0]['nombre_empresa']; ?></h1>
-        <h2><?php echo $items[0]['area_empresa']; ?></h2>
-        <!-- TÍTULO: INFORMACIÓN DE CONTACTO -->
-        <div class="contact-info"> 
+        <h2><?php echo $area_empresa ?></h2>
+        
+        <div class="contact-info"> <!-- Título: Información de contacto -->
             <p>DIRECCIÓN: <?php echo $items[0]['direccion_empresa']; ?></p>
             <p>TELÉFONO: <?php echo $items[0]['telefono_empresa']; ?></p>
             <p>E-MAIL: <?php echo $items[0]['email_empresa']; ?></p>
