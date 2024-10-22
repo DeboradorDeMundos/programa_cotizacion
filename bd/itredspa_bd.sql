@@ -219,6 +219,21 @@ CREATE TABLE Tp_trabajo (
 
 
 -- ------------------------------------------------------------------------------------------------------------
+-- ------------------------------------- TABLA Tp_Riesgo -------------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------ 
+
+-- Eliminar la tabla Tp_Riesgo si existe
+DROP TABLE IF EXISTS Tp_Riesgo;
+
+-- Crear la tabla de tipos de riesgo del proyecto
+CREATE TABLE Tp_Riesgo (
+    id_tp_riesgo INT NOT NULL AUTO_INCREMENT, -- Identificador único del tipo de riesgo
+    nombre_riesgo VARCHAR(255) NOT NULL, -- Nombre del tipo de riesgo
+    PRIMARY KEY (id_tp_riesgo) -- Definir clave primaria
+) ENGINE=InnoDB;
+
+
+-- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA PROYECTOS ------------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
 
@@ -232,8 +247,8 @@ CREATE TABLE C_Proyectos (
     codigo_proyecto VARCHAR(50) NOT NULL, -- Código del proyecto
     id_tp_trabajo INT NOT NULL, -- Reemplazar tipo_trabajo por la FK
     id_area INT NOT NULL, -- Identificador del área de la empresa (clave foránea)
-    riesgo_proyecto VARCHAR(255), -- Riesgo asociado al proyecto
-    descripcion_riesgo VARCHAR(255),
+    id_tp_riesgo INT NULL, -- Identificador del tipo de riesgo (FK)
+    descripcion_riesgo VARCHAR(255), -- Descripción del riesgo
     dias_compra VARCHAR(50), -- Días de compra relacionados con la cotización
     dias_trabajo VARCHAR(50), -- Días de trabajo relacionados con la cotización
     trabajadores INT, -- Número de trabajadores asignados
@@ -242,7 +257,8 @@ CREATE TABLE C_Proyectos (
     entrega VARCHAR(50), -- Entrega especificada
     PRIMARY KEY (id_proyecto), -- Definición de la clave primaria
     FOREIGN KEY (id_area) REFERENCES Tp_Area(id_area), -- Clave foránea del área de la empresa
-    FOREIGN KEY (id_tp_trabajo) REFERENCES Tp_trabajo(id_tp_trabajo) ON DELETE CASCADE -- Clave foránea para referenciar el tipo de trabajo
+    FOREIGN KEY (id_tp_trabajo) REFERENCES Tp_trabajo(id_tp_trabajo) ON DELETE CASCADE, -- Clave foránea para referenciar el tipo de trabajo
+    FOREIGN KEY (id_tp_riesgo) REFERENCES Tp_Riesgo(id_tp_riesgo) ON DELETE SET NULL -- Clave foránea para referenciar el tipo de riesgo
 ) ENGINE=InnoDB;
 
 
@@ -267,20 +283,22 @@ CREATE TABLE C_Encargados (
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA VENDEDORES -----------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
-
--- Eliminar la tabla Vendedores si existe
+-- Eliminar la tabla C_Vendedores si existe
 DROP TABLE IF EXISTS C_Vendedores;
 
--- Crear la tabla Vendedores
+-- Crear la tabla C_Vendedores
 CREATE TABLE C_Vendedores (
-    id_vendedor int NOT NULL AUTO_INCREMENT, -- Identificador único del vendedor
-    rut_vendedor varchar(20) , -- RUT del cliente (debe ser único)
-    nombre_vendedor varchar(255) NOT NULL, -- Nombre del vendedor
-    email_vendedor varchar(100), -- Email del vendedor
-    fono_vendedor varchar(20), -- Teléfono del vendedor
-    celular_vendedor varchar(20), -- Celular del vendedor
-    PRIMARY KEY (id_vendedor) -- Definición de la clave primaria
-) ENGINE=InnoDB ;
+    id_vendedor INT NOT NULL AUTO_INCREMENT, -- Identificador único del vendedor
+    rut_vendedor VARCHAR(20), -- RUT del vendedor (debe ser único)
+    nombre_vendedor VARCHAR(255) NOT NULL, -- Nombre del vendedor
+    email_vendedor VARCHAR(100), -- Email del vendedor
+    fono_vendedor VARCHAR(20), -- Teléfono del vendedor
+    celular_vendedor VARCHAR(20), -- Celular del vendedor
+    id_tp_cargo INT DEFAULT 3, -- Identificador del tipo de cargo del vendedor (FK), con valor por defecto de 3
+    PRIMARY KEY (id_vendedor), -- Definición de la clave primaria
+    FOREIGN KEY (id_tp_cargo) REFERENCES Tp_cargo(id_tp_cargo) ON DELETE SET NULL -- Clave foránea para referenciar el tipo de cargo
+) ENGINE=InnoDB;
+
 
 CREATE TABLE E_Bancos (
     id_banco INT AUTO_INCREMENT PRIMARY KEY,
@@ -335,8 +353,6 @@ CREATE TABLE C_Cotizaciones (
     FOREIGN KEY (id_vendedor) REFERENCES C_Vendedores(id_vendedor) ON DELETE SET NULL,
     FOREIGN KEY (id_encargado) REFERENCES C_Encargados(id_encargado) ON DELETE SET NULL
 ) ENGINE=InnoDB ;
-
-
 
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA TITULOS ---------------------------------------------------------
@@ -487,7 +503,6 @@ CREATE TABLE C_pago (
 
 COMMIT;
 
-
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA Condiciones_Generales -----------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
@@ -507,7 +522,6 @@ CREATE TABLE C_Condiciones_Generales (
 -- ------------------------------------- TABLA C_Cotizacion_Condiciones -----------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
 
-
 -- Crear la tabla intermedia Cotizacion_Condiciones
 DROP TABLE IF EXISTS C_Cotizacion_Condiciones;
 
@@ -519,8 +533,6 @@ CREATE TABLE C_Cotizacion_Condiciones (
     FOREIGN KEY (id_condiciones) REFERENCES C_Condiciones_Generales(id_condiciones) ON DELETE CASCADE
   --  UNIQUE KEY (id_cotizacion, id_condiciones) Para evitar duplicados
 ) ENGINE=InnoDB ;
-
-
 
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA E_Requisitos_Basicos -----------------------------------------------------
@@ -719,7 +731,7 @@ INSERT INTO Tp_Area (nombre_area) VALUES ('Recursos Humanos'),
                                                      ('Ventas');
 
 -- Insertar áreas de ejemplo en la tabla E_AreaEmpresa
-INSERT INTO Tp_trabajo (nombre_trabajo) VALUES ('Instalaciones'),
+INSERT INTO Tp_Trabajo (nombre_trabajo) VALUES ('Instalaciones'),
                                                  ('Desarrollo de Software'),
                                                    ('Contrucción'),
                                                     ('Pagina Web'),
