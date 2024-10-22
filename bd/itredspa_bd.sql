@@ -903,7 +903,7 @@ INSERT INTO C_Encargados (
     '987654321' -- Celular del encargado
 );
 
--- Insertar datos en la tabla C_Vendedores
+-- Insertar datos en la tabla Em_Vendedores
 INSERT INTO Em_Vendedores (
     rut_vendedor, 
     nombre_vendedor, 

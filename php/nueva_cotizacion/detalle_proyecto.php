@@ -184,9 +184,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Recibir datos del formulario para C_Proyectos
     $proyecto_nombre = isset($_POST['proyecto_nombre']) ? trim($_POST['proyecto_nombre']) : null;
     $proyecto_codigo = isset($_POST['proyecto_codigo']) ? trim($_POST['proyecto_codigo']) : null;
-    $tipo_trabajo = isset($_POST['tipo_trabajo']) ? $_POST['tipo_trabajo'] : null;
-    $area_trabajo = isset($_POST['area_trabajo']) ? $_POST['area_trabajo'] : null;
-    $riesgo = isset($_POST['riesgo']) ? $_POST['riesgo'] : null;
+    $tipo_trabajo = 1;
+    $area_trabajo = 1;
+    $riesgo = 1;
     $riesgo_descripcion = isset($_POST['riesgo_descripcion']) ? trim($_POST['riesgo_descripcion']) : null; // Nueva variable
     $dias_compra = isset($_POST['dias_compra']) ? $_POST['dias_compra'] : null;
     $dias_trabajo = isset($_POST['dias_trabajo']) ? $_POST['dias_trabajo'] : null;
@@ -197,14 +197,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($proyecto_nombre && $proyecto_codigo) {
         // Insertar o actualizar el proyecto
-        $sql = "INSERT INTO C_Proyectos (nombre_proyecto, codigo_proyecto, tipo_trabajo, area_trabajo, riesgo_proyecto, descripcion_riesgo, dias_compra, dias_trabajo, trabajadores, horario, colacion, entrega)
+        $sql = "INSERT INTO C_Proyectos (nombre_proyecto, codigo_proyecto, id_tp_trabajo, id_area, id_tp_riesgo, descripcion_riesgo, dias_compra, dias_trabajo, trabajadores, horario, colacion, entrega)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 ON DUPLICATE KEY UPDATE 
                     nombre_proyecto=VALUES(nombre_proyecto), 
                     codigo_proyecto=VALUES(codigo_proyecto), 
-                    tipo_trabajo=VALUES(tipo_trabajo), 
-                    area_trabajo=VALUES(area_trabajo), 
-                    riesgo_proyecto=VALUES(riesgo_proyecto),
+                    id_tp_trabajo=VALUES(id_tp_trabajo), 
+                    id_area=VALUES(id_area), 
+                    id_tp_riesgo=VALUES(id_tp_riesgo),
                     descripcion_riesgo=VALUES(descripcion_riesgo),
                     dias_compra=VALUES(dias_compra),
                     dias_trabajo=VALUES(dias_trabajo),

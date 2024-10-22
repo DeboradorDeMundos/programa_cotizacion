@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $celular_vendedor = $vendedores_celular[$i];
 
         // Inserta cada vendedor en la base de datos
-        $sql_vendedor = "INSERT INTO C_Vendedores (rut_vendedor, nombre_vendedor, email_vendedor, fono_vendedor, celular_vendedor)
+        $sql_vendedor = "INSERT INTO Em_Vendedores (rut_vendedor, nombre_vendedor, email_vendedor, fono_vendedor, celular_vendedor)
                           VALUES ('$rut_vendedor', '$nombre_vendedor', '$email_vendedor', '$fono_vendedor', '$celular_vendedor')";
         $mysqli->query($sql_vendedor);
     }

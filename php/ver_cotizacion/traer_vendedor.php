@@ -27,7 +27,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
         v.fono_vendedor,
         v.celular_vendedor
     FROM C_Cotizaciones cot
-    JOIN C_Vendedores v on cot.id_vendedor = v.id_vendedor
+    JOIN Em_Vendedores v on cot.id_vendedor = v.id_vendedor
     WHERE cot.id_cotizacion = ?";
 
     if ($stmt_vendedor = $mysqli->prepare($sql_vendedor)) {
@@ -136,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Verificación básica para campos requeridos
     if ($vendedor_rut && $vendedor_nombre) {
         // Insertar o actualizar el vendedor
-        $sql = "INSERT INTO C_Vendedores (rut_vendedor, nombre_vendedor, email_vendedor, fono_vendedor, celular_vendedor)
+        $sql = "INSERT INTO Em_Vendedores (rut_vendedor, nombre_vendedor, email_vendedor, fono_vendedor, celular_vendedor)
                 VALUES (?, ?, ?, ?, ?)
                 ON DUPLICATE KEY UPDATE 
                     nombre_vendedor = VALUES(nombre_vendedor), 
@@ -164,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Si no hay un nuevo ID, obtener el ID del vendedor existente
         if ($id_vendedor === 0) {
-            $result = $mysqli->query("SELECT id_vendedor FROM C_Vendedores WHERE rut_vendedor = '$vendedor_rut'");
+            $result = $mysqli->query("SELECT id_vendedor FROM Em_Vendedores WHERE rut_vendedor = '$vendedor_rut'");
             $row = $result->fetch_assoc();
             $id_vendedor = $row['id_vendedor'];
         }

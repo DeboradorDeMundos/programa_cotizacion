@@ -56,6 +56,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Error: Empresa no encontrada.");
     }
 
+    $sql = "SELECT id_encargado FROM em_encargados WHERE id_empresa = ?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("s", $id_empresa);
+    $stmt->execute();
+    $stmt->bind_result($id_enc);
+    $stmt->fetch();
+    $stmt->close();
+    if (!$id_empresa) {
+        die("Error: Empresa no encontrada.");
+    }
+
 
 
     // Recibir datos del formulario cotización
@@ -65,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $estado = "Pendiente"; // Asignar por defecto 'pendiente' al estado
     echo "Fecha de validez recibida: " . $fecha_validez;
     // Validar datos obligatorios
-    if (is_null($numero_cotizacion) || is_null($fecha_emision) || is_null($fecha_validez) || is_null($id_cliente) || is_null($id_proyecto) || is_null($id_empresa) || is_null($id_vendedor) || is_null($id_encargado)) {
+    if (is_null($numero_cotizacion) || is_null($fecha_emision) || is_null($fecha_validez) || is_null($id_cliente) || is_null($id_proyecto) || is_null($id_empresa) || is_null($id_vendedor) || is_null($id_enc)) {
         die("Faltan datos obligatorios para la cotización.");
     }
     
@@ -85,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param(
         "ssssiiiii",
         $numero_cotizacion, $fecha_emision, $fecha_validez, $estado,
-        $id_cliente, $id_proyecto, $id_empresa, $id_vendedor, $id_encargado
+        $id_cliente, $id_proyecto, $id_empresa, $id_vendedor, $id_enc
     );
 
     // Ejecutar la consulta y manejar posibles errores

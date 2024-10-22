@@ -52,7 +52,7 @@ $query = "
     JOIN C_Clientes c ON cot.id_cliente = c.id_cliente
     JOIN E_Empresa e ON cot.id_empresa = e.id_empresa
     JOIN C_Encargados enc ON cot.id_encargado = enc.id_encargado 
-    JOIN C_Vendedores ven ON cot.id_vendedor = ven.id_vendedor 
+    JOIN Em_Vendedores ven ON cot.id_vendedor = ven.id_vendedor 
     WHERE cot.id_cotizacion = ?
 ";
 

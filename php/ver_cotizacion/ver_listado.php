@@ -47,7 +47,7 @@ $sql = "SELECT c.id_cotizacion AS cotizacion_id, c.fecha_emision, c.fecha_valide
         FROM C_Cotizaciones c
         JOIN C_Proyectos p ON c.id_proyecto = p.id_proyecto
         JOIN C_Clientes cl ON c.id_cliente = cl.id_cliente
-        JOIN C_Vendedores v ON c.id_vendedor = v.id_vendedor
+        JOIN Em_Vendedores v ON c.id_vendedor = v.id_vendedor
         JOIN C_Totales t ON c.id_cotizacion = t.id_cotizacion
         WHERE c.id_empresa = ?";
 
