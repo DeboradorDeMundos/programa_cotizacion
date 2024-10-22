@@ -68,6 +68,7 @@ CREATE TABLE Tp_Area_Empresa (
 ) ENGINE=InnoDB;
 
 
+
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA E_Empresas -------------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
@@ -98,26 +99,41 @@ DROP TABLE IF EXISTS E_Empresa;
     ) ENGINE=InnoDB;
 
 
+-- ------------------------------------------------------------------------------------------------------------
+-- ------------------------------------- TABLA Tp_cargo -------------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------ 
+
+-- Eliminar la tabla Tp_cargo si existe
+DROP TABLE IF EXISTS Tp_cargo;
+
+-- Crear la tabla de tipos de cargos del encargado o personal
+CREATE TABLE Tp_cargo (
+    id_tp_cargo INT NOT NULL AUTO_INCREMENT, -- Identificador único del tipo de cargo
+    nombre_cargo VARCHAR(255) NOT NULL, -- Nombre del tipo de cargo
+    PRIMARY KEY (id_tp_cargo) -- Definir clave primaria
+) ENGINE=InnoDB;
+
 -- --------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA ENCARGADOS -------------------------------------------------------
 -- -------------------------------------------------------------------------------------------------------------- 
 
 -- Eliminar la tabla E_Encargados si existe
-    DROP TABLE IF EXISTS E_Encargados;
+DROP TABLE IF EXISTS E_Encargados;
+-- Crear la tabla E_Encargados
+CREATE TABLE E_Encargados (
+    id_encargado INT NOT NULL AUTO_INCREMENT, -- Identificador único del encargado
+    rut_encargado VARCHAR(20) UNIQUE, -- RUT del encargado (debe ser único)
+    nombre_encargado VARCHAR(255) NOT NULL, -- Nombre del encargado
+    id_tp_cargo INT  NULL, -- Identificador del tipo de cargo del encargado (fk)
+    email_encargado VARCHAR(100), -- Email del encargado
+    fono_encargado VARCHAR(20), -- Teléfono del encargado
+    celular_encargado VARCHAR(20), -- Celular del encargado
+    id_empresa INT NULL, -- Identificador de la empresa a la que pertenece el encargado
+    PRIMARY KEY (id_encargado), -- Definición de la clave primaria
+    FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE SET NULL, -- Clave foránea para referenciar la empresa
+    FOREIGN KEY (id_tp_cargo) REFERENCES Tp_cargo(id_tp_cargo) ON DELETE SET NULL -- Clave foránea para referenciar el tipo de cargo
+) ENGINE=InnoDB;
 
--- Crear la tabla Encargados con la columna id_empresa
-    CREATE TABLE E_Encargados (
-        id_encargado INT NOT NULL AUTO_INCREMENT, -- Identificador único del encargado
-        rut_encargado VARCHAR(20), -- RUT del encargado (debe ser único)
-        nombre_encargado VARCHAR(255) NOT NULL, -- Nombre del encargado
-        cargo_encargado VARCHAR(100), -- Cargo del encargado
-        email_encargado VARCHAR(100), -- Email del encargado
-        fono_encargado VARCHAR(20), -- Teléfono del encargado
-        celular_encargado VARCHAR(20), -- Celular del encargado
-        id_empresa INT NULL, -- Identificador de la empresa a la que pertenece el encargado
-        PRIMARY KEY (id_encargado), -- Definición de la clave primaria
-        FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE SET NULL -- Clave foránea para referenciar la empresa
-    ) ENGINE=InnoDB;
 
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA CLIENTES -------------------------------------------------------
@@ -670,6 +686,8 @@ CREATE INDEX idx_firmas_nombre_encargado ON E_Firmas(nombre_encargado_firma);
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- INSERT DATOS ----------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
+-- Insertar áreas de ejemplo en la tabla E_AreaEmpresa
+INSERT INTO Tp_cargo (nombre_cargo) VALUES ('Gerente General'), ('Administrador'), ('Vendedor'), ('Representante'), ('Encargado');
 -- Insertar áreas de ejemplo en la tabla E_AreaEmpresa
 INSERT INTO Tp_Area_Empresa (nombre_area) VALUES ('Recursos Humanos'), ('Finanzas'), ('Tecnología'), ('Marketing'), ('Ventas');
 -- Insertar áreas de ejemplo en la tabla Tp_Firma
