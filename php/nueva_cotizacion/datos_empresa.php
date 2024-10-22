@@ -113,27 +113,59 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Verifica que el nombre y el RUT de la empresa estén presentes
     if ($empresa_nombre && $empresa_rut) {
-        // Consulta para insertar o actualizar la empresa
+        // Consulta para insertar o actualizar la empresa si el RUT ya existe
         $sql = "INSERT INTO E_Empresa (rut_empresa, id_foto, nombre_empresa, id_area_empresa, direccion_empresa, telefono_empresa, email_empresa)
                 VALUES (?, ?, ?, ?, ?, ?, ?)
-                ON DUPLICATE KEY UPDATE nombre_empresa=VALUES(nombre_empresa), id_area_empresa=VALUES(id_area_empresa), direccion_empresa=VALUES(direccion_empresa), telefono_empresa=VALUES(telefono_empresa), email_empresa=VALUES(email_empresa)";
+                ON DUPLICATE KEY UPDATE 
+                    nombre_empresa = VALUES(nombre_empresa), 
+                    id_area_empresa = VALUES(id_area_empresa), 
+                    direccion_empresa = VALUES(direccion_empresa), 
+                    telefono_empresa = VALUES(telefono_empresa), 
+                    email_empresa = VALUES(email_empresa)";
+        
+        // Preparar la consulta
         $stmt = $mysqli->prepare($sql);
+
         // Verifica si la preparación de la consulta fue exitosa
         if ($stmt === false) {
             die("Error en la preparación de la consulta: " . $mysqli->error);
         }
-        $empresa_id_foto = null; // O el valor correspondiente si tienes la foto
+
+        // Si hay un campo de foto asociado, reemplaza null con su valor real
+        $empresa_id_foto = null; // O asigna el valor de la foto si existe
+        
         // Vincula los parámetros a la consulta
         $stmt->bind_param("sisssss", $empresa_rut, $empresa_id_foto, $empresa_nombre, $empresa_area, $empresa_direccion, $empresa_telefono, $empresa_email);
+
+        // Ejecuta la consulta
         $stmt->execute();
+
         // Verifica si hubo errores en la ejecución de la consulta
         if ($stmt->error) {
             die("Error en la ejecución de la consulta: " . $stmt->error);
         }
 
-        // Obtiene el ID de la empresa insertada/actualizada
-        $id_empresa = $mysqli->insert_id;
-        echo "Empresa insertada/actualizada. ID: $id_empresa<br>";
+        // Obtiene el ID de la empresa insertada o actualizada
+        $id_empresa = $stmt->insert_id;
+
+        // Si no se generó un nuevo ID, es una actualización (la empresa ya existía)
+        if ($stmt->affected_rows === 0) {
+            // Buscar el ID de la empresa existente con el mismo RUT
+            $sql_select = "SELECT id_empresa FROM E_Empresa WHERE rut_empresa = ?";
+            $stmt_select = $mysqli->prepare($sql_select);
+            $stmt_select->bind_param("s", $empresa_rut);
+            $stmt_select->execute();
+            $stmt_select->bind_result($id_empresa);
+            $stmt_select->fetch();
+            $stmt_select->close();
+
+            echo "Empresa actualizada. ID: $id_empresa<br>";
+        } else {
+            echo "Empresa insertada. ID: $id_empresa<br>";
+        }
+
+        // Cierra la declaración para liberar recursos
+        $stmt->close();
     } else {
         echo "Nombre y RUT de la empresa son obligatorios."; // Mensaje de error si faltan campos obligatorios
     }
