@@ -43,11 +43,11 @@ CREATE TABLE FP_FotosPerfil (
 
 
 -- ------------------------------------------------------------------------------------------------------------
--- ------------------------------------- TABLA E_tipo_firma -------------------------------------------------------
+-- ------------------------------------- TABLA tp_firma -------------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
 
 
-CREATE TABLE E_tipo_firma (
+CREATE TABLE Tp_Firma (
     id INT AUTO_INCREMENT PRIMARY KEY,
     tipo VARCHAR(50) NOT NULL UNIQUE
 );
@@ -94,7 +94,7 @@ DROP TABLE IF EXISTS E_Empresa;
         id_tipo_firma INT, -- Identificador del tipo de firma
         PRIMARY KEY (id_empresa), -- Clave primaria
         FOREIGN KEY (id_foto) REFERENCES FP_FotosPerfil(id_foto) ON DELETE CASCADE, -- Clave foránea de fotos
-        FOREIGN KEY (id_tipo_firma) REFERENCES E_tipo_firma(id) ON DELETE SET NULL, -- Clave foránea de tipo de firma
+        FOREIGN KEY (id_tipo_firma) REFERENCES Em_tipo_firma(id) ON DELETE SET NULL, -- Clave foránea de tipo de firma
         FOREIGN KEY (id_area_empresa) REFERENCES Tp_Area(id_area) -- Clave foránea del área de la empresa
     ) ENGINE=InnoDB;
 
@@ -117,10 +117,10 @@ CREATE TABLE Tp_cargo (
 -- ------------------------------------- TABLA ENCARGADOS -------------------------------------------------------
 -- -------------------------------------------------------------------------------------------------------------- 
 
--- Eliminar la tabla E_Encargados si existe
-DROP TABLE IF EXISTS E_Encargados;
+-- Eliminar la tabla Em_Encargados si existe
+DROP TABLE IF EXISTS Em_Encargados;
 -- Crear la tabla E_Encargados
-CREATE TABLE E_Encargados (
+CREATE TABLE Em_Encargados (
     id_encargado INT NOT NULL AUTO_INCREMENT, -- Identificador único del encargado
     rut_encargado VARCHAR(20) UNIQUE, -- RUT del encargado (debe ser único)
     nombre_encargado VARCHAR(255) NOT NULL, -- Nombre del encargado
@@ -143,7 +143,7 @@ CREATE TABLE E_Encargados (
     DROP TABLE IF EXISTS C_Clientes;
 
     -- Crear la tabla Clientes
-    CREATE TABLE C_Clientes (
+    CREATE TABLE C_Clientes ( -- cambiar  de C_Clientes a  Cl_clientes
         id_cliente int NOT NULL AUTO_INCREMENT, -- Identificador único del cliente
         id_empresa_creadora INT, -- Identificador de la empresa a la que pertenece el encargado
         rut_empresa_cliente varchar(20), -- RUT de la empresa del cliente (debe ser único)
@@ -283,11 +283,11 @@ CREATE TABLE C_Encargados (
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA VENDEDORES -----------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
--- Eliminar la tabla C_Vendedores si existe
-DROP TABLE IF EXISTS C_Vendedores;
+-- Eliminar la tabla Em_Vendedores si existe
+DROP TABLE IF EXISTS Em_Vendedores;
 
--- Crear la tabla C_Vendedores
-CREATE TABLE C_Vendedores (
+-- Crear la tabla Em_Vendedores
+CREATE TABLE Em_Vendedores (
     id_vendedor INT NOT NULL AUTO_INCREMENT, -- Identificador único del vendedor
     rut_vendedor VARCHAR(20), -- RUT del vendedor (debe ser único)
     nombre_vendedor VARCHAR(255) NOT NULL, -- Nombre del vendedor
@@ -300,18 +300,18 @@ CREATE TABLE C_Vendedores (
 ) ENGINE=InnoDB;
 
 
-CREATE TABLE E_Bancos (
+CREATE TABLE Tp_Banco (
     id_banco INT AUTO_INCREMENT PRIMARY KEY,
     nombre_banco VARCHAR(255) NOT NULL UNIQUE
 );
 
-CREATE TABLE E_Tipo_Cuenta (
+CREATE TABLE Tp_Cuenta (
     id_tipocuenta INT AUTO_INCREMENT PRIMARY KEY,
     tipocuenta VARCHAR(255) NOT NULL,
     descripcion VARCHAR(255)
 );
 
-CREATE TABLE E_Cuenta_Bancaria (
+CREATE TABLE Em_Cuenta_Bancaria (
     id_cuenta INT AUTO_INCREMENT PRIMARY KEY,
     rut_titular VARCHAR(12) NOT NULL,
     nombre_titular VARCHAR(255) NOT NULL,
@@ -321,8 +321,8 @@ CREATE TABLE E_Cuenta_Bancaria (
     celular INT ,
     email_banco VARCHAR(255) NOT NULL,
     id_empresa INT NOT NULL,
-    FOREIGN KEY (id_banco) REFERENCES E_Bancos(id_banco),
-    FOREIGN KEY (id_tipocuenta) REFERENCES E_Tipo_Cuenta(id_tipocuenta),
+    FOREIGN KEY (id_banco) REFERENCES Tp_Banco(id_banco),
+    FOREIGN KEY (id_tipocuenta) REFERENCES Tp_Cuenta(id_tipocuenta),
     FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa)
 );
 
@@ -350,8 +350,8 @@ CREATE TABLE C_Cotizaciones (
     FOREIGN KEY (id_cliente) REFERENCES C_Clientes(id_cliente) ON DELETE CASCADE, 
     FOREIGN KEY (id_proyecto) REFERENCES C_Proyectos(id_proyecto) ON DELETE CASCADE, 
     FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE CASCADE, 
-    FOREIGN KEY (id_vendedor) REFERENCES C_Vendedores(id_vendedor) ON DELETE SET NULL,
-    FOREIGN KEY (id_encargado) REFERENCES C_Encargados(id_encargado) ON DELETE SET NULL
+    FOREIGN KEY (id_vendedor) REFERENCES Em_Vendedores(id_vendedor) ON DELETE SET NULL,
+    FOREIGN KEY (id_encargado) REFERENCES Em_Encargados(id_encargado) ON DELETE SET NULL
 ) ENGINE=InnoDB ;
 
 -- ------------------------------------------------------------------------------------------------------------
@@ -387,6 +387,9 @@ CREATE TABLE C_Subtitulos (
     FOREIGN KEY (id_titulo) REFERENCES C_Titulos(id_titulo) ON DELETE CASCADE
 ) ENGINE=InnoDB ;
 
+-- ------------------------------------------------------------------------------------------------------------
+-- ------------------------------------- TABLA C_notas ---------------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------ 
 
 CREATE TABLE C_Notas (
     id_nota INT NOT NULL AUTO_INCREMENT,    -- ID de la nota
@@ -423,10 +426,6 @@ CREATE TABLE C_Detalles (
     FOREIGN KEY (id_subtitulo) REFERENCES C_Subtitulos(id_subtitulo) ON DELETE CASCADE,
     FOREIGN KEY (id_titulo) REFERENCES C_Titulos(id_titulo) ON DELETE CASCADE
 ) ENGINE=InnoDB ;
-
-
-
-
 
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA DETALLE C_Totales ----------------------------------------------
@@ -473,12 +472,9 @@ CREATE TABLE P_Productos (
     descripcion_producto TEXT, -- Descripción del producto
     precio_producto DECIMAL(10,2) NOT NULL, -- Precio del producto
     id_tipo_producto INT, -- Nuevo campo para el tipo de producto (clave foránea)
-    id_empresa INT, 
     PRIMARY KEY (id_producto), -- Definición de la clave primaria
-
     -- Definición de la clave foránea para id_foto
     FOREIGN KEY (id_tipo_producto) REFERENCES p_tipo_producto(id_tipo_producto) ON DELETE SET NULL, -- Puedes usar ON DELETE CASCADE si prefieres eliminar los productos cuando se elimina un tipo
-    FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE CASCADE 
 ) ENGINE=InnoDB ;
 
 -- ------------------------------------------------------------------------------------------------------------
@@ -510,7 +506,7 @@ COMMIT;
 -- Crear la tabla Condiciones_Generales
 DROP TABLE IF EXISTS C_Condiciones_Generales;
 
-CREATE TABLE C_Condiciones_Generales (
+CREATE TABLE Em_Condiciones_Generales (
     id_condiciones INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     id_empresa INT NOT NULL, -- ID de la cotización (clave foránea)
     descripcion_condiciones TEXT NOT NULL, -- Descripción de las condiciones generales
@@ -541,7 +537,7 @@ CREATE TABLE C_Cotizacion_Condiciones (
 
 -- Crear la tabla Requisitos_Basicos
 DROP TABLE IF EXISTS E_Requisitos_Basicos;
-CREATE TABLE E_Requisitos_Basicos (
+CREATE TABLE Em_Requisitos_Basicos (
     id_requisitos INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     indice INT NOT NULL, -- nueva tabla?
     descripcion_condiciones VARCHAR(255) NOT NULL,
@@ -565,7 +561,7 @@ CREATE TABLE C_Cotizaciones_Requisitos (
     id_cotizacion INT NOT NULL, -- Clave foránea hacia Cotizaciones
     id_requisitos INT NOT NULL, -- Clave foránea hacia Requisitos Básicos
     FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE,
-    FOREIGN KEY (id_requisitos) REFERENCES E_Requisitos_Basicos(id_requisitos) ON DELETE CASCADE
+    FOREIGN KEY (id_requisitos) REFERENCES Em_Requisitos_Basicos(id_requisitos) ON DELETE CASCADE
    -- UNIQUE KEY (id_cotizacion, id_requisitos) -- Para evitar duplicados
 ) ENGINE=InnoDB;
 
@@ -575,7 +571,7 @@ CREATE TABLE C_Cotizaciones_Requisitos (
 -- ------------------------------------------------------------------------------------------------------------ 
 
 
-    CREATE TABLE E_obligaciones_cliente (
+    CREATE TABLE Em_obligaciones_cliente (
         id INT AUTO_INCREMENT PRIMARY KEY,
         indice INT NOT NULL,
         descripcion TEXT NOT NULL,
@@ -598,7 +594,7 @@ CREATE TABLE C_Cotizaciones_Obligaciones (
     id_cotizacion INT NOT NULL, -- Clave foránea hacia Cotizaciones
     id_obligacion INT NOT NULL, -- Clave foránea hacia Obligaciones del Cliente
     FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE,
-    FOREIGN KEY (id_obligacion) REFERENCES E_obligaciones_cliente(id) ON DELETE CASCADE
+    FOREIGN KEY (id_obligacion) REFERENCES Em_obligaciones_cliente(id) ON DELETE CASCADE
     -- UNIQUE KEY (id_cotizacion, id_obligacion) -- Para evitar duplicados
 ) ENGINE=InnoDB;
 
@@ -641,7 +637,7 @@ CREATE TABLE C_Mensaje_Despedida (
 -- ------------------------------------- TABLA firmas -----------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
 
-CREATE TABLE E_Firmas (
+CREATE TABLE Em_Firmas (
     id_firma INT AUTO_INCREMENT PRIMARY KEY,
     id_empresa INT NOT NULL,
     titulo_firma VARCHAR(255) NOT NULL,
@@ -666,51 +662,7 @@ CREATE TABLE E_Firmas (
 -- ------------------------------------- INDICES  ----------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
 
--- Índices para la tabla C_Totales
-CREATE INDEX idx_totales_id_cotizacion ON C_Totales(id_cotizacion);
 
--- Índices para la tabla p_tipo_producto
-CREATE INDEX idx_tipo_producto_tipo ON p_tipo_producto(tipo_producto);
-
--- Índices para la tabla P_Productos
-CREATE INDEX idx_productos_id_tipo_producto ON P_Productos(id_tipo_producto);
-CREATE INDEX idx_productos_id_empresa ON P_Productos(id_empresa);
-CREATE INDEX idx_productos_nombre_producto ON P_Productos(nombre_producto);
-
--- Índices para la tabla C_pago
-CREATE INDEX idx_pago_id_cotizacion ON C_pago(id_cotizacion);
-CREATE INDEX idx_pago_fecha_pago ON C_pago(fecha_pago);
-
--- Índices para la tabla C_Condiciones_Generales
-CREATE INDEX idx_condiciones_generales_id_empresa ON C_Condiciones_Generales(id_empresa);
-
--- Índices para la tabla C_Cotizacion_Condiciones
-CREATE INDEX idx_cotizacion_condiciones_id_cotizacion ON C_Cotizacion_Condiciones(id_cotizacion);
-CREATE INDEX idx_cotizacion_condiciones_id_condiciones ON C_Cotizacion_Condiciones(id_condiciones);
-
--- Índices para la tabla E_Requisitos_Basicos
-CREATE INDEX idx_requisitos_basicos_id_empresa ON E_Requisitos_Basicos(id_empresa);
-
--- Índices para la tabla C_Cotizaciones_Requisitos
-CREATE INDEX idx_cotizaciones_requisitos_id_cotizacion ON C_Cotizaciones_Requisitos(id_cotizacion);
-CREATE INDEX idx_cotizaciones_requisitos_id_requisitos ON C_Cotizaciones_Requisitos(id_requisitos);
-
--- Índices para la tabla E_obligaciones_cliente
-CREATE INDEX idx_obligaciones_cliente_id_empresa ON E_obligaciones_cliente(id_empresa);
-
--- Índices para la tabla C_Cotizaciones_Obligaciones
-CREATE INDEX idx_cotizaciones_obligaciones_id_cotizacion ON C_Cotizaciones_Obligaciones(id_cotizacion);
-CREATE INDEX idx_cotizaciones_obligaciones_id_obligacion ON C_Cotizaciones_Obligaciones(id_obligacion);
-
--- Índices para la tabla C_Observaciones
-CREATE INDEX idx_observaciones_id_cotizacion ON C_Observaciones(id_cotizacion);
-
--- Índices para la tabla C_Mensaje_Despedida
-CREATE INDEX idx_mensaje_despedida_id_cotizacion ON C_Mensaje_Despedida(id_cotizacion);
-
--- Índices para la tabla E_Firmas
-CREATE INDEX idx_firmas_id_empresa ON E_Firmas(id_empresa);
-CREATE INDEX idx_firmas_nombre_encargado ON E_Firmas(nombre_encargado_firma);
 
 
 -- ------------------------------------------------------------------------------------------------------------
@@ -743,7 +695,7 @@ INSERT INTO E_tipo_firma (tipo) VALUES ('digital');
 INSERT INTO E_tipo_firma (tipo) VALUES ('foto');
 
  -- Insertar datos en la tabla Bancos
-INSERT INTO E_Bancos (nombre_banco) VALUES
+INSERT INTO Tp_Banco (nombre_banco) VALUES
 ('Banco de Chile'),
 ('Banco Santander Chile'),
 ('Banco Estado'),
@@ -818,7 +770,7 @@ INSERT INTO E_Empresa (
 );
 
 -- Insertar datos en la tabla E_Encargados
-INSERT INTO E_Encargados (
+INSERT INTO Em_Encargados (
     rut_encargado, 
     nombre_encargado, 
     email_encargado, 
@@ -835,7 +787,7 @@ INSERT INTO E_Encargados (
 );
 
 -- Insertar datos en la tabla C_Condiciones_Generales
-INSERT INTO C_Condiciones_Generales (id_empresa, descripcion_condiciones, estado) VALUES
+INSERT INTO Em_Condiciones_Generales (id_empresa, descripcion_condiciones, estado) VALUES
 (1, 'Condición general 1: Cumplir con todas las normativas legales vigentes.', TRUE),
 (1, 'Condición general 2: Realizar informes mensuales de avance del proyecto.', TRUE),
 (1, 'Condición general 3: Proveer acceso a la documentación necesaria para el trabajo.', TRUE),
@@ -848,7 +800,7 @@ INSERT INTO C_Condiciones_Generales (id_empresa, descripcion_condiciones, estado
 (1, 'Condición general 10: Cumplir con los plazos establecidos en el cronograma del proyecto.', TRUE);
 
 -- Insertar datos en la tabla E_Requisitos_Basicos
-INSERT INTO E_Requisitos_Basicos (indice, descripcion_condiciones, estado, id_empresa) VALUES
+INSERT INTO Em_Requisitos_Basicos (indice, descripcion_condiciones, estado, id_empresa) VALUES
 (1, 'Requisito básico 1: Registro de la empresa en el sistema.', TRUE, 1),
 (2, 'Requisito básico 2: Presentar documentación legal actualizada.', TRUE, 1),
 (3, 'Requisito básico 3: Cumplimiento de normativas de seguridad laboral.', TRUE, 1),
@@ -861,7 +813,7 @@ INSERT INTO E_Requisitos_Basicos (indice, descripcion_condiciones, estado, id_em
 (10, 'Requisito básico 10: Cumplir con las auditorías internas programadas.', TRUE, 1);
 
 -- Insertar datos en la tabla E_obligaciones_cliente
-INSERT INTO E_obligaciones_cliente (indice, descripcion, estado, id_empresa) VALUES
+INSERT INTO Em_obligaciones_cliente (indice, descripcion, estado, id_empresa) VALUES
 (1, 'Obligación 1: Proporcionar información veraz sobre la empresa.', TRUE, 1),
 (2, 'Obligación 2: Cumplir con los plazos de pago establecidos en el contrato.', TRUE, 1),
 (3, 'Obligación 3: Colaborar en la entrega de documentación requerida.', TRUE, 1),
@@ -959,7 +911,7 @@ INSERT INTO C_Encargados (
 );
 
 -- Insertar datos en la tabla C_Vendedores
-INSERT INTO C_Vendedores (
+INSERT INTO Em_Vendedores (
     rut_vendedor, 
     nombre_vendedor, 
     email_vendedor, 
@@ -1076,7 +1028,7 @@ INSERT INTO C_pago (
 );
 
 -- Insertar datos en la tabla C_Condiciones_Generales
-INSERT INTO C_Condiciones_Generales (
+INSERT INTO Em_Condiciones_Generales (
     id_empresa, 
     descripcion_condiciones, 
     estado
@@ -1087,7 +1039,7 @@ INSERT INTO C_Condiciones_Generales (
 );
 
 -- Insertar datos en la tabla E_Requisitos_Basicos
-INSERT INTO E_Requisitos_Basicos (
+INSERT INTO Em_Requisitos_Basicos (
     indice, 
     descripcion_condiciones, 
     id_empresa
@@ -1098,7 +1050,7 @@ INSERT INTO E_Requisitos_Basicos (
 );
 
 -- Insertar cuentas bancarias ficticias
-INSERT INTO E_Cuenta_Bancaria (
+INSERT INTO Em_Cuenta_Bancaria (
     rut_titular, 
     nombre_titular, 
     id_banco, 
@@ -1114,7 +1066,7 @@ INSERT INTO E_Cuenta_Bancaria (
 ('35792468-0', 'Ana Torres', 1, 1, '5678901234', 987654321, 'ana.torres@empresa.com', 1);
 
 -- Insertar una firma para la empresa 1
-INSERT INTO E_Firmas (
+INSERT INTO Em_Firmas (
     id_empresa, 
     titulo_firma, 
     nombre_encargado_firma, 
