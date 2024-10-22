@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $condicionesArray = explode('|', $condicionesString); // Se divide el string en un array utilizando el delimitador '|'
     if (!empty($condicionesArray)) {
         // Preparar la consulta para insertar las condiciones en la base de datos
-        $stmt = $mysqli->prepare("INSERT INTO C_Condiciones_Generales (id_empresa, descripcion_condiciones) VALUES (?, ?)");
+        $stmt = $mysqli->prepare("INSERT INTO Em_Condiciones_Generales (id_empresa, descripcion_condiciones) VALUES (?, ?)");
 
         if (!$stmt) {
             // Manejo de errores al preparar la consulta
