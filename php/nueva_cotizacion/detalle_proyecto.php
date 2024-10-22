@@ -131,7 +131,7 @@ BPPJ
         <div class="form-group">
             <!-- TÍTULO: CAMPO PARA LOS DÍAS DE TRABAJO -->
             <label for="dias_trabajo">Días de Trabajo:</label> <!-- Etiqueta para el campo de entrada de los días de trabajo -->
-            <!-- Título: Campo para Ingresar los Días de Trabajo -->
+            <!-- TÍTULO: CAMPO PARA INGRESAR LOS DÍAS DE TRABAJO -->
             <input type="number" id="dias_trabajo" name="dias_trabajo" placeholder="ingrese N° de dias" oninput="QuitarCaracteresInvalidos(this)"> <!-- Campo de número para ingresar la cantidad de días de trabajo. No es obligatorio -->
         </div>
     </div>

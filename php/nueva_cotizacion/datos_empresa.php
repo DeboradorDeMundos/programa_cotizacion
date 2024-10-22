@@ -40,15 +40,15 @@ BPPJ
             <!-- Campo select para elegir el área de la empresa, cargado dinámicamente desde la base de datos -->
             <select id="empresa_area" name="empresa_area">
                 <?php
-                // Consulta para obtener las áreas desde tp_area_empresa
-                $areas_query = "SELECT id_area_empresa, nombre_area FROM Tp_Area_Empresa";
+                // Consulta para obtener las áreas desde tp_area
+                $areas_query = "SELECT id_area_empresa, nombre_area FROM Tp_Area";
                 $result = $mysqli->query($areas_query);
                 
                 if ($result->num_rows > 0) {
                     while($area = $result->fetch_assoc()) {
                         // Verifica si es el área seleccionada
                         $selected = ($area['id_area_empresa'] == $row['EmpresaArea']) ? 'selected' : '';
-                        echo "<option value='" . htmlspecialchars($area['id_area_empresa']) . "' $selected>" . htmlspecialchars($area['nombre_area']) . "</option>";
+                        echo "<option value='" . htmlspecialchars($area['id_area']) . "' $selected>" . htmlspecialchars($area['nombre_area']) . "</option>";
                     }
                 }
                 ?>

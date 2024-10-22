@@ -54,17 +54,17 @@ CREATE TABLE E_tipo_firma (
 
 
 -- ------------------------------------------------------------------------------------------------------------
--- ------------------------------------- TABLA tp_Area_Empresa -------------------------------------------------------
+-- ------------------------------------- TABLA tp_Areaa -------------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
 
--- Eliminar la tabla Tp_Area_Empresa si existe
-DROP TABLE IF EXISTS Tp_Area_Empresa;
+-- Eliminar la tabla Tp_Area_ si existe
+DROP TABLE IF EXISTS Tp_Area;
 
 -- Crear la tabla de áreas de la empresa
-CREATE TABLE Tp_Area_Empresa (
-    id_area_empresa INT NOT NULL AUTO_INCREMENT, -- Identificador único del área de la empresa
+CREATE TABLE Tp_Area (
+    id_area INT NOT NULL AUTO_INCREMENT, -- Identificador único del área de la empresa
     nombre_area VARCHAR(255) NOT NULL, -- Nombre del área de la empresa
-    PRIMARY KEY (id_area_empresa) -- Definir clave primaria
+    PRIMARY KEY (id_area) -- Definir clave primaria
 ) ENGINE=InnoDB;
 
 
@@ -95,7 +95,7 @@ DROP TABLE IF EXISTS E_Empresa;
         PRIMARY KEY (id_empresa), -- Clave primaria
         FOREIGN KEY (id_foto) REFERENCES FP_FotosPerfil(id_foto) ON DELETE CASCADE, -- Clave foránea de fotos
         FOREIGN KEY (id_tipo_firma) REFERENCES E_tipo_firma(id) ON DELETE SET NULL, -- Clave foránea de tipo de firma
-        FOREIGN KEY (id_area_empresa) REFERENCES Tp_Area_Empresa(id_area_empresa) -- Clave foránea del área de la empresa
+        FOREIGN KEY (id_area_empresa) REFERENCES Tp_Area(id_area) -- Clave foránea del área de la empresa
     ) ENGINE=InnoDB;
 
 
@@ -204,29 +204,47 @@ CREATE TABLE E_Encargados (
 
 
 -- ------------------------------------------------------------------------------------------------------------
+-- ------------------------------------- TABLA Tp_trabajo -------------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------ 
+
+-- Eliminar la tabla Tp_trabajo si existe
+DROP TABLE IF EXISTS Tp_trabajo;
+
+-- Crear la tabla de tipos de trabajo del proyecto
+CREATE TABLE Tp_trabajo (
+    id_tp_trabajo INT NOT NULL AUTO_INCREMENT, -- Identificador único del tipo de trabajo
+    nombre_trabajo VARCHAR(255) NOT NULL, -- Nombre del tipo de trabajo
+    PRIMARY KEY (id_tp_trabajo) -- Definir clave primaria
+) ENGINE=InnoDB;
+
+
+-- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA PROYECTOS ------------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
 
--- Eliminar la tabla Proyectos si existe
-DROP TABLE IF EXISTS c_Proyectos;
+-- Eliminar la tabla C_Proyectos si existe
+DROP TABLE IF EXISTS C_Proyectos;
 
 -- Crear la tabla Proyectos
 CREATE TABLE C_Proyectos (
-    id_proyecto int NOT NULL AUTO_INCREMENT, -- Identificador único del proyecto
-    nombre_proyecto varchar(255), -- Nombre del proyecto
-    codigo_proyecto varchar(50) NOT NULL, -- Código del proyecto
-    tipo_trabajo varchar(255) NOT NULL, -- Tipo de trabajo del proyecto
-    area_trabajo varchar(255) NOT NULL, -- Área de trabajo del proyecto
-    riesgo_proyecto varchar(255), -- Riesgo asociado al proyecto
-    descripcion_riesgo varchar(255),
+    id_proyecto INT NOT NULL AUTO_INCREMENT, -- Identificador único del proyecto
+    nombre_proyecto VARCHAR(255), -- Nombre del proyecto
+    codigo_proyecto VARCHAR(50) NOT NULL, -- Código del proyecto
+    id_tp_trabajo INT NOT NULL, -- Reemplazar tipo_trabajo por la FK
+    id_area INT NOT NULL, -- Identificador del área de la empresa (clave foránea)
+    riesgo_proyecto VARCHAR(255), -- Riesgo asociado al proyecto
+    descripcion_riesgo VARCHAR(255),
     dias_compra VARCHAR(50), -- Días de compra relacionados con la cotización
     dias_trabajo VARCHAR(50), -- Días de trabajo relacionados con la cotización
     trabajadores INT, -- Número de trabajadores asignados
     horario VARCHAR(50), -- Horario de trabajo
     colacion VARCHAR(50), -- Colación incluida
     entrega VARCHAR(50), -- Entrega especificada
-    PRIMARY KEY (id_proyecto) -- Definición de la clave primaria
-) ENGINE=InnoDB ;
+    PRIMARY KEY (id_proyecto), -- Definición de la clave primaria
+    FOREIGN KEY (id_area) REFERENCES Tp_Area(id_area), -- Clave foránea del área de la empresa
+    FOREIGN KEY (id_tp_trabajo) REFERENCES Tp_trabajo(id_tp_trabajo) ON DELETE CASCADE -- Clave foránea para referenciar el tipo de trabajo
+) ENGINE=InnoDB;
+
 
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA ENCARGADOS -----------------------------------------------------
@@ -687,9 +705,25 @@ CREATE INDEX idx_firmas_nombre_encargado ON E_Firmas(nombre_encargado_firma);
 -- ------------------------------------- INSERT DATOS ----------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
 -- Insertar áreas de ejemplo en la tabla E_AreaEmpresa
-INSERT INTO Tp_cargo (nombre_cargo) VALUES ('Gerente General'), ('Administrador'), ('Vendedor'), ('Representante'), ('Encargado');
+INSERT INTO Tp_cargo (nombre_cargo) VALUES ('Gerente General'),
+                                            ('Administrador'),
+                                             ('Vendedor'),
+                                              ('Representante'),
+                                               ('Encargado');
+
 -- Insertar áreas de ejemplo en la tabla E_AreaEmpresa
-INSERT INTO Tp_Area_Empresa (nombre_area) VALUES ('Recursos Humanos'), ('Finanzas'), ('Tecnología'), ('Marketing'), ('Ventas');
+INSERT INTO Tp_Area (nombre_area) VALUES ('Recursos Humanos'),
+                                                  ('Finanzas'),
+                                                   ('Tecnología'),
+                                                    ('Marketing'),
+                                                     ('Ventas');
+
+-- Insertar áreas de ejemplo en la tabla E_AreaEmpresa
+INSERT INTO Tp_trabajo (nombre_trabajo) VALUES ('Instalaciones'),
+                                                 ('Desarrollo de Software'),
+                                                   ('Contrucción'),
+                                                    ('Pagina Web'),
+                                                     ('Diseño web');
 -- Insertar áreas de ejemplo en la tabla Tp_Firma
 INSERT INTO E_tipo_firma (tipo) VALUES ('automatica');
 INSERT INTO E_tipo_firma (tipo) VALUES ('manual');
@@ -874,8 +908,8 @@ INSERT INTO C_Clientes (
 INSERT INTO C_Proyectos (
     nombre_proyecto, 
     codigo_proyecto, 
-    tipo_trabajo, 
-    area_trabajo, 
+    id_tp_trabajo, 
+    id_area, 
     riesgo_proyecto, 
     dias_compra, 
     dias_trabajo, 
@@ -886,8 +920,8 @@ INSERT INTO C_Proyectos (
 ) VALUES (
     'Proyecto Alpha', -- Nombre del proyecto
     'PROJ-001', -- Código del proyecto
-    'Desarrollo de Software', -- Tipo de trabajo
-    'Tecnología', -- Área de trabajo
+    2, -- Tipo de trabajo
+    3, -- Área de trabajo
     'Bajo', -- Riesgo asociado
     '5', -- Días de compra
     '10', -- Días de trabajo

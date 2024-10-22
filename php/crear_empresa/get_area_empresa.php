@@ -28,7 +28,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
      <?php
 // Consulta para obtener las áreas de empresa
-$query = "SELECT id_area_empresa, nombre_area FROM Tp_Area_Empresa";
+$query = "SELECT id_area_empresa, nombre_area FROM Tp_Area";
 $result = $mysqli->query($query);
 
 // Verificar si se obtuvieron resultados
@@ -38,7 +38,7 @@ if ($result->num_rows > 0) {
     // Recorrer los resultados y crear opciones en el select
     while ($row = $result->fetch_assoc()) {
         // Mostrar solo el nombre en el texto de la opción, con el valor como id_area_empresa
-        echo '<option value="' . htmlspecialchars($row['id_area_empresa']) . '">' . htmlspecialchars($row['nombre_area']) . '</option>';
+        echo '<option value="' . htmlspecialchars($row['id_area']) . '">' . htmlspecialchars($row['nombre_area']) . '</option>';
     }
 } else {
     // Si no hay áreas, mostrar mensaje en el select
