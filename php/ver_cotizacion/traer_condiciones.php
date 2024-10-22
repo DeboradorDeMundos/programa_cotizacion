@@ -79,30 +79,30 @@ if ($stmt_seleccionadas = $mysqli->prepare($query_condiciones_seleccionadas)) {
 }
 ?>
 
-<!-- Título: Checkbox para mostrar/ocultar condiciones generales -->
+<!-- TÍTULO: CHECKBOX PARA MOSTRAR/OCULTAR CONDICIONES GENERALES -->
 <!-- Checkbox para mostrar/ocultar condiciones generales -->
 <label>
     <input type="checkbox" id="toggle-conditions" onclick="toggleConditions()"> Agregar condiciones generales
 </label>
 
-<!-- Título: Tabla para las condiciones generales -->
+<!-- TÍTULO: TABLA PARA LAS CONDICIONES GENERALES -->
 <!-- Tabla para las condiciones generales -->
 <table id="conditions-table" style="display: none;">
-    <!-- Título: Encabezado de la tabla -->
+    <!-- TÍTULO: ENCABEZADO DE LA TABLA -->
     <!-- Encabezado de la tabla -->
     <tr>
         <th style="background-color:lightgray" colspan="2">CONDICIONES GENERALES</th>
     </tr>
-    <!-- Título: Verificación de condiciones disponibles -->
+    <!-- TÍTULO: VERIFICACIÓN DE CONDICIONES DISPONIBLES -->
     <?php if (isset($condiciones) && !empty($condiciones)): ?>
-        <!-- Título: Iteración sobre las condiciones -->
+        <!-- TÍTULO: ITERACIÓN SOBRE LAS CONDICIONES -->
         <?php foreach ($condiciones as $condicion): ?>
             <tr>
-                <!-- Título: Celda de descripción de la condición -->
+                <!-- TÍTULO: CELDA DE DESCRIPCIÓN DE LA CONDICIÓN -->
                 <td>
                     <?php echo htmlspecialchars($condicion['id_condiciones']) . '.- ' . htmlspecialchars($condicion['descripcion_condiciones']); ?>
                 </td>
-                <!-- Título: Celda de checkbox para la condición -->
+                <!-- TÍTULO: CELDA DE CHECKBOX PARA LA CONDICIÓN -->
                 <td>
                     <input type="checkbox" name="condicion_check[]" value="<?php echo htmlspecialchars($condicion['id_condiciones']); ?>"
                         <?php echo in_array($condicion['id_condiciones'], $condiciones_seleccionadas) ? 'checked' : ''; ?> />
@@ -110,7 +110,7 @@ if ($stmt_seleccionadas = $mysqli->prepare($query_condiciones_seleccionadas)) {
             </tr>
         <?php endforeach; ?>
     <?php else: ?>
-        <!-- Título: Mensaje cuando no hay condiciones disponibles -->
+        <!-- TÍTULO: MENSAJE CUANDO NO HAY CONDICIONES DISPONIBLES -->
         <tr>
             <td colspan="2">No hay condiciones generales disponibles.</td>
         </tr>

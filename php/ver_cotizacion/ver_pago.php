@@ -40,12 +40,12 @@ $stmt_pagos->close();
 ?>
 
 <?php if (!empty($pagos)): ?>
-    <!-- Título: Pagos relacionados -->
+    <!-- TÍTULO: PAGOS RELACIONADOS -->
     <strong>Pagos relacionados: </strong><br><br>
     <table>
         <thead>
             <tr>
-                <!-- Título: Encabezados de la tabla -->
+                <!-- TÍTULO: ENCABEZADOS DE LA TABLA -->
                 <th>Número de Pago</th>
                 <th>Descripción</th>
                 <th>Porcentaje</th>
@@ -57,7 +57,7 @@ $stmt_pagos->close();
         <tbody>
         <?php foreach ($pagos as $pago): ?>
             <tr>
-                <!-- Título: Datos del pago -->
+                <!-- TÍTULO: DATOS DEL PAGO -->
                 <td><?php echo htmlspecialchars($pago['numero_pago']); ?></td>
                 <td><?php echo htmlspecialchars($pago['descripcion']); ?></td>
                 <td><?php echo htmlspecialchars($pago['porcentaje_pago']); ?>%</td>
@@ -69,7 +69,7 @@ $stmt_pagos->close();
         </tbody>
     </table>
 <?php else: ?>
-    <!-- Título: Mensaje cuando no hay pagos disponibles -->
+    <!-- TÍTULO: MENSAJE CUANDO NO HAY PAGOS DISPONIBLES -->
     No hay pagos disponibles para esta cotización.
 <?php endif; ?>
 

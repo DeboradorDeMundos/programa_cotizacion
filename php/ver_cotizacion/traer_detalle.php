@@ -65,30 +65,30 @@ $stmt_detalles->close();
     <link rel="stylesheet" href="../../css/ver_cotizacion/traer_detalle.css"> <!-- Estilo CSS -->
     <script src="../../js/ver_cotizacion/traer_detalle.js" defer></script> <!-- Script JavaScript -->
 </head>
-<!-- Título: Cuerpo del documento -->
+<!-- TÍTULO: CUERPO DEL DOCUMENTO -->
 <body>
-    <!-- Título: Campo de detalles de la cotización -->
+    <!-- TÍTULO: CAMPO DE DETALLES DE LA COTIZACIÓN -->
     <fieldset>
-        <!-- Título: Leyenda del campo -->
+        <!-- TÍTULO: LEYENDA DEL CAMPO -->
         <legend>Detalle de la Cotización</legend>
-        <!-- Título: Contenedor de detalles -->
+        <!-- TÍTULO: CONTENEDOR DE DETALLES -->
         <div id="detalle-contenedor">
-            <!-- Título: Iteración sobre títulos -->
+            <!-- TÍTULO: ITERACIÓN SOBRE TÍTULOS -->
             <?php foreach ($titulos as $titulo_index => $titulo_data): ?>
-                <!-- Título: Sección de detalle por título -->
+                <!-- TÍTULO: SECCIÓN DE DETALLE POR TÍTULO -->
                 <div class="detalle-section" data-titulo-index="<?php echo $titulo_index; ?>">
                     <div class="detalle-content">
-                        <!-- Título: Contenedor de título -->
+                        <!-- TÍTULO: CONTENEDOR DE TÍTULO -->
                         <div class="titulo-contenedor" style="display: flex; align-items: center;">
                             <label for="titulo">Título:</label>
                             <input type="text" name="detalle_titulo[<?php echo $titulo_index; ?>]" value="<?php echo htmlspecialchars($titulo_data['titulo']['nombre']); ?>" required style="margin-right: 10px;">
-                            <!-- Título: Botón para eliminar título -->
+                            <!-- TÍTULO: BOTÓN PARA ELIMINAR TÍTULO -->
                             <button type="button" class="btn-eliminar-titulo" onclick="removeDetailSection(this)">Eliminar Título</button>
                         </div>
-                        <!-- Título: Tabla de detalles -->
+                        <!-- TÍTULO: TABLA DE DETALLES -->
                         <table class="detalle-table">
                             <thead>
-                                <!-- Título: Encabezado de la tabla -->
+                                <!-- TÍTULO: ENCABEZADO DE LA TABLA -->
                                 <tr>
                                     <th>Tipo</th>
                                     <th>Nombre Producto</th>
@@ -101,46 +101,46 @@ $stmt_detalles->close();
                                 </tr>
                             </thead>
                             <tbody class="detalle-contenido">
-                                <!-- Título: Iteración sobre detalles del título -->
+                                <!-- TÍTULO: ITERACIÓN SOBRE DETALLES DEL TÍTULO -->
                                 <?php foreach ($titulo_data['detalles'] as $detalle_index => $detalle): ?>
-                                    <!-- Título: Fila de detalle -->
+                                    <!-- TÍTULO: FILA DE DETALLE -->
                                     <tr>
                                         <td><?php echo htmlspecialchars($detalle['tipo']); ?></td>
                                         <td><?php echo htmlspecialchars($detalle['nombre_producto']); ?></td>
                                         <td>
-                                            <!-- Título: Checkbox de descripción -->
+                                            <!-- TÍTULO: CHECKBOX DE DESCRIPCIÓN -->
                                             <input type="checkbox" name="detalle_descripcion[<?php echo $titulo_index; ?>][<?php echo $detalle_index; ?>]" <?php echo $detalle['descripcion'] ? 'checked' : ''; ?> onclick="toggleDescription(this)">
                                         </td>
                                         <td>
-                                            <!-- Título: Input de cantidad -->
+                                            <!-- TÍTULO: INPUT DE CANTIDAD -->
                                             <input type="number" name="detalle_cantidad[<?php echo $titulo_index; ?>][<?php echo $detalle_index; ?>]" value="<?php echo htmlspecialchars($detalle['cantidad']); ?>" required>
                                         </td>
                                         <td>
-                                            <!-- Título: Input de precio unitario -->
+                                            <!-- TÍTULO: INPUT DE PRECIO UNITARIO -->
                                             <input type="number" name="detalle_precio_unitario[<?php echo $titulo_index; ?>][<?php echo $detalle_index; ?>]" value="<?php echo htmlspecialchars($detalle['precio_unitario']); ?>" required>
                                         </td>
                                         <td>
-                                            <!-- Título: Input de descuento -->
+                                            <!-- TÍTULO: INPUT DE DESCUENTO -->
                                             <input type="number" name="detalle_descuento[<?php echo $titulo_index; ?>][<?php echo $detalle_index; ?>]" value="<?php echo htmlspecialchars($detalle['descuento_porcentaje']); ?>" required>
                                         </td>
                                         <td><?php echo htmlspecialchars($detalle['total']); ?></td>
                                         <td>
-                                            <!-- Título: Botón para eliminar detalle -->
+                                            <!-- TÍTULO: BOTÓN PARA ELIMINAR DETALLE -->
                                             <button type="button" class="btn-eliminar" onclick="removeDetailRow(this)">Eliminar</button>
                                         </td>
                                     </tr>
-                                    <!-- Título: Fila para descripción adicional -->
+                                    <!-- TÍTULO: FILA PARA DESCRIPCIÓN ADICIONAL -->
                                     <tr class="descripcion-row" style="<?php echo $detalle['descripcion'] ? 'table-row' : 'none'; ?>">
                                         <td colspan="7"><textarea name="detalle_descripcion_texto[<?php echo $titulo_index; ?>][<?php echo $detalle_index; ?>]"><?php echo htmlspecialchars($detalle['descripcion']); ?></textarea></td>
                                     </tr>
                                 <?php endforeach; ?>
-                                <!-- Título: Subtítulos después de los detalles -->
+                                <!-- TÍTULO: SUBTÍTULOS DESPUÉS DE LOS DETALLES -->
                                 <?php foreach ($titulo_data['subtitulos'] as $subtitulo_index => $subtitulo): ?>
-                                    <!-- Título: Fila de subtítulo -->
+                                    <!-- TÍTULO: FILA DE SUBTÍTULO -->
                                     <tr class="subtitulo">
                                         <td colspan="7" style="background-color: #f9f9f9; font-weight: bold; padding: 10px; margin: 5px 0;"><?php echo htmlspecialchars($subtitulo['nombre']); ?></td>
                                         <td>
-                                            <!-- Título: Botón para eliminar subtítulo -->
+                                            <!-- TÍTULO: BOTÓN PARA ELIMINAR SUBTÍTULO -->
                                             <button type="button" class="btn-eliminar-titulo" onclick="removeSubtitleRow(this)">Eliminar subtítulo</button>
                                         </td>
                                     </tr>
@@ -148,7 +148,7 @@ $stmt_detalles->close();
                             </tbody>
                         </table>
                     </div>
-                    <!-- Título: Botones de acción -->
+                    <!-- TÍTULO: BOTONES DE ACCIÓN -->
                     <div class="detalle-buttons">
                         <button type="button" onclick="addcabeza(this)">Agregar Cabecera</button>
                         <button type="button" onclick="addDetailRow(this)">Agregar detalles</button>
@@ -156,7 +156,7 @@ $stmt_detalles->close();
                     </div>
                 </div>
             <?php endforeach; ?>
-            <!-- Título: Botón para agregar un nuevo título -->
+            <!-- TÍTULO: BOTÓN PARA AGREGAR UN NUEVO TÍTULO -->
             <div class="fixed-button-contenedor">
                 <button type="button" onclick="addDetailSection()">Agregar un nuevo título</button>
             </div>

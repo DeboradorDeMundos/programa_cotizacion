@@ -16,60 +16,60 @@ BPPJ
 <link rel="stylesheet" href="../../css/nueva_cotizacion/detalle_total.css">
 <div class="form-contenedor">
     <div class="form-group-2">
-        <!-- Título: Campo para Sub Total -->
+        <!-- TÍTULO: CAMPO PARA SUB TOTAL -->
         <label for="subTotal">Sub Total</label>
-        <!-- Título: Campo para Mostrar el Sub Total -->
+        <!-- TÍTULO: CAMPO PARA MOSTRAR EL SUB TOTAL -->
         <input type="number" id="sub_total" name="sub_total" step="1" min="0" readonly>
     </div>
 
     <div class="form-group-inline-2">
         <div class="form-group-2">
-            <!-- Título: Campo para Descuento Global -->
+            <!-- TÍTULO: CAMPO PARA DESCUENTO GLOBAL -->
             <label for="descuentoGlobal">Descuento</label>
-            <!-- Título: Campo para Ingresar el Descuento Global en Porcentaje -->
+            <!-- TÍTULO: CAMPO PARA INGRESAR EL DESCUENTO GLOBAL EN PORCENTAJE -->
             <input type="number" id="descuento_global_porcentaje" name="descuento_global_porcentaje" oninput="CalcularTotales()" oninput="QuitarCaracteresInvalidos(this)" step="1" min="0" max="100" value="0">
             <span>%</span>
         </div>
         <div class="form-group-2">
-            <!-- Título: Campo para Monto del Descuento Global -->
+            <!-- TÍTULO: CAMPO PARA MONTO DEL DESCUENTO GLOBAL -->
             <label for="monto">Monto</label>
-            <!-- Título: Campo para Mostrar el Monto del Descuento Global -->
+            <!-- TÍTULO: CAMPO PARA MOSTRAR EL MONTO DEL DESCUENTO GLOBAL -->
             <input type="number" id="descuento_global_monto" name="descuento_global_monto" step="0" readonly>
         </div>
     </div>
 
     <div class="form-group-2">
-        <!-- Título: Campo para Monto Neto -->
+        <!-- TÍTULO: CAMPO PARA MONTO NETO -->
         <label for="montoNeto">Monto Neto</label>
-        <!-- Título: Campo para Mostrar el Monto Neto -->
+        <!-- TÍTULO: CAMPO PARA MOSTRAR EL MONTO NETO -->
         <input type="number" id="monto_neto" name="monto_neto" step="1" min="0" readonly>
     </div>
 
     <div class="form-group-inline-2">
         <div class="form-group-2">
-            <!-- Título: Campo para IVA -->
+            <!-- TÍTULO: CAMPO PARA IVA -->
             <label for="iva">IVA</label>
-            <!-- Título: Campo para Mostrar el IVA en Porcentaje -->
+            <!-- TÍTULO: CAMPO PARA MOSTRAR EL IVA EN PORCENTAJE -->
             <input type="number" id="iva_porcentaje" name="iva_porcentaje" step="0" min="0" max="100" value="19" readonly>
             <span>%</span>
         </div>
         <div class="form-group-2">
-            <!-- Título: Campo para Total IVA -->
+            <!-- TÍTULO: CAMPO PARA TOTAL IVA -->
             <label for="totalIva">Total IVA</label>
-            <!-- Título: Campo para Mostrar el Total de IVA -->
+            <!-- TÍTULO: CAMPO PARA MOSTRAR EL TOTAL DE IVA -->
             <input type="number" id="total_iva" name="total_iva" step="0" min="0" readonly>
         </div>
     </div>
 
     <div class="form-group-2">
-        <!-- Título: Campo para Total Final -->
+        <!-- TÍTULO: CAMPO PARA TOTAL FINAL -->
         <label for="total_final">Total final</label>
-        <!-- Título: Campo para Mostrar el Total Final -->
+        <!-- TÍTULO: CAMPO PARA MOSTRAR EL TOTAL FINAL -->
         <input type="number" id="total_final" name="total_final" step="1" min="0" readonly>
     </div>
 
     <label>Son:</label> 
-    <!-- Título: Inclusión del archivo numero_text.php -->
+    <!-- TÍTULO: INCLUSIÓN DEL ARCHIVO NUMERO_TEXT.PHP -->
     <?php include 'numero_text.php'; ?>
 </div>
 <script src="../../js/nueva_cotizacion/detalle_total.js"></script> 

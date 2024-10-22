@@ -39,84 +39,84 @@ BPPJ
         <form id="formulario-cotizacion" method="POST" action="" enctype="multipart/form-data">
             <!-- Formulario con ID "formulario-cotizacion". Usa el método POST para enviar los datos al servidor. El atributo "action" define el archivo al que se enviarán los datos. "enctype" especifica que el formulario puede enviar archivos -->
             <a href="javascript:history.back()" class="boton-fijado">Volver</a>
-            <!-- Título: Enlace para Volver -->
+            <!-- TÍTULO: ENLACE PARA VOLVER -->
             
             <!-- Fila 1 -->
             <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
-                <!-- Título: Logo de la Empresa -->
+                <!-- TÍTULO: LOGO DE LA EMPRESA -->
                 <?php include 'cargar_logo_empresa.php'; ?>
 
-                <!-- Título: Cuadro Rojo de Cotización -->
+                <!-- TÍTULO: CUADRO ROJO DE COTIZACIÓN -->
                 <?php include 'cuadro_rojo_cotizacion.php'; ?>
 
                 <fieldset class="box-6 cuadro-datos"> 
-                    <!-- Título: Sección de Datos -->
+                    <!-- TÍTULO: SECCIÓN DE DATOS -->
                     <label for="fecha_emision">Fecha de Emisión:</label> <!-- Etiqueta para el campo de entrada de la fecha de emisión -->
                     <input type="date" id="fecha_emision" name="fecha_emision" required> <!-- Campo de fecha para seleccionar la fecha de emisión. Es obligatorio --> 
                 </fieldset>
             </div>
             <!-- Fila 2 -->
-            <!-- Título: Datos de la Empresa -->
+            <!-- TÍTULO: DATOS DE LA EMPRESA -->
             <?php include 'datos_empresa.php'; ?>
 
             <!-- Fila 3 -->
             <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
-                <!-- Título: Detalle del Proyecto -->
+                <!-- TÍTULO: DETALLE DEL PROYECTO -->
                 <?php include 'detalle_proyecto.php'; ?>  
             </div> <!-- Cierra la fila -->
 
             <!-- Fila 4 -->
-            <!-- Título: Detalle del Cliente -->
+            <!-- TÍTULO: DETALLE DEL CLIENTE -->
             <?php include 'detalle_cliente.php'; ?>
 
             <!-- Fila 5 -->
-            <!-- Título: Detalle del Encargado -->
+            <!-- TÍTULO: DETALLE DEL ENCARGADO -->
             <?php include 'detalle_encargado.php'; ?>
 
             <!-- Fila 6 -->
-            <!-- Título: Detalle del Vendedor -->
+            <!-- TÍTULO: DETALLE DEL VENDEDOR -->
             <?php include 'detalle_vendedor.php'; ?>
 
-            <!-- Título: Detalle de Cotización -->
+            <!-- TÍTULO: DETALLE DE COTIZACIÓN -->
             <?php include 'detalle_cotizacion.php'; ?>
             
-            <!-- Título: Detalle General -->
+            <!-- TÍTULO: DETALLE GENERAL -->
             <?php include 'detalle.php'; ?>
 
-            <!-- Título: Cálculos Finales -->
+            <!-- TÍTULO: CÁLCULOS FINALES -->
             <?php include 'detalle_total.php'; ?>
 
-            <!-- Título: Observaciones -->
+            <!-- TÍTULO: OBSERVACIONES -->
             <?php include 'observaciones.php'; ?>
             
             <br>
-            <!-- Título: Sección para los Pagos -->
+            <!-- TÍTULO: SECCIÓN PARA LOS PAGOS -->
             <?php include 'pago.php'; ?>
             
             <br>
             
-            <!-- Título: Condiciones -->
+            <!-- TÍTULO: CONDICIONES -->
             <?php include 'traer_condiciones.php'; ?>
 
-            <!-- Título: Requisitos -->
+            <!-- TÍTULO: REQUISITOS -->
             <?php include 'traer_requisitos.php'; ?>
 
-            <!-- Título: Obligaciones del Cliente -->
+            <!-- TÍTULO: OBLIGACIONES DEL CLIENTE -->
             <?php include 'obligaciones_cliente.php'; ?>
             
             <!-- Botón para enviar el formulario y generar la cotización -->
             <div>
-                <!-- Título: Mensaje de Despedida -->            
+                <!-- TÍTULO: MENSAJE DE DESPEDIDA -->            
                 <?php include 'mensaje_despedida.php'; ?>            
             </div>
 
-            <!-- Título: Datos Bancarios -->
+            <!-- TÍTULO: DATOS BANCARIOS -->
             <?php include 'traer_datos_bancarios.php'; ?>
 
-            <!-- Título: Firma -->
+            <!-- TÍTULO: FIRMA -->
             <?php include 'firma.php'; ?>
             
-            <!-- Título: Enlaza nuevamente el archivo JavaScript para manejar la lógica del formulario de cotización -->       
+            <!-- TÍTULO: ENLAZA NUEVAMENTE EL ARCHIVO JAVASCRIPT PARA MANEJAR LA LÓGICA DEL FORMULARIO DE COTIZACIÓN -->       
             <script src="../../js/nueva_cotizacion/nueva_cotizacion.js"></script> 
             <script src="../../js/nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
 

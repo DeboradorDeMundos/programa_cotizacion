@@ -11,12 +11,12 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa info cliente .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-
-    <table class="customer-info"> <!-- Título: Tabla de información del cliente -->
+<!-- TÍTULO: TABLA DE INFORMACIÓN DEL CLIENTE -->
+    <table class="customer-info"> 
     <tbody>
         <tr>
             <td>
-                <!-- Título: Información del cliente -->
+                <!-- TÍTULO: INFORMACIÓN DEL CLIENTE -->
                 <strong>SEÑOR(ES):</strong> <?php echo $items[0]['nombre_empresa_cliente']; ?><br>
                 <strong>RUT:</strong> <?php echo $items[0]['rut_empresa_cliente']; ?><br>
                 <strong>DIRECCIÓN:</strong> <?php echo $items[0]['direccion_empresa_cliente']; ?><br>
@@ -26,7 +26,7 @@ BPPJ
                 <strong>TELÉFONO:</strong> <?php echo $items[0]['telefono_empresa_cliente']; ?><br>
             </td>
             <td>
-                <!-- Título: Información de emisión -->
+                <!-- TÍTULO: INFORMACIÓN DE EMISIÓN -->
                 <strong>F. EMISIÓN:</strong> <?php echo $items[0]['fecha_emision']; ?><br>
                 <strong>F. VENCIMIENTO:</strong> <?php echo $items[0]['fecha_validez']; ?><br>
                 <strong>CABECERA:</strong><br>
@@ -35,7 +35,7 @@ BPPJ
         </tr>
         <tr>
             <td colspan="1">
-                <!-- Título: Encargado del proyecto -->
+                <!-- TÍTULO: ENCARGADO DEL PROYECTO -->
                 <strong>ENCARGADO DE PROYECTO:</strong><br>
                 <strong>NOMBRE:</strong> <?php echo $items[0]['nombre_encargado']; ?><br>
                 <strong>RUT:</strong> <?php echo $items[0]['rut_encargado']; ?><br>
@@ -44,7 +44,7 @@ BPPJ
                 <strong>CELULAR:</strong> <?php echo $items[0]['celular_encargado']; ?><br>
             </td>
             <td colspan="1">
-                <!-- Título: Datos del vendedor -->
+                <!-- TÍTULO: DATOS DEL VENDEDOR -->
                 <strong>DATOS DEL VENDEDOR:</strong><br>
                 <strong>NOMBRE:</strong> <?php echo $items[0]['nombre_vendedor']; ?><br>
                 <strong>RUT:</strong> <?php echo $items[0]['rut_vendedor']; ?><br>

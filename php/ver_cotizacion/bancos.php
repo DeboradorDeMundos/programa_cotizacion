@@ -49,10 +49,10 @@ BPPJ
     }
 ?>
 
-<!-- TÍTULO: Contenedor de Información Bancaria -->
+<!-- TÍTULO: CONTENEDOR DE INFORMACIÓN BANCARIA -->
 <div class="barcode-contenedor">
 
-    <!-- TÍTULO: Tabla de Bancos -->
+    <!-- TÍTULO: TABLA DE BANCOS -->
     <table>
         <tr>
             <?php foreach ($bancos as $banco): ?>

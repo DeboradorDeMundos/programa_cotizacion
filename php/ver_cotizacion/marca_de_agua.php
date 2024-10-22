@@ -98,43 +98,43 @@ if ($result->num_rows > 0) {
 <div class="marca_de_agua"></div> <!-- Clase por defecto -->
 <div id="textoPersonalizado" class="texto-personalizado"></div> <!-- Div para texto personalizado -->
 
-<!-- Título: Formulario para cambiar la marca de agua -->
+<!-- TÍTULO: FORMULARIO PARA CAMBIAR LA MARCA DE AGUA -->
 <form id="form-marca-agua" method="POST" action="" enctype="multipart/form-data">
-    <!-- Título: Seleccionar marca de agua -->
+    <!-- TÍTULO: SELECCIONAR MARCA DE AGUA -->
     <label for="marca_agua">Seleccionar marca de agua:</label><br>
     
-    <!-- Título: Opción de nombre de empresa -->
+    <!-- TÍTULO: OPCIÓN DE NOMBRE DE EMPRESA -->
     <input type="radio" id="nombre_empresa" name="marca_agua" value="nombre_empresa" onchange="actualizarMarcaAgua()" checked>
     <label for="nombre_empresa">Nombre de la empresa</label><br>
 
-    <!-- Título: Opción de foto de empresa -->
+    <!-- TÍTULO: OPCIÓN DE FOTO DE EMPRESA -->
     <input type="radio" id="foto_empresa" name="marca_agua" value="foto_empresa" onchange="actualizarMarcaAgua()">
     <label for="foto_empresa">Foto de la empresa</label><br>
 
-    <!-- Título: Opción de imagen personalizada -->
+    <!-- TÍTULO: OPCIÓN DE IMAGEN PERSONALIZADA -->
     <input type="radio" id="imagen_personalizada" name="marca_agua" value="imagen_personalizada" onchange="subirImagen()">
     <label for="imagen_personalizada">Imagen Personalizada:</label>
     <input type="file" id="input_imagen_personalizada" name="imagen_personalizada" accept="image/*" style="display:none;">
     
-    <!-- Título: Opción de texto personalizado -->
+    <!-- TÍTULO: OPCIÓN DE TEXTO PERSONALIZADO -->
     <input type="radio" id="texto_personalizado" name="marca_agua" value="texto_personalizado" onchange="activarTextoPersonalizado()">
     <label for="texto_personalizado">Texto Personalizado:</label>
     <input type="text" id="input_texto_personalizado" name="texto_personalizado" placeholder="Ingresa tu texto aquí" oninput="actualizarTexto()" style="display:none;">
 
     <br><br>
-    <!-- Título: Disposición de la marca de agua -->
+    <!-- TÍTULO: DISPOSICIÓN DE LA MARCA DE AGUA -->
     <label for="disposicion">Disposición de la marca de agua:</label>
     <select name="disposicion" id="disposicion" onchange="actualizarMarcaAgua()">
         <option value="patron" selected>Patrón</option>
         <option value="centro">Centrado</option>
     </select>
 
-    <!-- Título: Ángulo de Rotación -->
+    <!-- TÍTULO: ÁNGULO DE ROTACIÓN -->
     <label for="angulo_rotacion">Ángulo de Rotación (grados):</label>
     <input type="range" name="angulo_rotacion" id="angulo_rotacion" value="0" min="-180" max="180" oninput="actualizarRotacion(this.value)">
     <span id="anguloValor">0</span> grados
 
-    <!-- Título: Tamaño de la marca de agua -->
+    <!-- TÍTULO: TAMAÑO DE LA MARCA DE AGUA -->
     <label for="tamano">Tamaño de la marca de agua (en píxeles):</label>
     <input type="range" name="tamano" id="tamano" value="30" min="10" max="1000" oninput="actualizarTamano(this.value)">
     <span id="tamanoValor">30</span> px

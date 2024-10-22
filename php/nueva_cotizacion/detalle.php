@@ -19,12 +19,12 @@ BPPJ
     <legend>Detalle de la Cotización</legend>
     <div id="detalle-contenedor">
         <div class="seccion-detalle">
-            <!-- Título: Sección para detalles de la cotización -->
+            <!-- TÍTULO: SECCIÓN PARA DETALLES DE LA COTIZACIÓN -->
             <!-- Aquí se agregarán las secciones dinámicamente -->
         </div>
 
         <div class="fixed-button-contenedor">
-            <!-- Título: Botón para agregar una nueva sección de detalle -->
+            <!-- TÍTULO: BOTÓN PARA AGREGAR UNA NUEVA SECCIÓN DE DETALLE -->
             <button type="button" onclick="AgregarSeccionDeDetalle()">Agregar un nuevo título</button>
         </div>
     </div>

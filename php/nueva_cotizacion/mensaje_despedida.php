@@ -16,9 +16,9 @@ BPPJ
     <link rel="stylesheet" href="../../css/nueva_cotizacion/mensaje_despedida.css">
 <fieldset class="mensaje_despedida-box">
     <div class="form-group">
-            <!-- Título: Etiqueta para Mensaje de Despedida -->
+            <!-- TÍTULO: ETIQUETA PARA MENSAJE DE DESPEDIDA -->
             <label for="mensaje_despedida">MENSAJE AL FINAL DE LA COTIZACION:</label>
-            <!-- Título: Área de Texto para Mensaje de Despedida -->
+            <!-- TÍTULO: ÁREA DE TEXTO PARA MENSAJE DE DESPEDIDA -->
             <textarea id="mensaje_despedida" name="mensaje_despedida" rows="4" cols="50" placeholder="---> AGREGA AQUI TU MENSAJE DE DESPEDIDA AQUI ..."></textarea>
         </div>        
     </fieldset>      

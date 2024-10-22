@@ -161,30 +161,30 @@ DROP TABLE IF EXISTS E_Empresa;
 -- ------------------------------------------------------------------------------------------------------------ 
 
 -- Eliminar la tabla Proveedor si existe
-DROP TABLE IF EXISTS P_Proveedor;
+    DROP TABLE IF EXISTS P_Proveedor;
 
 -- Crear la tabla Proveedor
-CREATE TABLE P_Proveedor (
-    id_proveedor int NOT NULL AUTO_INCREMENT, -- Identificador único del proveedor
-    nombre_proveedor varchar(255) NOT NULL, -- Nombre del proveedor
-    rut_proveedor varchar(20) , -- RUT del proveedor (debe ser único)
-    direccion_proveedor varchar(255), -- Dirección del proveedor
-    telefono_proveedor varchar(20), -- Teléfono del proveedor
-    email_proveedor varchar(100), -- Email del proveedor
-    cargo_proveedor varchar(255), -- Cargo del proveedor
-    comuna_proveedor varchar(255), -- Comuna del proveedor
-    ciudad_proveedor varchar(255), -- Ciudad del proveedor
-    tipo_proveedor varchar(255), -- Tipo del proveedor
-    empresa_proveedor varchar(255), -- Empresa del proveedor(empresa)
-    rut_empresa_proveedor varchar(20) , -- RUT del proveedor(debe ser único)(empresa)
-    direccion_empresa_proveedor varchar(255), -- Dirección del proveedor(empresa)
-    telefono_empresa_proveedor varchar(20), -- Teléfono del proveedor(empresa)
-    email_empresa_proveedor varchar(100), -- Email del proveedor(empresa)
-    comuna_empresa_proveedor varchar(255), -- Comuna del proveedor(empresa)
-    ciudad_empresa_proveedor varchar(255), -- Ciudad del proveedor(empresa)
-    giro_proveedor varchar(255), -- Giro del proveedor(empresa)
-    PRIMARY KEY (id_proveedor) -- Definición de la clave primaria
-) ENGINE=InnoDB ;
+    CREATE TABLE P_Proveedor (
+        id_proveedor int NOT NULL AUTO_INCREMENT, -- Identificador único del proveedor
+        nombre_proveedor varchar(255) NOT NULL, -- Nombre del proveedor
+        rut_proveedor varchar(20) , -- RUT del proveedor (debe ser único)
+        direccion_proveedor varchar(255), -- Dirección del proveedor
+        telefono_proveedor varchar(20), -- Teléfono del proveedor
+        email_proveedor varchar(100), -- Email del proveedor
+        cargo_proveedor varchar(255), -- Cargo del proveedor
+        comuna_proveedor varchar(255), -- Comuna del proveedor
+        ciudad_proveedor varchar(255), -- Ciudad del proveedor
+        tipo_proveedor varchar(255), -- Tipo del proveedor
+        empresa_proveedor varchar(255), -- Empresa del proveedor(empresa)
+        rut_empresa_proveedor varchar(20) , -- RUT del proveedor(debe ser único)(empresa)
+        direccion_empresa_proveedor varchar(255), -- Dirección del proveedor(empresa)
+        telefono_empresa_proveedor varchar(20), -- Teléfono del proveedor(empresa)
+        email_empresa_proveedor varchar(100), -- Email del proveedor(empresa)
+        comuna_empresa_proveedor varchar(255), -- Comuna del proveedor(empresa)
+        ciudad_empresa_proveedor varchar(255), -- Ciudad del proveedor(empresa)
+        giro_proveedor varchar(255), -- Giro del proveedor(empresa)
+        PRIMARY KEY (id_proveedor) -- Definición de la clave primaria
+    ) ENGINE=InnoDB ;
 
 
 -- ------------------------------------------------------------------------------------------------------------

@@ -13,17 +13,17 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- -->
 
     <link rel="stylesheet" href="../../css/nueva_cotizacion/traer_foto.css">
-<!-- Título: Sección para Cargar Logo de Empresa -->
+<!-- TÍTULO: SECCIÓN PARA CARGAR LOGO DE EMPRESA -->
 <div class="box-6 caja-logo">
     <label for="subir-logo" class="contenedor-logo">
         <?php if (isset($row['ruta_foto']) && !empty($row['ruta_foto'])): ?>
-            <!-- Título: Imagen de Logo de Empresa -->
+            <!-- TÍTULO: IMAGEN DE LOGO DE EMPRESA -->
             <img src="<?php echo htmlspecialchars($row['ruta_foto'], ENT_QUOTES, 'UTF-8'); ?>" alt="Foto de perfil" id="Previsualizar-logo" class="logo" onclick="document.getElementById('subir-logo').click();" />
         <?php else: ?>
-            <!-- Título: Texto para Cargar Logo -->
+            <!-- TÍTULO: TEXTO PARA CARGAR LOGO -->
             <span id="logo-text" onclick="document.getElementById('subir-logo').click();">Cargar Logo de Empresa</span>
         <?php endif; ?>
-        <!-- Título: Input para Subir Logo -->
+        <!-- TÍTULO: INPUT PARA SUBIR LOGO -->
         <input type="file" id="subir-logo" name="logo_upload" accept="image/*" style="display:none;" onchange="previewImage(event)">
     </label>
 </div>

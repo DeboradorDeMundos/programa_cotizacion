@@ -22,9 +22,9 @@ BPPJ
     <legend>Datos proyecto</legend>
     <div class="form-group-inline">
         <div class="form-group">
-            <!-- Título: Campo para el Nombre del Proyecto -->
+            <!-- TÍTULO: CAMPO PARA EL NOMBRE DEL PROYECTO -->
             <label for="proyecto_nombre">Nombre</label> <!-- Etiqueta para el campo de entrada del nombre del proyecto -->
-            <!-- Título: Campo para Ingresar el Nombre del Proyecto -->
+            <!-- TÍTULO: CAMPO PARA INGRESAR EL NOMBRE DEL PROYECTO -->
             <input type="text" id="proyecto_nombre" name="proyecto_nombre" required 
                 pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
                 title="Por favor, ingrese solo letras, números y caracteres como &,-."
@@ -33,9 +33,9 @@ BPPJ
         </div>
 
         <div class="form-group">
-            <!-- Título: Campo para el Código del Proyecto -->
+            <!-- TÍTULO: CAMPO PARA EL CÓDIGO DEL PROYECTO -->
             <label for="proyecto_codigo">Código</label>
-            <!-- Título: Campo para Ingresar el Código del Proyecto -->
+            <!-- TÍTULO: CAMPO PARA INGRESAR EL CÓDIGO DEL PROYECTO -->
             <input type="text" id="proyecto_codigo" name="proyecto_codigo" 
                 placeholder="Introduce un código único" 
                 required 
@@ -49,9 +49,9 @@ BPPJ
     <div class="form-group-inline">
 
         <div class="form-group">
-            <!-- Título: Campo para el Área de Trabajo -->
+            <!-- TÍTULO: CAMPO PARA EL ÁREA DE TRABAJO -->
             <label for="area_trabajo">Área de Trabajo:</label> <!-- Etiqueta para el campo de selección del área de trabajo -->
-            <!-- Título: Campo para Seleccionar el Área de Trabajo -->
+            <!-- TÍTULO: CAMPO PARA SELECCIONAR EL ÁREA DE TRABAJO -->
             <select id="area_trabajo" name="area_trabajo" required> <!-- Campo de selección para el área de trabajo. Este campo es obligatorio -->
                 <option value="" disabled selected>Selecciona un área</option> <!-- Opción por defecto -->
                 <option value="tecnologia">Tecnología</option>
@@ -73,9 +73,9 @@ BPPJ
         </div>
 
         <div class="form-group">
-            <!-- Título: Campo para el Tipo de Trabajo -->
+            <!-- TÍTULO: CAMPO PARA EL TIPO DE TRABAJO -->
             <label for="tipo_trabajo">Tipo de Trabajo:</label> <!-- Etiqueta para el campo de selección del tipo de trabajo -->
-            <!-- Título: Campo para Seleccionar el Tipo de Trabajo -->
+            <!-- TÍTULO: CAMPO PARA SELECCIONAR EL TIPO DE TRABAJO -->
             <select id="tipo_trabajo" name="tipo_trabajo" required> <!-- Campo de selección para el tipo de trabajo. Este campo es obligatorio -->
                 <option value="" disabled selected>Selecciona un tipo de trabajo</option> <!-- Opción por defecto -->
                 <option value="instalacion">Instalación</option>
@@ -95,9 +95,9 @@ BPPJ
     </div>
 
     <div class="form-group">
-        <!-- Título: Campo para el Riesgo -->
+        <!-- TÍTULO: CAMPO PARA EL RIESGO -->
         <label for="riesgo">Riesgo:</label> <!-- Etiqueta para el campo de selección del riesgo -->
-        <!-- Título: Campo para Seleccionar el Nivel de Riesgo -->
+        <!-- TÍTULO: CAMPO PARA SELECCIONAR EL NIVEL DE RIESGO -->
         <select id="riesgo" name="riesgo" required> <!-- Campo de selección para el riesgo. Este campo es obligatorio -->
             <option value="" disabled selected>Selecciona un nivel de riesgo</option> <!-- Opción por defecto -->
             <option value="alto">Alto</option>
@@ -107,9 +107,9 @@ BPPJ
     </div>
 
     <div class="form-group">
-        <!-- Título: Campo para la Descripción del Riesgo -->
+        <!-- TÍTULO: CAMPO PARA LA DESCRIPCIÓN DEL RIESGO -->
         <label for="riesgo_descripcion">Descripción de riesgo</label> <!-- Etiqueta para el campo de entrada de la descripción del riesgo -->
-        <!-- Título: Campo para Ingresar la Descripción del Riesgo -->
+        <!-- TÍTULO: CAMPO PARA INGRESAR LA DESCRIPCIÓN DEL RIESGO -->
         <input type="text" id="riesgo_descripcion" name="riesgo_descripcion" required 
             pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
             title="Por favor, ingrese solo letras, números y caracteres como &,-."
@@ -123,13 +123,13 @@ BPPJ
     <legend>-</legend>
     <div class="form-group-inline">
         <div class="form-group">
-            <!-- Título: Campo para los Días de Compra -->
+            <!-- TÍTULO: CAMPO PARA LOS DÍAS DE COMPRA -->
             <label for="dias_compra">Días de Compra:</label> <!-- Etiqueta para el campo de entrada de los días de compra -->
-            <!-- Título: Campo para Ingresar los Días de Compra -->
+            <!-- TÍTULO: CAMPO PARA INGRESAR LOS DÍAS DE COMPRA -->
             <input type="number" id="dias_compra" name="dias_compra" placeholder="ingrese N° de dias" oninput="QuitarCaracteresInvalidos(this)"> <!-- Campo de número para ingresar la cantidad de días de compra. Este campo no es obligatorio -->
         </div>
         <div class="form-group">
-            <!-- Título: Campo para los Días de Trabajo -->
+            <!-- TÍTULO: CAMPO PARA LOS DÍAS DE TRABAJO -->
             <label for="dias_trabajo">Días de Trabajo:</label> <!-- Etiqueta para el campo de entrada de los días de trabajo -->
             <!-- Título: Campo para Ingresar los Días de Trabajo -->
             <input type="number" id="dias_trabajo" name="dias_trabajo" placeholder="ingrese N° de dias" oninput="QuitarCaracteresInvalidos(this)"> <!-- Campo de número para ingresar la cantidad de días de trabajo. No es obligatorio -->
@@ -137,17 +137,17 @@ BPPJ
     </div>
 
     <div class="form-group">
-        <!-- Título: Campo para el Número de Trabajadores -->
+        <!-- TÍTULO: CAMPO PARA EL NÚMERO DE TRABAJADORES -->
         <label for="trabajadores">Número de Trabajadores:</label> <!-- Etiqueta para el campo de entrada del número de trabajadores -->
-        <!-- Título: Campo para Ingresar el Número de Trabajadores -->
+        <!-- TÍTULO: CAMPO PARA INGRESAR EL NÚMERO DE TRABAJADORES -->
         <input type="number" id="trabajadores" name="trabajadores" placeholder="N° trabajadores" oninput="QuitarCaracteresInvalidos(this)"> <!-- Campo de número para ingresar la cantidad de trabajadores. Este campo no es obligatorio -->
     </div>
 
     <div class="form-group-inline">
         <div class="form-group">
-            <!-- Título: Campo para el Horario -->
+            <!-- TÍTULO: CAMPO PARA EL HORARIO -->
             <label for="horario">Horario:</label>
-            <!-- Título: Campo para Ingresar el Horario -->
+            <!-- TÍTULO: CAMPO PARA INGRESAR EL HORARIO -->
             <input type="text" id="horario" name="horario" 
                 placeholder="Ej: 08:00 a 18:00" 
                 pattern="^([01]?[0-9]|2[0-3]):[0-5][0-9] a ([01]?[0-9]|2[0-3]):[0-5][0-9]$" 
@@ -155,9 +155,9 @@ BPPJ
                 title="Ingresa un horario válido (Ej: 08:00 a 18:00)."> <!-- Campo de texto para ingresar el horario. Este campo no es obligatorio -->
         </div>
         <div class="form-group">
-            <!-- Título: Campo para la Colación -->
+            <!-- TÍTULO: CAMPO PARA LA COLACIÓN -->
             <label for="colacion">Colación:</label>
-            <!-- Título: Campo para Ingresar la Información sobre la Colación -->
+            <!-- TÍTULO: CAMPO PARA INGRESAR LA INFORMACIÓN SOBRE LA COLACIÓN -->
             <input type="text" id="colacion" name="colacion" 
                 placeholder="Ej: Sí o No" 
                 pattern="^[a-zA-Z0-9-_]{1,10}$" 
@@ -167,9 +167,9 @@ BPPJ
     </div>
 
     <div class="form-group">
-        <!-- Título: Campo para la Entrega -->
+        <!-- TÍTULO: CAMPO PARA LA ENTREGA -->
         <label for="entrega">Entrega:</label> <!-- Etiqueta para el campo de entrada de la entrega -->
-        <!-- Título: Campo para Ingresar Detalles sobre la Entrega -->
+        <!-- TÍTULO: CAMPO PARA INGRESAR DETALLES SOBRE LA ENTREGA -->
         <input type="text" id="entrega" name="entrega" 
             placeholder="Ej: Lunes, Martes" 
             required 

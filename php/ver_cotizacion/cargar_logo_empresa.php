@@ -133,24 +133,24 @@ if ($id_empresa > 0) {
 ?>
 
 <link rel="stylesheet" href="../../css/ver_cotizacion/cargar_logo_empresa.css">
-<!-- Título: Sección de Código para la Carga de Logo -->
+<!-- TÍTULO: SECCIÓN DE CÓDIGO PARA LA CARGA DE LOGO -->
 <div class="box-6 caja-logo">
     <?php
-    // Título: Procesamiento de la Subida de Imagen
+    // TÍTULO: PROCESAMIENTO DE LA SUBIDA DE IMAGEN
     // Procesar la subida de la imagen cuando se envía el formulario
     $upload_dir = '../../imagenes/cotizacion/'; // Ruta relativa desde el archivo PHP
     $empresa_id_foto = null;
 
-    // Título: Verificación del Envío del Formulario
+    // TÍTULO: VERIFICACIÓN DEL ENVÍO DEL FORMULARIO
     // Verificar si se ha enviado el formulario
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Título: Verificación de la Carga de Imagen
+        // TÍTULO: VERIFICACIÓN DE LA CARGA DE IMAGEN
         // Verificar si se ha cargado una imagen sin errores
         if (isset($_FILES['logo_upload']) && $_FILES['logo_upload']['error'] == UPLOAD_ERR_OK) {
             $tmp_name = $_FILES['logo_upload']['tmp_name'];
             $name = basename($_FILES['logo_upload']['name']);
 
-            // Título: Validación de Tipo de Archivo
+            // TÍTULO: VALIDACIÓN DE TIPO DE ARCHIVO
             // Validar el tipo de archivo permitido
             $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
             if (!in_array($_FILES['logo_upload']['type'], $allowed_types)) {
@@ -159,12 +159,12 @@ if ($id_empresa > 0) {
 
             $upload_file = $upload_dir . $name; // Ruta del archivo a cargar
 
-            // Título: Movimiento de Archivo Cargado
+            // TÍTULO: MOVIMIENTO DE ARCHIVO CARGADO
             // Mover el archivo cargado al directorio de destino
             if (move_uploaded_file($tmp_name, $upload_file)) {
                 echo "Imagen subida correctamente."; // Mensaje de éxito
 
-                // Título: Inserción de Ruta de Foto en la Base de Datos
+                // TÍTULO: INSERCIÓN DE RUTA DE FOTO EN LA BASE DE DATOS
                 // Insertar la ruta de la foto en la tabla FotosPerfil
                 $sql_foto = "INSERT INTO C_FotosPerfil (ruta_foto) VALUES (?)";
                 $stmt_foto = $mysqli->prepare($sql_foto);
@@ -187,18 +187,18 @@ if ($id_empresa > 0) {
     }
     ?>
     
-    <!-- Título: Carga de Logo -->
+    <!-- TÍTULO: CARGA DE LOGO -->
     <label for="subir-logo" class="contenedor-logo">
         <?php if (isset($items['ruta_foto']) && !empty($items['ruta_foto'])): ?>
-            <!-- Título: Previsualización de Imagen -->
+            <!-- TÍTULO: PREVISUALIZACIÓN DE IMAGEN -->
             <!-- Mostrar la imagen de perfil si existe -->
             <img src="<?php echo htmlspecialchars($items['ruta_foto'], ENT_QUOTES, 'UTF-8'); ?>" alt="Foto de perfil" id="Previsualizar-logo" class="logo" onclick="document.getElementById('subir-logo').click();" />
         <?php else: ?>
-            <!-- Título: Texto para Cargar Logo -->
+            <!-- TÍTULO: TEXTO PARA CARGAR LOGO -->
             <!-- Mostrar texto para cargar logo si no hay imagen -->
             <span id="logo-text" onclick="document.getElementById('subir-logo').click();">Cargar Logo de Empresa</span>
         <?php endif; ?>
-        <!-- Título: Input Oculto para Cargar Imagen -->
+        <!-- TÍTULO: INPUT OCULTO PARA CARGAR IMAGEN -->
         <!-- Input oculto para cargar la imagen -->
         <input type="file" id="subir-logo" name="logo_upload" accept="image/*" style="display:none;" onchange="previewImage(event)">
     </label>

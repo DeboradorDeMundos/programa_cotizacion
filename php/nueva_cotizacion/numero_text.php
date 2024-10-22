@@ -11,19 +11,19 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Numero text .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-<!-- Título: Campo Oculto para Total en Texto -->
+<!-- TÍTULO: CAMPO OCULTO PARA TOTAL EN TEXTO -->
 <input type="hidden" id="total-en-texto" name="total-en-texto">
 <!-- Campo oculto para almacenar el total en texto -->
 
-<!-- Título: Div para Mostrar Total en Texto -->
+<!-- TÍTULO: DIV PARA MOSTRAR TOTAL EN TEXTO -->
 <div id="total-en-texto-display"></div>
 <!-- Elemento para mostrar el total en texto -->
 
-<!-- Título: Párrafo para Total en Texto -->
+<!-- TÍTULO: PÁRRAFO PARA TOTAL EN TEXTO -->
 <p id="total-en-texto" name="total-en-texto"></p>
 <!-- Párrafo que muestra el total en texto -->
 
-<!-- Título: Script para Convertir Número a Texto -->
+<!-- TÍTULO: SCRIPT PARA CONVERTIR NÚMERO A TEXTO -->
 <script src="../../js/nueva_cotizacion/numero_text.js"></script>
 <!-- Enlaza el script para convertir el número a texto -->
      <!-- ------------------------------------------------------------------------------------------------------------

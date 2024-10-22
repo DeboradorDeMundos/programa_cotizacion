@@ -47,49 +47,49 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
 ?>
 <link rel="stylesheet" href="../../css/ver_cotizacion/traer_totales.css">
 <div class="form-contenedor">
-    <!-- Título: Subtotal -->
+    <!-- TÍTULO: SUBTOTAL -->
     <div class="form-group-2">
         <label for="subTotal">Sub Total</label>
         <input type="number" id="sub_total" name="sub_total" step="1" min="0" value="<?php echo $sub_total; ?>" readonly>
     </div>
 
-    <!-- Título: Descuento y Monto -->
+    <!-- TÍTULO: DESCUENTO Y MONTO -->
     <div class="form-group-inline-2">
-        <!-- Título: Descuento Global -->
+        <!-- TÍTULO: DESCUENTO GLOBAL -->
         <div class="form-group-2">
             <label for="descuentoGlobal">Descuento</label>
             <input type="number" id="descuento_global_porcentaje" name="descuento_global_porcentaje" step="1" min="1" max="100" value="<?php echo $descuento_global; ?>" oninput="calculateTotals()">
             <span>%</span>
         </div>
-        <!-- Título: Monto del Descuento -->
+        <!-- TÍTULO: MONTO DEL DESCUENTO -->
         <div class="form-group-2">
             <label for="monto">Monto</label>
             <input type="number" id="descuento_global_monto" name="descuento_global_monto" step="0" value="<?php echo ($sub_total * $descuento_global / 100); ?>" readonly>
         </div>
     </div>
 
-    <!-- Título: Monto Neto -->
+    <!-- TÍTULO: MONTO NETO -->
     <div class="form-group-2">
         <label for="montoNeto">Monto Neto</label>
         <input type="number" id="monto_neto" name="monto_neto" step="1" min="0" value="<?php echo $monto_neto; ?>" readonly>
     </div>
 
-    <!-- Título: IVA y Total IVA -->
+    <!-- TÍTULO: IVA Y TOTAL IVA -->
     <div class="form-group-inline-2">
-        <!-- Título: IVA porcentaje -->
+        <!-- TÍTULO: IVA PORCENTAJE -->
         <div class="form-group-2">
             <label for="iva">IVA</label>
             <input type="number" id="iva_porcentaje" name="iva_porcentaje" step="0.01" min="0" max="100" value="<?php echo $iva_valor; ?>" readonly>
             <span>%</span>
         </div>
-        <!-- Título: Total IVA -->
+        <!-- TÍTULO: TOTAL IVA -->
         <div class="form-group-2">
             <label for="totalIva">Total IVA</label>
             <input type="number" id="total_iva" name="total_iva" step="0.01" min="0" value="<?php echo $total_iva; ?>" readonly>
         </div>
     </div>
     
-    <!-- Título: Total Final -->
+    <!-- TÍTULO: TOTAL FINAL -->
     <div class="form-group-2">
         <label for="total_final">Total final</label>
         <input type="number" id="total_final" name="total_final" step="1" min="0" value="<?php echo $total_final; ?>" readonly>

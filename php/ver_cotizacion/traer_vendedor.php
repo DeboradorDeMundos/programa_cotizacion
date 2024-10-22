@@ -52,7 +52,79 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
         echo "<p>Error al preparar la consulta del vendedor: " . $mysqli->error . "</p>";
     }
 }
+?>
+<fieldset class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
+    <!-- TÍTULO: DETALLE VENDEDOR -->
+    <legend>Detalle vendedor</legend>
+    <!-- TÍTULO: DATOS DEL VENDEDOR -->
+    <div class="box-6 cuadro-datos"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
+        <div class="form-group-inline">
+            <!-- TÍTULO: RUT DEL VENDEDOR -->
+            <div class="form-group">
+                <label for="vendedor_rut">RUT: </label> <!-- Etiqueta para el campo de entrada del RUT del vendedor -->
+                <input type="text" id="vendedor_rut" name="vendedor_rut" 
+                    minlength="7" maxlength="12" 
+                    placeholder="Ej: 12.345.678-9"
+                    value="<?php echo htmlspecialchars($vendedor_rut); ?>" 
+                    required 
+                    oninput="FormatearRut(this)"
+                    oninput="QuitarCaracteresInvalidos(this)"> <!-- Campo de texto para ingresar el RUT del vendedor. También es obligatorio -->
+            </div>
+            <!-- TÍTULO: NOMBRE DEL VENDEDOR -->
+            <div class="form-group">
+                <label for="vendedor_nombre">Nombre:</label> <!-- Etiqueta para el campo de entrada del nombre del vendedor -->
+                <input type="text" id="vendedor_nombre" name="vendedor_nombre" 
+                    value="<?php echo htmlspecialchars($vendedor_nombre); ?>" 
+                    placeholder="Ej: María López" 
+                    required 
+                    minlength="3" 
+                    maxlength="50" 
+                    pattern="^[a-zA-ZÀ-ÿ\s]+$" 
+                    oninput="QuitarCaracteresInvalidos(this)"
+                    title="Ingresa un nombre válido (Ej: María López). Solo se permiten letras y espacios."> <!-- Campo de texto para ingresar el nombre del vendedor. El atributo "required" hace que el campo sea obligatorio -->
+            </div>
+        </div>
 
+        <!-- TÍTULO: EMAIL DEL VENDEDOR -->
+        <div class="form-group">
+            <label for="vendedor_email">Email:</label> <!-- Etiqueta para el campo de entrada del email del vendedor -->
+            <input type="email" id="vendedor_email" name="vendedor_email" 
+                value="<?php echo htmlspecialchars($vendedor_email); ?>" 
+                placeholder="ejemplo@gmail.com" 
+                maxlength="255" 
+                required 
+                title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
+                oninput="QuitarCaracteresInvalidos(this)"
+                onblur="CompletarEmail(this)"> <!-- Campo de correo electrónico para ingresar el email del vendedor. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico. También es obligatorio -->
+        </div>
+    </div>
+    <!-- TÍTULO: DATOS DE CONTACTO DEL VENDEDOR -->
+    <div class="box-6 cuadro-datos cuadro-datos-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "cuadro-datos-left" para estilo -->
+        <!-- TÍTULO: TELÉFONO DEL VENDEDOR -->
+        <div class="form-group">
+            <label for="vendedor_telefono">Teléfono:</label> <!-- Etiqueta para el campo de entrada del teléfono del vendedor -->
+            <input type="text" id="vendedor_telefono" name="vendedor_telefono" 
+                value="<?php echo htmlspecialchars($vendedor_telefono); ?>" 
+                placeholder="+56 9 1234 1234" 
+                maxlength="16" 
+                title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
+                oninput="asegurarMasYDetectarPais4(this)"> <!-- Campo de texto para ingresar el teléfono del vendedor -->
+        </div>
+        <!-- TÍTULO: CELULAR DEL VENDEDOR -->
+        <div class="form-group">
+            <label for="vendedor_celular">Celular:</label> <!-- Etiqueta para el campo de entrada del celular del vendedor -->
+            <input type="text" id="vendedor_celular" name="vendedor_celular" 
+                value="<?php echo htmlspecialchars($vendedor_celular); ?>" 
+                placeholder="+56 9 1234 1234" 
+                maxlength="16" 
+                title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
+                oninput="asegurarMasYDetectarPais5(this)"> <!-- Campo de texto para ingresar el número de celular del vendedor -->
+        </div>
+    </div>
+</fieldset>
+
+
+<?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Recibir datos del formulario vendedor
     $vendedor_rut = isset($_POST['vendedor_rut']) ? trim($_POST['vendedor_rut']) : null;
@@ -103,76 +175,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-<fieldset class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
-    <!-- Título: Detalle vendedor -->
-    <legend>Detalle vendedor</legend>
-    <!-- Título: Datos del vendedor -->
-    <div class="box-6 cuadro-datos"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
-        <div class="form-group-inline">
-            <!-- Título: RUT del vendedor -->
-            <div class="form-group">
-                <label for="vendedor_rut">RUT: </label> <!-- Etiqueta para el campo de entrada del RUT del vendedor -->
-                <input type="text" id="vendedor_rut" name="vendedor_rut" 
-                    minlength="7" maxlength="12" 
-                    placeholder="Ej: 12.345.678-9"
-                    value="<?php echo htmlspecialchars($vendedor_rut); ?>" 
-                    required 
-                    oninput="FormatearRut(this)"
-                    oninput="QuitarCaracteresInvalidos(this)"> <!-- Campo de texto para ingresar el RUT del vendedor. También es obligatorio -->
-            </div>
-            <!-- Título: Nombre del vendedor -->
-            <div class="form-group">
-                <label for="vendedor_nombre">Nombre:</label> <!-- Etiqueta para el campo de entrada del nombre del vendedor -->
-                <input type="text" id="vendedor_nombre" name="vendedor_nombre" 
-                    value="<?php echo htmlspecialchars($vendedor_nombre); ?>" 
-                    placeholder="Ej: María López" 
-                    required 
-                    minlength="3" 
-                    maxlength="50" 
-                    pattern="^[a-zA-ZÀ-ÿ\s]+$" 
-                    oninput="QuitarCaracteresInvalidos(this)"
-                    title="Ingresa un nombre válido (Ej: María López). Solo se permiten letras y espacios."> <!-- Campo de texto para ingresar el nombre del vendedor. El atributo "required" hace que el campo sea obligatorio -->
-            </div>
-        </div>
-
-        <!-- Título: Email del vendedor -->
-        <div class="form-group">
-            <label for="vendedor_email">Email:</label> <!-- Etiqueta para el campo de entrada del email del vendedor -->
-            <input type="email" id="vendedor_email" name="vendedor_email" 
-                value="<?php echo htmlspecialchars($vendedor_email); ?>" 
-                placeholder="ejemplo@gmail.com" 
-                maxlength="255" 
-                required 
-                title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
-                oninput="QuitarCaracteresInvalidos(this)"
-                onblur="CompletarEmail(this)"> <!-- Campo de correo electrónico para ingresar el email del vendedor. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico. También es obligatorio -->
-        </div>
-    </div>
-    <!-- Título: Datos de contacto del vendedor -->
-    <div class="box-6 cuadro-datos cuadro-datos-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "cuadro-datos-left" para estilo -->
-        <!-- Título: Teléfono del vendedor -->
-        <div class="form-group">
-            <label for="vendedor_telefono">Teléfono:</label> <!-- Etiqueta para el campo de entrada del teléfono del vendedor -->
-            <input type="text" id="vendedor_telefono" name="vendedor_telefono" 
-                value="<?php echo htmlspecialchars($vendedor_telefono); ?>" 
-                placeholder="+56 9 1234 1234" 
-                maxlength="16" 
-                title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                oninput="asegurarMasYDetectarPais4(this)"> <!-- Campo de texto para ingresar el teléfono del vendedor -->
-        </div>
-        <!-- Título: Celular del vendedor -->
-        <div class="form-group">
-            <label for="vendedor_celular">Celular:</label> <!-- Etiqueta para el campo de entrada del celular del vendedor -->
-            <input type="text" id="vendedor_celular" name="vendedor_celular" 
-                value="<?php echo htmlspecialchars($vendedor_celular); ?>" 
-                placeholder="+56 9 1234 1234" 
-                maxlength="16" 
-                title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                oninput="asegurarMasYDetectarPais5(this)"> <!-- Campo de texto para ingresar el número de celular del vendedor -->
-        </div>
-    </div>
-</fieldset>
-
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Traer vendedores .PHP ----------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->

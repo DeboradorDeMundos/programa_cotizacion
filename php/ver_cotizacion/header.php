@@ -133,24 +133,24 @@ if ($stmt_firma = $mysqli->prepare($sql_firma)) {
     echo "<p>Error al preparar la consulta de la firma: " . $mysqli->error . "</p>";
 }
 ?>
-
-<div class="header-contenedor"> <!-- Título: Contenedor del encabezado -->
-    <!-- Título: Logo de la empresa -->
+ <!-- TÍTULO: CONTENEDOR DEL ENCABEZADO -->
+<div class="header-contenedor">
+    <!-- TÍTULO: LOGO DE LA EMPRESA -->
     <img alt="Company Logo" class="logo" src="<?php echo $ruta_foto; ?>"/>
-    
-    <div class="header"> <!-- Título: Información de la empresa -->
+    <!-- TÍTULO: INFORMACIÓN DE LA EMPRESA -->
+    <div class="header"> 
         <h1><?php echo $items[0]['nombre_empresa']; ?></h1>
         <h2><?php echo $items[0]['area_empresa']; ?></h2>
-        
-        <div class="contact-info"> <!-- Título: Información de contacto -->
+        <!-- TÍTULO: INFORMACIÓN DE CONTACTO -->
+        <div class="contact-info"> 
             <p>DIRECCIÓN: <?php echo $items[0]['direccion_empresa']; ?></p>
             <p>TELÉFONO: <?php echo $items[0]['telefono_empresa']; ?></p>
             <p>E-MAIL: <?php echo $items[0]['email_empresa']; ?></p>
             <p>WEB: <?php echo $items[0]['web_empresa']; ?></p>
         </div>
     </div>
-    
-    <div class="invoice-info"> <!-- Título: Información de la cotización -->
+    <!-- TÍTULO: INFORMACIÓN DE LA COTIZACIÓN -->
+    <div class="invoice-info"> 
         <p>R.U.T.: <?php echo $items[0]['rut_empresa']; ?></p>
         <h3>COTIZACIÓN</h3>
         <p>Nº: <?php echo $items[0]['numero_cotizacion']; ?></p>

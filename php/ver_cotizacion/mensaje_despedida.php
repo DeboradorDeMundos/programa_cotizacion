@@ -27,13 +27,13 @@ $stmt->close();
     <link rel="stylesheet" href="../../css/ver_cotizacion/mensaje_despedida.css">
 </head>
 
-<!-- Título: Mensaje de Despedida -->
+<!-- TÍTULO: MENSAJE DE DESPEDIDA -->
 <fieldset class="mensaje_despedida-box">
     <legend>¡IMPORTANTE!</legend>
     
-    <!-- Título: Grupo de formulario para mensaje de despedida -->
+    <!-- TÍTULO: GRUPO DE FORMULARIO PARA MENSAJE DE DESPEDIDA -->
     <div class="form-group">
-        <!-- Título: Mensaje -->
+        <!-- TÍTULO: MENSAJE -->
         <label for="mensaje_despedida">MENSAJE :</label>
         <textarea id="mensaje_despedida" rows="4" cols="50" readonly><?php echo htmlspecialchars($mensaje_despedida); ?></textarea>
     </div>

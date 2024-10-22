@@ -104,28 +104,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-<!-- Título: Fila para modificar datos del encargado -->
+<!-- TÍTULO: FILA PARA MODIFICAR DATOS DEL ENCARGADO -->
 <fieldset class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
     <legend>Modificar Datos Encargado</legend>
-    <!-- Título: Caja para ingresar datos del encargado (6 columnas) -->
+    <!-- TÍTULO: CAJA PARA INGRESAR DATOS DEL ENCARGADO (6 COLUMNAS) -->
     <div class="box-6 cuadro-datos"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
         <div class="form-group-inline">
-            <!-- Título: Grupo de formulario para RUT y Nombre -->
+            <!-- TÍTULO: GRUPO DE FORMULARIO PARA RUT Y NOMBRE -->
             <div class="form-group">
-                <!-- Título: Etiqueta para el campo de entrada del RUT del encargado -->
+                <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DEL RUT DEL ENCARGADO -->
                 <label for="encargado_rut">RUT: </label>
-                <!-- Título: Campo de texto para ingresar el RUT del encargado -->
+                <!-- TÍTULO: CAMPO DE TEXTO PARA INGRESAR EL RUT DEL ENCARGADO -->
                 <input type="text" id="encargado_rut" name="encargado_rut" 
                     minlength="7" maxlength="12" 
                     placeholder="Ej: 12.345.678-9" 
                     value="<?php echo htmlspecialchars($enc_rut); ?>" 
                     required oninput="FormatearRut(this)"> <!-- También es obligatorio -->
             </div>
-            <!-- Título: Grupo de formulario para Nombre -->
+            <!-- TÍTULO: GRUPO DE FORMULARIO PARA NOMBRE -->
             <div class="form-group">
-                <!-- Título: Etiqueta para el campo de entrada del nombre del encargado -->
+                <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DEL NOMBRE DEL ENCARGADO -->
                 <label for="enc_nombre">Nombre:</label> 
-                <!-- Título: Campo de texto para ingresar el nombre del encargado -->
+                <!-- TÍTULO: CAMPO DE TEXTO PARA INGRESAR EL NOMBRE DEL ENCARGADO -->
                 <input type="text" id="enc_nombre" name="enc_nombre" 
                     placeholder="Ej: Juan Pérez" 
                     value="<?php echo htmlspecialchars($enc_nombre); ?>" 
@@ -137,11 +137,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
 
-        <!-- Título: Grupo de formulario para Email -->
+        <!-- TÍTULO: GRUPO DE FORMULARIO PARA EMAIL -->
         <div class="form-group">
-            <!-- Título: Etiqueta para el campo de entrada del email del encargado -->
+            <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DEL EMAIL DEL ENCARGADO -->
             <label for="enc_email">Email:</label> 
-            <!-- Título: Campo de correo electrónico para ingresar el email del encargado -->
+            <!-- TÍTULO: CAMPO DE CORREO ELECTRÓNICO PARA INGRESAR EL EMAIL DEL ENCARGADO -->
             <input type="email" id="enc_email" name="enc_email" 
                 placeholder="ejemplo@gmail.com" 
                 maxlength="255" 
@@ -149,11 +149,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 required 
                 title="Ingresa un correo electrónico válido, como ejemplo@empresa.com"> <!-- El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
         </div>
-        <!-- Título: Grupo de formulario para Teléfono -->
+        <!-- TÍTULO: GRUPO DE FORMULARIO PARA TELÉFONO -->
         <div class="form-group">
-            <!-- Título: Etiqueta para el campo de entrada del teléfono del encargado -->
+            <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DEL TELÉFONO DEL ENCARGADO -->
             <label for="enc_fono">Teléfono:</label> 
-            <!-- Título: Campo de texto para ingresar el teléfono del encargado -->
+            <!-- TÍTULO: CAMPO DE TEXTO PARA INGRESAR EL TELÉFONO DEL ENCARGADO -->
             <input type="text" id="enc_fono" name="enc_fono" 
                 pattern="\+?\d{7,15}" 
                 placeholder="+56 9 1234 1234" 
@@ -162,23 +162,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"> 
         </div>
     </div>
-    <!-- Título: Caja para ingresar datos adicionales del encargado (6 columnas) -->
+    <!-- TÍTULO: CAJA PARA INGRESAR DATOS ADICIONALES DEL ENCARGADO (6 COLUMNAS) -->
     <div class="box-6 cuadro-datos cuadro-datos-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "cuadro-datos-left" para estilo -->
-        <!-- Título: Grupo de formulario para Celular -->
+        <!-- TÍTULO: GRUPO DE FORMULARIO PARA CELULAR -->
         <div class="form-group">
-            <!-- Título: Etiqueta para el campo de entrada del celular del encargado -->
+            <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DEL CELULAR DEL ENCARGADO -->
             <label for="enc_celular">Celular:</label> 
-            <!-- Título: Campo de texto para ingresar el número de celular del encargado -->
+            <!-- TÍTULO: CAMPO DE TEXTO PARA INGRESAR EL NÚMERO DE CELULAR DEL ENCARGADO -->
             <input type="text" id="enc_celular" name="enc_celular" 
                 pattern="\+?\d{7,15}" 
                 placeholder="+56 9 1234 1234" 
                 value="<?php echo htmlspecialchars($enc_celular); ?>"> <!-- Este campo no es obligatorio -->
         </div>
-        <!-- Título: Grupo de formulario para Proyecto Asignado -->
+        <!-- TÍTULO: GRUPO DE FORMULARIO PARA PROYECTO ASIGNADO -->
         <div class="form-group">
-            <!-- Título: Etiqueta para el campo de entrada del proyecto asignado al encargado -->
+            <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DEL PROYECTO ASIGNADO AL ENCARGADO -->
             <label for="enc_proyecto">Proyecto Asignado:</label> 
-            <!-- Título: Campo de texto para ingresar el nombre del proyecto asignado al encargado -->
+            <!-- TÍTULO: CAMPO DE TEXTO PARA INGRESAR EL NOMBRE DEL PROYECTO ASIGNADO AL ENCARGADO -->
             <input type="text" id="enc_proyecto" name="enc_proyecto" 
                 placeholder="Ej: Proyecto XYZ" 
                 value="<?php echo htmlspecialchars($enc_proyecto); ?>" 

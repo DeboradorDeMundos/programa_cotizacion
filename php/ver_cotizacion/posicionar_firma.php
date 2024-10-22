@@ -12,7 +12,7 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Firma .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
     <div id="firma-container" style="text-align: left;"> <!-- Aseguramos que inicie a la izquierda -->
-    <!-- Título: Verificación de Tipo de Firma -->
+    <!-- TÍTULO: VERIFICACIÓN DE TIPO DE FIRMA -->
     <?php
     // Verifica si hay un tipo de firma
     if ($tipo_firma) {
@@ -39,7 +39,7 @@ BPPJ
                 break;
 
             case 3: // Firma Imagen
-                // Título: Mostrar Imagen de Firma Digital
+                // TÍTULO: MOSTRAR IMAGEN DE FIRMA DIGITAL
                 if (!empty($firma['firma_digital'])) {
                     // Mostrar la imagen de la firma
                     $firma_imagen_url = htmlspecialchars($firma['firma_digital']);
@@ -50,7 +50,7 @@ BPPJ
                 break;
 
             case 4: // Firma Digital
-                // Título: Generar Código QR para Firma Digital
+                // TÍTULO: GENERAR CÓDIGO QR PARA FIRMA DIGITAL
                 // Generar el número de cotización
                 $url_firma = "../ver_cotizacion/ver_firma.php?id_cotizacion=" . $numero_cotizacion;
                 // URL del generador de códigos QR
@@ -75,17 +75,17 @@ BPPJ
 
 <!-- Contenedor de Alineación -->
 <div>
-    <!-- Título: Alineación de la Firma -->
+    <!-- TÍTULO: ALINEACIÓN DE LA FIRMA -->
     <label>
-        <!-- Título: Opción de Alineación Izquierda -->
+        <!-- TÍTULO: OPCIÓN DE ALINEACIÓN IZQUIERDA -->
         <input type="radio" name="alineacion" value="izquierda" checked onchange="cambiarAlineacion('izquierda')"> Izquierda
     </label>
     <label>
-        <!-- Título: Opción de Alineación Centro -->
+        <!-- TÍTULO: OPCIÓN DE ALINEACIÓN CENTRO -->
         <input type="radio" name="alineacion" value="centro" onchange="cambiarAlineacion('centro')"> Centro
     </label>
     <label>
-        <!-- Título: Opción de Alineación Derecha -->
+        <!-- TÍTULO: OPCIÓN DE ALINEACIÓN DERECHA -->
         <input type="radio" name="alineacion" value="derecha" onchange="cambiarAlineacion('derecha')"> Derecha
     </label>
 </div>

@@ -12,47 +12,47 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Datos empresa.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
     <link rel="stylesheet" href="../../css/ver_cotizacion/datos_empresa.css"> <!-- Enlaza el archivo CSS para estilizar los datos de la empresa -->
-    <div class="row"> <!-- Título: Crea una fila para organizar los elementos en una disposición horizontal -->
-    <!-- Título: Caja para ingresar datos de la empresa -->
+    <div class="row"> <!-- TÍTULO: Crea una fila para organizar los elementos en una disposición horizontal -->
+    <!-- TÍTULO: CAJA PARA INGRESAR DATOS DE LA EMPRESA -->
     <fieldset class="box-12 cuadro-datos"> 
-        <legend>Mi Empresa</legend> <!-- Título: Título del campo de datos -->
+        <legend>Mi Empresa</legend> <!-- TÍTULO: TÍTULO del campo de datos -->
 
-        <!-- Título: Campo de entrada oculto para el ID de la empresa -->
+        <!-- TÍTULO: CAMPO DE ENTRADA OCULTO PARA EL ID DE LA EMPRESA -->
         <input type="text" id="empresa-id" name="empresa_id" value="<?php echo htmlspecialchars($id); ?>" hidden> 
         
         <div class="form-group">
-            <!-- Título: Etiqueta para el campo de entrada del nombre de la empresa -->
+            <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DEL NOMBRE DE LA EMPRESA -->
             <label for="empresa_nombre">Nombre</label> 
-            <!-- Título: Campo de entrada para el nombre de la empresa -->
+            <!-- TÍTULO: CAMPO DE ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
             <!-- Campo de texto para ingresar el nombre de la empresa. El atributo "required" hace que el campo sea obligatorio -->
             <input type="text" id="empresa_nombre" name="empresa_nombre" value="<?php echo htmlspecialchars($items['EmpresaNombre']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
         </div>
 
         <div class="form-group">
-            <!-- Título: Etiqueta para el campo de entrada del área de la empresa -->
+            <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DEL ÁREA DE LA EMPRESA -->
             <label for="empresa_area">Área</label> 
-            <!-- Título: Campo de entrada para el área de la empresa -->
+            <!-- TÍTULO: CAMPO DE ENTRADA PARA EL ÁREA DE LA EMPRESA -->
             <!-- Campo de texto para ingresar el área de la empresa. Este campo no es obligatorio -->
             <input type="text" id="empresa_area" name="empresa_area" value="<?php echo htmlspecialchars($items['EmpresaArea']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
         </div>
 
         <div class="form-group">
-            <!-- Título: Etiqueta para el campo de entrada de la dirección de la empresa -->
+            <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DE LA DIRECCIÓN DE LA EMPRESA -->
             <label for="empresa_direccion">Dirección</label> 
-            <!-- Título: Campo de entrada para la dirección de la empresa -->
+            <!-- TÍTULO: CAMPO DE ENTRADA PARA LA DIRECCIÓN DE LA EMPRESA -->
             <!-- Campo de texto para ingresar la dirección de la empresa. Este campo no es obligatorio -->
             <input type="text" id="empresa_direccion" name="empresa_direccion" value="<?php echo htmlspecialchars($items['EmpresaDireccion']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
         </div>
                 
         <div class="form-group" style="display: flex; align-items: center;">
-            <!-- Título: Etiqueta para el campo de entrada del teléfono de la empresa -->
+            <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DEL TELÉFONO DE LA EMPRESA -->
             <label for="empresa_telefono" style="margin-right: 10px;">Teléfono</label>
 
-            <!-- Título: Imagen de la bandera -->
+            <!-- TÍTULO: IMAGEN DE LA BANDERA -->
             <img id="flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
                 alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
 
-            <!-- Título: Campo de entrada para el teléfono de la empresa -->
+            <!-- TÍTULO: CAMPO DE ENTRADA PARA EL TELÉFONO DE LA EMPRESA -->
             <!-- Campo de entrada de texto para el teléfono de la empresa -->
             <input type="text" id="empresa_telefono" name="empresa_telefono" 
                 value="<?php echo htmlspecialchars($items['EmpresaTelefono']); ?>"
@@ -64,14 +64,14 @@ BPPJ
         </div>
 
         <div class="form-group">
-            <!-- Título: Etiqueta para el campo de entrada del email de la empresa -->
+            <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DEL EMAIL DE LA EMPRESA -->
             <label for="empresa_email">Email</label> 
-            <!-- Título: Campo de entrada para el email de la empresa -->
+            <!-- TÍTULO: CAMPO DE ENTRADA PARA EL EMAIL DE LA EMPRESA -->
             <!-- Campo de correo electrónico para ingresar el email de la empresa. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
             <input type="email" id="empresa_email" name="empresa_email" value="<?php echo htmlspecialchars($items['EmpresaEmail']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
         </div>
-    </fieldset> <!-- Título: Cierra la caja de datos -->
-</div> <!-- Título: Cierra la fila -->
+    </fieldset> <!-- Cierra la caja de datos -->
+</DIV> <!--  CIERRA LA FILA -->
 
 <!-- Enlaza el archivo JavaScript para manejar la lógica del formulario de datos de la empresa -->
 <script src="../../js/ver_cotizacion/datos_empresa.js"></script> 

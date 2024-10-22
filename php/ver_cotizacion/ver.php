@@ -55,36 +55,36 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 </head>
 <body>
-    <!-- Título: Contenedor de botones -->
+    <!-- TÍTULO: CONTENEDOR DE BOTONES -->
     <!-- Contenedor de botones -->
     <div class="button-contenedor">
-        <!-- Título: Botón Volver -->
+        <!-- TÍTULO: BOTÓN VOLVER -->
         <button class="button volver" onclick="window.history.back()">Volver</button>
-        <!-- Título: Botón Imprimir -->
+        <!-- TÍTULO: BOTÓN IMPRIMIR -->
         <button class="button imprimir" onclick="imprimir()">Imprimir</button>
-        <!-- Título: Botón Volver al listado -->
+        <!-- TÍTULO: BOTÓN VOLVER AL LISTADO -->
         <button class="button volver listado" onclick="location.href='ver_listado.php?id=<?php echo $id_empresa; ?>'">Volver al listado</button>
-        <!-- Título: Botón Modificar cotización -->
+        <!-- TÍTULO: BOTÓN MODIFICAR COTIZACIÓN -->
         <button class="button Modificar" onclick="location.href='modificar_cotizacion.php?id=<?php echo $id_empresa; ?>'">Modificar cotización</button>
     </div>
 
-    <!-- Título: Contenedor principal -->
+    <!-- TÍTULO: CONTENEDOR PRINCIPAL -->
     <!-- Contenedor principal -->
     <div class="contenedor">
-        <!-- Título: Importar la marca de agua -->
+        <!-- TÍTULO: IMPORTAR LA MARCA DE AGUA -->
         <!-- Importar la marca de agua -->
         <?php include 'marca_de_agua.php'; ?>
 
-        <!-- Título: Header -->
+        <!-- TÍTULO: HEADER -->
         <?php include 'header.php'; ?>
-        <!-- Título: Información del cliente -->
+        <!-- TÍTULO: INFORMACIÓN DEL CLIENTE -->
         <?php include 'info_cliente.php'; ?>
-        <!-- Título: Detalle -->
+        <!-- TÍTULO: DETALLE -->
         <?php include 'detalle.php'; ?>
-        <!-- Título: Totales -->
+        <!-- TÍTULO: TOTALES -->
         <?php include 'totales.php'; ?>
 
-        <!-- Título: Tabla de totales -->
+        <!-- TÍTULO: TABLA DE TOTALES -->
         <table class="totals">
             <tr class="son">
                 <td colspan="2">
@@ -93,45 +93,45 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             </tr>
         </table>
 
-        <!-- Título: Ver pagos -->
+        <!-- TÍTULO: VER PAGOS -->
         <?php include 'ver_pago.php'; ?>
 
-        <!-- Título: Tabla de requisitos, condiciones y obligaciones -->
+        <!-- TÍTULO: TABLA DE REQUISITOS, CONDICIONES Y OBLIGACIONES -->
         <table>
             <tr>
                 <td>
-                    <!-- Título: Ver requisitos -->
+                    <!-- TÍTULO: VER REQUISITOS -->
                     <?php include 'ver_requisitos.php'; ?>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <!-- Título: Ver condiciones -->
+                    <!-- TÍTULO: VER CONDICIONES -->
                     <?php include 'ver_condiciones.php'; ?>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <!-- Título: Ver obligaciones -->
+                    <!-- TÍTULO: VER OBLIGACIONES -->
                     <?php include 'ver_obligaciones.php'; ?>
                 </td>
             </tr>
         </table>
 
-        <!-- Título: Mensaje de despedida -->
+        <!-- TÍTULO: MENSAJE DE DESPEDIDA -->
         <div>
             <?php include 'mensaje_despedida.php'; ?>
         </div>
 
-        <!-- Título: Bancos -->
+        <!-- TÍTULO: BANCOS -->
         <?php include 'bancos.php'; ?>
 
-        <!-- Título: Posicionar firma -->
+        <!-- TÍTULO: POSICIONAR FIRMA -->
         <?php include 'posicionar_firma.php'; ?>
 
     </div>
 
-    <!-- Título: Script -->
+    <!-- TÍTULO: SCRIPT -->
     <script src="../../js/ver_cotizacion/ver.js"></script>
 </body>
 </html>

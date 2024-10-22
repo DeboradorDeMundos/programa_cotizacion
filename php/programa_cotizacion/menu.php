@@ -45,45 +45,45 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <link rel="stylesheet" href="css/programa_cotizacion/menu.css">
 </head>
 
-<!-- Título: Navegación Principal -->
+<!-- TÍTULO: NAVEGACIÓN PRINCIPAL -->
 <nav>  
     <ul class="menu">
-        <!-- Título: Enlace para Nueva Cotización -->
+        <!-- TÍTULO: ENLACE PARA NUEVA COTIZACIÓN -->
         <li>
             <a href="php/nueva_cotizacion/nueva_cotizacion.php?id=<?php echo isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : ''; ?>" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
                 Nueva Cotización
             </a>
         </li>
         
-        <!-- Título: Enlace para Crear Cliente -->
+        <!-- TÍTULO: ENLACE PARA CREAR CLIENTE -->
         <li>
             <a href="php/crear_cliente/crear_cliente.php?id=<?php echo isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : ''; ?>" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
                 Crear Cliente
             </a>
         </li>
         
-        <!-- Título: Enlace para Crear Producto -->
+        <!-- TÍTULO: ENLACE PARA CREAR PRODUCTO -->
         <li>
             <a href="php/crear_producto/crear_producto.php?id=<?php echo isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : ''; ?>" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
                 Crear Producto
             </a>
         </li>
         
-        <!-- Título: Enlace para Crear Proveedor -->
+        <!-- TÍTULO: ENLACE PARA CREAR PROVEEDOR -->
         <li>
             <a href="php/crear_proveedor/crear_proveedor.php" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
                 Crear Proveedor
             </a>
         </li>
         
-        <!-- Título: Enlace para Ver Listado de Cotización -->
+        <!-- TÍTULO: ENLACE PARA VER LISTADO DE COTIZACIÓN -->
         <li>
             <a href="php/ver_cotizacion/ver_listado.php?id=<?php echo isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : ''; ?>" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
                 Ver listado Cotización
             </a>
         </li>
         
-        <!-- Título: Enlace para Crear Nueva Empresa -->
+        <!-- TÍTULO: ENLACE PARA CREAR NUEVA EMPRESA -->
         <li>
             <a href="php/crear_empresa/crear_empresa.php">
                 Crear nueva empresa

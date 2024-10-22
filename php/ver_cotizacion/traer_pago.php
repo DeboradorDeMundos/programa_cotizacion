@@ -96,27 +96,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <link rel="stylesheet" href="../../css/ver_cotizacion/traer_pago.css">
-<!-- Título: Sección de información de pagos -->
+<!-- TÍTULO: SECCIÓN DE INFORMACIÓN DE PAGOS -->
 <fieldset id="payment-section">
     <legend>Información de Pagos</legend>
-    <!-- Título: Botón para agregar un nuevo pago -->
+    <!-- TÍTULO: BOTÓN PARA AGREGAR UN NUEVO PAGO -->
     <button type="button" onclick="AgregarPago()">Agregar Pago</button>
     
-    <!-- Título: Tabla de pagos -->
+    <!-- TÍTULO: TABLA DE PAGOS -->
     <table id="payment-table" <?php if (count($pagos) > 0) { echo 'style="display:table;"'; } else { echo 'style="display:none;"'; } ?>>
         <thead>
             <tr>
-                <!-- Título: Cabecera de N° Pago -->
+                <!-- TÍTULO: CABECERA DE N° PAGO -->
                 <th>N° Pago</th>
-                <!-- Título: Cabecera de Descripción de Pago -->
+                <!-- TÍTULO: CABECERA DE DESCRIPCIÓN DE PAGO -->
                 <th>Descripción de Pago</th>
-                <!-- Título: Cabecera de % De Pago -->
+                <!-- TÍTULO: CABECERA DE % DE PAGO -->
                 <th>% De Pago</th>
-                <!-- Título: Cabecera de Monto de Pago -->
+                <!-- TÍTULO: CABECERA DE MONTO DE PAGO -->
                 <th>Monto de Pago</th>
-                <!-- Título: Cabecera de Fecha de Pago -->
+                <!-- TÍTULO: CABECERA DE FECHA DE PAGO -->
                 <th>Fecha de Pago</th>
-                <!-- Título: Cabecera de Acción -->
+                <!-- TÍTULO: CABECERA DE ACCIÓN -->
                 <th>Acción</th>
             </tr>
         </thead>
@@ -124,28 +124,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php if (!empty($pagos)): ?>
                 <?php foreach ($pagos as $pago): ?>
                     <tr>
-                        <!-- Título: Número de pago (solo lectura) -->
+                        <!-- TÍTULO: NÚMERO DE PAGO (SOLO LECTURA) -->
                         <td>
                             <input type="hidden" name="numero_pago[]" value="<?php echo htmlspecialchars($pago['numero_pago']); ?>">
                             <?php echo htmlspecialchars($pago['numero_pago']); ?>
                         </td>
-                        <!-- Título: Descripción editable -->
+                        <!-- TÍTULO: DESCRIPCIÓN EDITABLE -->
                         <td>
                             <input type="text" name="descripcion_pago[]" value="<?php echo htmlspecialchars($pago['descripcion']); ?>">
                         </td>
-                        <!-- Título: Porcentaje de pago editable -->
+                        <!-- TÍTULO: PORCENTAJE DE PAGO EDITABLE -->
                         <td>
                             <input type="number" name="porcentaje_pago[]" value="<?php echo htmlspecialchars($pago['porcentaje_pago']); ?>" step="0.01" min="0">
                         </td>
-                        <!-- Título: Monto editable -->
+                        <!-- TÍTULO: MONTO EDITABLE -->
                         <td>
                             <input type="number" name="monto_pago[]" value="<?php echo htmlspecialchars($pago['monto_pago']); ?>" step="0.01" min="0">
                         </td>
-                        <!-- Título: Fecha editable -->
+                        <!-- TÍTULO: FECHA EDITABLE -->
                         <td>
                             <input type="date" name="fecha_pago[]" value="<?php echo htmlspecialchars($pago['fecha_pago']); ?>">
                         </td>
-                        <!-- Título: Acción para eliminar el pago -->
+                        <!-- TÍTULO: ACCIÓN PARA ELIMINAR EL PAGO -->
                         <td>
                             <button type="button" onclick="EliminarPago(<?php echo $pago['numero_pago']; ?>)">Eliminar</button>
                         </td>
@@ -153,7 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <?php endforeach; ?>
             <?php else: ?>
                 <tr>
-                    <!-- Título: Mensaje cuando no hay pagos registrados -->
+                    <!-- TÍTULO: MENSAJE CUANDO NO HAY PAGOS REGISTRADOS -->
                     <td colspan="6">No hay pagos registrados.</td>
                 </tr>
             <?php endif; ?>

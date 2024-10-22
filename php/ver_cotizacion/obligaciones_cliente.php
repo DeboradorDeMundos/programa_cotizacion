@@ -66,34 +66,34 @@ $stmt_obligaciones_seleccionadas->close();
 
 <!-- Checkbox para mostrar/ocultar obligaciones del cliente --> 
 <link rel="stylesheet" href="../../css/ver_cotizacion/obligaciones_cliente.css">
-<!-- Título: Checkbox para mostrar obligaciones del cliente -->
+<!-- TÍTULO: CHECKBOX PARA MOSTRAR OBLIGACIONES DEL CLIENTE -->
 <label>
     <input type="checkbox" id="toggle-obligaciones" onclick="toggleObligaciones()"> Mostrar obligaciones del cliente
 </label>
 
-<!-- Título: Tabla de obligaciones del cliente -->
+<!-- TÍTULO: TABLA DE OBLIGACIONES DEL CLIENTE -->
 <table id="obligaciones-table" style="display: none;">
-    <!-- Título: Encabezado de la tabla -->
+    <!-- TÍTULO: ENCABEZADO DE LA TABLA -->
     <tr>
         <th style="background-color:lightgray" colspan="2">OBLIGACIONES DEL CLIENTE</th>
     </tr>
     <?php if (!empty($obligaciones_todas)): ?>
         <?php foreach ($obligaciones_todas as $obligacion): ?>
-            <!-- Título: Fila de obligación -->
+            <!-- TÍTULO: FILA DE OBLIGACIÓN -->
             <tr>
                 <td>
-                    <!-- Título: Descripción de la obligación -->
+                    <!-- TÍTULO: DESCRIPCIÓN DE LA OBLIGACIÓN -->
                     <?php echo htmlspecialchars($obligacion['indice']) . '.- ' . htmlspecialchars($obligacion['descripcion']); ?>
                 </td>
                 <td>
-                    <!-- Título: Checkbox de selección de obligación -->
+                    <!-- TÍTULO: CHECKBOX DE SELECCIÓN DE OBLIGACIÓN -->
                     <input type="checkbox" name="obligacion_check[]" value="<?php echo htmlspecialchars($obligacion['id']); ?>"
                         <?php echo in_array($obligacion['id'], array_column($obligaciones_seleccionadas, 'id')) ? 'checked' : ''; ?> />
                 </td>
             </tr>
         <?php endforeach; ?>
     <?php else: ?>
-        <!-- Título: Mensaje de error -->
+        <!-- TÍTULO: MENSAJE DE ERROR -->
         <tr>
             <td colspan="2"><?php echo $mensaje_error; ?></td>
         </tr>

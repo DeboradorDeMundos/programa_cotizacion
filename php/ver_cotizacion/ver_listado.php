@@ -164,21 +164,21 @@ $mysqli->close();
     <link rel="stylesheet" href="../../css/ver_cotizacion/ver_listado.css">
 </head>
 <body>
-    <!-- Título: Contenedor de Filtros de Búsqueda -->
+    <!-- TÍTULO: CONTENEDOR DE FILTROS DE BÚSQUEDA -->
     <div>
         <?php include 'filtros_busqueda.php'; ?>
     </div>
 
-    <!-- Título: Mensaje de estado -->
+    <!-- TÍTULO: MENSAJE DE ESTADO -->
     <?php echo $mensaje; ?>
 
-    <!-- Título: Lista de acciones -->
+    <!-- TÍTULO: LISTA DE ACCIONES -->
     <ul>
-        <!-- Título: Opción para crear nueva cotización -->
+        <!-- TÍTULO: OPCIÓN PARA CREAR NUEVA COTIZACIÓN -->
         <li>
             <a href="../nueva_cotizacion/nueva_cotizacion.php?id=<?php echo $id_empresa; ?>">Crear Cotización</a>
         </li>
-        <!-- Título: Opción para volver al menú -->
+        <!-- TÍTULO: OPCIÓN PARA VOLVER AL MENÚ -->
         <li>
             <a href="../../programa_cotizacion.php">Volver al Menú</a>
         </li>

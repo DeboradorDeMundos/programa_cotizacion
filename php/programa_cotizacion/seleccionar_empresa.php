@@ -13,7 +13,7 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- -->
 
     <link rel="stylesheet" href="css/programa_cotizacion/seleccionar_empresa.css">
-<!-- TÍTULO: Selección de Empresa -->
+<!-- TÍTUZLO: SELECCIÓN DE EMPRESA -->
 <!-- NOMBRE DEL FORMULARIO -->
 <label for="empresa">Seleccione la Empresa:</label>
 <!-- Combo Box seleccionar empresa -->
@@ -53,7 +53,7 @@ BPPJ
         <?php endwhile; ?>
     </select>
 
-    <!-- TÍTULO: Lista de Empresas -->
+    <!-- TÍTULO: LISTA DE EMPRESAS -->
     <!-- LISTA DE EMPRESA QUE MUESTRA EL COMBO BOX -->
     <div class="option-list" id="option-list">
         <?php

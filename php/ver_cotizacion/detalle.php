@@ -88,7 +88,7 @@ $stmt_titulos->close();
 foreach ($titulos as $titulo_id => $titulo): ?>
 <table border="1"> <!-- Título: Tabla de productos -->
     <?php
-    // Título: Mapeo de colores
+    // TÍTULO: MAPEO DE COLORES
     // Arreglo de mapeo de colores en español a códigos hexadecimales
     $colores = [
         'negro' => '#000000',
@@ -120,7 +120,7 @@ foreach ($titulos as $titulo_id => $titulo): ?>
     echo "</td></tr>";
     ?>
     
-    <!-- Título: Encabezados de la tabla -->
+    <!-- TÍTULO: ENCABEZADOS DE LA TABLA -->
     <tr>
         <th>nombre_producto</th>
         <th>descripcion</th>
@@ -128,7 +128,7 @@ foreach ($titulos as $titulo_id => $titulo): ?>
         <th>total</th>
     </tr>
     
-    <!-- Título: Nombre del título -->
+    <!-- TÍTULO: NOMBRE DEL TÍTULO -->
     <tr>
         <th colspan="6" class="titulo">
             <?php echo $titulo['nombre']; ?>
@@ -139,7 +139,7 @@ foreach ($titulos as $titulo_id => $titulo): ?>
     $subtitulos_mostrados = []; // Array para rastrear subtítulos mostrados
     $detalles_sin_subtitulo = []; // Array para almacenar detalles sin subtítulo
 
-    // Título: Imprimir los detalles
+    // TÍTULO: IMPRIMIR LOS DETALLES
     foreach ($titulo['detalles'] as $detalle) {
         $color_detalle = strtolower($detalle['color_detalle']); // Obtener el color del detalle en español
         $color_texto = isset($colores[$color_detalle]) ? $colores[$color_detalle] : '#000000'; // Negro por defecto si no hay color definido

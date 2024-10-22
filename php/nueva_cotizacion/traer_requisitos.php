@@ -26,12 +26,12 @@ BPPJ
 ?> 
 
     <link rel="stylesheet" href="../../css/nueva_cotizacion/traer_requisitos.css">
-<!-- Título: Checkbox para Mostrar/Ocultar Requisitos Generales -->
+<!-- TÍTULO: CHECKBOX PARA MOSTRAR/OCULTAR REQUISITOS GENERALES -->
 <label>
     <input type="checkbox" id="toggle-requisitos" onclick="toggleRequisitos()"> Mostrar requisitos generales
 </label>
 
-<!-- Título: Tabla para Requisitos Generales -->
+<!-- TÍTULO: TABLA PARA REQUISITOS GENERALES -->
 <table id="requisitos-table" style="display: none;">
     <tr>
         <th style="background-color:lightgray" colspan="2">REQUISITOS GENERALES</th>
@@ -39,12 +39,12 @@ BPPJ
     <?php if (!empty($requisitos)): ?>
         <?php foreach ($requisitos as $requisito): ?>
             <tr>
-                <!-- Título: Descripción de Requisito -->
+                <!-- TÍTULO: DESCRIPCIÓN DE REQUISITO -->
                 <td>
                     <?php echo htmlspecialchars($requisito['indice']) . '.- ' . htmlspecialchars($requisito['descripcion_condiciones']); ?>
                 </td>
                 <td>
-                    <!-- Título: Checkbox para Seleccionar Requisito -->
+                    <!-- TÍTULO: CHECKBOX PARA SELECCIONAR REQUISITO -->
                     <input type="checkbox" name="requisito_check[]" value="<?php echo $requisito['id_requisitos']; ?>"/>
                 </td>
             </tr>

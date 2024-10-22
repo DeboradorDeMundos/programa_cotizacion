@@ -50,13 +50,14 @@ BPPJ
 
 
 <link rel="stylesheet" href="../../css/ver_cotizacion/observaciones.css">
-<!-- Título: Campo de observación -->
+<!-- TÍTULO: CAMPO DE OBSERVACIÓN -->
 <fieldset class="observaciones-box">
-    <legend>OBSERVACIONES</legend> <!-- Título: Encabezado del fieldset -->
+    <!-- TÍTULO: ENCABEZADO DEL FIELDSET -->
+    <legend>OBSERVACIONES</legend> 
     <div class="form-group">
-        <!-- Título: Etiqueta del campo de texto -->
+        <!-- TÍTULO: ETIQUETA DEL CAMPO DE TEXTO -->
         <label for="observacion">Observación:</label>
-        <!-- Título: Área de texto para la observación -->
+        <!-- TÍTULO: ÁREA DE TEXTO PARA LA OBSERVACIÓN -->
         <textarea id="observacion" name="observacion"
             rows="4" cols="50" 
             placeholder="Agrega cualquier comentario adicional (OPCIONAL)...">

@@ -72,12 +72,12 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
 ?>
 
 <link rel="stylesheet" href="../../css/ver_cotizacion/traer_proyecto.css">
-<!-- Título: Sección de detalle del proyecto -->
+<!-- TÍTULO: SECCIÓN DE DETALLE DEL PROYECTO -->
 <fieldset class="box-6 cuadro-datos">
     <legend>Detalle proyecto</legend>
     <div class="form-group-inline">
         <div class="form-group">
-            <!-- Título: Campo Nombre del proyecto -->
+            <!-- TÍTULO: CAMPO NOMBRE DEL PROYECTO -->
             <label for="proyecto_nombre">Nombre</label>
             <input type="text" id="proyecto_nombre" name="proyecto_nombre" required 
                 pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
@@ -87,7 +87,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
                 value="<?php echo htmlspecialchars($proyecto_nombre); ?>">
         </div>
         <div class="form-group">
-            <!-- Título: Campo Código del proyecto -->
+            <!-- TÍTULO: CAMPO CÓDIGO DEL PROYECTO -->
             <label for="proyecto_codigo">Código</label>
             <input type="text" id="proyecto_codigo" name="proyecto_codigo" required 
                 maxlength="10" 
@@ -101,7 +101,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
 
     <div class="form-group-inline">
         <div class="form-group">
-            <!-- Título: Campo Área de Trabajo -->
+            <!-- TÍTULO: CAMPO ÁREA DE TRABAJO -->
             <label for="area_trabajo">Área de Trabajo:</label>
             <select id="area_trabajo" name="area_trabajo" required>
                 <option value="" disabled selected>Selecciona un área</option>
@@ -123,7 +123,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
             </select>
         </div>
         <div class="form-group">
-            <!-- Título: Campo Tipo de Trabajo -->
+            <!-- TÍTULO: CAMPO TIPO DE TRABAJO -->
             <label for="tipo_trabajo">Tipo de Trabajo:</label>
             <select id="tipo_trabajo" name="tipo_trabajo" required>
                 <option value="" disabled selected>Selecciona un tipo de trabajo</option>
@@ -144,7 +144,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
     </div>
 
     <div class="form-group">
-        <!-- Título: Campo Riesgo -->
+        <!-- TÍTULO: CAMPO RIESGO -->
         <label for="riesgo">Riesgo:</label>
         <select id="riesgo" name="riesgo" required>
             <option value="" disabled selected>Selecciona un nivel de riesgo</option>
@@ -155,7 +155,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
     </div>
 
     <div class="form-group">
-        <!-- Título: Campo Descripción de Riesgo -->
+        <!-- TÍTULO: CAMPO DESCRIPCIÓN DE RIESGO -->
         <label for="riesgo_descripcion">Descripción de riesgo</label>
         <input type="text" id="riesgo_descripcion" name="riesgo_descripcion" required 
             pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
@@ -166,19 +166,19 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
     </div>
 </fieldset>
 
-<!-- Título: Sección de detalle adicional -->
+<!-- TÍTULO: SECCIÓN DE DETALLE ADICIONAL -->
 <fieldset class="box-6 cuadro-datos cuadro-datos-left">
     <legend>Detalle</legend>
     <div class="form-group-inline">
         <div class="form-group">
-            <!-- Título: Campo Días de Compra -->
+            <!-- TÍTULO: CAMPO DÍAS DE COMPRA -->
             <label for="dias_compra">Días de Compra:</label>
             <input type="number" id="dias_compra" name="dias_compra" placeholder="Ingrese N° de días" 
                 oninput="QuitarCaracteresInvalidos(this)"
                 value="<?php echo htmlspecialchars($dias_compra); ?>">
         </div>
         <div class="form-group">
-            <!-- Título: Campo Días de Trabajo -->
+            <!-- TÍTULO: CAMPO DÍAS DE TRABAJO -->
             <label for="dias_trabajo">Días de Trabajo:</label>
             <input type="number" id="dias_trabajo" name="dias_trabajo" placeholder="Ingrese N° de días" 
                 oninput="QuitarCaracteresInvalidos(this)"
@@ -187,7 +187,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
     </div>
 
     <div class="form-group">
-        <!-- Título: Campo Número de Trabajadores -->
+        <!-- TÍTULO: CAMPO NÚMERO DE TRABAJADORES -->
         <label for="trabajadores">Número de Trabajadores:</label>
         <input type="number" id="trabajadores" name="trabajadores" placeholder="N° trabajadores" 
             oninput="QuitarCaracteresInvalidos(this)"
@@ -196,7 +196,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
 
     <div class="form-group-inline">
         <div class="form-group">
-            <!-- Título: Campo Horario -->
+            <!-- TÍTULO: CAMPO HORARIO -->
             <label for="horario">Horario:</label>
             <input type="text" id="horario" name="horario" 
                 pattern="^([01]?[0-9]|2[0-3]):[0-5][0-9] a ([01]?[0-9]|2[0-3]):[0-5][0-9]$" 
@@ -205,7 +205,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
                 value="<?php echo htmlspecialchars($horario); ?>">
         </div>
         <div class="form-group">
-            <!-- Título: Campo Colación -->
+            <!-- TÍTULO: CAMPO COLACIÓN -->
             <label for="colacion">Colación:</label>
             <input type="text" id="colacion" name="colacion" placeholder="Ej: Sí o No"
                 pattern="^[a-zA-Z]{2}$"
@@ -215,7 +215,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
     </div>
 
     <div class="form-group">
-        <!-- Título: Campo Entrega -->
+        <!-- TÍTULO: CAMPO ENTREGA -->
         <label for="entrega">Entrega:</label>
         <input type="text" id="entrega" name="entrega" placeholder="Ej: Lunes, Martes"
             required 

@@ -70,11 +70,11 @@ BPPJ
 
 <!-- Contenedor de Totales -->
 <div class="totals-contenedor">
-    <!-- Título: Tabla de Observaciones -->
+    <!-- TÍTULO: TABLA DE OBSERVACIONES -->
     <table class="observations">
         <tr>
             <td>
-                <!-- Título: Encabezado de Observaciones -->
+                <!-- TÍTULO: ENCABEZADO DE OBSERVACIONES -->
                 <strong>OBSERVACIONES</strong>
             </td>
         </tr>
@@ -94,55 +94,55 @@ BPPJ
         </tr>
     </table>
 
-    <!-- Título: Tabla de Totales -->
+    <!-- TÍTULO: TABLA DE TOTALES -->
     <table class="totals">
         <tr>
             <td>
-                <!-- Título: Sub-total -->
+                <!-- TÍTULO: SUB-TOTAL -->
                 Sub-total
             </td>
             <td>
-                <!-- Título: Valor del Sub-total -->
+                <!-- TÍTULO: VALOR DEL SUB-TOTAL -->
                 $ <?php echo number_format($totales['sub_total'], 0, ',', '.'); ?>
             </td>
         </tr>
         <tr>
             <td>
-                <!-- Título: Monto de Descuento por Porcentaje -->
+                <!-- TÍTULO: MONTO DE DESCUENTO POR PORCENTAJE -->
                 Monto descuento_porcentaje
             </td>
             <td>
-                <!-- Título: Valor del Descuento -->
+                <!-- TÍTULO: VALOR DEL DESCUENTO -->
                 $ <?php echo number_format($totales['descuento_global'], 0, ',', '.'); ?>
             </td>
         </tr>
         <tr>
             <td>
-                <!-- Título: IVA -->
+                <!-- TÍTULO: IVA -->
                 19% I.V.A.
             </td>
             <td>
-                <!-- Título: Valor del IVA -->
+                <!-- TÍTULO: VALOR DEL IVA -->
                 $ <?php echo number_format($totales['total_iva'], 0, ',', '.'); ?>
             </td>
         </tr>
         <tr>
             <td>
-                <!-- Título: Monto Neto -->
+                <!-- TÍTULO: MONTO NETO -->
                 Monto neto
             </td>
             <td>
-                <!-- Título: Valor del Monto Neto -->
+                <!-- TÍTULO: VALOR DEL MONTO NETO -->
                 $ <?php echo number_format($totales['monto_neto'], 0, ',', '.'); ?>
             </td>
         </tr>
         <tr>
             <td>
-                <!-- Título: Total Final -->
+                <!-- TÍTULO: TOTAL FINAL -->
                 <strong> TOTAL FINAL </strong>
             </td>
             <td>
-                <!-- Título: Valor del Total Final -->
+                <!-- TÍTULO: VALOR DEL TOTAL FINAL -->
                 $ <?php echo number_format($totales['total_final'], 0, ',', '.'); ?>
             </td>
         </tr>

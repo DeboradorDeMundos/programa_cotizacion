@@ -18,9 +18,9 @@ BPPJ
     <div class="box-6 cuadro-datos"> <!-- Crea una caja para ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
         <div class="form-group-inline">
             <div class="form-group">
-                <!-- Título: Campo para el RUT del vendedor -->
+                <!-- TÍTULO: CAMPO PARA EL RUT DEL VENDEDOR -->
                 <label for="vendedor_rut">RUT: </label> <!-- Etiqueta para el campo de entrada del RUT del cliente -->
-                <!-- Título: Campo para Ingresar el RUT del Vendedor -->
+                <!-- TÍTULO: CAMPO PARA INGRESAR EL RUT DEL VENDEDOR -->
                 <input type="text" id="vendedor_rut" name="vendedor_rut" 
                     minlength="7" maxlength="12" 
                     placeholder="Ej: 12.345.678-9"
@@ -29,9 +29,9 @@ BPPJ
                     required> <!-- Campo de texto para ingresar el RUT del cliente. También es obligatorio -->
             </div>
             <div class="form-group">
-                <!-- Título: Campo para el Nombre del vendedor -->
+                <!-- TÍTULO: CAMPO PARA EL NOMBRE DEL VENDEDOR -->
                 <label for="vendedor_nombre">Nombre:</label> <!-- Etiqueta para el campo de entrada del nombre del vendedor -->
-                <!-- Título: Campo para Ingresar el Nombre del Vendedor -->
+                <!-- TÍTULO: CAMPO PARA INGRESAR EL NOMBRE DEL VENDEDOR -->
                 <input type="text" id="vendedor_nombre" name="vendedor_nombre" 
                     placeholder="Ej: María López" 
                     required 
@@ -44,9 +44,9 @@ BPPJ
         </div>
         
         <div class="form-group">
-            <!-- Título: Campo para el Email del vendedor -->
+            <!-- TÍTULO: CAMPO PARA EL EMAIL DEL VENDEDOR -->
             <label for="vendedor_email">Email:</label> <!-- Etiqueta para el campo de entrada del email del vendedor -->
-            <!-- Título: Campo para Ingresar el Email del Vendedor -->
+            <!-- TÍTULO: CAMPO PARA INGRESAR EL EMAIL DEL VENDEDOR -->
             <input type="email" id="vendedor_email" name="vendedor_email"
                 placeholder="ejemplo@gmail.com" 
                 maxlength="255" 
@@ -58,14 +58,14 @@ BPPJ
     </div>
     <div class="box-6 cuadro-datos cuadro-datos-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "cuadro-datos-left" para estilo -->
         <div class="form-group">
-            <!-- Título: Campo para el Teléfono del vendedor -->
+            <!-- TÍTULO: CAMPO PARA EL TELÉFONO DEL VENDEDOR -->
             <label for="vendedor_telefono">Teléfono:</label> <!-- Etiqueta para el campo de entrada del teléfono del vendedor -->
             
-            <!-- Título: Imagen de la bandera para el teléfono -->
+            <!-- TÍTULO: IMAGEN DE LA BANDERA PARA EL TELÉFONO -->
             <img id="flag_vendedor_telefono" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
                 alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
 
-            <!-- Título: Campo para Ingresar el Teléfono del Vendedor -->
+            <!-- TÍTULO: CAMPO PARA INGRESAR EL TELÉFONO DEL VENDEDOR -->
             <input type="text" id="vendedor_telefono" name="vendedor_telefono"
                 placeholder="+56 9 1234 1234" 
                 maxlength="16" 
@@ -75,14 +75,14 @@ BPPJ
         </div>
 
         <div class="form-group">
-            <!-- Título: Campo para el Celular del vendedor -->
+            <!-- TÍTULO: CAMPO PARA EL CELULAR DEL VENDEDOR -->
             <label for="vendedor_celular">Celular:</label> <!-- Etiqueta para el campo de entrada del celular del vendedor -->
             
-            <!-- Título: Imagen de la bandera para el celular -->
+            <!-- TÍTULO: IMAGEN DE LA BANDERA PARA EL CELULAR -->
             <img id="flag_vendedor_celular" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
                  alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
 
-            <!-- Título: Campo para Ingresar el Celular del Vendedor -->
+            <!-- TÍTULO: CAMPO PARA INGRESAR EL CELULAR DEL VENDEDOR -->
             <input type="text" id="vendedor_celular" name="vendedor_celular"
                 placeholder="+56 9 1234 1234" 
                 maxlength="16" 

@@ -42,29 +42,29 @@ BPPJ
         echo "<p>Error al preparar la consulta de cuenta bancaria: " . $mysqli->error . "</p>";
     }
 ?>
-<!-- Título: Sección de transferencias bancarias -->
+<!-- TÍTULO: SECCIÓN DE TRANSFERENCIAS BANCARIAS -->
 <h2 style="text-align: center;">TRANSFERENCIAS A:</h2> <!-- Título para la sección de transferencias bancarias -->
-<!-- Título: Tabla para información bancaria -->
+<!-- TÍTULO: TABLA PARA INFORMACIÓN BANCARIA -->
 <table style="margin: 0 auto; border-collapse: collapse;"> <!-- Crea una tabla para mostrar la información bancaria para transferencias -->
-    <!-- Título: Encabezado de la tabla -->
+    <!-- TÍTULO: ENCABEZADO DE LA TABLA -->
     <tr>
         <?php if (!empty($bancos)): ?>
             <?php foreach ($bancos as $banco): ?>
-                <!-- Título: Columna de tipo de cuenta -->
+                <!-- TÍTULO: COLUMNA DE TIPO DE CUENTA -->
                 <th style="text-align: center; border: 1px solid #ddd; padding: 8px;">
                     <?php echo htmlspecialchars($banco['TipoCuentaDescripcion']); ?>
                 </th>
             <?php endforeach; ?>
         <?php else: ?>
-            <!-- Título: Mensaje cuando no hay información bancaria -->
+            <!-- TÍTULO: MENSAJE CUANDO NO HAY INFORMACIÓN BANCARIA -->
             <th colspan="3" style="text-align: center; border: 1px solid #ddd; padding: 8px;">No hay información bancaria disponible.</th>
         <?php endif; ?>
     </tr>
     <?php if (!empty($bancos)): ?>
-        <!-- Título: Filas con información de los bancos -->
+        <!-- TÍTULO: FILAS CON INFORMACIÓN DE LOS BANCOS -->
         <tr>
             <?php foreach ($bancos as $banco): ?>
-                <!-- Título: Celda de banco -->
+                <!-- TÍTULO: CELDA DE BANCO -->
                 <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
                     BANCO: <?php echo htmlspecialchars($banco['BancoNombre']); ?>
                 </td>
@@ -72,7 +72,7 @@ BPPJ
         </tr>
         <tr>
             <?php foreach ($bancos as $banco): ?>
-                <!-- Título: Celda de tipo de cuenta -->
+                <!-- TÍTULO: CELDA DE TIPO DE CUENTA -->
                 <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
                     TIPO CUENTA: <?php echo htmlspecialchars($banco['TipoCuentaDescripcion']); ?>
                 </td>
@@ -80,7 +80,7 @@ BPPJ
         </tr>
         <tr>
             <?php foreach ($bancos as $banco): ?>
-                <!-- Título: Celda de número de cuenta -->
+                <!-- TÍTULO: CELDA DE NÚMERO DE CUENTA -->
                 <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
                     NUMERO CUENTA: <?php echo htmlspecialchars($banco['CuentaNumeroCuenta']); ?>
                 </td>
@@ -88,7 +88,7 @@ BPPJ
         </tr>
         <tr>
             <?php foreach ($bancos as $banco): ?>
-                <!-- Título: Celda de nombre del titular -->
+                <!-- TÍTULO: CELDA DE NOMBRE DEL TITULAR -->
                 <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
                     NOMBRE: <?php echo htmlspecialchars($banco['CuentaNombreTitular']); ?>
                 </td>
@@ -96,7 +96,7 @@ BPPJ
         </tr>
         <tr>
             <?php foreach ($bancos as $banco): ?>
-                <!-- Título: Celda de RUT del titular -->
+                <!-- TÍTULO: CELDA DE RUT DEL TITULAR -->
                 <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
                     RUT: <?php echo htmlspecialchars($banco['CuentaRutTitular']); ?>
                 </td>
@@ -104,7 +104,7 @@ BPPJ
         </tr>
         <tr>
             <?php foreach ($bancos as $banco): ?>
-                <!-- Título: Celda de e-mail del banco -->
+                <!-- TÍTULO: CELDA DE E-MAIL DEL BANCO -->
                 <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
                     E-MAIL: <?php echo htmlspecialchars($banco['CuentaEmailBanco']); ?>
                 </td>
