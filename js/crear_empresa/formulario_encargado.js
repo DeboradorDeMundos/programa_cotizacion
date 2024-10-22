@@ -149,11 +149,27 @@ BPPJ
         input.value = input.value[0] + validCharacters; // Mantener el '+' y agregar solo los números
     }
 
+// TÍTULO PARA CARGAR CARGO DEL ENCARGADO
+    // Función para cargar los tipo de cargo
+    function CargarCargoEncargadO(idSelect) {
+        // Realiza una solicitud para obtener la lista de cargos desde el servidor
+        fetch('../../php/crear_empresa/get_cargo_encargado.php')
+            .then(response => response.text())
+            .then(data => {
+                const select = document.getElementById(idSelect); // Obtener el elemento select por su ID único
+                select.innerHTML = data;  // Insertar directamente las opciones generadas en el select
+            })
+            .catch(error => console.error('Error al cargar cargos del encargado:', error)); // Manejar errores de la solicitud
+    }
+
 // TÍTULO: AGREGAR NUEVA FILA
     // Función para agregar una nueva fila al formulario
     function agregarNuevaFila() {
         var tabla = document.getElementById('formulario-contenedor'); // Obtiene la tabla
         var nuevaFila = document.createElement('tr'); // Crea una nueva fila
+        
+        // Genera un ID único para el nuevo select
+        var idUnico = 'cargo-encargado-' + (tabla.getElementsByTagName('tr').length + 1);
 
         // Contenido de la nueva fila
         nuevaFila.innerHTML = `
@@ -166,12 +182,7 @@ BPPJ
                     pattern="^[A-Za-zÀ-ÿ\s.-]+$" placeholder="Ejemplo: Juan Pérez" oninput="QuitarCaracteresInvalidos(this)">
             </td>
             <td>
-                <select name="cargo_encargado[]" required>
-                    <option value="" disabled selected>Selecciona un cargo</option>
-                    <option value="gerente">Gerente</option>
-                    <option value="director">Director</option>
-                    <option value="ejecutivo">Ejecutivo</option>
-                    <option value="supervisor">Supervisor</option>
+                <select id="${idUnico}" name="cargo_encargado[]" required>
                 </select>
             </td>
             <td>
@@ -189,7 +200,11 @@ BPPJ
         `;
         
         tabla.appendChild(nuevaFila); // Agrega la nueva fila a la tabla
+
+        // Cargar los cargos en el nuevo select usando el ID único
+        CargarCargoEncargadO(idUnico);
     }
+
 
 // TÍTULO: ELIMINAR FILA
     // Función para eliminar una fila del formulario
@@ -199,12 +214,17 @@ BPPJ
         fila.remove(); // Elimina la fila
     }
 
+
 // TÍTULO: ACTUALIZAR BANDERA AL CARGAR LA PÁGINA
     // Asegúrate de que la bandera se actualice al cargar la página
     window.onload = function() {
         const campoTelefono4 = document.getElementById('encargado_fono'); // Obtén el campo de entrada del teléfono
         asegurarMasYDetectarPais4(campoTelefono4); // Llama a la función para asegurar "+" y detectar el país
     };
+
+    document.addEventListener('DOMContentLoaded', function() {
+        CargarCargoEncargadO('cargo-encargado');
+    });
     
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Formulario encargado  .JS ---------------------------------------

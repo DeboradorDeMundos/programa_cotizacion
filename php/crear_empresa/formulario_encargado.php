@@ -47,12 +47,8 @@ BPPJ
                                 pattern="^[A-Za-zÀ-ÿ\s.-]+$" placeholder="Ejemplo: Juan Pérez" oninput="QuitarCaracteresInvalidos(this)"></td>
                             <td>
                             <!-- TÍTULO: SELECCIÓN DEL CARGO DEL ENCARGADO -->
-                                <select name="cargo_encargado[]" required>
-                                    <option value="" disabled selected>Selecciona un cargo</option>
-                                    <option value="gerente">Gerente</option>
-                                    <option value="director">Director</option>
-                                    <option value="ejecutivo">Ejecutivo</option>
-                                    <option value="supervisor">Supervisor</option>
+                                <select id="cargo-encargado" name="cargo_encargado[]" required>
+
                                 </select>
                         </td>
                         <!-- TÍTULO: CAMPO DE ENTRADA PARA EL EMAIL DEL ENCARGADO -->
