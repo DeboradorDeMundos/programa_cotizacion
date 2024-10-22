@@ -155,77 +155,78 @@ BPPJ
                 <option value="encargado_rrhh">Encargado de RRHH</option>
             </select>
         </div>
+        <div class="form-group">
+        <!-- TÍTULO: CAMPO PARA EL GIRO DEL CLIENTE -->
+        <label for="cliente_giro">Giro:</label> <!-- Etiqueta PARA el campo de selección del giro del cliente -->
+        <!-- TÍTULO: CAMPO PARA SELECCIONAR EL GIRO DEL CLIENTE -->
+        <select id="cliente_giro" name="cliente_giro" required> <!-- Campo de selección PARA el giro del cliente. Este campo es obligatorio -->
+            <option value="" disabled selected>Selecciona un giro</option> <!-- Opción por defecto -->
+            <option value="comercio">Comercio</option>
+            <option value="servicios">Servicios</option>
+            <option value="manufactura">Manufactura</option>
+            <option value="construccion">Construcción</option>
+            <option value="tecnologia">Tecnología</option>
+            <option value="alimentos_bebidas">Alimentos y Bebidas</option>
+            <option value="educacion">Educación</option>
+            <option value="salud">Salud</option>
+            <option value="finanzas">Finanzas</option>
+            <option value="agricultura">Agricultura</option>
+            <option value="logistica_transporte">Logística y Transporte</option>
+            <option value="inmobiliario">Inmobiliario</option>
+            <option value="mineria">Minería</option>
+            <option value="energia">Energía</option>
+            <option value="turismo">Turismo</option>
+            <option value="arte_cultura">Arte y Cultura</option>
+        </select>
+    </div>
+
+    <div class="form-group-inline">
+        <div class="form-group">
+            <!-- TÍTULO: CAMPO PARA LA COMUNA DEL CLIENTE -->
+            <label for="cliente_comuna">Comuna:</label> <!-- Etiqueta PARA el campo de entrada de la comuna del cliente -->
+            <!-- TÍTULO: CAMPO PARA INGRESAR LA COMUNA DEL CLIENTE -->
+            <input type="text" id="cliente_comuna" name="cliente_comuna" 
+                placeholder="Ej: La Reina, Providencia" 
+                required 
+                minlength="3" 
+                maxlength="50" 
+                pattern="^[a-zA-ZÀ-ÿ\s]+$" 
+                oninput="QuitarCaracteresInvalidos(this)"
+                title="Ingresa una comuna válida (Ej: La Reina, Providencia). Solo se permiten letras y espacios."> <!-- Campo de texto PARA ingresar la comuna del cliente. Este campo no es obligatorio -->
+        </div>
+        <div class="form-group">
+            <!-- TÍTULO: CAMPO PARA LA CIUDAD DEL CLIENTE -->
+            <label for="cliente_ciudad">Ciudad:</label> <!-- Etiqueta PARA el campo de entrada de la ciudad del cliente -->
+            <!-- TÍTULO: CAMPO PARA INGRESAR LA CIUDAD DEL CLIENTE -->
+            <input type="text" id="cliente_ciudad" name="cliente_ciudad" 
+                placeholder="Ej: Santiago, Valparaíso" 
+                required 
+                minlength="3" 
+                maxlength="50" 
+                pattern="^[a-zA-ZÀ-ÿ\s]+$" 
+                oninput="QuitarCaracteresInvalidos(this)"
+                title="Ingresa una ciudad válida (Ej: Santiago, Valparaíso). Solo se permiten letras y espacios."> <!-- Campo de texto PARA ingresar la ciudad del cliente. Este campo no es obligatorio -->
+        </div>
+    </div>
+
+    <div class="form-group">
+        <!-- TÍTULO: CAMPO PARA EL TIPO DE CLIENTE -->
+        <label for="cliente_tipo">Tipo:</label> <!-- Etiqueta PARA el campo de selección del tipo de cliente -->
+        <!-- TÍTULO: CAMPO PARA SELECCIONAR EL TIPO DE CLIENTE -->
+        <select id="cliente_tipo" name="cliente_tipo" required> <!-- Campo de selección PARA el tipo de cliente. Este campo es obligatorio -->
+            <option value="" disabled selected>Selecciona un tipo de cliente</option> <!-- Opción por defecto -->
+            <option value="persona_natural">Persona Natural</option>
+            <option value="empresa">Empresa</option>
+            <option value="organizacion_sin_fines_de_lucro">Organización Sin Fines de Lucro</option>
+            <option value="institucion_gubernamental">Institución Gubernamental</option>
+            <option value="institucion_educativa">Institución Educativa</option>
+            <option value="multinacional">Multinacional</option>
+        </select>
+    </div>
     </div>
 </fieldset>
 
-<div class="form-group">
-    <!-- TÍTULO: CAMPO PARA EL GIRO DEL CLIENTE -->
-    <label for="cliente_giro">Giro:</label> <!-- Etiqueta PARA el campo de selección del giro del cliente -->
-    <!-- TÍTULO: CAMPO PARA SELECCIONAR EL GIRO DEL CLIENTE -->
-    <select id="cliente_giro" name="cliente_giro" required> <!-- Campo de selección PARA el giro del cliente. Este campo es obligatorio -->
-        <option value="" disabled selected>Selecciona un giro</option> <!-- Opción por defecto -->
-        <option value="comercio">Comercio</option>
-        <option value="servicios">Servicios</option>
-        <option value="manufactura">Manufactura</option>
-        <option value="construccion">Construcción</option>
-        <option value="tecnologia">Tecnología</option>
-        <option value="alimentos_bebidas">Alimentos y Bebidas</option>
-        <option value="educacion">Educación</option>
-        <option value="salud">Salud</option>
-        <option value="finanzas">Finanzas</option>
-        <option value="agricultura">Agricultura</option>
-        <option value="logistica_transporte">Logística y Transporte</option>
-        <option value="inmobiliario">Inmobiliario</option>
-        <option value="mineria">Minería</option>
-        <option value="energia">Energía</option>
-        <option value="turismo">Turismo</option>
-        <option value="arte_cultura">Arte y Cultura</option>
-    </select>
-</div>
 
-<div class="form-group-inline">
-    <div class="form-group">
-        <!-- TÍTULO: CAMPO PARA LA COMUNA DEL CLIENTE -->
-        <label for="cliente_comuna">Comuna:</label> <!-- Etiqueta PARA el campo de entrada de la comuna del cliente -->
-        <!-- TÍTULO: CAMPO PARA INGRESAR LA COMUNA DEL CLIENTE -->
-        <input type="text" id="cliente_comuna" name="cliente_comuna" 
-            placeholder="Ej: La Reina, Providencia" 
-            required 
-            minlength="3" 
-            maxlength="50" 
-            pattern="^[a-zA-ZÀ-ÿ\s]+$" 
-            oninput="QuitarCaracteresInvalidos(this)"
-            title="Ingresa una comuna válida (Ej: La Reina, Providencia). Solo se permiten letras y espacios."> <!-- Campo de texto PARA ingresar la comuna del cliente. Este campo no es obligatorio -->
-    </div>
-    <div class="form-group">
-        <!-- TÍTULO: CAMPO PARA LA CIUDAD DEL CLIENTE -->
-        <label for="cliente_ciudad">Ciudad:</label> <!-- Etiqueta PARA el campo de entrada de la ciudad del cliente -->
-        <!-- TÍTULO: CAMPO PARA INGRESAR LA CIUDAD DEL CLIENTE -->
-        <input type="text" id="cliente_ciudad" name="cliente_ciudad" 
-            placeholder="Ej: Santiago, Valparaíso" 
-            required 
-            minlength="3" 
-            maxlength="50" 
-            pattern="^[a-zA-ZÀ-ÿ\s]+$" 
-            oninput="QuitarCaracteresInvalidos(this)"
-            title="Ingresa una ciudad válida (Ej: Santiago, Valparaíso). Solo se permiten letras y espacios."> <!-- Campo de texto PARA ingresar la ciudad del cliente. Este campo no es obligatorio -->
-    </div>
-</div>
-
-<div class="form-group">
-    <!-- TÍTULO: CAMPO PARA EL TIPO DE CLIENTE -->
-    <label for="cliente_tipo">Tipo:</label> <!-- Etiqueta PARA el campo de selección del tipo de cliente -->
-    <!-- TÍTULO: CAMPO PARA SELECCIONAR EL TIPO DE CLIENTE -->
-    <select id="cliente_tipo" name="cliente_tipo" required> <!-- Campo de selección PARA el tipo de cliente. Este campo es obligatorio -->
-        <option value="" disabled selected>Selecciona un tipo de cliente</option> <!-- Opción por defecto -->
-        <option value="persona_natural">Persona Natural</option>
-        <option value="empresa">Empresa</option>
-        <option value="organizacion_sin_fines_de_lucro">Organización Sin Fines de Lucro</option>
-        <option value="institucion_gubernamental">Institución Gubernamental</option>
-        <option value="institucion_educativa">Institución Educativa</option>
-        <option value="multinacional">Multinacional</option>
-    </select>
-</div>
 <script src="../../js/nueva_cotizacion/detalle_cliente.js"></script> 
 
 <?php
