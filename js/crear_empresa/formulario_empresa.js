@@ -132,9 +132,7 @@ BPPJ
     }
 
 
-
-
-    // TÍTULO PARA CARGAR ÁREAS DE EMPRESA
+// TÍTULO PARA CARGAR ÁREAS DE EMPRESA
     // Función para cargar las áreas de la empresa
     function CargarAreasEmpresa() {
         // Realiza una solicitud para obtener la lista de áreas de empresa desde el servidor
