@@ -28,14 +28,6 @@ BPPJ
         input.value = input.value.replace(/[^A-Za-zÀ-ÿ0-9\s&.-]/g, '');
     });
 
-// TÍTULO PARA VALIDAR EL ÁREA DE LA EMPRESA
-    // Evento para validar el área de la empresa al introducir texto
-    document.getElementById('empresa_area').addEventListener('input', function () {
-        const input = this;
-        // Elimina caracteres no válidos (solo permite letras y algunos caracteres especiales)
-        input.value = input.value.replace(/[^A-Za-zÀ-ÿ\s&.-]/g, '');
-    });
-
 // TÍTULO PARA VALIDAR LA DIRECCIÓN DE LA EMPRESA
     // Evento para validar la dirección de la empresa al introducir texto
     document.getElementById('empresa_direccion').addEventListener('input', function () {
@@ -147,18 +139,15 @@ BPPJ
     function CargarAreasEmpresa() {
         // Realiza una solicitud para obtener la lista de áreas de empresa desde el servidor
         fetch('../../php/crear_empresa/get_area_empresa.php')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Error en la red: ' + response.status);
-                }
-                return response.text();  // Leer el contenido de la respuesta como texto (HTML)
-            })
+            .then(response => response.text())
             .then(data => {
                 const select = document.getElementById('empresa_area'); // Obtener el elemento select por su ID
                 select.innerHTML = data;  // Insertar directamente las opciones generadas en el select
             })
             .catch(error => console.error('Error al cargar áreas de empresa:', error)); // Manejar errores de la solicitud
     }
+
+    CargarAreasEmpresa();
 
     // Cargar áreas de empresa al cargar la página
     document.addEventListener('DOMContentLoaded', () => {

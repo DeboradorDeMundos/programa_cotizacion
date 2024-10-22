@@ -32,8 +32,7 @@ BPPJ
                     <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE SELECCIÓN DEL ÁREA DE LA EMPRESA -->
                         <label for="empresa_area">Área de la Empresa:</label>
                         <select id="empresa_area" name="empresa_area" required>
-                            <option value="">Seleccione el área</option>
-                            <!-- Las opciones se llenarán dinámicamente con JavaScript -->
+                            
                         </select>
                     </div>
                 </div>
@@ -145,6 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $empresa_web = isset($_POST['empresa_web']) ? trim($_POST['empresa_web']) : null;
         $dias_validez = isset($_POST['validez_cotizacion']) ? (int)$_POST['validez_cotizacion'] : null;
 
+
         // Obtener el id del tipo de firma basado en la opción seleccionada
         $id_tipo_firma = null;
         switch ($tipo_firma) {
@@ -168,7 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Verificar que la fecha está bien formada antes de intentar insertarla
         if ($fecha_creacion && preg_match('/^\d{4}-\d{2}-\d{2}$/', $fecha_creacion)) {
             // Inserta la empresa incluyendo el id del tipo de firma y nuevos campos
-            $sql_empresa = "INSERT INTO E_Empresa (id_foto, rut_empresa, nombre_empresa, area_empresa, direccion_empresa, telefono_empresa, email_empresa, fecha_creacion, pais_empresa, ciudad_empresa, web_empresa, dias_validez, id_tipo_firma)
+            $sql_empresa = "INSERT INTO E_Empresa (id_foto, rut_empresa, nombre_empresa, id_area_empresa, direccion_empresa, telefono_empresa, email_empresa, fecha_creacion, pais_empresa, ciudad_empresa, web_empresa, dias_validez, id_tipo_firma)
                             VALUES ('$id_foto', '$rut_empresa', '$nombre_empresa', '$area_empresa', '$direccion_empresa', '$telefono_empresa', '$email_empresa', '$fecha_creacion', '$empresa_pais', '$empresa_ciudad', '$empresa_web', $dias_validez, $id_tipo_firma)";
             
             if ($mysqli->query($sql_empresa) === TRUE) {
