@@ -15,7 +15,7 @@ BPPJ
 // Verificar si $row no es nulo antes de realizar la consulta
 if ($row !== null) {
     // Consulta para obtener las condiciones generales de la empresa
-    $query_condiciones = "SELECT id_condiciones, descripcion_condiciones FROM C_Condiciones_Generales WHERE id_empresa = ?";
+    $query_condiciones = "SELECT id_condiciones, descripcion_condiciones FROM em_Condiciones_Generales WHERE id_empresa = ?";
     
     // Preparar la consulta
     if ($stmt_cond = $mysqli->prepare($query_condiciones)) {

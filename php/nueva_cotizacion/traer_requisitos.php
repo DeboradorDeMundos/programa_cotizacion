@@ -13,7 +13,7 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- -->
     <?php
     // Consulta para obtener los requisitos básicos
-    $query_requisitos = "SELECT id_requisitos, indice, descripcion_condiciones FROM E_Requisitos_Basicos WHERE id_empresa = ?";
+    $query_requisitos = "SELECT id_requisitos, indice, descripcion_condiciones FROM em_Requisitos_Basicos WHERE id_empresa = ?";
     if ($stmt_req = $mysqli->prepare($query_requisitos)) {
         $stmt_req->bind_param('i', $id);
         $stmt_req->execute();

@@ -20,7 +20,7 @@ $mensaje_exito = '';
 // Consulta para obtener las obligaciones del cliente
 $query_obligaciones = "SELECT oc.id, oc.indice, oc.descripcion, oc.estado
                         FROM C_Cotizaciones cot
-                        JOIN E_obligaciones_cliente oc ON oc.id_empresa = cot.id_empresa
+                        JOIN em_obligaciones_cliente oc ON oc.id_empresa = cot.id_empresa
                         WHERE cot.id_cotizacion = ?";
 if ($stmt_obligaciones = $mysqli->prepare($query_obligaciones)) {
     $stmt_obligaciones->bind_param('i', $id_cotizacion);
@@ -39,7 +39,7 @@ if ($stmt_obligaciones = $mysqli->prepare($query_obligaciones)) {
 // Consulta para obtener las obligaciones seleccionadas
 $query_obligaciones_seleccionadas = "
     SELECT r.id, r.indice, r.descripcion
-    FROM e_obligaciones_cliente AS r
+    FROM em_obligaciones_cliente AS r
     JOIN c_cotizaciones_obligaciones AS cr ON r.id = cr.id_obligacion
     WHERE cr.id_cotizacion = ?
 ";

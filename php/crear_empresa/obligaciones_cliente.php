@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     $obligacionesArray = explode('|', $obligacionesString);
     if (!empty($obligacionesArray)) {
-        $stmt = $mysqli->prepare("INSERT INTO E_Obligaciones_Cliente (indice, descripcion, id_empresa) VALUES (?, ?, ?)");
+        $stmt = $mysqli->prepare("INSERT INTO em_obligaciones_cliente (indice, descripcion, id_empresa) VALUES (?, ?, ?)");
 
         if (!$stmt) {
             die("Error al preparar la consulta: " . $mysqli->error);

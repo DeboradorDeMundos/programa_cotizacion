@@ -19,7 +19,7 @@ if ($items !== null) {
                             con.id_condiciones, 
                             con.descripcion_condiciones 
                             FROM C_Cotizaciones cot
-                            JOIN  C_Condiciones_Generales con on con.id_empresa = cot.id_empresa
+                            JOIN  em_Condiciones_Generales con on con.id_empresa = cot.id_empresa
                             WHERE cot.id_cotizacion = ?";
     
     // Preparar la consulta

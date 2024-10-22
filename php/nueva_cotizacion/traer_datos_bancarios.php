@@ -22,9 +22,9 @@ BPPJ
         cb.email_banco AS CuentaEmailBanco,
         t.tipocuenta AS TipoCuentaDescripcion,
         b.nombre_banco AS BancoNombre
-    FROM E_Cuenta_Bancaria cb
-    LEFT JOIN E_Tipo_Cuenta t ON cb.id_tipocuenta = t.id_tipocuenta
-    LEFT JOIN E_Bancos b ON cb.id_banco = b.id_banco
+    FROM em_Cuenta_Bancaria cb
+    LEFT JOIN Tp_cuenta t ON cb.id_tipocuenta = t.id_tipocuenta
+    LEFT JOIN Tp_banco b ON cb.id_banco = b.id_banco
     WHERE cb.id_empresa = ?";
 
     if ($stmt_cuenta = $mysqli->prepare($sql_cuenta)) {

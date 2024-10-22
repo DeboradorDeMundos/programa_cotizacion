@@ -114,9 +114,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Verifica que el nombre y el RUT de la empresa estén presentes
     if ($empresa_nombre && $empresa_rut) {
         // Consulta para insertar o actualizar la empresa
-        $sql = "INSERT INTO E_Empresa (rut_empresa, id_foto, nombre_empresa, area_empresa, direccion_empresa, telefono_empresa, email_empresa)
+        $sql = "INSERT INTO E_Empresa (rut_empresa, id_foto, nombre_empresa, id_area_empresa, direccion_empresa, telefono_empresa, email_empresa)
                 VALUES (?, ?, ?, ?, ?, ?, ?)
-                ON DUPLICATE KEY UPDATE nombre_empresa=VALUES(nombre_empresa), area_empresa=VALUES(area_empresa), direccion_empresa=VALUES(direccion_empresa), telefono_empresa=VALUES(telefono_empresa), email_empresa=VALUES(email_empresa)";
+                ON DUPLICATE KEY UPDATE nombre_empresa=VALUES(nombre_empresa), id_area_empresa=VALUES(id_area_empresa), direccion_empresa=VALUES(direccion_empresa), telefono_empresa=VALUES(telefono_empresa), email_empresa=VALUES(email_empresa)";
         $stmt = $mysqli->prepare($sql);
         // Verifica si la preparación de la consulta fue exitosa
         if ($stmt === false) {
