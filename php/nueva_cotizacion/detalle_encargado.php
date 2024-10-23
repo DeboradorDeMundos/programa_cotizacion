@@ -41,8 +41,8 @@ BPPJ
                     pattern="^[a-zA-ZÀ-ÿ\s]+$" 
                     oninput="QuitarCaracteresInvalidos(this)"
                     title="Ingresa un nombre válido (Ej: Juan Pérez). Solo se permiten letras y espacios."> <!-- Campo de texto para ingresar el nombre del encargado. Este campo no es obligatorio -->
+                </div>
             </div>
-        </div>
     
         <div class="form-group">
             <!-- TÍTULO: CAMPO PARA EL EMAIL DEL ENCARGADO -->

@@ -300,16 +300,37 @@ CREATE TABLE Em_Vendedores (
 ) ENGINE=InnoDB;
 
 
+-- ------------------------------------------------------------------------------------------------------------
+-- ------------------------------------- TABLA Tp_Banco ---------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------ 
+
+-- Eliminar la tabla Tp_Banco si existe
+DROP TABLE IF EXISTS Tp_Banco;
+
 CREATE TABLE Tp_Banco (
     id_banco INT AUTO_INCREMENT PRIMARY KEY,
     nombre_banco VARCHAR(255) NOT NULL UNIQUE
 );
+
+-- ------------------------------------------------------------------------------------------------------------
+-- ------------------------------------- TABLA Tp_Cuenta ---------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------ 
+
+-- Eliminar la tabla Tp_Cuenta si existe
+DROP TABLE IF EXISTS Tp_Cuenta;
 
 CREATE TABLE Tp_Cuenta (
     id_tipocuenta INT AUTO_INCREMENT PRIMARY KEY,
     tipocuenta VARCHAR(255) NOT NULL,
     descripcion VARCHAR(255)
 );
+
+-- ------------------------------------------------------------------------------------------------------------
+-- ------------------------------------- TABLA Em_Cuenta_Bancaria ---------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------ 
+
+-- Eliminar la tabla Em_Cuenta_Bancaria si existe
+DROP TABLE IF EXISTS Em_Cuenta_Bancaria;
 
 CREATE TABLE Em_Cuenta_Bancaria (
     id_cuenta INT AUTO_INCREMENT PRIMARY KEY,
@@ -461,6 +482,10 @@ CREATE TABLE p_tipo_producto (
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA DETALLE Productos ----------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
+
+
+
+
 
 -- ------------------------------------------------------------------------------------------------------------
 -- ------------------------------------- TABLA pago -----------------------------------------------------
@@ -647,6 +672,104 @@ CREATE TABLE Em_Firmas (
 -- ------------------------------------- INDICES  ----------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------ 
 
+-- Crear índice en la tabla E_Empresa
+CREATE INDEX idx_empresa_id ON E_Empresa(id_empresa);
+
+-- Crear índice en la tabla C_Clientes
+CREATE INDEX idx_cliente_id ON C_Clientes(id_cliente);
+
+-- Crear índice en la tabla Em_Vendedores
+CREATE INDEX idx_vendedor_id ON Em_Vendedores(id_vendedor);
+
+-- Crear índice en la tabla Em_Encargados
+CREATE INDEX idx_encargado_id ON Em_Encargados(id_encargado);
+
+-- Crear índice en la tabla C_Proyectos
+CREATE INDEX idx_proyecto_id ON C_Proyectos(id_proyecto);
+
+-- Crear índice en la tabla p_Proveedor
+CREATE INDEX idx_proveedor_id ON p_Proveedor(id_proveedor);
+
+-- Crear índice en la tabla p_Proveedor_Producto
+CREATE INDEX idx_proveedor_producto_id ON p_Proveedor_Producto(id_proveedor_producto);
+
+-- Crear índice en la tabla C_Encargado
+CREATE INDEX idx_encargado_cliente_id ON C_Encargado(id_cliente);
+
+-- Crear índice en la tabla C_Cliente_Proyecto
+CREATE INDEX idx_cliente_proyecto_id ON C_Cliente_Proyecto(id_proyecto);
+
+-- Crear índice en la tabla C_Cliente_Contacto
+CREATE INDEX idx_cliente_contacto_id ON C_Cliente_Contacto(id_cliente);
+
+-- Crear índice en la tabla p_Tipo_Proveedor
+CREATE INDEX idx_tipo_proveedor_id ON p_Tipo_Proveedor(id_tipo_proveedor);
+
+-- Crear índice en la tabla Em_Tipo_Vendedor
+CREATE INDEX idx_tipo_vendedor_id ON Em_Tipo_Vendedor(id_tipo_vendedor);
+
+-- Crear índice en la tabla p_categoria_producto
+CREATE INDEX idx_categoria_producto_id ON p_categoria_producto(id_categoria_producto);
+
+-- Crear índice en la tabla p_estado_producto
+CREATE INDEX idx_estado_producto_id ON p_estado_producto(id_estado_producto);
+
+-- Crear índice en la tabla Tp_Banco
+CREATE INDEX idx_banco_id ON Tp_Banco(id_banco);
+
+-- Crear índice en la tabla Tp_Cuenta
+CREATE INDEX idx_tipocuenta_id ON Tp_Cuenta(id_tipocuenta);
+
+-- Crear índice en la tabla Em_Cuenta_Bancaria
+CREATE INDEX idx_cuenta_bancaria_id ON Em_Cuenta_Bancaria(id_cuenta);
+
+-- Crear índice en la tabla C_Cotizaciones
+CREATE INDEX idx_cotizacion_id ON C_Cotizaciones(id_cotizacion);
+
+-- Crear índice en la tabla C_Titulos
+CREATE INDEX idx_titulo_id ON C_Titulos(id_titulo);
+
+-- Crear índice en la tabla C_Subtitulos
+CREATE INDEX idx_subtitulo_id ON C_Subtitulos(id_subtitulo);
+
+-- Crear índice en la tabla C_Notas
+CREATE INDEX idx_nota_id ON C_Notas(id_nota);
+
+-- Crear índice en la tabla C_Detalles
+CREATE INDEX idx_detalle_id ON C_Detalles(id_detalle);
+
+-- Crear índice en la tabla C_Totales
+CREATE INDEX idx_total_id ON C_Totales(id_total);
+
+-- Crear índice en la tabla C_pago
+CREATE INDEX idx_pago_id ON C_pago(id_pago);
+
+-- Crear índice en la tabla Em_Condiciones_Generales
+CREATE INDEX idx_condiciones_generales_id ON Em_Condiciones_Generales(id_condiciones);
+
+-- Crear índice en la tabla C_Cotizacion_Condiciones
+CREATE INDEX idx_cotizacion_condiciones_id ON C_Cotizacion_Condiciones(id_cotizacion_condiciones);
+
+-- Crear índice en la tabla Em_Requisitos_Basicos
+CREATE INDEX idx_requisitos_basicos_id ON Em_Requisitos_Basicos(id_requisitos);
+
+-- Crear índice en la tabla C_Cotizaciones_Requisitos
+CREATE INDEX idx_cotizacion_requisito_id ON C_Cotizaciones_Requisitos(id_cotizacion_requisito);
+
+-- Crear índice en la tabla Em_obligaciones_cliente
+CREATE INDEX idx_obligacion_cliente_id ON Em_obligaciones_cliente(id);
+
+-- Crear índice en la tabla C_Cotizaciones_Obligaciones
+CREATE INDEX idx_cotizacion_obligacion_id ON C_Cotizaciones_Obligaciones(id_cotizacion_obligacion);
+
+-- Crear índice en la tabla C_Observaciones
+CREATE INDEX idx_observacion_id ON C_Observaciones(id_observacion);
+
+-- Crear índice en la tabla C_Mensaje_Despedida
+CREATE INDEX idx_mensaje_despedida_id ON C_Mensaje_Despedida(id_mensaje_despedida);
+
+-- Crear índice en la tabla Em_Firmas
+CREATE INDEX idx_firma_id ON Em_Firmas(id_firma);
 
 
 
